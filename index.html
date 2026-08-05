@@ -3288,6 +3288,13 @@ button:focus-visible, select:focus-visible, input:focus-visible {
   border-bottom: 1px solid var(--line) !important;
 }
 
+
+/* Fix Property Detail Panel position when Guided Presentation Rail is active */
+body.in-guided-presentation .property-detail-panel {
+  top: 54px !important;
+  height: calc(100% - 54px) !important;
+}
+
 </style>
 </head>
 <body>
@@ -5883,7 +5890,11 @@ let presentationPreState = null;
 let presentationPropertyId = null;
 
 function startGuidedPresentation(propId) {
-  const propertyId = propId || activeCardId || (ALL_PROPERTIES.find((p) => p.recommended) || ALL_PROPERTIES[0])?.id;
+  const filteredList = (typeof getFiltered === 'function' && getFiltered().length > 0) ? getFiltered() : ALL_PROPERTIES;
+  let propertyId = propId || activeCardId;
+  if (!propertyId || !filteredList.some((p) => p.id === propertyId)) {
+    propertyId = filteredList[0]?.id;
+  }
   if (!propertyId) return;
 
   // Save pre-presentation state
@@ -5951,7 +5962,7 @@ function applyPresentationStep(stepIdx) {
       <div class="p-rail__property-info">
         <span class="p-rail__badge">${property.id}</span>
         <select class="p-rail__select" onchange="switchPresentationProperty(this.value)" title="Quick switch property during meeting">
-          ${(typeof getFiltered === 'function' ? getFiltered() : ALL_PROPERTIES).map((p) => `
+          ${((typeof getFiltered === 'function' && getFiltered().length > 0) ? getFiltered() : ALL_PROPERTIES).map((p) => `
             <option value="${p.id}" ${p.id === property.id ? 'selected' : ''}>${p.title} (${getPropertyDetails(p).priceStr})</option>
           `).join('')}
         </select>
