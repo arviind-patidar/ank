@@ -3295,6 +3295,156 @@ body.in-guided-presentation .property-detail-panel {
   height: calc(100% - 54px) !important;
 }
 
+
+/* ===== UNIFIED DESIGN SYSTEM (8PX GRID, BUTTONS, RADIUS & ELEVATION) ===== */
+:root {
+  /* Acre&Key Brand Palette */
+  --green-deep:  #182A3D; /* Deep Navy main dark surface */
+  --green-mid:   #2F455A; /* Secondary dark surface */
+  --gold:        #9A7B4F; /* Antique Brass accent */
+  --cream:       #FBF6F3; /* Warm Ivory light surface */
+  --navy:        #182A3D; /* Primary body text on light */
+  --rust:        #9A7B4F; /* Accent brass */
+  --line:        #DDD7CF; /* Crisp border divider */
+  --card-bg:     #FFFFFF; /* Pure white card surface */
+  --warm-stone:  #EDE8E2; /* Warm stone secondary light */
+
+  --font-display: "Marcellus", serif;
+  --font-body:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    "Manrope", monospace;
+
+  /* Standardized 8px Spacing Grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Standardized Border Radius */
+  --radius: 6px;
+  --radius-pill: 999px;
+
+  /* Floating Elevation System */
+  --shadow-overlay: 0 12px 36px rgba(18, 32, 46, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-card-hover: 0 4px 14px rgba(24, 42, 61, 0.08);
+}
+
+/* Base Reset & Typography */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--green-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold) !important;
+  outline-offset: 2px !important;
+}
+
+/* Button Component Hierarchy */
+.btn-primary, .btn-present, .btn-bp-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  height: 32px;
+  background: var(--gold) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-body);
+  font-weight: 700 !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(154, 123, 79, 0.35);
+  transition: transform 150ms ease-out, background-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.btn-primary:hover, .btn-present:hover, .btn-bp-save:hover {
+  background: #8A6C40 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(154, 123, 79, 0.45);
+}
+.btn-primary:active, .btn-present:active, .btn-bp-save:active {
+  transform: translateY(0);
+}
+
+.btn-secondary, .btn-reset, .btn-bp-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  height: 32px;
+  background: transparent !important;
+  color: var(--navy) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-body);
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+  cursor: pointer;
+  transition: transform 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+.btn-secondary:hover, .btn-reset:hover, .btn-bp-reset:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent !important;
+  border: none !important;
+  color: #7A8288 !important;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+.btn-ghost:hover {
+  color: var(--gold) !important;
+}
+
+/* Skeleton Loading Component */
+.skeleton-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-2);
+}
+.skeleton-line {
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(24,42,61,0.06) 0%, rgba(182,138,76,0.18) 50%, rgba(24,42,61,0.06) 100%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite ease-in-out;
+}
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Floating Overlays Standardized Glassmorphism */
+.property-detail-panel,
+.map-view-pill,
+.price-legend,
+.locality-summary-strip,
+.compare-modal,
+.presentation-rail-overlay {
+  box-shadow: var(--shadow-overlay) !important;
+}
+
 </style>
 </head>
 <body>
