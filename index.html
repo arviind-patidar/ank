@@ -2664,6 +2664,351 @@ body.in-guided-presentation .locality-summary-strip {
   border-bottom: 1px solid var(--line);
 }
 
+
+/* ===== PROPERTY CARDS & SLIDING DETAILS PANEL ===== */
+.card {
+  border: 1px solid var(--line);
+  border-left: 3px solid #DDD7CF;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(24,42,61,0.08);
+  border-color: rgba(182,138,76,0.5);
+}
+.card--recommended {
+  border-left: 3px solid var(--gold) !important;
+  background: #FAF8F5;
+}
+.card--active {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 2px rgba(182,138,76,0.25) !important;
+}
+
+.card__row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.card__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--navy);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card__ak-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.card__ak-score--high { background: var(--gold); color: #fff; }
+.card__ak-score--mid  { background: rgba(154,123,79,0.2); color: #8A6C40; border: 1px solid rgba(154,123,79,0.35); }
+.card__ak-score--low  { background: rgba(0,0,0,0.06); color: #7A8288; }
+
+.card__row2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.card__price {
+  font-weight: 700;
+  color: var(--rust);
+}
+.card__config {
+  font-weight: 600;
+  color: #5B6B62;
+}
+
+.card__row3-why {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--navy);
+  background: rgba(182,138,76,0.1);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+}
+
+.card__row4-footer {
+  font-size: 10.5px;
+  color: #7A8288;
+}
+
+/* Property Detail Panel (Right-side Sliding Panel) */
+.property-detail-panel {
+  position: absolute;
+  top: 0; right: 0;
+  width: 370px;
+  height: 100%;
+  z-index: 500;
+  background: var(--cream);
+  color: var(--navy);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -6px 0 28px rgba(24,42,61,0.22);
+  transform: translateX(100%);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+.property-detail-panel--open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.map-wrap--panel-open {
+  padding-right: 370px;
+}
+
+.pdp__header {
+  flex: 0 0 auto;
+  padding: 16px 18px 12px;
+  background: var(--green-deep);
+  color: var(--cream);
+  position: relative;
+  border-bottom: 2px solid var(--gold);
+}
+.pdp__close {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease;
+}
+.pdp__close:hover { background: rgba(255,255,255,0.22); }
+
+.pdp__header-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(154,123,79,0.3);
+  color: #E2C699;
+  border: 1px solid rgba(154,123,79,0.45);
+  padding: 2px 7px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.pdp__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin: 0 28px 6px 0;
+}
+.pdp__header-row2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pdp__price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  color: #E2C699;
+}
+.pdp__config {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  color: rgba(255,255,255,0.72);
+}
+.pdp__ak-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10.5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+.pdp__ak-score--high { background: var(--gold); color: #fff; }
+.pdp__ak-score--mid  { background: rgba(154,123,79,0.28); color: #E2C699; border: 1px solid rgba(154,123,79,0.4); }
+.pdp__ak-score--low  { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); }
+
+.pdp__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+.pdp__section {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.pdp__section-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pdp__section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(154,123,79,0.2);
+}
+
+.pdp__reasons { display: flex; flex-direction: column; gap: 6px; }
+.pdp__reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--navy);
+}
+.pdp__reason-check {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(154,123,79,0.15);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: var(--rust);
+  margin-top: 1px;
+}
+
+.pdp__commute-card {
+  background: rgba(47,69,90,0.06);
+  border: 1px solid rgba(47,69,90,0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pdp__commute-icon { font-size: 26px; flex: 0 0 auto; line-height: 1; }
+.pdp__commute-time { font-family: var(--font-mono); font-weight: 800; font-size: 22px; color: var(--navy); line-height: 1; }
+.pdp__commute-detail { font-size: 10.5px; color: #5B6B62; margin-top: 2px; }
+.pdp__commute-to { font-size: 10px; color: #7A8288; margin-top: 3px; }
+
+.pdp__amenity-group { margin-bottom: 10px; }
+.pdp__amenity-group-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pdp__amenity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 11.5px;
+  border-bottom: 1px dashed rgba(0,0,0,0.06);
+}
+.pdp__amenity-row:last-child { border-bottom: none; }
+.pdp__amenity-name { color: var(--navy); font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdp__amenity-dist { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: var(--rust); white-space: nowrap; flex: 0 0 auto; }
+
+.pdp__footer {
+  flex: 0 0 auto;
+  padding: 14px 18px 18px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pdp__actions { display: flex; gap: 8px; }
+.pdp__action-btn {
+  flex: 1 1 0;
+  padding: 8px 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 150ms, border-color 150ms, color 150ms;
+}
+.pdp__action-btn:hover { border-color: var(--gold); }
+.pdp__action-btn--active { background: rgba(182,138,76,0.14); border-color: var(--gold); color: var(--rust); }
+.pdp__action-btn--in-compare { background: #B68A4C; border-color: #B68A4C; color: #fff; }
+
+.pdp__cta {
+  width: 100%;
+  padding: 11px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  background: var(--rust);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.pdp__cta:hover { background: #8a6c40; }
+.pdp__dev-footer { font-size: 10px; color: #7A8288; text-align: center; margin-top: 2px; }
+
+@media (max-width: 860px) {
+  .property-detail-panel {
+    width: 100%;
+    height: 55vh;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    transform: translateY(105%);
+    box-shadow: 0 -4px 24px rgba(24,42,61,0.22);
+    border-radius: 16px 16px 0 0;
+  }
+  .property-detail-panel--open { transform: translateY(0); }
+  .map-wrap--panel-open { padding-right: 0; padding-bottom: 55vh; }
+}
+
 </style>
 </head>
 <body>
@@ -3044,6 +3389,28 @@ body.in-guided-presentation .locality-summary-strip {
       <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--mall"></span> Malls</div>
       <div style="margin-top:6px; opacity:0.85;">Numbered = clustered, zoom in for names. Select a project to see its AK Score, nearest tech parks, metro, schools, hospitals &amp; malls — expand the popup to see everything within 5 km. "Tech Park View" and "Area Price Density" above the filters swap in full-city heatmaps (navy = denser tech parks, red = pricier per sqft).</div>
     </div>
+  
+    <!-- PROPERTY DETAIL PANEL (slides in from right) -->
+    <aside class="property-detail-panel" id="propertyDetailPanel" aria-label="Property detail" hidden>
+      <div class="pdp__header" id="pdpHeader">
+        <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive()" aria-label="Close detail panel">✕</button>
+        <div class="pdp__header-badge" id="pdpBadge">ACRE&amp;KEY RECOMMENDED</div>
+        <div class="pdp__title" id="pdpTitle">—</div>
+        <div class="pdp__header-row2">
+          <span class="pdp__price" id="pdpPrice"></span>
+          <span class="pdp__config" id="pdpConfig"></span>
+          <span class="pdp__ak-score" id="pdpAkScore"></span>
+        </div>
+      </div>
+      <div class="pdp__body" id="pdpBody"></div>
+      <div class="pdp__footer" id="pdpFooter">
+        <div class="pdp__actions" id="pdpActions"></div>
+        <button type="button" class="pdp__cta" id="pdpSiteVisit" onclick="alert('Site visit booking request saved for ' + buyerProfile.name + '!')">
+          📅 Book a Site Visit
+        </button>
+        <div class="pdp__dev-footer" id="pdpDevFooter"></div>
+      </div>
+    </aside>
   </main>
 
   <div id="compareTray" class="compare-tray" role="region" aria-label="Property comparison">
@@ -4744,22 +5111,141 @@ function renderList(properties) {
   });
 }
 
+
+/* ---- Property Detail Panel JS ---- */
+function renderDetailPanel(property) {
+  var panel   = document.getElementById("propertyDetailPanel");
+  var mapWrap = document.querySelector(".map-wrap");
+  if (!panel || !mapWrap) return;
+
+  var details = getPropertyDetails(property);
+  var commute = getBuyerCommute(property.lat, property.lng);
+  var nearby  = getDisplayAmenities(property);
+
+  var badge = document.getElementById("pdpBadge");
+  if (badge) badge.style.display = property.recommended ? "" : "none";
+
+  document.getElementById("pdpTitle").textContent = property.title;
+  document.getElementById("pdpPrice").textContent = details.priceStr;
+  document.getElementById("pdpConfig").textContent = details.config;
+
+  var akEl = document.getElementById("pdpAkScore");
+  if (property.akScore != null) {
+    akEl.textContent = "AK " + property.akScore;
+    var tc = property.akScore >= 78 ? "pdp__ak-score--high" : property.akScore >= 70 ? "pdp__ak-score--mid" : "pdp__ak-score--low";
+    akEl.className = "pdp__ak-score " + tc;
+    akEl.style.display = "";
+  } else { akEl.style.display = "none"; }
+
+  var extras = {
+    P02: ["Proximity to Kundalahalli metro corridor", "Grade-A Sumadhura build quality", "Strong rental demand in Brookefield"],
+    P04: ["Established Borewell Road address", "Low-rise, low-density community", "Quick access to ITPL"],
+    P05: ["ECC Road premium micro-market", "Low project density", "Vaswani legacy builds"],
+    P06: ["Hope Farm junction — 5 min to ITPL", "80+ amenities", "Strong resale performance"],
+    P07: ["Mahindra IGBC green-certified", "Spacious 3 & 4 BHK", "Pattandur Agrahara upcoming metro stop"],
+    P10: ["Serene lakefront backdrop", "KR Puram ORR access", "Brigade delivery track record"],
+    P51: ["80 acres of greenery", "Varthur Road — 12 min to Sigma", "Olympic sports facility"],
+    P60: ["SOBHA Neopolis ORR frontage", "SOBHA quality", "Greek-themed architecture — strong resale USP"],
+  };
+  var reasonsList = [];
+  if (details.whyRecommended) reasonsList.push(details.whyRecommended);
+  var ex = extras[property.id] || [];
+  ex.forEach(function(r) { if (reasonsList.indexOf(r) === -1) reasonsList.push(r); });
+  reasonsList = reasonsList.slice(0, 5);
+
+  var whyHtml = reasonsList.length > 0 ? ('<div class="pdp__section"><div class="pdp__section-label">Why We Recommend This</div><div class="pdp__reasons">' +
+    reasonsList.map(function(r) { return '<div class="pdp__reason"><span class="pdp__reason-check">✓</span><span>' + r + '</span></div>'; }).join("") +
+    "</div></div>") : "";
+
+  var commuteHtml = '<div class="pdp__section"><div class="pdp__section-label">Commute for ' + buyerProfile.name.split(" ")[0] + '</div>' +
+    '<div class="pdp__commute-card"><div class="pdp__commute-icon">' + commute.icon + '</div>' +
+    '<div><div class="pdp__commute-time">' + commute.mins + ' mins</div>' +
+    '<div class="pdp__commute-detail">' + commute.distanceKm.toFixed(1) + " km · " + buyerProfile.commuteMode + '</div>' +
+    '<div class="pdp__commute-to">to ' + buyerProfile.officeName + '</div></div></div></div>';
+
+  var amenityGroups = [
+    { label: "Tech Parks",     color: "#2E6F7E", icon: "🏢", items: nearby.techParks  },
+    { label: "Metro Stations", color: "#5B3E96", icon: "🚇", items: nearby.metro      },
+    { label: "Schools",        color: "#C77F1A", icon: "🎓", items: nearby.schools    },
+    { label: "Hospitals",      color: "#B7332C", icon: "🏥", items: nearby.hospitals  },
+    { label: "Malls",          color: "#B33F7D", icon: "🛍️", items: nearby.malls      },
+  ].filter(function(g) { return g.items && g.items.length > 0; });
+
+  var amenityHtml = amenityGroups.length > 0 ? ('<div class="pdp__section"><div class="pdp__section-label">Nearby Amenities</div>' +
+    amenityGroups.map(function(g) {
+      return '<div class="pdp__amenity-group"><div class="pdp__amenity-group-label" style="color:' + g.color + '">' + g.icon + ' ' + g.label + '</div>' +
+        g.items.map(function(item) {
+          return '<div class="pdp__amenity-row"><span class="pdp__amenity-name">' + (item.name || item.title || '—') + '</span><span class="pdp__amenity-dist">' + item.distanceKm.toFixed(1) + ' km</span></div>';
+        }).join("") + "</div>";
+    }).join("") + "</div>") : "";
+
+  var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Project Details</div>' +
+    '<div style="font-size:12px;line-height:1.7;color:var(--navy)">' +
+    '<div><span style="color:#7A8288;font-size:10px">DEVELOPER</span><br/>' + property.developer + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px">LOCALITY</span><br/>' + property.locality + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px">CORRIDOR</span><br/>' + property.zone + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px">STATUS</span><br/>' + property.status + '</div>' +
+    '</div></div>';
+
+  document.getElementById("pdpBody").innerHTML = whyHtml + commuteHtml + amenityHtml + detailHtml;
+
+  var shortlisted = shortlistSet.has(property.id);
+  var inCompare   = compareSelection.includes(property.id);
+  document.getElementById("pdpActions").innerHTML =
+    '<button type="button" class="pdp__action-btn' + (shortlisted ? " pdp__action-btn--active" : "") + '" onclick="toggleShortlistPdp('' + property.id + '')">' + (shortlisted ? "♥" : "♡") + ' Shortlist</button>' +
+    '<button type="button" class="pdp__action-btn' + (inCompare ? " pdp__action-btn--in-compare" : "") + '" onclick="toggleComparePdp('' + property.id + '')">⇄ ' + (inCompare ? "In Compare" : "Compare") + '</button>';
+
+  document.getElementById("pdpDevFooter").textContent = property.developer + " · " + property.locality;
+
+  panel.hidden = false;
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() { panel.classList.add("property-detail-panel--open"); });
+  });
+  mapWrap.classList.add("map-wrap--panel-open");
+  setTimeout(function() { if (map) google.maps.event.trigger(map, "resize"); }, 310);
+}
+
+function toggleShortlistPdp(id) {
+  toggleShortlist(id);
+  if (activeCardId === id) {
+    var s = shortlistSet.has(id), c = compareSelection.includes(id);
+    var el = document.getElementById("pdpActions");
+    if (el) el.innerHTML =
+      '<button type="button" class="pdp__action-btn' + (s ? " pdp__action-btn--active" : "") + '" onclick="toggleShortlistPdp('' + id + '')">' + (s ? "♥" : "♡") + ' Shortlist</button>' +
+      '<button type="button" class="pdp__action-btn' + (c ? " pdp__action-btn--in-compare" : "") + '" onclick="toggleComparePdp('' + id + '')">⇄ ' + (c ? "In Compare" : "Compare") + '</button>';
+  }
+}
+
+function toggleComparePdp(id) {
+  toggleCompare(id);
+  if (activeCardId === id) {
+    var s = shortlistSet.has(id), c = compareSelection.includes(id);
+    var el = document.getElementById("pdpActions");
+    if (el) el.innerHTML =
+      '<button type="button" class="pdp__action-btn' + (s ? " pdp__action-btn--active" : "") + '" onclick="toggleShortlistPdp('' + id + '')">' + (s ? "♥" : "♡") + ' Shortlist</button>' +
+      '<button type="button" class="pdp__action-btn' + (c ? " pdp__action-btn--in-compare" : "") + '" onclick="toggleComparePdp('' + id + '')">⇄ ' + (c ? "In Compare" : "Compare") + '</button>';
+  }
+}
+
 function setActive(id, { pan }) {
   activeCardId = id;
-  els.list.querySelectorAll(".card").forEach((c) => c.classList.toggle("card--active", c.dataset.id === id));
+  els.list.querySelectorAll(".card").forEach(function(c) { c.classList.toggle("card--active", c.dataset.id === id); });
 
-  const property = ALL_PROPERTIES.find((p) => p.id === id);
+  var property = ALL_PROPERTIES.find(function(p) { return p.id === id; });
   if (!property || !map) return;
 
-  const position = { lat: property.lat, lng: property.lng };
-  if (pan) map.panTo(position);
+  if (sharedInfoWindow) sharedInfoWindow.close();
+
+  var position = { lat: property.lat, lng: property.lng };
+  if (pan) {
+    var offset = window.innerWidth > 860 ? -0.008 : 0;
+    map.panTo({ lat: position.lat, lng: position.lng + offset });
+  }
 
   showAllAmenities = false;
   popupCache = property;
-  const nearby = getDisplayAmenities(property);
-  sharedInfoWindow.setContent(popupHtml(property, nearby.techParks, nearby.metro, nearby.schools, nearby.hospitals, nearby.malls));
-  sharedInfoWindow.setPosition(position);
-  sharedInfoWindow.open(map);
+
+  renderDetailPanel(property);
 
   if (markerLayer) markerLayer.draw();
   updateTechParkDisplay();
@@ -4772,7 +5258,17 @@ function setActive(id, { pan }) {
 function clearActive() {
   activeCardId = null;
   popupCache = null;
-  els.list.querySelectorAll(".card").forEach((c) => c.classList.remove("card--active"));
+  els.list.querySelectorAll(".card").forEach(function(c) { c.classList.remove("card--active"); });
+
+  var panel   = document.getElementById("propertyDetailPanel");
+  var mapWrap = document.querySelector(".map-wrap");
+  if (panel) {
+    panel.classList.remove("property-detail-panel--open");
+    setTimeout(function() { panel.hidden = true; }, 310);
+  }
+  if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
+  setTimeout(function() { if (map) google.maps.event.trigger(map, "resize"); }, 310);
+
   if (markerLayer) markerLayer.draw();
   updateTechParkDisplay();
   updateMetroDisplay();
@@ -4782,7 +5278,7 @@ function clearActive() {
 }
 
 function closeAndClearActive() {
-  sharedInfoWindow.close();
+  if (sharedInfoWindow) sharedInfoWindow.close();
   clearActive();
 }
 
