@@ -3709,6 +3709,54 @@ html, body {
   border-radius: 4px;
 }
 
+
+/* ===== UNIFIED MICRO-ANIMATIONS (150-250MS CURATED TIMING) ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* Button & Interactive Hover Timing */
+.btn-primary, .btn-secondary, .btn-present, .btn-bp-save, .btn-bp-reset, .btn-reset, .locality-chip, .map-view-pill__btn, .p-btn {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out !important;
+}
+
+/* Card Hover Elevation */
+.card {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms ease-out, border-color 180ms ease-out !important;
+}
+.card:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(24, 42, 61, 0.08) !important;
+  border-color: rgba(182, 138, 76, 0.5) !important;
+}
+
+/* Sliding Right-Side Property Detail Panel */
+.property-detail-panel {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Modal Backdrops & Overlays */
+.compare-modal-backdrop, .price-insight-modal-backdrop {
+  transition: opacity 180ms ease-out, visibility 180ms ease-out !important;
+}
+
+.compare-modal, .price-insight-card {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out !important;
+}
+
+/* Accordion Headers */
+.accordion__header {
+  transition: background-color 150ms ease-out !important;
+}
+
+/* Map Markers Pop-In & Scale */
+.gmap-marker-wrap {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.gmap-marker-wrap:hover {
+  transform: translate(-50%, -104%) scale(1.1) !important;
+}
+
 </style>
 </head>
 <body>
