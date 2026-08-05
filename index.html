@@ -3153,6 +3153,32 @@ body.in-guided-presentation .locality-summary-strip {
 }
 .price-legend__title { color: #E2C699 !important; font-family: var(--font-mono) !important; }
 
+
+/* ===== ADVISOR EXPERIENCE & PRESENTATION SWITCHER ===== */
+.p-rail__select {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(182, 138, 76, 0.45);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  max-width: 230px;
+  outline: none;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.p-rail__select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--gold);
+}
+.p-rail__select option {
+  background: #12202E;
+  color: #FFFFFF;
+  padding: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -5764,7 +5790,11 @@ function applyPresentationStep(stepIdx) {
     rail.innerHTML = `
       <div class="p-rail__property-info">
         <span class="p-rail__badge">${property.id}</span>
-        <span class="p-rail__title"><strong>${property.title}</strong> · ${details.priceStr}</span>
+        <select class="p-rail__select" onchange="switchPresentationProperty(this.value)" title="Quick switch property during meeting">
+          ${(typeof getFiltered === 'function' ? getFiltered() : ALL_PROPERTIES).map((p) => `
+            <option value="${p.id}" ${p.id === property.id ? 'selected' : ''}>${p.title} (${getPropertyDetails(p).priceStr})</option>
+          `).join('')}
+        </select>
       </div>
       <div class="p-rail__steps">
         ${PRESENTATION_STEPS.map((s, idx) => `
@@ -6197,6 +6227,38 @@ function updateLocalitySummaryStrip(rawLocality) {
   `;
 
   strip.classList.add("locality-summary-strip--visible");
+}
+
+
+/* ---- ADVISOR PRESENTATION ENHANCEMENTS ---- */
+function switchPresentationProperty(newPropId) {
+  if (!newPropId) return;
+  presentationPropertyId = newPropId;
+  setActive(newPropId, { pan: true });
+  applyPresentationStep(presentationCurrentStep);
+}
+
+function handlePresentationKeydown(e) {
+  if (!presentationActive) return;
+  // Ignore if user is typing in an input
+  if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA')) {
+    return;
+  }
+  if (e.key === "ArrowRight" || e.key === " ") {
+    e.preventDefault();
+    navigatePresentationStep(1);
+  } else if (e.key === "ArrowLeft") {
+    e.preventDefault();
+    navigatePresentationStep(-1);
+  } else if (e.key === "Escape") {
+    e.preventDefault();
+    exitGuidedPresentation();
+  }
+}
+
+if (!window.presentationKeybound) {
+  window.addEventListener("keydown", handlePresentationKeydown);
+  window.presentationKeybound = true;
 }
 
 function wireControls() {
