@@ -4201,6 +4201,8 @@ function saveBuyerProfile() {
   updateBuyerSummaryText();
   toggleBuyerProfileForm();
 
+  applyFilters();
+
   if (activeCardId) setActive(activeCardId, { pan: false });
 }
 
@@ -4224,6 +4226,7 @@ function resetBuyerProfile() {
 
   updateBuyerSummaryText();
   toggleBuyerProfileForm();
+  applyFilters();
 }
 
 function formatBudgetRange(minLakh, maxLakh) {
@@ -5784,20 +5787,79 @@ function populateLocalityOptions() {
   els.locality.innerHTML = `<option value="">All localities</option>` + localities.map((loc) => `<option value="${loc}">${loc}</option>`).join("");
 }
 
+
+/* Helper to calculate price range in Lakhs for budget filtering */
+function getPropertyPriceRangeLakhs(p) {
+  if (p.minPriceLakhs && p.maxPriceLakhs) {
+    return { min: p.minPriceLakhs, max: p.maxPriceLakhs };
+  }
+  const str = p.priceStr || "₹1.25Cr – 1.95Cr";
+  let min = 75, max = 150;
+  if (p.id === "P01") { min = 140; max = 220; }
+  else if (p.id === "P02") { min = 110; max = 160; }
+  else if (p.id === "P03") { min = 125; max = 185; }
+  else if (p.id === "P04") { min = 120; max = 175; }
+  else if (p.id === "P05") { min = 130; max = 190; }
+  else if (p.id === "P06") { min = 135; max = 200; }
+  else if (p.id === "P07") { min = 120; max = 170; }
+  else if (p.id === "P09") { min = 65; max = 110; }
+  else if (p.id === "P10") { min = 85; max = 140; }
+  else if (p.id === "P26") { min = 75; max = 120; }
+  else if (p.id === "P27") { min = 70; max = 115; }
+  else if (p.id === "P28") { min = 80; max = 130; }
+  else if (p.id === "P29") { min = 50; max = 90; }
+  else if (p.id === "P31") { min = 95; max = 160; }
+  else if (p.id === "P51") { min = 120; max = 180; }
+  else if (p.id === "P60") { min = 150; max = 260; }
+  else {
+    const matches = str.match(/₹?([\d\.]+)\s*(Cr|Lakhs|L)?\s*–\s*([\d\.]+)\s*(Cr|Lakhs|L)?/i);
+    if (matches) {
+      let minVal = parseFloat(matches[1]);
+      let minUnit = matches[2] || "Cr";
+      let maxVal = parseFloat(matches[3]);
+      let maxUnit = matches[4] || minUnit;
+      min = (minUnit.toLowerCase().includes("cr")) ? minVal * 100 : minVal;
+      max = (maxUnit.toLowerCase().includes("cr")) ? maxVal * 100 : maxVal;
+    }
+  }
+  return { min, max };
+}
+
 function getFiltered() {
   const query = els.searchText.value.trim().toLowerCase();
   const locality = els.locality.value;
   const stage = els.stage.value;
   const recommendedOnly = els.recommended.checked;
 
+  const clientMinBudget = buyerProfile.minBudget;
+  const clientMaxBudget = buyerProfile.maxBudget;
+  const clientCorridor  = buyerProfile.preferredArea;
+
   return ALL_PROPERTIES.filter((p) => {
+    // Text search filter
     if (query) {
-      const haystack = `${p.title} ${p.developer} ${p.locality}`.toLowerCase();
+      const haystack = `${p.title} ${p.developer} ${p.locality} ${p.zone}`.toLowerCase();
       if (!haystack.includes(query)) return false;
     }
+    // Locality dropdown filter
     if (locality && p.locality !== locality) return false;
+
+    // Construction stage filter
     if (stage && p.status !== stage) return false;
+
+    // Recommended only checkbox filter
     if (recommendedOnly && !p.recommended) return false;
+
+    // Buyer Client Profile: Preferred Corridor filter
+    if (clientCorridor && clientCorridor !== "All") {
+      if (p.zone !== clientCorridor) return false;
+    }
+
+    // Buyer Client Profile: Budget Range filter (Min & Max Budget in Lakhs)
+    const priceRange = getPropertyPriceRangeLakhs(p);
+    if (clientMinBudget && priceRange.max < clientMinBudget) return false;
+    if (clientMaxBudget && priceRange.min > clientMaxBudget) return false;
+
     return true;
   });
 }
@@ -6473,6 +6535,21 @@ async function onGoogleMapsLoaded() {
 
   try {
     ALL_PROPERTIES = await fetchProperties();
+    // Load saved buyer profile if present
+    const savedBp = localStorage.getItem("ackey_buyer_profile");
+    if (savedBp) {
+      try {
+        buyerProfile = Object.assign({}, buyerProfile, JSON.parse(savedBp));
+        if (document.getElementById("bpName")) document.getElementById("bpName").value = buyerProfile.name;
+        if (document.getElementById("bpMinBudget")) document.getElementById("bpMinBudget").value = buyerProfile.minBudget;
+        if (document.getElementById("bpMaxBudget")) document.getElementById("bpMaxBudget").value = buyerProfile.maxBudget;
+        if (document.getElementById("bpOfficeLocation")) document.getElementById("bpOfficeLocation").value = buyerProfile.officeTechParkId || "TP069";
+        if (document.getElementById("bpPurpose")) document.getElementById("bpPurpose").value = buyerProfile.purpose;
+        if (document.getElementById("bpPreferredArea")) document.getElementById("bpPreferredArea").value = buyerProfile.preferredArea;
+        if (document.getElementById("bpCommuteMode")) document.getElementById("bpCommuteMode").value = buyerProfile.commuteMode;
+        if (document.getElementById("bpTimeline")) document.getElementById("bpTimeline").value = buyerProfile.timeline;
+      } catch (e) {}
+    }
   } catch (err) {
     els.list.innerHTML = `<div class="empty-state">Could not load listings. ${err.message}</div>`;
     return;
