@@ -3405,10 +3405,6 @@ body.in-guided-presentation .locality-summary-strip {
       <div class="pdp__body" id="pdpBody"></div>
       <div class="pdp__footer" id="pdpFooter">
         <div class="pdp__actions" id="pdpActions"></div>
-        <button type="button" class="pdp__cta" id="pdpSiteVisit" onclick="alert('Site visit booking request saved for ' + buyerProfile.name + '!')">
-          📅 Book a Site Visit
-        </button>
-        <div class="pdp__dev-footer" id="pdpDevFooter"></div>
       </div>
     </aside>
   </main>
@@ -5196,7 +5192,7 @@ function renderDetailPanel(property) {
   }
   document.getElementById("pdpActions").innerHTML = pdpActionsHtml(property.id);
 
-  document.getElementById("pdpDevFooter").textContent = property.developer + " · " + property.locality;
+  var devEl = document.getElementById("pdpDevFooter"); if (devEl) devEl.textContent = property.developer + " · " + property.locality;
 
   panel.hidden = false;
   requestAnimationFrame(function() {
