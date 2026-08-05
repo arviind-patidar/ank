@@ -3610,6 +3610,35 @@ html, body {
   transition: opacity 250ms ease-out;
 }
 
+
+/* ===== ADVISORY PROPERTY DETAILS PANEL STYLING ===== */
+.pdp__pros-cons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.pdp__pro-item {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #182A3D;
+  background: rgba(182, 138, 76, 0.12);
+  border-left: 3px solid var(--gold);
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.pdp__con-item {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #7A8288;
+  background: rgba(0,0,0,0.03);
+  border-left: 3px solid #7A8288;
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
 </style>
 </head>
 <body>
@@ -5778,15 +5807,21 @@ function renderDetailPanel(property) {
         }).join("") + "</div>";
     }).join("") + "</div>") : "";
 
-  var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Project Details</div>' +
-    '<div style="font-size:12px;line-height:1.7;color:var(--navy)">' +
-    '<div><span style="color:#7A8288;font-size:10px">DEVELOPER</span><br/>' + property.developer + '</div>' +
-    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px">LOCALITY</span><br/>' + property.locality + '</div>' +
-    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px">CORRIDOR</span><br/>' + property.zone + '</div>' +
-    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px">STATUS</span><br/>' + property.status + '</div>' +
+  var advisoryTakeaways = '<div class="pdp__section"><div class="pdp__section-label">Advisory Decision Factors</div>' +
+    '<div class="pdp__pros-cons">' +
+    '<div class="pdp__pro-item"><strong>PRO:</strong> Prime corridor connectivity & Grade-A builder track record.</div>' +
+    '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> High demand corridor with limited inventory release.</div>' +
     '</div></div>';
 
-  document.getElementById("pdpBody").innerHTML = whyHtml + commuteHtml + amenityHtml + detailHtml;
+  var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Developer &amp; Project Details</div>' +
+    '<div style="font-size:12px;line-height:1.7;color:var(--navy)">' +
+    '<div><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">DEVELOPER PEDIGREE</span><br/><strong>' + property.developer + '</strong> · Grade-A Builder</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">MICRO-MARKET</span><br/>' + property.locality + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CORRIDOR</span><br/>' + property.zone + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CONSTRUCTION STATUS</span><br/>' + property.status + '</div>' +
+    '</div></div>';
+
+  document.getElementById("pdpBody").innerHTML = whyHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
 
   function pdpActionsHtml(id) {
     var s = shortlistSet.has(id), c = compareSelection.includes(id);
