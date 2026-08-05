@@ -3516,6 +3516,65 @@ html, body {
   box-shadow: 0 0 0 2px rgba(182, 138, 76, 0.2) !important;
 }
 
+
+/* ===== SEARCH & FILTER WORKFLOW ENHANCEMENTS ===== */
+.active-filters-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: rgba(182, 138, 76, 0.14);
+  color: var(--rust);
+  border: 1px solid rgba(182, 138, 76, 0.35);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+.active-filter-tag__remove {
+  background: transparent;
+  border: none;
+  color: var(--rust);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1;
+}
+.active-filter-tag__remove:hover {
+  color: #B7332C;
+}
+
+.empty-state__chips {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.empty-state__chip-btn {
+  padding: 5px 12px;
+  background: rgba(182, 138, 76, 0.12);
+  color: var(--rust);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.empty-state__chip-btn:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
 </style>
 </head>
 <body>
@@ -5561,7 +5620,16 @@ function renderList(properties) {
   if (shortlistBadge) shortlistBadge.textContent = properties.length;
 
   if (properties.length === 0) {
-    els.list.innerHTML = `<div class="empty-state">No projects match this search. Loosen a filter.</div>`;
+    els.list.innerHTML = `
+      <div class="empty-state">
+        <div style="font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">No matching projects found</div>
+        <div>Try expanding your search criteria or resetting filters:</div>
+        <div class="empty-state__chips">
+          <button type="button" class="empty-state__chip-btn" onclick="resetBuyerProfile()">Show All Corridors</button>
+          <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Reset Filters</button>
+        </div>
+      </div>
+    `;
     return;
   }
 
