@@ -3690,6 +3690,25 @@ html, body {
   padding: 10px 14px;
 }
 
+
+/* ===== EXECUTIVE LOCALITY INSIGHTS DASHBOARD ===== */
+.l-strip__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.l-strip__pillar-item {
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: #E2C699;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(182, 138, 76, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -6846,16 +6865,27 @@ function updateLocalitySummaryStrip(rawLocality) {
     highlight: "Prime connectivity · High demand corridor · Excellent social amenities"
   };
 
+  const highlightsList = meta.highlight.split(' · ');
+  const p1 = highlightsList[0] || 'Core tech hub status';
+  const p2 = highlightsList[1] || 'Metro & highway access';
+  const p3 = highlightsList[2] || 'Top schools & healthcare';
+  const p4 = 'High resale liquidity & growth';
+
   strip.innerHTML = `
     <div class="l-strip__header">
       <div style="display:flex; align-items:center; gap:8px;">
-        <span class="l-strip__name">📍 ${keyName}</span>
+        <span class="l-strip__name">📍 ${keyName} Locality Insights</span>
         <span class="l-strip__stats">${count} Projects · ${sqftRange}</span>
       </div>
       <button type="button" class="l-strip__close" onclick="updateLocalitySummaryStrip(''); els.locality.value=''; applyFilters();" title="Clear locality filter">✕</button>
     </div>
     <div class="l-strip__tagline">${meta.tagline}</div>
-    <div class="l-strip__highlight">⚡ ${meta.highlight}</div>
+    <div class="l-strip__pillars">
+      <div class="l-strip__pillar-item">🏢 <strong>Employment:</strong> ${p1}</div>
+      <div class="l-strip__pillar-item">🚇 <strong>Transit:</strong> ${p2}</div>
+      <div class="l-strip__pillar-item">🎓 <strong>Social Infra:</strong> ${p3}</div>
+      <div class="l-strip__pillar-item">📈 <strong>Outlook:</strong> ${p4}</div>
+    </div>
   `;
 
   strip.classList.add("locality-summary-strip--visible");
