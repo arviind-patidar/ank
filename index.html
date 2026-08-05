@@ -3306,7 +3306,12 @@ button:focus-visible, select:focus-visible, input:focus-visible {
     <span class="topbar__divider">//</span>
     <span class="topbar__page">Bengaluru Property Map</span>
   </div>
-  <div class="topbar__meta" id="resultMeta">— SHORTLIST</div>
+  <div class="topbar__right" style="margin-left: auto; display: flex; align-items: center;">
+    <button type="button" class="btn-present" id="btnStartPresent" onclick="startGuidedPresentation()" title="Start Guided Presentation Mode">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      Present
+    </button>
+  </div>
 </header>
 
 <div class="layout">
@@ -3616,17 +3621,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
       </div>
     </details>
 
-    <!-- 5. SETTINGS / ADVISOR MODE & FOOTER -->
-    <div class="presentation-bar">
-      <div style="display:flex; flex-direction:column;">
-        <span class="topbar__page" style="margin-bottom:2px;">ADVISOR MODE</span>
-        <span style="font-size:10px; color:#7A8288;">Guided Buyer Presentation</span>
-      </div>
-      <button type="button" class="btn-present" id="btnStartPresent" onclick="startGuidedPresentation()">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-        Present
-      </button>
-    </div>
+    <!-- 5. FOOTER & BADGES -->
 
     <div class="panel__footer">
       <div class="panel__footer-badges">
@@ -5333,7 +5328,7 @@ function getAkScoreBadgeHtml(score) {
 }
 
 function renderList(properties) {
-  els.meta.textContent = `${properties.length} SHORTLISTED`;
+  if (els.meta) els.meta.textContent = `${properties.length} SHORTLISTED`;
   const shortlistBadge = document.getElementById("shortlistBadge");
   if (shortlistBadge) shortlistBadge.textContent = properties.length;
 
