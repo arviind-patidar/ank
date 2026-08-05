@@ -3324,7 +3324,6 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </svg>
           </span>
           <span class="buyer-profile-bar__badge">BUYER INFORMATION</span>
-          <span class="buyer-profile-bar__text" id="buyerSummaryText">Rahul Mehta · ₹1.2–1.5Cr · ITPL Whitefield · Self-use</span>
         </div>
         <div class="buyer-profile-bar__right">
           <span class="buyer-profile-bar__edit-hint">Edit Profile</span>
@@ -4235,12 +4234,7 @@ function formatBudgetRange(minLakh, maxLakh) {
 
 function updateBuyerSummaryText() {
   const textEl = document.getElementById("buyerSummaryText");
-  const budgetFormatted = formatBudgetRange(buyerProfile.minBudget, buyerProfile.maxBudget);
-  const officeShort = buyerProfile.officeName.length > 22
-    ? buyerProfile.officeName.substring(0, 20) + "…"
-    : buyerProfile.officeName;
-
-  textEl.textContent = `${buyerProfile.name} · ${budgetFormatted} · ${officeShort} · ${buyerProfile.purpose}`;
+  if (!textEl) return;
 }
 
 function getBuyerCommute(propertyLat, propertyLng) {
