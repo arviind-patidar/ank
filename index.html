@@ -3786,6 +3786,86 @@ html, body {
   transform: translate(-50%, -104%) scale(1.1) !important;
 }
 
+
+/* Search Suggestions Dropdown Styling */
+.search-suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #FFFFFF;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(24, 42, 61, 0.22);
+  z-index: 999;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+}
+.search-suggestions-dropdown--visible {
+  display: block;
+}
+.search-suggestion-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(154, 123, 79, 0.12);
+  transition: background-color 150ms ease-out;
+}
+.search-suggestion-item:last-child {
+  border-bottom: none;
+}
+.search-suggestion-item:hover,
+.search-suggestion-item--active {
+  background: rgba(154, 123, 79, 0.12);
+}
+.search-suggestion-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.search-suggestion-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-suggestion-subtitle {
+  font-size: 10.5px;
+  color: #64748B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-suggestion-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.search-suggestion-badge--project {
+  background: rgba(154, 123, 79, 0.15);
+  color: #7A5B28;
+}
+.search-suggestion-badge--developer {
+  background: rgba(46, 111, 126, 0.15);
+  color: #2E6F7E;
+}
+.search-suggestion-badge--locality {
+  background: rgba(168, 103, 46, 0.15);
+  color: #A8672E;
+}
+
 </style>
 </head>
 <body>
@@ -4059,7 +4139,7 @@ html, body {
             <button type="button" class="geo-filter-banner__clear" onclick="clearGeoFilter()">Clear ✕</button>
           </div>
 
-          <label class="field field--search">
+          <label class="field field--search" style="position:relative;">
             <span class="field__label">Search Projects</span>
             <div class="field--search__row">
               <div class="field--search__input-wrap">
@@ -4076,6 +4156,7 @@ html, body {
                 <option value="locality">Locality</option>
               </select>
             </div>
+            <div id="searchSuggestionsDropdown" class="search-suggestions-dropdown"></div>
           </label>
 
           <div class="field-row">
@@ -9555,14 +9636,151 @@ function wireControls() {
     });
   }
 
+
+  // Auto-complete & Selection Dropdown Engine
+  const dropdownEl = document.getElementById("searchSuggestionsDropdown");
+
+  function closeSearchDropdown() {
+    if (dropdownEl) {
+      dropdownEl.classList.remove("search-suggestions-dropdown--visible");
+      dropdownEl.innerHTML = "";
+    }
+  }
+
+  function renderSearchSuggestions() {
+    if (!dropdownEl || !els.searchText) return;
+    const q = els.searchText.value.trim().toLowerCase();
+    const scope = els.searchScope ? els.searchScope.value : "all";
+
+    const suggestions = [];
+
+    // 1. Projects Suggestions
+    if (scope === "all" || scope === "project") {
+      const matchedProjects = ALL_PROPERTIES.filter((p) => {
+        if (!q) return true;
+        return p.title.toLowerCase().includes(q) || p.developer.toLowerCase().includes(q) || p.locality.toLowerCase().includes(q);
+      }).slice(0, 6);
+
+      matchedProjects.forEach((p) => {
+        suggestions.push({
+          type: "project",
+          id: p.id,
+          title: p.title,
+          subtitle: `${p.developer} · ${p.locality}`,
+          badgeText: "🏢 Project",
+          badgeClass: "search-suggestion-badge--project",
+          onSelect: () => {
+            els.searchText.value = p.title;
+            closeSearchDropdown();
+            applyFilters();
+            setActive(p.id, { pan: true });
+          }
+        });
+      });
+    }
+
+    // 2. Developers Suggestions
+    if (scope === "all" || scope === "developer") {
+      const devMap = {};
+      ALL_PROPERTIES.forEach((p) => {
+        devMap[p.developer] = (devMap[p.developer] || 0) + 1;
+      });
+      const developers = Object.keys(devMap).filter((d) => !q || d.toLowerCase().includes(q)).slice(0, 6);
+
+      developers.forEach((d) => {
+        suggestions.push({
+          type: "developer",
+          title: d,
+          subtitle: `${devMap[d]} Projects in platform`,
+          badgeText: "🏗️ Developer",
+          badgeClass: "search-suggestion-badge--developer",
+          onSelect: () => {
+            els.searchText.value = d;
+            closeSearchDropdown();
+            applyFilters();
+          }
+        });
+      });
+    }
+
+    // 3. Localities Suggestions
+    if (scope === "all" || scope === "locality") {
+      const locMap = {};
+      ALL_PROPERTIES.forEach((p) => {
+        locMap[p.locality] = (locMap[p.locality] || 0) + 1;
+      });
+      const localities = Object.keys(locMap).filter((l) => !q || l.toLowerCase().includes(q)).slice(0, 5);
+
+      localities.forEach((l) => {
+        suggestions.push({
+          type: "locality",
+          title: l,
+          subtitle: `${locMap[l]} Projects`,
+          badgeText: "📍 Locality",
+          badgeClass: "search-suggestion-badge--locality",
+          onSelect: () => {
+            els.searchText.value = l;
+            updateLocalitySummaryStrip(l);
+            closeSearchDropdown();
+            applyFilters();
+          }
+        });
+      });
+    }
+
+    if (suggestions.length === 0) {
+      dropdownEl.innerHTML = `<div style="padding:10px 12px; font-size:11.5px; color:#64748B;">No matching ${scope} found.</div>`;
+    } else {
+      dropdownEl.innerHTML = suggestions.map((s, idx) => `
+        <div class="search-suggestion-item" data-suggestion-idx="${idx}">
+          <div class="search-suggestion-main">
+            <span class="search-suggestion-title">${s.title}</span>
+            <span class="search-suggestion-subtitle">${s.subtitle}</span>
+          </div>
+          <span class="search-suggestion-badge ${s.badgeClass}">${s.badgeText}</span>
+        </div>
+      `).join("");
+
+      dropdownEl.querySelectorAll(".search-suggestion-item").forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const idx = parseInt(item.dataset.suggestionIdx, 10);
+          if (suggestions[idx] && suggestions[idx].onSelect) {
+            suggestions[idx].onSelect();
+          }
+        });
+      });
+    }
+
+    dropdownEl.classList.add("search-suggestions-dropdown--visible");
+  }
+
+  els.searchText.addEventListener("focus", renderSearchSuggestions);
+  els.searchText.addEventListener("click", renderSearchSuggestions);
   els.searchText.addEventListener("input", () => {
     els.clearSearchText.classList.toggle("field--search__clear--visible", els.searchText.value.length > 0);
+    renderSearchSuggestions();
     applyFilters();
   });
+
+  if (els.searchScope) {
+    els.searchScope.addEventListener("change", () => {
+      renderSearchSuggestions();
+      applyFilters();
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".field--search")) {
+      closeSearchDropdown();
+    }
+  });
+
 
   els.clearSearchText.addEventListener("click", () => {
     els.searchText.value = "";
     els.clearSearchText.classList.remove("field--search__clear--visible");
+    closeSearchDropdown();
     applyFilters();
   });
 
