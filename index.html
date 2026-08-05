@@ -5189,11 +5189,12 @@ function renderDetailPanel(property) {
 
   document.getElementById("pdpBody").innerHTML = whyHtml + commuteHtml + amenityHtml + detailHtml;
 
-  var shortlisted = shortlistSet.has(property.id);
-  var inCompare   = compareSelection.includes(property.id);
-  document.getElementById("pdpActions").innerHTML =
-    '<button type="button" class="pdp__action-btn' + (shortlisted ? " pdp__action-btn--active" : "") + '" onclick="toggleShortlistPdp('' + property.id + '')">' + (shortlisted ? "♥" : "♡") + ' Shortlist</button>' +
-    '<button type="button" class="pdp__action-btn' + (inCompare ? " pdp__action-btn--in-compare" : "") + '" onclick="toggleComparePdp('' + property.id + '')">⇄ ' + (inCompare ? "In Compare" : "Compare") + '</button>';
+  function pdpActionsHtml(id) {
+    var s = shortlistSet.has(id), c = compareSelection.includes(id);
+    return `<button type="button" class="pdp__action-btn${s ? " pdp__action-btn--active" : ""}" onclick="toggleShortlistPdp('${id}')">${s ? "♥" : "♡"} Shortlist</button>` +
+           `<button type="button" class="pdp__action-btn${c ? " pdp__action-btn--in-compare" : ""}" onclick="toggleComparePdp('${id}')">⇄ ${c ? "In Compare" : "Compare"}</button>`;
+  }
+  document.getElementById("pdpActions").innerHTML = pdpActionsHtml(property.id);
 
   document.getElementById("pdpDevFooter").textContent = property.developer + " · " + property.locality;
 
@@ -5208,22 +5209,16 @@ function renderDetailPanel(property) {
 function toggleShortlistPdp(id) {
   toggleShortlist(id);
   if (activeCardId === id) {
-    var s = shortlistSet.has(id), c = compareSelection.includes(id);
     var el = document.getElementById("pdpActions");
-    if (el) el.innerHTML =
-      '<button type="button" class="pdp__action-btn' + (s ? " pdp__action-btn--active" : "") + '" onclick="toggleShortlistPdp('' + id + '')">' + (s ? "♥" : "♡") + ' Shortlist</button>' +
-      '<button type="button" class="pdp__action-btn' + (c ? " pdp__action-btn--in-compare" : "") + '" onclick="toggleComparePdp('' + id + '')">⇄ ' + (c ? "In Compare" : "Compare") + '</button>';
+    if (el) el.innerHTML = pdpActionsHtml(id);
   }
 }
 
 function toggleComparePdp(id) {
   toggleCompare(id);
   if (activeCardId === id) {
-    var s = shortlistSet.has(id), c = compareSelection.includes(id);
     var el = document.getElementById("pdpActions");
-    if (el) el.innerHTML =
-      '<button type="button" class="pdp__action-btn' + (s ? " pdp__action-btn--active" : "") + '" onclick="toggleShortlistPdp('' + id + '')">' + (s ? "♥" : "♡") + ' Shortlist</button>' +
-      '<button type="button" class="pdp__action-btn' + (c ? " pdp__action-btn--in-compare" : "") + '" onclick="toggleComparePdp('' + id + '')">⇄ ' + (c ? "In Compare" : "Compare") + '</button>';
+    if (el) el.innerHTML = pdpActionsHtml(id);
   }
 }
 
