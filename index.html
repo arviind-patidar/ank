@@ -4405,49 +4405,1905 @@ const METRO_LINE_COLORS = {
 };
 
 const METRO_STATIONS = [
-  { id: "M01", name: "Whitefield (Kadugodi)", line: "Purple", lat: 12.996412, lng: 77.760085 },
-  { id: "M02", name: "Hopefarm Channasandra", line: "Purple", lat: 12.984089, lng: 77.751184 },
-  { id: "M03", name: "Kadugodi Tree Park", line: "Purple", lat: 12.987672, lng: 77.742321 },
-  { id: "M04", name: "Pattandur Agrahara", line: "Purple", lat: 12.986615, lng: 77.735091 },
-  { id: "M05", name: "Sri Sathya Sai Hospital", line: "Purple", lat: 12.979234, lng: 77.724812 },
-  { id: "M06", name: "Nallurhalli", line: "Purple", lat: 12.973411, lng: 77.718823 },
-  { id: "M07", name: "Kundalahalli", line: "Purple", lat: 12.971895, lng: 77.712984 },
-  { id: "M08", name: "Seetharamapalya", line: "Purple", lat: 12.978152, lng: 77.705819 },
-  { id: "M09", name: "Hoodi", line: "Purple", lat: 12.986812, lng: 77.701124 },
-  { id: "M10", name: "Garudacharpalya", line: "Purple", lat: 12.990423, lng: 77.696145 },
-  { id: "M11", name: "Singayyanapalya", line: "Purple", lat: 12.991204, lng: 77.687192 },
-  { id: "M12", name: "Krishnarajapura (KR Pura)", line: "Purple", lat: 12.996112, lng: 77.675631 },
-  { id: "M13", name: "Benniganahalli", line: "Purple", lat: 12.993581, lng: 77.662095 },
-  { id: "M14", name: "Baiyappanahalli", line: "Purple", lat: 12.990715, lng: 77.652391 },
-  { id: "M15", name: "Swami Vivekananda Road", line: "Purple", lat: 12.985821, lng: 77.644892 },
-  { id: "M16", name: "Indiranagar", line: "Purple", lat: 12.978312, lng: 77.638615 },
-  { id: "M17", name: "Halasuru", line: "Purple", lat: 12.975418, lng: 77.626834 },
-  { id: "M18", name: "Trinity", line: "Purple", lat: 12.972901, lng: 77.61712 },
-  { id: "M19", name: "Mahatma Gandhi Road (MG Road)", line: "Purple", lat: 12.975612, lng: 77.606742 },
+  {
+    "id": "M01",
+    "name": "Whitefield (Kadugodi)",
+    "line": "Purple",
+    "lat": 12.996412,
+    "lng": 77.760085
+  },
+  {
+    "id": "M02",
+    "name": "Hopefarm Channasandra",
+    "line": "Purple",
+    "lat": 12.984089,
+    "lng": 77.751184
+  },
+  {
+    "id": "M03",
+    "name": "Kadugodi Tree Park",
+    "line": "Purple",
+    "lat": 12.987672,
+    "lng": 77.742321
+  },
+  {
+    "id": "M04",
+    "name": "Pattandur Agrahara",
+    "line": "Purple",
+    "lat": 12.986615,
+    "lng": 77.735091
+  },
+  {
+    "id": "M05",
+    "name": "Sri Sathya Sai Hospital",
+    "line": "Purple",
+    "lat": 12.979234,
+    "lng": 77.724812
+  },
+  {
+    "id": "M06",
+    "name": "Nallurhalli",
+    "line": "Purple",
+    "lat": 12.973411,
+    "lng": 77.718823
+  },
+  {
+    "id": "M07",
+    "name": "Kundalahalli",
+    "line": "Purple",
+    "lat": 12.971895,
+    "lng": 77.712984
+  },
+  {
+    "id": "M08",
+    "name": "Seetharamapalya",
+    "line": "Purple",
+    "lat": 12.978152,
+    "lng": 77.705819
+  },
+  {
+    "id": "M09",
+    "name": "Hoodi",
+    "line": "Purple",
+    "lat": 12.986812,
+    "lng": 77.701124
+  },
+  {
+    "id": "M10",
+    "name": "Garudacharpalya",
+    "line": "Purple",
+    "lat": 12.990423,
+    "lng": 77.696145
+  },
+  {
+    "id": "M11",
+    "name": "Singayyanapalya",
+    "line": "Purple",
+    "lat": 12.991204,
+    "lng": 77.687192
+  },
+  {
+    "id": "M12",
+    "name": "Krishnarajapura (KR Pura)",
+    "line": "Purple",
+    "lat": 12.996112,
+    "lng": 77.675631
+  },
+  {
+    "id": "M13",
+    "name": "Benniganahalli",
+    "line": "Purple",
+    "lat": 12.993581,
+    "lng": 77.662095
+  },
+  {
+    "id": "M14",
+    "name": "Baiyappanahalli",
+    "line": "Purple",
+    "lat": 12.990715,
+    "lng": 77.652391
+  },
+  {
+    "id": "M15",
+    "name": "Swami Vivekananda Road",
+    "line": "Purple",
+    "lat": 12.985821,
+    "lng": 77.644892
+  },
+  {
+    "id": "M16",
+    "name": "Indiranagar",
+    "line": "Purple",
+    "lat": 12.978312,
+    "lng": 77.638615
+  },
+  {
+    "id": "M17",
+    "name": "Halasuru",
+    "line": "Purple",
+    "lat": 12.975418,
+    "lng": 77.626834
+  },
+  {
+    "id": "M18",
+    "name": "Trinity",
+    "line": "Purple",
+    "lat": 12.972901,
+    "lng": 77.61712
+  },
+  {
+    "id": "M19",
+    "name": "Mahatma Gandhi Road (MG Road)",
+    "line": "Purple",
+    "lat": 12.975612,
+    "lng": 77.606742
+  },
+  {
+    "id": "M20",
+    "name": "Cubbon Park",
+    "line": "Purple",
+    "lat": 12.981254,
+    "lng": 77.596821
+  },
+  {
+    "id": "M21",
+    "name": "Dr. B.R. Ambedkar Vidhana Soudha",
+    "line": "Purple",
+    "lat": 12.979851,
+    "lng": 77.591245
+  },
+  {
+    "id": "M22",
+    "name": "Sir M. Visvesvaraya Central College",
+    "line": "Purple",
+    "lat": 12.974125,
+    "lng": 77.582312
+  },
+  {
+    "id": "M23",
+    "name": "Nadaprabhu Kempegowda Majestic Interchange",
+    "line": "Purple",
+    "lat": 12.975689,
+    "lng": 77.572841
+  },
+  {
+    "id": "M24",
+    "name": "City Railway Station",
+    "line": "Purple",
+    "lat": 12.977215,
+    "lng": 77.566812
+  },
+  {
+    "id": "M25",
+    "name": "Magadi Road",
+    "line": "Purple",
+    "lat": 12.976521,
+    "lng": 77.554812
+  },
+  {
+    "id": "M26",
+    "name": "Nagasandra",
+    "line": "Green",
+    "lat": 13.048215,
+    "lng": 77.500215
+  },
+  {
+    "id": "M27",
+    "name": "Dasarahalli",
+    "line": "Green",
+    "lat": 13.041852,
+    "lng": 77.511245
+  },
+  {
+    "id": "M28",
+    "name": "Jalahalli",
+    "line": "Green",
+    "lat": 13.038152,
+    "lng": 77.519821
+  },
+  {
+    "id": "M29",
+    "name": "Peenya Industry",
+    "line": "Green",
+    "lat": 13.034521,
+    "lng": 77.526845
+  },
+  {
+    "id": "M30",
+    "name": "Peenya",
+    "line": "Green",
+    "lat": 13.031245,
+    "lng": 77.534812
+  },
+  {
+    "id": "M31",
+    "name": "Goraguntepalya",
+    "line": "Green",
+    "lat": 13.028541,
+    "lng": 77.542812
+  },
+  {
+    "id": "M32",
+    "name": "Yeshwanthpur",
+    "line": "Green",
+    "lat": 13.024521,
+    "lng": 77.549812
+  },
+  {
+    "id": "M33",
+    "name": "Sandal Soap Factory",
+    "line": "Green",
+    "lat": 13.018541,
+    "lng": 77.554812
+  },
+  {
+    "id": "M34",
+    "name": "Mahalakshmi",
+    "line": "Green",
+    "lat": 13.012541,
+    "lng": 77.552812
+  },
+  {
+    "id": "M35",
+    "name": "Rajajinagar",
+    "line": "Green",
+    "lat": 13.004851,
+    "lng": 77.553812
+  },
+  {
+    "id": "M36",
+    "name": "Kuvempu Road",
+    "line": "Green",
+    "lat": 12.998541,
+    "lng": 77.558812
+  },
+  {
+    "id": "M37",
+    "name": "Srirampura",
+    "line": "Green",
+    "lat": 12.991245,
+    "lng": 77.563812
+  },
+  {
+    "id": "M38",
+    "name": "Mantri Square Sampige Road",
+    "line": "Green",
+    "lat": 12.990215,
+    "lng": 77.570812
+  },
+  {
+    "id": "M39",
+    "name": "Chickpet",
+    "line": "Green",
+    "lat": 12.967851,
+    "lng": 77.574812
+  },
+  {
+    "id": "M40",
+    "name": "Krishna Rajendra Market (KR Market)",
+    "line": "Green",
+    "lat": 12.961245,
+    "lng": 77.574215
+  },
+  {
+    "id": "M41",
+    "name": "National College",
+    "line": "Green",
+    "lat": 12.951245,
+    "lng": 77.573812
+  },
+  {
+    "id": "M42",
+    "name": "Lalbagh",
+    "line": "Green",
+    "lat": 12.946521,
+    "lng": 77.581812
+  },
+  {
+    "id": "M43",
+    "name": "Southend Circle",
+    "line": "Green",
+    "lat": 12.938541,
+    "lng": 77.581245
+  },
+  {
+    "id": "M44",
+    "name": "Jayanagar",
+    "line": "Green",
+    "lat": 12.929851,
+    "lng": 77.581812
+  },
+  {
+    "id": "M45",
+    "name": "Rashtreeya Vidyalaya Road (RV Road)",
+    "line": "Green",
+    "lat": 12.921245,
+    "lng": 77.580812
+  },
+  {
+    "id": "M46",
+    "name": "Banashankari",
+    "line": "Green",
+    "lat": 12.915421,
+    "lng": 77.573812
+  },
+  {
+    "id": "M47",
+    "name": "JP Nagar",
+    "line": "Green",
+    "lat": 12.907851,
+    "lng": 77.572812
+  },
+  {
+    "id": "M48",
+    "name": "Yelachenahalli",
+    "line": "Green",
+    "lat": 12.896521,
+    "lng": 77.570812
+  },
+  {
+    "id": "M49",
+    "name": "Kanakapura Road / Doddakallasandra",
+    "line": "Green",
+    "lat": 12.884521,
+    "lng": 77.562812
+  },
+  {
+    "id": "M50",
+    "name": "Silk Institute",
+    "line": "Green",
+    "lat": 12.861245,
+    "lng": 77.545812
+  },
+  {
+    "id": "M51",
+    "name": "R.V. Road Interchange",
+    "line": "Yellow",
+    "lat": 12.921245,
+    "lng": 77.580812
+  },
+  {
+    "id": "M52",
+    "name": "Ragigudda",
+    "line": "Yellow",
+    "lat": 12.918541,
+    "lng": 77.592812
+  },
+  {
+    "id": "M53",
+    "name": "Jayadeva Hospital Interchange",
+    "line": "Yellow",
+    "lat": 12.918215,
+    "lng": 77.601245
+  },
+  {
+    "id": "M54",
+    "name": "BTM Layout",
+    "line": "Yellow",
+    "lat": 12.915421,
+    "lng": 77.609812
+  },
+  {
+    "id": "M55",
+    "name": "Central Silk Board Interchange",
+    "line": "Yellow",
+    "lat": 12.917245,
+    "lng": 77.623812
+  },
+  {
+    "id": "M56",
+    "name": "Bommanahalli",
+    "line": "Yellow",
+    "lat": 12.900215,
+    "lng": 77.625812
+  },
+  {
+    "id": "M57",
+    "name": "Hongasandra",
+    "line": "Yellow",
+    "lat": 12.888541,
+    "lng": 77.632812
+  },
+  {
+    "id": "M58",
+    "name": "Kudlu Gate",
+    "line": "Yellow",
+    "lat": 12.881245,
+    "lng": 77.641812
+  },
+  {
+    "id": "M59",
+    "name": "Electronic City Phase 1",
+    "line": "Yellow",
+    "lat": 12.845215,
+    "lng": 77.660245
+  },
+  {
+    "id": "M60",
+    "name": "Bommasandra",
+    "line": "Yellow",
+    "lat": 12.812541,
+    "lng": 77.695215
+  }
 ];
 
 const SCHOOLS = [
-  { id: "S16", name: "Chrysalis High Varthur", area: "Varthur Main Road", lat: 12.9421, lng: 77.7412 },
-  { id: "S17", name: "Chrysalis High Whitefield", area: "Kadugodi, Whitefield", lat: 12.9882, lng: 77.7512 },
-  { id: "S21", name: "Deens Academy Gunjur", area: "Gunjur, Varthur", lat: 12.9282, lng: 77.7451 },
-  { id: "S32", name: "Greenwood High International School", area: "Gunjur, Varthur Sarjapur Road", lat: 12.9085, lng: 77.7328 },
-  { id: "S72", name: "The Deens Academy", area: "ECC Road, Whitefield", lat: 12.9782, lng: 77.7381 },
+  {
+    "id": "S01",
+    "name": "The Deens Academy",
+    "area": "ECC Road, Whitefield",
+    "lat": 12.9782,
+    "lng": 77.7381
+  },
+  {
+    "id": "S02",
+    "name": "Chrysalis High Varthur",
+    "area": "Varthur Main Road",
+    "lat": 12.9421,
+    "lng": 77.7412
+  },
+  {
+    "id": "S03",
+    "name": "Chrysalis High Whitefield",
+    "area": "Kadugodi, Whitefield",
+    "lat": 12.9882,
+    "lng": 77.7512
+  },
+  {
+    "id": "S04",
+    "name": "Chrysalis High Marathahalli",
+    "area": "Marathahalli ORR",
+    "lat": 12.9551,
+    "lng": 77.6982
+  },
+  {
+    "id": "S05",
+    "name": "Chrysalis High Yelahanka",
+    "area": "Yelahanka New Town",
+    "lat": 13.0988,
+    "lng": 77.5891
+  },
+  {
+    "id": "S06",
+    "name": "Deens Academy Gunjur",
+    "area": "Gunjur, Varthur",
+    "lat": 12.9282,
+    "lng": 77.7451
+  },
+  {
+    "id": "S07",
+    "name": "Greenwood High International School",
+    "area": "Gunjur, Varthur Sarjapur Road",
+    "lat": 12.9085,
+    "lng": 77.7328
+  },
+  {
+    "id": "S08",
+    "name": "Greenwood High Bannerghatta",
+    "area": "Bannerghatta Road",
+    "lat": 12.8712,
+    "lng": 77.5982
+  },
+  {
+    "id": "S09",
+    "name": "Inventure Academy",
+    "area": "Dommasandra, Sarjapur Road",
+    "lat": 12.8941,
+    "lng": 77.7388
+  },
+  {
+    "id": "S10",
+    "name": "The International School Bangalore (TISB)",
+    "area": "Dommasandra Circle",
+    "lat": 12.8895,
+    "lng": 77.7461
+  },
+  {
+    "id": "S11",
+    "name": "Oakridge International School",
+    "area": "Sarjapur Road",
+    "lat": 12.8992,
+    "lng": 77.7215
+  },
+  {
+    "id": "S12",
+    "name": "Delhi Public School (DPS) East",
+    "area": "Sarjapur Road / Dommasandra",
+    "lat": 12.8961,
+    "lng": 77.7291
+  },
+  {
+    "id": "S13",
+    "name": "Delhi Public School (DPS) Whitefield",
+    "area": "Soukya Road",
+    "lat": 12.9645,
+    "lng": 77.7682
+  },
+  {
+    "id": "S14",
+    "name": "Delhi Public School (DPS) North",
+    "area": "Yelahanka / Thanisandra",
+    "lat": 13.1125,
+    "lng": 77.6201
+  },
+  {
+    "id": "S15",
+    "name": "Delhi Public School (DPS) South",
+    "area": "Kanakapura Road",
+    "lat": 12.8788,
+    "lng": 77.5512
+  },
+  {
+    "id": "S16",
+    "name": "Ryan International School Kundalahalli",
+    "area": "Brookefield",
+    "lat": 12.9688,
+    "lng": 77.7125
+  },
+  {
+    "id": "S17",
+    "name": "Ryan International School Yelahanka",
+    "area": "Yelahanka",
+    "lat": 13.1042,
+    "lng": 77.5921
+  },
+  {
+    "id": "S18",
+    "name": "Ryan International School Bannerghatta",
+    "area": "Bannerghatta",
+    "lat": 12.8821,
+    "lng": 77.6012
+  },
+  {
+    "id": "S19",
+    "name": "Vibgyor High School Marathahalli",
+    "area": "Kadubeesanahalli ORR",
+    "lat": 12.9412,
+    "lng": 77.6985
+  },
+  {
+    "id": "S20",
+    "name": "Vibgyor High School Haralur",
+    "area": "Haralur Road",
+    "lat": 12.9152,
+    "lng": 77.6621
+  },
+  {
+    "id": "S21",
+    "name": "Vibgyor High School Horamavu",
+    "area": "Horamavu Ring Road",
+    "lat": 13.0312,
+    "lng": 77.6582
+  },
+  {
+    "id": "S22",
+    "name": "Vibgyor High School Electronic City",
+    "area": "Electronic City Phase 1",
+    "lat": 12.8488,
+    "lng": 77.6591
+  },
+  {
+    "id": "S23",
+    "name": "Vibgyor High School BTM Layout",
+    "area": "BTM 2nd Stage",
+    "lat": 12.9182,
+    "lng": 77.6112
+  },
+  {
+    "id": "S24",
+    "name": "Vibgyor High School Hennur",
+    "area": "Hennur Main Road",
+    "lat": 13.0482,
+    "lng": 77.6401
+  },
+  {
+    "id": "S25",
+    "name": "National Public School (NPS) Whitefield",
+    "area": "Soukya Road",
+    "lat": 12.9682,
+    "lng": 77.7621
+  },
+  {
+    "id": "S26",
+    "name": "National Public School (NPS) Indiranagar",
+    "area": "12th Main Indiranagar",
+    "lat": 12.9721,
+    "lng": 77.6432
+  },
+  {
+    "id": "S27",
+    "name": "National Public School (NPS) Koramangala",
+    "area": "4th Block Koramangala",
+    "lat": 12.9341,
+    "lng": 77.6251
+  },
+  {
+    "id": "S28",
+    "name": "National Public School (NPS) HSR Layout",
+    "area": "HSR Sector 1",
+    "lat": 12.9185,
+    "lng": 77.6482
+  },
+  {
+    "id": "S29",
+    "name": "National Public School (NPS) Rajajinagar",
+    "area": "5th Block Rajajinagar",
+    "lat": 12.9912,
+    "lng": 77.5532
+  },
+  {
+    "id": "S30",
+    "name": "National Public School (NPS) Yeshwanthpur",
+    "area": "Yeshwanthpur",
+    "lat": 13.0282,
+    "lng": 77.5451
+  },
+  {
+    "id": "S31",
+    "name": "Silver Oaks International School",
+    "area": "Sarjapur Road",
+    "lat": 12.8982,
+    "lng": 77.7182
+  },
+  {
+    "id": "S32",
+    "name": "Whitefield Global School",
+    "area": "Hope Farm Junction",
+    "lat": 12.9852,
+    "lng": 77.7518
+  },
+  {
+    "id": "S33",
+    "name": "Gopalan International School",
+    "area": "Seetharamapalya, Hoodi",
+    "lat": 12.9785,
+    "lng": 77.7082
+  },
+  {
+    "id": "S34",
+    "name": "Gopalan National School",
+    "area": "Whitefield",
+    "lat": 12.9821,
+    "lng": 77.7215
+  },
+  {
+    "id": "S35",
+    "name": "Vydehi School of Excellence",
+    "area": "EPIP Zone, Whitefield",
+    "lat": 12.9765,
+    "lng": 77.7291
+  },
+  {
+    "id": "S36",
+    "name": "Legacy School Bangalore",
+    "area": "Banjara Layout, Hennur",
+    "lat": 13.0612,
+    "lng": 77.6482
+  },
+  {
+    "id": "S37",
+    "name": "Canadian International School",
+    "area": "Yelahanka / Thanisandra",
+    "lat": 13.1182,
+    "lng": 77.5985
+  },
+  {
+    "id": "S38",
+    "name": "Mallya Aditi International School",
+    "area": "Yelahanka New Town",
+    "lat": 13.0952,
+    "lng": 77.5921
+  },
+  {
+    "id": "S39",
+    "name": "Trio World Academy",
+    "area": "Sahakara Nagar, Kodigehalli",
+    "lat": 13.0652,
+    "lng": 77.5882
+  },
+  {
+    "id": "S40",
+    "name": "Stonehill International School",
+    "area": "Bettahalsoor, Airport Rd",
+    "lat": 13.1782,
+    "lng": 77.6251
+  },
+  {
+    "id": "S41",
+    "name": "Ebenezer International School",
+    "area": "Electronic City Phase 1",
+    "lat": 12.8391,
+    "lng": 77.6712
+  },
+  {
+    "id": "S42",
+    "name": "Primus Public School",
+    "area": "Sarjapur Road",
+    "lat": 12.9052,
+    "lng": 77.6892
+  },
+  {
+    "id": "S43",
+    "name": "Harvest International School",
+    "area": "Off Sarjapur Road",
+    "lat": 12.8962,
+    "lng": 77.7012
+  },
+  {
+    "id": "S44",
+    "name": "GEAR Innovative International School",
+    "area": "Doddakannelli, ORR",
+    "lat": 12.9125,
+    "lng": 77.6912
+  },
+  {
+    "id": "S45",
+    "name": "Orchid International School Sarjapur",
+    "area": "Haralur Road",
+    "lat": 12.9082,
+    "lng": 77.6712
+  },
+  {
+    "id": "S46",
+    "name": "Orchid International School BTM",
+    "area": "BTM Layout",
+    "lat": 12.9152,
+    "lng": 77.6082
+  },
+  {
+    "id": "S47",
+    "name": "Orchid International School Panathur",
+    "area": "Panathur Main Rd",
+    "lat": 12.9382,
+    "lng": 77.7082
+  },
+  {
+    "id": "S48",
+    "name": "Bethany High School",
+    "area": "Koramangala 8th Block",
+    "lat": 12.9482,
+    "lng": 77.6212
+  },
+  {
+    "id": "S49",
+    "name": "St. Joseph's Boys' High School",
+    "area": "Museum Road, MG Road",
+    "lat": 12.9682,
+    "lng": 77.6012
+  },
+  {
+    "id": "S50",
+    "name": "Bishop Cotton Boys' School",
+    "area": "Residency Road",
+    "lat": 12.9652,
+    "lng": 77.6018
+  },
+  {
+    "id": "S51",
+    "name": "Bishop Cotton Girls' School",
+    "area": "St. Mark's Road",
+    "lat": 12.9691,
+    "lng": 77.6002
+  },
+  {
+    "id": "S52",
+    "name": "Sophia High School",
+    "area": "Palace Road",
+    "lat": 12.9882,
+    "lng": 77.5882
+  },
+  {
+    "id": "S53",
+    "name": "Baldwin Boys' High School",
+    "area": "Richmond Town",
+    "lat": 12.9612,
+    "lng": 77.6052
+  },
+  {
+    "id": "S54",
+    "name": "Baldwin Girls' High School",
+    "area": "Richmond Town",
+    "lat": 12.9608,
+    "lng": 77.6048
+  },
+  {
+    "id": "S55",
+    "name": "Frank Anthony Public School",
+    "area": "Ulsoor",
+    "lat": 12.9752,
+    "lng": 77.6212
+  },
+  {
+    "id": "S56",
+    "name": "Army Public School",
+    "area": "PRTC, Kamaraj Road",
+    "lat": 12.9782,
+    "lng": 77.6182
+  },
+  {
+    "id": "S57",
+    "name": "Kendriya Vidyalaya NAL",
+    "area": "Jeevan Bhima Nagar",
+    "lat": 12.9612,
+    "lng": 77.6521
+  },
+  {
+    "id": "S58",
+    "name": "Kendriya Vidyalaya Hebbal",
+    "area": "Sadashivanagar",
+    "lat": 13.0182,
+    "lng": 77.5812
+  },
+  {
+    "id": "S59",
+    "name": "Delhi Public School (DPS) West",
+    "area": "Yeshwanthpur",
+    "lat": 13.0312,
+    "lng": 77.5282
+  },
+  {
+    "id": "S60",
+    "name": "Shriram Millennium School",
+    "area": "Electronic City Phase 2",
+    "lat": 12.8312,
+    "lng": 77.6852
+  },
+  {
+    "id": "S61",
+    "name": "Treamis World School",
+    "area": "Electronic City Phase 1",
+    "lat": 12.8352,
+    "lng": 77.6521
+  },
+  {
+    "id": "S62",
+    "name": "Sherwood High",
+    "area": "Bannerghatta Road",
+    "lat": 12.8682,
+    "lng": 77.5982
+  },
+  {
+    "id": "S63",
+    "name": "BGS National Public School",
+    "area": "Hulimavu, Bannerghatta",
+    "lat": 12.8852,
+    "lng": 77.6012
+  },
+  {
+    "id": "S64",
+    "name": "Bangalore International School",
+    "area": "Kothanur, Hennur",
+    "lat": 13.0612,
+    "lng": 77.6582
+  },
+  {
+    "id": "S65",
+    "name": "Kensri School",
+    "area": "Mariannapalya, Hebbal",
+    "lat": 13.0452,
+    "lng": 77.6082
+  },
+  {
+    "id": "S66",
+    "name": "HMR International School",
+    "area": "80ft Rd, Kalyan Nagar",
+    "lat": 13.0252,
+    "lng": 77.6482
+  },
+  {
+    "id": "S67",
+    "name": "New Horizon Gurukul",
+    "area": "Kadubeesanahalli, ORR",
+    "lat": 12.9352,
+    "lng": 77.6952
+  },
+  {
+    "id": "S68",
+    "name": "New Horizon Public School",
+    "area": "Indiranagar 100ft Rd",
+    "lat": 12.9682,
+    "lng": 77.6412
+  },
+  {
+    "id": "S69",
+    "name": "Ekya School ITPL",
+    "area": "EPIP Zone, Whitefield",
+    "lat": 12.9782,
+    "lng": 77.7262
+  },
+  {
+    "id": "S70",
+    "name": "Ekya School Byderahalli",
+    "area": "Kanakapura Road",
+    "lat": 12.8912,
+    "lng": 77.5612
+  },
+  {
+    "id": "S71",
+    "name": "Ekya School BTM Layout",
+    "area": "BTM Layout",
+    "lat": 12.9182,
+    "lng": 77.6052
+  },
+  {
+    "id": "S72",
+    "name": "CMR National Public School",
+    "area": "HRBR Layout, Kalyan Nagar",
+    "lat": 13.0212,
+    "lng": 77.6452
+  },
+  {
+    "id": "S73",
+    "name": "Kumaran's Public School (ICSE)",
+    "area": "Tata Silk Farm",
+    "lat": 12.9382,
+    "lng": 77.5712
+  },
+  {
+    "id": "S74",
+    "name": "Sri Kumaran Children's Home",
+    "area": "Mallasandra, Kanakapura Rd",
+    "lat": 12.8712,
+    "lng": 77.5482
+  },
+  {
+    "id": "S75",
+    "name": "Presidency School East",
+    "area": "Kasturi Nagar",
+    "lat": 13.0112,
+    "lng": 77.6582
+  },
+  {
+    "id": "S76",
+    "name": "Presidency School North",
+    "area": "Yelahanka",
+    "lat": 13.1082,
+    "lng": 77.5912
+  },
+  {
+    "id": "S77",
+    "name": "Presidency School South",
+    "area": "BSK 3rd Stage",
+    "lat": 12.9282,
+    "lng": 77.5512
+  },
+  {
+    "id": "S78",
+    "name": "Sindhi High School",
+    "area": "Hebbal",
+    "lat": 13.0382,
+    "lng": 77.5882
+  },
+  {
+    "id": "S79",
+    "name": "Brigade School at Mahadevapura",
+    "area": "Metropolis, Mahadevapura",
+    "lat": 12.9902,
+    "lng": 77.6972
+  },
+  {
+    "id": "S80",
+    "name": "Brigade School at Millennium",
+    "area": "JP Nagar 7th Phase",
+    "lat": 12.8912,
+    "lng": 77.5812
+  }
 ];
 
 const HOSPITALS = [
-  { id: "H14", name: "Brookefield Hospital", area: "ITPL Main Road, Brookefield", lat: 12.9661, lng: 77.7121 },
-  { id: "H19", name: "Cloudnine Hospital Whitefield", area: "Whitefield Main Road", lat: 12.9642, lng: 77.7381 },
-  { id: "H21", name: "Columbia Asia Hospital Whitefield", area: "Whitefield Main Road", lat: 12.9582, lng: 77.7461 },
-  { id: "H45", name: "Manipal Hospital Whitefield", area: "ITPL Main Road, Whitefield", lat: 12.9892, lng: 77.7281 },
-  { id: "H81", name: "Sri Sathya Sai Super Speciality Hospital", area: "EPIP Zone, Whitefield", lat: 12.9792, lng: 77.7248 },
+  {
+    "id": "H01",
+    "name": "Sri Sathya Sai Super Speciality Hospital",
+    "area": "EPIP Zone, Whitefield",
+    "lat": 12.9792,
+    "lng": 77.7248
+  },
+  {
+    "id": "H02",
+    "name": "Manipal Hospital Whitefield",
+    "area": "ITPL Main Road, Whitefield",
+    "lat": 12.9892,
+    "lng": 77.7281
+  },
+  {
+    "id": "H03",
+    "name": "Manipal Hospital Old Airport Road",
+    "area": "Kodihalli, Airport Rd",
+    "lat": 12.9582,
+    "lng": 77.6482
+  },
+  {
+    "id": "H04",
+    "name": "Manipal Hospital Sarjapur Road",
+    "area": "Bellandur Link, Sarjapur Rd",
+    "lat": 12.9182,
+    "lng": 77.6712
+  },
+  {
+    "id": "H05",
+    "name": "Manipal Hospital Hebbal",
+    "area": "Hebbal Flyover, Bellary Rd",
+    "lat": 13.0482,
+    "lng": 77.5912
+  },
+  {
+    "id": "H06",
+    "name": "Manipal Hospital Yeshwanthpur",
+    "area": "Yeshwanthpur Industrial Area",
+    "lat": 13.0182,
+    "lng": 77.5512
+  },
+  {
+    "id": "H07",
+    "name": "Manipal Hospital Jayanagar",
+    "area": "9th Block Jayanagar",
+    "lat": 12.9282,
+    "lng": 77.5882
+  },
+  {
+    "id": "H08",
+    "name": "Columbia Asia Hospital Whitefield",
+    "area": "Whitefield Main Road",
+    "lat": 12.9582,
+    "lng": 77.7461
+  },
+  {
+    "id": "H09",
+    "name": "Cloudnine Hospital Whitefield",
+    "area": "Whitefield Main Road",
+    "lat": 12.9642,
+    "lng": 77.7381
+  },
+  {
+    "id": "H10",
+    "name": "Cloudnine Hospital Old Airport Road",
+    "area": "Murugeshpalya",
+    "lat": 12.9562,
+    "lng": 77.6512
+  },
+  {
+    "id": "H11",
+    "name": "Cloudnine Hospital HRBR Layout",
+    "area": "Kalyan Nagar",
+    "lat": 13.0212,
+    "lng": 77.6482
+  },
+  {
+    "id": "H12",
+    "name": "Cloudnine Hospital Jayanagar",
+    "area": "3rd Block Jayanagar",
+    "lat": 12.9342,
+    "lng": 77.5812
+  },
+  {
+    "id": "H13",
+    "name": "Cloudnine Hospital Bellandur",
+    "area": "EcoSpace Link, Bellandur",
+    "lat": 12.9282,
+    "lng": 77.6812
+  },
+  {
+    "id": "H14",
+    "name": "Brookefield Hospital",
+    "area": "ITPL Main Road, Brookefield",
+    "lat": 12.9661,
+    "lng": 77.7121
+  },
+  {
+    "id": "H15",
+    "name": "Vydehi Institute of Medical Sciences",
+    "area": "EPIP Zone, Whitefield",
+    "lat": 12.9752,
+    "lng": 77.7282
+  },
+  {
+    "id": "H16",
+    "name": "RxDx Healthcare Whitefield",
+    "area": "EPIP Zone, Whitefield",
+    "lat": 12.9782,
+    "lng": 77.7212
+  },
+  {
+    "id": "H17",
+    "name": "RxDx Healthcare Kadubeesanahalli",
+    "area": "ORR Bellandur",
+    "lat": 12.9382,
+    "lng": 77.6922
+  },
+  {
+    "id": "H18",
+    "name": "Sakra World Hospital",
+    "area": "Devarabesanahalli, ORR",
+    "lat": 12.9312,
+    "lng": 77.6882
+  },
+  {
+    "id": "H19",
+    "name": "Aster CMI Hospital",
+    "area": "Hebbal / Sahakara Nagar",
+    "lat": 13.0512,
+    "lng": 77.5912
+  },
+  {
+    "id": "H20",
+    "name": "Aster RV Hospital",
+    "area": "JP Nagar 1st Phase",
+    "lat": 12.9152,
+    "lng": 77.5812
+  },
+  {
+    "id": "H21",
+    "name": "Aster Whitefield Hospital",
+    "area": "Whitefield Main Road",
+    "lat": 12.9682,
+    "lng": 77.7412
+  },
+  {
+    "id": "H22",
+    "name": "Fortis Hospital Bannerghatta Road",
+    "area": "Arekere, Bannerghatta Rd",
+    "lat": 12.8942,
+    "lng": 77.5982
+  },
+  {
+    "id": "H23",
+    "name": "Fortis Hospital Cunningham Road",
+    "area": "Cunningham Road",
+    "lat": 12.9882,
+    "lng": 77.5952
+  },
+  {
+    "id": "H24",
+    "name": "Fortis Hospital Rajajinagar",
+    "area": "1st Block Rajajinagar",
+    "lat": 12.9982,
+    "lng": 77.5552
+  },
+  {
+    "id": "H25",
+    "name": "Apollo Hospital Bannerghatta Road",
+    "area": "Arekere, Bannerghatta Rd",
+    "lat": 12.8962,
+    "lng": 77.5992
+  },
+  {
+    "id": "H26",
+    "name": "Apollo Hospital Jayanagar",
+    "area": "3rd Block Jayanagar",
+    "lat": 12.9312,
+    "lng": 77.5852
+  },
+  {
+    "id": "H27",
+    "name": "Apollo Hospital Sheshadripuram",
+    "area": "Sheshadripuram",
+    "lat": 12.9892,
+    "lng": 77.5752
+  },
+  {
+    "id": "H28",
+    "name": "Apollo Cradle & Children's Hospital",
+    "area": "Koramangala 5th Block",
+    "lat": 12.9352,
+    "lng": 77.6212
+  },
+  {
+    "id": "H29",
+    "name": "Apollo Cradle Brookefield",
+    "area": "Kundalahalli Main Rd",
+    "lat": 12.9652,
+    "lng": 77.7152
+  },
+  {
+    "id": "H30",
+    "name": "Sparsh Hospital Infrastructure Road",
+    "area": "Infantry Road",
+    "lat": 12.9812,
+    "lng": 77.5952
+  },
+  {
+    "id": "H31",
+    "name": "Sparsh Hospital Yeshwanthpur",
+    "area": "Yeshwanthpur",
+    "lat": 13.0212,
+    "lng": 77.5482
+  },
+  {
+    "id": "H32",
+    "name": "Sparsh Hospital Electronic City",
+    "area": "Electronic City Phase 1",
+    "lat": 12.8482,
+    "lng": 77.6621
+  },
+  {
+    "id": "H33",
+    "name": "Narayana Health City",
+    "area": "Mazumdar Shaw, E-City",
+    "lat": 12.8125,
+    "lng": 77.6952
+  },
+  {
+    "id": "H34",
+    "name": "Narayana Nethralaya Rajajinagar",
+    "area": "WTC / Orion Link",
+    "lat": 13.0112,
+    "lng": 77.5542
+  },
+  {
+    "id": "H35",
+    "name": "Narayana Nethralaya Health City",
+    "area": "E-City Bommasandra",
+    "lat": 12.8112,
+    "lng": 77.6962
+  },
+  {
+    "id": "H36",
+    "name": "Narayana Nethralaya Indiranagar",
+    "area": "100ft Road Indiranagar",
+    "lat": 12.9782,
+    "lng": 77.6412
+  },
+  {
+    "id": "H37",
+    "name": "St. John's Medical College Hospital",
+    "area": "Koramangala",
+    "lat": 12.9325,
+    "lng": 77.6182
+  },
+  {
+    "id": "H38",
+    "name": "St. Martha's Hospital",
+    "area": "Nrupathunga Road",
+    "lat": 12.9682,
+    "lng": 77.5882
+  },
+  {
+    "id": "H39",
+    "name": "St. Philomena's Hospital",
+    "area": "Viveknagar / Victoria Layout",
+    "lat": 12.9582,
+    "lng": 77.6125
+  },
+  {
+    "id": "H40",
+    "name": "Bowring and Lady Curzon Hospital",
+    "area": "Shivajinagar",
+    "lat": 12.9842,
+    "lng": 77.6012
+  },
+  {
+    "id": "H41",
+    "name": "Victoria Hospital (BMCRI)",
+    "area": "Fort, KR Market",
+    "lat": 12.9612,
+    "lng": 77.5742
+  },
+  {
+    "id": "H42",
+    "name": "Vani Vilas Hospital",
+    "area": "Fort, KR Market",
+    "lat": 12.9592,
+    "lng": 77.5732
+  },
+  {
+    "id": "H43",
+    "name": "M.S. Ramaiah Memorial Hospital",
+    "area": "Mathikere / MSRIT",
+    "lat": 13.0312,
+    "lng": 77.5642
+  },
+  {
+    "id": "H44",
+    "name": "Baptist Hospital",
+    "area": "Hebbal / Bellary Road",
+    "lat": 13.0352,
+    "lng": 77.5892
+  },
+  {
+    "id": "H45",
+    "name": "Jayadeva Institute of Cardiovascular Sciences",
+    "area": "Jayanagar 9th Block",
+    "lat": 12.9182,
+    "lng": 77.6012
+  },
+  {
+    "id": "H46",
+    "name": "NIMHANS",
+    "area": "Hosur Road / Dairy Circle",
+    "lat": 12.9412,
+    "lng": 77.5982
+  },
+  {
+    "id": "H47",
+    "name": "Kidwai Memorial Institute of Oncology",
+    "area": "Marigowda Road",
+    "lat": 12.9432,
+    "lng": 77.5942
+  },
+  {
+    "id": "H48",
+    "name": "HCG Cancer Centre",
+    "area": "Double Road, Shanti Nagar",
+    "lat": 12.9582,
+    "lng": 77.5912
+  },
+  {
+    "id": "H49",
+    "name": "Shankara Cancer Hospital",
+    "area": "Basavanagudi",
+    "lat": 12.9412,
+    "lng": 77.5782
+  },
+  {
+    "id": "H50",
+    "name": "BGS Gleneagles Global Hospital",
+    "area": "Kengeri / Mysore Rd",
+    "lat": 12.9012,
+    "lng": 77.4882
+  },
+  {
+    "id": "H51",
+    "name": "Kauvery Hospital Electronic City",
+    "area": "Electronic City Phase 1",
+    "lat": 12.8452,
+    "lng": 77.6612
+  },
+  {
+    "id": "H52",
+    "name": "Kauvery Hospital Marathahalli",
+    "area": "Marathahalli ORR",
+    "lat": 12.9542,
+    "lng": 77.6982
+  },
+  {
+    "id": "H53",
+    "name": "Motherhood Hospital Indiranagar",
+    "area": "100ft Road Indiranagar",
+    "lat": 12.9752,
+    "lng": 77.6412
+  },
+  {
+    "id": "H54",
+    "name": "Motherhood Hospital Sarjapur Road",
+    "area": "Kaikondrahalli",
+    "lat": 12.9112,
+    "lng": 77.6782
+  },
+  {
+    "id": "H55",
+    "name": "Motherhood Hospital HRBR Layout",
+    "area": "Kalyan Nagar",
+    "lat": 13.0252,
+    "lng": 77.6482
+  },
+  {
+    "id": "H56",
+    "name": "Motherhood Hospital Hebbal",
+    "area": "Sahakara Nagar",
+    "lat": 13.0612,
+    "lng": 77.5892
+  },
+  {
+    "id": "H57",
+    "name": "Ovum Woman & Child Hospital",
+    "area": "Hennur Road",
+    "lat": 13.0382,
+    "lng": 77.6382
+  },
+  {
+    "id": "H58",
+    "name": "Ovum Hospital Banaswadi",
+    "area": "Banaswadi",
+    "lat": 13.0112,
+    "lng": 77.6412
+  },
+  {
+    "id": "H59",
+    "name": "Rainbow Children's Hospital Marathahalli",
+    "area": "ORR Doddanekundi",
+    "lat": 12.9682,
+    "lng": 77.6982
+  },
+  {
+    "id": "H60",
+    "name": "Rainbow Children's Hospital Hebbal",
+    "area": "Sahakara Nagar",
+    "lat": 13.0582,
+    "lng": 77.5912
+  },
+  {
+    "id": "H61",
+    "name": "Rainbow Children's Hospital Bannerghatta",
+    "area": "Bannerghatta Rd",
+    "lat": 12.8982,
+    "lng": 77.5982
+  },
+  {
+    "id": "H62",
+    "name": "Vasavi Hospital",
+    "area": "Kumaraswamy Layout",
+    "lat": 12.9052,
+    "lng": 77.5612
+  },
+  {
+    "id": "H63",
+    "name": "Sevakshetra Hospital",
+    "area": "Banashankari 2nd Stage",
+    "lat": 12.9282,
+    "lng": 77.5682
+  },
+  {
+    "id": "H64",
+    "name": "Sagar Hospitals Jayanagar",
+    "area": "Tilaknagar, Jayanagar",
+    "lat": 12.9252,
+    "lng": 77.5912
+  },
+  {
+    "id": "H65",
+    "name": "Sagar Hospitals DSI",
+    "area": "Kumaraswamy Layout",
+    "lat": 12.9082,
+    "lng": 77.5621
+  },
+  {
+    "id": "H66",
+    "name": "KIMS Hospital & Research Centre",
+    "area": "KR Road, VV Puram",
+    "lat": 12.9512,
+    "lng": 77.5752
+  },
+  {
+    "id": "H67",
+    "name": "Sanjay Gandhi Institute of Trauma",
+    "area": "Jayanagar 9th Block",
+    "lat": 12.9212,
+    "lng": 77.5982
+  },
+  {
+    "id": "H68",
+    "name": "Command Hospital Air Force",
+    "area": "Old Airport Road",
+    "lat": 12.9612,
+    "lng": 77.6382
+  },
+  {
+    "id": "H69",
+    "name": "Chinmaya Mission Hospital (CMH)",
+    "area": "CMH Road, Indiranagar",
+    "lat": 12.9782,
+    "lng": 77.6382
+  },
+  {
+    "id": "H70",
+    "name": "Santosh Hospital Frazer Town",
+    "area": "Promenade Road",
+    "lat": 12.9982,
+    "lng": 77.6112
+  },
+  {
+    "id": "H71",
+    "name": "Santosh Hospital Bannerghatta",
+    "area": "Bannerghatta Rd",
+    "lat": 12.8912,
+    "lng": 77.5982
+  },
+  {
+    "id": "H72",
+    "name": "Bhagwan Mahaveer Jain Hospital Vasanthnagar",
+    "area": "Vasanthnagar",
+    "lat": 12.9912,
+    "lng": 77.5882
+  },
+  {
+    "id": "H73",
+    "name": "Bhagwan Mahaveer Jain Hospital Girinagar",
+    "area": "BSK 3rd Stage",
+    "lat": 12.9382,
+    "lng": 77.5412
+  },
+  {
+    "id": "H74",
+    "name": "Trustwell Hospital",
+    "area": "JC Road, Near Town Hall",
+    "lat": 12.9612,
+    "lng": 77.5852
+  },
+  {
+    "id": "H75",
+    "name": "Agadi Hospital",
+    "area": "Siddaiah Road, Wilson Garden",
+    "lat": 12.9512,
+    "lng": 77.5882
+  },
+  {
+    "id": "H76",
+    "name": "Lakeside Medical Center",
+    "area": "Ulsoor Lake Link",
+    "lat": 12.9812,
+    "lng": 77.6182
+  },
+  {
+    "id": "H77",
+    "name": "Republic Hospital",
+    "area": "Langford Gardens",
+    "lat": 12.9612,
+    "lng": 77.5982
+  },
+  {
+    "id": "H78",
+    "name": "Hosmat Hospital",
+    "area": "Magrath Road, Off MG Rd",
+    "lat": 12.9712,
+    "lng": 77.6112
+  },
+  {
+    "id": "H79",
+    "name": "Lions Eye Hospital",
+    "area": "Jeevan Bhima Nagar",
+    "lat": 12.9682,
+    "lng": 77.6512
+  },
+  {
+    "id": "H80",
+    "name": "Prabha Eye Clinic & Research Centre",
+    "area": "Jayanagar 4th Block",
+    "lat": 12.9282,
+    "lng": 77.5812
+  }
 ];
 
 const MALLS = [
-  { id: "MA02", name: "Ascendas Park Square Mall", area: "ITPL, Whitefield", lat: 12.9862, lng: 77.7371 },
-  { id: "MA29", name: "Inorbit Mall", area: "EPIP Zone, Whitefield", lat: 12.9782, lng: 77.7225 },
-  { id: "MA39", name: "Nexus Shantiniketan Mall", area: "Whitefield", lat: 12.9889, lng: 77.7289 },
-  { id: "MA40", name: "Nexus Whitefield", area: "Whitefield", lat: 12.9588, lng: 77.7468 },
-  { id: "MA45", name: "Phoenix Marketcity", area: "Mahadevapura / Whitefield Road", lat: 12.9959, lng: 77.6964 },
+  {
+    "id": "MA01",
+    "name": "Phoenix Marketcity",
+    "area": "Mahadevapura / Whitefield Road",
+    "lat": 12.9959,
+    "lng": 77.6964
+  },
+  {
+    "id": "MA02",
+    "name": "Ascendas Park Square Mall",
+    "area": "ITPL, Whitefield",
+    "lat": 12.9862,
+    "lng": 77.7371
+  },
+  {
+    "id": "MA03",
+    "name": "Nexus Shantiniketan Mall",
+    "area": "Whitefield",
+    "lat": 12.9889,
+    "lng": 77.7289
+  },
+  {
+    "id": "MA04",
+    "name": "Nexus Whitefield (Forum Value)",
+    "area": "Whitefield Main Rd",
+    "lat": 12.9588,
+    "lng": 77.7468
+  },
+  {
+    "id": "MA05",
+    "name": "Inorbit Mall",
+    "area": "EPIP Zone, Whitefield",
+    "lat": 12.9782,
+    "lng": 77.7225
+  },
+  {
+    "id": "MA06",
+    "name": "VR Bengaluru (Virtuous Retail)",
+    "area": "Mahadevapura ORR",
+    "lat": 12.9968,
+    "lng": 77.6978
+  },
+  {
+    "id": "MA07",
+    "name": "Orion Mall @ Brigade Gateway",
+    "area": "Dr. Rajkumar Rd, Malleshwaram",
+    "lat": 13.0112,
+    "lng": 77.5548
+  },
+  {
+    "id": "MA08",
+    "name": "Orion Avenue Mall",
+    "area": "Cooke Town / Banaswadi",
+    "lat": 13.0012,
+    "lng": 77.6212
+  },
+  {
+    "id": "MA09",
+    "name": "Orion Uptown Mall",
+    "area": "Hoskote / OMR Junction",
+    "lat": 13.0682,
+    "lng": 77.7852
+  },
+  {
+    "id": "MA10",
+    "name": "Phoenix Mall of Asia",
+    "area": "Hebbal / Bellary Road",
+    "lat": 13.0652,
+    "lng": 77.5912
+  },
+  {
+    "id": "MA11",
+    "name": "Nexus Koramangala (Forum Mall)",
+    "area": "Hosur Rd, Koramangala",
+    "lat": 12.9348,
+    "lng": 77.6112
+  },
+  {
+    "id": "MA12",
+    "name": "UB City Collection",
+    "area": "Vittal Mallya Road",
+    "lat": 12.9716,
+    "lng": 77.5958
+  },
+  {
+    "id": "MA13",
+    "name": "Mantri Square Mall",
+    "area": "Sampige Road, Malleshwaram",
+    "lat": 12.9912,
+    "lng": 77.5712
+  },
+  {
+    "id": "MA14",
+    "name": "Garuda Mall",
+    "area": "Magrath Road, Off MG Road",
+    "lat": 12.9702,
+    "lng": 77.6095
+  },
+  {
+    "id": "MA15",
+    "name": "1 MG-Lido Mall",
+    "area": "Trinity Circle, MG Road",
+    "lat": 12.9725,
+    "lng": 77.6185
+  },
+  {
+    "id": "MA16",
+    "name": "Royal Meenakshi Mall",
+    "area": "Bannerghatta Road, Hulimavu",
+    "lat": 12.8752,
+    "lng": 77.5982
+  },
+  {
+    "id": "MA17",
+    "name": "Nexus Centre City",
+    "area": "Mysore Road, Nayandahalli",
+    "lat": 12.9512,
+    "lng": 77.5282
+  },
+  {
+    "id": "MA18",
+    "name": "Element Mall",
+    "area": "Nagavara / Thanisandra Main Rd",
+    "lat": 13.0482,
+    "lng": 77.6251
+  },
+  {
+    "id": "MA19",
+    "name": "RMZ Galleria Mall",
+    "area": "Yelahanka Town",
+    "lat": 13.1008,
+    "lng": 77.5958
+  },
+  {
+    "id": "MA20",
+    "name": "Bhartiya Mall of Bengaluru",
+    "area": "Thanisandra Main Rd",
+    "lat": 13.0825,
+    "lng": 77.6401
+  },
+  {
+    "id": "MA21",
+    "name": "Vega City Mall",
+    "area": "Bannerghatta Road, BTM",
+    "lat": 12.9082,
+    "lng": 77.6012
+  },
+  {
+    "id": "MA22",
+    "name": "Gopalan Innovation Mall",
+    "area": "Bannerghatta Road",
+    "lat": 12.9022,
+    "lng": 77.5988
+  },
+  {
+    "id": "MA23",
+    "name": "Gopalan Signature Mall",
+    "area": "Old Madras Road",
+    "lat": 12.9938,
+    "lng": 77.6622
+  },
+  {
+    "id": "MA24",
+    "name": "Gopalan Arcade Mall",
+    "area": "Mysore Road, RR Nagar",
+    "lat": 12.9382,
+    "lng": 77.5212
+  },
+  {
+    "id": "MA25",
+    "name": "Gopalan Grand Mall",
+    "area": "Old Madras Road, Benniganahalli",
+    "lat": 12.9942,
+    "lng": 77.6682
+  },
+  {
+    "id": "MA26",
+    "name": "Market Square Mall",
+    "area": "Sarjapur Road / Kaikondrahalli",
+    "lat": 12.9125,
+    "lng": 77.6742
+  },
+  {
+    "id": "MA27",
+    "name": "Central Mall Bellandur",
+    "area": "EcoSpace Link, ORR",
+    "lat": 12.9265,
+    "lng": 77.6812
+  },
+  {
+    "id": "MA28",
+    "name": "Central Mall JP Nagar",
+    "area": "JP Nagar 2nd Phase",
+    "lat": 12.9121,
+    "lng": 77.5882
+  },
+  {
+    "id": "MA29",
+    "name": "Soul Space Arena Mall",
+    "area": "Doddanekundi, Marathahalli ORR",
+    "lat": 12.9721,
+    "lng": 77.6972
+  },
+  {
+    "id": "MA30",
+    "name": "Soul Space Spirit Mall",
+    "area": "Bellandur Link, ORR",
+    "lat": 12.9282,
+    "lng": 77.6782
+  },
+  {
+    "id": "MA31",
+    "name": "Lido Mall",
+    "area": "Ulsoor / MG Road",
+    "lat": 12.9732,
+    "lng": 77.6192
+  },
+  {
+    "id": "MA32",
+    "name": "Bangalore Central",
+    "area": "MG Road",
+    "lat": 12.9745,
+    "lng": 77.6082
+  },
+  {
+    "id": "MA33",
+    "name": "Commercial Street Retail District",
+    "area": "Tasker Town",
+    "lat": 12.9821,
+    "lng": 77.6082
+  },
+  {
+    "id": "MA34",
+    "name": "Brigade Road Promenade",
+    "area": "MG Road / Brigade Rd",
+    "lat": 12.9732,
+    "lng": 77.6072
+  },
+  {
+    "id": "MA35",
+    "name": "100ft Road Indiranagar Retail Strip",
+    "area": "Indiranagar",
+    "lat": 12.9752,
+    "lng": 77.6412
+  },
+  {
+    "id": "MA36",
+    "name": "Jayanagar 4th Block Shopping Complex",
+    "area": "Jayanagar",
+    "lat": 12.9282,
+    "lng": 77.5832
+  },
+  {
+    "id": "MA37",
+    "name": "Gandhi Bazaar Cultural Market",
+    "area": "Basavanagudi",
+    "lat": 12.9442,
+    "lng": 77.5712
+  },
+  {
+    "id": "MA38",
+    "name": "Chickpet Heritage Market",
+    "area": "Chickpet",
+    "lat": 12.9682,
+    "lng": 77.5742
+  },
+  {
+    "id": "MA39",
+    "name": "Orion East Mall",
+    "area": "Banaswadi Main Rd",
+    "lat": 13.0042,
+    "lng": 77.6252
+  },
+  {
+    "id": "MA40",
+    "name": "GT World Centre",
+    "area": "Magadi Road, Tollgate",
+    "lat": 12.9782,
+    "lng": 77.5482
+  },
+  {
+    "id": "MA41",
+    "name": "ETA Namma Mall",
+    "area": "Binny Mill, Bynarayanapura",
+    "lat": 12.9652,
+    "lng": 77.5612
+  },
+  {
+    "id": "MA42",
+    "name": "BDA Complex Koramangala",
+    "area": "Koramangala 3rd Block",
+    "lat": 12.9352,
+    "lng": 77.6182
+  },
+  {
+    "id": "MA43",
+    "name": "BDA Complex HSR Layout",
+    "area": "HSR Sector 6",
+    "lat": 12.9152,
+    "lng": 77.6382
+  },
+  {
+    "id": "MA44",
+    "name": "BDA Complex Indiranagar",
+    "area": "HAL 2nd Stage",
+    "lat": 12.9652,
+    "lng": 77.6452
+  },
+  {
+    "id": "MA45",
+    "name": "BDA Complex R.T. Nagar",
+    "area": "R.T. Nagar Main Rd",
+    "lat": 13.0182,
+    "lng": 77.5952
+  },
+  {
+    "id": "MA46",
+    "name": "Forum Rex Walk",
+    "area": "Brigade Road",
+    "lat": 12.9721,
+    "lng": 77.6078
+  },
+  {
+    "id": "MA47",
+    "name": "Nexus Neighborhood Retail",
+    "area": "Varthur Main Rd",
+    "lat": 12.9482,
+    "lng": 77.7412
+  },
+  {
+    "id": "MA48",
+    "name": "Global Mall",
+    "area": "Mysore Road Junction",
+    "lat": 12.9482,
+    "lng": 77.5252
+  },
+  {
+    "id": "MA49",
+    "name": "Decathlon Anubhava",
+    "area": "Airport Road, Chikkajala",
+    "lat": 13.1682,
+    "lng": 77.6282
+  },
+  {
+    "id": "MA50",
+    "name": "Decathlon Sarjapur",
+    "area": "Sarjapur Main Road",
+    "lat": 12.9052,
+    "lng": 77.6852
+  }
 ];
 
 const AREA_PRICING = [
