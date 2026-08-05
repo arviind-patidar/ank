@@ -3639,6 +3639,57 @@ html, body {
   border-radius: 0 4px 4px 0;
 }
 
+
+/* ===== EXECUTIVE CONSULTING COMPARISON SCREEN STYLING ===== */
+.compare-summary-box {
+  background: rgba(18, 32, 46, 0.95);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+}
+
+.compare-summary-box__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E2C699;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare-summary-box__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.compare-summary-box__winner-tag {
+  background: rgba(182, 138, 76, 0.22);
+  color: #E2C699;
+  border: 1px solid rgba(182, 138, 76, 0.45);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.compare-table__category-header {
+  background: rgba(24, 42, 61, 0.06);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  padding: 10px 14px;
+}
+
 </style>
 </head>
 <body>
@@ -6108,22 +6159,73 @@ function openCompareModal() {
     </tr>
   `;
 
+  // Find best-in-class metrics for decision summary
+  let highestScoreProp = props[0];
+  let lowestCommuteProp = props[0];
+  let minCommuteMins = 999;
+
+  props.forEach((p) => {
+    if (p.akScore != null && (highestScoreProp.akScore == null || p.akScore > highestScoreProp.akScore)) {
+      highestScoreProp = p;
+    }
+    const c = getBuyerCommute(p.lat, p.lng);
+    if (c.mins < minCommuteMins) {
+      minCommuteMins = c.mins;
+      lowestCommuteProp = p;
+    }
+  });
+
+  const catHeader = (title) => `
+    <tr class="compare-table__category-row">
+      <td colspan="${props.length + (showAddColumn ? 2 : 1)}" class="compare-table__category-header">${title}</td>
+    </tr>
+  `;
+
   modal.innerHTML = `
     <button type="button" class="compare-modal__close" onclick="closeCompareModal()">✕</button>
-    <div class="compare-modal__title">Compare Properties</div>
-    <div class="compare-modal__subtitle">Tailored for ${buyerProfile.name} (${formatBudgetRange(buyerProfile.minBudget, buyerProfile.maxBudget)})</div>
+    <div class="compare-modal__title">Executive Market Comparison</div>
+    <div class="compare-modal__subtitle">Tailored Advisory Matrix for ${buyerProfile.name} (${formatBudgetRange(buyerProfile.minBudget, buyerProfile.maxBudget)})</div>
+
+    <div class="compare-summary-box">
+      <div class="compare-summary-box__title">💡 Advisor Decision Key Takeaways</div>
+      <div class="compare-summary-box__grid">
+        <div class="compare-summary-box__winner-tag">🏆 <strong>Highest Diligence Score:</strong> ${highestScoreProp.title} ${highestScoreProp.akScore != null ? `(AK ${highestScoreProp.akScore})` : ''}</div>
+        <div class="compare-summary-box__winner-tag">⚡ <strong>Fastest Commute:</strong> ${lowestCommuteProp.title} (${minCommuteMins} mins to ${buyerProfile.officeName.split(" ")[0]})</div>
+      </div>
+    </div>
+
     <table class="compare-table">
       <thead><tr><th></th>${headerCells}${addHeaderCell}</tr></thead>
       <tbody>
-        ${row("Developer", (p) => p.developer)}
-        ${row("Corridor", (p) => p.zone)}
-        ${row("Locality", (p) => p.locality)}
-        ${row("Status", (p) => p.status)}
-        ${row("AK Score", (p) => p.akScore != null ? `<span class="compare-table__ak-score">${p.akScore}</span>` : "—")}
+        ${catHeader("Overview & Pricing")}
+        ${row("Price Range", (p) => `<strong>${getPropertyDetails(p).priceStr}</strong>`)}
+        ${row("Configuration", (p) => getPropertyDetails(p).config)}
+
+        ${catHeader("AK Diligence & Recommendation")}
+        ${row("AK Diligence Score", (p) => p.akScore != null ? `<span class="compare-table__ak-score">AK ${p.akScore}</span> ${p.id === highestScoreProp.id ? '🏆 Best' : ''}` : "—")}
+        ${row("Key Advisory Reason", (p) => getPropertyDetails(p).whyRecommended || "Strong corridor value proposition")}
+
+        ${catHeader("Commute & Location Efficiency")}
         ${row(`Commute to ${buyerProfile.officeName.split(" ")[0]}`, (p) => {
           const c = getBuyerCommute(p.lat, p.lng);
-          return `${c.icon} <strong>${c.mins} mins</strong> (${c.distanceKm.toFixed(1)} km)`;
+          return `${c.icon} <strong>${c.mins} mins</strong> (${c.distanceKm.toFixed(1)} km) ${p.id === lowestCommuteProp.id ? '⚡ Fastest' : ''}`;
         })}
+        ${row("Nearest Tech Park", (p) => {
+          const nearby = getDisplayAmenities(p);
+          const tp = nearby.techParks && nearby.techParks[0];
+          return tp ? `${tp.name || tp.title} (${tp.distanceKm.toFixed(1)} km)` : "—";
+        })}
+        ${row("Nearest Metro", (p) => {
+          const nearby = getDisplayAmenities(p);
+          const m = nearby.metro && nearby.metro[0];
+          return m ? `${m.name || m.title} (${m.distanceKm.toFixed(1)} km)` : "—";
+        })}
+
+        ${catHeader("Developer & Project Specs")}
+        ${row("Developer Pedigree", (p) => p.developer)}
+        ${row("Corridor", (p) => p.zone)}
+        ${row("Locality", (p) => p.locality)}
+        ${row("Construction Stage", (p) => p.status)}
       </tbody>
     </table>
   `;
