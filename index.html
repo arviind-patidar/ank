@@ -4094,129 +4094,7 @@ html, body {
       </div>
     </details>
 
-<!-- 3. BUYER INFORMATION -->
-    <div class="buyer-profile-bar" id="buyerProfileBar">
-      <div class="buyer-profile-bar__summary" id="buyerProfileSummary" role="button" tabindex="0" aria-expanded="false" aria-controls="buyerProfileForm">
-        <div class="buyer-profile-bar__left">
-          <span class="buyer-profile-bar__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </span>
-          <span class="buyer-profile-bar__badge">BUYER INFORMATION</span>
-        </div>
-        <div class="buyer-profile-bar__right">
-          <span class="buyer-profile-bar__edit-hint">Edit Profile</span>
-          <span class="buyer-profile-bar__chevron" id="buyerProfileChevron">▾</span>
-        </div>
-      </div>
-
-      <div class="buyer-profile-bar__form-wrap" id="buyerProfileForm" hidden>
-        <div class="buyer-profile-form">
-          <div class="buyer-profile-form__header">
-            <h3 class="buyer-profile-form__title">Buyer Client Profile</h3>
-            <span class="buyer-profile-form__sub">Tailor property recommendations &amp; commute calculations in real-time</span>
-          </div>
-
-          <div class="buyer-profile-form__grid">
-            <label class="field">
-              <span class="field__label">Buyer Name</span>
-              <input type="text" id="bpName" class="field__input" placeholder="e.g. Rahul Mehta" value="Rahul Mehta" autocomplete="off" />
-            </label>
-
-            <div class="field-row">
-              <label class="field">
-                <span class="field__label">Min Budget</span>
-                <select id="bpMinBudget" class="field__input">
-                  <option value="50">₹50 Lakhs</option>
-                  <option value="75">₹75 Lakhs</option>
-                  <option value="100">₹1.0 Crore</option>
-                  <option value="120" selected>₹1.2 Crores</option>
-                  <option value="150">₹1.5 Crores</option>
-                  <option value="200">₹2.0 Crores</option>
-                  <option value="250">₹2.5 Crores</option>
-                </select>
-              </label>
-              <label class="field">
-                <span class="field__label">Max Budget</span>
-                <select id="bpMaxBudget" class="field__input">
-                  <option value="100">₹1.0 Crore</option>
-                  <option value="120">₹1.2 Crores</option>
-                  <option value="150" selected>₹1.5 Crores</option>
-                  <option value="200">₹2.0 Crores</option>
-                  <option value="250">₹2.5 Crores</option>
-                  <option value="300">₹3.0 Crores</option>
-                  <option value="500">₹5.0+ Crores</option>
-                </select>
-              </label>
-            </div>
-
-            <label class="field">
-              <span class="field__label">Office / Commute Hub</span>
-              <select id="bpOfficeLocation" class="field__input">
-                <option value="TP069" selected>ITPL (Whitefield)</option>
-                <option value="TP042">Embassy Manyata (Hebbal / Nagavara)</option>
-                <option value="TP046">Embassy TechVillage (Bellandur ORR)</option>
-                <option value="TP110">RMZ Ecoworld (Bellandur)</option>
-                <option value="TP040">Embassy GolfLinks EGL (Domlur)</option>
-                <option value="TP004">Bagmane Constellation (Marathahalli)</option>
-                <option value="TP006">Bagmane Tech Park (CV Raman Nagar)</option>
-                <option value="TP037">Electronics City Phase 1</option>
-                <option value="TP107">RGA Tech Park (Sarjapur Road)</option>
-                <option value="TP143">WTC Bengaluru (Rajajinagar)</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span class="field__label">Purchase Purpose</span>
-              <select id="bpPurpose" class="field__input">
-                <option value="Self-use" selected>Self-use (Primary Home)</option>
-                <option value="Investment">Investment (Rental / Growth)</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span class="field__label">Preferred Corridor</span>
-              <select id="bpPreferredArea" class="field__input">
-                <option value="All" selected>Any Corridor</option>
-                <option value="Core Whitefield–Hoodi">Core Whitefield–Hoodi</option>
-                <option value="Budigere Cross–OMR East">Budigere Cross–OMR East</option>
-                <option value="KR Puram–Mahadevapura">KR Puram–Mahadevapura</option>
-                <option value="Varthur–Gunjur">Varthur–Gunjur</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span class="field__label">Preferred Commute Mode</span>
-              <select id="bpCommuteMode" class="field__input">
-                <option value="Car" selected>Driving / Car (20 km/h)</option>
-                <option value="Metro">Namma Metro (35 km/h)</option>
-                <option value="Two-wheeler">Two-wheeler / Bike (25 km/h)</option>
-                <option value="Cab">Cab / Rideshare (18 km/h)</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span class="field__label">Possession Timeline</span>
-              <select id="bpTimeline" class="field__input">
-                <option value="Ready to move">Ready to move</option>
-                <option value="Within 1 year" selected>Under Construction (&lt; 1 yr)</option>
-                <option value="1–2 years">Under Construction (1–2 yrs)</option>
-                <option value="2+ years">Under Construction (2+ yrs)</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="buyer-profile-form__actions">
-            <button type="button" class="btn-bp-save" id="btnSaveBuyerProfile">Save &amp; Collapse Profile</button>
-            <button type="button" class="btn-bp-reset" id="btnResetBuyerProfile">Reset Profile</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- 4. RECOMMENDED PROJECTS -->
+<!-- 3. RECOMMENDED PROJECTS -->
     <details class="accordion accordion--shortlist" id="listSection" open>
       <summary class="accordion__header">
         <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
@@ -7157,58 +7035,9 @@ const AREA_PRICING = [
 
 /* APP STATE */
 let ALL_PROPERTIES = [];
-let activeCardId = null;
-let popupCache = null;
-let map;
-let markerLayer;
-let techParkLayer;
-let metroLayer;
-let schoolLayer;
-let hospitalLayer;
-let mallLayer;
-let sharedInfoWindow;
-let techParkViewActive = false;
-let techParkDensityOverlay = null;
-let areaPriceViewActive = false;
-let areaPriceDensityOverlay = null;
-let areaPriceLabelLayer = null;
-let areaPriceHoverCircles = [];
-let priceLabelsEnabled = true;
-let premiumAreasOnly = false;
-let geoFilterCenter = null;
-let showAllAmenities = false;
-
-/* BUYER PROFILE STATE */
-let buyerProfile = {
-  name: "Rahul Mehta",
-  minBudget: 120,
-  maxBudget: 150,
-  officeTechParkId: "TP069",
-  officeName: "ITPL Whitefield",
-  officeLat: 12.9863,
-  officeLng: 77.7381,
-  purpose: "Self-use",
-  preferredArea: "All",
-  commuteMode: "Car",
-  timeline: "Within 1 year"
-};
-
-let compareSelection = [];
-let shortlistSet = new Set();
-const COMPARE_MAX = 3;
-const ZOOM_THRESHOLD = 13;
-const CLUSTER_PIXEL_RADIUS = 55;
-const SHOW_ALL_RADIUS_KM = 5;
-
-const TECH_PARK_DEFAULT_COUNT = 2;
-const METRO_DEFAULT_COUNT = 1;
-const SCHOOL_DEFAULT_COUNT = 2;
-const HOSPITAL_DEFAULT_COUNT = 2;
-const MALL_DEFAULT_COUNT = 2;
-
 const els = {
   list: document.getElementById("propertyList"),
-  meta: document.getElementById("resultMeta"),
+  meta: document.getElementById("shortlistBadge"),
   searchText: document.getElementById("filterSearchText"),
   clearSearchText: document.getElementById("clearSearchText"),
   searchScope: document.getElementById("filterSearchScope"),
@@ -7232,174 +7061,26 @@ const els = {
   priceLabels: document.getElementById("filterPriceLabels"),
   premiumAreas: document.getElementById("filterPremiumAreas"),
 };
-
-function showMapStatus(msg) {
-  els.mapStatus.textContent = msg;
-  els.mapStatus.classList.add("map-status--visible");
-}
-function hideMapStatus() {
-  els.mapStatus.classList.remove("map-status--visible");
-}
-
-function haversineKm(lat1, lng1, lat2, lng2) {
-  const R = 6371;
-  const dLat = ((lat2 - lat1) * Math.PI) / 180;
-  const dLng = ((lng2 - lng1) * Math.PI) / 180;
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
-
-function nearestOrWithinRadius(list, property, radiusKm) {
-  const withDistance = list.map((item) => ({
-    ...item,
-    distanceKm: haversineKm(property.lat, property.lng, item.lat, item.lng),
-  }));
-  const within = withDistance
-    .filter((item) => item.distanceKm <= radiusKm)
-    .sort((a, b) => a.distanceKm - b.distanceKm);
-  if (within.length > 0) return within;
-  const sorted = withDistance.slice().sort((a, b) => a.distanceKm - b.distanceKm);
-  return sorted.length > 0 ? [sorted[0]] : [];
-}
-
-function nearestN(list, property, n) {
-  const withDistance = list.map((item) => ({
-    ...item,
-    distanceKm: haversineKm(property.lat, property.lng, item.lat, item.lng),
-  }));
-  return withDistance.sort((a, b) => a.distanceKm - b.distanceKm).slice(0, n);
-}
-
-function getDisplayAmenities(property) {
-  if (showAllAmenities) {
-    return {
-      techParks: nearestOrWithinRadius(TECH_PARKS, property, SHOW_ALL_RADIUS_KM),
-      metro: nearestOrWithinRadius(METRO_STATIONS, property, SHOW_ALL_RADIUS_KM),
-      schools: nearestOrWithinRadius(SCHOOLS, property, SHOW_ALL_RADIUS_KM),
-      hospitals: nearestOrWithinRadius(HOSPITALS, property, SHOW_ALL_RADIUS_KM),
-      malls: nearestOrWithinRadius(MALLS, property, SHOW_ALL_RADIUS_KM),
-    };
-  }
-  return {
-    techParks: nearestN(TECH_PARKS, property, TECH_PARK_DEFAULT_COUNT),
-    metro: nearestN(METRO_STATIONS, property, METRO_DEFAULT_COUNT),
-    schools: nearestN(SCHOOLS, property, SCHOOL_DEFAULT_COUNT),
-    hospitals: nearestN(HOSPITALS, property, HOSPITAL_DEFAULT_COUNT),
-    malls: nearestN(MALLS, property, MALL_DEFAULT_COUNT),
-  };
-}
-
-/* BUYER PROFILE FUNCTIONS */
-function initBuyerProfile() {
-  const saved = localStorage.getItem("ackey_buyer_profile");
-  if (saved) {
-    try { buyerProfile = { ...buyerProfile, ...JSON.parse(saved) }; } catch (e) {}
-  }
-
-  document.getElementById("bpName").value = buyerProfile.name;
-  document.getElementById("bpMinBudget").value = buyerProfile.minBudget;
-  document.getElementById("bpMaxBudget").value = buyerProfile.maxBudget;
-  document.getElementById("bpOfficeLocation").value = buyerProfile.officeTechParkId;
-  document.getElementById("bpPurpose").value = buyerProfile.purpose;
-  document.getElementById("bpPreferredArea").value = buyerProfile.preferredArea;
-  document.getElementById("bpCommuteMode").value = buyerProfile.commuteMode;
-  document.getElementById("bpTimeline").value = buyerProfile.timeline;
-
-  updateBuyerSummaryText();
-
-  const summaryEl = document.getElementById("buyerProfileSummary");
-  summaryEl.addEventListener("click", toggleBuyerProfileForm);
-
-  document.getElementById("btnSaveBuyerProfile").addEventListener("click", saveBuyerProfile);
-  document.getElementById("btnResetBuyerProfile").addEventListener("click", resetBuyerProfile);
-}
-
-function toggleBuyerProfileForm() {
-  const formWrap = document.getElementById("buyerProfileForm");
-  const bar = document.getElementById("buyerProfileBar");
-  const summaryEl = document.getElementById("buyerProfileSummary");
-
-  const isOpen = !formWrap.hidden;
-  formWrap.hidden = isOpen;
-  bar.classList.toggle("buyer-profile-bar--open", !isOpen);
-  summaryEl.setAttribute("aria-expanded", String(!isOpen));
-}
-
-function saveBuyerProfile() {
-  const name = document.getElementById("bpName").value.trim() || "Client";
-  const minBudget = parseInt(document.getElementById("bpMinBudget").value, 10);
-  const maxBudget = parseInt(document.getElementById("bpMaxBudget").value, 10);
-  const officeTpId = document.getElementById("bpOfficeLocation").value;
-  const purpose = document.getElementById("bpPurpose").value;
-  const preferredArea = document.getElementById("bpPreferredArea").value;
-  const commuteMode = document.getElementById("bpCommuteMode").value;
-  const timeline = document.getElementById("bpTimeline").value;
-
-  const officeTp = TECH_PARKS.find(t => t.id === officeTpId) || TECH_PARKS[0];
-
-  buyerProfile = {
-    name, minBudget, maxBudget,
-    officeTechParkId: officeTpId,
-    officeName: officeTp.name.replace("International Tech Park Bangalore (ITPB / ITPL)", "ITPL"),
-    officeLat: officeTp.lat, officeLng: officeTp.lng,
-    purpose, preferredArea, commuteMode, timeline
-  };
-
-  localStorage.setItem("ackey_buyer_profile", JSON.stringify(buyerProfile));
-  updateBuyerSummaryText();
-  toggleBuyerProfileForm();
-
-  applyFilters();
-
-  if (activeCardId) setActive(activeCardId, { pan: false });
-}
-
-function resetBuyerProfile() {
-  buyerProfile = {
-    name: "Rahul Mehta", minBudget: 120, maxBudget: 150,
-    officeTechParkId: "TP069", officeName: "ITPL Whitefield",
-    officeLat: 12.9863, officeLng: 77.7381, purpose: "Self-use",
-    preferredArea: "All", commuteMode: "Car", timeline: "Within 1 year"
-  };
-
-  localStorage.removeItem("ackey_buyer_profile");
-  document.getElementById("bpName").value = buyerProfile.name;
-  document.getElementById("bpMinBudget").value = buyerProfile.minBudget;
-  document.getElementById("bpMaxBudget").value = buyerProfile.maxBudget;
-  document.getElementById("bpOfficeLocation").value = buyerProfile.officeTechParkId;
-  document.getElementById("bpPurpose").value = buyerProfile.purpose;
-  document.getElementById("bpPreferredArea").value = buyerProfile.preferredArea;
-  document.getElementById("bpCommuteMode").value = buyerProfile.commuteMode;
-  document.getElementById("bpTimeline").value = buyerProfile.timeline;
-
-  updateBuyerSummaryText();
-  toggleBuyerProfileForm();
-  applyFilters();
-}
-
-function formatBudgetRange(minLakh, maxLakh) {
-  const minStr = minLakh >= 100 ? `₹${(minLakh/100).toFixed(1)}Cr` : `₹${minLakh}L`;
-  const maxStr = maxLakh >= 100 ? `${(maxLakh/100).toFixed(1)}Cr` : `₹${maxLakh}L`;
-  return `${minStr.replace('.0','')}-${maxStr.replace('.0','')}`;
-}
-
-function updateBuyerSummaryText() {
-  const textEl = document.getElementById("buyerSummaryText");
-  if (!textEl) return;
-}
-
-function getBuyerCommute(propertyLat, propertyLng) {
-  const distanceKm = haversineKm(propertyLat, propertyLng, buyerProfile.officeLat, buyerProfile.officeLng);
-  let speedKmH = 20; icon = "🚗";
-  if (buyerProfile.commuteMode === "Metro") { speedKmH = 35; icon = "🚇"; }
-  else if (buyerProfile.commuteMode === "Two-wheeler") { speedKmH = 25; icon = "🛵"; }
-  else if (buyerProfile.commuteMode === "Cab") { speedKmH = 18; icon = "🚕"; }
-
-  const mins = Math.max(4, Math.round((distanceKm / speedKmH) * 60));
-  return { distanceKm, mins, icon };
-}
+let activeCardId = null;
+let popupCache = null;
+let map;
+let markerLayer;
+let techParkLayer;
+let metroLayer;
+let schoolLayer;
+let hospitalLayer;
+let mallLayer;
+let sharedInfoWindow;
+let techParkViewActive = false;
+let techParkDensityOverlay = null;
+let areaPriceViewActive = false;
+let areaPriceDensityOverlay = null;
+let areaPriceLabelLayer = null;
+let areaPriceHoverCircles = [];
+let priceLabelsEnabled = true;
+let premiumAreasOnly = false;
+let geoFilterCenter = null;
+let showAllAmenities = false;
 
 /* AMENITY MARKERS & POPUPS */
 function techParkMarkerHtml(tp, distanceKm) {
@@ -7438,12 +7119,11 @@ function nearbyTechParksHtml(nearby) {
 
   const items = nearby.slice(0, 3).map((tp) => {
     const mins = getTechParkCommuteMins(tp.distanceKm);
-    const isWorkplace = buyerProfile && buyerProfile.officeTechParkId === tp.id;
-    return `
-      <div class="popup-card__tp-item${isWorkplace ? ' popup-card__tp-item--workplace' : ''}">
+        return `
+      <div class="popup-card__tp-item">
         <div class="popup-card__tp-header">
           <span class="popup-card__tp-name">🏢 ${tp.name}</span>
-          ${isWorkplace ? '<span class="popup-card__tp-workplace-badge">Workplace</span>' : ''}
+          
         </div>
         <div class="popup-card__tp-details">
           <span class="popup-card__tp-mins">🚗 ~${mins} mins drive</span>
@@ -8243,7 +7923,7 @@ function popupHtml(p, nearbyTechParks, nearbyMetro, nearbySchools, nearbyHospita
   const commuteBanner = `
     <div class="popup-card__buyer-commute">
       <span class="popup-card__buyer-commute-icon">${commute.icon}</span>
-      <div><strong>${commute.mins} mins</strong> (${commute.distanceKm.toFixed(1)} km) to ${buyerProfile.officeName.split(" ")[0]} for ${firstName}</div>
+      <div><strong>${commute.mins} mins</strong> (${commute.distanceKm.toFixed(1)} km) to ITPL</div>
     </div>
   `;
 
@@ -8569,7 +8249,7 @@ function renderList(properties) {
       const details = getPropertyDetails(p);
       const akScoreHtml = getAkScoreBadgeHtml(p.akScore);
       const commute = getBuyerCommute(p.lat, p.lng);
-      const commuteBadge = `<div class="card__commute-badge">${commute.icon} ${commute.mins} mins (${commute.distanceKm.toFixed(1)} km) to ${buyerProfile.officeName.split(" ")[0]}</div>`;
+      const commuteBadge = `<div class="card__commute-badge">${commute.icon} ${commute.mins} mins (${commute.distanceKm.toFixed(1)} km) to ITPL</div>`;
       const isRecommended = p.recommended;
 
       return `
@@ -9009,13 +8689,13 @@ function openCompareModal() {
   modal.innerHTML = `
     <button type="button" class="compare-modal__close" onclick="closeCompareModal()">✕</button>
     <div class="compare-modal__title">Executive Market Comparison</div>
-    <div class="compare-modal__subtitle">Tailored Advisory Matrix for ${buyerProfile.name} (${formatBudgetRange(buyerProfile.minBudget, buyerProfile.maxBudget)})</div>
+    <div class="compare-modal__subtitle">Executive Advisory Comparison Matrix</div>
 
     <div class="compare-summary-box">
       <div class="compare-summary-box__title">💡 Advisor Decision Key Takeaways</div>
       <div class="compare-summary-box__grid">
         <div class="compare-summary-box__winner-tag">🏆 <strong>Highest Diligence Score:</strong> ${highestScoreProp.title} ${highestScoreProp.akScore != null ? `(AK ${highestScoreProp.akScore})` : ''}</div>
-        <div class="compare-summary-box__winner-tag">⚡ <strong>Fastest Commute:</strong> ${lowestCommuteProp.title} (${minCommuteMins} mins to ${buyerProfile.officeName.split(" ")[0]})</div>
+        <div class="compare-summary-box__winner-tag">⚡ <strong>Fastest Commute:</strong> ${lowestCommuteProp.title} (${minCommuteMins} mins to ITPL)</div>
       </div>
     </div>
 
@@ -9031,7 +8711,7 @@ function openCompareModal() {
         ${row("Key Advisory Reason", (p) => getPropertyDetails(p).whyRecommended || "Strong corridor value proposition")}
 
         ${catHeader("Commute & Location Efficiency")}
-        ${row(`Commute to ${buyerProfile.officeName.split(" ")[0]}`, (p) => {
+        ${row(`Commute to ITPL`, (p) => {
           const c = getBuyerCommute(p.lat, p.lng);
           return `${c.icon} <strong>${c.mins} mins</strong> (${c.distanceKm.toFixed(1)} km) ${p.id === lowestCommuteProp.id ? '⚡ Fastest' : ''}`;
         })}
@@ -9342,7 +9022,7 @@ function applyPresentationStep(stepIdx) {
       <div class="p-card__title">Commute & Tech Hub Proximity</div>
       <div class="p-card__body">
         <div style="background:rgba(255,255,255,0.06); padding:8px 10px; border-radius:6px; margin-bottom:8px;">
-          🏢 <strong>Office Commute:</strong> ${commute.mins} mins (${commute.distanceKm.toFixed(1)} km) to ${buyerProfile.officeName} via ${buyerProfile.commuteMode}.
+          🏢 <strong>Office Commute:</strong> ${commute.mins} mins (${commute.distanceKm.toFixed(1)} km) to ITPL Tech Hub via Drive.
         </div>
         ${nearestMetro ? `<div>🚇 <strong>Nearest Metro:</strong> ${nearestMetro.name} (${nearestMetro.distanceKm.toFixed(1)} km)</div>` : ''}
         ${nearestTP ? `<div>💻 <strong>Nearest Tech Park:</strong> ${nearestTP.name} (${nearestTP.distanceKm.toFixed(1)} km)</div>` : ''}
@@ -9484,12 +9164,12 @@ function applyPresentationStep(stepIdx) {
       <div class="p-card__title">Why We Recommend ${property.title}</div>
       <div class="p-card__body">
         <ul style="margin:4px 0 10px 16px; padding:0; font-size:11.5px; line-height:1.5;">
-          <li>✓ <strong>Fits Budget:</strong> ${details.priceStr} matches ${buyerProfile.name.split(' ')[0]}'s target budget (${buyerProfile.budget}).</li>
-          <li>✓ <strong>Optimal Commute:</strong> Only ${commute.mins} mins to ${buyerProfile.officeName}.</li>
+          <li>✓ <strong>Fits Budget:</strong> ${details.priceStr} matches target budget criteria.</li>
+          <li>✓ <strong>Optimal Commute:</strong> Only ${commute.mins} mins to ITPL Tech Hub.</li>
           <li>✓ <strong>High Diligence Score:</strong> AK ${property.akScore || 78} rating with verified builder delivery.</li>
         </ul>
-        <button type="button" style="width:100%; padding:10px; border-radius:999px; background:var(--rust); color:#fff; font-weight:700; border:none; cursor:pointer;" onclick="alert('Site visit booking request saved for ' + buyerProfile.name + '!')">
-          📅 Book Site Visit for ${buyerProfile.name.split(' ')[0]}
+        <button type="button" style="width:100%; padding:10px; border-radius:999px; background:var(--rust); color:#fff; font-weight:700; border:none; cursor:pointer;" onclick="alert('Site visit booking request saved!')">
+          📅 Book Site Visit
         </button>
       </div>
     `;
@@ -9730,7 +9410,7 @@ if (!window.presentationKeybound) {
 }
 
 function wireControls() {
-  initBuyerProfile();
+  
 
   const presentationModeToggle = document.getElementById("presentationModeToggle");
   const sidebarPanel = document.getElementById("sidebarPanel");
@@ -9969,34 +9649,22 @@ function wireControls() {
   priceInsightModalBackdrop.addEventListener("click", () => closePriceInsightCard());
 }
 
-async function onGoogleMapsLoaded() {
-  initMap();
-  wireControls();
-
-  try {
+async function initAppListings() {
+  if (!ALL_PROPERTIES || ALL_PROPERTIES.length === 0) {
     ALL_PROPERTIES = await fetchProperties();
-    // Load saved buyer profile if present
-    const savedBp = localStorage.getItem("ackey_buyer_profile");
-    if (savedBp) {
-      try {
-        buyerProfile = Object.assign({}, buyerProfile, JSON.parse(savedBp));
-        if (document.getElementById("bpName")) document.getElementById("bpName").value = buyerProfile.name;
-        if (document.getElementById("bpMinBudget")) document.getElementById("bpMinBudget").value = buyerProfile.minBudget;
-        if (document.getElementById("bpMaxBudget")) document.getElementById("bpMaxBudget").value = buyerProfile.maxBudget;
-        if (document.getElementById("bpOfficeLocation")) document.getElementById("bpOfficeLocation").value = buyerProfile.officeTechParkId || "TP069";
-        if (document.getElementById("bpPurpose")) document.getElementById("bpPurpose").value = buyerProfile.purpose;
-        if (document.getElementById("bpPreferredArea")) document.getElementById("bpPreferredArea").value = buyerProfile.preferredArea;
-        if (document.getElementById("bpCommuteMode")) document.getElementById("bpCommuteMode").value = buyerProfile.commuteMode;
-        if (document.getElementById("bpTimeline")) document.getElementById("bpTimeline").value = buyerProfile.timeline;
-      } catch (e) {}
-    }
-  } catch (err) {
-    els.list.innerHTML = `<div class="empty-state">Could not load listings. ${err.message}</div>`;
-    return;
   }
-
   populateLocalityOptions();
   applyFilters();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  wireControls();
+  initAppListings();
+});
+
+async function onGoogleMapsLoaded() {
+  initMap();
+  await initAppListings();
   updateTechParkDisplay();
 }
 
