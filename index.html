@@ -8880,6 +8880,7 @@ function initDraggableMinimizedPanel() {
   function onDragEnd() {
     if (!isDragging) return;
     isDragging = false;
+    setTimeout(() => { pdpIsDragging = false; }, 100);
     document.removeEventListener("mousemove", onDragMove);
     document.removeEventListener("mouseup", onDragEnd);
     document.removeEventListener("touchmove", onDragMove);
@@ -8985,12 +8986,16 @@ function setActive(id, { pan }) {
 function clearActive() {
   activeCardId = null;
   popupCache = null;
+  pdpMinimized = false;
+  pdpIsDragging = false;
   els.list.querySelectorAll(".card").forEach(function(c) { c.classList.remove("card--active"); });
 
   var panel   = document.getElementById("propertyDetailPanel");
   var mapWrap = document.querySelector(".map-wrap");
   if (panel) {
     panel.classList.remove("property-detail-panel--open");
+    panel.classList.remove("property-detail-panel--minimized");
+    panel.removeAttribute("style");
     setTimeout(function() { panel.hidden = true; }, 310);
   }
   if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
