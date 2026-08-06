@@ -8519,13 +8519,27 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(pillEl);
   }
 
-  // Mount Property Detail Panel, Compare Tray, and Modals inside #map so they work seamlessly in Fullscreen mode
-  const detailPanel = document.getElementById("propertyDetailPanel");
-  const compareTray = document.getElementById("compareTray");
-  const compareBackdrop = document.getElementById("compareModalBackdrop");
-  if (detailPanel && mapContainer) mapContainer.appendChild(detailPanel);
-  if (compareTray && mapContainer) mapContainer.appendChild(compareTray);
-  if (compareBackdrop && mapContainer) mapContainer.appendChild(compareBackdrop);
+  // Dynamic Fullscreen Handler: Move panels into #map when in Fullscreen, move back to .map-wrap in Normal mode
+  function handleFullscreenModeChange() {
+    const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    const mapWrapEl = document.querySelector(".map-wrap");
+    const detailPanel = document.getElementById("propertyDetailPanel");
+    const compareTray = document.getElementById("compareTray");
+    const compareBackdrop = document.getElementById("compareModalBackdrop");
+
+    if (isFullscreen) {
+      if (detailPanel && mapContainer && detailPanel.parentElement !== mapContainer) mapContainer.appendChild(detailPanel);
+      if (compareTray && mapContainer && compareTray.parentElement !== mapContainer) mapContainer.appendChild(compareTray);
+      if (compareBackdrop && mapContainer && compareBackdrop.parentElement !== mapContainer) mapContainer.appendChild(compareBackdrop);
+    } else {
+      if (detailPanel && mapWrapEl && detailPanel.parentElement !== mapWrapEl) mapWrapEl.appendChild(detailPanel);
+      if (compareTray && mapWrapEl && compareTray.parentElement !== mapWrapEl) mapWrapEl.appendChild(compareTray);
+      if (compareBackdrop && mapWrapEl && compareBackdrop.parentElement !== mapWrapEl) mapWrapEl.appendChild(compareBackdrop);
+    }
+  }
+
+  document.addEventListener("fullscreenchange", handleFullscreenModeChange);
+  document.addEventListener("webkitfullscreenchange", handleFullscreenModeChange);
 
   google.maps.event.addListenerOnce(map, "idle", hideMapStatus);
   return true;
