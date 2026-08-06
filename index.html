@@ -4033,18 +4033,7 @@ html, body {
   color: var(--gold);
   transform: scale(1.08);
 }
-.property-detail-panel--minimized {
-  height: auto !important;
-  max-height: 68px !important;
-  overflow: hidden !important;
-  border-radius: 12px !important;
-  margin-top: 12px !important;
-  margin-right: 12px !important;
-  box-shadow: 0 12px 32px rgba(24, 42, 61, 0.38) !important;
-  border: 1px solid var(--gold) !important;
-  background: var(--navy) !important;
-  cursor: pointer;
-}
+
 .property-detail-panel--minimized .pdp__body,
 .property-detail-panel--minimized .pdp__footer {
   display: none !important;
@@ -8783,10 +8772,26 @@ function renderDetailPanel(property) {
   var devEl = document.getElementById("pdpDevFooter"); if (devEl) devEl.textContent = property.developer + " · " + property.locality;
 
   panel.hidden = false;
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() { panel.classList.add("property-detail-panel--open"); });
-  });
-  mapWrap.classList.add("map-wrap--panel-open");
+  if (pdpMinimized) {
+    panel.classList.add("property-detail-panel--minimized");
+    panel.classList.remove("property-detail-panel--open");
+    mapWrap.classList.remove("map-wrap--panel-open");
+    const minBtn = document.getElementById("pdpMinimize");
+    if (minBtn) { minBtn.innerHTML = "⤢"; minBtn.title = "Expand property card"; }
+    const mapWrapEl = document.querySelector(".map-wrap");
+    if (mapWrapEl && !panel.style.left) {
+      const rect = mapWrapEl.getBoundingClientRect();
+      panel.style.setProperty("left", `${rect.right - 340}px`, "important");
+      panel.style.setProperty("top", `${rect.top + 20}px`, "important");
+      panel.style.setProperty("right", "auto", "important");
+    }
+  } else {
+    panel.classList.remove("property-detail-panel--minimized");
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() { panel.classList.add("property-detail-panel--open"); });
+    });
+    mapWrap.classList.add("map-wrap--panel-open");
+  }
   setTimeout(function() { if (map) google.maps.event.trigger(map, "resize"); }, 310);
 }
 
@@ -8938,31 +8943,7 @@ function toggleMinimizeDetailPanel() {
 }
 
 
-function toggleMinimizeDetailPanel() {
-  const panel = document.getElementById("propertyDetailPanel");
-  const minBtn = document.getElementById("pdpMinimize");
-  const mapWrap = document.querySelector(".map-wrap");
-  if (!panel) return;
 
-  pdpMinimized = !pdpMinimized;
-  if (pdpMinimized) {
-    panel.classList.add("property-detail-panel--minimized");
-    if (minBtn) {
-      minBtn.innerHTML = "⤢";
-      minBtn.title = "Expand property card";
-    }
-    if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
-  } else {
-    panel.classList.remove("property-detail-panel--minimized");
-    resetPanelDragPosition();
-    if (minBtn) {
-      minBtn.innerHTML = "⎯";
-      minBtn.title = "Minimize property card";
-    }
-    if (mapWrap) mapWrap.classList.add("map-wrap--panel-open");
-  }
-  setTimeout(() => { if (map) google.maps.event.trigger(map, "resize"); }, 200);
-}
 
 function setActive(id, { pan }) {
   activeCardId = id;
