@@ -2330,7 +2330,7 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
 .map-view-pill {
   position: absolute;
   top: 14px;
-  right: 14px;
+  right: 68px;
   z-index: 450;
   display: flex;
   align-items: center;
@@ -4062,6 +4062,24 @@ html, body {
   display: flex !important;
   gap: 6px !important;
   font-size: 11px !important;
+}
+
+
+/* Fullscreen mode support for map view pill control & legends */
+:fullscreen .map-view-pill,
+:-webkit-full-screen .map-view-pill,
+:fullscreen .map-status,
+:-webkit-full-screen .map-status,
+:fullscreen .map-legend-toggle,
+:-webkit-full-screen .map-legend-toggle,
+:fullscreen .map-legend-panel,
+:-webkit-full-screen .map-legend-panel {
+  z-index: 999999 !important;
+  display: flex !important;
+}
+:fullscreen .map-legend-panel,
+:-webkit-full-screen .map-legend-panel {
+  display: block !important;
 }
 
 </style>
@@ -8384,7 +8402,8 @@ function defineMarkerLayerClass() {
 }
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
+  const mapContainer = document.getElementById("map");
+  map = new google.maps.Map(mapContainer, {
     center: { lat: 12.9716, lng: 77.6412 },
     zoom: 11,
     mapTypeControl: true,
@@ -8474,6 +8493,12 @@ function initMap() {
     areaPriceDensityOverlay.draw();
     areaPriceLabelLayer.draw();
   });
+  // Bind mapViewPill to map container if needed so it stays visible in fullscreen
+  const pillEl = document.getElementById("mapViewPill");
+  if (pillEl && mapContainer) {
+    mapContainer.appendChild(pillEl);
+  }
+
   google.maps.event.addListenerOnce(map, "idle", hideMapStatus);
   return true;
 }
