@@ -10439,10 +10439,104 @@ function wireControls() {
   priceInsightModalBackdrop.addEventListener("click", () => closePriceInsightCard());
 }
 
-async function initAppListings() {
-  if (!ALL_PROPERTIES || ALL_PROPERTIES.length === 0) {
-    ALL_PROPERTIES = await fetchProperties();
+async 
+/* ===== CONFIGURATION & CENTRALIZED DATA SERVICE LAYER ===== */
+const APP_CONFIG = {
+  API_ENDPOINT: "", // Google Apps Script Web App URL (e.g. https://script.google.com/macros/s/.../exec)
+  TIMEOUT_MS: 10000,
+  CACHE_KEY: "ackey_app_data_v1"
+};
+
+const DataService = {
+  isLoaded: false,
+  isOfflineMode: false,
+  data: null,
+
+  async loadApplicationData() {
+    if (this.isLoaded && this.data) return this.data;
+
+    if (APP_CONFIG.API_ENDPOINT && APP_CONFIG.API_ENDPOINT.trim() !== "") {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), APP_CONFIG.TIMEOUT_MS);
+
+        const response = await fetch(APP_CONFIG.API_ENDPOINT, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          const json = await response.json();
+          if (json && (json.status === "success" || json.data) && (json.data || json.projects)) {
+            const raw = json.data || json;
+            this.data = this.parseApiData(raw);
+            this.isLoaded = true;
+            this.isOfflineMode = false;
+            this.updateGlobalState(this.data);
+            return this.data;
+          }
+        }
+      } catch (err) {
+        console.warn("API Endpoint fetch failed, using fallback dataset:", err);
+      }
+    }
+
+    this.isOfflineMode = true;
+    this.data = this.getFallbackData();
+    this.isLoaded = true;
+    this.updateGlobalState(this.data);
+    this.showApiStatusBanner();
+    return this.data;
+  },
+
+  parseApiData(raw) {
+    return {
+      projects: Array.isArray(raw.projects) && raw.projects.length > 0 ? raw.projects : SAMPLE_PROPERTIES,
+      techParks: Array.isArray(raw.techParks) && raw.techParks.length > 0 ? raw.techParks : TECH_PARKS,
+      metroStations: Array.isArray(raw.metroStations) && raw.metroStations.length > 0 ? raw.metroStations : METRO_STATIONS,
+      schools: Array.isArray(raw.schools) && raw.schools.length > 0 ? raw.schools : SCHOOLS,
+      hospitals: Array.isArray(raw.hospitals) && raw.hospitals.length > 0 ? raw.hospitals : HOSPITALS,
+      malls: Array.isArray(raw.malls) && raw.malls.length > 0 ? raw.malls : MALLS,
+      areaPricing: Array.isArray(raw.areaPricing) && raw.areaPricing.length > 0 ? raw.areaPricing : AREA_PRICING,
+      localities: raw.localities || LOCALITY_SUMMARIES
+    };
+  },
+
+  getFallbackData() {
+    return {
+      projects: SAMPLE_PROPERTIES,
+      techParks: TECH_PARKS,
+      metroStations: METRO_STATIONS,
+      schools: SCHOOLS,
+      hospitals: HOSPITALS,
+      malls: MALLS,
+      areaPricing: AREA_PRICING,
+      localities: LOCALITY_SUMMARIES
+    };
+  },
+
+  updateGlobalState(parsed) {
+    ALL_PROPERTIES = parsed.projects;
+    TECH_PARKS = parsed.techParks;
+    METRO_STATIONS = parsed.metroStations;
+    SCHOOLS = parsed.schools;
+    HOSPITALS = parsed.hospitals;
+    MALLS = parsed.malls;
+    AREA_PRICING = parsed.areaPricing;
+    if (parsed.localities) {
+      Object.assign(LOCALITY_SUMMARIES, parsed.localities);
+    }
+  },
+
+  showApiStatusBanner() {
+    const mapStatus = document.getElementById("mapStatus");
+    if (!mapStatus || !APP_CONFIG.API_ENDPOINT) return;
+    mapStatus.innerHTML = `⚠️ API Offline — Using Cached Data <button onclick="DataService.loadApplicationData(); applyFilters();" style="margin-left:8px; padding:2px 8px; font-size:10px; background:var(--gold); color:#fff; border:none; border-radius:4px; cursor:pointer;">Retry</button>`;
+    mapStatus.classList.add("map-status--visible");
+    setTimeout(() => { mapStatus.classList.remove("map-status--visible"); }, 5000);
   }
+};
+
+async function initAppListings() {
+  await DataService.loadApplicationData();
   populateLocalityOptions();
   populateWorkLocationOptions();
   applyFilters();
