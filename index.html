@@ -4091,6 +4091,17 @@ html, body {
   z-index: 999999 !important;
 }
 
+
+/* Fullscreen mode support for Property Detail Panel, Compare Tray & Modals */
+:fullscreen .property-detail-panel,
+:-webkit-full-screen .property-detail-panel,
+:fullscreen .compare-tray,
+:-webkit-full-screen .compare-tray,
+:fullscreen .compare-modal-backdrop,
+:-webkit-full-screen .compare-modal-backdrop {
+  z-index: 999999 !important;
+}
+
 </style>
 </head>
 <body>
@@ -8507,6 +8518,14 @@ function initMap() {
   if (pillEl) {
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(pillEl);
   }
+
+  // Mount Property Detail Panel, Compare Tray, and Modals inside #map so they work seamlessly in Fullscreen mode
+  const detailPanel = document.getElementById("propertyDetailPanel");
+  const compareTray = document.getElementById("compareTray");
+  const compareBackdrop = document.getElementById("compareModalBackdrop");
+  if (detailPanel && mapContainer) mapContainer.appendChild(detailPanel);
+  if (compareTray && mapContainer) mapContainer.appendChild(compareTray);
+  if (compareBackdrop && mapContainer) mapContainer.appendChild(compareBackdrop);
 
   google.maps.event.addListenerOnce(map, "idle", hideMapStatus);
   return true;
