@@ -3928,8 +3928,173 @@ html, body {
 <div class="layout">
 
   <aside class="panel" aria-label="Advisor Control Panel" id="sidebarPanel">
+<!-- 1. FILTERS & SEARCH -->
+    <details class="accordion accordion--explore" id="exploreAccordion" open>
+      <summary class="accordion__header">
+        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          Filters &amp; Search
+        </span>
+      </summary>
+      <div class="accordion__body">
+        <div id="propertyFiltersGroup">
+          <div id="geoFilterBanner" class="geo-filter-banner">
+            <span id="geoFilterBannerText"></span>
+            <button type="button" class="geo-filter-banner__clear" onclick="clearGeoFilter()">Clear ✕</button>
+          </div>
 
-    <!-- 1. BUYER INFORMATION -->
+          <label class="field field--search" style="position:relative;">
+            <span class="field__label">Search Projects</span>
+            <div class="field--search__row">
+              <div class="field--search__input-wrap">
+                <input type="text" id="filterSearchText" class="field__input" placeholder="Search by name, developer, or locality" autocomplete="off" />
+                <span class="field--search__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="20" y2="20"/></svg>
+                </span>
+                <button type="button" id="clearSearchText" class="field--search__clear" aria-label="Clear search">✕</button>
+              </div>
+              <select id="filterSearchScope" class="field__input field--search__scope" title="Search in">
+                <option value="all">All</option>
+                <option value="project">Project</option>
+                <option value="developer">Developer</option>
+                <option value="locality">Locality</option>
+              </select>
+            </div>
+            <div id="searchSuggestionsDropdown" class="search-suggestions-dropdown"></div>
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Micro-Market</span>
+              <select id="filterLocality" class="field__input">
+                <option value="">All micro-markets</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Construction Stage</span>
+              <select id="filterStage" class="field__input">
+                <option value="">All stages</option>
+                <option value="Under construction">Under construction</option>
+                <option value="Ready to move">Ready to move</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field field--checkbox">
+            <input type="checkbox" id="filterRecommended" />
+            <span class="field__label">Show only Acre&amp;Key recommended projects</span>
+          </label>
+
+          <div class="locality-section" aria-label="Popular localities" style="margin-top:10px;">
+            <div class="locality-section__header">
+              <span class="field__label">Popular Localities</span>
+              <button type="button" id="localityClear" class="locality-clear" hidden>✕ Clear</button>
+            </div>
+            <div class="locality-chips" id="localityChips" role="group" aria-label="Popular localities — select one to highlight it on the map">
+              <button type="button" class="locality-chip" data-slug="whitefield" aria-pressed="false">Whitefield</button>
+              <button type="button" class="locality-chip" data-slug="budigere-cross" aria-pressed="false">Budigere Cross</button>
+              <button type="button" class="locality-chip" data-slug="kr-puram" aria-pressed="false">KR Puram</button>
+              <button type="button" class="locality-chip" data-slug="varthur" aria-pressed="false">Varthur</button>
+            </div>
+          </div>
+
+          <button id="resetFilters" class="btn-reset" type="button" style="margin-top:12px;">Reset filters</button>
+        </div>
+      </div>
+    </details>
+
+<!-- 2. MAP LAYERS & INSIGHTS -->
+    <details class="accordion accordion--insights" id="insightsAccordion">
+      <summary class="accordion__header">
+        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          Map Layers &amp; Insights
+        </span>
+      </summary>
+      <div class="accordion__body">
+        <span class="sidebar-group-label">Map Amenity Markers</span>
+        <div class="amenity-toggles" role="group" aria-label="Map amenity layers">
+          <label class="amenity-toggle" title="Show nearby tech parks">
+            <input type="checkbox" id="filterTechParks" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--techpark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 21V7l8-4 8 4v14h-6v-6h-4v6H4z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Tech Parks</span>
+          </label>
+          <label class="amenity-toggle" title="Show metro stations">
+            <input type="checkbox" id="filterMetro" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--metro" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 16.5V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9.5A2.5 2.5 0 0 1 17.5 19H17l1.5 1.5v.5h-13v-.5L7 19h-.5A2.5 2.5 0 0 1 4 16.5zM7.5 15a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM6 12h12V7a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Metro Stations</span>
+          </label>
+          <label class="amenity-toggle" title="Show nearby schools">
+            <input type="checkbox" id="filterSchools" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--school" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M12 3 1 8l11 5 9-4.09V17h2V8L12 3zM5 10.18v4.32c0 .6.33 1.15.85 1.45l6 3.55.15.05.15-.05 6-3.55c.52-.3.85-.85.85-1.45v-4.32L12 14.5 5 10.18z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Schools</span>
+          </label>
+          <label class="amenity-toggle" title="Show nearby hospitals">
+            <input type="checkbox" id="filterHospitals" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--hospital" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M11 4h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Hospitals</span>
+          </label>
+          <label class="amenity-toggle" title="Show nearby malls">
+            <input type="checkbox" id="filterMalls" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--mall" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M7 8h10l1 11H6L7 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="white" stroke-width="1.6"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Malls</span>
+          </label>
+        </div>
+
+        <span class="sidebar-group-label" style="margin-top:10px;">Density Heatmaps</span>
+        <label class="field field--checkbox techpark-view-toggle" title="Show every tech park in Bengaluru with a density heatmap">
+          <input type="checkbox" id="filterTechParkView" />
+          <span class="field__label">Tech Park Density Heatmap</span>
+        </label>
+        <div id="techParkViewNotice" class="techpark-view-notice">
+          Showing all <strong id="techParkViewCount"></strong> tech parks across Bengaluru.
+        </div>
+
+        <div class="price-insights" style="margin-top:8px;">
+          <label class="field field--checkbox area-price-view-toggle" title="Show area-wise pricing across Bengaluru as a heatmap">
+            <input type="checkbox" id="filterAreaPriceView" />
+            <span class="field__label">Area Price Density Heatmap</span>
+          </label>
+
+          <div id="priceInsightsSubToggles" class="price-insights__sub-toggles" hidden>
+            <label class="field field--checkbox price-insights__sub-toggle">
+              <input type="checkbox" id="filterPriceLabels" checked />
+              <span class="field__label">Price Labels</span>
+            </label>
+            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
+              <input type="checkbox" id="filterAnnualGrowth" disabled />
+              <span class="field__label">Annual Growth <em>(coming soon)</em></span>
+            </label>
+            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
+              <input type="checkbox" id="filterRentalYield" disabled />
+              <span class="field__label">Rental Yield <em>(coming soon)</em></span>
+            </label>
+            <label class="field field--checkbox price-insights__sub-toggle">
+              <input type="checkbox" id="filterPremiumAreas" />
+              <span class="field__label">Premium Areas Only</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="areaPriceViewNotice" class="area-price-insight-card" style="margin-top:8px;">
+          <div class="area-price-insight-card__title">Area Price Insights</div>
+          <p>Visualizing average price/sqft across Bengaluru localities.</p>
+        </div>
+      </div>
+    </details>
+
+<!-- 3. BUYER INFORMATION -->
     <div class="buyer-profile-bar" id="buyerProfileBar">
       <div class="buyer-profile-bar__summary" id="buyerProfileSummary" role="button" tabindex="0" aria-expanded="false" aria-controls="buyerProfileForm">
         <div class="buyer-profile-bar__left">
@@ -4051,7 +4216,7 @@ html, body {
       </div>
     </div>
 
-    <!-- 2. RECOMMENDED PROJECTS -->
+<!-- 4. RECOMMENDED PROJECTS -->
     <details class="accordion accordion--shortlist" id="listSection" open>
       <summary class="accordion__header">
         <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
@@ -4063,172 +4228,6 @@ html, body {
       <div class="accordion__body accordion__body--list">
         <div id="propertyList" class="property-list" aria-live="polite">
           <div class="loading-state">Loading listings…</div>
-        </div>
-      </div>
-    </details>
-
-    <!-- 3. MAP LAYERS -->
-    <details class="accordion accordion--insights" id="insightsAccordion">
-      <summary class="accordion__header">
-        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          Map Layers &amp; Insights
-        </span>
-      </summary>
-      <div class="accordion__body">
-        <span class="sidebar-group-label">Map Amenity Markers</span>
-        <div class="amenity-toggles" role="group" aria-label="Map amenity layers">
-          <label class="amenity-toggle" title="Show nearby tech parks">
-            <input type="checkbox" id="filterTechParks" checked />
-            <span class="amenity-toggle__icon amenity-toggle__icon--techpark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 21V7l8-4 8 4v14h-6v-6h-4v6H4z"/></svg>
-            </span>
-            <span class="amenity-toggle__text">Tech Parks</span>
-          </label>
-          <label class="amenity-toggle" title="Show metro stations">
-            <input type="checkbox" id="filterMetro" checked />
-            <span class="amenity-toggle__icon amenity-toggle__icon--metro" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 16.5V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9.5A2.5 2.5 0 0 1 17.5 19H17l1.5 1.5v.5h-13v-.5L7 19h-.5A2.5 2.5 0 0 1 4 16.5zM7.5 15a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM6 12h12V7a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5z"/></svg>
-            </span>
-            <span class="amenity-toggle__text">Metro Stations</span>
-          </label>
-          <label class="amenity-toggle" title="Show nearby schools">
-            <input type="checkbox" id="filterSchools" checked />
-            <span class="amenity-toggle__icon amenity-toggle__icon--school" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M12 3 1 8l11 5 9-4.09V17h2V8L12 3zM5 10.18v4.32c0 .6.33 1.15.85 1.45l6 3.55.15.05.15-.05 6-3.55c.52-.3.85-.85.85-1.45v-4.32L12 14.5 5 10.18z"/></svg>
-            </span>
-            <span class="amenity-toggle__text">Schools</span>
-          </label>
-          <label class="amenity-toggle" title="Show nearby hospitals">
-            <input type="checkbox" id="filterHospitals" checked />
-            <span class="amenity-toggle__icon amenity-toggle__icon--hospital" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M11 4h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
-            </span>
-            <span class="amenity-toggle__text">Hospitals</span>
-          </label>
-          <label class="amenity-toggle" title="Show nearby malls">
-            <input type="checkbox" id="filterMalls" checked />
-            <span class="amenity-toggle__icon amenity-toggle__icon--mall" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M7 8h10l1 11H6L7 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="white" stroke-width="1.6"/></svg>
-            </span>
-            <span class="amenity-toggle__text">Malls</span>
-          </label>
-        </div>
-
-        <span class="sidebar-group-label" style="margin-top:10px;">Density Heatmaps</span>
-        <label class="field field--checkbox techpark-view-toggle" title="Show every tech park in Bengaluru with a density heatmap">
-          <input type="checkbox" id="filterTechParkView" />
-          <span class="field__label">Tech Park Density Heatmap</span>
-        </label>
-        <div id="techParkViewNotice" class="techpark-view-notice">
-          Showing all <strong id="techParkViewCount"></strong> tech parks across Bengaluru.
-        </div>
-
-        <div class="price-insights" style="margin-top:8px;">
-          <label class="field field--checkbox area-price-view-toggle" title="Show area-wise pricing across Bengaluru as a heatmap">
-            <input type="checkbox" id="filterAreaPriceView" />
-            <span class="field__label">Area Price Density Heatmap</span>
-          </label>
-
-          <div id="priceInsightsSubToggles" class="price-insights__sub-toggles" hidden>
-            <label class="field field--checkbox price-insights__sub-toggle">
-              <input type="checkbox" id="filterPriceLabels" checked />
-              <span class="field__label">Price Labels</span>
-            </label>
-            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
-              <input type="checkbox" id="filterAnnualGrowth" disabled />
-              <span class="field__label">Annual Growth <em>(coming soon)</em></span>
-            </label>
-            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
-              <input type="checkbox" id="filterRentalYield" disabled />
-              <span class="field__label">Rental Yield <em>(coming soon)</em></span>
-            </label>
-            <label class="field field--checkbox price-insights__sub-toggle">
-              <input type="checkbox" id="filterPremiumAreas" />
-              <span class="field__label">Premium Areas Only</span>
-            </label>
-          </div>
-        </div>
-
-        <div id="areaPriceViewNotice" class="area-price-insight-card" style="margin-top:8px;">
-          <div class="area-price-insight-card__title">Area Price Insights</div>
-          <p>Visualizing average price/sqft across Bengaluru localities.</p>
-        </div>
-      </div>
-    </details>
-
-    <!-- 4. FILTERS -->
-    <details class="accordion accordion--explore" id="exploreAccordion" open>
-      <summary class="accordion__header">
-        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
-          Filters &amp; Search
-        </span>
-      </summary>
-      <div class="accordion__body">
-        <div id="propertyFiltersGroup">
-          <div id="geoFilterBanner" class="geo-filter-banner">
-            <span id="geoFilterBannerText"></span>
-            <button type="button" class="geo-filter-banner__clear" onclick="clearGeoFilter()">Clear ✕</button>
-          </div>
-
-          <label class="field field--search" style="position:relative;">
-            <span class="field__label">Search Projects</span>
-            <div class="field--search__row">
-              <div class="field--search__input-wrap">
-                <input type="text" id="filterSearchText" class="field__input" placeholder="Search by name, developer, or locality" autocomplete="off" />
-                <span class="field--search__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="20" y2="20"/></svg>
-                </span>
-                <button type="button" id="clearSearchText" class="field--search__clear" aria-label="Clear search">✕</button>
-              </div>
-              <select id="filterSearchScope" class="field__input field--search__scope" title="Search in">
-                <option value="all">All</option>
-                <option value="project">Project</option>
-                <option value="developer">Developer</option>
-                <option value="locality">Locality</option>
-              </select>
-            </div>
-            <div id="searchSuggestionsDropdown" class="search-suggestions-dropdown"></div>
-          </label>
-
-          <div class="field-row">
-            <label class="field">
-              <span class="field__label">Micro-Market</span>
-              <select id="filterLocality" class="field__input">
-                <option value="">All micro-markets</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span class="field__label">Construction Stage</span>
-              <select id="filterStage" class="field__input">
-                <option value="">All stages</option>
-                <option value="Under construction">Under construction</option>
-                <option value="Ready to move">Ready to move</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="field field--checkbox">
-            <input type="checkbox" id="filterRecommended" />
-            <span class="field__label">Show only Acre&amp;Key recommended projects</span>
-          </label>
-
-          <div class="locality-section" aria-label="Popular localities" style="margin-top:10px;">
-            <div class="locality-section__header">
-              <span class="field__label">Popular Localities</span>
-              <button type="button" id="localityClear" class="locality-clear" hidden>✕ Clear</button>
-            </div>
-            <div class="locality-chips" id="localityChips" role="group" aria-label="Popular localities — select one to highlight it on the map">
-              <button type="button" class="locality-chip" data-slug="whitefield" aria-pressed="false">Whitefield</button>
-              <button type="button" class="locality-chip" data-slug="budigere-cross" aria-pressed="false">Budigere Cross</button>
-              <button type="button" class="locality-chip" data-slug="kr-puram" aria-pressed="false">KR Puram</button>
-              <button type="button" class="locality-chip" data-slug="varthur" aria-pressed="false">Varthur</button>
-            </div>
-          </div>
-
-          <button id="resetFilters" class="btn-reset" type="button" style="margin-top:12px;">Reset filters</button>
         </div>
       </div>
     </details>
