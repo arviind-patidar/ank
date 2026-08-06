@@ -9225,23 +9225,39 @@ function openCompareModal() {
     </tr>
   `;
 
+  // Get active target work location name if user typed/selected one
+  const targetWorkLocationName = (els.workLocationText && els.workLocationText.value.trim()) || "";
+  const hasWorkLocation = targetWorkLocationName !== "";
+
   // Find best-in-class metrics for decision summary
   let highestScoreProp = props[0] || {};
-  let lowestCommuteProp = props[0] || {};
+  let lowestCommuteProp = null;
   let minCommuteMins = 999;
 
   props.forEach((p) => {
-    const pScore = p.score != null ? p.score : p.akScore;
-    const hScore = highestScoreProp ? (highestScoreProp.score != null ? highestScoreProp.score : highestScoreProp.akScore) : null;
+    const pScore = (p.score != null) ? p.score : p.akScore;
+    const hScore = highestScoreProp ? ((highestScoreProp.score != null) ? highestScoreProp.score : highestScoreProp.akScore) : null;
     if (pScore != null && (hScore == null || pScore > hScore)) {
       highestScoreProp = p;
     }
-    const c = getBuyerCommute(p.lat, p.lng);
-    if (c && typeof c.mins === "number" && c.mins < minCommuteMins) {
-      minCommuteMins = c.mins;
-      lowestCommuteProp = p;
+    if (hasWorkLocation) {
+      const c = getBuyerCommute(p.lat, p.lng);
+      if (c && typeof c.mins === "number" && c.mins < minCommuteMins) {
+        minCommuteMins = c.mins;
+        lowestCommuteProp = p;
+      }
     }
   });
+
+  const highestScoreText = (highestScoreProp.score != null || highestScoreProp.akScore != null)
+    ? `(AK ${highestScoreProp.score != null ? highestScoreProp.score : highestScoreProp.akScore})`
+    : '';
+
+  const highestScoreHtml = `<div class="compare-summary-box__winner-tag">🏆 <strong>Highest Diligence Score:</strong> ${highestScoreProp.title || 'Selected Project'} ${highestScoreText}</div>`;
+  
+  const fastestCommuteHtml = (hasWorkLocation && lowestCommuteProp && minCommuteMins < 999)
+    ? `<div class="compare-summary-box__winner-tag">⚡ <strong>Fastest Commute:</strong> ${lowestCommuteProp.title} (${minCommuteMins} mins to ${targetWorkLocationName})</div>`
+    : "";
 
   const catHeader = (title) => `
     <tr class="compare-table__category-row">
@@ -9257,8 +9273,8 @@ function openCompareModal() {
     <div class="compare-summary-box">
       <div class="compare-summary-box__title">💡 Advisor Decision Key Takeaways</div>
       <div class="compare-summary-box__grid">
-        <div class="compare-summary-box__winner-tag">🏆 <strong>Highest Diligence Score:</strong> ${highestScoreProp.title} ${highestScoreProp.akScore != null ? `(AK ${highestScoreProp.akScore})` : ''}</div>
-        <div class="compare-summary-box__winner-tag">⚡ <strong>Fastest Commute:</strong> ${lowestCommuteProp.title} (${minCommuteMins} mins to ITPL)</div>
+        ${highestScoreHtml}
+        ${fastestCommuteHtml}
       </div>
     </div>
 
@@ -9270,16 +9286,16 @@ function openCompareModal() {
         ${row("Configuration", (p) => getPropertyDetails(p).config)}
 
         ${catHeader("AK Diligence & Recommendation")}
-        ${row("AK Diligence Score", (p) => p.akScore != null ? `<span class="compare-table__ak-score">AK ${p.akScore}</span> ${p.id === highestScoreProp.id ? '🏆 Best' : ''}` : "—")}
+        ${row("AK Diligence Score", (p) => (p.score != null || p.akScore != null) ? `<span class="compare-table__ak-score">AK ${p.score != null ? p.score : p.akScore}</span> ${p.id === highestScoreProp.id ? '🏆 Best' : ''}` : "—")}
         ${row("Key Advisory Reason", (p) => getPropertyDetails(p).whyRecommended || "Strong corridor value proposition")}
 
         ${catHeader("Commute & Location Efficiency")}
-        ${row(`Commute to ITPL`, (p) => {
+        ${hasWorkLocation ? row(`Commute to ${targetWorkLocationName}`, (p) => {
           const c = getBuyerCommute(p.lat, p.lng);
           if (!c) return "—";
           const dist = typeof c.distanceKm === "number" ? c.distanceKm.toFixed(1) : "—";
-          return `${c.icon || "🚗"} <strong>${c.mins || 0} mins</strong> (${dist} km) ${p.id === lowestCommuteProp.id ? '⚡ Fastest' : ''}`;
-        })}
+          return `${c.icon || "🚗"} <strong>${c.mins || 0} mins</strong> (${dist} km) ${lowestCommuteProp && p.id === lowestCommuteProp.id ? '⚡ Fastest' : ''}`;
+        }) : ""}
         ${row("Nearest Tech Park", (p) => {
           const nearby = getDisplayAmenities(p);
           const tp = nearby && nearby.techParks && nearby.techParks[0];
