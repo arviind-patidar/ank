@@ -9933,6 +9933,64 @@ function findLocalityMatchName(input) {
   return input;
 }
 
+
+/* ===== CIRCULAR LOCALITY HIGHLIGHT & AUTO-ZOOM ENGINE ===== */
+const LOCALITY_CENTERS = {
+  "Whitefield": { lat: 12.9698, lng: 77.7499, radiusMeters: 3200, zoom: 13.5 },
+  "Budigere Cross": { lat: 13.0694, lng: 77.7455, radiusMeters: 3500, zoom: 13.2 },
+  "KR Puram": { lat: 13.0075, lng: 77.6959, radiusMeters: 2800, zoom: 13.8 },
+  "Varthur": { lat: 12.9406, lng: 77.7468, radiusMeters: 2800, zoom: 13.8 },
+  "Sarjapur Road": { lat: 12.9099, lng: 77.6881, radiusMeters: 3500, zoom: 13.2 },
+  "Panathur": { lat: 12.9348, lng: 77.6983, radiusMeters: 2400, zoom: 14.0 },
+  "Bellandur": { lat: 12.9304, lng: 77.6784, radiusMeters: 2500, zoom: 14.0 },
+  "Hebbal": { lat: 13.0358, lng: 77.5970, radiusMeters: 3000, zoom: 13.5 },
+  "Thanisandra": { lat: 13.0549, lng: 77.6335, radiusMeters: 2800, zoom: 13.8 },
+  "Yelahanka": { lat: 13.1007, lng: 77.5963, radiusMeters: 3500, zoom: 13.2 }
+};
+
+let localityCircleOverlay = null;
+
+function clearLocalityCircleHighlight() {
+  if (localityCircleOverlay) {
+    localityCircleOverlay.setMap(null);
+    localityCircleOverlay = null;
+  }
+}
+
+function renderLocalityCircleHighlight(keyName) {
+  clearLocalityCircleHighlight();
+  if (!keyName || !map) return;
+
+  let locData = LOCALITY_CENTERS[keyName];
+
+  if (!locData) {
+    const matchingProps = ALL_PROPERTIES.filter((p) => p.locality.toLowerCase().includes(keyName.toLowerCase()));
+    if (matchingProps.length > 0) {
+      const avgLat = matchingProps.reduce((sum, p) => sum + p.lat, 0) / matchingProps.length;
+      const avgLng = matchingProps.reduce((sum, p) => sum + p.lng, 0) / matchingProps.length;
+      locData = { lat: avgLat, lng: avgLng, radiusMeters: 3000, zoom: 13.5 };
+    }
+  }
+
+  if (!locData) return;
+
+  localityCircleOverlay = new google.maps.Circle({
+    map: map,
+    center: { lat: locData.lat, lng: locData.lng },
+    radius: locData.radiusMeters || 3000,
+    fillColor: "#B68A4C",
+    fillOpacity: 0.14,
+    strokeColor: "#B68A4C",
+    strokeOpacity: 0.85,
+    strokeWeight: 2.5,
+    clickable: false,
+    zIndex: 10
+  });
+
+  map.panTo({ lat: locData.lat, lng: locData.lng });
+  map.setZoom(locData.zoom || 13.5);
+}
+
 function updateLocalitySummaryStrip(rawLocality) {
   const strip = document.getElementById("localitySummaryStrip");
   const clearBtn = document.getElementById("localityClear");
@@ -9942,6 +10000,7 @@ function updateLocalitySummaryStrip(rawLocality) {
     strip.classList.remove("locality-summary-strip--visible");
     if (clearBtn) clearBtn.hidden = true;
     document.querySelectorAll(".locality-chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
+    clearLocalityCircleHighlight();
     return;
   }
 
@@ -9998,6 +10057,7 @@ function updateLocalitySummaryStrip(rawLocality) {
   `;
 
   strip.classList.add("locality-summary-strip--visible");
+  renderLocalityCircleHighlight(keyName);
 }
 
 
