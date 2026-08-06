@@ -3902,7 +3902,99 @@ html, body {
 }
 
 
-/* Property Detail Panel Minimize Controls & Minimized State */
+/* Property Detail Panel Header Controls & Draggable Minimized Card */
+.pdp__header-controls {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 30 !important;
+}
+.pdp__header-controls .pdp__minimize-btn,
+.pdp__header-controls .pdp__close {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  flex: 0 0 auto !important;
+}
+.pdp__minimize-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  line-height: 1;
+}
+.pdp__minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.property-detail-panel--minimized {
+  position: absolute !important;
+  height: auto !important;
+  max-height: 72px !important;
+  width: 320px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 36px rgba(24, 42, 61, 0.45) !important;
+  border: 1.5px solid var(--gold) !important;
+  background: var(--navy) !important;
+  cursor: grab !important;
+  user-select: none !important;
+  touch-action: none !important;
+}
+.property-detail-panel--minimized:active {
+  cursor: grabbing !important;
+}
+.property-detail-panel--minimized .pdp__body,
+.property-detail-panel--minimized .pdp__footer {
+  display: none !important;
+}
+.property-detail-panel--minimized .pdp__header {
+  padding: 10px 75px 10px 32px !important;
+  position: relative !important;
+}
+.pdp__drag-handle {
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: -2px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.property-detail-panel--minimized .pdp__drag-handle {
+  display: block !important;
+}
+.property-detail-panel--minimized .pdp__title {
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 200px !important;
+}
+.property-detail-panel--minimized .pdp__header-row2 {
+  display: flex !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+}
 .pdp__header-controls {
   position: absolute;
   top: 14px;
@@ -4232,6 +4324,7 @@ html, body {
     <!-- PROPERTY DETAIL PANEL (slides in from right) -->
     <aside class="property-detail-panel" id="propertyDetailPanel" aria-label="Property detail" hidden>
       <div class="pdp__header" id="pdpHeader">
+        <span class="pdp__drag-handle" title="Drag to move card">⋮⋮</span>
         <div class="pdp__header-controls">
           <button type="button" class="pdp__minimize-btn" id="pdpMinimize" onclick="toggleMinimizeDetailPanel()" title="Minimize property card" aria-label="Minimize property card">⎯</button>
           <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive()" aria-label="Close detail panel">✕</button>
@@ -8601,7 +8694,105 @@ function toggleComparePdp(id) {
 }
 
 
+
 let pdpMinimized = false;
+let pdpIsDragging = false;
+
+function initDraggableMinimizedPanel() {
+  const panel = document.getElementById("propertyDetailPanel");
+  if (!panel) return;
+
+  let isMouseDown = false;
+  let startX = 0, startY = 0;
+  let initialLeft = 0, initialTop = 0;
+  let hasMoved = false;
+
+  panel.addEventListener("pointerdown", (e) => {
+    if (!pdpMinimized) return;
+    if (e.target.closest(".pdp__header-controls") || e.target.closest("button")) return;
+
+    isMouseDown = true;
+    hasMoved = false;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    const rect = panel.getBoundingClientRect();
+    initialLeft = rect.left;
+    initialTop = rect.top;
+
+    panel.setPointerCapture(e.pointerId);
+  });
+
+  panel.addEventListener("pointermove", (e) => {
+    if (!isMouseDown || !pdpMinimized) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+      hasMoved = true;
+      pdpIsDragging = true;
+      panel.style.left = `${initialLeft + dx}px`;
+      panel.style.top = `${initialTop + dy}px`;
+      panel.style.right = "auto";
+      panel.style.bottom = "auto";
+    }
+  });
+
+  const endDrag = (e) => {
+    if (!isMouseDown) return;
+    isMouseDown = false;
+    setTimeout(() => { pdpIsDragging = false; }, 50);
+  };
+
+  panel.addEventListener("pointerup", endDrag);
+  panel.addEventListener("pointercancel", endDrag);
+}
+
+function resetPanelDragPosition() {
+  const panel = document.getElementById("propertyDetailPanel");
+  if (panel) {
+    panel.style.left = "";
+    panel.style.top = "";
+    panel.style.right = "";
+    panel.style.bottom = "";
+  }
+}
+
+function toggleMinimizeDetailPanel() {
+  const panel = document.getElementById("propertyDetailPanel");
+  const minBtn = document.getElementById("pdpMinimize");
+  const mapWrap = document.querySelector(".map-wrap");
+  if (!panel) return;
+
+  pdpMinimized = !pdpMinimized;
+  if (pdpMinimized) {
+    panel.classList.add("property-detail-panel--minimized");
+    if (minBtn) {
+      minBtn.innerHTML = "⤢";
+      minBtn.title = "Expand property card";
+    }
+    if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
+
+    // Position in top-right of map viewport cleanly
+    const mapWrapEl = document.querySelector(".map-wrap");
+    if (mapWrapEl) {
+      const rect = mapWrapEl.getBoundingClientRect();
+      panel.style.left = `${rect.right - 340}px`;
+      panel.style.top = `${rect.top + 20}px`;
+      panel.style.right = "auto";
+    }
+  } else {
+    panel.classList.remove("property-detail-panel--minimized");
+    resetPanelDragPosition();
+    if (minBtn) {
+      minBtn.innerHTML = "⎯";
+      minBtn.title = "Minimize property card";
+    }
+    if (mapWrap) mapWrap.classList.add("map-wrap--panel-open");
+  }
+  setTimeout(() => { if (map) google.maps.event.trigger(map, "resize"); }, 200);
+}
+
 
 function toggleMinimizeDetailPanel() {
   const panel = document.getElementById("propertyDetailPanel");
@@ -9990,6 +10181,7 @@ async function initAppListings() {
 
 document.addEventListener("DOMContentLoaded", () => {
   wireControls();
+  initDraggableMinimizedPanel();
   initAppListings();
 });
 
