@@ -3901,6 +3901,71 @@ html, body {
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.28));
 }
 
+
+/* Property Detail Panel Minimize Controls & Minimized State */
+.pdp__header-controls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+.pdp__minimize-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.pdp__minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.08);
+}
+.property-detail-panel--minimized {
+  height: auto !important;
+  max-height: 68px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  margin-top: 12px !important;
+  margin-right: 12px !important;
+  box-shadow: 0 12px 32px rgba(24, 42, 61, 0.38) !important;
+  border: 1px solid var(--gold) !important;
+  background: var(--navy) !important;
+  cursor: pointer;
+}
+.property-detail-panel--minimized .pdp__body,
+.property-detail-panel--minimized .pdp__footer {
+  display: none !important;
+}
+.property-detail-panel--minimized .pdp__header {
+  padding: 10px 80px 10px 14px !important;
+}
+.property-detail-panel--minimized .pdp__title {
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 220px !important;
+}
+.property-detail-panel--minimized .pdp__header-row2 {
+  display: flex !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+}
+
 </style>
 </head>
 <body>
@@ -4167,7 +4232,10 @@ html, body {
     <!-- PROPERTY DETAIL PANEL (slides in from right) -->
     <aside class="property-detail-panel" id="propertyDetailPanel" aria-label="Property detail" hidden>
       <div class="pdp__header" id="pdpHeader">
-        <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive()" aria-label="Close detail panel">✕</button>
+        <div class="pdp__header-controls">
+          <button type="button" class="pdp__minimize-btn" id="pdpMinimize" onclick="toggleMinimizeDetailPanel()" title="Minimize property card" aria-label="Minimize property card">⎯</button>
+          <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive()" aria-label="Close detail panel">✕</button>
+        </div>
         <div class="pdp__header-badge" id="pdpBadge">ACRE&amp;KEY RECOMMENDED</div>
         <div class="pdp__title" id="pdpTitle">—</div>
         <div class="pdp__header-row2">
@@ -8530,6 +8598,34 @@ function toggleComparePdp(id) {
     var el = document.getElementById("pdpActions");
     if (el) el.innerHTML = pdpActionsHtml(id);
   }
+}
+
+
+let pdpMinimized = false;
+
+function toggleMinimizeDetailPanel() {
+  const panel = document.getElementById("propertyDetailPanel");
+  const minBtn = document.getElementById("pdpMinimize");
+  const mapWrap = document.querySelector(".map-wrap");
+  if (!panel) return;
+
+  pdpMinimized = !pdpMinimized;
+  if (pdpMinimized) {
+    panel.classList.add("property-detail-panel--minimized");
+    if (minBtn) {
+      minBtn.innerHTML = "⤢";
+      minBtn.title = "Expand property card";
+    }
+    if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
+  } else {
+    panel.classList.remove("property-detail-panel--minimized");
+    if (minBtn) {
+      minBtn.innerHTML = "⎯";
+      minBtn.title = "Minimize property card";
+    }
+    if (mapWrap) mapWrap.classList.add("map-wrap--panel-open");
+  }
+  setTimeout(() => { if (map) google.maps.event.trigger(map, "resize"); }, 200);
 }
 
 function setActive(id, { pan }) {
