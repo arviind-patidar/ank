@@ -4082,6 +4082,15 @@ html, body {
   display: block !important;
 }
 
+
+/* Google Maps Control Slot styling for Map View Pill */
+.gmap-control-pill-wrap,
+#mapViewPill {
+  margin-top: 10px !important;
+  margin-right: 10px !important;
+  z-index: 999999 !important;
+}
+
 </style>
 </head>
 <body>
@@ -8493,10 +8502,10 @@ function initMap() {
     areaPriceDensityOverlay.draw();
     areaPriceLabelLayer.draw();
   });
-  // Bind mapViewPill to map container if needed so it stays visible in fullscreen
+  // Register mapViewPill as official Google Maps control so it stays visible in Fullscreen mode
   const pillEl = document.getElementById("mapViewPill");
-  if (pillEl && mapContainer) {
-    mapContainer.appendChild(pillEl);
+  if (pillEl) {
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(pillEl);
   }
 
   google.maps.event.addListenerOnce(map, "idle", hideMapStatus);
