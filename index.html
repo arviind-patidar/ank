@@ -3866,6 +3866,27 @@ html, body {
   color: #A8672E;
 }
 
+
+/* Enhanced Z-Index & Visual Prominence for Custom Overlays */
+.gmap-marker-wrap {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  z-index: 50 !important;
+}
+
+.plot-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 4px 10px rgba(24, 42, 61, 0.35));
+}
+
+.techpark-marker, .metro-marker, .school-marker, .hospital-marker, .mall-marker {
+  z-index: 60 !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.28));
+}
+
 </style>
 </head>
 <body>
@@ -8351,9 +8372,34 @@ function initMap() {
     fullscreenControl: true,
     clickableIcons: false,
     styles: [
-      { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
-      { featureType: "poi", elementType: "geometry", stylers: [{ visibility: "off" }] },
-      { featureType: "transit", elementType: "labels", stylers: [{ visibility: "off" }] },
+      // 1. Desaturate base landscape & water
+      { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#6C7A89" }] },
+      { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#FFFFFF" }, { weight: 2 }] },
+      { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#F7F5F0" }] },
+      { featureType: "landscape.natural", elementType: "geometry", stylers: [{ color: "#E4EBDC" }] },
+      { featureType: "water", elementType: "geometry", stylers: [{ color: "#C5E3EB" }] },
+      { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#4B7D89" }] },
+
+      // 2. Hide all Points of Interest & Commercial clutter
+      { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
+      { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
+
+      // 3. Roads: Hide minor local road text labels & soften geometry
+      { featureType: "road.local", elementType: "labels", stylers: [{ visibility: "off" }] },
+      { featureType: "road.local", elementType: "geometry", stylers: [{ color: "#FFFFFF" }, { lightness: 20 }] },
+      { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#FFFFFF" }] },
+      { featureType: "road.arterial", elementType: "labels.text.fill", stylers: [{ color: "#7F8C8D" }] },
+      { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#E8DFD1" }] },
+      { featureType: "road.highway", elementType: "geometry.stroke", stylers: [{ color: "#DDD3C1" }] },
+      { featureType: "road.highway", elementType: "labels.text.fill", stylers: [{ color: "#5C6B73" }] },
+
+      // 4. Locality & Neighborhood labels: Soften contrast so project pins dominate
+      { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#788793" }] },
+      { featureType: "administrative.neighborhood", elementType: "labels.text.fill", stylers: [{ color: "#8C9BA5" }] },
+      { featureType: "administrative.neighborhood", elementType: "labels.text.stroke", stylers: [{ color: "#F7F5F0" }] },
+
+      // 5. Land use / Built-up parks
+      { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#E1EAD8" }, { visibility: "on" }] }
     ],
   });
 
