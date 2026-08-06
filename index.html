@@ -8609,8 +8609,8 @@ const RECOMMENDED_REASONS = {
 };
 
 function getPropertyDetails(p) {
-  let priceStr = p.priceStr || "₹1.25Cr – 1.95Cr";
-  let config = p.config || "2 & 3 BHK";
+  let priceStr = p.priceStr || p.priceRange || p.price || "₹1.25Cr – 1.95Cr";
+  let config = p.config || p.bhk || "2 & 3 BHK";
   let whyRecommended = p.whyRecommended || RECOMMENDED_REASONS[p.id] || (p.recommended ? "Strong tech hub proximity & proven builder track record" : "");
   return { priceStr, config, whyRecommended };
 }
@@ -9226,16 +9226,18 @@ function openCompareModal() {
   `;
 
   // Find best-in-class metrics for decision summary
-  let highestScoreProp = props[0];
-  let lowestCommuteProp = props[0];
+  let highestScoreProp = props[0] || {};
+  let lowestCommuteProp = props[0] || {};
   let minCommuteMins = 999;
 
   props.forEach((p) => {
-    if (p.akScore != null && (highestScoreProp.akScore == null || p.akScore > highestScoreProp.akScore)) {
+    const pScore = p.score != null ? p.score : p.akScore;
+    const hScore = highestScoreProp ? (highestScoreProp.score != null ? highestScoreProp.score : highestScoreProp.akScore) : null;
+    if (pScore != null && (hScore == null || pScore > hScore)) {
       highestScoreProp = p;
     }
     const c = getBuyerCommute(p.lat, p.lng);
-    if (c.mins < minCommuteMins) {
+    if (c && typeof c.mins === "number" && c.mins < minCommuteMins) {
       minCommuteMins = c.mins;
       lowestCommuteProp = p;
     }
@@ -9274,17 +9276,23 @@ function openCompareModal() {
         ${catHeader("Commute & Location Efficiency")}
         ${row(`Commute to ITPL`, (p) => {
           const c = getBuyerCommute(p.lat, p.lng);
-          return `${c.icon} <strong>${c.mins} mins</strong> (${c.distanceKm.toFixed(1)} km) ${p.id === lowestCommuteProp.id ? '⚡ Fastest' : ''}`;
+          if (!c) return "—";
+          const dist = typeof c.distanceKm === "number" ? c.distanceKm.toFixed(1) : "—";
+          return `${c.icon || "🚗"} <strong>${c.mins || 0} mins</strong> (${dist} km) ${p.id === lowestCommuteProp.id ? '⚡ Fastest' : ''}`;
         })}
         ${row("Nearest Tech Park", (p) => {
           const nearby = getDisplayAmenities(p);
-          const tp = nearby.techParks && nearby.techParks[0];
-          return tp ? `${tp.name || tp.title} (${tp.distanceKm.toFixed(1)} km)` : "—";
+          const tp = nearby && nearby.techParks && nearby.techParks[0];
+          if (!tp) return "—";
+          const dist = typeof tp.distanceKm === "number" ? tp.distanceKm.toFixed(1) : "—";
+          return `${tp.name || tp.title || "Tech Park"} (${dist} km)`;
         })}
         ${row("Nearest Metro", (p) => {
           const nearby = getDisplayAmenities(p);
-          const m = nearby.metro && nearby.metro[0];
-          return m ? `${m.name || m.title} (${m.distanceKm.toFixed(1)} km)` : "—";
+          const m = nearby && nearby.metro && nearby.metro[0];
+          if (!m) return "—";
+          const dist = typeof m.distanceKm === "number" ? m.distanceKm.toFixed(1) : "—";
+          return `${m.name || m.title || "Metro Station"} (${dist} km)`;
         })}
 
         ${catHeader("Developer & Project Specs")}
