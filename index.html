@@ -8790,10 +8790,7 @@ function initDraggableMinimizedPanel() {
 function resetPanelDragPosition() {
   const panel = document.getElementById("propertyDetailPanel");
   if (panel) {
-    panel.style.left = "";
-    panel.style.top = "";
-    panel.style.right = "";
-    panel.style.bottom = "";
+    panel.removeAttribute("style");
   }
 }
 
@@ -8850,6 +8847,7 @@ function toggleMinimizeDetailPanel() {
     if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
   } else {
     panel.classList.remove("property-detail-panel--minimized");
+    resetPanelDragPosition();
     if (minBtn) {
       minBtn.innerHTML = "⎯";
       minBtn.title = "Minimize property card";
