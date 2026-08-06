@@ -7035,6 +7035,9 @@ const AREA_PRICING = [
 
 /* APP STATE */
 let ALL_PROPERTIES = [];
+let shortlistSet = new Set();
+let compareSelection = [];
+const COMPARE_MAX = 3;
 const els = {
   list: document.getElementById("propertyList"),
   meta: document.getElementById("shortlistBadge"),
@@ -7092,6 +7095,19 @@ const METRO_DEFAULT_COUNT = 1;
 const SCHOOL_DEFAULT_COUNT = 2;
 const HOSPITAL_DEFAULT_COUNT = 2;
 const MALL_DEFAULT_COUNT = 2;
+
+function showMapStatus(msg) {
+  if (els.mapStatus) {
+    els.mapStatus.textContent = msg;
+    els.mapStatus.classList.add("map-status--visible");
+  }
+}
+
+function hideMapStatus() {
+  if (els.mapStatus) {
+    els.mapStatus.classList.remove("map-status--visible");
+  }
+}
 
 function haversineKm(lat1, lng1, lat2, lng2) {
   const R = 6371;
