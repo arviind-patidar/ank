@@ -7918,7 +7918,6 @@ function popupHtml(p, nearbyTechParks, nearbyMetro, nearbySchools, nearbyHospita
   const details = getPropertyDetails(p);
   const akScoreHtml = getAkScoreBadgeHtml(p.akScore);
   const commute = getBuyerCommute(p.lat, p.lng);
-  const firstName = buyerProfile.name.split(" ")[0];
 
   const commuteBanner = `
     <div class="popup-card__buyer-commute">
@@ -8332,11 +8331,11 @@ function renderDetailPanel(property) {
     reasonsList.map(function(r) { return '<div class="pdp__reason"><span class="pdp__reason-check">✓</span><span>' + r + '</span></div>'; }).join("") +
     "</div></div>") : "";
 
-  var commuteHtml = '<div class="pdp__section"><div class="pdp__section-label">Commute for ' + buyerProfile.name.split(" ")[0] + '</div>' +
+  var commuteHtml = '<div class="pdp__section"><div class="pdp__section-label">Commute</div>' +
     '<div class="pdp__commute-card"><div class="pdp__commute-icon">' + commute.icon + '</div>' +
     '<div><div class="pdp__commute-time">' + commute.mins + ' mins</div>' +
-    '<div class="pdp__commute-detail">' + commute.distanceKm.toFixed(1) + " km · " + buyerProfile.commuteMode + '</div>' +
-    '<div class="pdp__commute-to">to ' + buyerProfile.officeName + '</div></div></div></div>';
+    '<div class="pdp__commute-detail">' + commute.distanceKm.toFixed(1) + ' km · Drive</div>' +
+    '<div class="pdp__commute-to">to ITPL Tech Hub</div></div></div></div>';
 
   var amenityGroups = [
     { label: "Tech Parks",     color: "#2E6F7E", icon: "🏢", items: nearby.techParks  },
@@ -8794,39 +8793,35 @@ function getPropertyPriceRangeLakhs(p) {
 }
 
 function getFiltered() {
-  const query = els.searchText.value.trim().toLowerCase();
-  const locality = els.locality.value;
-  const stage = els.stage.value;
-  const recommendedOnly = els.recommended.checked;
+  if (!ALL_PROPERTIES || ALL_PROPERTIES.length === 0) {
+    ALL_PROPERTIES = SAMPLE_PROPERTIES;
+  }
 
-  const clientMinBudget = buyerProfile.minBudget;
-  const clientMaxBudget = buyerProfile.maxBudget;
-  const clientCorridor  = buyerProfile.preferredArea;
+  const query = (els.searchText && els.searchText.value) ? els.searchText.value.trim().toLowerCase() : "";
+  const locality = (els.locality && els.locality.value) ? els.locality.value : "";
+  const stage = (els.stage && els.stage.value) ? els.stage.value : "";
+  const recommendedOnly = (els.recommended && els.recommended.checked) ? els.recommended.checked : false;
 
   return ALL_PROPERTIES.filter((p) => {
     // Text search filter
     if (query) {
-      const haystack = `${p.title} ${p.developer} ${p.locality} ${p.zone}`.toLowerCase();
-      if (!haystack.includes(query)) return false;
+      const scope = (els.searchScope && els.searchScope.value) ? els.searchScope.value : "all";
+      if (scope === "project" && !p.title.toLowerCase().includes(query)) return false;
+      if (scope === "developer" && !p.developer.toLowerCase().includes(query)) return false;
+      if (scope === "locality" && !p.locality.toLowerCase().includes(query)) return false;
+      if (scope === "all") {
+        const haystack = `${p.title} ${p.developer} ${p.locality} ${p.zone}`.toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
     }
     // Locality dropdown filter
-    if (locality && p.locality !== locality) return false;
+    if (locality && p.locality.toLowerCase() !== locality.toLowerCase()) return false;
 
     // Construction stage filter
-    if (stage && p.status !== stage) return false;
+    if (stage && p.status.toLowerCase() !== stage.toLowerCase()) return false;
 
     // Recommended only checkbox filter
     if (recommendedOnly && !p.recommended) return false;
-
-    // Buyer Client Profile: Preferred Corridor filter
-    if (clientCorridor && clientCorridor !== "All") {
-      if (p.zone !== clientCorridor) return false;
-    }
-
-    // Buyer Client Profile: Budget Range filter (Min & Max Budget in Lakhs)
-    const priceRange = getPropertyPriceRangeLakhs(p);
-    if (clientMinBudget && priceRange.max < clientMinBudget) return false;
-    if (clientMaxBudget && priceRange.min > clientMaxBudget) return false;
 
     return true;
   });
