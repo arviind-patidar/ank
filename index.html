@@ -7082,6 +7082,77 @@ let premiumAreasOnly = false;
 let geoFilterCenter = null;
 let showAllAmenities = false;
 
+
+/* ===== AMENITY CONSTANTS & GEOLOCATION HELPERS ===== */
+const SHOW_ALL_RADIUS_KM = 5;
+const ZOOM_THRESHOLD = 13;
+const TECH_PARK_DEFAULT_COUNT = 2;
+const METRO_DEFAULT_COUNT = 1;
+const SCHOOL_DEFAULT_COUNT = 2;
+const HOSPITAL_DEFAULT_COUNT = 2;
+const MALL_DEFAULT_COUNT = 2;
+
+function haversineKm(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLng = ((lng2 - lng1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function getBuyerCommute(propertyLat, propertyLng) {
+  const itplLat = 12.9862, itplLng = 77.7371;
+  const distanceKm = haversineKm(propertyLat, propertyLng, itplLat, itplLng);
+  const speedKmH = 20;
+  const icon = "🚗";
+  const mins = Math.max(4, Math.round((distanceKm / speedKmH) * 60));
+  return { distanceKm, mins, icon };
+}
+
+function nearestOrWithinRadius(list, property, radiusKm) {
+  const withDistance = list.map((item) => ({
+    ...item,
+    distanceKm: haversineKm(property.lat, property.lng, item.lat, item.lng),
+  }));
+  const within = withDistance
+    .filter((item) => item.distanceKm <= radiusKm)
+    .sort((a, b) => a.distanceKm - b.distanceKm);
+  if (within.length > 0) return within;
+  const sorted = withDistance.slice().sort((a, b) => a.distanceKm - b.distanceKm);
+  return sorted.length > 0 ? [sorted[0]] : [];
+}
+
+function nearestN(list, property, n) {
+  return list
+    .map((item) => ({
+      ...item,
+      distanceKm: haversineKm(property.lat, property.lng, item.lat, item.lng),
+    }))
+    .sort((a, b) => a.distanceKm - b.distanceKm)
+    .slice(0, n);
+}
+
+function getDisplayAmenities(property) {
+  if (showAllAmenities) {
+    return {
+      techParks: nearestOrWithinRadius(TECH_PARKS, property, SHOW_ALL_RADIUS_KM),
+      metro: nearestOrWithinRadius(METRO_STATIONS, property, SHOW_ALL_RADIUS_KM),
+      schools: nearestOrWithinRadius(SCHOOLS, property, SHOW_ALL_RADIUS_KM),
+      hospitals: nearestOrWithinRadius(HOSPITALS, property, SHOW_ALL_RADIUS_KM),
+      malls: nearestOrWithinRadius(MALLS, property, SHOW_ALL_RADIUS_KM),
+    };
+  }
+  return {
+    techParks: nearestN(TECH_PARKS, property, TECH_PARK_DEFAULT_COUNT),
+    metro: nearestN(METRO_STATIONS, property, METRO_DEFAULT_COUNT),
+    schools: nearestN(SCHOOLS, property, SCHOOL_DEFAULT_COUNT),
+    hospitals: nearestN(HOSPITALS, property, HOSPITAL_DEFAULT_COUNT),
+    malls: nearestN(MALLS, property, MALL_DEFAULT_COUNT),
+  };
+}
+
 /* AMENITY MARKERS & POPUPS */
 function techParkMarkerHtml(tp, distanceKm) {
   const tagText = distanceKm != null ? `${tp.name} — ${distanceKm.toFixed(1)} km` : tp.name;
@@ -8235,7 +8306,7 @@ function renderList(properties) {
         <div style="font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">No matching projects found</div>
         <div>Try expanding your search criteria or resetting filters:</div>
         <div class="empty-state__chips">
-          <button type="button" class="empty-state__chip-btn" onclick="resetBuyerProfile()">Show All Corridors</button>
+          <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Show All Corridors</button>
           <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Reset Filters</button>
         </div>
       </div>
