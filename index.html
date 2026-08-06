@@ -3944,7 +3944,7 @@ html, body {
   color: var(--gold);
 }
 .property-detail-panel--minimized {
-  position: absolute !important;
+  position: fixed !important;
   height: auto !important;
   max-height: 72px !important;
   width: 320px !important;
@@ -3956,6 +3956,12 @@ html, body {
   cursor: grab !important;
   user-select: none !important;
   touch-action: none !important;
+  transform: none !important;
+  transition: none !important;
+  z-index: 9000 !important;
+}
+.property-detail-panel--minimized:active {
+  cursor: grabbing !important;
 }
 .property-detail-panel--minimized:active {
   cursor: grabbing !important;
@@ -8702,50 +8708,83 @@ function initDraggableMinimizedPanel() {
   const panel = document.getElementById("propertyDetailPanel");
   if (!panel) return;
 
-  let isMouseDown = false;
+  let isDragging = false;
   let startX = 0, startY = 0;
   let initialLeft = 0, initialTop = 0;
-  let hasMoved = false;
 
-  panel.addEventListener("pointerdown", (e) => {
+  function onDragStart(e) {
     if (!pdpMinimized) return;
     if (e.target.closest(".pdp__header-controls") || e.target.closest("button")) return;
 
-    isMouseDown = true;
-    hasMoved = false;
-    startX = e.clientX;
-    startY = e.clientY;
+    isDragging = true;
+    pdpIsDragging = false;
+
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    startX = clientX;
+    startY = clientY;
 
     const rect = panel.getBoundingClientRect();
     initialLeft = rect.left;
     initialTop = rect.top;
 
-    panel.setPointerCapture(e.pointerId);
-  });
+    document.addEventListener("mousemove", onDragMove);
+    document.addEventListener("mouseup", onDragEnd);
+    document.addEventListener("touchmove", onDragMove, { passive: false });
+    document.addEventListener("touchend", onDragEnd);
+  }
 
-  panel.addEventListener("pointermove", (e) => {
-    if (!isMouseDown || !pdpMinimized) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
+  function onDragMove(e) {
+    if (!isDragging || !pdpMinimized) return;
+
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    const dx = clientX - startX;
+    const dy = clientY - startY;
 
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
-      hasMoved = true;
       pdpIsDragging = true;
-      panel.style.left = `${initialLeft + dx}px`;
-      panel.style.top = `${initialTop + dy}px`;
-      panel.style.right = "auto";
-      panel.style.bottom = "auto";
+      if (e.cancelable) e.preventDefault();
+
+      let newLeft = initialLeft + dx;
+      let newTop = initialTop + dy;
+
+      const maxLeft = window.innerWidth - panel.offsetWidth - 10;
+      const maxTop = window.innerHeight - panel.offsetHeight - 10;
+
+      newLeft = Math.max(10, Math.min(newLeft, maxLeft));
+      newTop = Math.max(60, Math.min(newTop, maxTop));
+
+      panel.style.setProperty("left", `${newLeft}px`, "important");
+      panel.style.setProperty("top", `${newTop}px`, "important");
+      panel.style.setProperty("right", "auto", "important");
+      panel.style.setProperty("bottom", "auto", "important");
+      panel.style.setProperty("transform", "none", "important");
     }
-  });
+  }
 
-  const endDrag = (e) => {
-    if (!isMouseDown) return;
-    isMouseDown = false;
-    setTimeout(() => { pdpIsDragging = false; }, 50);
-  };
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    document.removeEventListener("mousemove", onDragMove);
+    document.removeEventListener("mouseup", onDragEnd);
+    document.removeEventListener("touchmove", onDragMove);
+    document.removeEventListener("touchend", onDragEnd);
+  }
 
-  panel.addEventListener("pointerup", endDrag);
-  panel.addEventListener("pointercancel", endDrag);
+  panel.addEventListener("mousedown", onDragStart);
+  panel.addEventListener("touchstart", onDragStart, { passive: true });
+
+  const pdpHeader = document.getElementById("pdpHeader");
+  if (pdpHeader) {
+    pdpHeader.addEventListener("click", (e) => {
+      if (pdpMinimized && !pdpIsDragging && !e.target.closest("button")) {
+        toggleMinimizeDetailPanel();
+      }
+    });
+  }
 }
 
 function resetPanelDragPosition() {
@@ -8777,9 +8816,10 @@ function toggleMinimizeDetailPanel() {
     const mapWrapEl = document.querySelector(".map-wrap");
     if (mapWrapEl) {
       const rect = mapWrapEl.getBoundingClientRect();
-      panel.style.left = `${rect.right - 340}px`;
-      panel.style.top = `${rect.top + 20}px`;
-      panel.style.right = "auto";
+      panel.style.setProperty("left", `${rect.right - 340}px`, "important");
+      panel.style.setProperty("top", `${rect.top + 20}px`, "important");
+      panel.style.setProperty("right", "auto", "important");
+      panel.style.setProperty("transform", "none", "important");
     }
   } else {
     panel.classList.remove("property-detail-panel--minimized");
