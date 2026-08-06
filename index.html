@@ -4453,7 +4453,7 @@ html, body {
 
 <script>
 /* DATA LAYER */
-const SAMPLE_PROPERTIES = [
+let SAMPLE_PROPERTIES = [
   { id: "P01", title: "Prestige Raintree Park", developer: "Prestige Group", locality: "Varthur Junction", zone: "Core Whitefield–Hoodi", status: "Under construction", lat: 12.9535, lng: 77.7455, akScore: null, recommended: false },
   { id: "P02", title: "Sumadhura Solace", developer: "Sumadhura Group", locality: "Brookefield / Kundalahalli belt", zone: "Core Whitefield–Hoodi", status: "Under construction", lat: 12.9556, lng: 77.7238, akScore: 77.4, recommended: true },
   { id: "P03", title: "Sumadhura Edition", developer: "Sumadhura Group", locality: "Siddapura / Nallurhalli belt", zone: "Core Whitefield–Hoodi", status: "Under construction", lat: 12.9619, lng: 77.7291, akScore: 76.4, recommended: true },
@@ -4527,7 +4527,7 @@ async function fetchProperties() {
   return SAMPLE_PROPERTIES;
 }
 
-const TECH_PARKS = [
+let TECH_PARKS = [
   { id: "TP001", name: "AMR Tech Park", area: "Hosur Road, Bommanahalli", lat: 12.9009, lng: 77.6247 },
   { id: "TP002", name: "Anchor Building (ITPL)", area: "Whitefield", lat: 12.9861, lng: 77.7368 },
   { id: "TP003", name: "Aura Tech Park", area: "Kodathi, Sarjapur Road", lat: 12.8988, lng: 77.7082 },
@@ -4680,7 +4680,7 @@ const METRO_LINE_COLORS = {
   Yellow: "#C9960A",
 };
 
-const METRO_STATIONS = [
+let METRO_STATIONS = [
   {
     "id": "M01",
     "name": "Whitefield (Kadugodi)",
@@ -5103,7 +5103,7 @@ const METRO_STATIONS = [
   }
 ];
 
-const SCHOOLS = [
+let SCHOOLS = [
   {
     "id": "S01",
     "name": "The Deens Academy",
@@ -5666,7 +5666,7 @@ const SCHOOLS = [
   }
 ];
 
-const HOSPITALS = [
+let HOSPITALS = [
   {
     "id": "H01",
     "name": "Sri Sathya Sai Super Speciality Hospital",
@@ -6229,7 +6229,7 @@ const HOSPITALS = [
   }
 ];
 
-const MALLS = [
+let MALLS = [
   {
     "id": "MA01",
     "name": "Phoenix Marketcity",
@@ -6582,7 +6582,7 @@ const MALLS = [
   }
 ];
 
-const AREA_PRICING = [
+let AREA_PRICING = [
   {
     "id": "AP01",
     "name": "UB City / Vittal Mallya Road",
@@ -10439,7 +10439,6 @@ function wireControls() {
   priceInsightModalBackdrop.addEventListener("click", () => closePriceInsightCard());
 }
 
-async 
 /* ===== CONFIGURATION & CENTRALIZED DATA SERVICE LAYER ===== */
 const APP_CONFIG = {
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec", // Live Google Sheets Apps Script API Endpoint
@@ -10460,7 +10459,7 @@ const DataService = {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), APP_CONFIG.TIMEOUT_MS);
 
-        const response = await fetch(APP_CONFIG.API_ENDPOINT, { signal: controller.signal });
+        const response = await fetch(APP_CONFIG.API_ENDPOINT, { method: "GET", redirect: "follow", signal: controller.signal });
         clearTimeout(timeoutId);
 
         if (response.ok) {
@@ -10488,15 +10487,46 @@ const DataService = {
   },
 
   parseApiData(raw) {
+    const rawProjects = Array.isArray(raw.projects) ? raw.projects : (Array.isArray(raw.data && raw.data.projects) ? raw.data.projects : []);
+    
+    const projects = rawProjects.length > 0
+      ? rawProjects.map((p, idx) => {
+          const sample = SAMPLE_PROPERTIES.find((s) => s.id === p.id || s.title.toLowerCase() === (p.title || "").toLowerCase()) || SAMPLE_PROPERTIES[idx % SAMPLE_PROPERTIES.length] || {};
+          
+          return {
+            id: p.id || sample.id || `p_${idx + 1}`,
+            title: p.title || sample.title || "Featured Project",
+            developer: p.developer || sample.developer || "Grade-A Builder",
+            locality: p.locality || sample.locality || "Bengaluru",
+            zone: p.zone || sample.zone || "Bengaluru",
+            status: p.status || sample.status || "Under Construction",
+            priceRange: p.priceRange || p.price || sample.priceRange || "₹1.25Cr – 1.95Cr",
+            bhk: p.bhk || p.config || sample.bhk || "2 & 3 BHK",
+            lat: (typeof p.lat === "number" && !isNaN(p.lat)) ? p.lat : (sample.lat || 12.9716),
+            lng: (typeof p.lng === "number" && !isNaN(p.lng)) ? p.lng : (sample.lng || 77.5946),
+            score: (typeof p.score === "number" && !isNaN(p.score)) ? p.score : ((typeof p.akScore === "number" && !isNaN(p.akScore)) ? p.akScore : (sample.score || 75.0)),
+            recommended: (p.recommended === true || p.recommended === "TRUE" || p.recommended === 1) ? true : (p.recommended === false ? false : (sample.recommended !== undefined ? sample.recommended : true)),
+            pitchText: p.pitchText || p.pitch || sample.pitchText || ""
+          };
+        })
+      : SAMPLE_PROPERTIES;
+
+    const techParks = Array.isArray(raw.techParks) && raw.techParks.length > 0 ? raw.techParks : (Array.isArray(raw.data && raw.data.techParks) ? raw.data.techParks : TECH_PARKS);
+    const metroStations = Array.isArray(raw.metroStations) && raw.metroStations.length > 0 ? raw.metroStations : (Array.isArray(raw.data && raw.data.metroStations) ? raw.data.metroStations : METRO_STATIONS);
+    const schools = Array.isArray(raw.schools) && raw.schools.length > 0 ? raw.schools : (Array.isArray(raw.data && raw.data.schools) ? raw.data.schools : SCHOOLS);
+    const hospitals = Array.isArray(raw.hospitals) && raw.hospitals.length > 0 ? raw.hospitals : (Array.isArray(raw.data && raw.data.hospitals) ? raw.data.hospitals : HOSPITALS);
+    const malls = Array.isArray(raw.malls) && raw.malls.length > 0 ? raw.malls : (Array.isArray(raw.data && raw.data.malls) ? raw.data.malls : MALLS);
+    const areaPricing = Array.isArray(raw.areaPricing) && raw.areaPricing.length > 0 ? raw.areaPricing : (Array.isArray(raw.data && raw.data.areaPricing) ? raw.data.areaPricing : AREA_PRICING);
+
     return {
-      projects: Array.isArray(raw.projects) && raw.projects.length > 0 ? raw.projects : SAMPLE_PROPERTIES,
-      techParks: Array.isArray(raw.techParks) && raw.techParks.length > 0 ? raw.techParks : TECH_PARKS,
-      metroStations: Array.isArray(raw.metroStations) && raw.metroStations.length > 0 ? raw.metroStations : METRO_STATIONS,
-      schools: Array.isArray(raw.schools) && raw.schools.length > 0 ? raw.schools : SCHOOLS,
-      hospitals: Array.isArray(raw.hospitals) && raw.hospitals.length > 0 ? raw.hospitals : HOSPITALS,
-      malls: Array.isArray(raw.malls) && raw.malls.length > 0 ? raw.malls : MALLS,
-      areaPricing: Array.isArray(raw.areaPricing) && raw.areaPricing.length > 0 ? raw.areaPricing : AREA_PRICING,
-      localities: raw.localities || LOCALITY_SUMMARIES
+      projects,
+      techParks,
+      metroStations,
+      schools,
+      hospitals,
+      malls,
+      areaPricing,
+      localities: raw.localities || (raw.data && raw.data.localities) || LOCALITY_SUMMARIES
     };
   },
 
