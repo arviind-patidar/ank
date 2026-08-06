@@ -3999,11 +3999,14 @@ html, body {
             </div>
           </div>
 
-                    <label class="field" style="margin-top:10px;">
+                    <label class="field field--search" style="margin-top:10px; position:relative;">
             <span class="field__label">Target Work Location</span>
-            <select id="filterWorkLocation" class="field__input">
-              <option value="">No Work Location (Optional)</option>
-            </select>
+            <div class="field--search__input-wrap">
+              <input type="text" id="filterWorkLocationText" class="field__input" placeholder="Type tech park name (e.g. ITPL, Manyata)" autocomplete="off" />
+              <input type="hidden" id="filterWorkLocation" value="" />
+              <button type="button" id="clearWorkLocationText" class="field--search__clear" aria-label="Clear work location" hidden>✕</button>
+            </div>
+            <div id="workLocationSuggestionsDropdown" class="search-suggestions-dropdown"></div>
           </label>
 
           <button id="resetFilters" class="btn-reset" type="button" style="margin-top:12px;">Reset filters</button>
@@ -7052,6 +7055,9 @@ const els = {
   clearSearchText: document.getElementById("clearSearchText"),
   searchScope: document.getElementById("filterSearchScope"),
   workLocation: document.getElementById("filterWorkLocation"),
+  workLocationText: document.getElementById("filterWorkLocationText"),
+  clearWorkLocationText: document.getElementById("clearWorkLocationText"),
+  workLocationDropdown: document.getElementById("workLocationSuggestionsDropdown"),
   locality: document.getElementById("filterLocality"),
   stage: document.getElementById("filterStage"),
   recommended: document.getElementById("filterRecommended"),
@@ -8871,11 +8877,107 @@ function closeCompareModal() {
   if (backdrop) backdrop.classList.remove("compare-modal-backdrop--visible");
 }
 
+
+/* ===== SEARCHABLE WORK LOCATION AUTO-COMPLETE ENGINE ===== */
+function initWorkLocationAutocomplete() {
+  const inputEl = els.workLocationText;
+  const hiddenEl = els.workLocation;
+  const clearBtn = els.clearWorkLocationText;
+  const dropdownEl = els.workLocationDropdown;
+
+  if (!inputEl || !hiddenEl || !dropdownEl) return;
+
+  function renderWorkSuggestions(query = "") {
+    const q = query.trim().toLowerCase();
+    const sorted = TECH_PARKS.slice().sort((a, b) => a.name.localeCompare(b.name));
+    const filtered = q
+      ? sorted.filter((tp) => tp.name.toLowerCase().includes(q) || (tp.locality && tp.locality.toLowerCase().includes(q)))
+      : sorted;
+
+    let itemsHtml = `<div class="search-suggestion-item" data-value=""><span class="search-suggestion-item__title" style="color:var(--text-muted);">🚫 No Work Location (Clear)</span></div>`;
+
+    if (filtered.length > 0) {
+      itemsHtml += filtered
+        .map(
+          (tp) => `
+          <div class="search-suggestion-item" data-value="${tp.id}" data-name="${tp.name}">
+            <span class="search-suggestion-item__icon">🏢</span>
+            <div class="search-suggestion-item__text">
+              <span class="search-suggestion-item__title">${tp.name}</span>
+              <span class="search-suggestion-item__sub">${tp.locality || "Bengaluru"}</span>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+    } else {
+      itemsHtml += `<div class="search-suggestion-empty">No matching tech park found</div>`;
+    }
+
+    dropdownEl.innerHTML = itemsHtml;
+    dropdownEl.classList.add("search-suggestions-dropdown--open");
+
+    dropdownEl.querySelectorAll(".search-suggestion-item").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const val = item.dataset.value;
+        const name = item.dataset.name || "";
+        selectWorkLocationOption(val, name);
+      });
+    });
+  }
+
+  function selectWorkLocationOption(id, name) {
+    hiddenEl.value = id;
+    if (id) {
+      inputEl.value = name;
+      if (clearBtn) clearBtn.hidden = false;
+    } else {
+      inputEl.value = "";
+      if (clearBtn) clearBtn.hidden = true;
+    }
+    dropdownEl.classList.remove("search-suggestions-dropdown--open");
+    triggerWorkLocationChange();
+  }
+
+  function triggerWorkLocationChange() {
+    applyFilters();
+    if (activeCardId) {
+      const p = ALL_PROPERTIES.find((x) => x.id === activeCardId);
+      if (p) renderDetailPanel(p);
+    }
+  }
+
+  inputEl.addEventListener("focus", () => {
+    renderWorkSuggestions(inputEl.value);
+  });
+
+  inputEl.addEventListener("input", () => {
+    if (!inputEl.value.trim()) {
+      hiddenEl.value = "";
+      if (clearBtn) clearBtn.hidden = true;
+      triggerWorkLocationChange();
+    }
+    renderWorkSuggestions(inputEl.value);
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      selectWorkLocationOption("", "");
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (!inputEl.contains(e.target) && !dropdownEl.contains(e.target)) {
+      dropdownEl.classList.remove("search-suggestions-dropdown--open");
+    }
+  });
+}
+
+
 function populateWorkLocationOptions() {
-  if (!els.workLocation || !TECH_PARKS) return;
-  const sortedParks = TECH_PARKS.slice().sort((a, b) => a.name.localeCompare(b.name));
-  const options = sortedParks.map((tp) => `<option value="${tp.id}">${tp.name} (${tp.locality || "Bengaluru"})</option>`).join("");
-  els.workLocation.innerHTML = `<option value="">No Work Location (Optional)</option>` + options;
+  initWorkLocationAutocomplete();
 }
 
 function populateLocalityOptions() {
@@ -9687,6 +9789,9 @@ function wireControls() {
 
   els.clearSearchText.addEventListener("click", () => {
     els.searchText.value = "";
+  if (els.workLocation) els.workLocation.value = "";
+  if (els.workLocationText) els.workLocationText.value = "";
+  if (els.clearWorkLocationText) els.clearWorkLocationText.hidden = true;
     els.clearSearchText.classList.remove("field--search__clear--visible");
     closeSearchDropdown();
     applyFilters();
