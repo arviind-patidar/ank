@@ -745,24 +745,30 @@ body {
 }
 
 .cluster-bubble {
-  min-width: 36px;
-  height: 36px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: var(--rust);
-  color: #fff;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #182A3D, #2C3E50);
+  color: #FFFFFF;
+  border: 1.5px solid var(--gold, #9A7B4F);
+  box-shadow: 0 3px 10px rgba(24, 42, 61, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-weight: 700;
   font-size: 11px;
-  transition: background 0.15s ease;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms ease-out, box-shadow 180ms ease-out;
+  cursor: pointer;
 }
 
-.cluster-bubble:hover { background: var(--gold); color: var(--green-deep); }
+.cluster-bubble:hover {
+  transform: scale(1.15);
+  background: linear-gradient(135deg, #2E6F7E, #182A3D);
+  border-color: #E2C699;
+  box-shadow: 0 5px 16px rgba(46, 111, 126, 0.45);
+}
 
 /* Tech park marker & hover-only label styling */
 .techpark-marker {
@@ -2342,29 +2348,31 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 5px 12px;
+  padding: 5px 14px;
   border-radius: 999px;
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 150ms ease;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .map-view-pill__btn:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .map-view-pill__btn--active {
   background: var(--gold) !important;
   color: #fff !important;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(182, 138, 76, 0.4);
+  border-color: #E2C699 !important;
+  box-shadow: 0 2px 10px rgba(182, 138, 76, 0.45);
 }
 
 body.in-guided-presentation .map-view-pill {
@@ -3081,19 +3089,20 @@ body.in-guided-presentation .locality-summary-strip {
 
 .plot-marker__tag {
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 9.5px;
+  font-weight: 700;
+  font-size: 11px;
   color: var(--navy);
   background: #FFFFFF;
-  padding: 3px 8px;
-  border-radius: 5px;
+  padding: 3.5px 10px;
+  border-radius: 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 160px;
-  border: 1px solid rgba(182, 138, 76, 0.4);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
-  transition: all 150ms ease;
+  max-width: 170px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(24, 42, 61, 0.22);
+  letter-spacing: -0.01em;
+  transition: all 180ms ease-out;
 }
 
 /* Recommended Property Pins */
@@ -3102,18 +3111,21 @@ body.in-guided-presentation .locality-summary-strip {
   background: #FAF8F5;
 }
 
-/* Active Selected Property Pin Pulsing Ring */
+/* Active Selected Property Pin */
+.gmap-marker-wrap--active {
+  z-index: 999 !important;
+}
+
+.plot-marker--active {
+  transform: scale(1.18);
+  z-index: 999;
+}
+
 .plot-marker--active .plot-marker__pin {
   background: var(--gold) !important;
   border-color: #ffffff !important;
-  transform: scale(1.22);
-  animation: markerPulseGlow 2s infinite ease-in-out;
-}
-
-@keyframes markerPulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(182, 138, 76, 0.7), 0 0 12px rgba(182, 138, 76, 0.5); }
-  70% { box-shadow: 0 0 0 12px rgba(182, 138, 76, 0), 0 0 20px rgba(182, 138, 76, 0.7); }
-  100% { box-shadow: 0 0 0 0 rgba(182, 138, 76, 0), 0 0 12px rgba(182, 138, 76, 0.5); }
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px rgba(226, 198, 153, 0.45), 0 8px 24px rgba(24, 42, 61, 0.4);
 }
 
 .plot-marker--active .plot-marker__tag {
@@ -3121,7 +3133,7 @@ body.in-guided-presentation .locality-summary-strip {
   color: #FFFFFF !important;
   border-color: var(--gold) !important;
   font-weight: 700;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+  box-shadow: 0 0 0 3px rgba(226, 198, 153, 0.45), 0 8px 24px rgba(24, 42, 61, 0.4) !important;
 }
 
 .plot-marker--active .plot-marker__leader {
@@ -8210,12 +8222,12 @@ function propertyTypeIcon(type) {
   return '<rect x="7" y="3" width="10" height="18" rx="1"/><rect x="9.3" y="6" width="2" height="2" fill="#9A7B4F"/><rect x="12.7" y="6" width="2" height="2" fill="#9A7B4F"/>';
 }
 
-function markerInnerHtml(property, isActive) {
+function markerInnerHtml(property, isActive, hideLabel = false) {
   const isRecommended = property.recommended;
   return `
     <div class="plot-marker ${isActive ? "plot-marker--active" : ""} ${isRecommended ? "plot-marker--recommended" : ""}" data-id="${property.id}">
-      <div class="plot-marker__tag" title="${property.title}">${property.title}</div>
-      <div class="plot-marker__leader"></div>
+      <div class="plot-marker__tag" style="${hideLabel ? 'display:none;' : ''}" title="${property.title}">${property.title}</div>
+      <div class="plot-marker__leader" style="${hideLabel ? 'display:none;' : ''}"></div>
       <div class="plot-marker__pin">
         <svg viewBox="0 0 24 24" width="12" height="12" fill="white">${propertyTypeIcon(property.type)}</svg>
       </div>
@@ -8340,12 +8352,50 @@ function defineMarkerLayerClass() {
 
       this.container.innerHTML = "";
       const gmapRef = gmap;
-      renderItems.forEach((item) => {
+      // Sort render items by priority: Active (1st) -> Recommended (2nd) -> Regular (3rd)
+      const sortedItems = renderItems.slice().sort((a, b) => {
+        if (a.type === "single" && a.property.id === activeCardId) return -1;
+        if (b.type === "single" && b.property.id === activeCardId) return 1;
+        if (a.type === "single" && a.property.recommended && !b.property?.recommended) return -1;
+        if (b.type === "single" && b.property.recommended && !a.property?.recommended) return 1;
+        return 0;
+      });
+
+      const placedLabelBoxes = [];
+      const isLabelOverlapping = (box) => {
+        return placedLabelBoxes.some((b) => !(box.x2 < b.x1 || box.x1 > b.x2 || box.y2 < b.y1 || box.y1 > b.y2));
+      };
+
+      sortedItems.forEach((item) => {
         const div = document.createElement("div");
         if (item.type === "single") {
-          div.className = "gmap-marker-wrap";
+          const isActive = item.property.id === activeCardId;
+          div.className = "gmap-marker-wrap" + (isActive ? " gmap-marker-wrap--active" : "");
           div.style.left = item.x + "px"; div.style.top = item.y + "px";
-          div.innerHTML = markerInnerHtml(item.property, item.property.id === activeCardId);
+
+          const labelWidth = Math.min(170, item.property.title.length * 7 + 24);
+          const labelHeight = 24;
+          const box = {
+            x1: item.x - labelWidth / 2,
+            y1: item.y - 48,
+            x2: item.x + labelWidth / 2,
+            y2: item.y - 24
+          };
+
+          let hideLabel = false;
+          if (!isActive) {
+            if (zoom < 12 && !item.property.recommended) {
+              hideLabel = true;
+            } else if (isLabelOverlapping(box)) {
+              hideLabel = true;
+            }
+          }
+
+          if (!hideLabel) {
+            placedLabelBoxes.push(box);
+          }
+
+          div.innerHTML = markerInnerHtml(item.property, isActive, hideLabel);
           div.addEventListener("click", () => setActive(item.property.id, { pan: false }));
         } else {
           div.className = "gmap-cluster-wrap";
@@ -8700,6 +8750,15 @@ function setActive(id, { pan }) {
   updateSchoolDisplay();
   updateHospitalDisplay();
   updateMallDisplay();
+
+  // Add subtle pulse highlight effect to selected marker
+  setTimeout(() => {
+    const el = document.querySelector(`.plot-marker[data-id="${id}"]`);
+    if (el) {
+      el.classList.add("plot-marker--highlight-pulse");
+      setTimeout(() => el.classList.remove("plot-marker--highlight-pulse"), 1600);
+    }
+  }, 50);
 }
 
 function clearActive() {
