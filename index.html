@@ -3999,6 +3999,13 @@ html, body {
             </div>
           </div>
 
+                    <label class="field" style="margin-top:10px;">
+            <span class="field__label">Target Work Location</span>
+            <select id="filterWorkLocation" class="field__input">
+              <option value="">No Work Location (Optional)</option>
+            </select>
+          </label>
+
           <button id="resetFilters" class="btn-reset" type="button" style="margin-top:12px;">Reset filters</button>
         </div>
       </div>
@@ -7044,6 +7051,7 @@ const els = {
   searchText: document.getElementById("filterSearchText"),
   clearSearchText: document.getElementById("clearSearchText"),
   searchScope: document.getElementById("filterSearchScope"),
+  workLocation: document.getElementById("filterWorkLocation"),
   locality: document.getElementById("filterLocality"),
   stage: document.getElementById("filterStage"),
   recommended: document.getElementById("filterRecommended"),
@@ -7119,13 +7127,32 @@ function haversineKm(lat1, lng1, lat2, lng2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-function getBuyerCommute(propertyLat, propertyLng) {
-  const itplLat = 12.9862, itplLng = 77.7371;
-  const distanceKm = haversineKm(propertyLat, propertyLng, itplLat, itplLng);
+function getSelectedWorkCommute(propertyLat, propertyLng) {
+  const parkId = (els.workLocation && els.workLocation.value) ? els.workLocation.value : "";
+  if (!parkId) return { active: false };
+
+  const park = TECH_PARKS.find((tp) => tp.id === parkId);
+  if (!park) return { active: false };
+
+  const distanceKm = haversineKm(propertyLat, propertyLng, park.lat, park.lng);
   const speedKmH = 20;
-  const icon = "🚗";
   const mins = Math.max(4, Math.round((distanceKm / speedKmH) * 60));
-  return { distanceKm, mins, icon };
+  const parts = park.name.split(" ");
+  const shortParkName = parts.length > 1 ? parts[0] : park.name;
+
+  return {
+    active: true,
+    parkId: park.id,
+    parkName: park.name,
+    shortName: shortParkName,
+    distanceKm,
+    mins,
+    icon: "🚗"
+  };
+}
+
+function getBuyerCommute(propertyLat, propertyLng) {
+  return getSelectedWorkCommute(propertyLat, propertyLng);
 }
 
 function nearestOrWithinRadius(list, property, radiusKm) {
@@ -8005,14 +8032,16 @@ function markerInnerHtml(property, isActive, hideLabel = false) {
 function popupHtml(p, nearbyTechParks, nearbyMetro, nearbySchools, nearbyHospitals, nearbyMalls) {
   const details = getPropertyDetails(p);
   const akScoreHtml = getAkScoreBadgeHtml(p.akScore);
-  const commute = getBuyerCommute(p.lat, p.lng);
+  const commute = getSelectedWorkCommute(p.lat, p.lng);
 
-  const commuteBanner = `
-    <div class="popup-card__buyer-commute">
-      <span class="popup-card__buyer-commute-icon">${commute.icon}</span>
-      <div><strong>${commute.mins} mins</strong> (${commute.distanceKm.toFixed(1)} km) to ITPL</div>
-    </div>
-  `;
+  const commuteBanner = commute.active
+    ? `
+      <div class="popup-card__buyer-commute">
+        <span class="popup-card__buyer-commute-icon">${commute.icon}</span>
+        <div><strong>${commute.mins} mins</strong> (${commute.distanceKm.toFixed(1)} km) to ${commute.shortName}</div>
+      </div>
+    `
+    : "";
 
   const hasAmenityData = nearbyTechParks !== undefined;
   const amenitiesSection = hasAmenityData
@@ -8335,8 +8364,10 @@ function renderList(properties) {
     .map((p) => {
       const details = getPropertyDetails(p);
       const akScoreHtml = getAkScoreBadgeHtml(p.akScore);
-      const commute = getBuyerCommute(p.lat, p.lng);
-      const commuteBadge = `<div class="card__commute-badge">${commute.icon} ${commute.mins} mins (${commute.distanceKm.toFixed(1)} km) to ITPL</div>`;
+      const commute = getSelectedWorkCommute(p.lat, p.lng);
+      const commuteBadge = commute.active
+        ? `<div class="card__commute-badge">${commute.icon} ${commute.mins} mins (${commute.distanceKm.toFixed(1)} km) to ${commute.shortName}</div>`
+        : "";
       const isRecommended = p.recommended;
 
       return `
@@ -8419,11 +8450,14 @@ function renderDetailPanel(property) {
     reasonsList.map(function(r) { return '<div class="pdp__reason"><span class="pdp__reason-check">✓</span><span>' + r + '</span></div>'; }).join("") +
     "</div></div>") : "";
 
-  var commuteHtml = '<div class="pdp__section"><div class="pdp__section-label">Commute</div>' +
-    '<div class="pdp__commute-card"><div class="pdp__commute-icon">' + commute.icon + '</div>' +
-    '<div><div class="pdp__commute-time">' + commute.mins + ' mins</div>' +
-    '<div class="pdp__commute-detail">' + commute.distanceKm.toFixed(1) + ' km · Drive</div>' +
-    '<div class="pdp__commute-to">to ITPL Tech Hub</div></div></div></div>';
+  var commute = getSelectedWorkCommute(property.lat, property.lng);
+  var commuteHtml = commute.active
+    ? '<div class="pdp__section"><div class="pdp__section-label">Commute</div>' +
+      '<div class="pdp__commute-card"><div class="pdp__commute-icon">' + commute.icon + '</div>' +
+      '<div><div class="pdp__commute-time">' + commute.mins + ' mins</div>' +
+      '<div class="pdp__commute-detail">' + commute.distanceKm.toFixed(1) + ' km · Drive</div>' +
+      '<div class="pdp__commute-to">to ' + commute.parkName + '</div></div></div></div>'
+    : '';
 
   var amenityGroups = [
     { label: "Tech Parks",     color: "#2E6F7E", icon: "🏢", items: nearby.techParks  },
@@ -8835,6 +8869,13 @@ function openCompareModal() {
 function closeCompareModal() {
   const backdrop = document.getElementById("compareModalBackdrop");
   if (backdrop) backdrop.classList.remove("compare-modal-backdrop--visible");
+}
+
+function populateWorkLocationOptions() {
+  if (!els.workLocation || !TECH_PARKS) return;
+  const sortedParks = TECH_PARKS.slice().sort((a, b) => a.name.localeCompare(b.name));
+  const options = sortedParks.map((tp) => `<option value="${tp.id}">${tp.name} (${tp.locality || "Bengaluru"})</option>`).join("");
+  els.workLocation.innerHTML = `<option value="">No Work Location (Optional)</option>` + options;
 }
 
 function populateLocalityOptions() {
@@ -9737,6 +9778,7 @@ async function initAppListings() {
     ALL_PROPERTIES = await fetchProperties();
   }
   populateLocalityOptions();
+  populateWorkLocationOptions();
   applyFilters();
 }
 
