@@ -3815,8 +3815,10 @@ html, body {
   overflow-y: auto;
   display: none;
 }
-.search-suggestions-dropdown--visible {
-  display: block;
+.search-suggestions-dropdown--visible,
+.search-suggestions-dropdown--open {
+  display: block !important;
+  z-index: 9999 !important;
 }
 .search-suggestion-item {
   padding: 8px 12px;
@@ -8916,6 +8918,7 @@ function initWorkLocationAutocomplete() {
 
     dropdownEl.innerHTML = itemsHtml;
     dropdownEl.classList.add("search-suggestions-dropdown--open");
+    dropdownEl.classList.add("search-suggestions-dropdown--visible");
 
     dropdownEl.querySelectorAll(".search-suggestion-item").forEach((item) => {
       item.addEventListener("click", (e) => {
@@ -8937,6 +8940,7 @@ function initWorkLocationAutocomplete() {
       if (clearBtn) clearBtn.hidden = true;
     }
     dropdownEl.classList.remove("search-suggestions-dropdown--open");
+    dropdownEl.classList.remove("search-suggestions-dropdown--visible");
     triggerWorkLocationChange();
   }
 
@@ -8971,6 +8975,7 @@ function initWorkLocationAutocomplete() {
   document.addEventListener("click", (e) => {
     if (!inputEl.contains(e.target) && !dropdownEl.contains(e.target)) {
       dropdownEl.classList.remove("search-suggestions-dropdown--open");
+    dropdownEl.classList.remove("search-suggestions-dropdown--visible");
     }
   });
 }
