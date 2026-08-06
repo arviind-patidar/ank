@@ -9480,8 +9480,20 @@ function getFiltered() {
         if (!haystack.includes(query)) return false;
       }
     }
-    // Locality dropdown filter
-    if (locality && p.locality.toLowerCase() !== locality.toLowerCase()) return false;
+    // Locality dropdown filter (token/substring smart match so Whitefield matches all 17 Whitefield sub-markets)
+    if (locality) {
+      const filterLoc = locality.toLowerCase().trim();
+      const propLoc = p.locality.toLowerCase().trim();
+
+      const keyTokens = filterLoc.split(/[\s\/–\-]+/).filter((t) => t.length > 3 && t !== "edge" && t !== "road" && t !== "cross" && t !== "belt" && t !== "main");
+
+      const isMatch = propLoc === filterLoc ||
+                      propLoc.includes(filterLoc) ||
+                      filterLoc.includes(propLoc) ||
+                      keyTokens.some((tok) => propLoc.includes(tok));
+
+      if (!isMatch) return false;
+    }
 
     // Construction stage filter
     if (stage && p.status.toLowerCase() !== stage.toLowerCase()) return false;
@@ -9974,7 +9986,7 @@ function findLocalityMatchName(input) {
 
 /* ===== CIRCULAR LOCALITY HIGHLIGHT & AUTO-ZOOM ENGINE ===== */
 const LOCALITY_CENTERS = {
-  "Whitefield": { lat: 12.9698, lng: 77.7499, radiusMeters: 3200, zoom: 13.5 },
+  "Whitefield": { lat: 12.9850, lng: 77.7480, radiusMeters: 5200, zoom: 12.8 },
   "Budigere Cross": { lat: 13.0694, lng: 77.7455, radiusMeters: 3500, zoom: 13.2 },
   "KR Puram": { lat: 13.0075, lng: 77.6959, radiusMeters: 2800, zoom: 13.8 },
   "Varthur": { lat: 12.9406, lng: 77.7468, radiusMeters: 2800, zoom: 13.8 },
