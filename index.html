@@ -7324,6 +7324,7 @@ const els = {
   premiumAreas: document.getElementById("filterPremiumAreas"),
 };
 let activeCardId = null;
+let selectedSearchPropertyId = "";
 let popupCache = null;
 let map;
 let markerLayer;
@@ -9469,15 +9470,26 @@ function getFiltered() {
   const recommendedOnly = (els.recommended && els.recommended.checked) ? els.recommended.checked : false;
 
   return ALL_PROPERTIES.filter((p) => {
-    // Text search filter
-    if (query) {
+    // Text search filter (Exact project match priority)
+    if (selectedSearchPropertyId) {
+      if (p.id !== selectedSearchPropertyId) return false;
+    } else if (query) {
       const scope = (els.searchScope && els.searchScope.value) ? els.searchScope.value : "all";
-      if (scope === "project" && !p.title.toLowerCase().includes(query)) return false;
-      if (scope === "developer" && !p.developer.toLowerCase().includes(query)) return false;
-      if (scope === "locality" && !p.locality.toLowerCase().includes(query)) return false;
-      if (scope === "all") {
-        const haystack = `${p.title} ${p.developer} ${p.locality} ${p.zone}`.toLowerCase();
-        if (!haystack.includes(query)) return false;
+      const qLower = query.toLowerCase().trim();
+
+      // If typed query is an exact match for a project title, isolate that project
+      const exactTitleMatch = ALL_PROPERTIES.find((item) => item.title.toLowerCase().trim() === qLower);
+
+      if (exactTitleMatch) {
+        if (p.id !== exactTitleMatch.id) return false;
+      } else {
+        if (scope === "project" && !p.title.toLowerCase().includes(qLower)) return false;
+        if (scope === "developer" && !p.developer.toLowerCase().includes(qLower)) return false;
+        if (scope === "locality" && !p.locality.toLowerCase().includes(qLower)) return false;
+        if (scope === "all") {
+          const haystack = `${p.title} ${p.developer} ${p.locality} ${p.zone}`.toLowerCase();
+          if (!haystack.includes(qLower)) return false;
+        }
       }
     }
     // Locality dropdown filter (token/substring smart match so Whitefield matches all 17 Whitefield sub-markets)
@@ -10221,6 +10233,7 @@ function wireControls() {
           badgeText: "🏢 Project",
           badgeClass: "search-suggestion-badge--project",
           onSelect: () => {
+            selectedSearchPropertyId = p.id;
             els.searchText.value = p.title;
             closeSearchDropdown();
             applyFilters();
@@ -10310,6 +10323,12 @@ function wireControls() {
   els.searchText.addEventListener("click", renderSearchSuggestions);
   els.searchText.addEventListener("input", () => {
     els.clearSearchText.classList.toggle("field--search__clear--visible", els.searchText.value.length > 0);
+    if (selectedSearchPropertyId) {
+      const selectedProp = ALL_PROPERTIES.find((item) => item.id === selectedSearchPropertyId);
+      if (!selectedProp || els.searchText.value.trim() !== selectedProp.title) {
+        selectedSearchPropertyId = "";
+      }
+    }
     renderSearchSuggestions();
     applyFilters();
   });
