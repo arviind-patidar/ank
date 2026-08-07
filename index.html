@@ -9057,28 +9057,34 @@ function resetPanelDragPosition() {
   }
 }
 
-function toggleMinimizeDetailPanel() {
+function toggleMinimizeDetailPanel(e) {
+  if (e) {
+    if (typeof e.preventDefault === "function") e.preventDefault();
+    if (typeof e.stopPropagation === "function") e.stopPropagation();
+  }
   const panel = document.getElementById("propertyDetailPanel");
   const minBtn = document.getElementById("pdpMinimize");
   const mapWrap = document.querySelector(".map-wrap");
   if (!panel) return;
 
+  pdpIsDragging = false;
   pdpMinimized = !pdpMinimized;
   if (pdpMinimized) {
     panel.classList.add("property-detail-panel--minimized");
+    panel.classList.remove("property-detail-panel--open");
     if (minBtn) {
       minBtn.innerHTML = "⤢";
       minBtn.title = "Expand property card";
     }
     if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
 
-    // Position in top-right of map viewport cleanly
     const mapWrapEl = document.querySelector(".map-wrap");
     if (mapWrapEl) {
       const rect = mapWrapEl.getBoundingClientRect();
       panel.style.setProperty("left", `${rect.right - 340}px`, "important");
       panel.style.setProperty("top", `${rect.top + 20}px`, "important");
       panel.style.setProperty("right", "auto", "important");
+      panel.style.setProperty("bottom", "auto", "important");
       panel.style.setProperty("transform", "none", "important");
     }
   } else {
@@ -9089,6 +9095,9 @@ function toggleMinimizeDetailPanel() {
       minBtn.title = "Minimize property card";
     }
     if (mapWrap) mapWrap.classList.add("map-wrap--panel-open");
+    requestAnimationFrame(function() {
+      panel.classList.add("property-detail-panel--open");
+    });
   }
   setTimeout(() => { if (map) google.maps.event.trigger(map, "resize"); }, 200);
 }
@@ -9098,6 +9107,13 @@ function toggleMinimizeDetailPanel() {
 
 function setActive(id, { pan }) {
   activeCardId = id;
+  pdpMinimized = false;
+  pdpIsDragging = false;
+  const panelEl = document.getElementById("propertyDetailPanel");
+  if (panelEl) {
+    panelEl.classList.remove("property-detail-panel--minimized");
+    panelEl.removeAttribute("style");
+  }
   els.list.querySelectorAll(".card").forEach(function(c) { c.classList.toggle("card--active", c.dataset.id === id); });
 
   var property = ALL_PROPERTIES.find(function(p) { return p.id === id; });
@@ -9159,7 +9175,11 @@ function clearActive() {
   updateMallDisplay();
 }
 
-function closeAndClearActive() {
+function closeAndClearActive(e) {
+  if (e) {
+    if (typeof e.preventDefault === "function") e.preventDefault();
+    if (typeof e.stopPropagation === "function") e.stopPropagation();
+  }
   if (sharedInfoWindow) sharedInfoWindow.close();
   clearActive();
 }
