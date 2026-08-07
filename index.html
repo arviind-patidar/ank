@@ -1123,12 +1123,54 @@ body {
   display: none;
   margin: 0 0 14px 0;
   padding: 10px 12px;
-  border: 1px dashed var(--line);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--warm-stone);
+  background: var(--card-bg);
   font-size: 10.5px;
   line-height: 1.5;
   color: var(--navy);
+}
+
+.techpark-legend {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 900;
+  display: none;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(24, 42, 61, 0.18);
+  padding: 10px 12px 8px;
+  font-family: var(--font-mono);
+  color: var(--navy);
+  width: 156px;
+}
+
+.techpark-legend--visible { display: block; }
+
+.techpark-legend__title {
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1F5FD6;
+  margin-bottom: 6px;
+}
+
+.techpark-legend__gradient {
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #DCEEFF, #A9D0FF, #6EA8F7, #3E7BFA, #1F5FD6);
+}
+
+.techpark-legend__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #5B6B62;
 }
 
 .techpark-view-notice--visible { display: block; }
@@ -4309,7 +4351,12 @@ html, body {
           <span class="field__label">Tech Park Density Heatmap</span>
         </label>
         <div id="techParkViewNotice" class="techpark-view-notice">
-          Showing all <strong id="techParkViewCount"></strong> tech parks across Bengaluru.
+          <div style="font-weight:600; color:var(--rust); margin-bottom:4px;">Employment Corridor Density</div>
+          <div>Showing all <strong id="techParkViewCount"></strong> tech parks across Bengaluru.</div>
+          <div class="techpark-legend__gradient" style="margin-top:6px; margin-bottom:4px;"></div>
+          <div class="techpark-legend__scale">
+            <span>Low</span><span>Medium</span><span>High</span><span>Peak</span>
+          </div>
         </div>
 
         <div class="price-insights" style="margin-top:8px;">
@@ -4439,6 +4486,14 @@ html, body {
     <div class="price-legend__gradient"></div>
     <div class="price-legend__scale">
       <span>₹4K</span><span>₹6K</span><span>₹8K</span><span>₹10K</span><span>₹12K+</span>
+    </div>
+  </div>
+
+  <div id="techParkLegend" class="techpark-legend" aria-hidden="true">
+    <div class="techpark-legend__title">Tech Park Density</div>
+    <div class="techpark-legend__gradient"></div>
+    <div class="techpark-legend__scale">
+      <span>Low</span><span>Med</span><span>High</span><span>Peak</span>
     </div>
   </div>
 
@@ -7878,26 +7933,43 @@ function updateMallDisplay() {
 
 /* TECH PARK DENSITY HEATMAP */
 function defineTechParkDensityOverlayClass() {
-  // Professional GIS Analytics Blue Palette:
-  // Low (#DCEEFF) -> Med-Low (#B9DBFF) -> Med (#89C2FF) -> High (#4A90E2) -> Very High (#2F6FB8)
-  const GIS_BLUE_STOPS = [
-    [0.00, 220, 238, 255], // Low (#DCEEFF)
-    [0.25, 185, 219, 255], // Medium-Low (#B9DBFF)
-    [0.50, 137, 194, 255], // Medium (#89C2FF)
-    [0.75,  74, 144, 226], // High (#4A90E2)
-    [1.00,  47, 111, 184]  // Very High (#2F6FB8)
+  // Continuous GIS Blue Gradient Palette:
+  // Very Low (Transparent) -> Low (#DCEEFF) -> Medium (#A9D0FF) -> High (#6EA8F7) -> Very High (#3E7BFA) -> Peak Density (#1F5FD6)
+  const CONTINUOUS_BLUE_STOPS = [
+    [0.00, 220, 238, 255,   0], // Very Low (Transparent)
+    [0.18, 220, 238, 255,  90], // Low (#DCEEFF)
+    [0.38, 169, 208, 255, 130], // Medium (#A9D0FF)
+    [0.60, 110, 168, 247, 165], // High (#6EA8F7)
+    [0.80,  62, 123, 250, 195], // Very High (#3E7BFA)
+    [1.00,  31,  95, 214, 220]  // Peak Density (#1F5FD6)
   ];
 
-  function colorForIntensity(t) {
-    for (let i = 0; i < GIS_BLUE_STOPS.length - 1; i++) {
-      const [t0, r0, g0, b0] = GIS_BLUE_STOPS[i];
-      const [t1, r1, g1, b1] = GIS_BLUE_STOPS[i + 1];
+  function getRGBAForIntensity(t) {
+    if (t <= 0) return [0, 0, 0, 0];
+    if (t >= 1) return CONTINUOUS_BLUE_STOPS[CONTINUOUS_BLUE_STOPS.length - 1].slice(1);
+    for (let i = 0; i < CONTINUOUS_BLUE_STOPS.length - 1; i++) {
+      const [t0, r0, g0, b0, a0] = CONTINUOUS_BLUE_STOPS[i];
+      const [t1, r1, g1, b1, a1] = CONTINUOUS_BLUE_STOPS[i + 1];
       if (t >= t0 && t <= t1) {
         const f = (t - t0) / (t1 - t0 || 1);
-        return [r0 + (r1 - r0) * f, g0 + (g1 - g0) * f, b0 + (b1 - b0) * f];
+        return [
+          r0 + (r1 - r0) * f,
+          g0 + (g1 - g0) * f,
+          b0 + (b1 - b0) * f,
+          a0 + (a1 - a0) * f
+        ];
       }
     }
-    return [47, 111, 184];
+    return CONTINUOUS_BLUE_STOPS[CONTINUOUS_BLUE_STOPS.length - 1].slice(1);
+  }
+
+  // Importance weights for major employment corridors (Manyata, Whitefield, ORR, Bellandur, E-City)
+  function getTechParkWeight(name) {
+    if (!name) return 1.0;
+    const n = name.toLowerCase();
+    if (n.includes("manyata") || n.includes("itpl") || n.includes("embassy techvillage") || n.includes("ecospace") || n.includes("prestige tech park")) return 2.2;
+    if (n.includes("bagmane") || n.includes("rmz") || n.includes("divyasree") || n.includes("global village") || n.includes("cesna")) return 1.6;
+    return 1.0;
   }
 
   return class extends google.maps.OverlayView {
@@ -7949,44 +8021,54 @@ function defineTechParkDensityOverlayClass() {
 
       const ctx = this.canvas.getContext("2d");
       ctx.clearRect(0, 0, width, height);
-      ctx.globalCompositeOperation = "lighter";
 
-      // Zoom-adaptive granularity: regional hotspots split into campus zones on zoom-in
+      // Phase 1: Accumulate smooth Gaussian radial falloff into alpha channel
+      ctx.globalCompositeOperation = "source-over";
+
       const zoom = gmap.getZoom() || 12;
+      // Dynamic zoom-adaptive radius (45px to 65px for corridors, splits into 26px campus hubs on zoom-in)
       const radius = zoom >= 13.5
-        ? Math.max(22, 50 - (zoom - 12) * 9)
-        : Math.min(55, Math.max(40, 50 + (12 - zoom) * 4));
+        ? Math.max(26, 60 - (zoom - 12) * 11)
+        : Math.min(65, Math.max(45, 55 + (12 - zoom) * 5));
 
       this.points.forEach((pt) => {
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
         const x = pixel.x - sw.x; const y = pixel.y - ne.y;
         if (x < -radius || x > width + radius || y < -radius || y > height + radius) return;
 
+        const w = getTechParkWeight(pt.name);
         const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        grad.addColorStop(0, "rgba(255,255,255,0.45)");
-        grad.addColorStop(0.5, "rgba(255,255,255,0.20)");
-        grad.addColorStop(1, "rgba(255,255,255,0)");
+        // Multi-stop Gaussian falloff for organic, smooth continuous density
+        grad.addColorStop(0.00, `rgba(0,0,0, ${Math.min(0.52, 0.38 * w)})`);
+        grad.addColorStop(0.28, `rgba(0,0,0, ${Math.min(0.35, 0.24 * w)})`);
+        grad.addColorStop(0.58, `rgba(0,0,0, ${Math.min(0.18, 0.10 * w)})`);
+        grad.addColorStop(0.85, `rgba(0,0,0, ${Math.min(0.05, 0.02 * w)})`);
+        grad.addColorStop(1.00, "rgba(0,0,0, 0)");
+
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      // Recolor canvas alpha into professional GIS blue gradient with 40-45% max opacity
+      // Phase 2: Color Map accumulated alpha into continuous GIS Blue Gradient
       const imgData = ctx.getImageData(0, 0, width, height);
       const data = imgData.data;
-      const maxTargetAlpha = 112; // 44% max opacity for high map readability
 
       for (let i = 0; i < data.length; i += 4) {
-        const a = data[i + 3];
-        if (a === 0) continue;
-        const t = Math.min(1, a / 160);
-        const [r, g, b] = colorForIntensity(t);
+        const rawAlpha = data[i + 3];
+        if (rawAlpha === 0) continue;
+
+        // Normalized intensity t between 0.0 and 1.0
+        const t = Math.min(1.0, rawAlpha / 185);
+        const [r, g, b, a] = getRGBAForIntensity(t);
+
         data[i] = Math.round(r);
         data[i + 1] = Math.round(g);
         data[i + 2] = Math.round(b);
-        data[i + 3] = Math.round(Math.min(maxTargetAlpha, a * 0.65));
+        data[i + 3] = Math.round(a);
       }
+
       ctx.putImageData(imgData, 0, 0);
     }
   };
