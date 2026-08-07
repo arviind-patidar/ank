@@ -14,7 +14,7 @@
 :root {
   /* acre&key Style Guide Official Brand Palette */
   --green-deep:  #1F2B38; /* Deep Navy — Primary Ink / Dark Surface (#1F2B38) */
-  --green-mid:   #1F2B38; /* Deep Navy Tint — Secondary emphasis */
+  --green-mid:   #2A3A4B; /* Deep Navy Tint — Secondary emphasis */
   --gold:        #B88E52; /* Antique Brass — 5% Accent (#B88E52) */
   --cream:       #F7F3EC; /* Warm Ivory — 75% Canvas / BG (#F7F3EC) */
   --navy:        #1F2B38; /* Deep Navy — Primary Body Text (#1F2B38) */
@@ -106,7 +106,7 @@ body {
 /* BUYER PROFILE PANEL */
 .buyer-profile-bar {
   flex: 0 0 auto;
-  background: #1F2B38;
+  background: #111F2E;
   border-bottom: 1px solid rgba(154, 123, 79, 0.35);
   position: relative;
   z-index: 20;
@@ -149,7 +149,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: rgba(154, 123, 79, 0.22);
-  color: #B88E52;
+  color: #E2C699;
   border: 1px solid rgba(154, 123, 79, 0.4);
   padding: 2px 7px;
   border-radius: 3px;
@@ -214,7 +214,7 @@ body {
 
 .buyer-profile-form__sub {
   font-size: 11px;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 .buyer-profile-form__grid {
@@ -243,7 +243,7 @@ body {
   transition: background 150ms ease;
 }
 
-.btn-bp-save:hover { background: #B88E52; }
+.btn-bp-save:hover { background: #8a6c40; }
 
 .btn-bp-reset {
   padding: 8px 14px;
@@ -425,7 +425,7 @@ body {
 .field__label {
   display: block;
   font-size: 10px;
-  color: #59616B;
+  color: #5B6B62;
   margin-bottom: 4px;
 }
 
@@ -474,7 +474,7 @@ body {
 .loading-state, .empty-state {
   font-family: var(--font-mono); font-weight: 600;
   font-size: 10px;
-  color: #59616B;
+  color: #7A8288;
   padding: 20px 2px;
 }
 
@@ -543,7 +543,7 @@ body {
 
 .card__ak-score--low {
   background: #ECEAE4;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 /* Row 2: Price + Configuration */
@@ -591,7 +591,7 @@ body {
 /* Row 4: Developer / Locality footer */
 .card__row4-footer {
   font-size: 9.5px;
-  color: #59616B;
+  color: #7A8288;
   font-family: var(--font-body);
   line-height: 1.3;
   margin-top: 2px;
@@ -750,7 +750,7 @@ body {
   height: 28px;
   padding: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1F2B38, #1F2B38);
+  background: linear-gradient(135deg, #1F2B38, #2C3E50);
   color: #FFFFFF;
   border: 1.5px solid var(--gold, #B88E52);
   box-shadow: 0 3px 10px rgba(24, 42, 61, 0.3);
@@ -767,7 +767,7 @@ body {
 .cluster-bubble:hover {
   transform: scale(1.15);
   background: linear-gradient(135deg, #2E6F7E, #1F2B38);
-  border-color: #B88E52;
+  border-color: #E2C699;
   box-shadow: 0 5px 16px rgba(46, 111, 126, 0.45);
 }
 
@@ -864,7 +864,7 @@ body {
   letter-spacing: 0.04em; text-transform: uppercase; color: #527196; margin-bottom: 3px;
 }
 .popup-card__techpark-row { font-size: 10px; color: var(--navy); line-height: 1.5; }
-.popup-card__techparks-empty { font-size: 9.5px; color: #59616B; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 5px; }
+.popup-card__techparks-empty { font-size: 9.5px; color: #7A8288; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 5px; }
 
 /* Metro station marker */
 .metro-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
@@ -884,7 +884,7 @@ body {
 .popup-card__metros { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
 .popup-card__metros-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #6E5C8A; margin-bottom: 4px; }
 .popup-card__metro-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
-.popup-card__metros-empty { font-size: 10px; color: #59616B; font-style: italic; margin-top: 6px; }
+.popup-card__metros-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* School marker */
 .school-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
@@ -906,7 +906,7 @@ body {
 .popup-card__schools { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
 .popup-card__schools-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #8A7346; margin-bottom: 4px; }
 .popup-card__school-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
-.popup-card__schools-empty { font-size: 10px; color: #59616B; font-style: italic; margin-top: 6px; }
+.popup-card__schools-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* Hospital marker */
 .hospital-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
@@ -928,7 +928,7 @@ body {
 .popup-card__hospitals { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
 .popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #A35249; margin-bottom: 4px; }
 .popup-card__hospital-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
-.popup-card__hospitals-empty { font-size: 10px; color: #59616B; font-style: italic; margin-top: 6px; }
+.popup-card__hospitals-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* Mall marker */
 .mall-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
@@ -950,7 +950,7 @@ body {
 .popup-card__malls { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
 .popup-card__malls-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #B33F7D; margin-bottom: 4px; }
 .popup-card__mall-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
-.popup-card__malls-empty { font-size: 10px; color: #59616B; font-style: italic; margin-top: 6px; }
+.popup-card__malls-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 .field--search__row {
   display: flex;
@@ -1095,13 +1095,13 @@ body {
 }
 
 .locality-chip[aria-pressed="true"] {
-  background: #B88E52;
-  border-color: #B88E52;
+  background: #B68A4C;
+  border-color: #B68A4C;
   color: #FFFFFF;
   box-shadow: 0 2px 6px rgba(182, 138, 76, 0.45);
 }
 
-.locality-chip[aria-pressed="true"]:hover { background: #B88E52; }
+.locality-chip[aria-pressed="true"]:hover { background: #B68A4C; }
 
 .techpark-view-toggle {
   margin: 0 0 12px 0;
@@ -1171,7 +1171,7 @@ body {
   justify-content: space-between;
   font-size: 8.5px;
   font-weight: 600;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 .techpark-view-notice--visible { display: block; }
@@ -1258,7 +1258,7 @@ body {
   padding-left: 16px;
   font-size: 10.5px;
   line-height: 1.6;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 .geo-filter-banner {
@@ -1328,7 +1328,7 @@ body {
   justify-content: space-between;
   font-size: 8.5px;
   font-weight: 600;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 .area-price-label {
@@ -1463,7 +1463,7 @@ body {
   font-size: 9.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 .price-insight-card__row-value {
@@ -1501,7 +1501,7 @@ body {
   border-radius: 999px;
   cursor: pointer;
 }
-.price-insight-card__cta:hover { background: #B88E52; }
+.price-insight-card__cta:hover { background: #8a6c40; }
 
 .amenity-toggles {
   display: flex;
@@ -1751,8 +1751,8 @@ body {
 }
 
 .popup-card__action-btn--in-compare {
-  background: #B88E52;
-  border-color: #B88E52;
+  background: #B68A4C;
+  border-color: #B68A4C;
   color: #FFFFFF;
 }
 
@@ -1965,14 +1965,14 @@ body {
   padding: 10px 12px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #59616B;
+  color: #7A8288;
   text-align: center;
 }
 
 .compare-tray__hint {
   font-family: var(--font-mono);
   font-size: 9.5px;
-  color: #59616B;
+  color: #7A8288;
   text-align: center;
   margin-top: 8px;
 }
@@ -1990,7 +1990,7 @@ body {
   border-radius: 999px;
   cursor: pointer;
 }
-.compare-tray__cta:hover { background: #B88E52; }
+.compare-tray__cta:hover { background: #8a6c40; }
 
 .compare-modal-backdrop {
   position: fixed;
@@ -2193,7 +2193,7 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
   right: 0;
   height: 54px;
   z-index: 10000;
-  background: #1F2B38;
+  background: #12202E;
   color: #fff;
   display: flex;
   align-items: center;
@@ -2217,7 +2217,7 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
   font-size: 8.5px;
   letter-spacing: 0.08em;
   background: rgba(182,138,76,0.25);
-  color: #B88E52;
+  color: #E2C699;
   padding: 3px 7px;
   border-radius: 4px;
   border: 1px solid rgba(182,138,76,0.4);
@@ -2265,7 +2265,7 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
   box-shadow: 0 2px 8px rgba(182,138,76,0.4);
 }
 .p-rail__step--done {
-  color: #B88E52;
+  color: #E2C699;
 }
 .p-rail__step-num {
   width: 16px;
@@ -2356,7 +2356,7 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #B88E52;
+  color: #E2C699;
 }
 .p-card__title {
   font-family: var(--font-display);
@@ -2425,7 +2425,7 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
   background: var(--gold) !important;
   color: #fff !important;
   font-weight: 700;
-  border-color: #B88E52 !important;
+  border-color: #E2C699 !important;
   box-shadow: 0 2px 10px rgba(182, 138, 76, 0.45);
 }
 
@@ -2435,13 +2435,6 @@ body.in-guided-presentation .map-view-pill {
 
 
 /* LOCALITY SUMMARY STRIP OVERLAY */
-/* Explicit Screen Zone Anchors */
-.locality-summary-strip { position: absolute; top: 16px; left: 16px; z-index: 400; }
-.map-view-pill          { position: absolute; top: 16px; right: 16px; z-index: 410; }
-.property-detail-panel  { position: absolute; top: 0; right: 0; z-index: 500; }
-.compare-tray           { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 600; }
-.price-legend, .techpark-legend { position: absolute; bottom: 20px; left: 16px; z-index: 400; }
-
 .locality-summary-strip {
   position: absolute;
   top: 14px;
@@ -2489,7 +2482,7 @@ body.in-guided-presentation .map-view-pill {
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  color: #B88E52;
+  color: #E2C699;
   background: rgba(182, 138, 76, 0.2);
   padding: 2px 7px;
   border-radius: 4px;
@@ -2599,7 +2592,7 @@ body.in-guided-presentation .locality-summary-strip {
 
 .popup-card__tp-details {
   font-size: 10px;
-  color: #59616B;
+  color: #5B6B62;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -2730,7 +2723,7 @@ body.in-guided-presentation .locality-summary-strip {
   font-size: 8.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #59616B;
+  color: #7A8288;
   margin-bottom: 8px;
   display: block;
 }
@@ -2814,8 +2807,8 @@ body.in-guided-presentation .locality-summary-strip {
   white-space: nowrap;
 }
 .card__ak-score--high { background: var(--gold); color: #fff; }
-.card__ak-score--mid  { background: rgba(154,123,79,0.2); color: #B88E52; border: 1px solid rgba(154,123,79,0.35); }
-.card__ak-score--low  { background: rgba(0,0,0,0.06); color: #59616B; }
+.card__ak-score--mid  { background: rgba(154,123,79,0.2); color: #8A6C40; border: 1px solid rgba(154,123,79,0.35); }
+.card__ak-score--low  { background: rgba(0,0,0,0.06); color: #7A8288; }
 
 .card__row2 {
   display: flex;
@@ -2831,7 +2824,7 @@ body.in-guided-presentation .locality-summary-strip {
 }
 .card__config {
   font-weight: 600;
-  color: #59616B;
+  color: #5B6B62;
 }
 
 .card__row3-why {
@@ -2846,7 +2839,7 @@ body.in-guided-presentation .locality-summary-strip {
 
 .card__row4-footer {
   font-size: 10.5px;
-  color: #59616B;
+  color: #7A8288;
 }
 
 /* Property Detail Panel (Right-side Sliding Panel) */
@@ -2906,7 +2899,7 @@ body.in-guided-presentation .locality-summary-strip {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: rgba(154,123,79,0.3);
-  color: #B88E52;
+  color: #E2C699;
   border: 1px solid rgba(154,123,79,0.45);
   padding: 2px 7px;
   border-radius: 3px;
@@ -2931,7 +2924,7 @@ body.in-guided-presentation .locality-summary-strip {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 14px;
-  color: #B88E52;
+  color: #E2C699;
 }
 .pdp__config {
   font-family: var(--font-mono);
@@ -2948,7 +2941,7 @@ body.in-guided-presentation .locality-summary-strip {
   margin-left: auto;
 }
 .pdp__ak-score--high { background: var(--gold); color: #fff; }
-.pdp__ak-score--mid  { background: rgba(154,123,79,0.28); color: #B88E52; border: 1px solid rgba(154,123,79,0.4); }
+.pdp__ak-score--mid  { background: rgba(154,123,79,0.28); color: #E2C699; border: 1px solid rgba(154,123,79,0.4); }
 .pdp__ak-score--low  { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); }
 
 .pdp__body {
@@ -3013,8 +3006,8 @@ body.in-guided-presentation .locality-summary-strip {
 }
 .pdp__commute-icon { font-size: 26px; flex: 0 0 auto; line-height: 1; }
 .pdp__commute-time { font-family: var(--font-mono); font-weight: 800; font-size: 22px; color: var(--navy); line-height: 1; }
-.pdp__commute-detail { font-size: 10.5px; color: #59616B; margin-top: 2px; }
-.pdp__commute-to { font-size: 10px; color: #59616B; margin-top: 3px; }
+.pdp__commute-detail { font-size: 10.5px; color: #5B6B62; margin-top: 2px; }
+.pdp__commute-to { font-size: 10px; color: #7A8288; margin-top: 3px; }
 
 .pdp__amenity-group { margin-bottom: 10px; }
 .pdp__amenity-group-label {
@@ -3070,7 +3063,7 @@ body.in-guided-presentation .locality-summary-strip {
 }
 .pdp__action-btn:hover { border-color: var(--gold); }
 .pdp__action-btn--active { background: rgba(182,138,76,0.14); border-color: var(--gold); color: var(--rust); }
-.pdp__action-btn--in-compare { background: #B88E52; border-color: #B88E52; color: #fff; }
+.pdp__action-btn--in-compare { background: #B68A4C; border-color: #B68A4C; color: #fff; }
 
 .pdp__cta {
   width: 100%;
@@ -3089,8 +3082,8 @@ body.in-guided-presentation .locality-summary-strip {
   justify-content: center;
   gap: 6px;
 }
-.pdp__cta:hover { background: #B88E52; }
-.pdp__dev-footer { font-size: 10px; color: #59616B; text-align: center; margin-top: 2px; }
+.pdp__cta:hover { background: #8a6c40; }
+.pdp__dev-footer { font-size: 10px; color: #7A8288; text-align: center; margin-top: 2px; }
 
 @media (max-width: 860px) {
   .property-detail-panel {
@@ -3219,8 +3212,8 @@ body.in-guided-presentation .locality-summary-strip {
   height: 36px;
   padding: 0 8px;
   border-radius: 999px;
-  background: #1F2B38;
-  color: #B88E52;
+  background: #12202E;
+  color: #E2C699;
   border: 2px solid var(--gold);
   box-shadow: 0 4px 14px rgba(0,0,0,0.35);
   display: flex;
@@ -3253,7 +3246,7 @@ body.in-guided-presentation .locality-summary-strip {
   box-shadow: 0 6px 20px rgba(0,0,0,0.35) !important;
   color: #fff !important;
 }
-.price-legend__title { color: #B88E52 !important; font-family: var(--font-mono) !important; }
+.price-legend__title { color: #E2C699 !important; font-family: var(--font-mono) !important; }
 
 
 /* ===== ADVISOR EXPERIENCE & PRESENTATION SWITCHER ===== */
@@ -3276,7 +3269,7 @@ body.in-guided-presentation .locality-summary-strip {
   border-color: var(--gold);
 }
 .p-rail__select option {
-  background: #1F2B38;
+  background: #12202E;
   color: #FFFFFF;
   padding: 4px;
 }
@@ -3286,7 +3279,7 @@ body.in-guided-presentation .locality-summary-strip {
 .loading-state {
   padding: 24px 16px;
   text-align: center;
-  color: #59616B;
+  color: #7A8288;
   font-size: 12px;
   font-weight: 600;
   background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(182,138,76,0.14) 50%, rgba(255,255,255,0.6) 100%);
@@ -3304,7 +3297,7 @@ body.in-guided-presentation .locality-summary-strip {
 .empty-state {
   padding: 32px 18px;
   text-align: center;
-  color: #59616B;
+  color: #5B6B62;
   font-size: 12.5px;
   line-height: 1.5;
   background: #FFFFFF;
@@ -3344,13 +3337,13 @@ button:focus-visible, select:focus-visible, input:focus-visible {
 /* ===== HIGH CONTRAST VISIBLE BUYER PROFILE BOX ===== */
 .buyer-profile-bar {
   border-bottom: 1px solid rgba(182, 138, 76, 0.4) !important;
-  background: #1F2B38 !important;
+  background: #12202E !important;
   color: #FFFFFF !important;
 }
 
 .buyer-profile-bar__summary {
   padding: 11px 18px !important;
-  background: #1F2B38 !important;
+  background: #12202E !important;
   border-bottom: 1px solid rgba(182, 138, 76, 0.25) !important;
   cursor: pointer;
 }
@@ -3360,7 +3353,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
 
 .buyer-profile-bar__badge {
   background: rgba(182, 138, 76, 0.25) !important;
-  color: #B88E52 !important;
+  color: #E2C699 !important;
   border: 1px solid rgba(182, 138, 76, 0.5) !important;
   font-weight: 700 !important;
   font-size: 8.5px !important;
@@ -3374,12 +3367,12 @@ button:focus-visible, select:focus-visible, input:focus-visible {
 }
 
 .buyer-profile-bar__icon {
-  color: #B88E52 !important;
+  color: #E2C699 !important;
 }
 
 .buyer-profile-bar__edit-hint,
 .buyer-profile-bar__chevron {
-  color: #B88E52 !important;
+  color: #E2C699 !important;
   font-weight: 700 !important;
 }
 
@@ -3472,7 +3465,7 @@ html, body {
   transition: transform 150ms ease-out, background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 .btn-primary:hover, .btn-present:hover, .btn-bp-save:hover {
-  background: #B88E52 !important;
+  background: #8A6C40 !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(154, 123, 79, 0.45);
 }
@@ -3506,7 +3499,7 @@ html, body {
 .btn-ghost {
   background: transparent !important;
   border: none !important;
-  color: #59616B !important;
+  color: #7A8288 !important;
   cursor: pointer;
   transition: color 150ms ease-out;
 }
@@ -3734,9 +3727,9 @@ html, body {
 .pdp__con-item {
   font-size: 11px;
   line-height: 1.4;
-  color: #59616B;
+  color: #7A8288;
   background: rgba(0,0,0,0.03);
-  border-left: 3px solid #59616B;
+  border-left: 3px solid #7A8288;
   padding: 6px 10px;
   border-radius: 0 4px 4px 0;
 }
@@ -3758,7 +3751,7 @@ html, body {
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #B88E52;
+  color: #E2C699;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -3774,7 +3767,7 @@ html, body {
 
 .compare-summary-box__winner-tag {
   background: rgba(182, 138, 76, 0.22);
-  color: #B88E52;
+  color: #E2C699;
   border: 1px solid rgba(182, 138, 76, 0.45);
   padding: 4px 10px;
   border-radius: 4px;
@@ -3804,7 +3797,7 @@ html, body {
 .l-strip__pillar-item {
   font-size: 10.5px;
   line-height: 1.35;
-  color: #B88E52;
+  color: #E2C699;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(182, 138, 76, 0.3);
   padding: 4px 8px;
@@ -4011,7 +4004,7 @@ html, body {
   width: 320px !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  box-shadow: var(--shadow-overlay) !important;
+  box-shadow: 0 14px 36px rgba(24, 42, 61, 0.45) !important;
   border: 1.5px solid var(--gold) !important;
   background: var(--navy) !important;
   cursor: grab !important;
@@ -4264,18 +4257,7 @@ html, body {
 
             <label class="field">
               <span class="field__label">Construction Stage</span>
-                        <div class="field-row" style="margin-top:10px;">
-            <label class="field">
-              <span class="field__label">Min Budget (₹ Lakhs)</span>
-              <input type="number" id="filterMinBudget" class="field__input tabular-nums" placeholder="e.g. 80" min="0" max="1000" step="5" />
-            </label>
-            <label class="field">
-              <span class="field__label">Max Budget (₹ Lakhs)</span>
-              <input type="number" id="filterMaxBudget" class="field__input tabular-nums" placeholder="e.g. 250" min="0" max="1000" step="5" />
-            </label>
-          </div>
-
-          <select id="filterStage" class="field__input">
+              <select id="filterStage" class="field__input">
                 <option value="">All stages</option>
                 <option value="Under construction">Under construction</option>
                 <option value="Ready to move">Ready to move</option>
@@ -7377,8 +7359,6 @@ const els = {
   workLocationText: document.getElementById("filterWorkLocationText"),
   clearWorkLocationText: document.getElementById("clearWorkLocationText"),
   workLocationDropdown: document.getElementById("workLocationSuggestionsDropdown"),
-  minBudget: document.getElementById("filterMinBudget"),
-  maxBudget: document.getElementById("filterMaxBudget"),
   locality: document.getElementById("filterLocality"),
   stage: document.getElementById("filterStage"),
   recommended: document.getElementById("filterRecommended"),
@@ -7484,9 +7464,7 @@ function getBuyerCommute(propertyLat, propertyLng) {
 }
 
 function nearestOrWithinRadius(list, property, radiusKm) {
-  const filtered = getAmenitiesBoundingBox(list, property.lat, property.lng, 0.08);
-  const pool = filtered.length > 0 ? filtered : list;
-  const withDistance = pool.map((item) => ({
+  const withDistance = list.map((item) => ({
     ...item,
     distanceKm: haversineKm(property.lat, property.lng, item.lat, item.lng),
   }));
@@ -7499,24 +7477,13 @@ function nearestOrWithinRadius(list, property, radiusKm) {
 }
 
 function nearestN(list, property, n) {
-  const filtered = getAmenitiesBoundingBox(list, property.lat, property.lng, 0.08);
-  const pool = filtered.length > 0 ? filtered : list;
-  return pool
+  return list
     .map((item) => ({
       ...item,
       distanceKm: haversineKm(property.lat, property.lng, item.lat, item.lng),
     }))
     .sort((a, b) => a.distanceKm - b.distanceKm)
     .slice(0, n);
-}
-
-function getAmenitiesBoundingBox(list, centerLat, centerLng, maxDeltaDeg = 0.045) {
-  if (!Array.isArray(list)) return [];
-  return list.filter((item) =>
-    typeof item.lat === "number" && typeof item.lng === "number" &&
-    Math.abs(item.lat - centerLat) <= maxDeltaDeg &&
-    Math.abs(item.lng - centerLng) <= maxDeltaDeg
-  );
 }
 
 function getDisplayAmenities(property) {
@@ -7565,9 +7532,9 @@ function techParkPopupHtml(tp, distanceKm) {
 }
 
 function getTechParkCommuteMins(distanceKm) {
-  const offPeak = Math.max(4, Math.round(distanceKm * 1.8 + 2));
-  const peak = Math.max(8, Math.round(distanceKm * 3.2 + 5));
-  return `${offPeak}–${peak}`;
+  if (distanceKm <= 1.5) return Math.max(3, Math.round(distanceKm * 2.5 + 2));
+  if (distanceKm <= 8) return Math.round(distanceKm * 2.4 + 3);
+  return Math.round(distanceKm * 2.2 + 5);
 }
 
 function nearbyTechParksHtml(nearby) {
@@ -8278,7 +8245,7 @@ function buildAreaPriceHoverCircles() {
       fillOpacity: 0, strokeOpacity: 0, clickable: true, zIndex: 5,
     });
     circle.addListener("mouseover", (e) => {
-      circle.setOptions({ fillOpacity: 0.12, fillColor: "#B88E52", strokeOpacity: 0.6, strokeColor: "#B88E52", strokeWeight: 2 });
+      circle.setOptions({ fillOpacity: 0.12, fillColor: "#B68A4C", strokeOpacity: 0.6, strokeColor: "#B68A4C", strokeWeight: 2 });
       showAreaPriceHoverTip(area, e.domEvent);
     });
     circle.addListener("mousemove", (e) => moveAreaPriceHoverTip(e.domEvent));
@@ -8521,16 +8488,6 @@ function popupHtml(p, nearbyTechParks, nearbyMetro, nearbySchools, nearbyHospita
   `;
 }
 
-function getSpiderfiedPosition(lat, lng, index, total) {
-  if (total <= 1) return { lat, lng };
-  const angle = (index / total) * 2 * Math.PI;
-  const radiusDegrees = 0.00025; // ~25-30m dispersion radius
-  return {
-    lat: lat + radiusDegrees * Math.sin(angle),
-    lng: lng + radiusDegrees * Math.cos(angle)
-  };
-}
-
 function defineMarkerLayerClass() {
   return class extends google.maps.OverlayView {
     constructor(gmap) {
@@ -8641,26 +8598,6 @@ function defineMarkerLayerClass() {
       });
     }
   };
-}
-
-function switchMobileTab(tab) {
-  document.querySelectorAll(".mobile-nav-tab").forEach((t) => t.classList.remove("mobile-nav-tab--active"));
-  const mapWrap = document.querySelector(".map-wrap");
-  const listSection = document.getElementById("listSection");
-  const pdp = document.getElementById("propertyDetailPanel");
-
-  if (tab === "map") {
-    if (mapWrap) mapWrap.style.display = "block";
-    if (listSection) listSection.style.display = "";
-    if (pdp && pdp.hidden === false) pdp.hidden = false;
-  } else if (tab === "list") {
-    if (listSection) listSection.scrollIntoView({ behavior: "smooth" });
-  } else if (tab === "detail") {
-    if (pdp && activeCardId) {
-      pdp.hidden = false;
-      pdp.scrollIntoView({ behavior: "smooth" });
-    }
-  }
 }
 
 function initMap() {
@@ -8967,10 +8904,10 @@ function renderDetailPanel(property) {
 
   var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Developer &amp; Project Details</div>' +
     '<div style="font-size:12px;line-height:1.7;color:var(--navy)">' +
-    '<div><span style="color:#59616B;font-size:10px;letter-spacing:0.06em;">DEVELOPER PEDIGREE</span><br/><strong>' + property.developer + '</strong> · Grade-A Builder</div>' +
-    '<div style="margin-top:6px"><span style="color:#59616B;font-size:10px;letter-spacing:0.06em;">MICRO-MARKET</span><br/>' + property.locality + '</div>' +
-    '<div style="margin-top:6px"><span style="color:#59616B;font-size:10px;letter-spacing:0.06em;">CORRIDOR</span><br/>' + property.zone + '</div>' +
-    '<div style="margin-top:6px"><span style="color:#59616B;font-size:10px;letter-spacing:0.06em;">CONSTRUCTION STATUS</span><br/>' + property.status + '</div>' +
+    '<div><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">DEVELOPER PEDIGREE</span><br/><strong>' + property.developer + '</strong> · Grade-A Builder</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">MICRO-MARKET</span><br/>' + property.locality + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CORRIDOR</span><br/>' + property.zone + '</div>' +
+    '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CONSTRUCTION STATUS</span><br/>' + property.status + '</div>' +
     '</div></div>';
 
   document.getElementById("pdpBody").innerHTML = whyHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
@@ -9792,11 +9729,6 @@ function getFiltered() {
     // Recommended only checkbox filter
     if (recommendedOnly && !p.recommended) return false;
 
-    // Dual-thumb budget range filter
-    const pPrices = getPropertyPriceRangeLakhs(p);
-    const matchesBudget = pPrices.min <= maxB && pPrices.max >= minB;
-    if (!matchesBudget) return false;
-
     return true;
   });
 }
@@ -9825,21 +9757,6 @@ let presentationActive = false;
 let presentationCurrentStep = 0;
 let presentationPreState = null;
 let presentationPropertyId = null;
-
-function copyClientSummaryLink() {
-  const url = window.location.href;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(url).then(() => {
-      alert("📋 Client Summary Link copied to clipboard!");
-    });
-  } else {
-    alert(`Client Summary Link: ${url}`);
-  }
-}
-
-function exportPdfShortlist() {
-  window.print();
-}
 
 function startGuidedPresentation(propId) {
   const filteredList = (typeof getFiltered === 'function' && getFiltered().length > 0) ? getFiltered() : ALL_PROPERTIES;
@@ -9968,7 +9885,7 @@ function applyPresentationStep(stepIdx) {
       </div>
       <div class="p-card__title">${property.title}</div>
       <div class="p-card__body">
-        <div style="margin-bottom:6px; font-weight:600; color:#B88E52;">${details.priceStr} · ${details.config}</div>
+        <div style="margin-bottom:6px; font-weight:600; color:#E2C699;">${details.priceStr} · ${details.config}</div>
         <div>Developer: <strong>${property.developer}</strong></div>
         <div>Locality: <strong>${property.locality}</strong> (${property.zone})</div>
         <div>Status: <strong>${property.status}</strong></div>
@@ -10081,7 +9998,7 @@ function applyPresentationStep(stepIdx) {
     stepCard.innerHTML = `
       <div class="p-card__header">
         <span class="p-card__step-label">Step 4 of 6 · Price Context</span>
-        <span style="font-size:12px; color:#B88E52; font-weight:700;">₹${Math.round(area.avgPrice).toLocaleString('en-IN')}/sqft</span>
+        <span style="font-size:12px; color:#E2C699; font-weight:700;">₹${Math.round(area.avgPrice).toLocaleString('en-IN')}/sqft</span>
       </div>
       <div class="p-card__title">${property.locality} Market Benchmark</div>
       <div class="p-card__body">
@@ -10145,7 +10062,7 @@ function applyPresentationStep(stepIdx) {
     stepCard.innerHTML = `
       <div class="p-card__header">
         <span class="p-card__step-label">Step 6 of 6 · Recommendation</span>
-        <span style="font-size:12px; color:#B88E52; font-weight:700;">AK ${property.akScore || 78}</span>
+        <span style="font-size:12px; color:#E2C699; font-weight:700;">AK ${property.akScore || 78}</span>
       </div>
       <div class="p-card__title">Why We Recommend ${property.title}</div>
       <div class="p-card__body">
@@ -10342,9 +10259,9 @@ function renderLocalityCircleHighlight(keyName) {
     map: map,
     center: { lat: locData.lat, lng: locData.lng },
     radius: locData.radiusMeters || 3000,
-    fillColor: "#B88E52",
+    fillColor: "#B68A4C",
     fillOpacity: 0.14,
-    strokeColor: "#B88E52",
+    strokeColor: "#B68A4C",
     strokeOpacity: 0.85,
     strokeWeight: 2.5,
     clickable: false,
@@ -10660,8 +10577,6 @@ function wireControls() {
   });
 
   [els.locality, els.stage].forEach((el) => el.addEventListener("change", applyFilters));
-  if (els.minBudget) els.minBudget.addEventListener("input", applyFilters);
-  if (els.maxBudget) els.maxBudget.addEventListener("input", applyFilters);
   els.recommended.addEventListener("change", applyFilters);
 
   // Locality Chips wiring
@@ -10924,16 +10839,5 @@ setTimeout(() => {
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&callback=onGoogleMapsLoaded" async defer></script>
-  <div id="mobileNavBar" class="mobile-nav-bar" role="navigation" aria-label="Mobile Viewport Tabs">
-    <button type="button" class="mobile-nav-tab mobile-nav-tab--active" onclick="switchMobileTab('map')">
-      <span>🗺️</span><span>Map View</span>
-    </button>
-    <button type="button" class="mobile-nav-tab" onclick="switchMobileTab('list')">
-      <span>📋</span><span>Listings</span>
-    </button>
-    <button type="button" class="mobile-nav-tab" onclick="switchMobileTab('detail')">
-      <span>🏠</span><span>Detail</span>
-    </button>
-  </div>
 </body>
 </html>
