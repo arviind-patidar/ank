@@ -2383,9 +2383,9 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
 /* PERSISTENT MAP VIEW PILL CONTROL */
 .map-view-pill {
   position: absolute;
-  top: 14px;
-  right: 68px;
-  z-index: 450;
+  top: 16px;
+  right: 16px;
+  z-index: 410;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -2437,11 +2437,11 @@ body.in-guided-presentation .map-view-pill {
 /* LOCALITY SUMMARY STRIP OVERLAY */
 .locality-summary-strip {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 16px;
+  left: 16px;
   width: 440px;
   max-width: calc(100vw - 40px);
-  z-index: 440;
+  z-index: 400;
   background: rgba(24, 42, 61, 0.94);
   backdrop-filter: blur(12px);
   border: 1px solid var(--gold);
@@ -8488,6 +8488,16 @@ function popupHtml(p, nearbyTechParks, nearbyMetro, nearbySchools, nearbyHospita
   `;
 }
 
+function getSpiderfiedPosition(lat, lng, index, total) {
+  if (total <= 1) return { lat, lng };
+  const angle = (index / total) * 2 * Math.PI;
+  const radiusDegrees = 0.00025; // ~25-30m dispersion
+  return {
+    lat: lat + radiusDegrees * Math.sin(angle),
+    lng: lng + radiusDegrees * Math.cos(angle)
+  };
+}
+
 function defineMarkerLayerClass() {
   return class extends google.maps.OverlayView {
     constructor(gmap) {
@@ -8511,7 +8521,17 @@ function defineMarkerLayerClass() {
       const showNames = zoom >= ZOOM_THRESHOLD;
 
       const points = this.properties.map((p) => {
-        const pt = projection.fromLatLngToDivPixel(new google.maps.LatLng(p.lat, p.lng));
+        let lat = p.lat, lng = p.lng;
+        if (zoom >= 14) {
+          const sameLoc = this.properties.filter((other) => Math.abs(other.lat - p.lat) < 0.00015 && Math.abs(other.lng - p.lng) < 0.00015);
+          if (sameLoc.length > 1) {
+            const idx = sameLoc.indexOf(p);
+            const pos = getSpiderfiedPosition(p.lat, p.lng, idx, sameLoc.length);
+            lat = pos.lat;
+            lng = pos.lng;
+          }
+        }
+        const pt = projection.fromLatLngToDivPixel(new google.maps.LatLng(lat, lng));
         return { property: p, x: pt.x, y: pt.y };
       });
 
