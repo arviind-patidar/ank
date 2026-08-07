@@ -4486,7 +4486,7 @@ html, body {
     <div class="price-legend__title">Price / sqft</div>
     <div class="price-legend__gradient"></div>
     <div class="price-legend__scale">
-      <span>₹4K</span><span>₹6K</span><span>₹8K</span><span>₹10K</span><span>₹12K+</span>
+      <span>₹6K</span><span>₹8K</span><span>₹10K</span><span>₹12K</span><span>₹14K+</span>
     </div>
   </div>
 
@@ -8107,15 +8107,15 @@ function setTechParkViewMode(active) {
 
 /* AREA PRICE HEATMAP */
 const PRICE_COLOR_STOPS = [
-  [4000,  168, 216, 185], // #A8D8B9 (Soft Green)
-  [5000,  207, 221, 173], // Soft Green-Yellow Interpolation
-  [6000,  246, 227, 161], // #F6E3A1 (Soft Yellow)
-  [7000,  245, 212, 149], // Soft Yellow-Orange Interpolation
-  [8000,  245, 197, 138], // #F5C58A (Soft Orange)
-  [9000,  242, 178, 130], // Soft Orange-Coral Interpolation
-  [10000, 239, 160, 122], // #EFA07A (Muted Coral)
-  [11000, 227, 142, 118], // Muted Coral-Terracotta Interpolation
-  [12000, 216, 124, 114], // #D87C72 (Soft Terracotta)
+  [6000,  168, 216, 185], // #A8D8B9 (Soft Green - ₹6k)
+  [7000,  207, 221, 173], // Interpolation (₹7k)
+  [8000,  246, 227, 161], // #F6E3A1 (Soft Yellow - ₹8k)
+  [9000,  245, 212, 149], // Interpolation (₹9k)
+  [10000, 245, 197, 138], // #F5C58A (Soft Orange - ₹10k)
+  [11000, 242, 178, 130], // Interpolation (₹11k)
+  [12000, 239, 160, 122], // #EFA07A (Muted Coral - ₹12k)
+  [13000, 227, 142, 118], // Interpolation (₹13k)
+  [14000, 216, 124, 114], // #D87C72 (Soft Terracotta - ₹14k+)
 ];
 
 function colorForPrice(price) {
