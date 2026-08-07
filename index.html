@@ -1173,6 +1173,16 @@ body {
   cursor: not-allowed;
 }
 
+.tech-park-density-canvas {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tech-park-density-canvas--visible {
+  opacity: 1;
+}
+
 .area-price-insight-card {
   display: none;
   margin: 0 0 14px 0;
@@ -7868,24 +7878,26 @@ function updateMallDisplay() {
 
 /* TECH PARK DENSITY HEATMAP */
 function defineTechParkDensityOverlayClass() {
-  const COLOR_STOPS = [
-    [0.00, 154, 123, 79],
-    [0.30, 154, 123, 79],
-    [0.50, 126, 90, 50],
-    [0.68, 96, 62, 36],
-    [0.84, 58, 40, 28],
-    [1.00, 24, 42, 61],
+  // Professional GIS Analytics Blue Palette:
+  // Low (#DCEEFF) -> Med-Low (#B9DBFF) -> Med (#89C2FF) -> High (#4A90E2) -> Very High (#2F6FB8)
+  const GIS_BLUE_STOPS = [
+    [0.00, 220, 238, 255], // Low (#DCEEFF)
+    [0.25, 185, 219, 255], // Medium-Low (#B9DBFF)
+    [0.50, 137, 194, 255], // Medium (#89C2FF)
+    [0.75,  74, 144, 226], // High (#4A90E2)
+    [1.00,  47, 111, 184]  // Very High (#2F6FB8)
   ];
+
   function colorForIntensity(t) {
-    for (let i = 0; i < COLOR_STOPS.length - 1; i++) {
-      const [t0, r0, g0, b0] = COLOR_STOPS[i];
-      const [t1, r1, g1, b1] = COLOR_STOPS[i + 1];
+    for (let i = 0; i < GIS_BLUE_STOPS.length - 1; i++) {
+      const [t0, r0, g0, b0] = GIS_BLUE_STOPS[i];
+      const [t1, r1, g1, b1] = GIS_BLUE_STOPS[i + 1];
       if (t >= t0 && t <= t1) {
         const f = (t - t0) / (t1 - t0 || 1);
         return [r0 + (r1 - r0) * f, g0 + (g1 - g0) * f, b0 + (b1 - b0) * f];
       }
     }
-    return [24, 42, 61];
+    return [47, 111, 184];
   }
 
   return class extends google.maps.OverlayView {
@@ -7894,17 +7906,39 @@ function defineTechParkDensityOverlayClass() {
     }
     onAdd() {
       this.canvas = document.createElement("canvas");
-      this.canvas.style.position = "absolute"; this.canvas.style.pointerEvents = "none";
-      this.getPanes().overlayLayer.appendChild(this.canvas);
+      this.canvas.className = "tech-park-density-canvas";
+      // Mount on mapPane so density renders BELOW all markers, pins, clusters and popups
+      const panes = this.getPanes();
+      const parentPane = panes.mapPane || panes.overlayLayer;
+      parentPane.appendChild(this.canvas);
     }
-    onRemove() { if (this.canvas) { this.canvas.parentNode.removeChild(this.canvas); this.canvas = null; } }
-    setPoints(points) { this.points = points; this.draw(); }
+    onRemove() {
+      if (this.canvas) {
+        if (this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
+        this.canvas = null;
+      }
+    }
+    setPoints(points) {
+      this.points = points;
+      this.draw();
+      if (this.canvas) {
+        if (points && points.length > 0) {
+          this.canvas.classList.add("tech-park-density-canvas--visible");
+        } else {
+          this.canvas.classList.remove("tech-park-density-canvas--visible");
+        }
+      }
+    }
     draw() {
       if (!this.canvas) return;
       const projection = this.getProjection(); if (!projection) return;
       const gmap = this.getMap(); if (!gmap) return;
       const bounds = gmap.getBounds();
-      if (!bounds || this.points.length === 0) { this.canvas.width = 0; this.canvas.height = 0; return; }
+      if (!bounds || this.points.length === 0) {
+        this.canvas.width = 0; this.canvas.height = 0;
+        this.canvas.classList.remove("tech-park-density-canvas--visible");
+        return;
+      }
 
       const ne = projection.fromLatLngToDivPixel(bounds.getNorthEast());
       const sw = projection.fromLatLngToDivPixel(bounds.getSouthWest());
@@ -7914,26 +7948,44 @@ function defineTechParkDensityOverlayClass() {
       this.canvas.width = width; this.canvas.height = height;
 
       const ctx = this.canvas.getContext("2d");
-      ctx.clearRect(0, 0, width, height); ctx.globalCompositeOperation = "lighter";
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "lighter";
 
-      const radius = 42;
+      // Zoom-adaptive granularity: regional hotspots split into campus zones on zoom-in
+      const zoom = gmap.getZoom() || 12;
+      const radius = zoom >= 13.5
+        ? Math.max(22, 50 - (zoom - 12) * 9)
+        : Math.min(55, Math.max(40, 50 + (12 - zoom) * 4));
+
       this.points.forEach((pt) => {
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
         const x = pixel.x - sw.x; const y = pixel.y - ne.y;
         if (x < -radius || x > width + radius || y < -radius || y > height + radius) return;
+
         const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        grad.addColorStop(0, "rgba(255,255,255,0.4)");
+        grad.addColorStop(0, "rgba(255,255,255,0.45)");
+        grad.addColorStop(0.5, "rgba(255,255,255,0.20)");
         grad.addColorStop(1, "rgba(255,255,255,0)");
-        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
       });
 
+      // Recolor canvas alpha into professional GIS blue gradient with 40-45% max opacity
       const imgData = ctx.getImageData(0, 0, width, height);
       const data = imgData.data;
+      const maxTargetAlpha = 112; // 44% max opacity for high map readability
+
       for (let i = 0; i < data.length; i += 4) {
-        const a = data[i + 3]; if (a === 0) continue;
-        const t = Math.min(1, a / 170);
+        const a = data[i + 3];
+        if (a === 0) continue;
+        const t = Math.min(1, a / 160);
         const [r, g, b] = colorForIntensity(t);
-        data[i] = r; data[i + 1] = g; data[i + 2] = b; data[i + 3] = Math.min(235, 55 + a);
+        data[i] = Math.round(r);
+        data[i + 1] = Math.round(g);
+        data[i + 2] = Math.round(b);
+        data[i + 3] = Math.round(Math.min(maxTargetAlpha, a * 0.65));
       }
       ctx.putImageData(imgData, 0, 0);
     }
