@@ -771,6 +771,8 @@ body {
   box-shadow: 0 5px 16px rgba(46, 111, 126, 0.45);
 }
 
+/* Soft, Light Pastel Amenity Markers (Low Contrast, Property is HERO) */
+
 /* Tech park marker & hover-only label styling */
 .techpark-marker {
   display: flex;
@@ -778,55 +780,54 @@ body {
   align-items: center;
   position: relative;
   cursor: pointer;
+  z-index: 120;
 }
 
 .techpark-marker__pin {
-  width: 24px;
-  height: 24px;
-  background: #2E6F7E;
-  border: 2px solid #123138;
-  border-radius: 6px;
+  width: 19px;
+  height: 19px;
+  background: #527196;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease-out, box-shadow 180ms ease-out;
+  box-shadow: 0 2px 6px rgba(82, 113, 150, 0.35);
+  transition: transform 180ms ease, background-color 180ms ease;
 }
 
 .techpark-marker:hover .techpark-marker__pin {
-  transform: scale(1.18);
-  background: #3E8A9C;
-  box-shadow: 0 4px 12px rgba(46, 111, 126, 0.45);
+  transform: scale(1.15);
+  background: #3B587B;
 }
 
 .techpark-marker__leader {
   width: 1px;
-  height: 6px;
-  background: #2E6F7E;
+  height: 5px;
+  background: #527196;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 180ms ease-out, visibility 180ms ease-out;
 }
 
 .techpark-marker__tag {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 8px;
-  color: #fff;
-  background: #1F2B38;
+  color: #2D435A;
+  background: #EBF3FA;
   padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 160px;
-  border: 1px solid var(--gold);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  border: 1px solid #829AB1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(4px);
-  transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1), visibility 180ms ease-out;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
   z-index: 10;
 }
 
@@ -837,8 +838,8 @@ body {
   transform: translateY(0);
 }
 
-.cluster-bubble--techpark { background: #2E6F7E; }
-.cluster-bubble--techpark:hover { background: #3E8A9C; color: #fff; }
+.cluster-bubble--techpark { background: #527196; }
+.cluster-bubble--techpark:hover { background: #3B587B; color: #fff; }
 
 .popup-card__techpark-badge {
   display: inline-block;
@@ -848,8 +849,8 @@ body {
   text-transform: uppercase;
   padding: 2px 6px;
   border-radius: 2px;
-  background: rgba(46,111,126,0.12);
-  color: #2E6F7E;
+  background: #EBF3FA;
+  color: #2D435A;
   margin-bottom: 4px;
 }
 
@@ -860,88 +861,88 @@ body {
 }
 .popup-card__techparks-label {
   font-family: var(--font-mono); font-weight: 600; font-size: 8px;
-  letter-spacing: 0.04em; text-transform: uppercase; color: #2E6F7E; margin-bottom: 3px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #527196; margin-bottom: 3px;
 }
 .popup-card__techpark-row { font-size: 10px; color: var(--navy); line-height: 1.5; }
 .popup-card__techparks-empty { font-size: 9.5px; color: #7A8288; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 5px; }
 
 /* Metro station marker */
-.metro-marker { display: flex; flex-direction: column; align-items: center; }
+.metro-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .metro-marker__pin {
-  width: 20px; height: 20px; border-radius: 50%; border: 2px solid #1A1A1A;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+  width: 18px; height: 18px; border-radius: 50%; background: #6E5C8A; border: 1.5px solid #FFFFFF;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(110, 92, 138, 0.35);
 }
-.metro-marker__leader { width: 1px; height: 8px; background: #1A1A1A; }
+.metro-marker__leader { width: 1px; height: 5px; background: #6E5C8A; }
 .metro-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
-  padding: 2px 6px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #1A1A1A; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #423656;
+  background: #F3EFEF; padding: 3px 8px; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #968AA8; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
-.cluster-bubble--metro { background: #5B3E96; }
-.cluster-bubble--metro:hover { background: #7A55C4; color: #fff; }
+.cluster-bubble--metro { background: #6E5C8A; }
+.cluster-bubble--metro:hover { background: #52436B; color: #fff; }
 
 .popup-card__metros { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__metros-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #5B3E96; margin-bottom: 4px; }
+.popup-card__metros-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #6E5C8A; margin-bottom: 4px; }
 .popup-card__metro-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__metros-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* School marker */
-.school-marker { display: flex; flex-direction: column; align-items: center; }
+.school-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .school-marker__pin {
-  width: 21px; height: 21px; background: #C77F1A; border: 2px solid #6B4310;
-  border-radius: 6px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 0 3px rgba(199,127,26,0.22);
+  width: 18px; height: 18px; background: #8A7346; border: 1.5px solid #FFFFFF;
+  border-radius: 5px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(138, 115, 70, 0.35);
 }
-.school-marker__leader { width: 1px; height: 8px; background: #C77F1A; }
+.school-marker__leader { width: 1px; height: 5px; background: #8A7346; }
 .school-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
-  background: #C77F1A; padding: 2px 6px; border-radius: 3px; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #6B4310; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #4F4022;
+  background: #FAF5E8; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #A8956F; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
-.cluster-bubble--school { background: #C77F1A; }
-.cluster-bubble--school:hover { background: #E0993A; color: #fff; }
+.cluster-bubble--school { background: #8A7346; }
+.cluster-bubble--school:hover { background: #6B5731; color: #fff; }
 
 .popup-card__schools { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__schools-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #C77F1A; margin-bottom: 4px; }
+.popup-card__schools-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #8A7346; margin-bottom: 4px; }
 .popup-card__school-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__schools-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* Hospital marker */
-.hospital-marker { display: flex; flex-direction: column; align-items: center; }
+.hospital-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .hospital-marker__pin {
-  width: 21px; height: 21px; background: #B7332C; border: 2px solid #5C1815;
+  width: 18px; height: 18px; background: #A35249; border: 1.5px solid #FFFFFF;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 0 3px rgba(183,51,44,0.22);
+  box-shadow: 0 2px 6px rgba(163, 82, 73, 0.35);
 }
-.hospital-marker__leader { width: 1px; height: 8px; background: #B7332C; }
+.hospital-marker__leader { width: 1px; height: 5px; background: #A35249; }
 .hospital-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
-  background: #B7332C; padding: 2px 6px; border-radius: 3px; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #5C1815; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #572A25;
+  background: #FBF0EF; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #B87B75; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
-.cluster-bubble--hospital { background: #B7332C; }
-.cluster-bubble--hospital:hover { background: #D14A42; color: #fff; }
+.cluster-bubble--hospital { background: #A35249; }
+.cluster-bubble--hospital:hover { background: #823C34; color: #fff; }
 
 .popup-card__hospitals { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #B7332C; margin-bottom: 4px; }
+.popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #A35249; margin-bottom: 4px; }
 .popup-card__hospital-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__hospitals-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* Mall marker */
-.mall-marker { display: flex; flex-direction: column; align-items: center; }
+.mall-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .mall-marker__pin {
-  width: 21px; height: 21px; background: #B33F7D; border: 2px solid #5C1F41;
-  border-radius: 6px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 0 3px rgba(179,63,125,0.22);
+  width: 18px; height: 18px; background: #8C5777; border: 1.5px solid #FFFFFF;
+  border-radius: 5px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(140, 87, 119, 0.35);
 }
-.mall-marker__leader { width: 1px; height: 8px; background: #B33F7D; }
+.mall-marker__leader { width: 1px; height: 5px; background: #8C5777; }
 .mall-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
-  background: #B33F7D; padding: 2px 6px; border-radius: 3px; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #5C1F41; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #4D2C40;
+  background: #F8EEF4; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #AA7D98; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 .cluster-bubble--mall { background: #B33F7D; }
 .cluster-bubble--mall:hover { background: #CC5A97; color: #fff; }
@@ -7565,14 +7566,13 @@ function nearbyTechParksHtml(nearby) {
 }
 
 function metroMarkerHtml(station, distanceKm) {
-  const color = METRO_LINE_COLORS[station.line] || "#5B3E96";
   const tagText = distanceKm != null ? `${station.name} — ${distanceKm.toFixed(1)} km` : station.name;
   return `
     <div class="metro-marker" data-metro-id="${station.id}">
-      <div class="metro-marker__tag" style="background:${color};" title="${tagText}">${tagText}</div>
-      <div class="metro-marker__leader" style="background:${color};"></div>
-      <div class="metro-marker__pin" style="background:${color};">
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="white"><path d="M4 16.5V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9.5A2.5 2.5 0 0 1 17.5 19H17l1.5 1.5v.5h-13v-.5L7 19h-.5A2.5 2.5 0 0 1 4 16.5zM7.5 15a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM6 12h12V7a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5z"/></svg>
+      <div class="metro-marker__tag" title="${tagText}">${tagText}</div>
+      <div class="metro-marker__leader"></div>
+      <div class="metro-marker__pin">
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 16.5V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9.5A2.5 2.5 0 0 1 17.5 19H17l1.5 1.5v.5h-13v-.5L7 19h-.5A2.5 2.5 0 0 1 4 16.5zM7.5 15a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM6 12h12V7a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5z"/></svg>
       </div>
     </div>
   `;
