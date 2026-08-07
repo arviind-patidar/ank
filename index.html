@@ -4062,7 +4062,11 @@ html, body {
   display: flex;
   align-items: center;
   gap: 6px;
-  z-index: 10;
+  z-index: 100 !important;
+  pointer-events: auto !important;
+}
+.pdp__minimize-btn, .pdp__close {
+  pointer-events: auto !important;
 }
 .pdp__minimize-btn {
   background: rgba(255, 255, 255, 0.14);
@@ -4456,8 +4460,8 @@ html, body {
       <div class="pdp__header" id="pdpHeader">
         <span class="pdp__drag-handle" title="Drag to move card">⋮⋮</span>
         <div class="pdp__header-controls">
-          <button type="button" class="pdp__minimize-btn" id="pdpMinimize" onclick="toggleMinimizeDetailPanel()" title="Minimize property card" aria-label="Minimize property card">⎯</button>
-          <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive()" aria-label="Close detail panel">✕</button>
+          <button type="button" class="pdp__minimize-btn" id="pdpMinimize" onclick="toggleMinimizeDetailPanel(event)" title="Minimize property card" aria-label="Minimize property card">⎯</button>
+          <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive(event)" aria-label="Close detail panel">✕</button>
         </div>
         <div class="pdp__header-badge" id="pdpBadge">ACRE&amp;KEY RECOMMENDED</div>
         <div class="pdp__title" id="pdpTitle">—</div>
@@ -9179,10 +9183,10 @@ function clearActive() {
   var panel   = document.getElementById("propertyDetailPanel");
   var mapWrap = document.querySelector(".map-wrap");
   if (panel) {
+    panel.hidden = true;
     panel.classList.remove("property-detail-panel--open");
     panel.classList.remove("property-detail-panel--minimized");
     panel.removeAttribute("style");
-    setTimeout(function() { panel.hidden = true; }, 310);
   }
   if (mapWrap) mapWrap.classList.remove("map-wrap--panel-open");
   setTimeout(function() { if (map) google.maps.event.trigger(map, "resize"); }, 310);
