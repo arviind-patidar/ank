@@ -1267,7 +1267,7 @@ body {
   height: 8px;
   border-radius: 4px;
   margin-bottom: 5px;
-  background: linear-gradient(to right, #E4CBA0, #C79660, #B06E46, #8C3C37, #5A1923);
+  background: linear-gradient(to right, #228B22, #E6A028, #D8701E, #D22D2D, #8C145A);
 }
 
 .price-legend__scale {
@@ -7974,8 +7974,11 @@ function setTechParkViewMode(active) {
 
 /* AREA PRICE HEATMAP */
 const PRICE_COLOR_STOPS = [
-  [4000,  228, 203, 160], [6000,  199, 150, 96], [8000,  176, 110, 70],
-  [10000, 140, 60, 55], [12000, 90, 25, 35],
+  [4000,   34, 139,  34], // Emerald Green (#228B22)
+  [6000,  230, 160,  40], // Vibrant Amber (#E6A028)
+  [8000,  216, 112,  30], // Antique Brass / Copper (#D8701E)
+  [10000, 210,  45,  45], // Crimson Red (#D22D2D)
+  [12000, 140,  20,  90], // Imperial Royal Magenta (#8C145A)
 ];
 
 function colorForPrice(price) {
@@ -8023,16 +8026,26 @@ function defineAreaPriceDensityOverlayClass() {
 
       const ctx = this.canvas.getContext("2d"); ctx.clearRect(0, 0, width, height);
 
+      const zoom = gmap.getZoom() || 12;
+      const radius = Math.max(55, Math.min(105, (zoom - 10) * 18 + 55));
+      const peakAlpha = 0.72;
+
       this.points.forEach((pt) => {
-        const radius = 32; const peakAlpha = 0.25;
         const [r, g, b] = colorForPrice(pt.avgPrice);
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
         const x = pixel.x - sw.x; const y = pixel.y - ne.y;
         if (x < -radius || x > width + radius || y < -radius || y > height + radius) return;
+
         const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        grad.addColorStop(0, `rgba(${r},${g},${b},${peakAlpha})`);
-        grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
-        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
+        grad.addColorStop(0, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha})`);
+        grad.addColorStop(0.35, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha * 0.68})`);
+        grad.addColorStop(0.70, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha * 0.25})`);
+        grad.addColorStop(1, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},0)`);
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
       });
     }
   };
