@@ -9717,6 +9717,8 @@ function applyFilters() {
   const filtered = getFiltered();
   renderList(filtered);
   renderMarkers(filtered);
+  const selectedLocality = els.locality ? els.locality.value : "";
+  updateLocalitySummaryStrip(selectedLocality);
 }
 
 
@@ -10197,6 +10199,7 @@ const LOCALITY_CENTERS = {
   "Whitefield": { lat: 12.9850, lng: 77.7480, radiusMeters: 5200, zoom: 12.8 },
   "Budigere Cross": { lat: 13.0694, lng: 77.7455, radiusMeters: 3500, zoom: 13.2 },
   "KR Puram": { lat: 13.0075, lng: 77.6959, radiusMeters: 2800, zoom: 13.8 },
+  "Mahadevapura": { lat: 12.9931, lng: 77.6850, radiusMeters: 3000, zoom: 13.8 },
   "Varthur": { lat: 12.9406, lng: 77.7468, radiusMeters: 2800, zoom: 13.8 },
   "Sarjapur Road": { lat: 12.9099, lng: 77.6881, radiusMeters: 3500, zoom: 13.2 },
   "Panathur": { lat: 12.9348, lng: 77.6983, radiusMeters: 2400, zoom: 14.0 },
