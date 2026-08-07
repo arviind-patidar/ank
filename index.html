@@ -771,95 +771,177 @@ body {
   box-shadow: 0 5px 16px rgba(46, 111, 126, 0.45);
 }
 
-/* Soft Muted Amenity Markers (Soft Slate Blue, Soft Lavender, Sand/Beige, Soft Terracotta, Soft Grey) */
-.techpark-marker, .metro-marker, .school-marker, .hospital-marker, .mall-marker {
+/* Tech park marker & hover-only label styling */
+.techpark-marker {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   cursor: pointer;
-  opacity: 0.78;
-  transition: opacity 200ms ease, transform 180ms ease;
-  z-index: 100;
 }
 
-.map-has-hero .techpark-marker,
-.map-has-hero .metro-marker,
-.map-has-hero .school-marker,
-.map-has-hero .hospital-marker,
-.map-has-hero .mall-marker {
-  opacity: 0.65;
-}
-
-.techpark-marker:hover, .metro-marker:hover, .school-marker:hover, .hospital-marker:hover, .mall-marker:hover {
-  opacity: 1 !important;
-  z-index: 500 !important;
-}
-
-/* Tech Park (Soft Slate Blue #9BAEC8 / #4A5E78) */
 .techpark-marker__pin {
-  width: 17px; height: 17px; background: #9BAEC8; border: 1px solid #4A5E78; border-radius: 4px;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  width: 24px;
+  height: 24px;
+  background: #2E6F7E;
+  border: 2px solid #123138;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease-out, box-shadow 180ms ease-out;
 }
-.techpark-marker__leader { width: 1px; height: 5px; background: #9BAEC8; opacity: 0; visibility: hidden; }
+
+.techpark-marker:hover .techpark-marker__pin {
+  transform: scale(1.18);
+  background: #3E8A9C;
+  box-shadow: 0 4px 12px rgba(46, 111, 126, 0.45);
+}
+
+.techpark-marker__leader {
+  width: 1px;
+  height: 6px;
+  background: #2E6F7E;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease-out, visibility 180ms ease-out;
+}
+
 .techpark-marker__tag {
-  font-family: var(--font-body); font-weight: 500; font-size: 7.5px; color: #1F2B38; background: #F7F9FC;
-  padding: 2px 6px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #9BAEC8; box-shadow: 0 2px 6px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; pointer-events: none;
-  transform: translateY(3px); transition: opacity 180ms ease, transform 180ms ease; z-index: 10;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 8px;
+  color: #fff;
+  background: #1F2B38;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1), visibility 180ms ease-out;
+  z-index: 10;
 }
-.techpark-marker:hover .techpark-marker__tag, .techpark-marker:hover .techpark-marker__leader { opacity: 1; visibility: visible; transform: translateY(0); }
-.cluster-bubble--techpark { background: #9BAEC8; border-color: #4A5E78; }
 
-/* Metro (Soft Lavender #B8B0C8 / #685C80) */
+.techpark-marker:hover .techpark-marker__tag,
+.techpark-marker:hover .techpark-marker__leader {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cluster-bubble--techpark { background: #2E6F7E; }
+.cluster-bubble--techpark:hover { background: #3E8A9C; color: #fff; }
+
+.popup-card__techpark-badge {
+  display: inline-block;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: rgba(46,111,126,0.12);
+  color: #2E6F7E;
+  margin-bottom: 4px;
+}
+
+.popup-card__techparks {
+  margin-top: 6px;
+  border-top: 1px dashed var(--line);
+  padding-top: 5px;
+}
+.popup-card__techparks-label {
+  font-family: var(--font-mono); font-weight: 600; font-size: 8px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #2E6F7E; margin-bottom: 3px;
+}
+.popup-card__techpark-row { font-size: 10px; color: var(--navy); line-height: 1.5; }
+.popup-card__techparks-empty { font-size: 9.5px; color: #7A8288; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 5px; }
+
+/* Metro station marker */
+.metro-marker { display: flex; flex-direction: column; align-items: center; }
 .metro-marker__pin {
-  width: 17px; height: 17px; background: #B8B0C8; border-radius: 50%; border: 1px solid #685C80;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid #1A1A1A;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
 }
-.metro-marker__leader { width: 1px; height: 5px; background: #B8B0C8; }
+.metro-marker__leader { width: 1px; height: 8px; background: #1A1A1A; }
 .metro-marker__tag {
-  font-family: var(--font-body); font-weight: 500; font-size: 7.5px; color: #FFFFFF; background: #685C80;
+  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
   padding: 2px 6px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #B8B0C8; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  border: 1px solid #1A1A1A; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
 }
-.cluster-bubble--metro { background: #B8B0C8; }
+.cluster-bubble--metro { background: #5B3E96; }
+.cluster-bubble--metro:hover { background: #7A55C4; color: #fff; }
 
-/* Schools (Sand / Light Beige #D4C8B5 / #8A7B68) */
+.popup-card__metros { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__metros-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #5B3E96; margin-bottom: 4px; }
+.popup-card__metro-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__metros-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+/* School marker */
+.school-marker { display: flex; flex-direction: column; align-items: center; }
 .school-marker__pin {
-  width: 17px; height: 17px; background: #D4C8B5; border: 1px solid #8A7B68; border-radius: 4px;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  width: 21px; height: 21px; background: #C77F1A; border: 2px solid #6B4310;
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 3px rgba(199,127,26,0.22);
 }
-.school-marker__leader { width: 1px; height: 5px; background: #D4C8B5; }
+.school-marker__leader { width: 1px; height: 8px; background: #C77F1A; }
 .school-marker__tag {
-  font-family: var(--font-body); font-weight: 500; font-size: 7.5px; color: #1F2B38; background: #FAF7F2;
-  padding: 2px 6px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #D4C8B5; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
+  background: #C77F1A; padding: 2px 6px; border-radius: 3px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 130px;
+  border: 1px solid #6B4310; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
 }
-.cluster-bubble--school { background: #D4C8B5; }
+.cluster-bubble--school { background: #C77F1A; }
+.cluster-bubble--school:hover { background: #E0993A; color: #fff; }
 
-/* Hospitals (Soft Terracotta #D49B92 / #8C5248) */
+.popup-card__schools { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__schools-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #C77F1A; margin-bottom: 4px; }
+.popup-card__school-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__schools-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+/* Hospital marker */
+.hospital-marker { display: flex; flex-direction: column; align-items: center; }
 .hospital-marker__pin {
-  width: 17px; height: 17px; background: #D49B92; border: 1px solid #8C5248; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  width: 21px; height: 21px; background: #B7332C; border: 2px solid #5C1815;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 3px rgba(183,51,44,0.22);
 }
-.hospital-marker__leader { width: 1px; height: 5px; background: #D49B92; }
+.hospital-marker__leader { width: 1px; height: 8px; background: #B7332C; }
 .hospital-marker__tag {
-  font-family: var(--font-body); font-weight: 500; font-size: 7.5px; color: #FFFFFF; background: #8C5248;
-  padding: 2px 6px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #D49B92; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
+  background: #B7332C; padding: 2px 6px; border-radius: 3px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 130px;
+  border: 1px solid #5C1815; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
 }
-.cluster-bubble--hospital { background: #D49B92; }
+.cluster-bubble--hospital { background: #B7332C; }
+.cluster-bubble--hospital:hover { background: #D14A42; color: #fff; }
 
-/* Malls (Soft Grey #BCC0C8 / #5C626E) */
+.popup-card__hospitals { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #B7332C; margin-bottom: 4px; }
+.popup-card__hospital-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__hospitals-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+/* Mall marker */
+.mall-marker { display: flex; flex-direction: column; align-items: center; }
 .mall-marker__pin {
-  width: 17px; height: 17px; background: #BCC0C8; border: 1px solid #5C626E; border-radius: 4px;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  width: 21px; height: 21px; background: #B33F7D; border: 2px solid #5C1F41;
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 3px rgba(179,63,125,0.22);
 }
-.mall-marker__leader { width: 1px; height: 5px; background: #BCC0C8; }
+.mall-marker__leader { width: 1px; height: 8px; background: #B33F7D; }
 .mall-marker__tag {
-  font-family: var(--font-body); font-weight: 500; font-size: 7.5px; color: #1F2B38; background: #F4F5F7;
-  padding: 2px 6px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;
-  border: 1px solid #BCC0C8; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  font-family: var(--font-body); font-weight: 600; font-size: 7.5px; color: #fff;
+  background: #B33F7D; padding: 2px 6px; border-radius: 3px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 130px;
+  border: 1px solid #5C1F41; box-shadow: 0 1px 4px rgba(0,0,0,0.25);
 }
 .cluster-bubble--mall { background: #B33F7D; }
 .cluster-bubble--mall:hover { background: #CC5A97; color: #fff; }
@@ -3087,61 +3169,24 @@ body.in-guided-presentation .locality-summary-strip {
   z-index: 999 !important;
 }
 
-.gmap-marker-wrap--active {
-  z-index: 999999 !important;
-}
-
 .plot-marker--active {
-  transform: scale(1.22);
-  z-index: 999999 !important;
-  position: relative;
-}
-
-.plot-marker--active::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: rgba(200, 155, 74, 0.35);
-  transform: translate(-50%, -50%);
-  animation: heroPulseAura 2s infinite ease-out;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes heroPulseAura {
-  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
-  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+  transform: scale(1.18);
+  z-index: 999;
 }
 
 .plot-marker--active .plot-marker__pin {
-  width: 28px !important;
-  height: 28px !important;
-  background: #C89B4A !important;
-  border: 2.5px solid #FFFFFF !important;
-  transform: scale(1.15);
-  box-shadow: 0 0 0 6px rgba(200, 155, 74, 0.40), 0 10px 30px rgba(24, 42, 61, 0.5) !important;
+  background: var(--gold) !important;
+  border-color: #ffffff !important;
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px rgba(226, 198, 153, 0.45), 0 8px 24px rgba(24, 42, 61, 0.4);
 }
 
 .plot-marker--active .plot-marker__tag {
-  font-family: var(--font-display), 'Marcellus', Georgia, serif !important;
-  font-size: 13.5px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em !important;
-  background: #1F2B38 !important;
+  background: var(--navy) !important;
   color: #FFFFFF !important;
-  padding: 6px 14px !important;
-  border: 2px solid #C89B4A !important;
-  border-radius: 8px !important;
-  max-width: 240px !important;
-  box-shadow: 0 0 0 4px rgba(200, 155, 74, 0.45), 0 10px 32px rgba(24, 42, 61, 0.5) !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  z-index: 999999 !important;
+  border-color: var(--gold) !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(226, 198, 153, 0.45), 0 8px 24px rgba(24, 42, 61, 0.4) !important;
 }
 
 .plot-marker--active .plot-marker__leader {
@@ -9060,12 +9105,6 @@ function setActive(id, { pan }) {
 
   if (sharedInfoWindow) sharedInfoWindow.close();
 
-  const mapWrap = document.querySelector(".map-wrap");
-  if (mapWrap) mapWrap.classList.add("map-has-hero");
-  if (typeof renderLocalityCircleHighlight === "function" && property.locality) {
-    renderLocalityCircleHighlight(property.locality);
-  }
-
   var position = { lat: property.lat, lng: property.lng };
   if (pan) {
     var offset = window.innerWidth > 860 ? -0.008 : 0;
@@ -9099,12 +9138,10 @@ function clearActive() {
   popupCache = null;
   pdpMinimized = false;
   pdpIsDragging = false;
-  const mapWrap = document.querySelector(".map-wrap");
-  if (mapWrap) mapWrap.classList.remove("map-has-hero");
-  if (typeof clearLocalityCircleHighlight === "function") clearLocalityCircleHighlight();
   els.list.querySelectorAll(".card").forEach(function(c) { c.classList.remove("card--active"); });
 
   var panel   = document.getElementById("propertyDetailPanel");
+  var mapWrap = document.querySelector(".map-wrap");
   if (panel) {
     panel.classList.remove("property-detail-panel--open");
     panel.classList.remove("property-detail-panel--minimized");
