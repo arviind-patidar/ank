@@ -4675,6 +4675,7 @@ let SAMPLE_PROPERTIES = [
   { id: "P64", title: "Spectra Parijatha", developer: "Spectra Constructions", locality: "Varthur", zone: "Varthur–Gunjur", status: "Under construction", lat: 12.9438, lng: 77.7445, akScore: null, recommended: false },
   { id: "P65", title: "Orchid Life", developer: "Goyal & Co", locality: "Varthur", zone: "Varthur–Gunjur", status: "Under construction", lat: 12.9248, lng: 77.7412, akScore: null, recommended: false },
   { id: "P66", title: "Mana Dale", developer: "Mana Projects", locality: "Varthur / Gunjur", zone: "Varthur–Gunjur", status: "Under construction", lat: 12.9185, lng: 77.7258, akScore: null, recommended: false },
+  { id: "P67", title: "Provident Botanico", developer: "Provident Housing Limited", locality: "Whitefield", zone: "Core Whitefield–Hoodi", status: "Under construction", lat: 12.99276418, lng: 77.80604506, akScore: 72.5, recommended: true },
 ];
 
 async function fetchProperties() {
@@ -10994,10 +10995,10 @@ const DataService = {
             status: p.status || sample.status || "Under Construction",
             priceRange: p.priceRange || p.price || sample.priceRange || "₹1.25Cr – 1.95Cr",
             bhk: p.bhk || p.config || sample.bhk || "2 & 3 BHK",
-            lat: (typeof p.lat === "number" && !isNaN(p.lat)) ? p.lat : (sample.lat || 12.9716),
-            lng: (typeof p.lng === "number" && !isNaN(p.lng)) ? p.lng : (sample.lng || 77.5946),
-            score: (typeof p.score === "number" && !isNaN(p.score)) ? p.score : ((typeof p.akScore === "number" && !isNaN(p.akScore)) ? p.akScore : (sample.score || 75.0)),
-            recommended: (p.recommended === true || p.recommended === "TRUE" || p.recommended === 1) ? true : (p.recommended === false ? false : (sample.recommended !== undefined ? sample.recommended : true)),
+            lat: (typeof p.lat === "number" && !isNaN(p.lat)) ? p.lat : (!isNaN(parseFloat(p.lat)) ? parseFloat(p.lat) : (sample.lat || 12.9716)),
+            lng: (typeof p.lng === "number" && !isNaN(p.lng)) ? p.lng : (!isNaN(parseFloat(p.lng)) ? parseFloat(p.lng) : (sample.lng || 77.5946)),
+            score: (typeof p.score === "number" && !isNaN(p.score)) ? p.score : (!isNaN(parseFloat(p.akScore)) ? parseFloat(p.akScore) : (!isNaN(parseFloat(p.score)) ? parseFloat(p.score) : (sample.score || sample.akScore || 72.5))),
+            recommended: (p.recommended === true || p.recommended === 1 || String(p.recommended).toUpperCase() === "TRUE") ? true : (p.recommended === false || String(p.recommended).toUpperCase() === "FALSE" ? false : (sample.recommended !== undefined ? sample.recommended : true)),
             pitchText: p.pitchText || p.pitch || sample.pitchText || ""
           };
         })
