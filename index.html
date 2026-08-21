@@ -3853,6 +3853,90 @@ html, body {
 }
 
 
+/* MULTI-PROPERTY FILTER CHIPS & SELECTOR */
+.multi-prop-filter {
+  margin-top: 10px;
+  background: rgba(31, 43, 56, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  display: none;
+}
+.multi-prop-filter--active {
+  display: block;
+}
+.multi-prop-filter__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: var(--muted-slate);
+}
+.multi-prop-filter__title {
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.multi-prop-filter__clear-all {
+  background: none;
+  border: none;
+  color: var(--rust);
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.multi-prop-filter__clear-all:hover {
+  text-decoration: underline;
+}
+.multi-prop-filter__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.multi-prop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--navy);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.multi-prop-chip__remove {
+  background: none;
+  border: none;
+  color: var(--muted-slate);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.multi-prop-chip__remove:hover {
+  color: #D87C72;
+}
+.search-suggestion-item--selected {
+  background: rgba(184, 142, 82, 0.12) !important;
+  border-left: 3px solid var(--gold);
+}
+.search-suggestion-check {
+  font-size: 13px;
+  color: var(--rust);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
 /* Search Suggestions Dropdown Styling */
 .search-suggestions-dropdown {
   position: absolute;
@@ -4248,8 +4332,20 @@ html, body {
                 <option value="locality">Locality</option>
               </select>
             </div>
-            <div id="searchSuggestionsDropdown" class="search-suggestions-dropdown"></div>
+                        <div id="searchSuggestionsDropdown" class="search-suggestions-dropdown"></div>
           </label>
+
+          <!-- MULTI-PROPERTY SELECTION CONTAINER -->
+          <div id="multiPropFilterContainer" class="multi-prop-filter">
+            <div class="multi-prop-filter__header">
+              <span class="multi-prop-filter__title">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Selected Properties (<span id="multiPropCount">0</span>)
+              </span>
+              <button type="button" class="multi-prop-filter__clear-all" onclick="clearMultiPropertySelection()">Clear All</button>
+            </div>
+            <div id="multiPropChipsContainer" class="multi-prop-filter__chips"></div>
+          </div>
 
           <div class="field-row">
             <label class="field">
@@ -7385,6 +7481,7 @@ const els = {
 };
 let activeCardId = null;
 let selectedSearchPropertyId = "";
+let selectedPropertyIds = new Set();
 let popupCache = null;
 let map;
 let markerLayer;
@@ -9710,6 +9807,11 @@ function getFiltered() {
   const recommendedOnly = (els.recommended && els.recommended.checked) ? els.recommended.checked : false;
 
   return ALL_PROPERTIES.filter((p) => {
+    // Multi-Property Selection Filter Priority
+    if (selectedPropertyIds && selectedPropertyIds.size > 0) {
+      if (!selectedPropertyIds.has(p.id)) return false;
+    }
+
     // Text search filter (Exact project match priority)
     if (selectedSearchPropertyId) {
       if (p.id !== selectedSearchPropertyId) return false;
@@ -10431,6 +10533,69 @@ if (!window.presentationKeybound) {
   window.presentationKeybound = true;
 }
 
+function renderSelectedPropertyChips() {
+  const container = document.getElementById("multiPropFilterContainer");
+  const chipsWrap = document.getElementById("multiPropChipsContainer");
+  const countEl = document.getElementById("multiPropCount");
+  if (!container || !chipsWrap) return;
+
+  if (selectedPropertyIds.size === 0) {
+    container.classList.remove("multi-prop-filter--active");
+    chipsWrap.innerHTML = "";
+    if (countEl) countEl.textContent = "0";
+    return;
+  }
+
+  container.classList.add("multi-prop-filter--active");
+  if (countEl) countEl.textContent = selectedPropertyIds.size;
+
+  const chipsHtml = Array.from(selectedPropertyIds).map((id) => {
+    const prop = ALL_PROPERTIES.find((p) => p.id === id);
+    if (!prop) return "";
+    return `
+      <div class="multi-prop-chip">
+        <span>${prop.title}</span>
+        <button type="button" class="multi-prop-chip__remove" onclick="toggleSelectProperty('${prop.id}')" title="Remove ${prop.title}">✕</button>
+      </div>
+    `;
+  }).join("");
+
+  chipsWrap.innerHTML = chipsHtml;
+}
+
+function toggleSelectProperty(id) {
+  if (selectedPropertyIds.has(id)) {
+    selectedPropertyIds.delete(id);
+  } else {
+    selectedPropertyIds.add(id);
+  }
+  renderSelectedPropertyChips();
+  if (typeof renderSearchSuggestions === "function") renderSearchSuggestions();
+  applyFilters();
+
+  // Fit map bounds to selected properties if any exist
+  if (selectedPropertyIds.size > 0 && typeof map !== "undefined" && map) {
+    const bounds = new google.maps.LatLngBounds();
+    let hasCoords = false;
+    ALL_PROPERTIES.forEach((p) => {
+      if (selectedPropertyIds.has(p.id) && typeof p.lat === "number" && typeof p.lng === "number") {
+        bounds.extend({ lat: p.lat, lng: p.lng });
+        hasCoords = true;
+      }
+    });
+    if (hasCoords) {
+      map.fitBounds(bounds, selectedPropertyIds.size === 1 ? 120 : 60);
+    }
+  }
+}
+
+function clearMultiPropertySelection() {
+  selectedPropertyIds.clear();
+  renderSelectedPropertyChips();
+  if (typeof renderSearchSuggestions === "function") renderSearchSuggestions();
+  applyFilters();
+}
+
 function wireControls() {
   
 
@@ -10453,7 +10618,70 @@ function wireControls() {
     }
   }
 
-  function renderSearchSuggestions() {
+  function renderSelectedPropertyChips() {
+  const container = document.getElementById("multiPropFilterContainer");
+  const chipsWrap = document.getElementById("multiPropChipsContainer");
+  const countEl = document.getElementById("multiPropCount");
+  if (!container || !chipsWrap) return;
+
+  if (selectedPropertyIds.size === 0) {
+    container.classList.remove("multi-prop-filter--active");
+    chipsWrap.innerHTML = "";
+    if (countEl) countEl.textContent = "0";
+    return;
+  }
+
+  container.classList.add("multi-prop-filter--active");
+  if (countEl) countEl.textContent = selectedPropertyIds.size;
+
+  const chipsHtml = Array.from(selectedPropertyIds).map((id) => {
+    const prop = ALL_PROPERTIES.find((p) => p.id === id);
+    if (!prop) return "";
+    return `
+      <div class="multi-prop-chip">
+        <span>${prop.title}</span>
+        <button type="button" class="multi-prop-chip__remove" onclick="toggleSelectProperty('${prop.id}')" title="Remove ${prop.title}">✕</button>
+      </div>
+    `;
+  }).join("");
+
+  chipsWrap.innerHTML = chipsHtml;
+}
+
+function toggleSelectProperty(id) {
+  if (selectedPropertyIds.has(id)) {
+    selectedPropertyIds.delete(id);
+  } else {
+    selectedPropertyIds.add(id);
+  }
+  renderSelectedPropertyChips();
+  renderSearchSuggestions();
+  applyFilters();
+
+  // Fit map bounds to selected properties if any exist
+  if (selectedPropertyIds.size > 0 && map) {
+    const bounds = new google.maps.LatLngBounds();
+    let hasCoords = false;
+    ALL_PROPERTIES.forEach((p) => {
+      if (selectedPropertyIds.has(p.id) && typeof p.lat === "number" && typeof p.lng === "number") {
+        bounds.extend({ lat: p.lat, lng: p.lng });
+        hasCoords = true;
+      }
+    });
+    if (hasCoords) {
+      map.fitBounds(bounds, selectedPropertyIds.size === 1 ? 120 : 60);
+    }
+  }
+}
+
+function clearMultiPropertySelection() {
+  selectedPropertyIds.clear();
+  renderSelectedPropertyChips();
+  renderSearchSuggestions();
+  applyFilters();
+}
+
+function renderSearchSuggestions() {
     if (!dropdownEl || !els.searchText) return;
     const q = els.searchText.value.trim().toLowerCase();
     const scope = els.searchScope ? els.searchScope.value : "all";
@@ -10468,19 +10696,17 @@ function wireControls() {
       }).slice(0, 6);
 
       matchedProjects.forEach((p) => {
+        const isSelected = selectedPropertyIds.has(p.id);
         suggestions.push({
           type: "project",
           id: p.id,
-          title: p.title,
+          title: (isSelected ? `<span class="search-suggestion-check">✓</span>` : `<span class="search-suggestion-check" style="opacity:0.3">☐</span>`) + p.title,
           subtitle: `${p.developer} · ${p.locality}`,
-          badgeText: "🏢 Project",
-          badgeClass: "search-suggestion-badge--project",
+          badgeText: isSelected ? "✓ Selected" : "+ Add to Filter",
+          badgeClass: isSelected ? "search-suggestion-badge--project" : "search-suggestion-badge--locality",
+          isSelected: isSelected,
           onSelect: () => {
-            selectedSearchPropertyId = p.id;
-            els.searchText.value = p.title;
-            closeSearchDropdown();
-            applyFilters();
-            setActive(p.id, { pan: true });
+            toggleSelectProperty(p.id);
           }
         });
       });
@@ -10539,7 +10765,7 @@ function wireControls() {
       dropdownEl.innerHTML = `<div style="padding:10px 12px; font-size:11.5px; color:#59616B;">No matching ${scope} found.</div>`;
     } else {
       dropdownEl.innerHTML = suggestions.map((s, idx) => `
-        <div class="search-suggestion-item" data-suggestion-idx="${idx}">
+        <div class="search-suggestion-item ${s.isSelected ? "search-suggestion-item--selected" : ""}" data-suggestion-idx="${idx}">
           <div class="search-suggestion-main">
             <span class="search-suggestion-title">${s.title}</span>
             <span class="search-suggestion-subtitle">${s.subtitle}</span>
@@ -10646,6 +10872,8 @@ function wireControls() {
     els.locality.value = "";
     els.stage.value = "";
     els.recommended.checked = false;
+    if (selectedPropertyIds) selectedPropertyIds.clear();
+    renderSelectedPropertyChips();
     applyFilters();
   });
 
