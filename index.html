@@ -2380,6 +2380,45 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
 }
 
 
+
+/* HIDE OTHER PROJECT & AMENITY TAGS WHEN A PROPERTY IS SELECTED (REVEAL ON HOVER) */
+body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__tag,
+body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__leader {
+  display: none !important;
+}
+
+body.has-active-property .techpark-marker .techpark-marker__tag,
+body.has-active-property .techpark-marker .techpark-marker__leader,
+body.has-active-property .metro-marker .metro-marker__tag,
+body.has-active-property .metro-marker .metro-marker__leader,
+body.has-active-property .school-marker .school-marker__tag,
+body.has-active-property .school-marker .school-marker__leader,
+body.has-active-property .hospital-marker .hospital-marker__tag,
+body.has-active-property .hospital-marker .hospital-marker__leader,
+body.has-active-property .mall-marker .mall-marker__tag,
+body.has-active-property .mall-marker .mall-marker__leader {
+  display: none !important;
+}
+
+/* REVEAL TAGS DYNAMICALLY ON MOUSE HOVER */
+body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__tag,
+body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__leader,
+body.has-active-property .techpark-marker:hover .techpark-marker__tag,
+body.has-active-property .techpark-marker:hover .techpark-marker__leader,
+body.has-active-property .metro-marker:hover .metro-marker__tag,
+body.has-active-property .metro-marker:hover .metro-marker__leader,
+body.has-active-property .school-marker:hover .school-marker__tag,
+body.has-active-property .school-marker:hover .school-marker__leader,
+body.has-active-property .hospital-marker:hover .hospital-marker__tag,
+body.has-active-property .hospital-marker:hover .hospital-marker__leader,
+body.has-active-property .mall-marker:hover .mall-marker__tag,
+body.has-active-property .mall-marker:hover .mall-marker__leader {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 99999 !important;
+}
+
 /* PERSISTENT MAP VIEW PILL CONTROL */
 .map-view-pill {
   position: absolute;
@@ -8693,7 +8732,9 @@ function defineMarkerLayerClass() {
 
           let hideLabel = false;
           if (!isActive) {
-            if (zoom < 12 && !item.property.recommended) {
+            if (activeCardId) {
+              hideLabel = true;
+            } else if (zoom < 12 && !item.property.recommended) {
               hideLabel = true;
             } else if (isLabelOverlapping(box)) {
               hideLabel = true;
@@ -9228,6 +9269,7 @@ function toggleMinimizeDetailPanel(e) {
 
 
 function setActive(id, { pan }) {
+  document.body.classList.add("has-active-property");
   activeCardId = id;
   pdpMinimized = false;
   pdpIsDragging = false;
@@ -9272,6 +9314,7 @@ function setActive(id, { pan }) {
 }
 
 function clearActive() {
+  document.body.classList.remove("has-active-property");
   activeCardId = null;
   popupCache = null;
   pdpMinimized = false;
