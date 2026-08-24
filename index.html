@@ -7941,7 +7941,15 @@ function getCombinedDisplayAmenities() {
 
 function updateAllAmenityDisplays() {
   const selectedProps = getSelectedPropertiesForAmenities();
-  if (selectedProps.length > 0) {
+  const hasActiveAmenity = (typeof els !== "undefined") && (
+    (els.techParks && els.techParks.checked) ||
+    (els.metro && els.metro.checked) ||
+    (els.schools && els.schools.checked) ||
+    (els.hospitals && els.hospitals.checked) ||
+    (els.malls && els.malls.checked)
+  );
+
+  if (selectedProps.length > 0 && hasActiveAmenity) {
     document.body.classList.add("has-active-property");
   } else {
     document.body.classList.remove("has-active-property");
@@ -7958,6 +7966,11 @@ function updateTechParkDisplay() {
   if (techParkViewActive) {
     techParkLayer.setForceIndividual(false);
     techParkLayer.setParks(TECH_PARKS);
+    return;
+  }
+  if (typeof els !== "undefined" && els.techParks && !els.techParks.checked) {
+    techParkLayer.setForceIndividual(false);
+    techParkLayer.setParks([]);
     return;
   }
   const combined = getCombinedDisplayAmenities();
@@ -8006,6 +8019,11 @@ function defineMetroLayerClass() {
 
 function updateMetroDisplay() {
   if (!metroLayer) return;
+  if (typeof els !== "undefined" && els.metro && !els.metro.checked) {
+    metroLayer.setForceIndividual(false);
+    metroLayer.setStations([]);
+    return;
+  }
   const combined = getCombinedDisplayAmenities();
   if (combined && combined.metro) {
     metroLayer.setForceIndividual(true);
@@ -8049,6 +8067,11 @@ function defineSchoolLayerClass() {
 
 function updateSchoolDisplay() {
   if (!schoolLayer) return;
+  if (typeof els !== "undefined" && els.schools && !els.schools.checked) {
+    schoolLayer.setForceIndividual(false);
+    schoolLayer.setSchools([]);
+    return;
+  }
   const combined = getCombinedDisplayAmenities();
   if (combined && combined.schools) {
     schoolLayer.setForceIndividual(true);
@@ -8092,6 +8115,11 @@ function defineHospitalLayerClass() {
 
 function updateHospitalDisplay() {
   if (!hospitalLayer) return;
+  if (typeof els !== "undefined" && els.hospitals && !els.hospitals.checked) {
+    hospitalLayer.setForceIndividual(false);
+    hospitalLayer.setHospitals([]);
+    return;
+  }
   const combined = getCombinedDisplayAmenities();
   if (combined && combined.hospitals) {
     hospitalLayer.setForceIndividual(true);
@@ -8135,6 +8163,11 @@ function defineMallLayerClass() {
 
 function updateMallDisplay() {
   if (!mallLayer) return;
+  if (typeof els !== "undefined" && els.malls && !els.malls.checked) {
+    mallLayer.setForceIndividual(false);
+    mallLayer.setMalls([]);
+    return;
+  }
   const combined = getCombinedDisplayAmenities();
   if (combined && combined.malls) {
     mallLayer.setForceIndividual(true);
