@@ -4136,7 +4136,9 @@ html, body {
   touch-action: none !important;
   transform: none !important;
   transition: none !important;
-  z-index: 9000 !important;
+  z-index: 99999 !important;
+  isolation: isolate !important;
+  pointer-events: auto !important;
 }
 .property-detail-panel--minimized:active {
   cursor: grabbing !important;
@@ -9261,11 +9263,22 @@ function initDraggableMinimizedPanel() {
     return { x: e.clientX || 0, y: e.clientY || 0 };
   }
 
+  function stopEventBubble(e) {
+    if (!e) return;
+    if (typeof e.stopPropagation === "function") e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+  }
+
   function onDragStart(e) {
     if (!pdpMinimized) return;
     if (isDragging) return;
     if (e.target.closest(".pdp__header-controls") || e.target.closest("button") || e.target.closest(".pdp__minimize-btn") || e.target.closest(".pdp__close")) {
       return;
+    }
+
+    stopEventBubble(e);
+    if (e.cancelable && e.type !== "touchstart") {
+      e.preventDefault();
     }
 
     isDragging = true;
@@ -9279,20 +9292,21 @@ function initDraggableMinimizedPanel() {
     initialLeft = rect.left;
     initialTop = rect.top;
 
-    if (e.cancelable && e.type !== "touchstart") {
-      e.preventDefault();
-    }
-
-    window.addEventListener("mousemove", onDragMove, { passive: false });
-    window.addEventListener("mouseup", onDragEnd, { passive: false });
-    window.addEventListener("touchmove", onDragMove, { passive: false });
-    window.addEventListener("touchend", onDragEnd, { passive: false });
-    window.addEventListener("pointermove", onDragMove, { passive: false });
-    window.addEventListener("pointerup", onDragEnd, { passive: false });
+    window.addEventListener("mousemove", onDragMove, { passive: false, capture: true });
+    window.addEventListener("mouseup", onDragEnd, { passive: false, capture: true });
+    window.addEventListener("touchmove", onDragMove, { passive: false, capture: true });
+    window.addEventListener("touchend", onDragEnd, { passive: false, capture: true });
+    window.addEventListener("pointermove", onDragMove, { passive: false, capture: true });
+    window.addEventListener("pointerup", onDragEnd, { passive: false, capture: true });
   }
 
   function onDragMove(e) {
     if (!isDragging || !pdpMinimized) return;
+
+    stopEventBubble(e);
+    if (e.cancelable && typeof e.preventDefault === "function") {
+      e.preventDefault();
+    }
 
     const coords = getClientCoords(e);
     const dx = coords.x - startX;
@@ -9300,9 +9314,6 @@ function initDraggableMinimizedPanel() {
 
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
       pdpIsDragging = true;
-      if (e.cancelable && typeof e.preventDefault === "function") {
-        e.preventDefault();
-      }
 
       let newLeft = initialLeft + dx;
       let newTop = initialTop + dy;
@@ -9323,20 +9334,30 @@ function initDraggableMinimizedPanel() {
 
   function onDragEnd(e) {
     if (!isDragging) return;
+    stopEventBubble(e);
     isDragging = false;
     setTimeout(() => { pdpIsDragging = false; }, 180);
 
-    window.removeEventListener("mousemove", onDragMove);
-    window.removeEventListener("mouseup", onDragEnd);
-    window.removeEventListener("touchmove", onDragMove);
-    window.removeEventListener("touchend", onDragEnd);
-    window.removeEventListener("pointermove", onDragMove);
-    window.removeEventListener("pointerup", onDragEnd);
+    window.removeEventListener("mousemove", onDragMove, { capture: true });
+    window.removeEventListener("mouseup", onDragEnd, { capture: true });
+    window.removeEventListener("touchmove", onDragMove, { capture: true });
+    window.removeEventListener("touchend", onDragEnd, { capture: true });
+    window.removeEventListener("pointermove", onDragMove, { capture: true });
+    window.removeEventListener("pointerup", onDragEnd, { capture: true });
   }
 
-  panel.addEventListener("pointerdown", onDragStart, { passive: false });
-  panel.addEventListener("mousedown", onDragStart, { passive: false });
-  panel.addEventListener("touchstart", onDragStart, { passive: false });
+  panel.addEventListener("pointerdown", onDragStart, { passive: false, capture: true });
+  panel.addEventListener("mousedown", onDragStart, { passive: false, capture: true });
+  panel.addEventListener("touchstart", onDragStart, { passive: false, capture: true });
+
+  // Explicitly prevent Google Maps API from receiving drag events on panel
+  ["pointerdown", "mousedown", "touchstart"].forEach((evtName) => {
+    panel.addEventListener(evtName, (e) => {
+      if (pdpMinimized && !e.target.closest("button") && !e.target.closest(".pdp__header-controls")) {
+        stopEventBubble(e);
+      }
+    }, { capture: true });
+  });
 
   panel.addEventListener("click", (e) => {
     if (pdpMinimized && !pdpIsDragging && !e.target.closest("button") && !e.target.closest(".pdp__header-controls")) {
