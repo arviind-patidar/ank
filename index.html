@@ -10993,7 +10993,9 @@ function renderSearchSuggestions() {
     applyFilters();
   });
 
-  [els.locality, els.stage].forEach((el) => el.addEventListener("change", applyFilters));
+  [els.locality, els.stage, els.techParks, els.metro, els.schools, els.hospitals, els.malls].forEach((el) => {
+    if (el) el.addEventListener("change", applyFilters);
+  });
   els.recommended.addEventListener("change", applyFilters);
 
   // Locality Chips wiring
