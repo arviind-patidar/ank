@@ -8829,7 +8829,8 @@ function defineMarkerLayerClass() {
         if (item.type === "single") {
           const isSingleActive = item.property.id === activeCardId;
           const isMultiSelected = selectedPropertyIds && selectedPropertyIds.has(item.property.id);
-          const isActive = isSingleActive || isMultiSelected;
+          // Only single active property (when detail panel is open) highlights its name tag
+          const isActive = isSingleActive;
 
           div.className = "gmap-marker-wrap" + (isActive ? " gmap-marker-wrap--active" : "");
           div.style.left = item.x + "px"; div.style.top = item.y + "px";
