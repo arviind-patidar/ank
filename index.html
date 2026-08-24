@@ -8779,8 +8779,10 @@ function defineMarkerLayerClass() {
       const gmapRef = gmap;
       // Sort render items by priority: Active (1st) -> Recommended (2nd) -> Regular (3rd)
       const sortedItems = renderItems.slice().sort((a, b) => {
-        if (a.type === "single" && a.property.id === activeCardId) return -1;
-        if (b.type === "single" && b.property.id === activeCardId) return 1;
+        const aSelected = a.type === "single" && (a.property.id === activeCardId || (selectedPropertyIds && selectedPropertyIds.has(a.property.id)));
+        const bSelected = b.type === "single" && (b.property.id === activeCardId || (selectedPropertyIds && selectedPropertyIds.has(b.property.id)));
+        if (aSelected && !bSelected) return -1;
+        if (bSelected && !aSelected) return 1;
         if (a.type === "single" && a.property.recommended && !b.property?.recommended) return -1;
         if (b.type === "single" && b.property.recommended && !a.property?.recommended) return 1;
         return 0;
@@ -8794,7 +8796,10 @@ function defineMarkerLayerClass() {
       sortedItems.forEach((item) => {
         const div = document.createElement("div");
         if (item.type === "single") {
-          const isActive = item.property.id === activeCardId;
+          const isSingleActive = item.property.id === activeCardId;
+          const isMultiSelected = selectedPropertyIds && selectedPropertyIds.has(item.property.id);
+          const isActive = isSingleActive || isMultiSelected;
+
           div.className = "gmap-marker-wrap" + (isActive ? " gmap-marker-wrap--active" : "");
           div.style.left = item.x + "px"; div.style.top = item.y + "px";
 
@@ -8809,7 +8814,7 @@ function defineMarkerLayerClass() {
 
           let hideLabel = false;
           if (!isActive) {
-            if (activeCardId) {
+            if (activeCardId || (selectedPropertyIds && selectedPropertyIds.size > 0)) {
               hideLabel = true;
             } else if (zoom < 12 && !item.property.recommended) {
               hideLabel = true;
