@@ -9250,55 +9250,55 @@ function initDraggableMinimizedPanel() {
   let isDragging = false;
   let startX = 0, startY = 0;
   let initialLeft = 0, initialTop = 0;
-  let activePointerId = null;
+
+  function getClientCoords(e) {
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    if (e.changedTouches && e.changedTouches.length > 0) {
+      return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+    }
+    return { x: e.clientX || 0, y: e.clientY || 0 };
+  }
 
   function onDragStart(e) {
     if (!pdpMinimized) return;
     if (isDragging) return;
-    if (e.target.closest(".pdp__header-controls") || e.target.closest("button") || e.target.closest(".pdp__minimize-btn") || e.target.closest(".pdp__close")) return;
+    if (e.target.closest(".pdp__header-controls") || e.target.closest("button") || e.target.closest(".pdp__minimize-btn") || e.target.closest(".pdp__close")) {
+      return;
+    }
 
     isDragging = true;
     pdpIsDragging = false;
 
-    const clientX = e.touches ? e.touches[0].clientX : (e.clientX !== undefined ? e.clientX : 0);
-    const clientY = e.touches ? e.touches[0].clientY : (e.clientY !== undefined ? e.clientY : 0);
-
-    startX = clientX;
-    startY = clientY;
+    const coords = getClientCoords(e);
+    startX = coords.x;
+    startY = coords.y;
 
     const rect = panel.getBoundingClientRect();
     initialLeft = rect.left;
     initialTop = rect.top;
 
-    if (e.pointerId !== undefined && typeof panel.setPointerCapture === "function") {
-      try {
-        panel.setPointerCapture(e.pointerId);
-        activePointerId = e.pointerId;
-      } catch (err) {}
-    }
-
     if (e.cancelable && e.type !== "touchstart") {
       e.preventDefault();
     }
 
-    document.addEventListener("mousemove", onDragMove, { passive: false });
-    document.addEventListener("mouseup", onDragEnd);
-    document.addEventListener("touchmove", onDragMove, { passive: false });
-    document.addEventListener("touchend", onDragEnd);
-    document.addEventListener("pointermove", onDragMove, { passive: false });
-    document.addEventListener("pointerup", onDragEnd);
+    window.addEventListener("mousemove", onDragMove, { passive: false });
+    window.addEventListener("mouseup", onDragEnd, { passive: false });
+    window.addEventListener("touchmove", onDragMove, { passive: false });
+    window.addEventListener("touchend", onDragEnd, { passive: false });
+    window.addEventListener("pointermove", onDragMove, { passive: false });
+    window.addEventListener("pointerup", onDragEnd, { passive: false });
   }
 
   function onDragMove(e) {
     if (!isDragging || !pdpMinimized) return;
 
-    const clientX = e.touches ? e.touches[0].clientX : (e.clientX !== undefined ? e.clientX : startX);
-    const clientY = e.touches ? e.touches[0].clientY : (e.clientY !== undefined ? e.clientY : startY);
+    const coords = getClientCoords(e);
+    const dx = coords.x - startX;
+    const dy = coords.y - startY;
 
-    const dx = clientX - startX;
-    const dy = clientY - startY;
-
-    if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
       pdpIsDragging = true;
       if (e.cancelable && typeof e.preventDefault === "function") {
         e.preventDefault();
@@ -9324,23 +9324,18 @@ function initDraggableMinimizedPanel() {
   function onDragEnd(e) {
     if (!isDragging) return;
     isDragging = false;
-    if (activePointerId !== null && typeof panel.releasePointerCapture === "function") {
-      try {
-        panel.releasePointerCapture(activePointerId);
-      } catch (err) {}
-      activePointerId = null;
-    }
-    setTimeout(() => { pdpIsDragging = false; }, 150);
-    document.removeEventListener("mousemove", onDragMove);
-    document.removeEventListener("mouseup", onDragEnd);
-    document.removeEventListener("touchmove", onDragMove);
-    document.removeEventListener("touchend", onDragEnd);
-    document.removeEventListener("pointermove", onDragMove);
-    document.removeEventListener("pointerup", onDragEnd);
+    setTimeout(() => { pdpIsDragging = false; }, 180);
+
+    window.removeEventListener("mousemove", onDragMove);
+    window.removeEventListener("mouseup", onDragEnd);
+    window.removeEventListener("touchmove", onDragMove);
+    window.removeEventListener("touchend", onDragEnd);
+    window.removeEventListener("pointermove", onDragMove);
+    window.removeEventListener("pointerup", onDragEnd);
   }
 
-  panel.addEventListener("pointerdown", onDragStart);
-  panel.addEventListener("mousedown", onDragStart);
+  panel.addEventListener("pointerdown", onDragStart, { passive: false });
+  panel.addEventListener("mousedown", onDragStart, { passive: false });
   panel.addEventListener("touchstart", onDragStart, { passive: false });
 
   panel.addEventListener("click", (e) => {
