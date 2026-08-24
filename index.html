@@ -721,18 +721,18 @@ body {
 
 .plot-marker__tag {
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 650;
   font-size: 9.5px;
   color: var(--navy);
   background: #FFFFFF;
-  padding: 3px 7px;
-  border-radius: 3px;
+  padding: 2.5px 7px;
+  border-radius: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px;
+  max-width: 135px;
   border: 1px solid var(--gold);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(24, 42, 61, 0.18);
 }
 
 .plot-marker--active .plot-marker__pin { background: var(--gold); border-color: var(--rust); }
@@ -3182,18 +3182,18 @@ body.in-guided-presentation .locality-summary-strip {
 
 .plot-marker__tag {
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 11px;
+  font-weight: 650;
+  font-size: 9.5px;
   color: var(--navy);
   background: #FFFFFF;
-  padding: 3.5px 10px;
-  border-radius: 6px;
+  padding: 2.5px 7px;
+  border-radius: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 170px;
+  max-width: 135px;
   border: 1px solid var(--gold);
-  box-shadow: 0 4px 14px rgba(24, 42, 61, 0.22);
+  box-shadow: 0 2px 8px rgba(24, 42, 61, 0.18);
   letter-spacing: -0.01em;
   transition: all 180ms ease-out;
 }
@@ -8834,7 +8834,7 @@ function defineMarkerLayerClass() {
           div.className = "gmap-marker-wrap" + (isActive ? " gmap-marker-wrap--active" : "");
           div.style.left = item.x + "px"; div.style.top = item.y + "px";
 
-          const labelWidth = Math.min(170, item.property.title.length * 7 + 24);
+          const labelWidth = Math.min(135, item.property.title.length * 6 + 18);
           const labelHeight = 24;
           const box = {
             x1: item.x - labelWidth / 2,
