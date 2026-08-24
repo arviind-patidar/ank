@@ -4130,6 +4130,7 @@ html, body {
   box-shadow: 0 14px 36px rgba(24, 42, 61, 0.45) !important;
   border: 1.5px solid var(--gold) !important;
   background: var(--navy) !important;
+  cursor: move !important;
   cursor: grab !important;
   user-select: none !important;
   touch-action: none !important;
@@ -4139,6 +4140,15 @@ html, body {
 }
 .property-detail-panel--minimized:active {
   cursor: grabbing !important;
+}
+.property-detail-panel--minimized * {
+  cursor: inherit;
+}
+.property-detail-panel--minimized button,
+.property-detail-panel--minimized .pdp__header-controls,
+.property-detail-panel--minimized .pdp__minimize-btn,
+.property-detail-panel--minimized .pdp__close {
+  cursor: pointer !important;
 }
 .property-detail-panel--minimized:active {
   cursor: grabbing !important;
@@ -9249,13 +9259,13 @@ function initDraggableMinimizedPanel() {
 
   function onDragStart(e) {
     if (!pdpMinimized) return;
-    if (e.target.closest(".pdp__header-controls") || e.target.closest("button")) return;
+    if (e.target.closest(".pdp__header-controls") || e.target.closest("button") || e.target.closest(".pdp__minimize-btn") || e.target.closest(".pdp__close")) return;
 
     isDragging = true;
     pdpIsDragging = false;
 
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const clientX = e.touches ? e.touches[0].clientX : (e.clientX !== undefined ? e.clientX : 0);
+    const clientY = e.touches ? e.touches[0].clientY : (e.clientY !== undefined ? e.clientY : 0);
 
     startX = clientX;
     startY = clientY;
@@ -9268,20 +9278,22 @@ function initDraggableMinimizedPanel() {
     document.addEventListener("mouseup", onDragEnd);
     document.addEventListener("touchmove", onDragMove, { passive: false });
     document.addEventListener("touchend", onDragEnd);
+    document.addEventListener("pointermove", onDragMove);
+    document.addEventListener("pointerup", onDragEnd);
   }
 
   function onDragMove(e) {
     if (!isDragging || !pdpMinimized) return;
 
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const clientX = e.touches ? e.touches[0].clientX : (e.clientX !== undefined ? e.clientX : startX);
+    const clientY = e.touches ? e.touches[0].clientY : (e.clientY !== undefined ? e.clientY : startY);
 
     const dx = clientX - startX;
     const dy = clientY - startY;
 
-    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+    if (Math.abs(dx) > 2 || Math.abs(dy) > 2) {
       pdpIsDragging = true;
-      if (e.cancelable) e.preventDefault();
+      if (e.cancelable && typeof e.preventDefault === "function") e.preventDefault();
 
       let newLeft = initialLeft + dx;
       let newTop = initialTop + dy;
@@ -9303,24 +9315,24 @@ function initDraggableMinimizedPanel() {
   function onDragEnd() {
     if (!isDragging) return;
     isDragging = false;
-    setTimeout(() => { pdpIsDragging = false; }, 100);
+    setTimeout(() => { pdpIsDragging = false; }, 120);
     document.removeEventListener("mousemove", onDragMove);
     document.removeEventListener("mouseup", onDragEnd);
     document.removeEventListener("touchmove", onDragMove);
     document.removeEventListener("touchend", onDragEnd);
+    document.removeEventListener("pointermove", onDragMove);
+    document.removeEventListener("pointerup", onDragEnd);
   }
 
   panel.addEventListener("mousedown", onDragStart);
   panel.addEventListener("touchstart", onDragStart, { passive: true });
+  panel.addEventListener("pointerdown", onDragStart);
 
-  const pdpHeader = document.getElementById("pdpHeader");
-  if (pdpHeader) {
-    pdpHeader.addEventListener("click", (e) => {
-      if (pdpMinimized && !pdpIsDragging && !e.target.closest("button")) {
-        toggleMinimizeDetailPanel();
-      }
-    });
-  }
+  panel.addEventListener("click", (e) => {
+    if (pdpMinimized && !pdpIsDragging && !e.target.closest("button") && !e.target.closest(".pdp__header-controls")) {
+      toggleMinimizeDetailPanel(e);
+    }
+  });
 }
 
 function resetPanelDragPosition() {
