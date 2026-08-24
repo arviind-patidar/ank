@@ -8727,9 +8727,6 @@ function popupHtml(p, nearbyTechParks, nearbyMetro, nearbySchools, nearbyHospita
       ${commuteBanner}
       ${amenitiesSection}
       <div class="popup-card__actions">
-        <button type="button" class="popup-card__action-btn${shortlisted ? " popup-card__action-btn--active" : ""}" onclick="toggleShortlist('${p.id}')">
-          ${shortlisted ? "♥" : "♡"} Shortlist
-        </button>
         <button type="button" class="popup-card__action-btn${inCompare ? " popup-card__action-btn--in-compare" : ""}" onclick="toggleCompare('${p.id}')">
           ⇄ ${inCompare ? "In Compare" : "Compare"}
         </button>
@@ -9192,9 +9189,8 @@ function renderDetailPanel(property) {
   document.getElementById("pdpBody").innerHTML = whyHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
 
   function pdpActionsHtml(id) {
-    var s = shortlistSet.has(id), c = compareSelection.includes(id);
-    return `<button type="button" class="pdp__action-btn${s ? " pdp__action-btn--active" : ""}" onclick="toggleShortlistPdp('${id}')">${s ? "♥" : "♡"} Shortlist</button>` +
-           `<button type="button" class="pdp__action-btn${c ? " pdp__action-btn--in-compare" : ""}" onclick="toggleComparePdp('${id}')">⇄ ${c ? "In Compare" : "Compare"}</button>`;
+    var c = compareSelection.includes(id);
+    return `<button type="button" class="pdp__action-btn${c ? " pdp__action-btn--in-compare" : ""}" onclick="toggleComparePdp('${id}')">⇄ ${c ? "In Compare" : "Compare"}</button>`;
   }
   document.getElementById("pdpActions").innerHTML = pdpActionsHtml(property.id);
 
