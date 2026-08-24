@@ -9250,9 +9250,11 @@ function initDraggableMinimizedPanel() {
   let isDragging = false;
   let startX = 0, startY = 0;
   let initialLeft = 0, initialTop = 0;
+  let activePointerId = null;
 
   function onDragStart(e) {
     if (!pdpMinimized) return;
+    if (isDragging) return;
     if (e.target.closest(".pdp__header-controls") || e.target.closest("button") || e.target.closest(".pdp__minimize-btn") || e.target.closest(".pdp__close")) return;
 
     isDragging = true;
@@ -9268,11 +9270,22 @@ function initDraggableMinimizedPanel() {
     initialLeft = rect.left;
     initialTop = rect.top;
 
-    document.addEventListener("mousemove", onDragMove);
+    if (e.pointerId !== undefined && typeof panel.setPointerCapture === "function") {
+      try {
+        panel.setPointerCapture(e.pointerId);
+        activePointerId = e.pointerId;
+      } catch (err) {}
+    }
+
+    if (e.cancelable && e.type !== "touchstart") {
+      e.preventDefault();
+    }
+
+    document.addEventListener("mousemove", onDragMove, { passive: false });
     document.addEventListener("mouseup", onDragEnd);
     document.addEventListener("touchmove", onDragMove, { passive: false });
     document.addEventListener("touchend", onDragEnd);
-    document.addEventListener("pointermove", onDragMove);
+    document.addEventListener("pointermove", onDragMove, { passive: false });
     document.addEventListener("pointerup", onDragEnd);
   }
 
@@ -9285,9 +9298,11 @@ function initDraggableMinimizedPanel() {
     const dx = clientX - startX;
     const dy = clientY - startY;
 
-    if (Math.abs(dx) > 2 || Math.abs(dy) > 2) {
+    if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
       pdpIsDragging = true;
-      if (e.cancelable && typeof e.preventDefault === "function") e.preventDefault();
+      if (e.cancelable && typeof e.preventDefault === "function") {
+        e.preventDefault();
+      }
 
       let newLeft = initialLeft + dx;
       let newTop = initialTop + dy;
@@ -9306,10 +9321,16 @@ function initDraggableMinimizedPanel() {
     }
   }
 
-  function onDragEnd() {
+  function onDragEnd(e) {
     if (!isDragging) return;
     isDragging = false;
-    setTimeout(() => { pdpIsDragging = false; }, 120);
+    if (activePointerId !== null && typeof panel.releasePointerCapture === "function") {
+      try {
+        panel.releasePointerCapture(activePointerId);
+      } catch (err) {}
+      activePointerId = null;
+    }
+    setTimeout(() => { pdpIsDragging = false; }, 150);
     document.removeEventListener("mousemove", onDragMove);
     document.removeEventListener("mouseup", onDragEnd);
     document.removeEventListener("touchmove", onDragMove);
@@ -9318,9 +9339,9 @@ function initDraggableMinimizedPanel() {
     document.removeEventListener("pointerup", onDragEnd);
   }
 
-  panel.addEventListener("mousedown", onDragStart);
-  panel.addEventListener("touchstart", onDragStart, { passive: true });
   panel.addEventListener("pointerdown", onDragStart);
+  panel.addEventListener("mousedown", onDragStart);
+  panel.addEventListener("touchstart", onDragStart, { passive: false });
 
   panel.addEventListener("click", (e) => {
     if (pdpMinimized && !pdpIsDragging && !e.target.closest("button") && !e.target.closest(".pdp__header-controls")) {
