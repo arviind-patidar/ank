@@ -7870,6 +7870,94 @@ function defineTechParkLayerClass() {
   };
 }
 
+function getSelectedPropertiesForAmenities() {
+  const properties = [];
+  if (activeCardId) {
+    const p = ALL_PROPERTIES.find((item) => item.id === activeCardId);
+    if (p) properties.push(p);
+  }
+  if (selectedPropertyIds && selectedPropertyIds.size > 0) {
+    ALL_PROPERTIES.forEach((item) => {
+      if (selectedPropertyIds.has(item.id) && !properties.some((p) => p.id === item.id)) {
+        properties.push(item);
+      }
+    });
+  }
+  return properties;
+}
+
+function getCombinedDisplayAmenities() {
+  const selectedProps = getSelectedPropertiesForAmenities();
+  if (selectedProps.length === 0) return null;
+
+  const tpMap = new Map();
+  const metroMap = new Map();
+  const schoolMap = new Map();
+  const hospitalMap = new Map();
+  const mallMap = new Map();
+
+  selectedProps.forEach((prop) => {
+    const amenities = getDisplayAmenities(prop);
+    if (amenities.techParks) {
+      amenities.techParks.forEach((item) => {
+        if (!tpMap.has(item.id) || (item.distanceKm != null && item.distanceKm < tpMap.get(item.id).distanceKm)) {
+          tpMap.set(item.id, item);
+        }
+      });
+    }
+    if (amenities.metro) {
+      amenities.metro.forEach((item) => {
+        if (!metroMap.has(item.id) || (item.distanceKm != null && item.distanceKm < metroMap.get(item.id).distanceKm)) {
+          metroMap.set(item.id, item);
+        }
+      });
+    }
+    if (amenities.schools) {
+      amenities.schools.forEach((item) => {
+        if (!schoolMap.has(item.id) || (item.distanceKm != null && item.distanceKm < schoolMap.get(item.id).distanceKm)) {
+          schoolMap.set(item.id, item);
+        }
+      });
+    }
+    if (amenities.hospitals) {
+      amenities.hospitals.forEach((item) => {
+        if (!hospitalMap.has(item.id) || (item.distanceKm != null && item.distanceKm < hospitalMap.get(item.id).distanceKm)) {
+          hospitalMap.set(item.id, item);
+        }
+      });
+    }
+    if (amenities.malls) {
+      amenities.malls.forEach((item) => {
+        if (!mallMap.has(item.id) || (item.distanceKm != null && item.distanceKm < mallMap.get(item.id).distanceKm)) {
+          mallMap.set(item.id, item);
+        }
+      });
+    }
+  });
+
+  return {
+    techParks: Array.from(tpMap.values()),
+    metro: Array.from(metroMap.values()),
+    schools: Array.from(schoolMap.values()),
+    hospitals: Array.from(hospitalMap.values()),
+    malls: Array.from(mallMap.values())
+  };
+}
+
+function updateAllAmenityDisplays() {
+  const selectedProps = getSelectedPropertiesForAmenities();
+  if (selectedProps.length > 0) {
+    document.body.classList.add("has-active-property");
+  } else {
+    document.body.classList.remove("has-active-property");
+  }
+  updateTechParkDisplay();
+  updateMetroDisplay();
+  updateSchoolDisplay();
+  updateHospitalDisplay();
+  updateMallDisplay();
+}
+
 function updateTechParkDisplay() {
   if (!techParkLayer) return;
   if (techParkViewActive) {
@@ -7877,14 +7965,11 @@ function updateTechParkDisplay() {
     techParkLayer.setParks(TECH_PARKS);
     return;
   }
-  if (activeCardId) {
-    const property = ALL_PROPERTIES.find((p) => p.id === activeCardId);
-    if (property) {
-      const nearby = getDisplayAmenities(property).techParks;
-      techParkLayer.setForceIndividual(true);
-      techParkLayer.setParks(nearby);
-      return;
-    }
+  const combined = getCombinedDisplayAmenities();
+  if (combined && combined.techParks) {
+    techParkLayer.setForceIndividual(true);
+    techParkLayer.setParks(combined.techParks);
+    return;
   }
   techParkLayer.setForceIndividual(false);
   techParkLayer.setParks([]);
@@ -7926,13 +8011,11 @@ function defineMetroLayerClass() {
 
 function updateMetroDisplay() {
   if (!metroLayer) return;
-  if (activeCardId) {
-    const property = ALL_PROPERTIES.find((p) => p.id === activeCardId);
-    if (property) {
-      metroLayer.setForceIndividual(true);
-      metroLayer.setStations(getDisplayAmenities(property).metro);
-      return;
-    }
+  const combined = getCombinedDisplayAmenities();
+  if (combined && combined.metro) {
+    metroLayer.setForceIndividual(true);
+    metroLayer.setStations(combined.metro);
+    return;
   }
   metroLayer.setForceIndividual(false); metroLayer.setStations([]);
 }
@@ -7971,13 +8054,11 @@ function defineSchoolLayerClass() {
 
 function updateSchoolDisplay() {
   if (!schoolLayer) return;
-  if (activeCardId) {
-    const property = ALL_PROPERTIES.find((p) => p.id === activeCardId);
-    if (property) {
-      schoolLayer.setForceIndividual(true);
-      schoolLayer.setSchools(getDisplayAmenities(property).schools);
-      return;
-    }
+  const combined = getCombinedDisplayAmenities();
+  if (combined && combined.schools) {
+    schoolLayer.setForceIndividual(true);
+    schoolLayer.setSchools(combined.schools);
+    return;
   }
   schoolLayer.setForceIndividual(false); schoolLayer.setSchools([]);
 }
@@ -8016,13 +8097,11 @@ function defineHospitalLayerClass() {
 
 function updateHospitalDisplay() {
   if (!hospitalLayer) return;
-  if (activeCardId) {
-    const property = ALL_PROPERTIES.find((p) => p.id === activeCardId);
-    if (property) {
-      hospitalLayer.setForceIndividual(true);
-      hospitalLayer.setHospitals(getDisplayAmenities(property).hospitals);
-      return;
-    }
+  const combined = getCombinedDisplayAmenities();
+  if (combined && combined.hospitals) {
+    hospitalLayer.setForceIndividual(true);
+    hospitalLayer.setHospitals(combined.hospitals);
+    return;
   }
   hospitalLayer.setForceIndividual(false); hospitalLayer.setHospitals([]);
 }
@@ -8061,13 +8140,11 @@ function defineMallLayerClass() {
 
 function updateMallDisplay() {
   if (!mallLayer) return;
-  if (activeCardId) {
-    const property = ALL_PROPERTIES.find((p) => p.id === activeCardId);
-    if (property) {
-      mallLayer.setForceIndividual(true);
-      mallLayer.setMalls(getDisplayAmenities(property).malls);
-      return;
-    }
+  const combined = getCombinedDisplayAmenities();
+  if (combined && combined.malls) {
+    mallLayer.setForceIndividual(true);
+    mallLayer.setMalls(combined.malls);
+    return;
   }
   mallLayer.setForceIndividual(false); mallLayer.setMalls([]);
 }
@@ -9909,6 +9986,7 @@ function applyFilters() {
   renderMarkers(filtered);
   const selectedLocality = els.locality ? els.locality.value : "";
   updateLocalitySummaryStrip(selectedLocality);
+  updateAllAmenityDisplays();
 }
 
 
