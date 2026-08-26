@@ -8186,6 +8186,40 @@ function updateMallDisplay() {
 
 /* TECH PARK DENSITY HEATMAP */
 function defineTechParkDensityOverlayClass() {
+  const PALETTE_STOPS = [
+    [0.00, 248, 243, 234,   0],
+    [0.18, 248, 243, 234, 110],
+    [0.42, 233, 216, 180, 155],
+    [0.68, 216, 190, 138, 195],
+    [1.00, 200, 155,  74, 235]
+  ];
+
+  const COLOR_LUT = new Uint8ClampedArray(256 * 4);
+  for (let i = 0; i < 256; i++) {
+    const t = i / 255;
+    let r = 200, g = 155, b = 74, a = 235;
+    if (t <= 0) {
+      r = 0; g = 0; b = 0; a = 0;
+    } else {
+      for (let s = 0; s < PALETTE_STOPS.length - 1; s++) {
+        const [t0, r0, g0, b0, a0] = PALETTE_STOPS[s];
+        const [t1, r1, g1, b1, a1] = PALETTE_STOPS[s + 1];
+        if (t >= t0 && t <= t1) {
+          const f = (t - t0) / (t1 - t0 || 1);
+          r = r0 + (r1 - r0) * f;
+          g = g0 + (g1 - g0) * f;
+          b = b0 + (b1 - b0) * f;
+          a = a0 + (a1 - a0) * f;
+          break;
+        }
+      }
+    }
+    COLOR_LUT[i * 4]     = Math.round(r);
+    COLOR_LUT[i * 4 + 1] = Math.round(g);
+    COLOR_LUT[i * 4 + 2] = Math.round(b);
+    COLOR_LUT[i * 4 + 3] = Math.round(a);
+  }
+
   function getTechParkWeight(name) {
     if (!name) return 1.0;
     const n = name.toLowerCase();
@@ -8203,7 +8237,6 @@ function defineTechParkDensityOverlayClass() {
       this.canvas.className = "tech-park-density-canvas";
       this.canvas.style.position = "absolute";
       this.canvas.style.pointerEvents = "none";
-      // Mount strictly on overlayLayer to allow full map zooming and panning
       const panes = this.getPanes();
       const parentPane = panes.overlayLayer || panes.mapPane;
       if (parentPane) parentPane.appendChild(this.canvas);
@@ -8240,38 +8273,66 @@ function defineTechParkDensityOverlayClass() {
       const sw = projection.fromLatLngToDivPixel(bounds.getSouthWest());
       const width = Math.max(1, Math.round(Math.abs(ne.x - sw.x)));
       const height = Math.max(1, Math.round(Math.abs(sw.y - ne.y)));
-      this.canvas.style.left = sw.x + "px"; this.canvas.style.top = ne.y + "px";
-      this.canvas.width = width; this.canvas.height = height;
 
-      const ctx = this.canvas.getContext("2d");
-      if (!ctx) return;
-      ctx.clearRect(0, 0, width, height);
+      this.canvas.style.left = sw.x + "px";
+      this.canvas.style.top = ne.y + "px";
+      this.canvas.width = width;
+      this.canvas.height = height;
+
+      const offscreen = document.createElement("canvas");
+      offscreen.width = width;
+      offscreen.height = height;
+      const offCtx = offscreen.getContext("2d");
+      if (!offCtx) return;
+
+      offCtx.clearRect(0, 0, width, height);
 
       const zoom = gmap.getZoom() || 12;
       const baseRadius = zoom >= 13.5
         ? Math.max(35, 75 - (zoom - 12) * 12)
-        : Math.min(95, Math.max(55, 70 + (12 - zoom) * 8));
-
-      ctx.globalCompositeOperation = "source-over";
+        : Math.min(95, Math.max(50, 65 + (12 - zoom) * 8));
 
       this.points.forEach((pt) => {
+        if (typeof pt.lat !== "number" || typeof pt.lng !== "number" || isNaN(pt.lat) || isNaN(pt.lng)) return;
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
         const x = pixel.x - sw.x; const y = pixel.y - ne.y;
         if (x < -baseRadius * 2 || x > width + baseRadius * 2 || y < -baseRadius * 2 || y > height + baseRadius * 2) return;
 
         const w = getTechParkWeight(pt.name);
         const r = baseRadius * Math.sqrt(w);
-        const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
-        grad.addColorStop(0.00, "rgba(200, 155, 74, 0.60)"); // Brand Gold (#C89B4A)
-        grad.addColorStop(0.35, "rgba(216, 190, 138, 0.40)"); // Muted Gold (#D8BE8A)
-        grad.addColorStop(0.70, "rgba(233, 216, 180, 0.20)"); // Light Beige (#E9D8B4)
-        grad.addColorStop(1.00, "rgba(248, 243, 234, 0)");   // Transparent
 
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fill();
+        const grad = offCtx.createRadialGradient(x, y, 0, x, y, r);
+        grad.addColorStop(0.00, `rgba(0,0,0, ${Math.min(0.55, 0.40 * w)})`);
+        grad.addColorStop(0.30, `rgba(0,0,0, ${Math.min(0.38, 0.26 * w)})`);
+        grad.addColorStop(0.60, `rgba(0,0,0, ${Math.min(0.20, 0.12 * w)})`);
+        grad.addColorStop(0.88, `rgba(0,0,0, ${Math.min(0.06, 0.03 * w)})`);
+        grad.addColorStop(1.00, "rgba(0,0,0, 0)");
+
+        offCtx.fillStyle = grad;
+        offCtx.beginPath();
+        offCtx.arc(x, y, r, 0, Math.PI * 2);
+        offCtx.fill();
       });
+
+      const imgData = offCtx.getImageData(0, 0, width, height);
+      const pixels = imgData.data;
+
+      for (let i = 0; i < pixels.length; i += 4) {
+        const alpha = pixels[i + 3];
+        if (alpha === 0) continue;
+        const lutIdx = Math.min(255, Math.round((alpha / 210) * 255));
+        const lutOffset = lutIdx * 4;
+        pixels[i]     = COLOR_LUT[lutOffset];
+        pixels[i + 1] = COLOR_LUT[lutOffset + 1];
+        pixels[i + 2] = COLOR_LUT[lutOffset + 2];
+        pixels[i + 3] = COLOR_LUT[lutOffset + 3];
+      }
+
+      const mainCtx = this.canvas.getContext("2d");
+      if (mainCtx) {
+        mainCtx.clearRect(0, 0, width, height);
+        mainCtx.putImageData(imgData, 0, 0);
+      }
     }
   };
 }
@@ -11152,7 +11213,8 @@ const DataService = {
         })
       : SAMPLE_PROPERTIES;
 
-    const techParks = Array.isArray(raw.techParks) && raw.techParks.length > 0 ? raw.techParks : (Array.isArray(raw.data && raw.data.techParks) ? raw.data.techParks : TECH_PARKS);
+    const rawTechList = Array.isArray(raw.techParks) && raw.techParks.length > 0 ? raw.techParks : (Array.isArray(raw.data && raw.data.techParks) ? raw.data.techParks : TECH_PARKS);
+    const techParks = normalizeTechParksData(rawTechList);
     const metroStations = Array.isArray(raw.metroStations) && raw.metroStations.length > 0 ? raw.metroStations : (Array.isArray(raw.data && raw.data.metroStations) ? raw.data.metroStations : METRO_STATIONS);
     const schools = Array.isArray(raw.schools) && raw.schools.length > 0 ? raw.schools : (Array.isArray(raw.data && raw.data.schools) ? raw.data.schools : SCHOOLS);
     const hospitals = Array.isArray(raw.hospitals) && raw.hospitals.length > 0 ? raw.hospitals : (Array.isArray(raw.data && raw.data.hospitals) ? raw.data.hospitals : HOSPITALS);
@@ -11169,6 +11231,29 @@ const DataService = {
       areaPricing,
       localities: raw.localities || (raw.data && raw.data.localities) || LOCALITY_SUMMARIES
     };
+  },
+
+  normalizeTechParksData(rawList) {
+    if (!Array.isArray(rawList)) return TECH_PARKS;
+    const valid = [];
+    rawList.forEach((item, idx) => {
+      if (!item) return;
+      let lat = typeof item.lat === "number" ? item.lat : parseFloat(item.lat);
+      let lng = typeof item.lng === "number" ? item.lng : parseFloat(item.lng);
+      if (!isNaN(lat) && !isNaN(lng)) {
+        if (lat > 70 && lng < 25) { const tmp = lat; lat = lng; lng = tmp; }
+      }
+      if (!isNaN(lat) && !isNaN(lng) && lat >= 12.0 && lat <= 13.8 && lng >= 76.8 && lng <= 78.5) {
+        valid.push({
+          id: item.id || `TP${idx + 1}`,
+          name: item.name || item.title || "Tech Park",
+          area: item.area || item.locality || "Bengaluru",
+          lat: lat,
+          lng: lng
+        });
+      }
+    });
+    return valid.length > 0 ? valid : TECH_PARKS;
   },
 
   getFallbackData() {
