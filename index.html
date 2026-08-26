@@ -8230,10 +8230,10 @@ function defineTechParkDensityOverlayClass() {
     onAdd() {
       this.canvas = document.createElement("canvas");
       this.canvas.className = "tech-park-density-canvas";
-      // Mount on mapPane so density renders BELOW all markers, pins, clusters and popups
+      // Mount on overlayLayer so density renders above map tiles and below markers
       const panes = this.getPanes();
-      const parentPane = panes.mapPane || panes.overlayLayer;
-      parentPane.appendChild(this.canvas);
+      const parentPane = panes.overlayLayer || panes.overlayMouseTarget || panes.mapPane;
+      if (parentPane) parentPane.appendChild(this.canvas);
     }
     onRemove() {
       if (this.canvas) {
@@ -8325,7 +8325,12 @@ function defineTechParkDensityOverlayClass() {
   };
 }
 
-function showTechParkHeatmap() { if (techParkDensityOverlay) techParkDensityOverlay.setPoints(TECH_PARKS); }
+function showTechParkHeatmap() {
+  if (techParkDensityOverlay) {
+    techParkDensityOverlay.setPoints(TECH_PARKS);
+    techParkDensityOverlay.draw();
+  }
+}
 function hideTechParkHeatmap() { if (techParkDensityOverlay) techParkDensityOverlay.setPoints([]); }
 
 function setSidebarModeForHeatmap(active) {
@@ -8338,14 +8343,15 @@ function setSidebarModeForHeatmap(active) {
 function setTechParkViewMode(active) {
   techParkViewActive = active;
   if (active && areaPriceViewActive) {
-    els.areaPriceView.checked = false;
+    if (els.areaPriceView) els.areaPriceView.checked = false;
     setAreaPriceViewMode(false);
   }
 
-  els.techParkViewNotice.classList.toggle("techpark-view-notice--visible", active);
-  if (active) els.techParkViewCount.textContent = TECH_PARKS.length;
+  if (els.techParkViewNotice) els.techParkViewNotice.classList.toggle("techpark-view-notice--visible", active);
+  if (active && els.techParkViewCount) els.techParkViewCount.textContent = TECH_PARKS.length;
 
   if (active) {
+    setSidebarModeForHeatmap(true);
     if (markerLayer && markerLayer.container) markerLayer.container.style.display = "";
     if (techParkLayer && techParkLayer.container) techParkLayer.container.style.display = "";
     showTechParkHeatmap();
