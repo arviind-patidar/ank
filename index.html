@@ -7946,6 +7946,7 @@ function getCombinedDisplayAmenities() {
 
 function updateAllAmenityDisplays() {
   const selectedProps = getSelectedPropertiesForAmenities();
+  const hasActiveProperty = (typeof activeCardId !== "undefined" && activeCardId !== null) || (typeof selectedPropertyIds !== "undefined" && selectedPropertyIds && selectedPropertyIds.size > 0);
   const hasActiveAmenity = (typeof els !== "undefined") && (
     (els.techParks && els.techParks.checked) ||
     (els.metro && els.metro.checked) ||
@@ -7954,7 +7955,7 @@ function updateAllAmenityDisplays() {
     (els.malls && els.malls.checked)
   );
 
-  if (selectedProps.length > 0 && hasActiveAmenity) {
+  if ((selectedProps.length > 0 || hasActiveProperty) && hasActiveAmenity) {
     document.body.classList.add("has-active-property");
   } else {
     document.body.classList.remove("has-active-property");
@@ -9463,7 +9464,6 @@ function setActive(id, { pan }) {
 }
 
 function clearActive() {
-  document.body.classList.remove("has-active-property");
   activeCardId = null;
   popupCache = null;
   pdpMinimized = false;
@@ -9482,11 +9482,7 @@ function clearActive() {
   setTimeout(function() { if (map) google.maps.event.trigger(map, "resize"); }, 310);
 
   if (markerLayer) markerLayer.draw();
-  updateTechParkDisplay();
-  updateMetroDisplay();
-  updateSchoolDisplay();
-  updateHospitalDisplay();
-  updateMallDisplay();
+  updateAllAmenityDisplays();
 }
 
 function closeAndClearActive(e) {
