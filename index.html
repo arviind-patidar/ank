@@ -775,10 +775,10 @@ body {
 
 /* Tech park marker & hover-only label styling */
 .techpark-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   z-index: 120;
 }
@@ -794,48 +794,48 @@ body {
   justify-content: center;
   box-shadow: 0 2px 6px rgba(82, 113, 150, 0.35);
   transition: transform 180ms ease, background-color 180ms ease;
+  pointer-events: auto;
 }
 
 .techpark-marker:hover .techpark-marker__pin {
-  transform: scale(1.15);
+  transform: scale(1.18);
   background: #3B587B;
 }
 
 .techpark-marker__leader {
-  width: 1px;
-  height: 5px;
-  background: #527196;
-  opacity: 0;
-  visibility: hidden;
+  display: none !important;
 }
 
 .techpark-marker__tag {
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translate(-50%, 0) !important;
+  margin-bottom: 6px !important;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 8px;
+  font-size: 8.5px;
   color: #2D435A;
   background: #EBF3FA;
-  padding: 3px 8px;
+  padding: 3.5px 9px;
   border-radius: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 160px;
+  max-width: 170px;
   border: 1px solid #829AB1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(4px);
-  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
-  z-index: 10;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 160ms ease-out !important;
+  z-index: 200 !important;
 }
 
-.techpark-marker:hover .techpark-marker__tag,
-.techpark-marker:hover .techpark-marker__leader {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.techpark-marker:hover .techpark-marker__tag {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate(-50%, -3px) !important;
 }
 
 .cluster-bubble--techpark { background: #527196; }
