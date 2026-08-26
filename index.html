@@ -8422,7 +8422,7 @@ function defineAreaPriceDensityOverlayClass() {
       const projection = this.getProjection(); if (!projection) return;
       const gmap = this.getMap(); if (!gmap) return;
       const bounds = gmap.getBounds();
-      if (!bounds || this.points.length === 0) { this.canvas.width = 0; this.canvas.height = 0; return; }
+      if (!bounds || !this.points || this.points.length === 0) { this.canvas.width = 0; this.canvas.height = 0; return; }
 
       const ne = projection.fromLatLngToDivPixel(bounds.getNorthEast());
       const sw = projection.fromLatLngToDivPixel(bounds.getSouthWest());
@@ -8431,23 +8431,26 @@ function defineAreaPriceDensityOverlayClass() {
       this.canvas.style.left = sw.x + "px"; this.canvas.style.top = ne.y + "px";
       this.canvas.width = width; this.canvas.height = height;
 
-      const ctx = this.canvas.getContext("2d"); ctx.clearRect(0, 0, width, height);
+      const ctx = this.canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
 
       const zoom = gmap.getZoom() || 12;
-      const radius = Math.max(50, Math.min(95, (zoom - 10) * 16 + 50));
-      const peakAlpha = 0.48; // Muted, soft, elegant density alpha
+      const radius = Math.max(70, Math.min(135, (zoom - 10) * 22 + 70));
+      const peakAlpha = 0.52;
 
       this.points.forEach((pt) => {
+        if (typeof pt.lat !== "number" || typeof pt.lng !== "number" || isNaN(pt.lat) || isNaN(pt.lng) || isNaN(pt.avgPrice)) return;
         const [r, g, b] = colorForPrice(pt.avgPrice);
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
         const x = pixel.x - sw.x; const y = pixel.y - ne.y;
-        if (x < -radius || x > width + radius || y < -radius || y > height + radius) return;
+        if (x < -radius * 2 || x > width + radius * 2 || y < -radius * 2 || y > height + radius * 2) return;
 
         const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        grad.addColorStop(0, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha})`);
-        grad.addColorStop(0.40, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha * 0.50})`);
-        grad.addColorStop(0.75, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha * 0.15})`);
-        grad.addColorStop(1, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},0)`);
+        grad.addColorStop(0.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha})`);
+        grad.addColorStop(0.35, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha * 0.55})`);
+        grad.addColorStop(0.70, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${peakAlpha * 0.20})`);
+        grad.addColorStop(1.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},0)`);
 
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -8477,7 +8480,7 @@ function defineAreaPriceLabelLayerClass() {
       const gmap = this.getMap(); if (!gmap) return;
 
       this.container.innerHTML = "";
-      if (!priceLabelsEnabled || gmap.getZoom() < 13 || this.points.length === 0) return;
+      if (!priceLabelsEnabled || gmap.getZoom() < 11.5 || !this.points || this.points.length === 0) return;
 
       const placed = [];
       const sorted = this.points.slice().sort((a, b) => b.avgPrice - a.avgPrice);
@@ -11219,7 +11222,8 @@ const DataService = {
     const schools = Array.isArray(raw.schools) && raw.schools.length > 0 ? raw.schools : (Array.isArray(raw.data && raw.data.schools) ? raw.data.schools : SCHOOLS);
     const hospitals = Array.isArray(raw.hospitals) && raw.hospitals.length > 0 ? raw.hospitals : (Array.isArray(raw.data && raw.data.hospitals) ? raw.data.hospitals : HOSPITALS);
     const malls = Array.isArray(raw.malls) && raw.malls.length > 0 ? raw.malls : (Array.isArray(raw.data && raw.data.malls) ? raw.data.malls : MALLS);
-    const areaPricing = Array.isArray(raw.areaPricing) && raw.areaPricing.length > 0 ? raw.areaPricing : (Array.isArray(raw.data && raw.data.areaPricing) ? raw.data.areaPricing : AREA_PRICING);
+    const rawPriceList = Array.isArray(raw.areaPricing) && raw.areaPricing.length > 0 ? raw.areaPricing : (Array.isArray(raw.data && raw.data.areaPricing) ? raw.data.areaPricing : AREA_PRICING);
+    const areaPricing = normalizeAreaPricingData(rawPriceList);
 
     return {
       projects,
@@ -11231,6 +11235,37 @@ const DataService = {
       areaPricing,
       localities: raw.localities || (raw.data && raw.data.localities) || LOCALITY_SUMMARIES
     };
+  },
+
+  normalizeAreaPricingData(rawList) {
+    if (!Array.isArray(rawList)) return AREA_PRICING;
+    const valid = [];
+    rawList.forEach((item, idx) => {
+      if (!item) return;
+      let lat = typeof item.lat === "number" ? item.lat : parseFloat(item.lat);
+      let lng = typeof item.lng === "number" ? item.lng : parseFloat(item.lng);
+      let avgPrice = typeof item.avgPrice === "number" ? item.avgPrice : parseFloat(item.avgPrice);
+      let minPrice = typeof item.minPrice === "number" ? item.minPrice : parseFloat(item.minPrice);
+      let maxPrice = typeof item.maxPrice === "number" ? item.maxPrice : parseFloat(item.maxPrice);
+
+      if (!isNaN(lat) && !isNaN(lng)) {
+        if (lat > 70 && lng < 25) { const tmp = lat; lat = lng; lng = tmp; }
+      }
+      if (!isNaN(lat) && !isNaN(lng) && lat >= 12.0 && lat <= 13.8 && lng >= 76.8 && lng <= 78.5 && !isNaN(avgPrice) && avgPrice > 0) {
+        valid.push({
+          id: item.id || `AP${idx + 1}`,
+          name: item.name || item.locality || "Bengaluru Area",
+          zone: item.zone || "Bengaluru",
+          avgPrice: avgPrice,
+          minPrice: !isNaN(minPrice) ? minPrice : Math.round(avgPrice * 0.75),
+          maxPrice: !isNaN(maxPrice) ? maxPrice : Math.round(avgPrice * 1.35),
+          lat: lat,
+          lng: lng,
+          category: item.category || (avgPrice >= 18000 ? "Ultra-Luxury" : avgPrice >= 10500 ? "Premium" : avgPrice >= 8000 ? "Mid-Segment" : "Budget")
+        });
+      }
+    });
+    return valid.length > 0 ? valid : AREA_PRICING;
   },
 
   normalizeTechParksData(rawList) {
