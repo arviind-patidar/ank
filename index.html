@@ -1218,9 +1218,10 @@ body {
 
 .tech-park-density-canvas {
   position: absolute;
-  pointer-events: none;
+  pointer-events: none !important;
   opacity: 0;
   transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 .tech-park-density-canvas--visible {
   opacity: 1;
@@ -8185,41 +8186,11 @@ function updateMallDisplay() {
 
 /* TECH PARK DENSITY HEATMAP */
 function defineTechParkDensityOverlayClass() {
-  // AcrenKey Brand-Aligned Gold Gradient Palette:
-  // Very Low (Transparent) -> Low (#F8F3EA Warm Ivory) -> Medium (#E9D8B4 Light Beige) -> High (#D8BE8A Muted Gold) -> Very High (#C89B4A Brand Gold)
-  const BRAND_GOLD_STOPS = [
-    [0.00, 248, 243, 234,   0], // Very Low (Transparent)
-    [0.20, 248, 243, 234,  90], // Low (#F8F3EA - Warm Ivory)
-    [0.45, 233, 216, 180, 135], // Medium (#E9D8B4 - Light Beige)
-    [0.70, 216, 190, 138, 175], // High (#D8BE8A - Muted Gold)
-    [1.00, 200, 155,  74, 215]  // Very High (#C89B4A - Brand Gold)
-  ];
-
-  function getRGBAForIntensity(t) {
-    if (t <= 0) return [0, 0, 0, 0];
-    if (t >= 1) return BRAND_GOLD_STOPS[BRAND_GOLD_STOPS.length - 1].slice(1);
-    for (let i = 0; i < BRAND_GOLD_STOPS.length - 1; i++) {
-      const [t0, r0, g0, b0, a0] = BRAND_GOLD_STOPS[i];
-      const [t1, r1, g1, b1, a1] = BRAND_GOLD_STOPS[i + 1];
-      if (t >= t0 && t <= t1) {
-        const f = (t - t0) / (t1 - t0 || 1);
-        return [
-          r0 + (r1 - r0) * f,
-          g0 + (g1 - g0) * f,
-          b0 + (b1 - b0) * f,
-          a0 + (a1 - a0) * f
-        ];
-      }
-    }
-    return BRAND_GOLD_STOPS[BRAND_GOLD_STOPS.length - 1].slice(1);
-  }
-
-  // Importance weights for major employment corridors (Manyata, Whitefield, ORR, Bellandur, E-City)
   function getTechParkWeight(name) {
     if (!name) return 1.0;
     const n = name.toLowerCase();
     if (n.includes("manyata") || n.includes("itpl") || n.includes("embassy techvillage") || n.includes("ecospace") || n.includes("prestige tech park")) return 2.2;
-    if (n.includes("bagmane") || n.includes("rmz") || n.includes("divyasree") || n.includes("global village") || n.includes("cesna")) return 1.6;
+    if (n.includes("bagmane") || n.includes("rmz") || n.includes("divyasree") || n.includes("global village") || n.includes("cessna")) return 1.6;
     return 1.0;
   }
 
@@ -8230,9 +8201,11 @@ function defineTechParkDensityOverlayClass() {
     onAdd() {
       this.canvas = document.createElement("canvas");
       this.canvas.className = "tech-park-density-canvas";
-      // Mount on overlayLayer so density renders above map tiles and below markers
+      this.canvas.style.position = "absolute";
+      this.canvas.style.pointerEvents = "none";
+      // Mount strictly on overlayLayer to allow full map zooming and panning
       const panes = this.getPanes();
-      const parentPane = panes.overlayLayer || panes.overlayMouseTarget || panes.mapPane;
+      const parentPane = panes.overlayLayer || panes.mapPane;
       if (parentPane) parentPane.appendChild(this.canvas);
     }
     onRemove() {
@@ -8242,10 +8215,10 @@ function defineTechParkDensityOverlayClass() {
       }
     }
     setPoints(points) {
-      this.points = points;
+      this.points = points || [];
       this.draw();
       if (this.canvas) {
-        if (points && points.length > 0) {
+        if (this.points && this.points.length > 0) {
           this.canvas.classList.add("tech-park-density-canvas--visible");
         } else {
           this.canvas.classList.remove("tech-park-density-canvas--visible");
@@ -8257,7 +8230,7 @@ function defineTechParkDensityOverlayClass() {
       const projection = this.getProjection(); if (!projection) return;
       const gmap = this.getMap(); if (!gmap) return;
       const bounds = gmap.getBounds();
-      if (!bounds || this.points.length === 0) {
+      if (!bounds || !this.points || this.points.length === 0) {
         this.canvas.width = 0; this.canvas.height = 0;
         this.canvas.classList.remove("tech-park-density-canvas--visible");
         return;
@@ -8271,56 +8244,34 @@ function defineTechParkDensityOverlayClass() {
       this.canvas.width = width; this.canvas.height = height;
 
       const ctx = this.canvas.getContext("2d");
+      if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
 
-      // Phase 1: Accumulate smooth Gaussian radial falloff into alpha channel
-      ctx.globalCompositeOperation = "source-over";
-
       const zoom = gmap.getZoom() || 12;
-      // Dynamic zoom-adaptive radius (45px to 65px for corridors, splits into 26px campus hubs on zoom-in)
-      const radius = zoom >= 13.5
-        ? Math.max(26, 60 - (zoom - 12) * 11)
-        : Math.min(65, Math.max(45, 55 + (12 - zoom) * 5));
+      const baseRadius = zoom >= 13.5
+        ? Math.max(35, 75 - (zoom - 12) * 12)
+        : Math.min(95, Math.max(55, 70 + (12 - zoom) * 8));
+
+      ctx.globalCompositeOperation = "source-over";
 
       this.points.forEach((pt) => {
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
         const x = pixel.x - sw.x; const y = pixel.y - ne.y;
-        if (x < -radius || x > width + radius || y < -radius || y > height + radius) return;
+        if (x < -baseRadius * 2 || x > width + baseRadius * 2 || y < -baseRadius * 2 || y > height + baseRadius * 2) return;
 
         const w = getTechParkWeight(pt.name);
-        const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        // Multi-stop Gaussian falloff for organic, smooth continuous density
-        grad.addColorStop(0.00, `rgba(0,0,0, ${Math.min(0.52, 0.38 * w)})`);
-        grad.addColorStop(0.28, `rgba(0,0,0, ${Math.min(0.35, 0.24 * w)})`);
-        grad.addColorStop(0.58, `rgba(0,0,0, ${Math.min(0.18, 0.10 * w)})`);
-        grad.addColorStop(0.85, `rgba(0,0,0, ${Math.min(0.05, 0.02 * w)})`);
-        grad.addColorStop(1.00, "rgba(0,0,0, 0)");
+        const r = baseRadius * Math.sqrt(w);
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+        grad.addColorStop(0.00, "rgba(200, 155, 74, 0.60)"); // Brand Gold (#C89B4A)
+        grad.addColorStop(0.35, "rgba(216, 190, 138, 0.40)"); // Muted Gold (#D8BE8A)
+        grad.addColorStop(0.70, "rgba(233, 216, 180, 0.20)"); // Light Beige (#E9D8B4)
+        grad.addColorStop(1.00, "rgba(248, 243, 234, 0)");   // Transparent
 
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fill();
       });
-
-      // Phase 2: Color Map accumulated alpha into continuous GIS Blue Gradient
-      const imgData = ctx.getImageData(0, 0, width, height);
-      const data = imgData.data;
-
-      for (let i = 0; i < data.length; i += 4) {
-        const rawAlpha = data[i + 3];
-        if (rawAlpha === 0) continue;
-
-        // Normalized intensity t between 0.0 and 1.0
-        const t = Math.min(1.0, rawAlpha / 185);
-        const [r, g, b, a] = getRGBAForIntensity(t);
-
-        data[i] = Math.round(r);
-        data[i + 1] = Math.round(g);
-        data[i + 2] = Math.round(b);
-        data[i + 3] = Math.round(a);
-      }
-
-      ctx.putImageData(imgData, 0, 0);
     }
   };
 }
