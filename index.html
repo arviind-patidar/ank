@@ -13292,34 +13292,36 @@ function initMap() {
     fullscreenControl: true,
     clickableIcons: false,
     styles: [
-      // 1. Desaturate base landscape & water
-      { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#6C7A89" }] },
-      { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#FFFFFF" }, { weight: 2 }] },
-      { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#F7F5F0" }] },
-      { featureType: "landscape.natural", elementType: "geometry", stylers: [{ color: "#E4EBDC" }] },
-      { featureType: "water", elementType: "geometry", stylers: [{ color: "#C5E3EB" }] },
-      { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#4B7D89" }] },
+      // 1. Soft base typography
+      { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#4A525D" }] },
+      { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#F5F0E8" }, { weight: 1.5 }] },
 
-      // 2. Hide all Points of Interest & Commercial clutter
+      // 2. Warm natural landscape & water
+      { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#F2EDE4" }] },
+      { featureType: "landscape.natural", elementType: "geometry", stylers: [{ color: "#E3EAD8" }] },
+      { featureType: "water", elementType: "geometry", stylers: [{ color: "#CBDDE4" }] },
+      { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#4C6E7F" }] },
+
+      // 3. Hide POI & Transit clutter
       { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
       { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
 
-      // 3. Roads: Hide minor local road text labels & soften geometry
+      // 4. Warm subtle roads (eliminating harsh pure white lines)
       { featureType: "road.local", elementType: "labels", stylers: [{ visibility: "off" }] },
-      { featureType: "road.local", elementType: "geometry", stylers: [{ color: "#FFFFFF" }, { lightness: 20 }] },
-      { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#FFFFFF" }] },
-      { featureType: "road.arterial", elementType: "labels.text.fill", stylers: [{ color: "#7F8C8D" }] },
-      { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#E8DFD1" }] },
-      { featureType: "road.highway", elementType: "geometry.stroke", stylers: [{ color: "#DDD3C1" }] },
-      { featureType: "road.highway", elementType: "labels.text.fill", stylers: [{ color: "#5C6B73" }] },
+      { featureType: "road.local", elementType: "geometry", stylers: [{ color: "#E8E1D3" }] },
+      { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#DDD2BF" }] },
+      { featureType: "road.arterial", elementType: "labels.text.fill", stylers: [{ color: "#5C6570" }] },
+      { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#D2BF9E" }] },
+      { featureType: "road.highway", elementType: "geometry.stroke", stylers: [{ color: "#C4AF8B" }] },
+      { featureType: "road.highway", elementType: "labels.text.fill", stylers: [{ color: "#3B444E" }] },
 
-      // 4. Locality & Neighborhood labels: Soften contrast so project pins dominate
-      { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#788793" }] },
-      { featureType: "administrative.neighborhood", elementType: "labels.text.fill", stylers: [{ color: "#8C9BA5" }] },
-      { featureType: "administrative.neighborhood", elementType: "labels.text.stroke", stylers: [{ color: "#F7F5F0" }] },
+      // 5. Locality & Neighborhood labels
+      { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#3B444E" }] },
+      { featureType: "administrative.neighborhood", elementType: "labels.text.fill", stylers: [{ color: "#65727F" }] },
+      { featureType: "administrative.neighborhood", elementType: "labels.text.stroke", stylers: [{ color: "#F2EDE4" }, { weight: 1.5 }] },
 
-      // 5. Land use / Built-up parks
-      { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#E1EAD8" }, { visibility: "on" }] }
+      // 6. Parks
+      { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#D9E5CE" }, { visibility: "on" }] }
     ],
   });
 
@@ -13330,9 +13332,7 @@ function initMap() {
     if (mapWrap) {
       mapWrap.classList.toggle("map-wrap--satellite", isSat);
     }
-    if (type === "satellite") {
-      map.setMapTypeId("hybrid");
-    }
+    // Keep pure satellite view without forcing hybrid road grids
   });
 
 
