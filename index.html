@@ -4959,24 +4959,7 @@ html, body {
             <span class="field__label">Area Price Density Heatmap</span>
           </label>
 
-          <div id="priceInsightsSubToggles" class="price-insights__sub-toggles" hidden>
-            <label class="field field--checkbox price-insights__sub-toggle">
-              <input type="checkbox" id="filterPriceLabels" checked />
-              <span class="field__label">Price Labels</span>
-            </label>
-            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
-              <input type="checkbox" id="filterAnnualGrowth" disabled />
-              <span class="field__label">Annual Growth <em>(coming soon)</em></span>
-            </label>
-            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
-              <input type="checkbox" id="filterRentalYield" disabled />
-              <span class="field__label">Rental Yield <em>(coming soon)</em></span>
-            </label>
-            <label class="field field--checkbox price-insights__sub-toggle">
-              <input type="checkbox" id="filterPremiumAreas" />
-              <span class="field__label">Premium Areas Only</span>
-            </label>
-          </div>
+
         </div>
 
         <!-- NEW CTA: METRO LINES (Placed immediately after Area Price Density) -->
@@ -15670,14 +15653,18 @@ function renderSearchSuggestions() {
     });
   }
 
-  els.priceLabels.addEventListener("change", () => {
-    priceLabelsEnabled = els.priceLabels.checked;
-    updateAreaPriceLabels();
-  });
-  els.premiumAreas.addEventListener("change", () => {
-    premiumAreasOnly = els.premiumAreas.checked;
-    refreshAreaPriceLayers();
-  });
+  if (els.priceLabels) {
+    els.priceLabels.addEventListener("change", () => {
+      priceLabelsEnabled = els.priceLabels.checked;
+      updateAreaPriceLabels();
+    });
+  }
+  if (els.premiumAreas) {
+    els.premiumAreas.addEventListener("change", () => {
+      premiumAreasOnly = els.premiumAreas.checked;
+      refreshAreaPriceLayers();
+    });
+  }
 
   const legendToggle = document.getElementById("legendToggle");
   const legendPanel = document.getElementById("legendPanel");
