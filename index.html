@@ -5047,11 +5047,7 @@ html, body {
     </div>
     
 
-    <!-- CUSTOM ACRE&KEY MAP / SATELLITE CONTROL -->
-    <div id="acreMapTypeControl" class="acre-maptype-control">
-      <button type="button" class="acre-maptype-btn acre-maptype-btn--active" id="btnMapTypeRoadmap" onclick="setAcreMapType('roadmap')">MAP</button>
-      <button type="button" class="acre-maptype-btn" id="btnMapTypeSatellite" onclick="setAcreMapType('satellite')">SATELLITE</button>
-    </div>
+    
 
     <!-- CUSTOM ACRE&KEY MAP MODE PILL -->
     
@@ -13459,8 +13455,10 @@ function initMap() {
     ],
   });
 
-  // Register custom Acre&Key MAP | SATELLITE control into Google Maps TOP_LEFT control pane
+  
+  // Register single clean custom Acre&Key MAP | SATELLITE control into Google Maps TOP_LEFT
   const mapTypeCtrl = document.createElement("div");
+  mapTypeCtrl.id = "acreMapTypeControl";
   mapTypeCtrl.className = "acre-maptype-control";
   mapTypeCtrl.innerHTML = `
     <button type="button" class="acre-maptype-btn acre-maptype-btn--active" id="btnMapTypeRoadmap">MAP</button>
@@ -13474,15 +13472,19 @@ function initMap() {
   if (btnRoadmap) {
     btnRoadmap.addEventListener("click", (e) => {
       e.stopPropagation();
+      e.preventDefault();
       setAcreMapType("roadmap");
     });
   }
   if (btnSatellite) {
     btnSatellite.addEventListener("click", (e) => {
       e.stopPropagation();
+      e.preventDefault();
       setAcreMapType("satellite");
     });
   }
+
+    
 
 
   map.addListener("maptypeid_changed", () => {
@@ -16009,17 +16011,15 @@ function quickSearch(str) {
 
 
 
+
 // ACRE&KEY SATELLITE & MAP TYPE CONTROL ENGINE
 function setAcreMapType(type) {
-  console.log("Setting map type to:", type);
-  if (typeof map === 'undefined' || !map) {
-    console.warn("Map instance not ready yet");
-    return;
-  }
+  if (typeof map === 'undefined' || !map) return;
   map.setMapTypeId(type);
 
-  const btnRoadmap = document.getElementById('btnMapTypeRoadmap');
-  const btnSatellite = document.getElementById('btnMapTypeSatellite');
+  const ctrl = document.getElementById('acreMapTypeControl');
+  const btnRoadmap = ctrl ? ctrl.querySelector('#btnMapTypeRoadmap') : null;
+  const btnSatellite = ctrl ? ctrl.querySelector('#btnMapTypeSatellite') : null;
   const satOverlay = document.getElementById('satelliteCanvasOverlay');
   const mapWrap = document.querySelector('.map-wrap');
 
@@ -16030,25 +16030,6 @@ function setAcreMapType(type) {
   if (satOverlay) satOverlay.hidden = !isSat;
   if (mapWrap) mapWrap.classList.toggle('map-wrap--satellite', isSat);
 }
-
-// Bind explicit click listeners to ensure 100% click reliability
-document.addEventListener('DOMContentLoaded', () => {
-  const btnRoadmap = document.getElementById('btnMapTypeRoadmap');
-  const btnSatellite = document.getElementById('btnMapTypeSatellite');
-
-  if (btnRoadmap) {
-    btnRoadmap.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setAcreMapType('roadmap');
-    });
-  }
-  if (btnSatellite) {
-    btnSatellite.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setAcreMapType('satellite');
-    });
-  }
-});
 // Update active project selection state for de-emphasis
 const origSetActive = window.setActive;
 window.setActive = function(id, options) {
