@@ -771,35 +771,35 @@ body {
   box-shadow: 0 5px 16px rgba(46, 111, 126, 0.45);
 }
 
-/* Soft, Light Pastel Amenity Markers (Low Contrast, Property is HERO) */
+/* Vibrant, High-Contrast Amenity & Infrastructure Map Markers */
 
-/* Tech park marker & hover-only label styling */
 .techpark-marker {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   z-index: 120;
 }
 
 .techpark-marker__pin {
-  width: 19px;
-  height: 19px;
-  background: #527196;
-  border: 1.5px solid #FFFFFF;
-  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  background: #2563EB;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(82, 113, 150, 0.35);
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.45), 0 1px 4px rgba(0, 0, 0, 0.25);
   transition: transform 180ms ease, background-color 180ms ease;
   pointer-events: auto;
 }
 
 .techpark-marker:hover .techpark-marker__pin {
-  transform: scale(1.18);
-  background: #3B587B;
+  transform: scale(1.22);
+  background: #1D4ED8;
+  box-shadow: 0 5px 14px rgba(29, 78, 216, 0.6);
 }
 
 .techpark-marker__leader {
@@ -807,50 +807,37 @@ body {
 }
 
 .techpark-marker__tag {
-  position: absolute !important;
-  bottom: 100% !important;
-  left: 50% !important;
-  transform: translate(-50%, 0) !important;
-  margin-bottom: 6px !important;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 8.5px;
-  color: #2D435A;
-  background: #EBF3FA;
-  padding: 3.5px 9px;
+  font-weight: 700;
+  font-size: 9.5px;
+  color: #1E40AF;
+  background: #FFFFFF;
+  padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 170px;
-  border: 1px solid #829AB1;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 160ms ease-out !important;
+  max-width: 180px;
+  border: 1.5px solid #2563EB;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+  margin-bottom: 4px;
   z-index: 200 !important;
 }
 
-.techpark-marker:hover .techpark-marker__tag {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translate(-50%, -3px) !important;
-}
-
-.cluster-bubble--techpark { background: #527196; }
-.cluster-bubble--techpark:hover { background: #3B587B; color: #fff; }
+.cluster-bubble--techpark { background: #2563EB; border: 2px solid #FFFFFF; color: #FFFFFF; font-weight: 800; }
+.cluster-bubble--techpark:hover { background: #1D4ED8; color: #fff; }
 
 .popup-card__techpark-badge {
   display: inline-block;
-  font-family: var(--font-mono); font-weight: 600;
-  font-size: 8px;
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: 8.5px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 2px;
-  background: #EBF3FA;
-  color: #2D435A;
+  padding: 2.5px 7px;
+  border-radius: 3px;
+  background: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
   margin-bottom: 4px;
 }
 
@@ -860,8 +847,8 @@ body {
   padding-top: 5px;
 }
 .popup-card__techparks-label {
-  font-family: var(--font-mono); font-weight: 600; font-size: 8px;
-  letter-spacing: 0.04em; text-transform: uppercase; color: #527196; margin-bottom: 3px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 8.5px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #2563EB; margin-bottom: 3px;
 }
 .popup-card__techpark-row { font-size: 10px; color: var(--navy); line-height: 1.5; }
 .popup-card__techparks-empty { font-size: 9.5px; color: #7A8288; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 5px; }
@@ -869,86 +856,91 @@ body {
 /* Metro station marker */
 .metro-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .metro-marker__pin {
-  width: 18px; height: 18px; border-radius: 50%; background: #6E5C8A; border: 1.5px solid #FFFFFF;
-  display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(110, 92, 138, 0.35);
+  width: 24px; height: 24px; border-radius: 50%; background: #7C3AED; border: 2px solid #FFFFFF;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(124, 58, 237, 0.45), 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 180ms ease;
 }
-.metro-marker__leader { width: 1px; height: 5px; background: #6E5C8A; }
+.metro-marker:hover .metro-marker__pin { transform: scale(1.22); background: #6D28D9; }
+.metro-marker__leader { display: none !important; }
 .metro-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #423656;
-  background: #F3EFEF; padding: 3px 8px; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;
-  border: 1px solid #968AA8; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-body); font-weight: 700; font-size: 9.5px; color: #5B21B6;
+  background: #FFFFFF; padding: 3px 8px; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+  border: 1.5px solid #7C3AED; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22); margin-bottom: 4px;
 }
-.cluster-bubble--metro { background: #6E5C8A; }
-.cluster-bubble--metro:hover { background: #52436B; color: #fff; }
+.cluster-bubble--metro { background: #7C3AED; border: 2px solid #FFFFFF; color: #FFFFFF; font-weight: 800; }
+.cluster-bubble--metro:hover { background: #6D28D9; color: #fff; }
 
 .popup-card__metros { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__metros-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #6E5C8A; margin-bottom: 4px; }
+.popup-card__metros-label { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #7C3AED; margin-bottom: 4px; }
 .popup-card__metro-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__metros-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* School marker */
 .school-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .school-marker__pin {
-  width: 18px; height: 18px; background: #8A7346; border: 1.5px solid #FFFFFF;
-  border-radius: 5px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 6px rgba(138, 115, 70, 0.35);
+  width: 24px; height: 24px; background: #D97706; border: 2px solid #FFFFFF;
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 10px rgba(217, 119, 6, 0.45), 0 1px 4px rgba(0, 0, 0, 0.25); transition: transform 180ms ease;
 }
-.school-marker__leader { width: 1px; height: 5px; background: #8A7346; }
+.school-marker:hover .school-marker__pin { transform: scale(1.22); background: #B45309; }
+.school-marker__leader { display: none !important; }
 .school-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #4F4022;
-  background: #FAF5E8; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
-  border: 1px solid #A8956F; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-body); font-weight: 700; font-size: 9.5px; color: #92400E;
+  background: #FFFFFF; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+  border: 1.5px solid #D97706; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22); margin-bottom: 4px;
 }
-.cluster-bubble--school { background: #8A7346; }
-.cluster-bubble--school:hover { background: #6B5731; color: #fff; }
+.cluster-bubble--school { background: #D97706; border: 2px solid #FFFFFF; color: #FFFFFF; font-weight: 800; }
+.cluster-bubble--school:hover { background: #B45309; color: #fff; }
 
 .popup-card__schools { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__schools-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #8A7346; margin-bottom: 4px; }
+.popup-card__schools-label { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #D97706; margin-bottom: 4px; }
 .popup-card__school-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__schools-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* Hospital marker */
 .hospital-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .hospital-marker__pin {
-  width: 18px; height: 18px; background: #A35249; border: 1.5px solid #FFFFFF;
+  width: 24px; height: 24px; background: #DC2626; border: 2px solid #FFFFFF;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 6px rgba(163, 82, 73, 0.35);
+  box-shadow: 0 3px 10px rgba(220, 38, 38, 0.45), 0 1px 4px rgba(0, 0, 0, 0.25); transition: transform 180ms ease;
 }
-.hospital-marker__leader { width: 1px; height: 5px; background: #A35249; }
+.hospital-marker:hover .hospital-marker__pin { transform: scale(1.22); background: #B91C1C; }
+.hospital-marker__leader { display: none !important; }
 .hospital-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #572A25;
-  background: #FBF0EF; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
-  border: 1px solid #B87B75; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-body); font-weight: 700; font-size: 9.5px; color: #991B1B;
+  background: #FFFFFF; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+  border: 1.5px solid #DC2626; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22); margin-bottom: 4px;
 }
-.cluster-bubble--hospital { background: #A35249; }
-.cluster-bubble--hospital:hover { background: #823C34; color: #fff; }
+.cluster-bubble--hospital { background: #DC2626; border: 2px solid #FFFFFF; color: #FFFFFF; font-weight: 800; }
+.cluster-bubble--hospital:hover { background: #B91C1C; color: #fff; }
 
 .popup-card__hospitals { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #A35249; margin-bottom: 4px; }
+.popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #DC2626; margin-bottom: 4px; }
 .popup-card__hospital-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__hospitals-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
 /* Mall marker */
 .mall-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
 .mall-marker__pin {
-  width: 18px; height: 18px; background: #8C5777; border: 1.5px solid #FFFFFF;
-  border-radius: 5px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 6px rgba(140, 87, 119, 0.35);
+  width: 24px; height: 24px; background: #DB2777; border: 2px solid #FFFFFF;
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 10px rgba(219, 39, 119, 0.45), 0 1px 4px rgba(0, 0, 0, 0.25); transition: transform 180ms ease;
 }
-.mall-marker__leader { width: 1px; height: 5px; background: #8C5777; }
+.mall-marker:hover .mall-marker__pin { transform: scale(1.22); background: #BE185D; }
+.mall-marker__leader { display: none !important; }
 .mall-marker__tag {
-  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #4D2C40;
-  background: #F8EEF4; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
-  border: 1px solid #AA7D98; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-body); font-weight: 700; font-size: 9.5px; color: #9D174D;
+  background: #FFFFFF; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+  border: 1.5px solid #DB2777; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22); margin-bottom: 4px;
 }
-.cluster-bubble--mall { background: #B33F7D; }
-.cluster-bubble--mall:hover { background: #CC5A97; color: #fff; }
+.cluster-bubble--mall { background: #DB2777; border: 2px solid #FFFFFF; color: #FFFFFF; font-weight: 800; }
+.cluster-bubble--mall:hover { background: #BE185D; color: #fff; }
 
 .popup-card__malls { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
-.popup-card__malls-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #B33F7D; margin-bottom: 4px; }
+.popup-card__malls-label { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #DB2777; margin-bottom: 4px; }
 .popup-card__mall-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
 .popup-card__malls-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
 
@@ -1542,11 +1534,11 @@ body {
   flex: 0 0 auto;
 }
 
-.amenity-toggle__icon--techpark { background: #2E6F7E; }
-.amenity-toggle__icon--metro    { background: #5B3E96; }
-.amenity-toggle__icon--school   { background: #C77F1A; }
-.amenity-toggle__icon--hospital { background: #B7332C; }
-.amenity-toggle__icon--mall     { background: #B33F7D; }
+.amenity-toggle__icon--techpark { background: #2563EB; }
+.amenity-toggle__icon--metro    { background: #7C3AED; }
+.amenity-toggle__icon--school   { background: #D97706; }
+.amenity-toggle__icon--hospital { background: #DC2626; }
+.amenity-toggle__icon--mall     { background: #DB2777; }
 
 .amenity-toggle__text {
   font-family: var(--font-body);
@@ -2388,18 +2380,7 @@ body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__le
   display: none !important;
 }
 
-body.has-active-property .techpark-marker .techpark-marker__tag,
-body.has-active-property .techpark-marker .techpark-marker__leader,
-body.has-active-property .metro-marker .metro-marker__tag,
-body.has-active-property .metro-marker .metro-marker__leader,
-body.has-active-property .school-marker .school-marker__tag,
-body.has-active-property .school-marker .school-marker__leader,
-body.has-active-property .hospital-marker .hospital-marker__tag,
-body.has-active-property .hospital-marker .hospital-marker__leader,
-body.has-active-property .mall-marker .mall-marker__tag,
-body.has-active-property .mall-marker .mall-marker__leader {
-  display: none !important;
-}
+/* Amenity tags remain visible on active property select */
 
 /* REVEAL TAGS DYNAMICALLY ON MOUSE HOVER */
 body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__tag,
@@ -3163,15 +3144,15 @@ body.in-guided-presentation .locality-summary-strip {
 }
 
 .plot-marker__pin {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: var(--rust);
-  border: 2px solid #fff;
+  background: linear-gradient(135deg, #1E293B, #0F172A);
+  border: 2px solid #F59E0B;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transition: all 180ms ease;
 }
 
@@ -13192,7 +13173,7 @@ function setAreaPriceViewMode(active) {
 }
 
 function propertyTypeIcon(type) {
-  return '<rect x="7" y="3" width="10" height="18" rx="1"/><rect x="9.3" y="6" width="2" height="2" fill="#B88E52"/><rect x="12.7" y="6" width="2" height="2" fill="#B88E52"/>';
+  return '<path d="M12 2.5L2 10h3v11.5h14V10h3L12 2.5zM10 19.5v-5h4v5h-4z" fill="#FFFFFF"/>';
 }
 
 function markerInnerHtml(property, isActive, hideLabel = false) {
@@ -13202,7 +13183,7 @@ function markerInnerHtml(property, isActive, hideLabel = false) {
       <div class="plot-marker__tag" style="${hideLabel ? 'display:none;' : ''}" title="${property.title}">${property.title}</div>
       <div class="plot-marker__leader" style="${hideLabel ? 'display:none;' : ''}"></div>
       <div class="plot-marker__pin">
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="white">${propertyTypeIcon(property.type)}</svg>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="white">${propertyTypeIcon(property.type)}</svg>
       </div>
     </div>
   `;
