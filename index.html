@@ -4539,6 +4539,174 @@ html, body {
 .status-tag--proposed { background: #F3E8FF; color: #6B21A8; }
 
 
+
+/* METRO LINES SIDEBAR CTA & MAP OVERLAY STYLING */
+.metro-lines-view-toggle {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+.metro-lines-view-toggle.active,
+.metro-lines-view-toggle:has(input:checked) {
+  background: var(--espresso, #12202E) !important;
+  color: var(--warm-ivory, #FAF8F5) !important;
+  border-color: var(--rust, #A8672E) !important;
+  box-shadow: 0 4px 12px rgba(18, 32, 46, 0.25);
+}
+.metro-lines-view-toggle.active .field__label,
+.metro-lines-view-toggle:has(input:checked) .field__label {
+  color: #FFFFFF !important;
+}
+
+/* FLOATING METRO LEGEND & LINE FILTERS PANEL */
+.metro-legend-panel {
+  position: absolute;
+  top: 68px;
+  right: 16px;
+  z-index: 450;
+  background: rgba(18, 32, 46, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid var(--gold, #B88E52);
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: 255px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  transition: all 0.2s ease-out;
+}
+
+.metro-legend__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.metro-legend__title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold, #E2C699);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metro-legend__close {
+  background: transparent;
+  border: none;
+  color: #A0AEC0;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+.metro-legend__close:hover { color: #FFFFFF; }
+
+.metro-line-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.metro-filter-btn {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 2.5px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.metro-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.metro-filter-btn.active {
+  background: var(--line-clr, var(--gold, #B88E52));
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.metro-legend__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 10px;
+}
+
+.metro-legend__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metro-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.metro-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #FFFFFF;
+  flex-shrink: 0;
+}
+
+.metro-legend__dash {
+  width: 12px;
+  height: 0;
+  border-top: 2px dashed #2563EB;
+  flex-shrink: 0;
+}
+
+.metro-legend__status {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.metro-legend__status--op { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+.metro-legend__status--uc { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+
+/* INTERCHANGE STATION PIN STYLING */
+.metro-interchange-pin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid #12202E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px #F59E0B, 0 4px 10px rgba(0,0,0,0.4);
+  font-size: 10px;
+  font-weight: 800;
+  color: #12202E;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+.metro-interchange-pin:hover {
+  transform: scale(1.25);
+}
+
 </style>
 </head>
 <body>
@@ -4784,6 +4952,7 @@ html, body {
           </div>
         </div>
 
+
         <div class="price-insights" style="margin-top:8px;">
           <label class="field field--checkbox area-price-view-toggle" title="Show area-wise pricing across Bengaluru as a heatmap">
             <input type="checkbox" id="filterAreaPriceView" />
@@ -4808,6 +4977,17 @@ html, body {
               <span class="field__label">Premium Areas Only</span>
             </label>
           </div>
+        </div>
+
+        <!-- NEW CTA: METRO LINES (Placed immediately after Area Price Density) -->
+        <div class="metro-lines-insights" style="margin-top:8px;">
+          <label class="field field--checkbox metro-lines-view-toggle" id="ctaMetroLinesToggle" title="Display Namma Metro routes, stations, interchanges, and property connectivity">
+            <input type="checkbox" id="filterMetroLines" />
+            <span class="field__label" style="display:flex; align-items:center; gap:6px; font-weight:700;">
+              <span style="font-size:13px;">🚇</span>
+              <span>Metro Lines</span>
+            </span>
+          </label>
         </div>
 
         <div id="areaPriceViewNotice" class="area-price-insight-card" style="margin-top:8px;">
@@ -12051,8 +12231,16 @@ function metroMarkerHtml(station, distanceKm) {
 
 function nearbyMetroHtml(nearby) {
   if (!nearby || nearby.length === 0) return `<div class="popup-card__metros-empty">No metro station within ${SHOW_ALL_RADIUS_KM} km.</div>`;
-  const rows = nearby.map((m) => `<div class="popup-card__metro-row">${m.name} (${m.line}) — <span class="mono">${m.distanceKm.toFixed(1)} km</span></div>`).join("");
-  return `<div class="popup-card__metros"><div class="popup-card__metros-label">Metro Stations</div>${rows}</div>`;
+  const lineColors = { Purple: "#7B2D8E", Green: "#0F8B45", Yellow: "#C9960A", Blue: "#2563EB", Pink: "#DB2777" };
+  const rows = nearby.map((m) => {
+    const clr = lineColors[m.line] || "#7B2D8E";
+    const mins = Math.max(2, Math.round(m.distanceKm * 2.6 + 2));
+    return `<div class="popup-card__metro-row" style="display:flex; align-items:center; justify-content:space-between; margin-top:2px;">
+      <span><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:${clr}; margin-right:4px;"></span><strong>${m.name}</strong> (${m.line})</span>
+      <span class="mono" style="font-size:9.5px; color:#527196;">🚗 ~${mins}m (${m.distanceKm.toFixed(1)} km)</span>
+    </div>`;
+  }).join("");
+  return `<div class="popup-card__metros"><div class="popup-card__metros-label">🚇 Nearest Metro Proximity</div>${rows}</div>`;
 }
 
 function schoolMarkerHtml(school, distanceKm) {
@@ -13343,6 +13531,7 @@ function initMap() {
   sharedInfoWindow = new google.maps.InfoWindow();
 
   google.maps.event.addListener(map, "zoom_changed", () => {
+    if (metroNetworkActive) renderMetroNetwork();
     markerLayer.draw();
     techParkLayer.draw();
     metroLayer.draw();
@@ -15466,6 +15655,21 @@ function renderSearchSuggestions() {
 
   els.techParkView.addEventListener("change", () => setTechParkViewMode(els.techParkView.checked));
   els.areaPriceView.addEventListener("change", () => setAreaPriceViewMode(els.areaPriceView.checked));
+
+  const chkMetroLines = document.getElementById("filterMetroLines");
+  if (chkMetroLines) {
+    chkMetroLines.addEventListener("change", () => toggleMetroLines());
+  }
+  const ctaMetroLines = document.getElementById("ctaMetroLinesToggle");
+  if (ctaMetroLines) {
+    ctaMetroLines.addEventListener("click", (e) => {
+      if (e.target.tagName !== "INPUT") {
+        if (chkMetroLines) chkMetroLines.checked = !chkMetroLines.checked;
+        toggleMetroLines();
+      }
+    });
+  }
+
   els.priceLabels.addEventListener("change", () => {
     priceLabelsEnabled = els.priceLabels.checked;
     updateAreaPriceLabels();
@@ -15732,6 +15936,262 @@ function initAppListings() {
   // Revalidate live Google Sheets data in background without blocking UI
   DataService.loadApplicationData();
 }
+
+
+/* NAMMA METRO NETWORK OVERLAY MANAGER */
+let metroNetworkActive = false;
+let activeMetroLineFilter = "ALL";
+let metroPolylines = [];
+let metroStationMarkers = [];
+
+const METRO_LINE_CONFIG = {
+  Purple: {
+    name: "Purple Line",
+    color: "#7B2D8E",
+    statusText: "Operational",
+    isOperational: true,
+    dashed: false,
+    stationIds: ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18", "M19", "M20", "M21", "M22", "M23", "M24", "M25"]
+  },
+  Green: {
+    name: "Green Line",
+    color: "#0F8B45",
+    statusText: "Operational",
+    isOperational: true,
+    dashed: false,
+    stationIds: ["M26", "M27", "M28", "M29", "M30", "M31", "M32", "M33", "M34", "M35", "M36", "M37", "M38", "M23", "M39", "M40", "M41", "M42", "M43", "M44", "M45", "M46", "M47", "M48", "M49", "M50"]
+  },
+  Yellow: {
+    name: "Yellow Line",
+    color: "#C9960A",
+    statusText: "Testing / Opening Soon",
+    isOperational: true,
+    dashed: false,
+    stationIds: ["M51", "M52", "M53", "M54", "M55", "M56", "M57", "M58", "M59", "M60"]
+  },
+  Blue: {
+    name: "Blue Line (ORR-Airport)",
+    color: "#2563EB",
+    statusText: "Under Construction",
+    isOperational: false,
+    dashed: true,
+    points: [
+      { lat: 12.917245, lng: 77.623812 },
+      { lat: 12.9125, lng: 77.6385 },
+      { lat: 12.9245, lng: 77.6482 },
+      { lat: 12.9255, lng: 77.6612 },
+      { lat: 12.9285, lng: 77.6742 },
+      { lat: 12.9365, lng: 77.6902 },
+      { lat: 12.9555, lng: 77.6982 },
+      { lat: 12.9715, lng: 77.6975 },
+      { lat: 12.996112, lng: 77.675631 },
+      { lat: 13.0085, lng: 77.6625 },
+      { lat: 13.0212, lng: 77.6485 },
+      { lat: 13.0285, lng: 77.6395 },
+      { lat: 13.0415, lng: 77.6185 },
+      { lat: 13.1012, lng: 77.5965 },
+      { lat: 13.1985, lng: 77.7065 }
+    ]
+  },
+  Pink: {
+    name: "Pink Line",
+    color: "#DB2777",
+    statusText: "Under Construction",
+    isOperational: false,
+    dashed: true,
+    points: [
+      { lat: 12.8715, lng: 77.5965 },
+      { lat: 12.8825, lng: 77.5985 },
+      { lat: 12.8955, lng: 77.5995 },
+      { lat: 12.9085, lng: 77.6015 },
+      { lat: 12.918215, lng: 77.601245 },
+      { lat: 12.9355, lng: 77.6015 },
+      { lat: 12.9485, lng: 77.6035 },
+      { lat: 12.9585, lng: 77.6045 },
+      { lat: 12.975612, lng: 77.606742 },
+      { lat: 12.9865, lng: 77.6035 },
+      { lat: 12.9965, lng: 77.5985 },
+      { lat: 13.0065, lng: 77.6015 },
+      { lat: 13.0185, lng: 77.6085 },
+      { lat: 13.0415, lng: 77.6185 }
+    ]
+  }
+};
+
+const INTERCHANGE_STATION_IDS = new Set(["M23", "M12", "M55", "M53", "M51", "M19"]);
+
+function toggleMetroLines(forceActive) {
+  const checkbox = document.getElementById("filterMetroLines");
+  const container = document.getElementById("ctaMetroLinesToggle");
+
+  if (typeof forceActive === "boolean") {
+    metroNetworkActive = forceActive;
+    if (checkbox) checkbox.checked = forceActive;
+  } else {
+    metroNetworkActive = checkbox ? checkbox.checked : !metroNetworkActive;
+  }
+
+  if (container) {
+    container.classList.toggle("active", metroNetworkActive);
+  }
+
+  const legendPanel = document.getElementById("metroLegendPanel");
+  if (legendPanel) {
+    legendPanel.style.display = metroNetworkActive ? "block" : "none";
+  }
+
+  if (metroNetworkActive) {
+    renderMetroNetwork();
+  } else {
+    clearMetroNetwork();
+  }
+}
+
+function filterMetroLine(lineName, btnEl) {
+  activeMetroLineFilter = lineName;
+  if (btnEl && btnEl.parentNode) {
+    const btns = btnEl.parentNode.querySelectorAll(".metro-filter-btn");
+    btns.forEach((b) => b.classList.remove("active"));
+    btnEl.classList.add("active");
+  }
+  if (metroNetworkActive) {
+    renderMetroNetwork();
+  }
+}
+
+function clearMetroNetwork() {
+  metroPolylines.forEach((p) => p.setMap(null));
+  metroPolylines = [];
+  metroStationMarkers.forEach((m) => m.setMap(null));
+  metroStationMarkers = [];
+}
+
+function renderMetroNetwork() {
+  clearMetroNetwork();
+  if (!map || !metroNetworkActive) return;
+
+  const currentZoom = map.getZoom();
+
+  Object.keys(METRO_LINE_CONFIG).forEach((lineKey) => {
+    if (activeMetroLineFilter !== "ALL" && activeMetroLineFilter !== lineKey) {
+      return;
+    }
+
+    const cfg = METRO_LINE_CONFIG[lineKey];
+    let path = [];
+
+    if (cfg.points) {
+      path = cfg.points.map((pt) => new google.maps.LatLng(pt.lat, pt.lng));
+    } else if (cfg.stationIds) {
+      path = cfg.stationIds
+        .map((id) => METRO_STATIONS.find((s) => s.id === id))
+        .filter(Boolean)
+        .map((s) => new google.maps.LatLng(s.lat, s.lng));
+    }
+
+    if (path.length < 2) return;
+
+    // Background white stroke for contrast over Satellite / Roadmap
+    const bgLine = new google.maps.Polyline({
+      path: path,
+      geodesic: true,
+      strokeColor: "#FFFFFF",
+      strokeOpacity: 0.9,
+      strokeWeight: currentZoom < 12 ? 6 : 9,
+      zIndex: 100,
+      map: map
+    
+});
+    metroPolylines.push(bgLine);
+
+    // Foreground line with official Namma Metro color
+    let fgOptions = {
+      path: path,
+      geodesic: true,
+      strokeColor: cfg.color,
+      strokeOpacity: cfg.dashed ? 0 : 0.95,
+      strokeWeight: currentZoom < 12 ? 4 : 6,
+      zIndex: 101,
+      map: map
+    };
+
+    if (cfg.dashed) {
+      const lineSymbol = {
+        path: "M 0,-1 0,1",
+        strokeOpacity: 1,
+        strokeColor: cfg.color,
+        scale: 4
+      };
+      fgOptions.icons = [{
+        icon: lineSymbol,
+        offset: "0",
+        repeat: "16px"
+      }];
+    }
+
+    const fgLine = new google.maps.Polyline(fgOptions);
+    metroPolylines.push(fgLine);
+  });
+
+  // Render Station Markers
+  METRO_STATIONS.forEach((station) => {
+    if (activeMetroLineFilter !== "ALL" && station.line !== activeMetroLineFilter) {
+      return;
+    }
+
+    const isInterchange = INTERCHANGE_STATION_IDS.has(station.id) || station.name.includes("Interchange");
+    const cfg = METRO_LINE_CONFIG[station.line] || { color: "#7B2D8E" };
+
+    const markerIcon = {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: isInterchange ? 8 : (currentZoom < 13 ? 4 : 5.5),
+      fillColor: isInterchange ? "#FFFFFF" : cfg.color,
+      fillOpacity: 1,
+      strokeColor: isInterchange ? "#12202E" : "#FFFFFF",
+      strokeWeight: isInterchange ? 3 : 2
+    };
+
+    const stationMarker = new google.maps.Marker({
+      position: { lat: station.lat, lng: station.lng },
+      map: map,
+      icon: markerIcon,
+      title: `${station.name} (${station.line} Line)`,
+      zIndex: isInterchange ? 300 : 250
+    });
+
+    stationMarker.addListener("click", () => {
+      // Calculate nearby projects within 3km
+      const nearbyProjects = ALL_PROPERTIES.filter((p) => {
+        const dist = haversineDistanceKm(station.lat, station.lng, p.lat, p.lng);
+        return dist <= 3.0;
+      });
+
+      const nearbyTP = TECH_PARKS.filter((tp) => {
+        const dist = haversineDistanceKm(station.lat, station.lng, tp.lat, tp.lng);
+        return dist <= 3.0;
+      });
+
+      const contentHtml = `
+        <div class="popup-card" style="min-width:210px;">
+          <div class="popup-card__techpark-badge" style="background:${cfg.color}; color:#FFF;">${station.line} Line ${isInterchange ? '· Interchange' : ''}</div>
+          <div class="popup-card__title" style="font-size:13px; font-weight:800; margin-top:4px;">${station.name}</div>
+          <div style="font-size:10px; color:#527196; margin-bottom:8px;">Namma Metro Station</div>
+          <div style="font-size:11px; line-height:1.6; border-top:1px dashed #E2E8F0; padding-top:6px;">
+            <div>🏡 <strong>${nearbyProjects.length}</strong> Nearby Residential Projects (3 km)</div>
+            <div>🏢 <strong>${nearbyTP.length}</strong> Nearby Tech Parks</div>
+          </div>
+        </div>
+      `;
+
+      sharedInfoWindow.setContent(contentHtml);
+      sharedInfoWindow.setPosition({ lat: station.lat, lng: station.lng });
+      sharedInfoWindow.open(map);
+    });
+
+    metroStationMarkers.push(stationMarker);
+  });
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   wireControls();
