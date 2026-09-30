@@ -5033,6 +5033,20 @@ html, body {
 
   <main class="map-wrap">
 
+    <!-- PERSISTENT MAP VIEW PILL CONTROL -->
+    <div id="mapViewPill" class="map-view-pill" role="radiogroup" aria-label="Map view context">
+      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties')">
+        <span>📍</span> Properties
+      </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark')">
+        <span>🏢</span> Tech Park Density
+      </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnPrice" onclick="switchMapViewContext('price')">
+        <span>🏷️</span> Price Density
+      </button>
+    </div>
+    
+
     <!-- CUSTOM ACRE&KEY MAP / SATELLITE CONTROL -->
     <div id="acreMapTypeControl" class="acre-maptype-control">
       <button type="button" class="acre-maptype-btn acre-maptype-btn--active" id="btnMapTypeRoadmap" onclick="setAcreMapType('roadmap')">MAP</button>
@@ -13444,6 +13458,32 @@ function initMap() {
       { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#D9E5CE" }, { visibility: "on" }] }
     ],
   });
+
+  // Register custom Acre&Key MAP | SATELLITE control into Google Maps TOP_LEFT control pane
+  const mapTypeCtrl = document.createElement("div");
+  mapTypeCtrl.className = "acre-maptype-control";
+  mapTypeCtrl.innerHTML = `
+    <button type="button" class="acre-maptype-btn acre-maptype-btn--active" id="btnMapTypeRoadmap">MAP</button>
+    <button type="button" class="acre-maptype-btn" id="btnMapTypeSatellite">SATELLITE</button>
+  `;
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(mapTypeCtrl);
+
+  const btnRoadmap = mapTypeCtrl.querySelector("#btnMapTypeRoadmap");
+  const btnSatellite = mapTypeCtrl.querySelector("#btnMapTypeSatellite");
+
+  if (btnRoadmap) {
+    btnRoadmap.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setAcreMapType("roadmap");
+    });
+  }
+  if (btnSatellite) {
+    btnSatellite.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setAcreMapType("satellite");
+    });
+  }
+
 
   map.addListener("maptypeid_changed", () => {
     const type = map.getMapTypeId();
