@@ -5022,6 +5022,9 @@ html, body {
       <button type="button" class="map-view-pill__btn" id="mapViewBtnPrice" onclick="switchMapViewContext('price')">
         <span>🏷️</span> Price Density
       </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro')">
+        <span>🚇</span> Metro Lines
+      </button>
     </div>
     
 
@@ -15029,6 +15032,8 @@ function switchMapViewContext(context) {
     }
     els.areaPriceView.checked = true;
     setAreaPriceViewMode(true);
+  } else if (context === 'metro') {
+    toggleMetroLines(!metroNetworkActive);
   }
 
   updateMapViewPillUI();
@@ -15038,11 +15043,12 @@ function updateMapViewPillUI() {
   const btnProps = document.getElementById("mapViewBtnProperties");
   const btnTech = document.getElementById("mapViewBtnTechPark");
   const btnPrice = document.getElementById("mapViewBtnPrice");
-  if (!btnProps || !btnTech || !btnPrice) return;
+  const btnMetro = document.getElementById("mapViewBtnMetro");
 
-  btnProps.classList.toggle("map-view-pill__btn--active", !techParkViewActive && !areaPriceViewActive);
-  btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
-  btnPrice.classList.toggle("map-view-pill__btn--active", areaPriceViewActive);
+  if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", !techParkViewActive && !areaPriceViewActive && !metroNetworkActive);
+  if (btnTech) btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
+  if (btnPrice) btnPrice.classList.toggle("map-view-pill__btn--active", areaPriceViewActive);
+  if (btnMetro) btnMetro.classList.toggle("map-view-pill__btn--active", metroNetworkActive);
 }
 
 
@@ -16021,6 +16027,7 @@ function toggleMetroLines(forceActive) {
   if (container) {
     container.classList.toggle("active", metroNetworkActive);
   }
+  updateMapViewPillUI();
 
   const legendPanel = document.getElementById("metroLegendPanel");
   if (legendPanel) {
