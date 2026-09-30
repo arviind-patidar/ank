@@ -15935,9 +15935,74 @@ setTimeout(() => {
     showMapStatus("Map failed to load — check the API key, billing, or referrer restrictions in Google Cloud Console.");
   }
 }, 6000);
+
+// --- EXPLICIT DOM EVENT BINDING ENGINE ---
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Acre&Key Intelligence Engine Initialized");
+
+  // MAP TYPE BUTTONS (MAP | SATELLITE)
+  const btnRoadmap = document.getElementById('btnMapTypeRoadmap');
+  const btnSatellite = document.getElementById('btnMapTypeSatellite');
+  if (btnRoadmap) {
+    btnRoadmap.addEventListener('click', (e) => {
+      e.stopPropagation(); e.preventDefault();
+      setAcreMapType('roadmap');
+    });
+  }
+  if (btnSatellite) {
+    btnSatellite.addEventListener('click', (e) => {
+      e.stopPropagation(); e.preventDefault();
+      setAcreMapType('satellite');
+    });
+  }
+
+  // BUYER INTENT CARDS
+  const intentBuy = document.getElementById('intentBuyHome');
+  const intentCompare = document.getElementById('intentCompareAreas');
+  const intentCheck = document.getElementById('intentCheckProject');
+  if (intentBuy) intentBuy.addEventListener('click', () => setBuyerIntent('buy_home'));
+  if (intentCompare) intentCompare.addEventListener('click', () => setBuyerIntent('compare_areas'));
+  if (intentCheck) intentCheck.addEventListener('click', () => setBuyerIntent('check_project'));
+
+  // BUYER LENSES
+  const lensEndUse = document.getElementById('lensEndUse');
+  const lensCommute = document.getElementById('lensCommute');
+  const lensFamily = document.getElementById('lensFamily');
+  const lensInv = document.getElementById('lensInvestment');
+  const lensRental = document.getElementById('lensRental');
+  if (lensEndUse) lensEndUse.addEventListener('click', () => setBuyerLens('end_use'));
+  if (lensCommute) lensCommute.addEventListener('click', () => setBuyerLens('commute'));
+  if (lensFamily) lensFamily.addEventListener('click', () => setBuyerLens('family'));
+  if (lensInv) lensInv.addEventListener('click', () => setBuyerLens('investment'));
+  if (lensRental) lensRental.addEventListener('click', () => setBuyerLens('rental'));
+
+  // MAP MODES
+  const modeProp = document.getElementById('modeBtnProperties');
+  const modeEmp = document.getElementById('modeBtnEmployment');
+  const modeConn = document.getElementById('modeBtnConnectivity');
+  const modeLiv = document.getElementById('modeBtnLivability');
+  const modeMkt = document.getElementById('modeBtnMarket');
+  const modeFut = document.getElementById('modeBtnFuture');
+  if (modeProp) modeProp.addEventListener('click', () => switchMapMode('properties'));
+  if (modeEmp) modeEmp.addEventListener('click', () => switchMapMode('employment'));
+  if (modeConn) modeConn.addEventListener('click', () => switchMapMode('connectivity'));
+  if (modeLiv) modeLiv.addEventListener('click', () => switchMapMode('livability'));
+  if (modeMkt) modeMkt.addEventListener('click', () => switchMapMode('market'));
+  if (modeFut) modeFut.addEventListener('click', () => switchMapMode('future_growth'));
+
+  // TOP RIGHT MAP VIEW PILLS
+  const viewProp = document.getElementById('mapViewBtnProperties');
+  const viewTech = document.getElementById('mapViewBtnTechPark');
+  const viewPrice = document.getElementById('mapViewBtnPrice');
+  if (viewProp) viewProp.addEventListener('click', () => switchMapViewContext('properties'));
+  if (viewTech) viewTech.addEventListener('click', () => switchMapViewContext('techpark'));
+  if (viewPrice) viewPrice.addEventListener('click', () => switchMapViewContext('price'));
+});
+
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&callback=onGoogleMapsLoaded" async defer>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&callback=onGoogleMapsLoaded" async defer></script>
+<script>
 // --- ACRE&KEY PROPERTY INTELLIGENCE ENGINE EXTENSIONS ---
 let activeBuyerIntent = 'buy_home';
 let activeBuyerLens = 'end_use';
@@ -16041,7 +16106,6 @@ window.setActive = function(id, options) {
     mapWrap.classList.toggle('map-wrap--has-selected', !!id);
   }
 };
-
 </script>
 
 <!-- METHODOLOGY MODAL -->
