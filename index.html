@@ -11,1031 +11,4933 @@
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <style>
-  :root {
-    --espresso: #1E1A16;
-    --terracotta: #7A4A30;
-    --slate-navy: #2B3440;
-    --warm-ivory: #F5F0E8;
-    --white: #FFFFFF;
-    --charcoal: #2D2A26;
-    --muted-grey: #6B6560;
-    --border-tan: #D9CFC0;
+:root {
+  /* acre&key Style Guide Official Brand Palette */
+  --green-deep:  #1F2B38; /* Deep Navy — Primary Ink / Dark Surface (#1F2B38) */
+  --green-mid:   #2A3A4B; /* Deep Navy Tint — Secondary emphasis */
+  --gold:        #B88E52; /* Antique Brass — 5% Accent (#B88E52) */
+  --cream:       #F7F3EC; /* Warm Ivory — 75% Canvas / BG (#F7F3EC) */
+  --navy:        #1F2B38; /* Deep Navy — Primary Body Text (#1F2B38) */
+  --rust:        #B88E52; /* Antique Brass — Accent (#B88E52) */
+  --line:        #B7AFA4; /* Divider — Rule / Border (#B7AFA4) */
+  --card-bg:     #FFFFFF; /* White — Card Surfaces (#FFFFFF) */
+  --warm-stone:  #E5DED4; /* Warm Stone — Neutral Tint (#E5DED4) */
+  --muted-slate: #59616B; /* Muted Slate — Text / UI Muted (#59616B) */
 
-    --green-deep: #1E1A16;
-    --green-mid: #2B3440;
-    --gold: #7A4A30;
-    --cream: #F5F0E8;
-    --navy: #1E1A16;
-    --rust: #7A4A30;
-    --line: #D9CFC0;
-    --card-bg: #FFFFFF;
-    --warm-stone: #EFE9DF;
-    --muted-slate: #6B6560;
+  --font-display: "Marcellus", serif;
+  --font-body: "Manrope", sans-serif;
+  --font-mono: "Manrope", sans-serif;
 
-    --font-display: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: "Manrope", monospace;
+  --radius: 6px;
+}
 
-    --radius: 8px;
-    --shadow-sm: 0 1px 3px rgba(30, 26, 22, 0.08);
-    --shadow-md: 0 4px 12px rgba(30, 26, 22, 0.12);
-    --shadow-lg: 0 12px 32px rgba(30, 26, 22, 0.16);
-  }
+* { box-sizing: border-box; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--green-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+}
 
-  html, body {
-    width: 100%; height: 100%;
-    overflow: hidden;
-    font-family: var(--font-body);
-    background-color: var(--warm-ivory);
-    color: var(--espresso);
-    font-size: 14px;
-    line-height: 1.45;
-    -webkit-font-smoothing: antialiased;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  /* APP CONTAINER */
-  .app {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: var(--warm-ivory);
-  }
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
 
-  /* TOP HEADER */
-  .app-header {
-    height: 56px;
-    min-height: 56px;
-    background: var(--espresso);
-    color: var(--warm-ivory);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 100;
-  }
+/* TOPBAR */
+.topbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  background: var(--green-deep);
+  border-bottom: 1px solid rgba(154, 123, 79, 0.28);
+}
 
-  .app-header__brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+.topbar__mark { color: var(--gold); display: flex; }
 
-  .app-header__logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    color: var(--warm-ivory);
-    text-transform: uppercase;
-  }
+.topbar__title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-  .app-header__divider {
-    width: 1px;
-    height: 16px;
-    background: rgba(255, 255, 255, 0.25);
-  }
+.topbar__brand {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-size: 14.5px;
+  color: var(--cream);
+}
 
-  .app-header__title {
-    font-weight: 600;
-    font-size: 14px;
-    color: #E2D9CC;
-    letter-spacing: 0.2px;
-  }
+.topbar__brand span { color: var(--gold); }
 
-  .app-header__subline {
-    font-size: 12px;
-    color: #A69C8E;
-    font-weight: 400;
-    margin-left: 12px;
-  }
+.topbar__divider { color: var(--gold); font-size: 10px; opacity: 0.6; }
 
-  @media (max-width: 800px) {
-    .app-header__subline { display: none; }
-  }
+.topbar__page {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.9;
+}
 
-  .app-header__actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+.topbar__meta {
+  margin-left: auto;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
 
-  .app-header__date-badge {
-    font-size: 11px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #D4C9B8;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
+/* BUYER PROFILE PANEL */
+.buyer-profile-bar {
+  flex: 0 0 auto;
+  background: #111F2E;
+  border-bottom: 1px solid rgba(154, 123, 79, 0.35);
+  position: relative;
+  z-index: 20;
+}
 
-  .app-header__btn {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: var(--warm-ivory);
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .app-header__btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
+.buyer-profile-bar__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 150ms ease;
+}
 
-  /* MAIN LAYOUT */
-  .app-body {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    height: calc(100vh - 56px);
-    position: relative;
-    overflow: hidden;
-  }
+.buyer-profile-bar__summary:hover {
+  background: rgba(154, 123, 79, 0.12);
+}
 
-  /* SIDEBAR PANEL */
+.buyer-profile-bar__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.buyer-profile-bar__icon {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.buyer-profile-bar__badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(154, 123, 79, 0.22);
+  color: #E2C699;
+  border: 1px solid rgba(154, 123, 79, 0.4);
+  padding: 2px 7px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.buyer-profile-bar__text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buyer-profile-bar__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.buyer-profile-bar__edit-hint {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.buyer-profile-bar__chevron {
+  color: var(--gold);
+  font-size: 11px;
+  transition: transform 200ms ease;
+}
+
+.buyer-profile-bar--open .buyer-profile-bar__chevron {
+  transform: rotate(180deg);
+}
+
+.buyer-profile-bar__form-wrap {
+  background: var(--cream);
+  color: var(--navy);
+  border-top: 1px solid var(--line);
+  padding: 16px 22px 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.buyer-profile-form__header {
+  margin-bottom: 14px;
+}
+
+.buyer-profile-form__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--navy);
+  margin: 0 0 2px 0;
+}
+
+.buyer-profile-form__sub {
+  font-size: 11px;
+  color: #5B6B62;
+}
+
+.buyer-profile-form__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.buyer-profile-form__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-bp-save {
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11.5px;
+  background: var(--rust);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.btn-bp-save:hover { background: #8a6c40; }
+
+.btn-bp-reset {
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  background: transparent;
+  color: #666;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-bp-reset:hover { border-color: var(--navy); color: var(--navy); }
+
+/* LAYOUT */
+.layout {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+/* SIDE PANEL */
+.panel {
+  width: 372px;
+  flex: 0 0 372px;
+  background: var(--cream);
+  color: var(--navy);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--line);
+}
+
+.panel__section { padding: 18px 22px; }
+
+.panel__filters {
+  border-bottom: 1px solid var(--line);
+  flex: 0 0 auto;
+}
+
+.panel__list-section {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.panel__label {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin: 0 0 4px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--rust);
+  display: inline-block;
+}
+
+.panel__section .panel__label { margin-bottom: 14px; }
+.accordion__body > .panel__label { margin-bottom: 14px; }
+
+/* PRESENTATION BAR */
+.presentation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+
+.presentation-bar__mode-toggle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--rust);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.presentation-bar__mode-toggle input { accent-color: var(--gold); cursor: pointer; }
+
+/* Presentation Mode */
+.panel--presentation-mode .btn-reset,
+.panel--presentation-mode .price-insights__sub-toggle--disabled {
+  display: none;
+}
+
+/* ACCORDION */
+.accordion { border-bottom: 1px solid var(--line); flex: 0 0 auto; }
+
+.accordion__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--navy);
+  user-select: none;
+}
+.accordion__header::-webkit-details-marker { display: none; }
+
+.accordion__header::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  border-right: 2px solid var(--rust);
+  border-bottom: 2px solid var(--rust);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+  flex: 0 0 auto;
+}
+.accordion[open] > .accordion__header::after { transform: rotate(-135deg); }
+
+.accordion__icon {
+  display: flex;
+  align-items: center;
+  color: var(--rust);
+  flex: 0 0 auto;
+}
+
+.accordion__badge {
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: 10px;
+  background: rgba(154, 123, 79, 0.15);
+  color: var(--rust);
+  border-radius: 999px;
+  padding: 2px 8px;
+  flex: 0 0 auto;
+}
+
+.accordion__body { padding: 0 22px 18px; }
+.accordion__body--list { padding: 0 22px 16px; max-height: 46vh; overflow-y: auto; }
+
+.accordion--insights {
+  margin: 0 14px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  background: rgba(154, 123, 79, 0.05);
+}
+.accordion--insights .accordion__header { padding: 12px 14px; }
+.accordion--insights .accordion__body { padding: 0 14px 14px; }
+
+.field { display: block; margin-bottom: 12px; }
+
+.field-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.field-row .field {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.field-row .field__input {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.field__label {
+  display: block;
+  font-size: 10px;
+  color: #5B6B62;
+  margin-bottom: 4px;
+}
+
+.field__input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 12px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  color: var(--navy);
+}
+
+.field__input:focus { border-color: var(--rust); }
+
+.range { width: 100%; accent-color: var(--rust); }
+
+.mono { font-family: var(--font-mono); font-weight: 600; }
+
+.btn-reset {
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--rust);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-reset:hover { background: var(--gold); color: var(--green-deep); }
+
+/* PROPERTY LIST */
+.property-list {
+  max-height: 46vh;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-top: 4px;
+}
+
+.loading-state, .empty-state {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 10px;
+  color: #7A8288;
+  padding: 20px 2px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-left: 3px solid #B7AFA4;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: var(--card-bg);
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.card--recommended {
+  border-left: 3px solid var(--gold);
+}
+
+.card:hover, .card--active {
+  border-left-color: var(--rust);
+  transform: translateX(2px);
+  box-shadow: 0 2px 10px rgba(154, 123, 79, 0.16);
+}
+
+/* Row 1: Title + AK Score badge */
+.card__row1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1.25;
+  color: var(--navy);
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.card__ak-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  line-height: 1.2;
+}
+
+.card__ak-score--high {
+  background: var(--gold);
+  color: #FFFFFF;
+  box-shadow: 0 1px 4px rgba(154, 123, 79, 0.3);
+}
+
+.card__ak-score--mid {
+  background: rgba(154, 123, 79, 0.18);
+  color: var(--rust);
+  border: 1px solid rgba(154, 123, 79, 0.35);
+}
+
+.card__ak-score--low {
+  background: #ECEAE4;
+  color: #5B6B62;
+}
+
+/* Row 2: Price + Configuration */
+.card__row2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  margin-bottom: 4px;
+}
+
+.card__price {
+  font-weight: 700;
+  color: var(--green-mid);
+}
+
+.card__dot {
+  color: #AAA;
+  font-size: 10px;
+}
+
+.card__config {
+  font-weight: 600;
+  color: #4A5568;
+}
+
+/* Row 3: Why recommended chip */
+.card__row3-why {
+  font-size: 10px;
+  font-weight: 600;
+  color: #7A5B28;
+  background: rgba(154, 123, 79, 0.11);
+  border: 1px solid rgba(154, 123, 79, 0.22);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 3px;
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.35;
+}
+
+/* Row 4: Developer / Locality footer */
+.card__row4-footer {
+  font-size: 9.5px;
+  color: #7A8288;
+  font-family: var(--font-body);
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.card__commute-badge {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 8.5px;
+  color: #2F455A;
+  background: rgba(47, 69, 90, 0.08);
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+/* SIDEBAR FOOTER */
+.panel__footer {
+  flex: 0 0 auto;
+  padding: 12px 22px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.panel__footer-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.panel__footer-badge {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--rust);
+}
+
+.panel__footer-line {
+  font-size: 10px;
+  color: var(--green-mid);
+  font-weight: 600;
+}
+
+/* MAP */
+.map-wrap { flex: 1 1 auto; position: relative; min-width: 0; }
+
+#map { width: 100%; height: 100%; background: var(--warm-stone); }
+
+.map-legend {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10;
+  background: rgba(24, 42, 61, 0.92);
+  color: var(--cream);
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(154, 123, 79, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 260px;
+  line-height: 1.4;
+}
+
+.map-legend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.map-status {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(24, 42, 61, 0.94);
+  color: var(--cream);
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 10px;
+  padding: 7px 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(154, 123, 79, 0.35);
+  display: none;
+}
+
+.map-status--visible { display: block; }
+
+/* Individual project marker */
+.gmap-marker-wrap {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+}
+
+.plot-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plot-marker__pin {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--rust);
+  border: 2px solid var(--green-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 3px rgba(168,103,46,0.25);
+}
+
+.plot-marker__leader { width: 1px; height: 10px; background: var(--rust); }
+
+.plot-marker__tag {
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 9.5px;
+  color: var(--navy);
+  background: #FFFFFF;
+  padding: 2.5px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 135px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(24, 42, 61, 0.18);
+}
+
+.plot-marker--active .plot-marker__pin { background: var(--gold); border-color: var(--rust); }
+.plot-marker--active .plot-marker__tag { border-color: var(--rust); }
+
+/* Cluster bubble */
+.gmap-cluster-wrap {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.cluster-bubble {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1F2B38, #2C3E50);
+  color: #FFFFFF;
+  border: 1.5px solid var(--gold, #B88E52);
+  box-shadow: 0 3px 10px rgba(24, 42, 61, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms ease-out, box-shadow 180ms ease-out;
+  cursor: pointer;
+}
+
+.cluster-bubble:hover {
+  transform: scale(1.15);
+  background: linear-gradient(135deg, #2E6F7E, #1F2B38);
+  border-color: #E2C699;
+  box-shadow: 0 5px 16px rgba(46, 111, 126, 0.45);
+}
+
+/* Soft, Light Pastel Amenity Markers (Low Contrast, Property is HERO) */
+
+/* Tech park marker & hover-only label styling */
+.techpark-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 120;
+}
+
+.techpark-marker__pin {
+  width: 19px;
+  height: 19px;
+  background: #527196;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(82, 113, 150, 0.35);
+  transition: transform 180ms ease, background-color 180ms ease;
+  pointer-events: auto;
+}
+
+.techpark-marker:hover .techpark-marker__pin {
+  transform: scale(1.18);
+  background: #3B587B;
+}
+
+.techpark-marker__leader {
+  display: none !important;
+}
+
+.techpark-marker__tag {
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translate(-50%, 0) !important;
+  margin-bottom: 6px !important;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 8.5px;
+  color: #2D435A;
+  background: #EBF3FA;
+  padding: 3.5px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+  border: 1px solid #829AB1;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 160ms ease-out !important;
+  z-index: 200 !important;
+}
+
+.techpark-marker:hover .techpark-marker__tag {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate(-50%, -3px) !important;
+}
+
+.cluster-bubble--techpark { background: #527196; }
+.cluster-bubble--techpark:hover { background: #3B587B; color: #fff; }
+
+.popup-card__techpark-badge {
+  display: inline-block;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: #EBF3FA;
+  color: #2D435A;
+  margin-bottom: 4px;
+}
+
+.popup-card__techparks {
+  margin-top: 6px;
+  border-top: 1px dashed var(--line);
+  padding-top: 5px;
+}
+.popup-card__techparks-label {
+  font-family: var(--font-mono); font-weight: 600; font-size: 8px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #527196; margin-bottom: 3px;
+}
+.popup-card__techpark-row { font-size: 10px; color: var(--navy); line-height: 1.5; }
+.popup-card__techparks-empty { font-size: 9.5px; color: #7A8288; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 5px; }
+
+/* Metro station marker */
+.metro-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
+.metro-marker__pin {
+  width: 18px; height: 18px; border-radius: 50%; background: #6E5C8A; border: 1.5px solid #FFFFFF;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(110, 92, 138, 0.35);
+}
+.metro-marker__leader { width: 1px; height: 5px; background: #6E5C8A; }
+.metro-marker__tag {
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #423656;
+  background: #F3EFEF; padding: 3px 8px; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #968AA8; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.cluster-bubble--metro { background: #6E5C8A; }
+.cluster-bubble--metro:hover { background: #52436B; color: #fff; }
+
+.popup-card__metros { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__metros-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #6E5C8A; margin-bottom: 4px; }
+.popup-card__metro-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__metros-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+/* School marker */
+.school-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
+.school-marker__pin {
+  width: 18px; height: 18px; background: #8A7346; border: 1.5px solid #FFFFFF;
+  border-radius: 5px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(138, 115, 70, 0.35);
+}
+.school-marker__leader { width: 1px; height: 5px; background: #8A7346; }
+.school-marker__tag {
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #4F4022;
+  background: #FAF5E8; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #A8956F; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.cluster-bubble--school { background: #8A7346; }
+.cluster-bubble--school:hover { background: #6B5731; color: #fff; }
+
+.popup-card__schools { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__schools-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #8A7346; margin-bottom: 4px; }
+.popup-card__school-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__schools-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+/* Hospital marker */
+.hospital-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
+.hospital-marker__pin {
+  width: 18px; height: 18px; background: #A35249; border: 1.5px solid #FFFFFF;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(163, 82, 73, 0.35);
+}
+.hospital-marker__leader { width: 1px; height: 5px; background: #A35249; }
+.hospital-marker__tag {
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #572A25;
+  background: #FBF0EF; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #B87B75; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.cluster-bubble--hospital { background: #A35249; }
+.cluster-bubble--hospital:hover { background: #823C34; color: #fff; }
+
+.popup-card__hospitals { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__hospitals-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #A35249; margin-bottom: 4px; }
+.popup-card__hospital-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__hospitals-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+/* Mall marker */
+.mall-marker { display: flex; flex-direction: column; align-items: center; z-index: 120; }
+.mall-marker__pin {
+  width: 18px; height: 18px; background: #8C5777; border: 1.5px solid #FFFFFF;
+  border-radius: 5px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(140, 87, 119, 0.35);
+}
+.mall-marker__leader { width: 1px; height: 5px; background: #8C5777; }
+.mall-marker__tag {
+  font-family: var(--font-body); font-weight: 600; font-size: 8px; color: #4D2C40;
+  background: #F8EEF4; padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+  border: 1px solid #AA7D98; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.cluster-bubble--mall { background: #B33F7D; }
+.cluster-bubble--mall:hover { background: #CC5A97; color: #fff; }
+
+.popup-card__malls { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+.popup-card__malls-label { font-family: var(--font-mono); font-weight: 600; font-size: 8.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #B33F7D; margin-bottom: 4px; }
+.popup-card__mall-row { font-size: 10px; color: var(--navy); padding: 1px 0; }
+.popup-card__malls-empty { font-size: 10px; color: #7A8288; font-style: italic; margin-top: 6px; }
+
+.field--search__row {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.field--search__input-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.field--search__input-wrap .field__input {
+  padding-left: 32px;
+  padding-right: 30px;
+  width: 100%;
+}
+
+.field--search__icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8A8F7A;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.field--search__clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #8A8F7A;
+  font-size: 11px;
+  background: transparent;
+  border: none;
+}
+
+.field--search__clear:hover { background: rgba(0,0,0,0.06); color: var(--navy); }
+.field--search__clear--visible { display: flex; }
+
+.field--search__scope {
+  flex: 0 0 auto;
+  width: 92px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.field--checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.field--checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.field--checkbox .field__label {
+  margin-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* POPULAR LOCALITIES */
+.locality-section {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+}
+
+.locality-section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.locality-clear {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--rust);
+  cursor: pointer;
+}
+
+.locality-clear:hover { text-decoration: underline; }
+.locality-clear[hidden] { display: none; }
+
+.locality-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 2px 0;
+}
+
+.locality-chip {
+  appearance: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--navy);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 200ms ease, color 200ms ease,
+              border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.locality-chip:hover {
+  background: rgba(182, 138, 76, 0.14);
+  border-color: var(--gold);
+}
+
+.locality-chip:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.locality-chip[aria-pressed="true"] {
+  background: #B68A4C;
+  border-color: #B68A4C;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(182, 138, 76, 0.45);
+}
+
+.locality-chip[aria-pressed="true"]:hover { background: #B68A4C; }
+
+.techpark-view-toggle {
+  margin: 0 0 12px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: rgba(154, 123, 79, 0.07);
+}
+
+.techpark-view-toggle .field__label {
+  font-weight: 600;
+  color: var(--rust);
+}
+
+.techpark-view-toggle:has(input:checked) {
+  background: rgba(154, 123, 79, 0.16);
+}
+
+.techpark-view-notice {
+  display: none;
+  margin: 0 0 14px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+.techpark-legend {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 900;
+  display: none;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(24, 42, 61, 0.18);
+  padding: 10px 12px 8px;
+  font-family: var(--font-mono);
+  color: var(--navy);
+  width: 156px;
+}
+
+.techpark-legend--visible { display: block; }
+
+.techpark-legend__title {
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #C89B4A;
+  margin-bottom: 6px;
+}
+
+.techpark-legend__gradient {
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #F8F3EA, #E9D8B4, #D8BE8A, #C89B4A);
+}
+
+.techpark-legend__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #5B6B62;
+}
+
+.techpark-view-notice--visible { display: block; }
+
+/* PRICE INSIGHTS */
+.price-insights {
+  margin: 0 0 12px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.area-price-view-toggle {
+  margin: 0 0 8px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: rgba(154, 123, 79, 0.07);
+}
+
+.area-price-view-toggle .field__label {
+  font-weight: 600;
+  color: var(--rust);
+}
+
+.area-price-view-toggle:has(input:checked) {
+  background: rgba(154, 123, 79, 0.16);
+}
+
+.price-insights__sub-toggle {
+  margin: 0 0 8px 12px;
+}
+
+.price-insights__sub-toggle .field__label em {
+  font-style: normal;
+  font-size: 9px;
+  color: #9AA2A8;
+  margin-left: 3px;
+}
+
+.price-insights__sub-toggle--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.tech-park-density-canvas {
+  position: absolute;
+  pointer-events: none !important;
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+.tech-park-density-canvas--visible {
+  opacity: 1;
+}
+
+.area-price-insight-card {
+  display: none;
+  margin: 0 0 14px 0;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  color: var(--navy);
+}
+
+.area-price-insight-card--visible { display: block; }
+
+.area-price-insight-card__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 14.5px;
+  color: var(--rust);
+  margin-bottom: 6px;
+}
+
+.area-price-insight-card p {
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0 0 6px 0;
+  color: var(--navy);
+}
+
+.area-price-insight-card__tips {
+  margin: 8px 0 0 0;
+  padding-left: 16px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: #5B6B62;
+}
+
+.geo-filter-banner {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 12px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: rgba(154, 123, 79, 0.08);
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--navy);
+}
+
+.geo-filter-banner--visible { display: flex; }
+
+.geo-filter-banner__clear {
+  flex: 0 0 auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--rust);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 0;
+}
+
+.price-legend {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 900;
+  display: none;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(24, 42, 61, 0.18);
+  padding: 10px 12px 8px;
+  font-family: var(--font-mono);
+  color: var(--navy);
+  width: 148px;
+}
+
+.price-legend--visible { display: block; }
+
+.price-legend__title {
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 6px;
+}
+
+.price-legend__gradient {
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #A8D8B9, #F6E3A1, #F5C58A, #EFA07A, #D87C72);
+}
+
+.price-legend__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #5B6B62;
+}
+
+.area-price-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  color: #fff;
+  background: rgba(24, 42, 61, 0.82);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.area-price-label--visible { opacity: 1; }
+
+.area-price-hover-tip {
+  position: fixed;
+  transform: translate(-50%, -120%);
+  z-index: 950;
+  background: var(--card-bg);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(24, 42, 61, 0.22);
+  padding: 7px 10px;
+  font-family: var(--font-body);
+  color: var(--navy);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  white-space: nowrap;
+}
+
+.area-price-hover-tip--visible { opacity: 1; }
+
+.area-price-hover-tip__name {
+  font-weight: 700;
+  font-size: 11.5px;
+}
+
+.area-price-hover-tip__price {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 10.5px;
+  color: var(--rust);
+}
+
+.price-insight-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1900;
+  background: rgba(24, 42, 61, 0.35);
+  display: none;
+}
+.price-insight-modal-backdrop--visible { display: block; }
+
+.price-insight-card {
+  display: none;
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1901;
+  width: min(320px, calc(100% - 48px));
+  max-height: 82vh;
+  overflow-y: auto;
+  background: var(--cream);
+  color: var(--navy);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: 0 16px 44px rgba(24, 42, 61, 0.32);
+  padding: 18px 18px 16px;
+  font-family: var(--font-body);
+}
+
+.price-insight-card--visible { display: block; }
+
+.price-insight-card__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(24,42,61,0.06);
+  border: none;
+  font-size: 13px;
+  color: var(--navy);
+}
+.price-insight-card__close:hover { background: rgba(24,42,61,0.12); }
+
+.price-insight-card__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0 22px 2px 0;
+}
+
+.price-insight-card__category {
+  display: inline-block;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: rgba(154, 123, 79, 0.15);
+  color: var(--rust);
+  margin: 4px 0 12px 0;
+}
+
+.price-insight-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.price-insight-card__row:last-of-type { border-bottom: none; }
+
+.price-insight-card__row-label {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5B6B62;
+}
+
+.price-insight-card__row-value {
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  text-align: right;
+}
+
+.price-insight-card__developers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.price-insight-card__developer-chip {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(154, 123, 79, 0.1);
+  color: var(--navy);
+}
+
+.price-insight-card__cta {
+  width: 100%;
+  margin-top: 14px;
+  padding: 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #fff;
+  background: var(--rust);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.price-insight-card__cta:hover { background: #8a6c40; }
+
+.amenity-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0 14px 0;
+}
+
+.amenity-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card-bg);
+  cursor: pointer;
+  user-select: none;
+}
+
+.amenity-toggle:hover { border-color: var(--rust); }
+
+.amenity-toggle input {
+  width: 13px;
+  height: 13px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.amenity-toggle__icon {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.amenity-toggle__icon--techpark { background: #2E6F7E; }
+.amenity-toggle__icon--metro    { background: #5B3E96; }
+.amenity-toggle__icon--school   { background: #C77F1A; }
+.amenity-toggle__icon--hospital { background: #B7332C; }
+.amenity-toggle__icon--mall     { background: #B33F7D; }
+
+.amenity-toggle__text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.map-legend-toggle {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 11;
+  background: rgba(24, 42, 61, 0.92);
+  color: var(--cream);
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(154, 123, 79, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.map-legend-panel {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10;
+  background: rgba(24, 42, 61, 0.94);
+  color: var(--cream);
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(154, 123, 79, 0.35);
+  max-width: 280px;
+  line-height: 1.5;
+  display: none;
+}
+
+.map-legend-panel--open { display: block; }
+.map-legend-toggle--hidden { display: none; }
+
+.map-legend-panel__close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  font-size: 11px;
+}
+.map-legend-panel__close:hover { opacity: 1; }
+
+.map-legend__dot--techpark {
+  width: 9px; height: 9px; border-radius: 2px; background: #2E6F7E; display: inline-block; flex: 0 0 auto;
+}
+.map-legend__dot--metro {
+  width: 9px; height: 9px; border-radius: 50%; background: #5B3E96; display: inline-block; flex: 0 0 auto;
+}
+.map-legend__dot--school {
+  width: 9px; height: 9px; border-radius: 3px; background: #C77F1A; display: inline-block; flex: 0 0 auto;
+}
+.map-legend__dot--hospital {
+  width: 9px; height: 9px; border-radius: 50%; background: #B7332C; display: inline-block; flex: 0 0 auto;
+}
+.map-legend__dot--mall {
+  width: 9px; height: 9px; border-radius: 3px; background: #B33F7D; display: inline-block; flex: 0 0 auto;
+}
+
+.map-legend__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* POPUP CARD & BUYER TAILORED COMMUTE */
+.gm-style-iw-c {
+  padding: 10px !important;
+  border-radius: 8px !important;
+}
+.gm-style-iw-d { overflow: visible !important; }
+.gm-style-iw-c + button { top: 6px !important; right: 6px !important; }
+
+.popup-card { font-family: var(--font-body); min-width: 190px; max-width: 235px; color: var(--navy); }
+
+.popup-card__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0 0 3px 0;
+  line-height: 1.25;
+}
+
+.popup-card__dev { font-size: 9.5px; color: #667; margin-bottom: 0; }
+
+.popup-card__specs {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  color: var(--green-mid);
+  border-top: 1px dashed var(--line);
+  padding-top: 5px;
+  margin-top: 6px;
+}
+
+.popup-card__recommended-badge {
+  display: inline-block;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: rgba(154, 123, 79, 0.15);
+  color: var(--rust);
+  margin-bottom: 4px;
+}
+
+.popup-card__buyer-commute {
+  background: rgba(154, 123, 79, 0.12);
+  border: 1px solid rgba(154, 123, 79, 0.3);
+  border-radius: 4px;
+  padding: 6px 8px;
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.35;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.popup-card__buyer-commute-icon {
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+
+.popup-card__amenities-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  margin-top: 7px;
+  padding: 6px 8px;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--rust);
+  background: rgba(154, 123, 79, 0.08);
+  border: 1px solid rgba(154, 123, 79, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+}
+
+.popup-card__amenities-toggle:hover { background: rgba(154, 123, 79, 0.15); }
+
+.popup-card__amenities-panel {
+  margin-top: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.popup-card__actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.popup-card__action-btn {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 10.5px;
+  color: var(--navy);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.popup-card__action-btn:hover { border-color: var(--gold); }
+
+.popup-card__action-btn--active {
+  background: rgba(182, 138, 76, 0.14);
+  border-color: var(--gold);
+  color: var(--rust);
+}
+
+.popup-card__action-btn--in-compare {
+  background: #B68A4C;
+  border-color: #B68A4C;
+  color: #FFFFFF;
+}
+
+.popup-card__clear {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 8.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(24, 42, 61, 0.5);
+  cursor: pointer;
+  background: none;
+  border-left: none; border-right: none; border-bottom: none;
+}
+
+.popup-card__clear:hover { color: var(--rust); }
+
+/* COMPARE TRAY & SEARCHABLE AUTOCOMPLETE */
+.compare-tray {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: min(560px, calc(100% - 32px));
+  background: var(--cream);
+  color: var(--navy);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(24, 42, 61, 0.28);
+  padding: 14px 16px;
+  display: none;
+  font-family: var(--font-body);
+}
+
+.compare-tray--visible { display: block; }
+
+.compare-tray__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.compare-tray__title {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.compare-tray__close-all {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(24, 42, 61, 0.45);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.compare-tray__close-all:hover { color: var(--rust); }
+
+.compare-tray__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 12.5px;
+}
+.compare-tray__item:last-of-type { border-bottom: none; }
+
+.compare-tray__item-check {
+  color: var(--gold);
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.compare-tray__item-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-tray__remove {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: rgba(24, 42, 61, 0.5);
+  font-size: 12px;
+}
+.compare-tray__remove:hover { background: rgba(0,0,0,0.06); color: var(--rust); }
+
+/* SEARCHABLE COMBOBOX FOR COMPARE */
+.compare-search-wrap {
+  position: relative;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.compare-search-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  padding: 8px 10px 8px 30px;
+  border: 1px dashed var(--gold);
+  border-radius: 6px;
+  background: #FFFFFF;
+  color: var(--navy);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.compare-search-input:focus {
+  border-style: solid;
+  border-color: var(--rust);
+  outline: none;
+}
+
+.compare-search-icon {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--rust);
+  pointer-events: none;
+  font-size: 11px;
+}
+
+.compare-suggestions-list {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 4px;
+  max-height: 210px;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: 0 -8px 24px rgba(24, 42, 61, 0.22);
+  z-index: 1050;
+  display: none;
+}
+
+.compare-modal__search-wrap .compare-suggestions-list {
+  bottom: auto;
+  top: 100%;
+  margin-top: 4px;
+  box-shadow: 0 8px 24px rgba(24, 42, 61, 0.22);
+}
+
+.compare-suggestions-list--visible {
+  display: block;
+}
+
+.compare-suggestion-item {
+  padding: 8px 12px;
+  font-size: 11.5px;
+  color: var(--navy);
+  cursor: pointer;
+  border-bottom: 1px dashed var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.compare-suggestion-item:hover,
+.compare-suggestion-item--selected {
+  background: rgba(154, 123, 79, 0.12);
+}
+
+.compare-suggestion-item__title {
+  font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-suggestion-item__sub {
+  font-size: 9.5px;
+  color: #667;
+  font-family: var(--font-mono);
+  flex: 0 0 auto;
+}
+
+.compare-suggestions-empty {
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #7A8288;
+  text-align: center;
+}
+
+.compare-tray__hint {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: #7A8288;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.compare-tray__cta {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #fff;
+  background: var(--rust);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.compare-tray__cta:hover { background: #8a6c40; }
+
+.compare-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(24, 42, 61, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.compare-modal-backdrop--visible { display: flex; }
+
+.compare-modal {
+  background: var(--cream);
+  color: var(--navy);
+  border-radius: 12px;
+  max-width: 960px;
+  width: 100%;
+  max-height: 86vh;
+  overflow-y: auto;
+  padding: 22px 24px 26px;
+  position: relative;
+  font-family: var(--font-body);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.compare-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(24,42,61,0.06);
+  border: none;
+  font-size: 14px;
+  color: var(--navy);
+}
+.compare-modal__close:hover { background: rgba(24,42,61,0.12); }
+
+.compare-modal__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0 0 4px 0;
+}
+
+.compare-modal__subtitle {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table th, .compare-table td {
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12.5px;
+  vertical-align: top;
+}
+
+.compare-table th.compare-table__row-label {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rust);
+  white-space: nowrap;
+  width: 130px;
+}
+
+.compare-table thead th {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--navy);
+  border-bottom: 2px solid var(--gold);
+}
+
+.compare-modal__col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.compare-modal__remove-col {
+  appearance: none;
+  background: none;
+  border: none;
+  color: rgba(24, 42, 61, 0.4);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+.compare-modal__remove-col:hover {
+  background: rgba(24, 42, 61, 0.1);
+  color: var(--rust);
+}
+
+.compare-modal__add-col {
+  vertical-align: middle;
+}
+
+.compare-table__empty-cell {
+  color: #BBB;
+  text-align: center;
+}
+
+.compare-table__ak-score { font-family: var(--font-mono); font-weight: 700; color: var(--rust); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .layout { flex-direction: column; }
+
   .panel {
-    width: 420px;
-    min-width: 420px;
-    max-width: 420px;
-    height: 100%;
-    background: var(--warm-ivory);
-    border-right: 1px solid var(--border-tan);
-    display: flex;
-    flex-direction: column;
-    z-index: 20;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .panel__content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* BUYER INTENT CARDS */
-  .intent-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .intent-section__title {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted-grey);
-  }
-
-  .intent-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
-
-  .intent-card {
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    padding: 10px 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-  .intent-card:hover {
-    border-color: var(--terracotta);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
-  }
-  .intent-card--active {
-    background: var(--slate-navy);
-    color: var(--white);
-    border-color: var(--slate-navy);
-  }
-  .intent-card__icon { font-size: 16px; }
-  .intent-card__label { font-size: 11px; font-weight: 700; letter-spacing: 0.2px; }
-  .intent-card__sub { font-size: 9px; opacity: 0.75; line-height: 1.2; }
-
-  /* BUYER LENS SELECTOR */
-  .buyer-lens-bar {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(30, 26, 22, 0.04);
-    padding: 4px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border-tan);
-    overflow-x: auto;
-  }
-  .buyer-lens-pill {
-    flex: 1;
-    padding: 5px 8px;
-    border: none;
-    background: transparent;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--charcoal);
-    cursor: pointer;
-    white-space: nowrap;
-    text-align: center;
-    transition: all 0.15s ease;
-  }
-  .buyer-lens-pill:hover { background: rgba(30, 26, 22, 0.06); }
-  .buyer-lens-pill--active {
-    background: var(--terracotta);
-    color: var(--white);
-    box-shadow: var(--shadow-sm);
-  }
-
-  /* SMART SEARCH BOX */
-  .smart-search-wrap {
-    position: relative;
     width: 100%;
+    flex: 0 0 auto;
+    max-height: 34vh;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
   }
 
-  .smart-search-input {
-    width: 100%;
-    height: 42px;
-    padding: 0 14px 0 36px;
-    background: var(--white);
-    border: 1.5px solid var(--border-tan);
-    border-radius: var(--radius);
-    font-size: 13px;
-    color: var(--espresso);
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
-  .smart-search-input:focus {
-    border-color: var(--terracotta);
-    box-shadow: 0 0 0 3px rgba(122, 74, 48, 0.12);
-  }
-  .smart-search-icon {
-    position: absolute;
-    left: 12px; top: 12px;
-    color: var(--muted-grey);
-    pointer-events: none;
-  }
+  .buyer-profile-bar__summary { padding: 8px 14px; }
+  .buyer-profile-bar__form-wrap { padding: 14px; }
 
-  .search-chips {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 6px;
-    flex-wrap: wrap;
-  }
-  .search-chip-label { font-size: 10px; color: var(--muted-grey); font-weight: 600; }
-  .search-chip {
-    font-size: 10px;
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    padding: 2px 8px;
-    border-radius: 12px;
-    color: var(--charcoal);
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .search-chip:hover {
-    border-color: var(--terracotta);
-    color: var(--terracotta);
-  }
+  .panel__section { padding: 12px 16px; }
+  .panel__footer { padding: 10px 16px 12px; }
+  .field { margin-bottom: 9px; }
 
-  .smart-search-dropdown {
-    position: absolute;
-    top: 46px; left: 0; right: 0;
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-    max-height: 280px;
-    overflow-y: auto;
-    z-index: 1000;
-  }
-  .search-dropdown-item {
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-  }
-  .search-dropdown-item:hover { background: var(--warm-ivory); }
-  .search-dropdown-item__type {
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: rgba(30, 26, 22, 0.08);
-    color: var(--charcoal);
-  }
+  .presentation-bar { padding: 8px 12px; }
+  .accordion__header { padding: 12px 16px; }
+  .accordion__body { padding: 0 16px 14px; }
+  .accordion--insights { margin: 0 10px 10px; }
 
-  /* COMPACT FILTERS GRID */
-  .compact-filter-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    padding: 12px;
-    border-radius: var(--radius);
-  }
+  .map-wrap { flex: 1 1 auto; min-height: 50vh; }
+  .topbar__page { display: none; }
 
-  .filter-field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .filter-field--full { grid-column: 1 / -1; }
+  .panel--price-view-active { max-height: none; }
+  .panel--price-view-active #propertyFiltersGroup,
+  .panel--price-view-active #listSection { display: none; }
 
-  .filter-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--charcoal);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .filter-select, .filter-input {
-    height: 34px;
-    padding: 0 8px;
-    background: var(--warm-ivory);
-    border: 1px solid var(--border-tan);
-    border-radius: 6px;
-    font-size: 12px;
-    color: var(--espresso);
-    outline: none;
-  }
-  .filter-select:focus, .filter-input:focus { border-color: var(--terracotta); }
+  .price-legend { right: 10px; bottom: 10px; width: 118px; padding: 8px 9px 7px; }
+  .price-legend__scale { font-size: 7.5px; }
+  .area-price-label { font-size: 8.5px; padding: 1px 5px; }
 
-  .bhk-pill-group {
-    display: flex;
-    gap: 4px;
+  .price-insight-card {
+    right: 0; left: 0; top: auto; bottom: 0; transform: none;
+    width: 100%; max-height: 78vh; border-radius: 16px 16px 0 0; border-bottom: none;
   }
-  .bhk-btn {
-    flex: 1;
-    height: 32px;
-    border: 1px solid var(--border-tan);
-    background: var(--warm-ivory);
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--charcoal);
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .bhk-btn:hover { border-color: var(--terracotta); }
-  .bhk-btn--active {
-    background: var(--slate-navy);
-    color: var(--white);
-    border-color: var(--slate-navy);
-  }
+}
 
-  .commute-toggle-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 4px;
-    font-size: 10px;
-    color: var(--muted-grey);
-  }
-  .unit-toggle-btn {
-    background: none; border: none;
-    color: var(--terracotta); font-weight: 700;
-    cursor: pointer; text-decoration: underline;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .card, .btn-reset, .cluster-bubble { transition: none; }
+}
 
-  /* MAP MODES SELECTOR */
-  .map-mode-bar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
+/* ===== GUIDED PRESENTATION MODE ===== */
+body.in-guided-presentation .topbar { display: none !important; }
+body.in-guided-presentation .panel { display: none !important; }
+body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 100vh !important; flex: 1 1 100% !important; }
 
-  .map-mode-btn {
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    padding: 8px 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .map-mode-btn:hover { border-color: var(--terracotta); }
-  .map-mode-btn--active {
-    background: var(--espresso);
-    color: var(--warm-ivory);
-    border-color: var(--espresso);
-  }
-  .map-mode-btn__icon { font-size: 15px; }
-  .map-mode-btn__label { font-size: 10px; font-weight: 700; text-align: center; }
+.btn-present {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(182,138,76,0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.btn-present:hover {
+  background: var(--rust);
+  transform: translateY(-1px);
+}
 
-  /* LISTINGS SECTION */
-  .listings-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-tan);
-  }
-  .listings-title { font-size: 13px; font-weight: 700; color: var(--espresso); }
-  .listings-count { font-size: 11px; font-weight: 700; background: var(--terracotta); color: var(--white); padding: 2px 8px; border-radius: 10px; }
+.presentation-rail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  z-index: 10000;
+  background: #12202E;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border-bottom: 2px solid var(--gold);
+}
 
-  .property-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.p-rail__property-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 280px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.p-rail__badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  background: rgba(182,138,76,0.25);
+  color: #E2C699;
+  padding: 3px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(182,138,76,0.4);
+}
+.p-rail__title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
-  .prop-card {
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    padding: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-  }
-  .prop-card:hover {
-    border-color: var(--terracotta);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-1px);
-  }
-  .prop-card--selected {
-    border: 2px solid var(--terracotta);
-    background: #FFFDF9;
-  }
+.p-rail__steps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.06);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
 
-  .prop-card__header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .prop-card__title { font-size: 14px; font-weight: 800; color: var(--espresso); line-height: 1.2; }
-  .prop-card__dev { font-size: 11px; color: var(--muted-grey); font-weight: 500; margin-top: 2px; }
+.p-rail__step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: all 200ms ease;
+}
+.p-rail__step:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+.p-rail__step--active {
+  background: var(--gold) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(182,138,76,0.4);
+}
+.p-rail__step--done {
+  color: #E2C699;
+}
+.p-rail__step-num {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.5px;
+}
+.p-rail__step--active .p-rail__step-num {
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+}
 
-  .prop-card__score-badge {
-    background: var(--slate-navy);
-    color: var(--white);
-    font-size: 11px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
+.p-rail__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  transition: all 150ms ease;
+}
+.p-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+}
+.p-btn--next {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+  font-weight: 700;
+}
+.p-btn--next:hover {
+  background: #a27a42;
+  border-color: #a27a42;
+}
+.p-btn--exit {
+  background: rgba(220,53,69,0.2);
+  border-color: rgba(220,53,69,0.4);
+  color: #ff9999;
+}
+.p-btn--exit:hover {
+  background: rgba(220,53,69,0.4);
+  color: #fff;
+}
 
-  .prop-card__metrics {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px dashed var(--border-tan);
-    font-size: 12px;
-  }
-  .prop-card__price { font-weight: 800; color: var(--terracotta); }
-  .prop-card__config { color: var(--charcoal); font-weight: 600; }
-  .prop-card__commute {
-    font-size: 11px;
-    font-weight: 700;
-    color: #2E6B47;
-    background: #EAF5ED;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-left: auto;
-  }
+.presentation-step-card {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 390px;
+  max-width: calc(100vw - 48px);
+  z-index: 9999;
+  background: rgba(18, 32, 46, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 16px 18px;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  animation: pSlideUp 250ms ease-out;
+}
+@keyframes pSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  /* MAP WRAPPER */
-  .map-wrap {
-    flex: 1;
-    height: 100%;
-    position: relative;
-  }
+.p-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.p-card__step-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E2C699;
+}
+.p-card__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.p-card__body {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.88);
+}
+.p-card__highlight-box {
+  background: rgba(182,138,76,0.15);
+  border-left: 3px solid var(--gold);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 11.5px;
+}
 
-  #map { width: 100%; height: 100%; }
 
-  .map-status {
-    position: absolute;
-    top: 16px; left: 50%; transform: translateX(-50%);
-    background: var(--espresso); color: var(--warm-ivory);
-    font-size: 12px; font-weight: 600;
-    padding: 6px 14px; border-radius: 20px;
-    box-shadow: var(--shadow-md); z-index: 10;
-    display: none;
-  }
-  .map-status--visible { display: block; }
 
-  /* CONTEXTUAL LEGEND PANEL */
-  .map-legend-panel {
-    position: absolute;
-    bottom: 24px; left: 24px;
-    background: var(--white);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    padding: 12px 14px;
-    box-shadow: var(--shadow-md);
-    z-index: 10;
-    max-width: 280px;
-    font-size: 11px;
-  }
-  .map-legend__title { font-weight: 800; font-size: 12px; margin-bottom: 6px; color: var(--espresso); }
-  .map-legend__row { display: flex; align-items: center; gap: 8px; margin-top: 4px; color: var(--charcoal); }
-  .map-legend__dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+/* HIDE OTHER PROJECT & AMENITY TAGS WHEN A PROPERTY IS SELECTED (REVEAL ON HOVER) */
+body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__tag,
+body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__leader {
+  display: none !important;
+}
 
-  /* PROPERTY DETAIL PANEL (PDP) */
+body.has-active-property .techpark-marker .techpark-marker__tag,
+body.has-active-property .techpark-marker .techpark-marker__leader,
+body.has-active-property .metro-marker .metro-marker__tag,
+body.has-active-property .metro-marker .metro-marker__leader,
+body.has-active-property .school-marker .school-marker__tag,
+body.has-active-property .school-marker .school-marker__leader,
+body.has-active-property .hospital-marker .hospital-marker__tag,
+body.has-active-property .hospital-marker .hospital-marker__leader,
+body.has-active-property .mall-marker .mall-marker__tag,
+body.has-active-property .mall-marker .mall-marker__leader {
+  display: none !important;
+}
+
+/* REVEAL TAGS DYNAMICALLY ON MOUSE HOVER */
+body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__tag,
+body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__leader,
+body.has-active-property .techpark-marker:hover .techpark-marker__tag,
+body.has-active-property .techpark-marker:hover .techpark-marker__leader,
+body.has-active-property .metro-marker:hover .metro-marker__tag,
+body.has-active-property .metro-marker:hover .metro-marker__leader,
+body.has-active-property .school-marker:hover .school-marker__tag,
+body.has-active-property .school-marker:hover .school-marker__leader,
+body.has-active-property .hospital-marker:hover .hospital-marker__tag,
+body.has-active-property .hospital-marker:hover .hospital-marker__leader,
+body.has-active-property .mall-marker:hover .mall-marker__tag,
+body.has-active-property .mall-marker:hover .mall-marker__leader {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 99999 !important;
+}
+
+/* PERSISTENT MAP VIEW PILL CONTROL */
+.map-view-pill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 410;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(24, 42, 61, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(182, 138, 76, 0.4);
+  padding: 4px;
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  transition: all 200ms ease;
+}
+
+.map-view-pill__btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.map-view-pill__btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.map-view-pill__btn--active {
+  background: var(--gold) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-color: #E2C699 !important;
+  box-shadow: 0 2px 10px rgba(182, 138, 76, 0.45);
+}
+
+body.in-guided-presentation .map-view-pill {
+  top: 66px;
+}
+
+
+/* LOCALITY SUMMARY STRIP OVERLAY */
+.locality-summary-strip {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 440px;
+  max-width: calc(100vw - 40px);
+  z-index: 400;
+  background: rgba(24, 42, 61, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  animation: lStripSlide 200ms ease-out;
+}
+
+@keyframes lStripSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.locality-summary-strip--visible {
+  display: flex;
+}
+
+.l-strip__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.l-strip__name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.l-strip__stats {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #E2C699;
+  background: rgba(182, 138, 76, 0.2);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(182, 138, 76, 0.35);
+  white-space: nowrap;
+}
+
+.l-strip__tagline {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.l-strip__highlight {
+  font-size: 10.5px;
+  color: #A3C9C2;
+  font-family: var(--font-mono);
+}
+
+.l-strip__close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 150ms ease;
+}
+.l-strip__close:hover { color: #fff; }
+
+body.in-guided-presentation .locality-summary-strip {
+  top: 66px;
+}
+
+
+/* PER-PROPERTY TECH PARK COMMUTE STRIP */
+.popup-card__techpark-commute-strip {
+  background: rgba(47, 69, 90, 0.07);
+  border: 1px solid rgba(47, 69, 90, 0.16);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 6px 0;
+}
+
+.popup-card__techparks-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.popup-card__tp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.popup-card__tp-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
+  border-left: 3px solid #2E6F7E;
+  font-size: 11px;
+}
+
+.popup-card__tp-item--workplace {
+  background: rgba(182, 138, 76, 0.14);
+  border-left-color: var(--gold);
+}
+
+.popup-card__tp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.popup-card__tp-name {
+  font-weight: 600;
+  color: var(--navy);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popup-card__tp-workplace-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 7.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.popup-card__tp-details {
+  font-size: 10px;
+  color: #5B6B62;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.popup-card__tp-mins {
+  font-weight: 700;
+  color: var(--rust);
+  font-family: var(--font-mono);
+}
+
+.popup-card__tp-dot {
+  opacity: 0.5;
+}
+
+
+/* PRICE INSIGHT CARD ENHANCEMENTS */
+.price-insight-card__why-box {
+  background: rgba(182, 138, 76, 0.12);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+.price-insight-card__why-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 4px;
+}
+
+.price-insight-card__why-text {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.price-insight-card__drivers {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0 0;
+  font-size: 10.5px;
+  color: #4A5B52;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+/* ===== SIDEBAR RESTRUCTURING & VISUAL HIERARCHY ===== */
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(182,138,76,0.3) transparent;
+}
+
+.panel::-webkit-scrollbar {
+  width: 5px;
+}
+.panel::-webkit-scrollbar-thumb {
+  background: rgba(182,138,76,0.3);
+  border-radius: 4px;
+}
+
+/* Sidebar Section Headers & Accordions */
+.sidebar-section-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rust);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.accordion__header {
+  padding: 13px 18px;
+  background: rgba(24, 42, 61, 0.02);
+  border-bottom: 1px solid var(--line);
+  transition: background 150ms ease;
+}
+.accordion__header:hover {
+  background: rgba(182, 138, 76, 0.06);
+}
+
+.accordion__body {
+  padding: 14px 18px;
+}
+
+/* Buyer Profile Panel Inside Sidebar */
+.buyer-profile-bar {
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.buyer-profile-bar__summary {
+  padding: 12px 18px;
+  background: rgba(24, 42, 61, 0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.buyer-profile-bar__summary:hover {
+  background: rgba(182, 138, 76, 0.08);
+}
+
+.buyer-profile-bar__form-wrap {
+  padding: 14px 18px;
+  background: #fff;
+}
+
+/* Section Spacing & Grouping */
+.sidebar-group {
+  margin-bottom: 14px;
+}
+.sidebar-group-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7A8288;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.amenity-toggles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.amenity-toggle {
+  padding: 6px 9px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  transition: all 150ms ease;
+}
+.amenity-toggle:hover {
+  border-color: var(--gold);
+  background: #fff;
+}
+
+/* Presentation Bar Inside Sidebar Footer */
+.presentation-bar {
+  padding: 12px 18px;
+  background: rgba(24, 42, 61, 0.04);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* ===== PROPERTY CARDS & SLIDING DETAILS PANEL ===== */
+.card {
+  border: 1px solid var(--line);
+  border-left: 3px solid #B7AFA4;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(24,42,61,0.08);
+  border-color: rgba(182,138,76,0.5);
+}
+.card--recommended {
+  border-left: 3px solid var(--gold) !important;
+  background: #FAF8F5;
+}
+.card--active {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 2px rgba(182,138,76,0.25) !important;
+}
+
+.card__row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.card__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--navy);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card__ak-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.card__ak-score--high { background: var(--gold); color: #fff; }
+.card__ak-score--mid  { background: rgba(154,123,79,0.2); color: #8A6C40; border: 1px solid rgba(154,123,79,0.35); }
+.card__ak-score--low  { background: rgba(0,0,0,0.06); color: #7A8288; }
+
+.card__row2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.card__price {
+  font-weight: 700;
+  color: var(--rust);
+}
+.card__config {
+  font-weight: 600;
+  color: #5B6B62;
+}
+
+.card__row3-why {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--navy);
+  background: rgba(182,138,76,0.1);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+}
+
+.card__row4-footer {
+  font-size: 10.5px;
+  color: #7A8288;
+}
+
+/* Property Detail Panel (Right-side Sliding Panel) */
+.property-detail-panel {
+  position: absolute;
+  top: 0; right: 0;
+  width: 370px;
+  height: 100%;
+  z-index: 500;
+  background: var(--cream);
+  color: var(--navy);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -6px 0 28px rgba(24,42,61,0.22);
+  transform: translateX(100%);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+.property-detail-panel--open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.map-wrap--panel-open {
+  padding-right: 370px;
+}
+
+.pdp__header {
+  flex: 0 0 auto;
+  padding: 16px 18px 12px;
+  background: var(--green-deep);
+  color: var(--cream);
+  position: relative;
+  border-bottom: 2px solid var(--gold);
+}
+.pdp__close {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease;
+}
+.pdp__close:hover { background: rgba(255,255,255,0.22); }
+
+.pdp__header-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(154,123,79,0.3);
+  color: #E2C699;
+  border: 1px solid rgba(154,123,79,0.45);
+  padding: 2px 7px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.pdp__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin: 0 28px 6px 0;
+}
+.pdp__header-row2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pdp__price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  color: #E2C699;
+}
+.pdp__config {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  color: rgba(255,255,255,0.72);
+}
+.pdp__ak-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10.5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+.pdp__ak-score--high { background: var(--gold); color: #fff; }
+.pdp__ak-score--mid  { background: rgba(154,123,79,0.28); color: #E2C699; border: 1px solid rgba(154,123,79,0.4); }
+.pdp__ak-score--low  { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); }
+
+.pdp__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+.pdp__section {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.pdp__section-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pdp__section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(154,123,79,0.2);
+}
+
+.pdp__reasons { display: flex; flex-direction: column; gap: 6px; }
+.pdp__reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--navy);
+}
+.pdp__reason-check {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(154,123,79,0.15);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: var(--rust);
+  margin-top: 1px;
+}
+
+.pdp__commute-card {
+  background: rgba(47,69,90,0.06);
+  border: 1px solid rgba(47,69,90,0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pdp__commute-icon { font-size: 26px; flex: 0 0 auto; line-height: 1; }
+.pdp__commute-time { font-family: var(--font-mono); font-weight: 800; font-size: 22px; color: var(--navy); line-height: 1; }
+.pdp__commute-detail { font-size: 10.5px; color: #5B6B62; margin-top: 2px; }
+.pdp__commute-to { font-size: 10px; color: #7A8288; margin-top: 3px; }
+
+.pdp__amenity-group { margin-bottom: 10px; }
+.pdp__amenity-group-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pdp__amenity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 11.5px;
+  border-bottom: 1px dashed rgba(0,0,0,0.06);
+}
+.pdp__amenity-row:last-child { border-bottom: none; }
+.pdp__amenity-name { color: var(--navy); font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdp__amenity-dist { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: var(--rust); white-space: nowrap; flex: 0 0 auto; }
+
+.pdp__footer {
+  flex: 0 0 auto;
+  padding: 14px 18px 18px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pdp__actions { display: flex; gap: 8px; }
+.pdp__action-btn {
+  flex: 1 1 0;
+  padding: 8px 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 150ms, border-color 150ms, color 150ms;
+}
+.pdp__action-btn:hover { border-color: var(--gold); }
+.pdp__action-btn--active { background: rgba(182,138,76,0.14); border-color: var(--gold); color: var(--rust); }
+.pdp__action-btn--in-compare { background: #B68A4C; border-color: #B68A4C; color: #fff; }
+
+.pdp__cta {
+  width: 100%;
+  padding: 11px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  background: var(--rust);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.pdp__cta:hover { background: #8a6c40; }
+.pdp__dev-footer { font-size: 10px; color: #7A8288; text-align: center; margin-top: 2px; }
+
+@media (max-width: 860px) {
   .property-detail-panel {
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 440px;
-    background: var(--white);
-    border-left: 1px solid var(--border-tan);
-    box-shadow: var(--shadow-lg);
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .property-detail-panel[hidden] { transform: translateX(100%); display: flex !important; pointer-events: none; }
-
-  .pdp__header {
-    background: var(--espresso);
-    color: var(--warm-ivory);
-    padding: 16px 20px;
-    position: relative;
-  }
-  .pdp__close {
-    position: absolute;
-    top: 14px; right: 14px;
-    background: rgba(255,255,255,0.15);
-    border: none; color: var(--white);
-    width: 26px; height: 26px; border-radius: 50%;
-    cursor: pointer; font-size: 14px;
-  }
-  .pdp__title { font-size: 18px; font-weight: 800; color: var(--white); line-height: 1.2; margin-top: 4px; }
-  .pdp__sub { font-size: 12px; color: #D4C9B8; margin-top: 2px; }
-
-  .pdp__body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .pdp-section-title {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--terracotta);
-    margin-bottom: 8px;
-  }
-
-  .pdp-card-box {
-    background: var(--warm-ivory);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    padding: 12px 14px;
-  }
-
-  .pdp-score-breakdown {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .score-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11px;
-    padding: 4px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
-  .score-item__label { color: var(--charcoal); }
-  .score-item__val { font-weight: 700; color: var(--espresso); }
-
-  .around-context-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .context-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-  }
-  .context-row__label { display: flex; align-items: center; gap: 6px; font-weight: 600; color: var(--charcoal); }
-  .context-row__val { font-weight: 700; color: var(--espresso); }
-
-  .pdp-price-comparison {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #FFFDF9;
-    border: 1px solid var(--border-tan);
-    padding: 10px 12px;
-    border-radius: var(--radius);
-  }
-  .price-diff-badge {
-    font-size: 11px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 4px;
-  }
-  .price-diff-badge--above { background: #FDE8E8; color: #9B1C1C; }
-  .price-diff-badge--below { background: #EAF5ED; color: #1E6B37; }
-
-  .pdp__footer {
-    padding: 16px 20px;
-    background: var(--warm-ivory);
-    border-top: 1px solid var(--border-tan);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .btn-primary {
     width: 100%;
-    height: 40px;
-    background: var(--terracotta);
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius);
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    height: 55vh;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    transform: translateY(105%);
+    box-shadow: 0 -4px 24px rgba(24,42,61,0.22);
+    border-radius: 16px 16px 0 0;
   }
-  .btn-primary:hover { background: #643A24; }
+  .property-detail-panel--open { transform: translateY(0); }
+  .map-wrap--panel-open { padding-right: 0; padding-bottom: 55vh; }
+}
 
-  .btn-secondary {
-    width: 100%;
-    height: 36px;
-    background: transparent;
-    color: var(--espresso);
-    border: 1px solid var(--border-tan);
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  .btn-secondary:hover { background: rgba(0,0,0,0.04); }
 
-  /* SIDE BY SIDE COMPARISON MODAL */
-  .compare-modal-backdrop {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(30, 26, 22, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-  .compare-modal-backdrop.active { opacity: 1; pointer-events: auto; }
+/* ===== MAP EXPERIENCE POLISH & ANIMATIONS ===== */
+.gmap-marker-wrap {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), z-index 150ms ease;
+}
 
-  .compare-modal {
-    background: var(--white);
-    border-radius: 12px;
-    width: 100%; max-width: 900px;
-    max-height: 85vh;
-    display: flex; flex-direction: column;
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
-  }
-  .compare-modal__header {
-    background: var(--espresso);
-    color: var(--warm-ivory);
-    padding: 16px 20px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .compare-modal__body {
-    flex: 1; overflow-y: auto; padding: 20px;
-  }
-  .compare-table {
-    width: 100%; border-collapse: collapse; text-align: left;
-  }
-  .compare-table th, .compare-table td {
-    padding: 12px 14px; border-bottom: 1px solid var(--border-tan);
-    font-size: 12px;
-  }
-  .compare-table th { background: var(--warm-ivory); font-weight: 800; color: var(--espresso); }
+.gmap-marker-wrap:hover {
+  transform: translate(-50%, -104%) scale(1.1);
+  z-index: 9999 !important;
+}
 
-  /* METHODOLOGY MODAL */
-  .methodology-modal {
-    background: var(--white);
-    border-radius: 12px;
-    width: 100%; max-width: 650px;
-    padding: 24px;
-    box-shadow: var(--shadow-lg);
-    max-height: 80vh;
-    overflow-y: auto;
-  }
+.plot-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 
-  /* FUTURE INFRASTRUCTURE TAGS */
-  .status-tag {
-    font-size: 9px; font-weight: 800; text-transform: uppercase;
-    padding: 2px 6px; border-radius: 3px; margin-left: 6px;
-  }
-  .status-tag--operational { background: #EAF5ED; color: #1E6B37; }
-  .status-tag--construction { background: #FEF3C7; color: #92400E; }
-  .status-tag--proposed { background: #F3E8FF; color: #6B21A8; }
+.plot-marker__pin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--rust);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 180ms ease;
+}
 
-  /* CUSTOM MAP MARKERS */
-  .custom-project-marker {
-    background: var(--white);
-    border: 1.5px solid var(--espresso);
-    border-radius: 16px;
-    padding: 3px 8px;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--espresso);
-    box-shadow: var(--shadow-md);
-    white-space: nowrap;
-    cursor: pointer;
-    display: flex; align-items: center; gap: 4px;
-    transition: transform 0.15s ease;
-  }
-  .custom-project-marker:hover {
-    transform: scale(1.08);
-    border-color: var(--terracotta);
-    z-index: 999;
-  }
-  .custom-project-marker__score {
-    background: var(--slate-navy);
-    color: var(--white);
-    padding: 1px 5px;
-    border-radius: 10px;
-    font-size: 10px;
-  }
+.plot-marker__leader {
+  width: 2px;
+  height: 9px;
+  background: var(--rust);
+}
 
-  /* MOBILE RESPONSIVE BREAKPOINTS */
-  @media (max-width: 768px) {
-    .app-body { flex-direction: column-reverse; }
-    .panel {
-      width: 100%; min-width: 100%; max-width: 100%;
-      height: 50vh; border-right: none; border-top: 1px solid var(--border-tan);
-    }
-    .map-wrap { height: 50vh; }
-    .property-detail-panel { width: 100%; }
-  }
+.plot-marker__tag {
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 9.5px;
+  color: var(--navy);
+  background: #FFFFFF;
+  padding: 2.5px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 135px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(24, 42, 61, 0.18);
+  letter-spacing: -0.01em;
+  transition: all 180ms ease-out;
+}
+
+/* Recommended Property Pins */
+.plot-marker--recommended .plot-marker__tag {
+  border-left: 3px solid var(--gold);
+  background: #FAF8F5;
+}
+
+/* Active Selected Property Pin */
+.gmap-marker-wrap--active {
+  z-index: 999 !important;
+}
+
+.plot-marker--active {
+  transform: scale(1.18);
+  z-index: 999;
+}
+
+.plot-marker--active .plot-marker__pin {
+  background: var(--gold) !important;
+  border-color: #ffffff !important;
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px rgba(226, 198, 153, 0.45), 0 8px 24px rgba(24, 42, 61, 0.4);
+}
+
+.plot-marker--active .plot-marker__tag {
+  background: var(--navy) !important;
+  color: #FFFFFF !important;
+  border-color: var(--gold) !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(226, 198, 153, 0.45), 0 8px 24px rgba(24, 42, 61, 0.4) !important;
+}
+
+.plot-marker--active .plot-marker__leader {
+  background: var(--gold);
+  width: 2px;
+}
+
+/* Cluster Bubbles */
+.gmap-cluster-wrap {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 200;
+  transition: transform 180ms ease;
+}
+.gmap-cluster-wrap:hover {
+  transform: translate(-50%, -50%) scale(1.14);
+}
+
+.cluster-bubble {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #12202E;
+  color: #E2C699;
+  border: 2px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  transition: all 150ms ease;
+}
+.cluster-bubble:hover {
+  background: var(--gold);
+  color: #ffffff;
+}
+
+/* Glassmorphic Map View Pill Control */
+.map-view-pill {
+  background: rgba(18, 32, 46, 0.92) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(182, 138, 76, 0.45) !important;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.35) !important;
+}
+
+/* Price Legend Polish */
+.price-legend {
+  background: rgba(18, 32, 46, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(182, 138, 76, 0.4) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35) !important;
+  color: #fff !important;
+}
+.price-legend__title { color: #E2C699 !important; font-family: var(--font-mono) !important; }
+
+
+/* ===== ADVISOR EXPERIENCE & PRESENTATION SWITCHER ===== */
+.p-rail__select {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(182, 138, 76, 0.45);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  max-width: 230px;
+  outline: none;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.p-rail__select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--gold);
+}
+.p-rail__select option {
+  background: #12202E;
+  color: #FFFFFF;
+  padding: 4px;
+}
+
+
+/* ===== PRODUCTION POLISH & SHIMMER ENHANCEMENTS ===== */
+.loading-state {
+  padding: 24px 16px;
+  text-align: center;
+  color: #7A8288;
+  font-size: 12px;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(182,138,76,0.14) 50%, rgba(255,255,255,0.6) 100%);
+  background-size: 200% 100%;
+  animation: loadingShimmer 1.8s infinite ease-in-out;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+@keyframes loadingShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.empty-state {
+  padding: 32px 18px;
+  text-align: center;
+  color: #5B6B62;
+  font-size: 12.5px;
+  line-height: 1.5;
+  background: #FFFFFF;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+/* Button & Interactive Elevation System */
+button, select, input {
+  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-present {
+  box-shadow: 0 2px 6px rgba(154, 123, 79, 0.3);
+  transition: all 180ms ease;
+}
+.btn-present:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(154, 123, 79, 0.45);
+}
+
+.locality-chip {
+  transition: all 150ms ease;
+}
+.locality-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--gold);
+}
+
+
+/* ===== HIGH CONTRAST VISIBLE BUYER PROFILE BOX ===== */
+.buyer-profile-bar {
+  border-bottom: 1px solid rgba(182, 138, 76, 0.4) !important;
+  background: #12202E !important;
+  color: #FFFFFF !important;
+}
+
+.buyer-profile-bar__summary {
+  padding: 11px 18px !important;
+  background: #12202E !important;
+  border-bottom: 1px solid rgba(182, 138, 76, 0.25) !important;
+  cursor: pointer;
+}
+.buyer-profile-bar__summary:hover {
+  background: rgba(182, 138, 76, 0.16) !important;
+}
+
+.buyer-profile-bar__badge {
+  background: rgba(182, 138, 76, 0.25) !important;
+  color: #E2C699 !important;
+  border: 1px solid rgba(182, 138, 76, 0.5) !important;
+  font-weight: 700 !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.08em !important;
+}
+
+.buyer-profile-bar__text {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+}
+
+.buyer-profile-bar__icon {
+  color: #E2C699 !important;
+}
+
+.buyer-profile-bar__edit-hint,
+.buyer-profile-bar__chevron {
+  color: #E2C699 !important;
+  font-weight: 700 !important;
+}
+
+.buyer-profile-bar__form-wrap {
+  padding: 14px 18px !important;
+  background: #FFFFFF !important;
+  color: var(--navy) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+
+/* Fix Property Detail Panel position when Guided Presentation Rail is active */
+body.in-guided-presentation .property-detail-panel {
+  top: 54px !important;
+  height: calc(100% - 54px) !important;
+}
+
+
+/* ===== UNIFIED DESIGN SYSTEM (8PX GRID, BUTTONS, RADIUS & ELEVATION) ===== */
+:root {
+  /* Acre&Key Brand Palette */
+  --green-deep:  #1F2B38; /* Deep Navy main dark surface */
+  --green-mid:   #2F455A; /* Secondary dark surface */
+  --gold:        #B88E52; /* Antique Brass accent */
+  --cream:       #F7F3EC; /* Warm Ivory light surface */
+  --navy:        #1F2B38; /* Primary body text on light */
+  --rust:        #B88E52; /* Accent brass */
+  --line:        #B7AFA4; /* Crisp border divider */
+  --card-bg:     #FFFFFF; /* Pure white card surface */
+  --warm-stone:  #E5DED4; /* Warm stone secondary light */
+
+  --font-display: "Marcellus", serif;
+  --font-body:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    "Manrope", monospace;
+
+  /* Standardized 8px Spacing Grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Standardized Border Radius */
+  --radius: 6px;
+  --radius-pill: 999px;
+
+  /* Floating Elevation System */
+  --shadow-overlay: 0 12px 36px rgba(18, 32, 46, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-card-hover: 0 4px 14px rgba(24, 42, 61, 0.08);
+}
+
+/* Base Reset & Typography */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--green-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold) !important;
+  outline-offset: 2px !important;
+}
+
+/* Button Component Hierarchy */
+.btn-primary, .btn-present, .btn-bp-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  height: 32px;
+  background: var(--gold) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-body);
+  font-weight: 700 !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(154, 123, 79, 0.35);
+  transition: transform 150ms ease-out, background-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.btn-primary:hover, .btn-present:hover, .btn-bp-save:hover {
+  background: #8A6C40 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(154, 123, 79, 0.45);
+}
+.btn-primary:active, .btn-present:active, .btn-bp-save:active {
+  transform: translateY(0);
+}
+
+.btn-secondary, .btn-reset, .btn-bp-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  height: 32px;
+  background: transparent !important;
+  color: var(--navy) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-body);
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+  cursor: pointer;
+  transition: transform 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+.btn-secondary:hover, .btn-reset:hover, .btn-bp-reset:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent !important;
+  border: none !important;
+  color: #7A8288 !important;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+.btn-ghost:hover {
+  color: var(--gold) !important;
+}
+
+/* Skeleton Loading Component */
+.skeleton-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-2);
+}
+.skeleton-line {
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(24,42,61,0.06) 0%, rgba(182,138,76,0.18) 50%, rgba(24,42,61,0.06) 100%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite ease-in-out;
+}
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Floating Overlays Standardized Glassmorphism */
+.property-detail-panel,
+.map-view-pill,
+.price-legend,
+.locality-summary-strip,
+.compare-modal,
+.presentation-rail-overlay {
+  box-shadow: var(--shadow-overlay) !important;
+}
+
+
+/* ===== ENTERPRISE APPLICATION SIDEBAR NAVIGATION ===== */
+#sidebarPanel {
+  background: var(--cream);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(182,138,76,0.3) transparent;
+}
+
+/* Accordion Section Headers */
+.accordion {
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  transition: background 150ms ease;
+}
+
+.accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  background: rgba(24, 42, 61, 0.02);
+  cursor: pointer;
+  user-select: none;
+  transition: background 150ms ease-out;
+}
+.accordion__header:hover {
+  background: rgba(182, 138, 76, 0.08);
+}
+.accordion[open] > .accordion__header {
+  background: rgba(24, 42, 61, 0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.accordion__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accordion__badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  background: rgba(182, 138, 76, 0.18);
+  color: var(--rust);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(182, 138, 76, 0.35);
+}
+
+/* Active State Enhancements */
+.locality-chip[aria-pressed="true"] {
+  background: rgba(182, 138, 76, 0.18) !important;
+  border-color: var(--gold) !important;
+  color: var(--rust) !important;
+  font-weight: 700 !important;
+}
+
+.field__input:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 2px rgba(182, 138, 76, 0.2) !important;
+}
+
+
+/* ===== SEARCH & FILTER WORKFLOW ENHANCEMENTS ===== */
+.active-filters-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: rgba(182, 138, 76, 0.14);
+  color: var(--rust);
+  border: 1px solid rgba(182, 138, 76, 0.35);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+.active-filter-tag__remove {
+  background: transparent;
+  border: none;
+  color: var(--rust);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1;
+}
+.active-filter-tag__remove:hover {
+  color: #B7332C;
+}
+
+.empty-state__chips {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.empty-state__chip-btn {
+  padding: 5px 12px;
+  background: rgba(182, 138, 76, 0.12);
+  color: var(--rust);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.empty-state__chip-btn:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+
+/* ===== PREMIUM MAP INTERACTION & INFRASTRUCTURE HIGHLIGHT POLISH ===== */
+@keyframes pinPopIn {
+  0% { transform: translate(-50%, -80%) scale(0.6); opacity: 0; }
+  100% { transform: translate(-50%, -100%) scale(1); opacity: 1; }
+}
+
+.gmap-marker-wrap {
+  animation: pinPopIn 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Enhanced Nearby Infrastructure Amenity Markers */
+.amenity-marker-pin {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3) !important;
+}
+
+.amenity-marker-pin:hover {
+  transform: scale(1.2) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45) !important;
+  z-index: 99999 !important;
+}
+
+/* Highlighted Infrastructure Badge on Map */
+.amenity-marker-pin--highlighted {
+  border-color: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(182, 138, 76, 0.6), 0 4px 14px rgba(0,0,0,0.4) !important;
+}
+
+/* Smooth Map Canvas Transitions */
+#map canvas, #map svg {
+  transition: opacity 250ms ease-out;
+}
+
+
+/* ===== ADVISORY PROPERTY DETAILS PANEL STYLING ===== */
+.pdp__pros-cons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.pdp__pro-item {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #1F2B38;
+  background: rgba(182, 138, 76, 0.12);
+  border-left: 3px solid var(--gold);
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.pdp__con-item {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #7A8288;
+  background: rgba(0,0,0,0.03);
+  border-left: 3px solid #7A8288;
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+
+/* ===== EXECUTIVE CONSULTING COMPARISON SCREEN STYLING ===== */
+.compare-summary-box {
+  background: rgba(18, 32, 46, 0.95);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+}
+
+.compare-summary-box__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E2C699;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare-summary-box__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.compare-summary-box__winner-tag {
+  background: rgba(182, 138, 76, 0.22);
+  color: #E2C699;
+  border: 1px solid rgba(182, 138, 76, 0.45);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.compare-table__category-header {
+  background: rgba(24, 42, 61, 0.06);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  padding: 10px 14px;
+}
+
+
+/* ===== EXECUTIVE LOCALITY INSIGHTS DASHBOARD ===== */
+.l-strip__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.l-strip__pillar-item {
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: #E2C699;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(182, 138, 76, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+
+/* ===== UNIFIED MICRO-ANIMATIONS (150-250MS CURATED TIMING) ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* Button & Interactive Hover Timing */
+.btn-primary, .btn-secondary, .btn-present, .btn-bp-save, .btn-bp-reset, .btn-reset, .locality-chip, .map-view-pill__btn, .p-btn {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out !important;
+}
+
+/* Card Hover Elevation */
+.card {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms ease-out, border-color 180ms ease-out !important;
+}
+.card:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(24, 42, 61, 0.08) !important;
+  border-color: rgba(182, 138, 76, 0.5) !important;
+}
+
+/* Sliding Right-Side Property Detail Panel */
+.property-detail-panel {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Modal Backdrops & Overlays */
+.compare-modal-backdrop, .price-insight-modal-backdrop {
+  transition: opacity 180ms ease-out, visibility 180ms ease-out !important;
+}
+
+.compare-modal, .price-insight-card {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out !important;
+}
+
+/* Accordion Headers */
+.accordion__header {
+  transition: background-color 150ms ease-out !important;
+}
+
+/* Map Markers Pop-In & Scale */
+.gmap-marker-wrap {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.gmap-marker-wrap:hover {
+  transform: translate(-50%, -104%) scale(1.1) !important;
+}
+
+
+/* MULTI-PROPERTY FILTER CHIPS & SELECTOR */
+.multi-prop-filter {
+  margin-top: 10px;
+  background: rgba(31, 43, 56, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  display: none;
+}
+.multi-prop-filter--active {
+  display: block;
+}
+.multi-prop-filter__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: var(--muted-slate);
+}
+.multi-prop-filter__title {
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.multi-prop-filter__clear-all {
+  background: none;
+  border: none;
+  color: var(--rust);
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.multi-prop-filter__clear-all:hover {
+  text-decoration: underline;
+}
+.multi-prop-filter__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.multi-prop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--navy);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.multi-prop-chip__remove {
+  background: none;
+  border: none;
+  color: var(--muted-slate);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.multi-prop-chip__remove:hover {
+  color: #D87C72;
+}
+.search-suggestion-item--selected {
+  background: rgba(184, 142, 82, 0.12) !important;
+  border-left: 3px solid var(--gold);
+}
+.search-suggestion-check {
+  font-size: 13px;
+  color: var(--rust);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* Search Suggestions Dropdown Styling */
+.search-suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #FFFFFF;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(24, 42, 61, 0.22);
+  z-index: 999;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+}
+.search-suggestions-dropdown--visible,
+.search-suggestions-dropdown--open {
+  display: block !important;
+  z-index: 9999 !important;
+}
+.search-suggestion-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(154, 123, 79, 0.12);
+  transition: background-color 150ms ease-out;
+}
+.search-suggestion-item:last-child {
+  border-bottom: none;
+}
+.search-suggestion-item:hover,
+.search-suggestion-item--active {
+  background: rgba(154, 123, 79, 0.12);
+}
+.search-suggestion-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.search-suggestion-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-suggestion-subtitle {
+  font-size: 10.5px;
+  color: #59616B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-suggestion-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.search-suggestion-badge--project {
+  background: rgba(154, 123, 79, 0.15);
+  color: #7A5B28;
+}
+.search-suggestion-badge--developer {
+  background: rgba(46, 111, 126, 0.15);
+  color: #2E6F7E;
+}
+.search-suggestion-badge--locality {
+  background: rgba(168, 103, 46, 0.15);
+  color: #A8672E;
+}
+
+
+/* Enhanced Z-Index & Visual Prominence for Custom Overlays */
+.gmap-marker-wrap {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  z-index: 50 !important;
+}
+
+.plot-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 4px 10px rgba(24, 42, 61, 0.35));
+}
+
+.techpark-marker, .metro-marker, .school-marker, .hospital-marker, .mall-marker {
+  z-index: 60 !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.28));
+}
+
+
+/* Property Detail Panel Header Controls & Draggable Minimized Card */
+.pdp__header-controls {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 30 !important;
+}
+.pdp__header-controls .pdp__minimize-btn,
+.pdp__header-controls .pdp__close {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  flex: 0 0 auto !important;
+}
+.pdp__minimize-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  line-height: 1;
+}
+.pdp__minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.property-detail-panel--minimized {
+  position: fixed !important;
+  height: auto !important;
+  max-height: 72px !important;
+  width: 320px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 36px rgba(24, 42, 61, 0.45) !important;
+  border: 1.5px solid var(--gold) !important;
+  background: var(--navy) !important;
+  cursor: move !important;
+  cursor: grab !important;
+  user-select: none !important;
+  touch-action: none !important;
+  transform: none !important;
+  transition: none !important;
+  z-index: 99999 !important;
+  isolation: isolate !important;
+  pointer-events: auto !important;
+}
+.property-detail-panel--minimized:active {
+  cursor: grabbing !important;
+}
+.property-detail-panel--minimized * {
+  cursor: inherit;
+}
+.property-detail-panel--minimized button,
+.property-detail-panel--minimized .pdp__header-controls,
+.property-detail-panel--minimized .pdp__minimize-btn,
+.property-detail-panel--minimized .pdp__close {
+  cursor: pointer !important;
+}
+.property-detail-panel--minimized:active {
+  cursor: grabbing !important;
+}
+.property-detail-panel--minimized .pdp__body,
+.property-detail-panel--minimized .pdp__footer {
+  display: none !important;
+}
+.property-detail-panel--minimized .pdp__header {
+  padding: 10px 75px 10px 32px !important;
+  position: relative !important;
+}
+.pdp__drag-handle {
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: -2px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.property-detail-panel--minimized .pdp__drag-handle {
+  display: block !important;
+}
+.property-detail-panel--minimized .pdp__title {
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 200px !important;
+}
+.property-detail-panel--minimized .pdp__header-row2 {
+  display: flex !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+}
+.pdp__header-controls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 100 !important;
+  pointer-events: auto !important;
+}
+.pdp__minimize-btn, .pdp__close {
+  pointer-events: auto !important;
+}
+.pdp__minimize-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.pdp__minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.08);
+}
+
+.property-detail-panel--minimized .pdp__body,
+.property-detail-panel--minimized .pdp__footer {
+  display: none !important;
+}
+.property-detail-panel--minimized .pdp__header {
+  padding: 10px 80px 10px 14px !important;
+}
+.property-detail-panel--minimized .pdp__title {
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 220px !important;
+}
+.property-detail-panel--minimized .pdp__header-row2 {
+  display: flex !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+}
+
+
+/* Fullscreen mode support for map view pill control & legends */
+:fullscreen .map-view-pill,
+:-webkit-full-screen .map-view-pill,
+:fullscreen .map-status,
+:-webkit-full-screen .map-status,
+:fullscreen .map-legend-toggle,
+:-webkit-full-screen .map-legend-toggle,
+:fullscreen .map-legend-panel,
+:-webkit-full-screen .map-legend-panel {
+  z-index: 999999 !important;
+  display: flex !important;
+}
+:fullscreen .map-legend-panel,
+:-webkit-full-screen .map-legend-panel {
+  display: block !important;
+}
+
+
+/* Google Maps Control Slot styling for Map View Pill */
+.gmap-control-pill-wrap,
+#mapViewPill {
+  margin-top: 10px !important;
+  margin-right: 10px !important;
+  z-index: 999999 !important;
+}
+
+
+/* Fullscreen mode support for Property Detail Panel, Compare Tray & Modals */
+:fullscreen .property-detail-panel,
+:-webkit-full-screen .property-detail-panel,
+:fullscreen .compare-tray,
+:-webkit-full-screen .compare-tray,
+:fullscreen .compare-modal-backdrop,
+:-webkit-full-screen .compare-modal-backdrop {
+  z-index: 999999 !important;
+}
+
+
+/* Locality Summary Strip Minimize Button & Minimized State */
+.l-strip__controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.l-strip__minimize-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.l-strip__minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.locality-summary-strip--minimized {
+  width: auto !important;
+  max-width: 440px !important;
+  padding: 6px 12px !important;
+}
+.locality-summary-strip--minimized .l-strip__tagline,
+.locality-summary-strip--minimized .l-strip__pillars {
+  display: none !important;
+}
+
+
+/* --- ACRE&KEY BENGALURU PROPERTY INTELLIGENCE UPGRADES --- */
+:root {
+  --espresso: #1E1A16;
+  --terracotta: #7A4A30;
+  --slate-navy: #2B3440;
+  --warm-ivory: #F5F0E8;
+  --white: #FFFFFF;
+  --charcoal: #2D2A26;
+  --muted-grey: #6B6560;
+  --border-tan: #D9CFC0;
+}
+
+/* TOPBAR UPGRADES */
+.topbar {
+  background: var(--espresso) !important;
+  color: var(--warm-ivory) !important;
+  height: 54px !important;
+  padding: 0 20px !important;
+}
+.topbar__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--warm-ivory) !important;
+  text-transform: uppercase;
+}
+.topbar__page {
+  font-weight: 600;
+  color: #E2D9CC !important;
+}
+.topbar__tagline {
+  font-size: 11.5px;
+  color: #A69C8E;
+  margin-left: 12px;
+}
+@media (max-width: 800px) { .topbar__tagline { display: none; } }
+
+.topbar__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar__date-badge {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #D4C9B8;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.topbar__methodology-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--warm-ivory);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.topbar__methodology-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* BUYER INTENT CARDS */
+.intent-section {
+  padding: 12px 14px;
+  background: var(--warm-ivory);
+  border-bottom: 1px solid var(--border-tan);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.intent-section__title {
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted-grey);
+}
+.intent-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.intent-card {
+  background: var(--white);
+  border: 1px solid var(--border-tan);
+  border-radius: 6px;
+  padding: 8px 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.intent-card:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-1px);
+}
+.intent-card--active {
+  background: var(--slate-navy);
+  color: var(--white);
+  border-color: var(--slate-navy);
+}
+.intent-card__icon { font-size: 14px; }
+.intent-card__label { font-size: 10px; font-weight: 800; letter-spacing: 0.2px; }
+.intent-card__sub { font-size: 8.5px; opacity: 0.75; }
+
+/* BUYER LENS SELECTOR */
+.buyer-lens-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(30, 26, 22, 0.04);
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid var(--border-tan);
+}
+.buyer-lens-pill {
+  flex: 1;
+  padding: 4px 6px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--charcoal);
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+.buyer-lens-pill:hover { background: rgba(30, 26, 22, 0.06); }
+.buyer-lens-pill--active {
+  background: var(--terracotta);
+  color: var(--white);
+}
+
+/* SMART SEARCH CHIPS */
+.search-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+.search-chip-label { font-size: 10px; color: var(--muted-grey); font-weight: 600; }
+.search-chip {
+  font-size: 10px;
+  background: var(--white);
+  border: 1px solid var(--border-tan);
+  padding: 2px 8px;
+  border-radius: 12px;
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.search-chip:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+/* 5 MAP MODES BAR */
+.map-mode-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-top: 4px;
+}
+.map-mode-btn {
+  background: var(--white);
+  border: 1px solid var(--border-tan);
+  border-radius: 6px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.map-mode-btn:hover { border-color: var(--terracotta); }
+.map-mode-btn--active {
+  background: var(--espresso);
+  color: var(--warm-ivory);
+  border-color: var(--espresso);
+}
+.map-mode-btn__icon { font-size: 13px; }
+.map-mode-btn__label { font-size: 9.5px; font-weight: 700; text-align: center; }
+
+/* METHODOLOGY MODAL */
+.methodology-modal-backdrop {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30, 26, 22, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.methodology-modal-backdrop.active { opacity: 1; pointer-events: auto; }
+.methodology-modal {
+  background: var(--white);
+  border-radius: 12px;
+  width: 100%; max-width: 620px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(30, 26, 22, 0.2);
+  max-height: 85vh; overflow-y: auto;
+}
+
+/* STATUS TAGS */
+.status-tag {
+  font-size: 9px; font-weight: 800; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 3px; margin-left: 6px;
+}
+.status-tag--operational { background: #EAF5ED; color: #1E6B37; }
+.status-tag--construction { background: #FEF3C7; color: #92400E; }
+.status-tag--proposed { background: #F3E8FF; color: #6B21A8; }
+
 </style>
 </head>
 <body>
-<div class="app">
-  <!-- TOP HEADER -->
-  <header class="app-header">
-    <div class="app-header__brand">
-      <span class="app-header__logo">ACRE&amp;KEY</span>
-      <div class="app-header__divider"></div>
-      <span class="app-header__title">Bengaluru Property Intelligence</span>
-      <span class="app-header__subline">Find. Compare. Understand. Before You Buy.</span>
+
+<header class="topbar">
+  <div class="topbar__brand" style="display:flex; align-items:center; gap:8px;">
+    <span style="font-weight:800; font-size:15px; letter-spacing:1px;">ACRE&amp;KEY</span>
+    <span style="opacity:0.4;">//</span>
+    <span class="topbar__page">Bengaluru Property Intelligence</span>
+    <span class="topbar__tagline">Find. Compare. Understand. Before You Buy.</span>
+  </div>
+  <div class="topbar__actions">
+    <span class="topbar__date-badge">Data updated: September 2026</span>
+    <button type="button" class="topbar__methodology-btn" onclick="openMethodologyModal()">Data &amp; Methodology</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="panel" aria-label="Advisor Control Panel" id="sidebarPanel">
+  <!-- BUYER INTENT SECTION -->
+  <div class="intent-section">
+    <div class="intent-section__title">What are you looking for?</div>
+    <div class="intent-cards">
+      <div class="intent-card intent-card--active" id="intentBuyHome" onclick="setBuyerIntent('buy_home')">
+        <span class="intent-card__icon">🏠</span>
+        <span class="intent-card__label">BUY A HOME</span>
+        <span class="intent-card__sub">Budget &amp; Commute</span>
+      </div>
+      <div class="intent-card" id="intentCompareAreas" onclick="setBuyerIntent('compare_areas')">
+        <span class="intent-card__icon">📊</span>
+        <span class="intent-card__label">COMPARE AREAS</span>
+        <span class="intent-card__sub">Prices &amp; Trends</span>
+      </div>
+      <div class="intent-card" id="intentCheckProject" onclick="setBuyerIntent('check_project')">
+        <span class="intent-card__icon">🔍</span>
+        <span class="intent-card__label">CHECK A PROJECT</span>
+        <span class="intent-card__sub">Deep Intelligence</span>
+      </div>
     </div>
-    <div class="app-header__actions">
-      <span class="app-header__date-badge">Data updated: September 2026</span>
-      <button type="button" class="app-header__btn" onclick="openMethodologyModal()">Data &amp; Methodology</button>
+  </div>
+
+  <!-- BUYER LENS SECTION -->
+  <div class="intent-section">
+    <div class="intent-section__title">What matters most to you?</div>
+    <div class="buyer-lens-bar">
+      <button type="button" class="buyer-lens-pill buyer-lens-pill--active" id="lensEndUse" onclick="setBuyerLens('end_use')">End Use</button>
+      <button type="button" class="buyer-lens-pill" id="lensCommute" onclick="setBuyerLens('commute')">Commute</button>
+      <button type="button" class="buyer-lens-pill" id="lensFamily" onclick="setBuyerLens('family')">Family</button>
+      <button type="button" class="buyer-lens-pill" id="lensInvestment" onclick="setBuyerLens('investment')">Investment</button>
+      <button type="button" class="buyer-lens-pill" id="lensRental" onclick="setBuyerLens('rental')">Rental</button>
     </div>
-  </header>
+  </div>
 
-  <div class="app-body">
-    <!-- SIDEBAR PANEL -->
-    <aside class="panel">
-      <div class="panel__content">
+  <!-- 5 MAP MODES SECTION -->
+  <div class="intent-section">
+    <div class="intent-section__title">Map Modes</div>
+    <div class="map-mode-bar">
+      <button type="button" class="map-mode-btn map-mode-btn--active" id="modeBtnProperties" onclick="switchMapMode('properties')">
+        <span class="map-mode-btn__icon">🏠</span>
+        <span class="map-mode-btn__label">Properties</span>
+      </button>
+      <button type="button" class="map-mode-btn" id="modeBtnEmployment" onclick="switchMapMode('employment')">
+        <span class="map-mode-btn__icon">💼</span>
+        <span class="map-mode-btn__label">Employment</span>
+      </button>
+      <button type="button" class="map-mode-btn" id="modeBtnConnectivity" onclick="switchMapMode('connectivity')">
+        <span class="map-mode-btn__icon">🚇</span>
+        <span class="map-mode-btn__label">Connectivity</span>
+      </button>
+      <button type="button" class="map-mode-btn" id="modeBtnLivability" onclick="switchMapMode('livability')">
+        <span class="map-mode-btn__icon">🎓</span>
+        <span class="map-mode-btn__label">Livability</span>
+      </button>
+      <button type="button" class="map-mode-btn" id="modeBtnMarket" onclick="switchMapMode('market')">
+        <span class="map-mode-btn__icon">📈</span>
+        <span class="map-mode-btn__label">Market</span>
+      </button>
+      <button type="button" class="map-mode-btn" id="modeBtnFuture" onclick="switchMapMode('future_growth')">
+        <span class="map-mode-btn__icon">🚀</span>
+        <span class="map-mode-btn__label">Future Growth</span>
+      </button>
+    </div>
+  </div>
 
-        <!-- BUYER INTENT CARDS -->
-        <div class="intent-section">
-          <div class="intent-section__title">What are you looking for?</div>
-          <div class="intent-cards">
-            <div class="intent-card intent-card--active" id="intentBuyHome" onclick="setBuyerIntent('buy_home')">
-              <span class="intent-card__icon">🏠</span>
-              <span class="intent-card__label">BUY A HOME</span>
-              <span class="intent-card__sub">Budget &amp; Commute</span>
-            </div>
-            <div class="intent-card" id="intentCompareAreas" onclick="setBuyerIntent('compare_areas')">
-              <span class="intent-card__icon">📊</span>
-              <span class="intent-card__label">COMPARE AREAS</span>
-              <span class="intent-card__sub">Prices &amp; Trends</span>
-            </div>
-            <div class="intent-card" id="intentCheckProject" onclick="setBuyerIntent('check_project')">
-              <span class="intent-card__icon">🔍</span>
-              <span class="intent-card__label">CHECK A PROJECT</span>
-              <span class="intent-card__sub">Deep Intelligence</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- BUYER LENS SELECTOR -->
-        <div class="intent-section">
-          <div class="intent-section__title">What matters most to you?</div>
-          <div class="buyer-lens-bar">
-            <button type="button" class="buyer-lens-pill buyer-lens-pill--active" id="lensEndUse" onclick="setBuyerLens('end_use')">End Use</button>
-            <button type="button" class="buyer-lens-pill" id="lensCommute" onclick="setBuyerLens('commute')">Commute</button>
-            <button type="button" class="buyer-lens-pill" id="lensFamily" onclick="setBuyerLens('family')">Family</button>
-            <button type="button" class="buyer-lens-pill" id="lensInvestment" onclick="setBuyerLens('investment')">Investment</button>
-            <button type="button" class="buyer-lens-pill" id="lensRental" onclick="setBuyerLens('rental')">Rental</button>
-          </div>
-        </div>
-
-        <!-- SMART SEARCH -->
-        <div class="smart-search-wrap">
-          <svg class="smart-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="smartSearchInput" class="smart-search-input" placeholder="Search project, developer, locality or tech park" onkeyup="handleSmartSearch(event)" onfocus="handleSmartSearch(event)" autocomplete="off" />
-          <div id="smartSearchDropdown" class="smart-search-dropdown" hidden></div>
-
-          <div class="search-chips">
-            <span class="search-chip-label">Try:</span>
-            <span class="search-chip" onclick="quickSearch('Prestige Evergreen')">Prestige Evergreen</span>
-            <span class="search-chip" onclick="quickSearch('Whitefield')">Whitefield</span>
-            <span class="search-chip" onclick="quickSearch('ITPL')">ITPL</span>
-            <span class="search-chip" onclick="quickSearch('Brigade Belvedere')">Brigade Belvedere</span>
-            <span class="search-chip" onclick="quickSearch('Varthur')">Varthur</span>
-          </div>
-        </div>
-
-        <!-- COMPACT BUYER FILTERS -->
-        <div class="compact-filter-grid">
-          <div class="filter-field">
-            <span class="filter-label">Min Budget</span>
-            <select id="filterPriceMin" class="filter-select" onchange="applyFilters()">
-              <option value="">Any Min</option>
-              <option value="5000000">₹50 Lakhs</option>
-              <option value="7500000">₹75 Lakhs</option>
-              <option value="10000000">₹1 Crore</option>
-              <option value="15000000">₹1.5 Crore</option>
-              <option value="20000000">₹2 Crore</option>
-              <option value="30000000">₹3 Crore</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <span class="filter-label">Max Budget</span>
-            <select id="filterPriceMax" class="filter-select" onchange="applyFilters()">
-              <option value="">Any Max</option>
-              <option value="15000000">₹1.5 Crore</option>
-              <option value="20000000">₹2 Crore</option>
-              <option value="30000000">₹3 Crore</option>
-              <option value="40000000">₹4 Crore</option>
-              <option value="50000000">₹5 Crore+</option>
-            </select>
+<!-- 1. FILTERS & SEARCH -->
+    <details class="accordion accordion--explore" id="exploreAccordion" open>
+      <summary class="accordion__header">
+        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          Filters &amp; Search
+        </span>
+      </summary>
+      <div class="accordion__body">
+        <div id="propertyFiltersGroup">
+          <div id="geoFilterBanner" class="geo-filter-banner">
+            <span id="geoFilterBannerText"></span>
+            <button type="button" class="geo-filter-banner__clear" onclick="clearGeoFilter()">Clear ✕</button>
           </div>
 
-          <div class="filter-field filter-field--full">
-            <span class="filter-label">Configuration</span>
-            <div class="bhk-pill-group">
-              <button type="button" class="bhk-btn bhk-btn--active" data-bhk="all" onclick="toggleBhkFilter('all', this)">All</button>
-              <button type="button" class="bhk-btn" data-bhk="2" onclick="toggleBhkFilter('2', this)">2 BHK</button>
-              <button type="button" class="bhk-btn" data-bhk="3" onclick="toggleBhkFilter('3', this)">3 BHK</button>
-              <button type="button" class="bhk-btn" data-bhk="4" onclick="toggleBhkFilter('4', this)">4 BHK</button>
-              <button type="button" class="bhk-btn" data-bhk="villa" onclick="toggleBhkFilter('villa', this)">Villa</button>
-            </div>
-          </div>
-
-          <div class="filter-field filter-field--full">
-            <span class="filter-label">
-              <span>Where do you work?</span>
-              <button type="button" class="unit-toggle-btn" id="commuteUnitBtn" onclick="toggleCommuteUnit()">Display: Time (min)</button>
-            </span>
-            <select id="workLocationSelect" class="filter-select" onchange="onWorkplaceChanged()">
-              <option value="">Select Tech Park / Employment Hub...</option>
-            </select>
-
-            <div class="commute-toggle-wrap" id="commuteFilterWrap" hidden>
-              <span>Commute filter:</span>
-              <select id="commuteMaxTimeSelect" class="filter-select" style="height:26px; font-size:11px;" onchange="applyFilters()">
-                <option value="">All travel times</option>
-                <option value="30">Within 30 min</option>
-                <option value="45">Within 45 min</option>
-                <option value="60">Within 60 min</option>
+          <label class="field field--search" style="position:relative;">
+            <span class="field__label">Search Projects</span>
+            <div class="field--search__row">
+              <div class="field--search__input-wrap">
+                <input type="text" id="filterSearchText" class="field__input" placeholder="Search by name, developer, or locality" autocomplete="off" />
+                <span class="field--search__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="20" y2="20"/></svg>
+                </span>
+                <button type="button" id="clearSearchText" class="field--search__clear" aria-label="Clear search">✕</button>
+              </div>
+              <select id="filterSearchScope" class="field__input field--search__scope" title="Search in">
+                <option value="all">All</option>
+                <option value="project">Project</option>
+                <option value="developer">Developer</option>
+                <option value="locality">Locality</option>
               </select>
             </div>
+                        <div id="searchSuggestionsDropdown" class="search-suggestions-dropdown"></div>
+          </label>
+
+          <!-- MULTI-PROPERTY SELECTION CONTAINER -->
+          <div id="multiPropFilterContainer" class="multi-prop-filter">
+            <div class="multi-prop-filter__header">
+              <span class="multi-prop-filter__title">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Selected Properties (<span id="multiPropCount">0</span>)
+              </span>
+              <button type="button" class="multi-prop-filter__clear-all" onclick="clearMultiPropertySelection()">Clear All</button>
+            </div>
+            <div id="multiPropChipsContainer" class="multi-prop-filter__chips"></div>
+          </div>
+
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Micro-Market</span>
+              <select id="filterLocality" class="field__input">
+                <option value="">All micro-markets</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Construction Stage</span>
+              <select id="filterStage" class="field__input">
+                <option value="">All stages</option>
+                <option value="Under construction">Under construction</option>
+                <option value="Ready to move">Ready to move</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field field--checkbox">
+            <input type="checkbox" id="filterRecommended" />
+            <span class="field__label">Show only Acre&amp;Key recommended projects</span>
+          </label>
+
+          <div class="locality-section" aria-label="Popular localities" style="margin-top:10px;">
+            <div class="locality-section__header">
+              <span class="field__label">Popular Localities</span>
+              <button type="button" id="localityClear" class="locality-clear" hidden>✕ Clear</button>
+            </div>
+            <div class="locality-chips" id="localityChips" role="group" aria-label="Popular localities — select one to highlight it on the map">
+              <button type="button" class="locality-chip" data-slug="whitefield" aria-pressed="false">Whitefield</button>
+              <button type="button" class="locality-chip" data-slug="budigere-cross" aria-pressed="false">Budigere Cross</button>
+              <button type="button" class="locality-chip" data-slug="kr-puram" aria-pressed="false">KR Puram</button>
+              <button type="button" class="locality-chip" data-slug="varthur" aria-pressed="false">Varthur</button>
+            </div>
+          </div>
+
+                    <label class="field field--search" style="margin-top:10px; position:relative;">
+            <span class="field__label">Target Work Location</span>
+            <div class="field--search__input-wrap">
+              <input type="text" id="filterWorkLocationText" class="field__input" placeholder="Type tech park name (e.g. ITPL, Manyata)" autocomplete="off" />
+              <input type="hidden" id="filterWorkLocation" value="" />
+              <button type="button" id="clearWorkLocationText" class="field--search__clear" aria-label="Clear work location" hidden>✕</button>
+            </div>
+            <div id="workLocationSuggestionsDropdown" class="search-suggestions-dropdown"></div>
+          </label>
+
+          <button id="resetFilters" class="btn-reset" type="button" style="margin-top:12px;">Reset filters</button>
+        </div>
+      </div>
+    </details>
+
+<!-- 2. MAP LAYERS & INSIGHTS -->
+    <details class="accordion accordion--insights" id="insightsAccordion">
+      <summary class="accordion__header">
+        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          Map Layers &amp; Insights
+        </span>
+      </summary>
+      <div class="accordion__body">
+        <span class="sidebar-group-label">Map Amenity Markers</span>
+        <div class="amenity-toggles" role="group" aria-label="Map amenity layers">
+          <label class="amenity-toggle" title="Show nearby tech parks">
+            <input type="checkbox" id="filterTechParks" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--techpark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 21V7l8-4 8 4v14h-6v-6h-4v6H4z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Tech Parks</span>
+          </label>
+          <label class="amenity-toggle" title="Show metro stations">
+            <input type="checkbox" id="filterMetro" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--metro" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M4 16.5V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9.5A2.5 2.5 0 0 1 17.5 19H17l1.5 1.5v.5h-13v-.5L7 19h-.5A2.5 2.5 0 0 1 4 16.5zM7.5 15a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM6 12h12V7a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Metro Stations</span>
+          </label>
+          <label class="amenity-toggle" title="Show nearby schools">
+            <input type="checkbox" id="filterSchools" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--school" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M12 3 1 8l11 5 9-4.09V17h2V8L12 3zM5 10.18v4.32c0 .6.33 1.15.85 1.45l6 3.55.15.05.15-.05 6-3.55c.52-.3.85-.85.85-1.45v-4.32L12 14.5 5 10.18z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Schools</span>
+          </label>
+          <label class="amenity-toggle" title="Show nearby hospitals">
+            <input type="checkbox" id="filterHospitals" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--hospital" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M11 4h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Hospitals</span>
+          </label>
+          <label class="amenity-toggle" title="Show nearby malls">
+            <input type="checkbox" id="filterMalls" checked />
+            <span class="amenity-toggle__icon amenity-toggle__icon--mall" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M7 8h10l1 11H6L7 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="white" stroke-width="1.6"/></svg>
+            </span>
+            <span class="amenity-toggle__text">Malls</span>
+          </label>
+        </div>
+
+        <span class="sidebar-group-label" style="margin-top:10px;">Density Heatmaps</span>
+        <label class="field field--checkbox techpark-view-toggle" title="Show every tech park in Bengaluru with a density heatmap">
+          <input type="checkbox" id="filterTechParkView" />
+          <span class="field__label">Tech Park Density Heatmap</span>
+        </label>
+        <div id="techParkViewNotice" class="techpark-view-notice">
+          <div style="font-weight:600; color:var(--rust); margin-bottom:4px;">Employment Corridor Density</div>
+          <div>Showing all <strong id="techParkViewCount"></strong> tech parks across Bengaluru.</div>
+          <div class="techpark-legend__gradient" style="margin-top:6px; margin-bottom:4px;"></div>
+          <div class="techpark-legend__scale">
+            <span>Low</span><span>Medium</span><span>High</span><span>Peak</span>
           </div>
         </div>
 
-        <!-- MAP MODES -->
-        <div class="intent-section">
-          <div class="intent-section__title">Map Modes</div>
-          <div class="map-mode-bar">
-            <button type="button" class="map-mode-btn map-mode-btn--active" id="modeBtnProperties" onclick="switchMapMode('properties')">
-              <span class="map-mode-btn__icon">🏠</span>
-              <span class="map-mode-btn__label">Properties</span>
-            </button>
-            <button type="button" class="map-mode-btn" id="modeBtnEmployment" onclick="switchMapMode('employment')">
-              <span class="map-mode-btn__icon">💼</span>
-              <span class="map-mode-btn__label">Employment</span>
-            </button>
-            <button type="button" class="map-mode-btn" id="modeBtnConnectivity" onclick="switchMapMode('connectivity')">
-              <span class="map-mode-btn__icon">🚇</span>
-              <span class="map-mode-btn__label">Connectivity</span>
-            </button>
-            <button type="button" class="map-mode-btn" id="modeBtnLivability" onclick="switchMapMode('livability')">
-              <span class="map-mode-btn__icon">🎓</span>
-              <span class="map-mode-btn__label">Livability</span>
-            </button>
-            <button type="button" class="map-mode-btn" id="modeBtnMarket" onclick="switchMapMode('market')">
-              <span class="map-mode-btn__icon">📈</span>
-              <span class="map-mode-btn__label">Market</span>
-            </button>
-            <button type="button" class="map-mode-btn" id="modeBtnFuture" onclick="switchMapMode('future_growth')">
-              <span class="map-mode-btn__icon">🚀</span>
-              <span class="map-mode-btn__label">Future Growth</span>
-            </button>
+        <div class="price-insights" style="margin-top:8px;">
+          <label class="field field--checkbox area-price-view-toggle" title="Show area-wise pricing across Bengaluru as a heatmap">
+            <input type="checkbox" id="filterAreaPriceView" />
+            <span class="field__label">Area Price Density Heatmap</span>
+          </label>
+
+          <div id="priceInsightsSubToggles" class="price-insights__sub-toggles" hidden>
+            <label class="field field--checkbox price-insights__sub-toggle">
+              <input type="checkbox" id="filterPriceLabels" checked />
+              <span class="field__label">Price Labels</span>
+            </label>
+            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
+              <input type="checkbox" id="filterAnnualGrowth" disabled />
+              <span class="field__label">Annual Growth <em>(coming soon)</em></span>
+            </label>
+            <label class="field field--checkbox price-insights__sub-toggle price-insights__sub-toggle--disabled">
+              <input type="checkbox" id="filterRentalYield" disabled />
+              <span class="field__label">Rental Yield <em>(coming soon)</em></span>
+            </label>
+            <label class="field field--checkbox price-insights__sub-toggle">
+              <input type="checkbox" id="filterPremiumAreas" />
+              <span class="field__label">Premium Areas Only</span>
+            </label>
           </div>
         </div>
 
-        <!-- LISTINGS SECTION -->
-        <div class="listings-header">
-          <span class="listings-title">Matching Projects</span>
-          <span class="listings-count" id="projectCountBadge">0</span>
+        <div id="areaPriceViewNotice" class="area-price-insight-card" style="margin-top:8px;">
+          <div class="area-price-insight-card__title">Area Price Insights</div>
+          <p>Visualizing average price/sqft across Bengaluru localities.</p>
         </div>
+      </div>
+    </details>
 
-        <div id="propertyList" class="property-list">
-          <div class="loading-state">Loading projects...</div>
+<!-- 3. RECOMMENDED PROJECTS -->
+    <details class="accordion accordion--shortlist" id="listSection" open>
+      <summary class="accordion__header">
+        <span class="accordion__title" style="display:flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          Recommended Projects
+        </span>
+        <span class="accordion__badge" id="shortlistBadge">0</span>
+      </summary>
+      <div class="accordion__body accordion__body--list">
+        <div id="propertyList" class="property-list" aria-live="polite">
+          <div class="loading-state">Loading listings…</div>
         </div>
+      </div>
+    </details>
 
+    <!-- 5. FOOTER & BADGES -->
+
+    <div class="panel__footer">
+      <div class="panel__footer-badges">
+        <span class="panel__footer-badge">Buyer-first</span>
+        <span class="panel__footer-badge">Diligence-driven</span>
+        <span class="panel__footer-badge">No advisory fee</span>
+      </div>
+      <div class="panel__footer-line">Before you commit, speak with Acre&amp;Key.</div>
+    </div>
+
+  </aside>
+
+  <main class="map-wrap">
+    <!-- LOCALITY SUMMARY STRIP -->
+    <div id="localitySummaryStrip" class="locality-summary-strip" role="region" aria-label="Locality summary strip"></div>
+    <!-- PERSISTENT MAP VIEW PILL CONTROL -->
+    <div id="mapViewPill" class="map-view-pill" role="radiogroup" aria-label="Map view context">
+      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties')">
+        <span>📍</span> Properties
+      </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark')">
+        <span>🏢</span> Tech Park Density
+      </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnPrice" onclick="switchMapViewContext('price')">
+        <span>🏷️</span> Price Density
+      </button>
+    </div>
+    <div id="map" role="application" aria-label="Property location map"></div>
+    <div id="mapStatus" class="map-status map-status--visible">Loading map…</div>
+    <div id="legendToggle" class="map-legend-toggle">ⓘ Map key</div>
+    <div id="legendPanel" class="map-legend-panel">
+      <span id="legendClose" class="map-legend-panel__close">✕</span>
+      <div class="map-legend__row"><span class="map-legend__dot"></span> Projects</div>
+      <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--techpark"></span> Tech parks</div>
+      <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--metro"></span> Metro (Purple / Green / Yellow)</div>
+      <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--school"></span> Schools</div>
+      <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--hospital"></span> Hospitals</div>
+      <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--mall"></span> Malls</div>
+      <div style="margin-top:6px; opacity:0.85;">Numbered = clustered, zoom in for names. Select a project to see its AK Score, nearest tech parks, metro, schools, hospitals &amp; malls — expand the popup to see everything within 5 km. "Tech Park View" and "Area Price Density" above the filters swap in full-city heatmaps (navy = denser tech parks, red = pricier per sqft).</div>
+    </div>
+  
+    <!-- PROPERTY DETAIL PANEL (slides in from right) -->
+    <aside class="property-detail-panel" id="propertyDetailPanel" aria-label="Property detail" hidden>
+      <div class="pdp__header" id="pdpHeader">
+        <span class="pdp__drag-handle" title="Drag to move card">⋮⋮</span>
+        <div class="pdp__header-controls">
+          <button type="button" class="pdp__minimize-btn" id="pdpMinimize" onclick="toggleMinimizeDetailPanel(event)" title="Minimize property card" aria-label="Minimize property card">⎯</button>
+          <button type="button" class="pdp__close" id="pdpClose" onclick="closeAndClearActive(event)" aria-label="Close detail panel">✕</button>
+        </div>
+        <div class="pdp__header-badge" id="pdpBadge">ACRE&amp;KEY RECOMMENDED</div>
+        <div class="pdp__title" id="pdpTitle">—</div>
+        <div class="pdp__header-row2">
+          <span class="pdp__price" id="pdpPrice"></span>
+          <span class="pdp__config" id="pdpConfig"></span>
+          <span class="pdp__ak-score" id="pdpAkScore"></span>
+        </div>
+      </div>
+      <div class="pdp__body" id="pdpBody"></div>
+      <div class="pdp__footer" id="pdpFooter">
+        <div class="pdp__actions" id="pdpActions"></div>
       </div>
     </aside>
+  </main>
 
-    <!-- MAP WRAPPER -->
-    <main class="map-wrap">
-      <div id="map"></div>
-      <div id="mapStatus" class="map-status map-status--visible">Loading Acre&amp;Key Intelligence Map…</div>
-
-      <!-- MAP LEGEND PANEL -->
-      <div id="legendPanel" class="map-legend-panel">
-        <div class="map-legend__title" id="legendTitle">Properties Mode</div>
-        <div id="legendRows"></div>
-      </div>
-
-      <!-- PROPERTY DETAIL PANEL -->
-      <aside class="property-detail-panel" id="propertyDetailPanel" hidden>
-        <div class="pdp__header">
-          <button type="button" class="pdp__close" onclick="closeDetailPanel()">✕</button>
-          <div style="font-size:10px; font-weight:800; text-transform:uppercase; color:#E2D9CC; letter-spacing:1px;" id="pdpHeaderSub">ACRE&amp;KEY INTELLIGENCE</div>
-          <div class="pdp__title" id="pdpTitle">Project Name</div>
-          <div class="pdp__sub" id="pdpSub">Locality • Developer</div>
-        </div>
-        <div class="pdp__body" id="pdpBody">
-          <!-- Rendered dynamically -->
-        </div>
-        <div class="pdp__footer">
-          <button type="button" class="btn-primary" onclick="bookAdvisoryCall()">Book Acre&amp;Key Advisory Call</button>
-          <div style="display:flex; gap:8px;">
-            <button type="button" class="btn-secondary" style="flex:1;" id="pdpCompareBtn" onclick="toggleCompareActiveProject()">+ Add to Compare</button>
-            <button type="button" class="btn-secondary" style="flex:1;" id="pdpViewLinkBtn" onclick="openActiveProjectLink()">View Project Page ↗</button>
-          </div>
-        </div>
-      </aside>
-    </main>
+  <div id="compareTray" class="compare-tray" role="region" aria-label="Property comparison">
   </div>
-</div>
 
-<!-- COMPARE MODAL -->
-<div id="compareModalBackdrop" class="compare-modal-backdrop">
-  <div class="compare-modal">
-    <div class="compare-modal__header">
-      <span style="font-size:16px; font-weight:800;">Acre&amp;Key Side-by-Side Project Comparison</span>
-      <button type="button" style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;" onclick="closeCompareModal()">✕</button>
-    </div>
-    <div class="compare-modal__body" id="compareModalBody"></div>
-  </div>
-</div>
-
-<!-- METHODOLOGY MODAL -->
-<div id="methodologyModalBackdrop" class="compare-modal-backdrop">
-  <div class="methodology-modal">
-    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; border-bottom:1px solid var(--border-tan); padding-bottom:12px;">
-      <span style="font-size:18px; font-weight:800; color:var(--espresso);">Data Sources &amp; Intelligence Methodology</span>
-      <button type="button" style="background:none; border:none; font-size:18px; cursor:pointer; color:var(--espresso);" onclick="closeMethodologyModal()">✕</button>
-    </div>
-    <div style="font-size:13px; color:var(--charcoal); display:flex; flex-direction:column; gap:12px;">
-      <p><strong>Independent &amp; Buyer-First Position:</strong> Acre&amp;Key does not accept developer listing fees or alter intelligence scores for commercial interest.</p>
-      <p><strong>Primary Data Sources:</strong> Verified RERA registrations, Bengaluru Master Plan GIS overlays, Namma Metro Phase 1/2A/2B/3 alignment documentation, and live spatial coordinates.</p>
-      <p><strong>Workplace Commute Calculation:</strong> Travel times are computed using peak-hour urban transit velocity matrix models across major tech corridors (ITPL, Outer Ring Road, Manyata, Electronic City).</p>
-      <p><strong>Acre&amp;Key Score Framework:</strong> Synthesizes Location (25%), Developer Track Record (20%), Product Quality (20%), Price Competitiveness vs Area Average (15%), Connectivity (10%), and Livability (10%).</p>
-      <p style="font-size:11px; color:var(--muted-grey); margin-top:8px;">Data updated: September 2026. All spatial overlays undergo monthly verification.</p>
+  <div id="compareModalBackdrop" class="compare-modal-backdrop" role="dialog" aria-modal="true" aria-label="Compare properties">
+    <div class="compare-modal" id="compareModal">
     </div>
   </div>
+
+  <div id="priceLegend" class="price-legend" aria-hidden="true">
+    <div class="price-legend__title">Price / sqft</div>
+    <div class="price-legend__gradient"></div>
+    <div class="price-legend__scale">
+      <span>₹6K</span><span>₹8K</span><span>₹10K</span><span>₹12K</span><span>₹14K+</span>
+    </div>
+  </div>
+
+  <div id="techParkLegend" class="techpark-legend" aria-hidden="true">
+    <div class="techpark-legend__title">Tech Park Density</div>
+    <div class="techpark-legend__gradient"></div>
+    <div class="techpark-legend__scale">
+      <span>Very Low</span><span>Low</span><span>Med</span><span>High</span><span>Very High</span>
+    </div>
+  </div>
+
+  <div id="areaPriceHoverTip" class="area-price-hover-tip" role="tooltip"></div>
+
+  <div id="priceInsightModalBackdrop" class="price-insight-modal-backdrop"></div>
+  <div id="priceInsightCard" class="price-insight-card" role="dialog" aria-modal="true" aria-label="Locality price insights">
+  </div>
+
 </div>
 
 <script>
@@ -11802,51 +15704,15 @@ setTimeout(() => {
 }, 6000);
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&callback=onGoogleMapsLoaded" async defer></script>
-
-
-<script>
-// --- ACRE&KEY BENGALURU PROPERTY INTELLIGENCE ENGINE UPGRADES ---
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&callback=onGoogleMapsLoaded" async defer>
+// --- ACRE&KEY PROPERTY INTELLIGENCE ENGINE EXTENSIONS ---
 let activeBuyerIntent = 'buy_home';
 let activeBuyerLens = 'end_use';
 let activeMapMode = 'properties';
-let activeWorkplaceId = '';
-let commuteDisplayUnit = 'min'; // 'min' or 'km'
-let activeBhkFilter = 'all';
-let activeProjectForPdp = null;
-
-// FUTURE INFRASTRUCTURE DATASET (METRO, ROADS, TECH HUBS)
-const FUTURE_INFRASTRUCTURE = [
-  { id: 'F01', type: 'metro', name: 'Namma Metro Phase 2A (ORR Line: Silk Board - KR Puram)', status: 'construction', completion: '2026-2027', lat: 12.9250, lng: 77.6850 },
-  { id: 'F02', type: 'metro', name: 'Namma Metro Phase 2B (Airport Line: KR Puram - KIA)', status: 'construction', completion: '2026-2027', lat: 13.0850, lng: 77.6450 },
-  { id: 'F03', type: 'metro', name: 'Namma Metro Phase 3 (ORR West & Magadi Road Corridor)', status: 'proposed', completion: '2028-2030', lat: 12.9650, lng: 77.5250 },
-  { id: 'F04', type: 'road', name: 'Satellite Town Ring Road (STRR Hoskote - Dobbaspet)', status: 'construction', completion: '2026', lat: 13.1250, lng: 77.7850 },
-  { id: 'F05', type: 'road', name: 'Peripheral Ring Road (PRR East Corridor)', status: 'proposed', completion: '2028+', lat: 12.9950, lng: 77.7650 },
-  { id: 'F06', type: 'tech_hub', name: 'Devanahalli IT Investment Region (ITIR Phase 1)', status: 'proposed', completion: '2028-2030', lat: 13.2350, lng: 77.7150 }
-];
-
-// Initialize Workplace Options
-function initWorkplaceOptions() {
-  const select = document.getElementById('workLocationSelect');
-  if (!select || !Array.isArray(TECH_PARKS)) return;
-
-  // Clear existing except first
-  select.innerHTML = '<option value="">Select Tech Park / Employment Hub...</option>';
-  
-  const sortedParks = [...TECH_PARKS].sort((a, b) => a.name.localeCompare(b.name));
-  sortedParks.forEach(tp => {
-    const opt = document.createElement('option');
-    opt.value = tp.id;
-    opt.textContent = `${tp.name} (${tp.area})`;
-    select.appendChild(opt);
-  });
-}
 
 function setBuyerIntent(intent) {
   activeBuyerIntent = intent;
   document.querySelectorAll('.intent-card').forEach(c => c.classList.remove('intent-card--active'));
-  
   if (intent === 'buy_home') {
     document.getElementById('intentBuyHome')?.classList.add('intent-card--active');
     switchMapMode('properties');
@@ -11856,422 +15722,78 @@ function setBuyerIntent(intent) {
   } else if (intent === 'check_project') {
     document.getElementById('intentCheckProject')?.classList.add('intent-card--active');
     switchMapMode('properties');
-    document.getElementById('smartSearchInput')?.focus();
+    if (els && els.searchText) els.searchText.focus();
   }
 }
 
 function setBuyerLens(lens) {
   activeBuyerLens = lens;
   document.querySelectorAll('.buyer-lens-pill').forEach(b => b.classList.remove('buyer-lens-pill--active'));
-  
-  const targetBtn = document.getElementById('lens' + lens.charAt(0).toUpperCase() + lens.slice(1));
-  if (targetBtn) targetBtn.classList.add('buyer-lens-pill--active');
-
-  applyFilters();
-  if (activeProjectForPdp) {
-    renderDetailPanel(activeProjectForPdp);
-  }
-}
-
-function toggleBhkFilter(bhk, btnEl) {
-  activeBhkFilter = bhk;
-  document.querySelectorAll('.bhk-btn').forEach(b => b.classList.remove('bhk-btn--active'));
-  if (btnEl) btnEl.classList.add('bhk-btn--active');
-  applyFilters();
-}
-
-function toggleCommuteUnit() {
-  commuteDisplayUnit = (commuteDisplayUnit === 'min') ? 'km' : 'min';
-  const btn = document.getElementById('commuteUnitBtn');
-  if (btn) btn.textContent = `Display: ${commuteDisplayUnit === 'min' ? 'Time (min)' : 'Distance (km)'}`;
-  applyFilters();
-  if (activeProjectForPdp) renderDetailPanel(activeProjectForPdp);
-}
-
-function onWorkplaceChanged() {
-  const select = document.getElementById('workLocationSelect');
-  activeWorkplaceId = select ? select.value : '';
-  const filterWrap = document.getElementById('commuteFilterWrap');
-  if (filterWrap) {
-    filterWrap.hidden = !activeWorkplaceId;
-  }
-  applyFilters();
+  const btn = document.getElementById('lens' + lens.charAt(0).toUpperCase() + lens.slice(1));
+  if (btn) btn.classList.add('buyer-lens-pill--active');
+  if (typeof applyFilters === 'function') applyFilters();
 }
 
 function switchMapMode(mode) {
   activeMapMode = mode;
   document.querySelectorAll('.map-mode-btn').forEach(b => b.classList.remove('map-mode-btn--active'));
-  
-  const btnId = 'modeBtn' + mode.charAt(0).toUpperCase() + mode.slice(1);
-  const btn = document.getElementById(btnId) || document.getElementById('modeBtn' + mode);
+  const btn = document.getElementById('modeBtn' + mode.charAt(0).toUpperCase() + mode.slice(1));
   if (btn) btn.classList.add('map-mode-btn--active');
 
-  // Trigger layer switches
-  if (typeof hideTechParkHeatmap === 'function') hideTechParkHeatmap();
-  if (typeof hideAreaPriceHeatmap === 'function') hideAreaPriceHeatmap();
+  if (!els) return;
 
-  if (mode === 'market') {
-    if (typeof showAreaPriceHeatmap === 'function') showAreaPriceHeatmap();
+  if (mode === 'properties') {
+    if (els.techParkView && els.techParkView.checked) { els.techParkView.checked = false; setTechParkViewMode(false); }
+    if (els.areaPriceView && els.areaPriceView.checked) { els.areaPriceView.checked = false; setAreaPriceViewMode(false); }
   } else if (mode === 'employment') {
-    if (typeof showTechParkHeatmap === 'function') showTechParkHeatmap();
+    if (els.areaPriceView && els.areaPriceView.checked) { els.areaPriceView.checked = false; setAreaPriceViewMode(false); }
+    if (els.techParkView) { els.techParkView.checked = true; setTechParkViewMode(true); }
+  } else if (mode === 'market') {
+    if (els.techParkView && els.techParkView.checked) { els.techParkView.checked = false; setTechParkViewMode(false); }
+    if (els.areaPriceView) { els.areaPriceView.checked = true; setAreaPriceViewMode(true); }
+  } else if (mode === 'connectivity') {
+    if (els.metro && !els.metro.checked) { els.metro.click(); }
+  } else if (mode === 'livability') {
+    if (els.schools && !els.schools.checked) { els.schools.click(); }
+    if (els.hospitals && !els.hospitals.checked) { els.hospitals.click(); }
+    if (els.malls && !els.malls.checked) { els.malls.click(); }
   }
-
-  updateMapLegend();
-}
-
-function updateMapLegend() {
-  const title = document.getElementById('legendTitle');
-  const container = document.getElementById('legendRows');
-  if (!title || !container) return;
-
-  if (activeMapMode === 'properties') {
-    title.textContent = 'Properties Mode';
-    container.innerHTML = `
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#1E1A16;"></span> Residential Projects</div>
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#7A4A30;"></span> Acre&Key Recommended</div>
-    `;
-  } else if (activeMapMode === 'employment') {
-    title.textContent = 'Employment Mode';
-    container.innerHTML = `
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#2B3440;"></span> Tech Parks &amp; IT Hubs</div>
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#7A4A30;"></span> Major IT Corridors</div>
-    `;
-  } else if (activeMapMode === 'market') {
-    title.textContent = 'Market Price Density';
-    container.innerHTML = `
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#9B1C1C;"></span> Premium (₹15K+ / sqft)</div>
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#D97706;"></span> Mid-High (₹10K - ₹15K)</div>
-      <div class="map-legend__row"><span class="map-legend__dot" style="background:#2563EB;"></span> Value (Below ₹10K)</div>
-    `;
-  } else if (activeMapMode === 'future_growth') {
-    title.textContent = 'Future Growth Infrastructure';
-    container.innerHTML = `
-      <div class="map-legend__row"><span class="status-tag status-tag--construction">Const.</span> Metro Phase 2A / 2B</div>
-      <div class="map-legend__row"><span class="status-tag status-tag--proposed">Prop.</span> Metro Phase 3 &amp; PRR</div>
-    `;
-  } else {
-    title.textContent = 'Map Key';
-    container.innerHTML = `<div class="map-legend__row">Standard spatial overlays</div>`;
-  }
-}
-
-// SMART SEARCH SUGGESTIONS
-function handleSmartSearch(e) {
-  const input = document.getElementById('smartSearchInput');
-  const dropdown = document.getElementById('smartSearchDropdown');
-  if (!input || !dropdown) return;
-
-  const q = input.value.trim().toLowerCase();
-  if (!q) { dropdown.hidden = true; return; }
-
-  const matches = [];
-
-  // Match Projects
-  if (Array.isArray(ALL_PROPERTIES)) {
-    ALL_PROPERTIES.forEach(p => {
-      if (p.title.toLowerCase().includes(q) || p.developer.toLowerCase().includes(q) || p.locality.toLowerCase().includes(q)) {
-        matches.push({ type: 'Project', title: p.title, sub: `${p.developer} • ${p.locality}`, item: p, category: 'project' });
-      }
-    });
-  }
-
-  // Match Tech Parks
-  if (Array.isArray(TECH_PARKS)) {
-    TECH_PARKS.forEach(tp => {
-      if (tp.name.toLowerCase().includes(q) || tp.area.toLowerCase().includes(q)) {
-        matches.push({ type: 'Tech Park', title: tp.name, sub: tp.area, item: tp, category: 'tech_park' });
-      }
-    });
-  }
-
-  const slice = matches.slice(0, 7);
-  if (slice.length === 0) {
-    dropdown.innerHTML = '<div style="padding:12px; font-size:12px; color:var(--muted-grey);">No matching results found</div>';
-    dropdown.hidden = false;
-    return;
-  }
-
-  dropdown.innerHTML = slice.map((m, idx) => `
-    <div class="search-dropdown-item" onclick="selectSearchSuggestion(${idx})">
-      <div>
-        <div style="font-weight:700; font-size:13px; color:var(--espresso);">${m.title}</div>
-        <div style="font-size:11px; color:var(--muted-grey);">${m.sub}</div>
-      </div>
-      <span class="search-dropdown-item__type">${m.type}</span>
-    </div>
-  `).join('');
-
-  window._currentSearchMatches = slice;
-  dropdown.hidden = false;
-}
-
-function quickSearch(queryStr) {
-  const input = document.getElementById('smartSearchInput');
-  if (input) {
-    input.value = queryStr;
-    handleSmartSearch({ target: input });
-  }
-}
-
-function selectSearchSuggestion(idx) {
-  const dropdown = document.getElementById('smartSearchDropdown');
-  if (dropdown) dropdown.hidden = true;
-  
-  const matches = window._currentSearchMatches || [];
-  const match = matches[idx];
-  if (!match) return;
-
-  if (match.category === 'project') {
-    if (typeof map !== 'undefined' && map && match.item.lat && match.item.lng) {
-      map.panTo({ lat: match.item.lat, lng: match.item.lng });
-      map.setZoom(14.5);
-    }
-    renderDetailPanel(match.item);
-  } else if (match.category === 'tech_park') {
-    if (typeof map !== 'undefined' && map && match.item.lat && match.item.lng) {
-      map.panTo({ lat: match.item.lat, lng: match.item.lng });
-      map.setZoom(13.5);
-    }
-    const select = document.getElementById('workLocationSelect');
-    if (select) {
-      select.value = match.item.id;
-      onWorkplaceChanged();
-    }
-  }
-}
-
-// UPGRADED PROJECT DETAIL PANEL (PDP)
-function renderDetailPanel(property) {
-  if (!property) return;
-  activeProjectForPdp = property;
-
-  const panel = document.getElementById('propertyDetailPanel');
-  if (!panel) return;
-
-  const titleEl = document.getElementById('pdpTitle');
-  const subEl = document.getElementById('pdpSub');
-  const bodyEl = document.getElementById('pdpBody');
-
-  if (titleEl) titleEl.textContent = property.title;
-  if (subEl) subEl.textContent = `${property.developer} • ${property.locality}`;
-
-  // Compute commute if workplace selected
-  let commuteInfo = '';
-  if (activeWorkplaceId && typeof getSelectedWorkCommute === 'function') {
-    const c = getSelectedWorkCommute(property.lat, property.lng);
-    if (c && c.active) {
-      commuteInfo = commuteDisplayUnit === 'min' ? `~${c.mins} min travel` : `~${c.distanceKm.toFixed(1)} km`;
-    }
-  }
-
-  // Price position vs Area Average
-  const areaAvgPrice = (typeof getAreaAvgPriceForLocality === 'function') ? getAreaAvgPriceForLocality(property.locality) : 12500;
-  const propPriceNum = property.priceSqft || 11500;
-  const priceDiffPct = Math.round(((propPriceNum - areaAvgPrice) / areaAvgPrice) * 100);
-  const isAbove = priceDiffPct > 0;
-
-  // Component score breakdown
-  const akScore = property.akScore || property.score || 78;
-
-  bodyEl.innerHTML = `
-    <!-- KEY METRICS CARD -->
-    <div class="pdp-card-box" style="background:#FFFDF9; border-color:var(--terracotta);">
-      <div style="display:flex; align-items:center; justify-content:space-between;">
-        <div>
-          <div style="font-size:20px; font-weight:800; color:var(--terracotta);">${property.priceRange || '₹1.25Cr – 2.10Cr'}</div>
-          <div style="font-size:11px; color:var(--muted-grey); margin-top:2px;">₹${propPriceNum.toLocaleString()}/sqft • ${property.bhk || '2 & 3 BHK'}</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:22px; font-weight:800; color:var(--slate-navy);">${akScore} <span style="font-size:12px; opacity:0.7;">/ 100</span></div>
-          <div style="font-size:10px; font-weight:700; color:var(--terracotta);">ACRE&amp;KEY SCORE</div>
-        </div>
-      </div>
-      ${commuteInfo ? `<div style="margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-tan); font-size:12px; font-weight:700; color:#1E6B37; display:flex; align-items:center; gap:6px;">🚗 Work Commute: ${commuteInfo}</div>` : ''}
-    </div>
-
-    <!-- WHY THIS SCORE? BREAKDOWN -->
-    <div>
-      <div class="pdp-section-title">Why this score? (Acre&amp;Key Components)</div>
-      <div class="pdp-card-box pdp-score-breakdown">
-        <div class="score-item"><span class="score-item__label">Location</span><span class="score-item__val">${Math.min(95, akScore + 4)}/100</span></div>
-        <div class="score-item"><span class="score-item__label">Connectivity</span><span class="score-item__val">${Math.min(92, akScore + 2)}/100</span></div>
-        <div class="score-item"><span class="score-item__label">Developer</span><span class="score-item__val">${Math.min(96, akScore + 5)}/100</span></div>
-        <div class="score-item"><span class="score-item__label">Product Quality</span><span class="score-item__val">${Math.min(90, akScore - 1)}/100</span></div>
-        <div class="score-item"><span class="score-item__label">Pricing Value</span><span class="score-item__val">${Math.min(88, akScore - 3)}/100</span></div>
-        <div class="score-item"><span class="score-item__label">Future Growth</span><span class="score-item__val">${Math.min(94, akScore + 1)}/100</span></div>
-      </div>
-    </div>
-
-    <!-- AROUND THIS PROJECT -->
-    <div>
-      <div class="pdp-section-title">Around this project</div>
-      <div class="pdp-card-box around-context-grid">
-        <div class="context-row">
-          <span class="context-row__label">💼 Nearest Tech Park</span>
-          <span class="context-row__val">ITPL (~12 min)</span>
-        </div>
-        <div class="context-row">
-          <span class="context-row__label">🚇 Nearest Metro</span>
-          <span class="context-row__val">Kadugodi (~1.4 km)</span>
-        </div>
-        <div class="context-row">
-          <span class="context-row__label">🎓 Top School</span>
-          <span class="context-row__val">Inventure Academy (~3.2 km)</span>
-        </div>
-        <div class="context-row">
-          <span class="context-row__label">🏥 Healthcare</span>
-          <span class="context-row__val">Manipal Hospital (~2.1 km)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRICE INTELLIGENCE -->
-    <div>
-      <div class="pdp-section-title">Price Intelligence</div>
-      <div class="pdp-price-comparison">
-        <div>
-          <div style="font-size:11px; color:var(--muted-grey);">Project Price</div>
-          <div style="font-size:14px; font-weight:800; color:var(--espresso);">₹${propPriceNum.toLocaleString()} / sqft</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:11px; color:var(--muted-grey);">Area Avg (${property.locality})</div>
-          <div style="font-size:14px; font-weight:700; color:var(--charcoal);">₹${areaAvgPrice.toLocaleString()} / sqft</div>
-        </div>
-        <span class="price-diff-badge ${isAbove ? 'price-diff-badge--above' : 'price-diff-badge--below'}">
-          ${isAbove ? '+' : ''}${priceDiffPct}% vs Area
-        </span>
-      </div>
-      <div style="font-size:11px; color:var(--muted-grey); margin-top:6px; line-height:1.4;">
-        Price context: Project is priced ${isAbove ? 'above' : 'below'} the current area average due to ${property.developer} brand tier and prime connectivity.
-      </div>
-    </div>
-
-    <!-- WHAT THIS MEANS INSIGHT -->
-    <div>
-      <div class="pdp-section-title">Acre&amp;Key Location Snapshot</div>
-      <div class="pdp-card-box" style="font-size:12px; color:var(--charcoal); line-height:1.5;">
-        "Strong employment connectivity with direct access to major IT hubs in ${property.locality} and established social infrastructure."
-      </div>
-    </div>
-  `;
-
-  panel.hidden = false;
-}
-
-function closeDetailPanel() {
-  const panel = document.getElementById('propertyDetailPanel');
-  if (panel) panel.hidden = true;
-  activeProjectForPdp = null;
-}
-
-// SIDE BY SIDE 3-PROJECT COMPARISON MODAL
-function openCompareModal() {
-  const modal = document.getElementById('compareModalBackdrop');
-  const body = document.getElementById('compareModalBody');
-  if (!modal || !body) return;
-
-  const compareItems = window.compareSelection || [];
-  if (compareItems.length === 0) {
-    body.innerHTML = `
-      <div style="text-align:center; padding:40px; color:var(--muted-grey);">
-        <div style="font-size:32px; margin-bottom:12px;">📊</div>
-        <div style="font-weight:700; font-size:15px; color:var(--espresso);">No projects selected for comparison</div>
-        <div style="font-size:12px; margin-top:4px;">Add up to 3 projects using the "+ Add to Compare" button on any project card.</div>
-      </div>
-    `;
-    modal.classList.add('active');
-    return;
-  }
-
-  body.innerHTML = `
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th style="width:200px;">Metric</th>
-          ${compareItems.map(p => `<th><div style="font-weight:800; font-size:14px;">${p.title}</div><div style="font-size:11px; font-weight:500; opacity:0.8;">${p.locality}</div></th>`).join('')}
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Price / sqft</strong></td>
-          ${compareItems.map(p => `<td>₹${(p.priceSqft || 11500).toLocaleString()} / sqft</td>`).join('')}
-        </tr>
-        <tr>
-          <td><strong>Configuration</strong></td>
-          ${compareItems.map(p => `<td>${p.bhk || '2 & 3 BHK'}</td>`).join('')}
-        </tr>
-        <tr>
-          <td><strong>Acre&amp;Key Score</strong></td>
-          ${compareItems.map(p => `<td><strong style="color:var(--terracotta);">${p.akScore || p.score || 78} / 100</strong></td>`).join('')}
-        </tr>
-        <tr>
-          <td><strong>Developer</strong></td>
-          ${compareItems.map(p => `<td>${p.developer}</td>`).join('')}
-        </tr>
-        <tr>
-          <td><strong>Status</strong></td>
-          ${compareItems.map(p => `<td>${p.status || 'Under Construction'}</td>`).join('')}
-        </tr>
-      </tbody>
-    </table>
-  `;
-
-  modal.classList.add('active');
-}
-
-function closeCompareModal() {
-  const modal = document.getElementById('compareModalBackdrop');
-  if (modal) modal.classList.remove('active');
 }
 
 function openMethodologyModal() {
   const modal = document.getElementById('methodologyModalBackdrop');
   if (modal) modal.classList.add('active');
 }
-
 function closeMethodologyModal() {
   const modal = document.getElementById('methodologyModalBackdrop');
   if (modal) modal.classList.remove('active');
 }
 
-function bookAdvisoryCall() {
-  window.open('https://acreandkey.com', '_blank');
-}
-
-function toggleCompareActiveProject() {
-  if (!activeProjectForPdp) return;
-  if (!window.compareSelection) window.compareSelection = [];
-  
-  const idx = window.compareSelection.findIndex(p => p.id === activeProjectForPdp.id);
-  if (idx >= 0) {
-    window.compareSelection.splice(idx, 1);
-    alert(`Removed ${activeProjectForPdp.title} from comparison.`);
-  } else {
-    if (window.compareSelection.length >= 3) {
-      alert('You can compare a maximum of 3 projects at a time.');
-      return;
-    }
-    window.compareSelection.push(activeProjectForPdp);
-    alert(`Added ${activeProjectForPdp.title} to comparison.`);
+function quickSearch(str) {
+  if (els && els.searchText) {
+    els.searchText.value = str;
+    if (typeof applyFilters === 'function') applyFilters();
   }
 }
 
-function openActiveProjectLink() {
-  if (activeProjectForPdp && activeProjectForPdp.link) {
-    window.open(activeProjectForPdp.link, '_blank');
-  } else {
-    alert('Project page link will be available upon official release.');
-  }
-}
-
-// Auto init on load
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    initWorkplaceOptions();
-    updateMapLegend();
-  }, 1000);
-});
 </script>
+
+<!-- METHODOLOGY MODAL -->
+<div id="methodologyModalBackdrop" class="methodology-modal-backdrop">
+  <div class="methodology-modal">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; border-bottom:1px solid var(--border-tan); padding-bottom:12px;">
+      <span style="font-size:16px; font-weight:800; color:var(--espresso);">Data Sources &amp; Intelligence Methodology</span>
+      <button type="button" style="background:none; border:none; font-size:18px; cursor:pointer; color:var(--espresso);" onclick="closeMethodologyModal()">✕</button>
+    </div>
+    <div style="font-size:12.5px; color:var(--charcoal); display:flex; flex-direction:column; gap:12px; line-height:1.5;">
+      <p><strong>Independent &amp; Buyer-First Position:</strong> Acre&amp;Key does not accept developer listing fees or alter intelligence scores for commercial interest.</p>
+      <p><strong>Primary Data Sources:</strong> Verified RERA registrations, Bengaluru Master Plan GIS overlays, Namma Metro Phase 1/2A/2B/3 alignment documentation, and live spatial coordinates.</p>
+      <p><strong>Workplace Commute Calculation:</strong> Travel times are computed using peak-hour urban transit velocity matrix models across major tech corridors (ITPL, Outer Ring Road, Manyata, Electronic City).</p>
+      <p><strong>Acre&amp;Key Score Framework:</strong> Synthesizes Location (25%), Developer Track Record (20%), Product Quality (20%), Price Competitiveness vs Area Average (15%), Connectivity (10%), and Livability (10%).</p>
+      <p style="font-size:11px; color:var(--muted-grey); margin-top:8px;">Data updated: September 2026. All spatial overlays undergo monthly verification.</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
