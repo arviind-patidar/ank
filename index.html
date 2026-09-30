@@ -4549,6 +4549,64 @@ html, body {
 .status-tag--construction { background: #FEF3C7; color: #92400E; }
 .status-tag--proposed { background: #F3E8FF; color: #6B21A8; }
 
+
+/* SATELLITE VIEW CONTRAST & LEGIBILITY ENHANCEMENTS */
+.map-wrap--satellite .plot-marker__tag {
+  background: #1E1A16 !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #7A4A30 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7) !important;
+  font-weight: 700 !important;
+}
+
+.map-wrap--satellite .plot-marker__pin {
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+.map-wrap--satellite .cluster-bubble {
+  background: #1E1A16 !important;
+  color: #F5F0E8 !important;
+  border: 2.5px solid #FFFFFF !important;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.85) !important;
+  font-weight: 800 !important;
+}
+
+.map-wrap--satellite .techpark-marker__pin,
+.map-wrap--satellite .metro-marker__pin,
+.map-wrap--satellite .school-marker__pin,
+.map-wrap--satellite .hospital-marker__pin,
+.map-wrap--satellite .mall-marker__pin {
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+.map-wrap--satellite .techpark-marker__tag,
+.map-wrap--satellite .metro-marker__tag,
+.map-wrap--satellite .school-marker__tag,
+.map-wrap--satellite .hospital-marker__tag,
+.map-wrap--satellite .mall-marker__tag {
+  background: #1E1A16 !important;
+  color: #F5F0E8 !important;
+  border: 1px solid #7A4A30 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75) !important;
+}
+
+.map-wrap--satellite .map-legend-panel {
+  background: rgba(30, 26, 22, 0.94) !important;
+  color: #F5F0E8 !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.map-wrap--satellite .map-legend__title {
+  color: #FFFFFF !important;
+}
+
+.map-wrap--satellite .map-legend__row {
+  color: #E2D9CC !important;
+}
+
 </style>
 </head>
 <body>
@@ -13264,6 +13322,19 @@ function initMap() {
       { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#E1EAD8" }, { visibility: "on" }] }
     ],
   });
+
+  map.addListener("maptypeid_changed", () => {
+    const type = map.getMapTypeId();
+    const isSat = (type === "satellite" || type === "hybrid");
+    const mapWrap = document.querySelector(".map-wrap");
+    if (mapWrap) {
+      mapWrap.classList.toggle("map-wrap--satellite", isSat);
+    }
+    if (type === "satellite") {
+      map.setMapTypeId("hybrid");
+    }
+  });
+
 
   const MarkerLayer = defineMarkerLayerClass();
   markerLayer = new MarkerLayer(map);
