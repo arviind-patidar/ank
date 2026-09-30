@@ -4607,6 +4607,123 @@ html, body {
   color: #E2D9CC !important;
 }
 
+
+/* ACRE&KEY SATELLITE & MAP CONTROL REDESIGN */
+.acre-maptype-control {
+  position: absolute;
+  top: 16px; left: 16px;
+  background: var(--white);
+  border: 1px solid var(--border-tan);
+  border-radius: 8px;
+  padding: 3px;
+  display: flex;
+  gap: 2px;
+  box-shadow: 0 4px 12px rgba(30, 26, 22, 0.14);
+  z-index: 15;
+}
+.acre-maptype-btn {
+  padding: 5px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.acre-maptype-btn:hover { background: rgba(30, 26, 22, 0.05); }
+.acre-maptype-btn--active {
+  background: var(--espresso) !important;
+  color: var(--warm-ivory) !important;
+}
+
+.acre-mapmode-pill {
+  position: absolute;
+  top: 16px; right: 54px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border-tan);
+  border-radius: 8px;
+  padding: 3px;
+  display: flex;
+  gap: 2px;
+  box-shadow: 0 4px 12px rgba(30, 26, 22, 0.14);
+  z-index: 15;
+}
+.acre-mode-btn {
+  padding: 5px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.acre-mode-btn:hover { background: rgba(30, 26, 22, 0.05); }
+.acre-mode-btn--active {
+  background: var(--terracotta) !important;
+  color: var(--white) !important;
+}
+
+.satellite-canvas-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30, 26, 22, 0.09);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* REDESIGNED COMPACT CLUSTER BUBBLES (34px) */
+.cluster-bubble, .gmap-cluster-wrap .cluster-bubble {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 50% !important;
+  background: var(--espresso) !important;
+  color: var(--warm-ivory) !important;
+  border: 2px solid var(--white) !important;
+  box-shadow: 0 3px 10px rgba(30, 26, 22, 0.4) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease !important;
+}
+.cluster-bubble:hover, .gmap-cluster-wrap:hover .cluster-bubble {
+  transform: scale(1.12) !important;
+  border-color: var(--terracotta) !important;
+}
+
+/* PROGRESSIVE DISCLOSURE: DEFAULT NO TAG, HOVER/SELECTED HAS TAG */
+.plot-marker__tag {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate(-50%, 4px) !important;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease !important;
+  pointer-events: none !important;
+}
+.gmap-marker-wrap:hover .plot-marker__tag,
+.gmap-marker-wrap--active .plot-marker__tag {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate(-50%, -3px) !important;
+  pointer-events: auto !important;
+}
+
+/* SELECTED PROJECT DE-EMPHASIS */
+.map-wrap--has-selected .gmap-marker-wrap:not(.gmap-marker-wrap--active) {
+  opacity: 0.45 !important;
+  filter: grayscale(30%) !important;
+  transform: scale(0.9) !important;
+}
+
 </style>
 </head>
 <body>
@@ -4915,6 +5032,23 @@ html, body {
   </aside>
 
   <main class="map-wrap">
+
+    <!-- CUSTOM ACRE&KEY MAP / SATELLITE CONTROL -->
+    <div id="acreMapTypeControl" class="acre-maptype-control">
+      <button type="button" class="acre-maptype-btn acre-maptype-btn--active" id="btnMapTypeRoadmap" onclick="setAcreMapType('roadmap')">MAP</button>
+      <button type="button" class="acre-maptype-btn" id="btnMapTypeSatellite" onclick="setAcreMapType('satellite')">SATELLITE</button>
+    </div>
+
+    <!-- CUSTOM ACRE&KEY MAP MODE PILL -->
+    <div id="acreMapModePill" class="acre-mapmode-pill">
+      <button type="button" class="acre-mode-btn acre-mode-btn--active" id="pillModeProperties" onclick="switchMapMode('properties')">Properties</button>
+      <button type="button" class="acre-mode-btn" id="pillModeEmployment" onclick="switchMapMode('employment')">Employment</button>
+      <button type="button" class="acre-mode-btn" id="pillModeMarket" onclick="switchMapMode('market')">Market</button>
+    </div>
+
+    <!-- SATELLITE 10% OVERLAY CANVAS -->
+    <div id="satelliteCanvasOverlay" class="satellite-canvas-overlay" hidden></div>
+
     <!-- LOCALITY SUMMARY STRIP -->
     <div id="localitySummaryStrip" class="locality-summary-strip" role="region" aria-label="Locality summary strip"></div>
     <!-- PERSISTENT MAP VIEW PILL CONTROL -->
@@ -13287,7 +13421,7 @@ function initMap() {
   map = new google.maps.Map(mapContainer, {
     center: { lat: 12.9820, lng: 77.6900 },
     zoom: 11.7,
-    mapTypeControl: true,
+    mapTypeControl: false,
     streetViewControl: true,
     fullscreenControl: true,
     clickableIcons: false,
@@ -15846,6 +15980,37 @@ function quickSearch(str) {
     if (typeof applyFilters === 'function') applyFilters();
   }
 }
+
+
+// ACRE&KEY SATELLITE & MAP TYPE CONTROL ENGINE
+function setAcreMapType(type) {
+  if (typeof map === 'undefined' || !map) return;
+  map.setMapTypeId(type);
+
+  const btnRoadmap = document.getElementById('btnMapTypeRoadmap');
+  const btnSatellite = document.getElementById('btnMapTypeSatellite');
+  const satOverlay = document.getElementById('satelliteCanvasOverlay');
+  const mapWrap = document.querySelector('.map-wrap');
+
+  const isSat = (type === 'satellite' || type === 'hybrid');
+
+  if (btnRoadmap) btnRoadmap.classList.toggle('acre-maptype-btn--active', !isSat);
+  if (btnSatellite) btnSatellite.classList.toggle('acre-maptype-btn--active', isSat);
+  if (satOverlay) satOverlay.hidden = !isSat;
+  if (mapWrap) mapWrap.classList.toggle('map-wrap--satellite', isSat);
+}
+
+// Update active project selection state for de-emphasis
+const origSetActive = window.setActive;
+window.setActive = function(id, options) {
+  if (typeof origSetActive === 'function') {
+    origSetActive(id, options);
+  }
+  const mapWrap = document.querySelector('.map-wrap');
+  if (mapWrap) {
+    mapWrap.classList.toggle('map-wrap--has-selected', !!id);
+  }
+};
 
 </script>
 
