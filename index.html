@@ -5040,11 +5040,7 @@ html, body {
     </div>
 
     <!-- CUSTOM ACRE&KEY MAP MODE PILL -->
-    <div id="acreMapModePill" class="acre-mapmode-pill">
-      <button type="button" class="acre-mode-btn acre-mode-btn--active" id="pillModeProperties" onclick="switchMapMode('properties')">Properties</button>
-      <button type="button" class="acre-mode-btn" id="pillModeEmployment" onclick="switchMapMode('employment')">Employment</button>
-      <button type="button" class="acre-mode-btn" id="pillModeMarket" onclick="switchMapMode('market')">Market</button>
-    </div>
+    
 
     <!-- SATELLITE 10% OVERLAY CANVAS -->
     <div id="satelliteCanvasOverlay" class="satellite-canvas-overlay" hidden></div>
@@ -5052,17 +5048,7 @@ html, body {
     <!-- LOCALITY SUMMARY STRIP -->
     <div id="localitySummaryStrip" class="locality-summary-strip" role="region" aria-label="Locality summary strip"></div>
     <!-- PERSISTENT MAP VIEW PILL CONTROL -->
-    <div id="mapViewPill" class="map-view-pill" role="radiogroup" aria-label="Map view context">
-      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties')">
-        <span>📍</span> Properties
-      </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark')">
-        <span>🏢</span> Tech Park Density
-      </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnPrice" onclick="switchMapViewContext('price')">
-        <span>🏷️</span> Price Density
-      </button>
-    </div>
+    
     <div id="map" role="application" aria-label="Property location map"></div>
     <div id="mapStatus" class="map-status map-status--visible">Loading map…</div>
     <div id="legendToggle" class="map-legend-toggle">ⓘ Map key</div>
@@ -15982,9 +15968,14 @@ function quickSearch(str) {
 }
 
 
+
 // ACRE&KEY SATELLITE & MAP TYPE CONTROL ENGINE
 function setAcreMapType(type) {
-  if (typeof map === 'undefined' || !map) return;
+  console.log("Setting map type to:", type);
+  if (typeof map === 'undefined' || !map) {
+    console.warn("Map instance not ready yet");
+    return;
+  }
   map.setMapTypeId(type);
 
   const btnRoadmap = document.getElementById('btnMapTypeRoadmap');
@@ -16000,6 +15991,24 @@ function setAcreMapType(type) {
   if (mapWrap) mapWrap.classList.toggle('map-wrap--satellite', isSat);
 }
 
+// Bind explicit click listeners to ensure 100% click reliability
+document.addEventListener('DOMContentLoaded', () => {
+  const btnRoadmap = document.getElementById('btnMapTypeRoadmap');
+  const btnSatellite = document.getElementById('btnMapTypeSatellite');
+
+  if (btnRoadmap) {
+    btnRoadmap.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setAcreMapType('roadmap');
+    });
+  }
+  if (btnSatellite) {
+    btnSatellite.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setAcreMapType('satellite');
+    });
+  }
+});
 // Update active project selection state for de-emphasis
 const origSetActive = window.setActive;
 window.setActive = function(id, options) {
