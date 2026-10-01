@@ -4707,6 +4707,461 @@ html, body {
   transform: scale(1.25);
 }
 
+
+/* ACRE&KEY DUAL MODE (CUSTOMER + TEAM) STYLING */
+.topbar__mode-switcher {
+  display: flex;
+  background: rgba(30, 42, 54, 0.6);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid rgba(182, 138, 76, 0.3);
+  gap: 2px;
+}
+
+.topbar__mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #A0AEC0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.topbar__mode-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.topbar__mode-btn--active {
+  background: var(--gold, #B88E52) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.topbar__shortlist-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--gold, #B88E52);
+  background: linear-gradient(135deg, var(--gold, #B88E52), #8C6228);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(184, 142, 82, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.topbar__shortlist-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(184, 142, 82, 0.45);
+}
+
+.topbar__load-customer-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid #4A5568;
+  background: #2D3748;
+  color: #E2E8F0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.topbar__load-customer-btn:hover {
+  background: #3A4A60;
+  color: #FFFFFF;
+  border-color: var(--gold, #B88E52);
+}
+
+/* CUSTOMER HERO OPENING BANNER */
+.customer-hero-banner {
+  background: linear-gradient(135deg, #12202E, #1E2D3D);
+  border-bottom: 1.5px solid var(--gold, #B88E52);
+  padding: 16px 24px;
+  color: #FFFFFF;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  animation: fadeInDown 0.25s ease-out;
+}
+
+.customer-hero__content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.customer-hero__badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--gold, #E2C699);
+  background: rgba(184, 142, 82, 0.15);
+  border: 1px solid rgba(184, 142, 82, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.customer-hero__title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px 0;
+  color: #FFFFFF;
+}
+
+.customer-hero__sub {
+  font-size: 12.5px;
+  color: #CBD5E0;
+  margin: 0 0 14px 0;
+  line-height: 1.45;
+  max-width: 760px;
+}
+
+.customer-hero__actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.customer-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.customer-hero__btn--primary {
+  background: var(--gold, #B88E52);
+  color: #FFFFFF;
+  border: 1px solid var(--gold, #B88E52);
+  box-shadow: 0 3px 12px rgba(184, 142, 82, 0.35);
+}
+.customer-hero__btn--primary:hover {
+  background: #A07840;
+  transform: translateY(-1px);
+}
+
+.customer-hero__btn--secondary {
+  background: transparent;
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.customer-hero__btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.customer-hero__dismiss {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  color: #A0AEC0;
+  font-size: 16px;
+  cursor: pointer;
+}
+.customer-hero__dismiss:hover { color: #FFFFFF; }
+
+/* PERSISTENT CONTEXT BARS */
+.customer-context-bar, .team-context-bar {
+  background: #12202E;
+  border-bottom: 1px solid rgba(184, 142, 82, 0.3);
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #FFFFFF;
+  font-size: 12px;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.customer-context__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold, #E2C699);
+  letter-spacing: 0.05em;
+  margin-right: 6px;
+}
+
+.customer-context__summary {
+  font-weight: 600;
+  color: #E2E8F0;
+}
+
+.customer-context__actions, .team-context__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customer-context__btn, .team-context__btn {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.customer-context__btn:hover, .team-context__btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.team-context__badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  background: #2B6CB0;
+  color: #FFFFFF;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+
+.team-context__name {
+  font-weight: 800;
+  color: var(--gold, #E2C699);
+  margin-right: 8px;
+}
+
+.team-context__override-badge {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 800;
+  background: #C53030;
+  color: #FFFFFF;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* GUIDED 8-STEP SHORTLIST MODAL */
+.customer-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(18, 32, 46, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease-out;
+}
+
+.customer-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.customer-modal {
+  background: #FFFFFF;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  border: 1px solid var(--border-tan, #D9CFC0);
+}
+
+.customer-modal__header {
+  background: #12202E;
+  color: #FFFFFF;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customer-modal__step-indicator {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold, #E2C699);
+  letter-spacing: 0.08em;
+}
+
+.customer-modal__close {
+  background: transparent;
+  border: none;
+  color: #A0AEC0;
+  font-size: 18px;
+  cursor: pointer;
+}
+.customer-modal__close:hover { color: #FFFFFF; }
+
+.customer-modal__progress-bar {
+  height: 4px;
+  background: #2D3748;
+  width: 100%;
+}
+
+.customer-modal__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold, #B88E52), #D97706);
+  width: 12.5%;
+  transition: width 0.25s ease;
+}
+
+.customer-modal__body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+
+.modal-step-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #12202E;
+  margin: 0 0 6px 0;
+}
+
+.modal-step-desc {
+  font-size: 12.5px;
+  color: #4A5568;
+  margin: 0 0 20px 0;
+  line-height: 1.45;
+}
+
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.chip-card {
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #F8FAFC;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chip-card:hover {
+  border-color: var(--gold, #B88E52);
+  background: #FFFDF9;
+}
+
+.chip-card.selected {
+  border-color: var(--gold, #B88E52);
+  background: #FAF5EE;
+  box-shadow: 0 0 0 2px rgba(184, 142, 82, 0.25);
+}
+
+.chip-card__icon { font-size: 18px; }
+.chip-card__label { font-weight: 700; font-size: 13px; color: #1A202C; }
+.chip-card__sub { font-size: 10.5px; color: #718096; }
+
+.customer-modal__footer {
+  padding: 16px 24px;
+  background: #F7FAFC;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.modal-btn--back {
+  background: transparent;
+  border: 1px solid #CBD5E0;
+  color: #4A5568;
+}
+.modal-btn--back:hover { background: #EDF2F7; color: #1A202C; }
+
+.modal-btn--next {
+  background: var(--gold, #B88E52);
+  border: 1px solid var(--gold, #B88E52);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(184, 142, 82, 0.3);
+}
+.modal-btn--next:hover { background: #A07840; }
+
+/* MATCH CLASSIFICATION BADGES & MATCH REASONS */
+.match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.match-badge--strong { background: #DEF7EC; color: #03543F; border: 1px solid #84E1BC; }
+.match-badge--partial { background: #FEF08A; color: #713F12; border: 1px solid #FDE047; }
+.match-badge--alt { background: #E2E8F0; color: #334155; border: 1px solid #CBD5E1; }
+
+.match-reason-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 6px;
+  border-top: 1px dashed #E2E8F0;
+  padding-top: 5px;
+  font-size: 10.5px;
+}
+
+.match-reason-item {
+  color: #2F855A;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -4718,11 +5173,72 @@ html, body {
     <span class="topbar__page">Bengaluru Property Intelligence</span>
     <span class="topbar__tagline">Find. Compare. Understand. Before You Buy.</span>
   </div>
+  <!-- DUAL MODE SWITCHER -->
+  <div class="topbar__mode-switcher" id="appModeSwitcher">
+    <button type="button" class="topbar__mode-btn topbar__mode-btn--active" id="btnModeCustomer" onclick="switchAppMode('customer')">
+      <span>👤</span> CUSTOMER MODE
+    </button>
+    <button type="button" class="topbar__mode-btn" id="btnModeTeam" onclick="switchAppMode('team')">
+      <span>🛡️</span> TEAM / ADVISOR MODE
+    </button>
+  </div>
+
   <div class="topbar__actions">
-    <span class="topbar__date-badge">Data updated: September 2026</span>
+    <button type="button" class="topbar__shortlist-cta-btn" id="headerShortlistBtn" onclick="openCustomerShortlistModal()">
+      <span>✨</span> BUILD MY SHORTLIST
+    </button>
+    <button type="button" class="topbar__load-customer-btn" id="headerLoadCustomerBtn" onclick="openLoadCustomerModal()" style="display:none;">
+      <span>📂</span> LOAD CUSTOMER
+    </button>
     <button type="button" class="topbar__methodology-btn" onclick="openMethodologyModal()">Data &amp; Methodology</button>
   </div>
 </header>
+
+
+<!-- CUSTOMER MODE HERO BANNER -->
+<div id="customerHeroBanner" class="customer-hero-banner">
+  <div class="customer-hero__content">
+    <div class="customer-hero__badge">ACRE&amp;KEY PERSONALIZED MATCHING ENGINE</div>
+    <h1 class="customer-hero__title">FIND THE RIGHT PROPERTY FOR YOU</h1>
+    <p class="customer-hero__sub">Tell us what matters to you. Acre&amp;Key will shortlist projects that fit your budget, location, and workplace commute.</p>
+    <div class="customer-hero__actions">
+      <button type="button" class="customer-hero__btn customer-hero__btn--primary" onclick="openCustomerShortlistModal()">
+        <span>✨</span> BUILD MY SHORTLIST
+      </button>
+      <button type="button" class="customer-hero__btn customer-hero__btn--secondary" onclick="closeCustomerHeroBanner()">
+        <span>🗺️</span> EXPLORE THE MAP
+      </button>
+    </div>
+  </div>
+  <button type="button" class="customer-hero__dismiss" onclick="closeCustomerHeroBanner()">✕</button>
+</div>
+
+<!-- PERSISTENT CUSTOMER SEARCH CONTEXT BAR -->
+<div id="customerSearchContextBar" class="customer-context-bar" style="display:none;">
+  <div class="customer-context__info">
+    <span class="customer-context__label">YOUR SHORTLIST:</span>
+    <span class="customer-context__summary" id="customerSearchSummaryText">All Bengaluru Properties</span>
+  </div>
+  <div class="customer-context__actions">
+    <button type="button" class="customer-context__btn" onclick="openCustomerShortlistModal(true)">✏️ EDIT REQUIREMENTS</button>
+    <button type="button" class="customer-context__btn customer-context__btn--outline" onclick="exploreAllBengaluru()">🗺️ EXPLORE ALL OF BENGALURU</button>
+  </div>
+</div>
+
+<!-- TEAM CUSTOMER CONTEXT BAR -->
+<div id="teamCustomerContextBar" class="team-context-bar" style="display:none;">
+  <div class="team-context__left">
+    <span class="team-context__badge">CUSTOMER LOADED</span>
+    <span class="team-context__name" id="teamCustomerName">Rahul Sharma</span>
+    <span class="team-context__req" id="teamCustomerReqText">3 BHK · ₹1.5–2.5 Cr · Whitefield · Near ITPL</span>
+  </div>
+  <div class="team-context__right">
+    <span class="team-context__override-badge" id="teamOverrideBadge" style="display:none;">FILTER OVERRIDE ACTIVE</span>
+    <button type="button" class="team-context__btn" onclick="openTeamNotesModal()">📝 INTERNAL NOTES</button>
+    <button type="button" class="team-context__btn team-context__btn--gold" onclick="saveAsNewRequirement()">💾 SAVE AS NEW REQUIREMENT</button>
+    <button type="button" class="team-context__btn team-context__btn--clear" onclick="clearLoadedCustomer()">✕ UNLOAD</button>
+  </div>
+</div>
 
 <div class="layout">
 
@@ -13638,8 +14154,23 @@ function renderList(properties) {
         : "";
       const isRecommended = p.recommended;
 
+      // Dual Mode Match Calculation
+      let matchBadgeHtml = "";
+      if (typeof MatchingEngine !== "undefined" && typeof currentRequirementProfile !== "undefined" && currentRequirementProfile) {
+        const match = MatchingEngine.calculateProjectMatch(p, currentRequirementProfile);
+        const matchClass = match.classification === "STRONG MATCH" ? "match-badge--strong" : match.classification === "PARTIAL MATCH" ? "match-badge--partial" : "match-badge--alt";
+        matchBadgeHtml = `
+          <div class="match-badge ${matchClass}">
+            <span>${match.classification === "STRONG MATCH" ? "★" : match.classification === "PARTIAL MATCH" ? "✦" : "•"} ${match.classification} (${match.score}%)</span>
+          </div>
+          ${match.reasons && match.reasons.length ? `<div style="font-size:11px; color:#2D3748; background:#F7FAFC; padding:4px 8px; border-radius:4px; margin-top:4px; margin-bottom:6px; line-height:1.3; border-left:2px solid var(--navy);">${match.reasons.slice(0, 2).join("<br/>")}</div>` : ""}
+        `;
+      }
+
       return `
         <div class="card${isRecommended ? " card--recommended" : ""}${p.id === activeCardId ? " card--active" : ""}" data-id="${p.id}" tabindex="0" role="button">
+          ${matchBadgeHtml}
+
           <!-- Row 1: Title + AK Score badge -->
           <div class="card__row1">
             <div class="card__title" title="${p.title}">${p.title}</div>
@@ -16187,6 +16718,401 @@ function renderMetroNetwork() {
 }
 
 
+
+/* ============================================================
+   ACRE&KEY SHARED DATA ENGINE & DUAL MODE CONTROLLER
+   ============================================================ */
+
+let activeAppMode = "customer"; // "customer" or "team"
+let currentCustomerStep = 1;
+let currentRequirementProfile = null;
+let currentLoadedLead = null;
+let leadDatabase = [
+  {
+    lead_id: "LEAD_01",
+    name: "Rahul Sharma",
+    phone: "+91 98765 43210",
+    email: "rahul@example.com",
+    created_at: "2026-09-30T10:00:00Z",
+    requirement: {
+      requirement_id: "REQ_01",
+      lead_id: "LEAD_01",
+      purchase_purpose: "end_use",
+      property_types: ["Apartment", "Villa"],
+      budget_min: 125,
+      budget_max: 250,
+      budget_flexible: false,
+      preferred_locations: ["Whitefield", "Varthur"],
+      work_location_name: "ITPL",
+      work_location_lat: 12.9841,
+      work_location_lng: 77.7512,
+      commute_priority: "VERY_IMPORTANT",
+      max_commute_minutes: 45,
+      configuration: ["3 BHK"]
+    }
+  },
+  {
+    lead_id: "LEAD_02",
+    name: "Ananya Roy",
+    phone: "+91 98111 22233",
+    email: "ananya@example.com",
+    created_at: "2026-09-29T14:30:00Z",
+    requirement: {
+      requirement_id: "REQ_02",
+      lead_id: "LEAD_02",
+      purchase_purpose: "investment",
+      property_types: ["Apartment"],
+      budget_min: 75,
+      budget_max: 150,
+      budget_flexible: false,
+      preferred_locations: ["Hebbal", "Yelahanka"],
+      work_location_name: "Manyata Tech Park",
+      work_location_lat: 13.0415,
+      work_location_lng: 77.6185,
+      commute_priority: "IMPORTANT",
+      max_commute_minutes: 30,
+      configuration: ["2 BHK", "3 BHK"]
+    }
+  }
+];
+
+// 1. APP MODE MANAGER
+function switchAppMode(mode) {
+  activeAppMode = mode;
+  document.getElementById("btnModeCustomer")?.classList.toggle("topbar__mode-btn--active", mode === "customer");
+  document.getElementById("btnModeTeam")?.classList.toggle("topbar__mode-btn--active", mode === "team");
+
+  const headerShortlistBtn = document.getElementById("headerShortlistBtn");
+  const headerLoadCustomerBtn = document.getElementById("headerLoadCustomerBtn");
+  const heroBanner = document.getElementById("customerHeroBanner");
+
+  if (mode === "customer") {
+    if (headerShortlistBtn) headerShortlistBtn.style.display = "inline-flex";
+    if (headerLoadCustomerBtn) headerLoadCustomerBtn.style.display = "none";
+    if (heroBanner && !currentRequirementProfile) heroBanner.style.display = "block";
+    document.getElementById("teamCustomerContextBar").style.display = "none";
+    if (currentRequirementProfile) {
+      document.getElementById("customerSearchContextBar").style.display = "flex";
+    }
+  } else {
+    if (headerShortlistBtn) headerShortlistBtn.style.display = "none";
+    if (headerLoadCustomerBtn) headerLoadCustomerBtn.style.display = "inline-flex";
+    if (heroBanner) heroBanner.style.display = "none";
+    document.getElementById("customerSearchContextBar").style.display = "none";
+    if (currentLoadedLead) {
+      document.getElementById("teamCustomerContextBar").style.display = "flex";
+    }
+  }
+}
+
+// 2. SHARED MATCHING ENGINE
+const MatchingEngine = {
+  weights: {
+    budget: 0.30,
+    propertyType: 0.20,
+    preferredLocation: 0.20,
+    commute: 0.20,
+    configuration: 0.10
+  },
+
+  calculateProjectMatch(project, req) {
+    if (!req) return { score: 100, classification: "STRONG MATCH", reasons: ["All Projects View"] };
+
+    let score = 0;
+    const reasons = [];
+
+    // 1. Budget Match (30%)
+    const pDetails = getPropertyDetails(project);
+    const pMin = pDetails.priceMinLakhs || 125;
+    const pMax = pDetails.priceMaxLakhs || 195;
+
+    if (req.budget_flexible || (pMin <= req.budget_max && pMax >= req.budget_min)) {
+      score += 30;
+      reasons.push("✓ Within your budget range");
+    }
+
+    // 2. Property Type (20%)
+    const reqTypes = req.property_types || ["Apartment"];
+    const pType = project.type || "Apartment";
+    if (reqTypes.some(t => t.toLowerCase() === pType.toLowerCase())) {
+      score += 20;
+      reasons.push(`✓ Matches ${pType} preference`);
+    }
+
+    // 3. Preferred Location (20%)
+    const reqLocs = req.preferred_locations || [];
+    if (reqLocs.length === 0 || reqLocs.some(loc => project.locality?.toLowerCase().includes(loc.toLowerCase()) || project.zone?.toLowerCase().includes(loc.toLowerCase()))) {
+      score += 20;
+      reasons.push(`✓ Located in preferred area (${project.locality})`);
+    }
+
+    // 4. Workplace Commute (20%)
+    if (req.work_location_lat && req.work_location_lng) {
+      const dist = haversineDistanceKm(req.work_location_lat, req.work_location_lng, project.lat, project.lng);
+      const mins = Math.round(dist * 2.5 + 3);
+      if (mins <= (req.max_commute_minutes || 45)) {
+        score += 20;
+        reasons.push(`✓ Near ${req.work_location_name || 'workplace'} (~${mins} mins drive)`);
+      } else {
+        reasons.push(`🚗 ~${mins} mins to ${req.work_location_name || 'workplace'}`);
+      }
+    } else {
+      score += 20; // Default if no work location given
+    }
+
+    // 5. Configuration (10%)
+    const reqConfigs = req.configuration || [];
+    if (reqConfigs.length === 0 || reqConfigs.some(cfg => pDetails.config?.includes(cfg))) {
+      score += 10;
+      reasons.push(`✓ Available in ${pDetails.config}`);
+    }
+
+    // Classification
+    let classification = "ALTERNATIVE";
+    if (score >= 80) classification = "STRONG MATCH";
+    else if (score >= 55) classification = "PARTIAL MATCH";
+
+    return { score, classification, reasons };
+  }
+};
+
+// 3. GUIDED 8-STEP SHORTLIST FLOW MANAGER
+let shortlistDraft = {
+  name: "", phone: "", email: "", consent: true,
+  purchase_purpose: "end_use",
+  property_types: ["Apartment"],
+  budget_min: 100, budget_max: 150, budget_flexible: false,
+  preferred_locations: ["Whitefield"],
+  work_location_name: "ITPL", work_location_lat: 12.9841, work_location_lng: 77.7512,
+  commute_priority: "VERY_IMPORTANT", max_commute_minutes: 45,
+  configuration: ["3 BHK"]
+};
+
+function openCustomerShortlistModal(isEdit = false) {
+  currentCustomerStep = 1;
+  updateModalStepUI();
+  document.getElementById("customerShortlistModal")?.classList.add("active");
+}
+
+function closeCustomerShortlistModal() {
+  document.getElementById("customerShortlistModal")?.classList.remove("active");
+}
+
+function updateModalStepUI() {
+  const indicator = document.getElementById("modalStepIndicator");
+  const fill = document.getElementById("modalProgressFill");
+  const btnBack = document.getElementById("btnModalBack");
+  const btnNext = document.getElementById("btnModalNext");
+
+  if (indicator) indicator.textContent = `STEP ${currentCustomerStep} OF 8`;
+  if (fill) fill.style.width = `${(currentCustomerStep / 8) * 100}%`;
+  if (btnBack) btnBack.style.display = currentCustomerStep > 1 ? "inline-block" : "none";
+  if (btnNext) btnNext.textContent = currentCustomerStep === 8 ? "GET MY SHORTLIST ✨" : "CONTINUE →";
+
+  for (let i = 1; i <= 8; i++) {
+    const el = document.getElementById(`stepContainer${i}`);
+    if (el) el.style.display = i === currentCustomerStep ? "block" : "none";
+  }
+}
+
+function nextCustomerStep() {
+  if (currentCustomerStep === 1) {
+    const name = document.getElementById("custLeadName")?.value.trim();
+    const phone = document.getElementById("custLeadPhone")?.value.trim();
+    if (!name || !phone) {
+      alert("Please enter your name and WhatsApp number to continue.");
+      return;
+    }
+    shortlistDraft.name = name;
+    shortlistDraft.phone = phone;
+    shortlistDraft.email = document.getElementById("custLeadEmail")?.value.trim();
+  }
+
+  if (currentCustomerStep < 8) {
+    currentCustomerStep++;
+    updateModalStepUI();
+  } else {
+    // Finish questionnaire & apply requirement profile
+    finishCustomerShortlist();
+  }
+}
+
+function prevCustomerStep() {
+  if (currentCustomerStep > 1) {
+    currentCustomerStep--;
+    updateModalStepUI();
+  }
+}
+
+function selectPurpose(val, el) {
+  shortlistDraft.purchase_purpose = val;
+  el.parentNode.querySelectorAll(".chip-card").forEach(c => c.classList.remove("selected"));
+  el.classList.add("selected");
+}
+
+function togglePropType(val, el) {
+  el.classList.toggle("selected");
+  const selectedCards = el.parentNode.querySelectorAll(".chip-card.selected");
+  shortlistDraft.property_types = Array.from(selectedCards).map(c => c.querySelector(".chip-card__label").textContent.trim());
+}
+
+function selectBudget(min, max, el, flex = false) {
+  shortlistDraft.budget_min = min;
+  shortlistDraft.budget_max = max;
+  shortlistDraft.budget_flexible = flex;
+  el.parentNode.querySelectorAll(".chip-card").forEach(c => c.classList.remove("selected"));
+  el.classList.add("selected");
+}
+
+function toggleArea(val, el) {
+  el.classList.toggle("selected");
+  const selectedCards = el.parentNode.querySelectorAll(".chip-card.selected");
+  shortlistDraft.preferred_locations = Array.from(selectedCards).map(c => c.querySelector(".chip-card__label").textContent.trim());
+}
+
+function onCustWorkLocationChange(val) {
+  shortlistDraft.work_location_name = val;
+  if (val === "ITPL") { shortlistDraft.work_location_lat = 12.9841; shortlistDraft.work_location_lng = 77.7512; }
+  else if (val.includes("Manyata")) { shortlistDraft.work_location_lat = 13.0415; shortlistDraft.work_location_lng = 77.6185; }
+  else if (val.includes("Cessna")) { shortlistDraft.work_location_lat = 12.9365; shortlistDraft.work_location_lng = 77.6902; }
+}
+
+function selectMaxCommute(mins, el) {
+  shortlistDraft.max_commute_minutes = mins;
+  el.parentNode.querySelectorAll(".chip-card").forEach(c => c.classList.remove("selected"));
+  el.classList.add("selected");
+}
+
+function toggleConfig(val, el) {
+  el.classList.toggle("selected");
+  const selectedCards = el.parentNode.querySelectorAll(".chip-card.selected");
+  shortlistDraft.configuration = Array.from(selectedCards).map(c => c.querySelector(".chip-card__label").textContent.trim());
+}
+
+function finishCustomerShortlist() {
+  closeCustomerShortlistModal();
+  closeCustomerHeroBanner();
+
+  currentRequirementProfile = { ...shortlistDraft };
+
+  // Save new lead object
+  const newLead = {
+    lead_id: `LEAD_${Date.now()}`,
+    name: shortlistDraft.name,
+    phone: shortlistDraft.phone,
+    email: shortlistDraft.email,
+    created_at: new Date().toISOString(),
+    requirement: currentRequirementProfile
+  };
+  leadDatabase.unshift(newLead);
+
+  // Update Context Bar
+  const contextBar = document.getElementById("customerSearchContextBar");
+  const summaryText = document.getElementById("customerSearchSummaryText");
+
+  const locStr = currentRequirementProfile.preferred_locations.join(", ") || "Bengaluru";
+  const cfgStr = currentRequirementProfile.configuration.join(", ") || "Properties";
+  const bgtStr = currentRequirementProfile.budget_flexible ? "Flexible Budget" : `₹${currentRequirementProfile.budget_min}L–${currentRequirementProfile.budget_max}L`;
+
+  if (summaryText) summaryText.textContent = `${cfgStr} · ${bgtStr} · ${locStr} · Near ${currentRequirementProfile.work_location_name || 'workplace'}`;
+  if (contextBar) contextBar.style.display = "flex";
+
+  applyFilters();
+}
+
+function closeCustomerHeroBanner() {
+  const banner = document.getElementById("customerHeroBanner");
+  if (banner) banner.style.display = "none";
+}
+
+function exploreAllBengaluru() {
+  currentRequirementProfile = null;
+  document.getElementById("customerSearchContextBar").style.display = "none";
+  applyFilters();
+}
+
+// 4. TEAM MODE: LOAD CUSTOMER MANAGER
+function openLoadCustomerModal() {
+  renderLeadSearchList();
+  document.getElementById("loadCustomerModal")?.classList.add("active");
+}
+
+function closeLoadCustomerModal() {
+  document.getElementById("loadCustomerModal")?.classList.remove("active");
+}
+
+function renderLeadSearchList() {
+  const listEl = document.getElementById("leadSearchList");
+  if (!listEl) return;
+
+  listEl.innerHTML = leadDatabase.map(l => {
+    const req = l.requirement;
+    const reqStr = `${req.configuration.join("/")} · ₹${req.budget_min}-${req.budget_max}L · ${req.preferred_locations.join(", ")}`;
+    return `
+      <div class="chip-card" onclick="loadCustomerLead('${l.lead_id}')" style="cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-weight:800; color:#12202E;">${l.name}</span>
+          <span style="font-size:10px; color:#718096;">${l.phone}</span>
+        </div>
+        <div style="font-size:11px; color:#4A5568;">${reqStr}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function filterLeadSearchList() {
+  const q = document.getElementById("leadSearchQuery")?.value.toLowerCase() || "";
+  document.querySelectorAll("#leadSearchList .chip-card").forEach(el => {
+    const txt = el.textContent.toLowerCase();
+    el.style.display = txt.includes(q) ? "flex" : "none";
+  });
+}
+
+function loadCustomerLead(leadId) {
+  closeLoadCustomerModal();
+  const lead = leadDatabase.find(l => l.lead_id === leadId);
+  if (!lead) return;
+
+  currentLoadedLead = lead;
+  currentRequirementProfile = lead.requirement;
+
+  const bar = document.getElementById("teamCustomerContextBar");
+  const nameEl = document.getElementById("teamCustomerName");
+  const reqEl = document.getElementById("teamCustomerReqText");
+
+  const req = lead.requirement;
+  const reqStr = `${req.configuration.join("/")} · ₹${req.budget_min}-${req.budget_max}L · ${req.preferred_locations.join(", ")}`;
+
+  if (nameEl) nameEl.textContent = lead.name;
+  if (reqEl) reqEl.textContent = reqStr;
+  if (bar) bar.style.display = "flex";
+
+  applyFilters();
+}
+
+function clearLoadedCustomer() {
+  currentLoadedLead = null;
+  currentRequirementProfile = null;
+  document.getElementById("teamCustomerContextBar").style.display = "none";
+  applyFilters();
+}
+
+function openTeamNotesModal() {
+  document.getElementById("teamNotesModal")?.classList.add("active");
+}
+function closeTeamNotesModal() {
+  document.getElementById("teamNotesModal")?.classList.remove("active");
+}
+function saveTeamInternalNotes() {
+  const notes = document.getElementById("teamInternalNotesText")?.value.trim();
+  if (currentLoadedLead) {
+    currentLoadedLead.internal_notes = notes;
+    alert("Internal team notes saved securely.");
+  }
+  closeTeamNotesModal();
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   wireControls();
   initDraggableMinimizedPanel();
@@ -16387,6 +17313,213 @@ window.setActive = function(id, options) {
       <p><strong>Workplace Commute Calculation:</strong> Travel times are computed using peak-hour urban transit velocity matrix models across major tech corridors (ITPL, Outer Ring Road, Manyata, Electronic City).</p>
       <p><strong>Acre&amp;Key Score Framework:</strong> Synthesizes Location (25%), Developer Track Record (20%), Product Quality (20%), Price Competitiveness vs Area Average (15%), Connectivity (10%), and Livability (10%).</p>
       <p style="font-size:11px; color:var(--muted-grey); margin-top:8px;">Data updated: September 2026. All spatial overlays undergo monthly verification.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- GUIDED 8-STEP SHORTLIST QUESTIONNAIRE MODAL -->
+<div id="customerShortlistModal" class="customer-modal-backdrop">
+  <div class="customer-modal">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator" id="modalStepIndicator">STEP 1 OF 8</div>
+      <button type="button" class="customer-modal__close" onclick="closeCustomerShortlistModal()">✕</button>
+    </div>
+    <div class="customer-modal__progress-bar">
+      <div class="customer-modal__progress-fill" id="modalProgressFill" style="width: 12.5%;"></div>
+    </div>
+    <div class="customer-modal__body" id="customerModalBody">
+
+      <!-- STEP 1: CONTACT LEAD CAPTURE -->
+      <div class="modal-step" id="stepContainer1">
+        <h2 class="modal-step-title">LET'S PERSONALISE YOUR SEARCH</h2>
+        <p class="modal-step-desc">Enter your contact details so Acre&amp;Key can deliver your personalized shortlist and connectivity analysis.</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <label class="field">
+            <span class="field__label">Full Name *</span>
+            <input type="text" id="custLeadName" class="field__input" placeholder="e.g. Rahul Sharma" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span class="field__label">WhatsApp Number *</span>
+            <input type="tel" id="custLeadPhone" class="field__input" placeholder="e.g. +91 98765 43210" autocomplete="tel" required />
+          </label>
+          <label class="field">
+            <span class="field__label">Email Address (Optional)</span>
+            <input type="email" id="custLeadEmail" class="field__input" placeholder="e.g. rahul@example.com" autocomplete="email" />
+          </label>
+          <label style="display:flex; align-items:flex-start; gap:8px; margin-top:6px; font-size:11px; color:#4A5568; line-height:1.4;">
+            <input type="checkbox" id="custLeadConsent" checked style="margin-top:2px;" />
+            <span>By continuing, you agree to be contacted by Acre&amp;Key regarding your property search and personalized intelligence recommendations.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- STEP 2: PURCHASE PURPOSE -->
+      <div class="modal-step" id="stepContainer2" style="display:none;">
+        <h2 class="modal-step-title">WHAT ARE YOU BUYING FOR?</h2>
+        <p class="modal-step-desc">Select your primary objective to help us weigh livability vs investment growth factors.</p>
+        <div class="chip-grid">
+          <div class="chip-card selected" onclick="selectPurpose('end_use', this)">
+            <span class="chip-card__icon">🏡</span>
+            <span class="chip-card__label">END USE</span>
+            <span class="chip-card__sub">For living with family</span>
+          </div>
+          <div class="chip-card" onclick="selectPurpose('investment', this)">
+            <span class="chip-card__icon">📈</span>
+            <span class="chip-card__label">INVESTMENT</span>
+            <span class="chip-card__sub">Rental yield &amp; growth</span>
+          </div>
+          <div class="chip-card" onclick="selectPurpose('both', this)">
+            <span class="chip-card__icon">💎</span>
+            <span class="chip-card__label">BOTH</span>
+            <span class="chip-card__sub">Self-use with appreciation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: PROPERTY TYPE -->
+      <div class="modal-step" id="stepContainer3" style="display:none;">
+        <h2 class="modal-step-title">WHAT TYPE OF PROPERTY ARE YOU LOOKING FOR?</h2>
+        <p class="modal-step-desc">Select one or more property types that suit your preference.</p>
+        <div class="chip-grid">
+          <div class="chip-card selected" onclick="togglePropType('Apartment', this)">
+            <span class="chip-card__icon">🏢</span>
+            <span class="chip-card__label">APARTMENT</span>
+            <span class="chip-card__sub">Gated high-rise / low-rise</span>
+          </div>
+          <div class="chip-card" onclick="togglePropType('Villa', this)">
+            <span class="chip-card__icon">🏰</span>
+            <span class="chip-card__label">VILLA</span>
+            <span class="chip-card__sub">Row house / independent villa</span>
+          </div>
+          <div class="chip-card" onclick="togglePropType('Plot', this)">
+            <span class="chip-card__icon">📐</span>
+            <span class="chip-card__label">PLOT</span>
+            <span class="chip-card__sub">Plotted development / land</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: BUDGET -->
+      <div class="modal-step" id="stepContainer4" style="display:none;">
+        <h2 class="modal-step-title">WHAT'S YOUR APPROXIMATE BUDGET?</h2>
+        <p class="modal-step-desc">Select your target price bracket across all-inclusive property cost.</p>
+        <div class="chip-grid">
+          <div class="chip-card" onclick="selectBudget(50, 75, this)"><span class="chip-card__label">₹50L – ₹75L</span></div>
+          <div class="chip-card" onclick="selectBudget(75, 100, this)"><span class="chip-card__label">₹75L – ₹1.0 Cr</span></div>
+          <div class="chip-card selected" onclick="selectBudget(100, 150, this)"><span class="chip-card__label">₹1.0 Cr – ₹1.5 Cr</span></div>
+          <div class="chip-card" onclick="selectBudget(150, 250, this)"><span class="chip-card__label">₹1.5 Cr – ₹2.5 Cr</span></div>
+          <div class="chip-card" onclick="selectBudget(250, 400, this)"><span class="chip-card__label">₹2.5 Cr – ₹4.0 Cr</span></div>
+          <div class="chip-card" onclick="selectBudget(400, 1000, this)"><span class="chip-card__label">₹4.0 Cr+</span></div>
+          <div class="chip-card" onclick="selectBudget(0, 0, this, true)"><span class="chip-card__label">FLEXIBLE</span></div>
+        </div>
+      </div>
+
+      <!-- STEP 5: PREFERRED AREA -->
+      <div class="modal-step" id="stepContainer5" style="display:none;">
+        <h2 class="modal-step-title">WHERE WOULD YOU LIKE TO LIVE?</h2>
+        <p class="modal-step-desc">Select one or more preferred corridors across Bengaluru.</p>
+        <div class="chip-grid">
+          <div class="chip-card selected" onclick="toggleArea('Whitefield', this)"><span class="chip-card__label">Whitefield</span></div>
+          <div class="chip-card" onclick="toggleArea('Varthur', this)"><span class="chip-card__label">Varthur</span></div>
+          <div class="chip-card" onclick="toggleArea('Hebbal', this)"><span class="chip-card__label">Hebbal</span></div>
+          <div class="chip-card" onclick="toggleArea('Yelahanka', this)"><span class="chip-card__label">Yelahanka</span></div>
+          <div class="chip-card" onclick="toggleArea('Sarjapur Road', this)"><span class="chip-card__label">Sarjapur Road</span></div>
+          <div class="chip-card" onclick="toggleArea('Electronic City', this)"><span class="chip-card__label">Electronic City</span></div>
+          <div class="chip-card" onclick="toggleArea('Budigere Cross', this)"><span class="chip-card__label">Budigere Cross</span></div>
+          <div class="chip-card" onclick="toggleArea('KR Puram', this)"><span class="chip-card__label">KR Puram</span></div>
+        </div>
+      </div>
+
+      <!-- STEP 6: WORK LOCATION -->
+      <div class="modal-step" id="stepContainer6" style="display:none;">
+        <h2 class="modal-step-title">WHERE DO YOU WORK?</h2>
+        <p class="modal-step-desc">Select your office or tech park hub to compute commute Proximity.</p>
+        <label class="field">
+          <span class="field__label">Select Tech Park / Workplace Hub</span>
+          <select id="custWorkLocationSelect" class="field__input" onchange="onCustWorkLocationChange(this.value)">
+            <option value="">-- Optional / Remote / Multiple --</option>
+            <option value="ITPL" selected>ITPL / International Tech Park (Whitefield)</option>
+            <option value="Manyata Tech Park">Manyata Tech Park (Hebbal / Nagawara)</option>
+            <option value="Cessna Business Park">Cessna Business Park (ORR Marathahalli)</option>
+            <option value="Embassy TechVillage">Embassy TechVillage (ORR Bellandur)</option>
+            <option value="Electronic City">Electronic City Phase 1 / 2</option>
+            <option value="EPIP Zone">EPIP Zone (Whitefield)</option>
+            <option value="Bagmane Tech Park">Bagmane Tech Park (CV Raman Nagar)</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- STEP 7: COMMUTE -->
+      <div class="modal-step" id="stepContainer7" style="display:none;">
+        <h2 class="modal-step-title">HOW IMPORTANT IS YOUR COMMUTE?</h2>
+        <p class="modal-step-desc">Specify how many maximum drive minutes you prefer to spend commuting.</p>
+        <div style="margin-bottom:16px;">
+          <div class="chip-grid">
+            <div class="chip-card selected" onclick="selectMaxCommute(30, this)"><span class="chip-card__label">🚀 Within 30 Mins</span></div>
+            <div class="chip-card" onclick="selectMaxCommute(45, this)"><span class="chip-card__label">🚗 Within 45 Mins</span></div>
+            <div class="chip-card" onclick="selectMaxCommute(60, this)"><span class="chip-card__label">🚙 Within 60 Mins</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 8: CONFIGURATION -->
+      <div class="modal-step" id="stepContainer8" style="display:none;">
+        <h2 class="modal-step-title">SELECT PREFERRED CONFIGURATION</h2>
+        <p class="modal-step-desc">Choose bedroom configurations or plot size requirement.</p>
+        <div class="chip-grid">
+          <div class="chip-card" onclick="toggleConfig('2 BHK', this)"><span class="chip-card__label">2 BHK</span></div>
+          <div class="chip-card selected" onclick="toggleConfig('3 BHK', this)"><span class="chip-card__label">3 BHK</span></div>
+          <div class="chip-card" onclick="toggleConfig('4 BHK', this)"><span class="chip-card__label">4 BHK</span></div>
+          <div class="chip-card" onclick="toggleConfig('5+ BHK', this)"><span class="chip-card__label">5+ BHK / Villa</span></div>
+          <div class="chip-card" onclick="toggleConfig('Flexible', this)"><span class="chip-card__label">FLEXIBLE</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="customer-modal__footer">
+      <button type="button" class="modal-btn modal-btn--back" id="btnModalBack" onclick="prevCustomerStep()" style="display:none;">← BACK</button>
+      <div></div>
+      <button type="button" class="modal-btn modal-btn--next" id="btnModalNext" onclick="nextCustomerStep()">CONTINUE →</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOAD CUSTOMER LEAD MODAL FOR TEAM MODE -->
+<div id="loadCustomerModal" class="customer-modal-backdrop">
+  <div class="customer-modal" style="max-width:520px;">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator">📂 LOAD CUSTOMER REQUIREMENT</div>
+      <button type="button" class="customer-modal__close" onclick="closeLoadCustomerModal()">✕</button>
+    </div>
+    <div class="customer-modal__body">
+      <h3 style="font-size:15px; font-weight:800; color:#12202E; margin:0 0 6px 0;">SELECT A CUSTOMER LEAD</h3>
+      <p style="font-size:12px; color:#4A5568; margin:0 0 16px 0;">Search saved customer requirement profiles to load onto the research map workspace.</p>
+      <input type="text" id="leadSearchQuery" class="field__input" placeholder="Search by name, phone, or requirement ID..." onkeyup="filterLeadSearchList()" style="margin-bottom:12px;" />
+      <div id="leadSearchList" style="display:flex; flex-direction:column; gap:8px; max-height:280px; overflow-y:auto;">
+        <!-- Lead items generated dynamically -->
+      </div>
+    </div>
+    <div class="customer-modal__footer">
+      <button type="button" class="modal-btn modal-btn--back" onclick="closeLoadCustomerModal()">CANCEL</button>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM INTERNAL NOTES MODAL -->
+<div id="teamNotesModal" class="customer-modal-backdrop">
+  <div class="customer-modal" style="max-width:480px;">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator">📝 INTERNAL TEAM NOTES</div>
+      <button type="button" class="customer-modal__close" onclick="closeTeamNotesModal()">✕</button>
+    </div>
+    <div class="customer-modal__body">
+      <p style="font-size:12px; color:#4A5568; margin:0 0 12px 0;">These notes are strictly internal to Acre&amp;Key advisors and are <strong>NEVER</strong> visible to customers.</p>
+      <textarea id="teamInternalNotesText" class="field__input" rows="6" placeholder="Enter private notes (e.g. Customer prefers Whitefield but open to Varthur. Does not want high-density towers)..."></textarea>
+    </div>
+    <div class="customer-modal__footer">
+      <button type="button" class="modal-btn modal-btn--back" onclick="closeTeamNotesModal()">CANCEL</button>
+      <button type="button" class="modal-btn modal-btn--next" onclick="saveTeamInternalNotes()">SAVE NOTES</button>
     </div>
   </div>
 </div>
