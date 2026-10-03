@@ -2382,15 +2382,41 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
 
 
 
-/* HIDE OTHER PROJECT & AMENITY TAGS WHEN A PROPERTY IS SELECTED (REVEAL ON HOVER) */
+/* HIDE OTHER PROJECT & ALL AMENITY TAGS BY DEFAULT (REVEAL STRICTLY ON HOVER) */
+.techpark-marker__tag,
+.techpark-marker__leader,
+.metro-marker__tag,
+.metro-marker__leader,
+.school-marker__tag,
+.school-marker__leader,
+.hospital-marker__tag,
+.hospital-marker__leader,
+.mall-marker__tag,
+.mall-marker__leader,
 body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__tag,
-body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__leader {
+body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__leader,
+body.has-active-property .techpark-marker .techpark-marker__tag,
+body.has-active-property .metro-marker .metro-marker__tag,
+body.has-active-property .school-marker .school-marker__tag,
+body.has-active-property .hospital-marker .hospital-marker__tag,
+body.has-active-property .mall-marker .mall-marker__tag {
   display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
-/* Amenity tags remain visible on active property select */
-
-/* REVEAL TAGS DYNAMICALLY ON MOUSE HOVER */
+/* REVEAL AMENITY TAGS & NON-ACTIVE PROJECT TAGS STRICTLY ON MOUSE HOVER */
+.techpark-marker:hover .techpark-marker__tag,
+.techpark-marker:hover .techpark-marker__leader,
+.metro-marker:hover .metro-marker__tag,
+.metro-marker:hover .metro-marker__leader,
+.school-marker:hover .school-marker__tag,
+.school-marker:hover .school-marker__leader,
+.hospital-marker:hover .hospital-marker__tag,
+.hospital-marker:hover .hospital-marker__leader,
+.mall-marker:hover .mall-marker__tag,
+.mall-marker:hover .mall-marker__leader,
 body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__tag,
 body.has-active-property .plot-marker:not(.plot-marker--active):hover .plot-marker__leader,
 body.has-active-property .techpark-marker:hover .techpark-marker__tag,
