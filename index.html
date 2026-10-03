@@ -16246,8 +16246,16 @@ function toggleSelectProperty(id) {
         hasCoords = true;
       }
     });
-    if (hasCoords) {
-      map.fitBounds(bounds, selectedPropertyIds.size === 1 ? 120 : 60);
+    if (selectedPropertyIds.size === 1) {
+      const singleId = Array.from(selectedPropertyIds)[0];
+      const singleProp = ALL_PROPERTIES.find((p) => p.id === singleId);
+      if (singleProp && typeof singleProp.lat === "number" && typeof singleProp.lng === "number") {
+        const offset = window.innerWidth > 860 ? -0.004 : 0;
+        map.panTo({ lat: singleProp.lat, lng: singleProp.lng + offset });
+        map.setZoom(13.8);
+      }
+    } else if (hasCoords) {
+      map.fitBounds(bounds, 60);
     }
   }
 }
@@ -16331,8 +16339,16 @@ function toggleSelectProperty(id) {
         hasCoords = true;
       }
     });
-    if (hasCoords) {
-      map.fitBounds(bounds, selectedPropertyIds.size === 1 ? 120 : 60);
+    if (selectedPropertyIds.size === 1) {
+      const singleId = Array.from(selectedPropertyIds)[0];
+      const singleProp = ALL_PROPERTIES.find((p) => p.id === singleId);
+      if (singleProp && typeof singleProp.lat === "number" && typeof singleProp.lng === "number") {
+        const offset = window.innerWidth > 860 ? -0.004 : 0;
+        map.panTo({ lat: singleProp.lat, lng: singleProp.lng + offset });
+        map.setZoom(13.8);
+      }
+    } else if (hasCoords) {
+      map.fitBounds(bounds, 60);
     }
   }
 }
