@@ -17370,7 +17370,62 @@ function switchAppMode(mode) {
   }
 }
 
-// 2. SHARED MATCHING ENGINE (HARD FILTERS + SOFT SCORING)
+const CORRIDOR_MICRO_MARKETS = {
+  whitefield: [
+    "whitefield", "itpl", "hope farm", "ecc road", "borewell road",
+    "brookefield", "kundalahalli", "pattandur agrahara", "kadugodi",
+    "seegehalli", "varthur", "varthur road", "channasandra", "immadihalli",
+    "hoodi", "belathur", "hagadur", "panathur"
+  ],
+  varthur: [
+    "varthur", "varthur road", "varthur lake", "gunjur", "balagere",
+    "panathur", "whitefield", "kadubeesanahalli"
+  ],
+  sarjapur: [
+    "sarjapur", "sarjapur road", "carmelaram", "dommasandra", "sompura",
+    "hadosiddapura", "kodathi", "yamare", "mullur"
+  ],
+  bellandur: [
+    "bellandur", "outer ring road", "orr", "ecoworld", "ecospace",
+    "kadubeesanahalli", "devarabeesanahalli", "kasavanahalli", "haralur"
+  ],
+  electronic_city: [
+    "electronic city", "e-city", "phase 1", "phase 2", "attibele",
+    "chandapura", "bommasandra", "jigani", "hosa road", "singasandra"
+  ],
+  manyata: [
+    "manyata", "nagavara", "hebbal", "thanisandra", "hennur",
+    "horamavu", "kalyan nagar", "hrbr layout", "jakkur", "sahakar nagar"
+  ],
+  devanahalli: [
+    "devanahalli", "airport road", "shettigere", "kiadb", "aerotropolis",
+    "ivc road", "doddaballapur road", "yelahanka"
+  ],
+  budigere: [
+    "budigere", "budigere cross", "old madras road", "omr", "mandur",
+    "nimbekaipura", "hoskote"
+  ],
+  kr_puram: [
+    "kr puram", "tin factory", "ramamurthy nagar", "bhattanahalli",
+    "tc palya", "pai layout", "mahadevapura"
+  ]
+};
+
+function getPreferredLocationCoords(locName) {
+  if (!locName) return null;
+  const l = locName.toLowerCase();
+  if (l.includes("whitefield")) return { lat: 12.9698, lng: 77.7500 };
+  if (l.includes("varthur")) return { lat: 12.9382, lng: 77.7410 };
+  if (l.includes("sarjapur")) return { lat: 12.9010, lng: 77.6870 };
+  if (l.includes("bellandur")) return { lat: 12.9260, lng: 77.6760 };
+  if (l.includes("electronic")) return { lat: 12.8452, lng: 77.6602 };
+  if (l.includes("manyata") || l.includes("nagavara") || l.includes("hebbal")) return { lat: 13.0415, lng: 77.6185 };
+  if (l.includes("devanahalli") || l.includes("yelahanka")) return { lat: 13.1000, lng: 77.5960 };
+  if (l.includes("budigere") || l.includes("kr puram")) return { lat: 13.0100, lng: 77.7000 };
+  return null;
+}
+
+// 2. SHARED MATCHING ENGINE (STRICT HARD FILTERS + SOFT SCORING)
 const MatchingEngine = {
   calculateProjectMatch(project, req) {
     if (!req) {
@@ -17406,7 +17461,7 @@ const MatchingEngine = {
     if (reqTypes.length > 0) {
       passType = reqTypes.some(t => pType.includes(t) || t.includes(pType));
       if (!passType) {
-        exclusions.push(`Property type mismatch (Project is ${project.type || 'Apartment'})`);
+        exclusions.push(`Property type mismatch (${project.type || 'Apartment'})`);
       } else {
         hardMatches.push(`Property Type (${project.type || 'Apartment'})`);
       }
@@ -17418,20 +17473,26 @@ const MatchingEngine = {
     if (reqConfigs.length > 0) {
       passConfig = reqConfigs.some(cfg => pConfigStr.includes(cfg));
       if (!passConfig) {
-        exclusions.push(`Configuration mismatch (Offers ${pConfigStr || 'N/A'})`);
+        exclusions.push(`BHK mismatch (Offers ${pConfigStr || 'N/A'})`);
       } else {
         hardMatches.push(`Configuration (${reqConfigs.join(', ')})`);
       }
     }
 
-    // 3. HARD FILTER: BUDGET OVERLAP
+    // 3. HARD FILTER: BUDGET (STRICT OVERLAP + CEILING)
     let passBudget = true;
     if (!req.budget_flexible) {
       const bMin = req.budget_min || 0;
       const bMax = req.budget_max || 9999;
-      passBudget = (pMin <= bMax && pMax >= bMin);
+      // Project starting price must be <= max budget (with 5% buffer) AND project max price >= min budget
+      const maxAllowedMinPrice = bMax * 1.05;
+      passBudget = (pMin <= maxAllowedMinPrice && pMax >= bMin);
       if (!passBudget) {
-        exclusions.push(`Price (₹${pMin}L–${pMax}L) outside budget (₹${bMin}L–${bMax}L)`);
+        if (pMin > maxAllowedMinPrice) {
+          exclusions.push(`Starting price (₹${(pMin/100).toFixed(2)}Cr) exceeds budget limit (₹${(bMax/100).toFixed(2)}Cr)`);
+        } else {
+          exclusions.push(`Price range (₹${pMin}L–${pMax}L) outside budget (₹${bMin}L–${bMax}L)`);
+        }
       } else {
         hardMatches.push(`Within Budget Range (₹${bMin}L–${bMax}L)`);
       }
@@ -17439,35 +17500,59 @@ const MatchingEngine = {
       hardMatches.push(`Flexible Budget`);
     }
 
-    // 4. HARD FILTER: LOCATION PREFERENCE
+    // 4. HARD FILTER: LOCATION PREFERENCE & CORRIDOR FIT
     const reqLocs = (req.preferred_locations || []).map(l => l.toLowerCase().trim());
     let passLocation = true;
-    if (reqLocs.length > 0 && req.location_mode === "STRICT") {
-      passLocation = reqLocs.some(loc => pLocality.includes(loc) || loc.includes(pLocality) || pZone.includes(loc));
-      if (!passLocation) {
-        exclusions.push(`Outside preferred strict location (${req.preferred_locations.join(', ')})`);
-      } else {
-        hardMatches.push(`Matches Location (${project.locality})`);
+    if (reqLocs.length > 0) {
+      // Direct token / substring match
+      const directMatch = reqLocs.some(loc => {
+        const lClean = loc.toLowerCase().trim();
+        return pLocality.includes(lClean) || lClean.includes(pLocality) || pZone.includes(lClean);
+      });
+
+      // Corridor micro-market map match
+      let corridorMatch = false;
+      for (const reqLoc of reqLocs) {
+        for (const [corridorKey, subMarkets] of Object.entries(CORRIDOR_MICRO_MARKETS)) {
+          if (reqLoc.includes(corridorKey) || corridorKey.includes(reqLoc)) {
+            if (subMarkets.some(sub => pLocality.includes(sub) || sub.includes(pLocality))) {
+              corridorMatch = true;
+              break;
+            }
+          }
+        }
+        if (corridorMatch) break;
       }
-    } else if (reqLocs.length > 0) {
-      const isDirectMatch = reqLocs.some(loc => pLocality.includes(loc) || loc.includes(pLocality) || pZone.includes(loc));
-      if (isDirectMatch) {
-        hardMatches.push(`Preferred Location (${project.locality})`);
+
+      // Radius proximity match (within 8.5 km of preferred location hub)
+      let proximityMatch = false;
+      const locCoords = getPreferredLocationCoords(reqLocs[0]);
+      if (locCoords) {
+        const distKm = haversineDistanceKm(locCoords.lat, locCoords.lng, project.lat, project.lng);
+        if (distKm <= 8.5) {
+          proximityMatch = true;
+        }
+      }
+
+      passLocation = directMatch || corridorMatch || proximityMatch;
+
+      if (!passLocation) {
+        exclusions.push(`Outside preferred corridor (Located in ${project.locality})`);
       } else {
-        hardMatches.push(`Nearby Sub-Market (${project.locality})`);
+        hardMatches.push(`Preferred Location / Corridor (${project.locality})`);
       }
     }
 
-    // 5. HARD FILTER: WORK COMMUTE TIME
+    // 5. HARD FILTER: WORK COMMUTE TIME (Peak Bengaluru Traffic)
     let passCommute = true;
     let commuteMins = null;
     if (req.work_location_lat && req.work_location_lng) {
       const dist = haversineDistanceKm(req.work_location_lat, req.work_location_lng, project.lat, project.lng);
-      commuteMins = Math.round(dist * 2.5 + 3);
+      commuteMins = Math.round(dist <= 5 ? (dist * 3.5 + 5) : (dist * 4.2 + 6));
       const maxCommute = req.max_commute_minutes || 45;
       if (commuteMins > maxCommute) {
         passCommute = false;
-        exclusions.push(`Commute (~${commuteMins} mins) exceeds max limit (${maxCommute} mins)`);
+        exclusions.push(`Peak commute (~${commuteMins} mins) exceeds your limit (${maxCommute} mins)`);
       } else {
         hardMatches.push(`Commute ~${commuteMins} mins to ${req.work_location_name || 'Work'}`);
       }
@@ -17720,6 +17805,13 @@ function finishCustomerShortlist() {
   if (contextBar) contextBar.style.display = "flex";
 
   applyFilters();
+
+  const filtered = getFiltered();
+  if (map && filtered && filtered.length > 0) {
+    const bounds = new google.maps.LatLngBounds();
+    filtered.forEach(p => bounds.extend({ lat: p.lat, lng: p.lng }));
+    map.fitBounds(bounds, 60);
+  }
 }
 
 function closeCustomerHeroBanner() {
