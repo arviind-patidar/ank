@@ -12942,6 +12942,10 @@ function haversineKm(lat1, lng1, lat2, lng2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+function haversineDistanceKm(lat1, lng1, lat2, lng2) {
+  return haversineKm(lat1, lng1, lat2, lng2);
+}
+
 function getSelectedWorkCommute(propertyLat, propertyLng) {
   const parkId = (els.workLocation && els.workLocation.value) ? els.workLocation.value : "";
   if (!parkId) return { active: false };
@@ -17524,12 +17528,12 @@ const MatchingEngine = {
         if (corridorMatch) break;
       }
 
-      // Radius proximity match (within 8.5 km of preferred location hub)
+      // Radius proximity match (within 5.0 km of preferred location hub)
       let proximityMatch = false;
       const locCoords = getPreferredLocationCoords(reqLocs[0]);
       if (locCoords) {
         const distKm = haversineDistanceKm(locCoords.lat, locCoords.lng, project.lat, project.lng);
-        if (distKm <= 8.5) {
+        if (distKm <= 5.0) {
           proximityMatch = true;
         }
       }
