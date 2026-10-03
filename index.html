@@ -5631,7 +5631,7 @@ html, body {
 
   <!-- 5 MAP MODES SECTION -->
   <div class="intent-section">
-    <div class="intent-section__title">Map Modes</div>
+    <div class="intent-section__title">EXPLORE BENGALURU</div>
     <div class="map-mode-bar">
       <button type="button" class="map-mode-btn map-mode-btn--active" id="modeBtnProperties" onclick="switchMapMode('properties')">
         <span class="map-mode-btn__icon">🏠</span>
@@ -14682,7 +14682,44 @@ function renderDetailPanel(property) {
     '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CONSTRUCTION STATUS</span><br/>' + property.status + '</div>' +
     '</div></div>';
 
-  document.getElementById("pdpBody").innerHTML = mattersHtml + searchMatchHtml + whyHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
+    // DECISION TRADE-OFFS
+  var tradeoffsHtml = '';
+  var tradeoffsList = [];
+  if (nearestMetro && nearestMetro.distanceKm > 2.5) {
+    tradeoffsList.push('⚠ ~' + nearestMetro.distanceKm.toFixed(1) + ' km to nearest metro station');
+  }
+  if (nearestSchool && nearestSchool.distanceKm > 3.0) {
+    tradeoffsList.push('⚠ ~' + nearestSchool.distanceKm.toFixed(1) + ' km to premier school cluster');
+  }
+  if (property.priceSqft && property.priceSqft > 12500) {
+    tradeoffsList.push('⚠ Premium pricing per sqft vs micro-market average');
+  }
+  if (tradeoffsList.length === 0) {
+    tradeoffsList.push('⚠ High-demand corridor with active inventory absorption');
+  }
+  tradeoffsHtml = '<div class="pdp__section" style="background:#FFF9F5; border:1px solid #FBD5C0; border-left:3px solid #C55A11; border-radius:6px; padding:10px 12px; margin-top:10px;">' +
+    '<div class="pdp__section-label" style="color:#C55A11; margin-bottom:6px; font-weight:700;">DECISION TRADE-OFFS</div>' +
+    '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:#5C2B09; font-weight:600;">' +
+      tradeoffsList.map(function(t) { return '<div>' + t + '</div>'; }).join('') +
+    '</div></div>';
+
+  // YOU MAY ALSO CONSIDER (Alternatives)
+  var altProps = ALL_PROPERTIES.filter(function(p) {
+    return p.id !== property.id && (p.locality === property.locality || p.zone === property.zone);
+  }).slice(0, 3);
+
+  var alternativesHtml = altProps.length > 0 ? ('<div class="pdp__section"><div class="pdp__section-label" style="color:var(--rust); font-weight:700;">YOU MAY ALSO CONSIDER</div>' +
+    '<div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">' +
+      altProps.map(function(ap) {
+        var apDetails = getPropertyDetails(ap);
+        return '<div style="background:#FFFFFF; border:1px solid var(--line); padding:8px 10px; border-radius:6px; cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="setActive(\'' + ap.id + '\', {pan:true})">' +
+          '<div><div style="font-weight:700; color:var(--navy); font-size:11.5px;">' + ap.title + '</div><div style="font-size:10px; color:#59616B;">' + apDetails.priceStr + ' · ' + ap.locality + '</div></div>' +
+          '<span style="font-size:10px; color:var(--rust); font-family:var(--font-mono); font-weight:700;">VIEW →</span>' +
+        '</div>';
+      }).join('') +
+    '</div></div>') : '';
+
+  document.getElementById("pdpBody").innerHTML = mattersHtml + searchMatchHtml + tradeoffsHtml + whyHtml + alternativesHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
 
   function pdpActionsHtml(id) {
     var c = compareSelection.includes(id);
@@ -17278,12 +17315,25 @@ const MatchingEngine = {
       reasons.push(`✓ Available in ${pDetails.config}`);
     }
 
+    // Calculate Trade-offs
+    const tradeoffs = [];
+    if (project.priceSqft && project.priceSqft > 13000) {
+      tradeoffs.push("⚠ ~12% above micro-market average price/sqft");
+    }
+    if (req.work_location_lat && req.work_location_lng) {
+      const dist = haversineDistanceKm(req.work_location_lat, req.work_location_lng, project.lat, project.lng);
+      const mins = Math.round(dist * 2.5 + 3);
+      if (mins > 35) {
+        tradeoffs.push(`⚠ Longer peak-hour commute (~${mins} mins)`);
+      }
+    }
+
     // Classification
     let classification = "ALTERNATIVE";
     if (score >= 80) classification = "STRONG MATCH";
     else if (score >= 55) classification = "PARTIAL MATCH";
 
-    return { score, classification, reasons };
+    return { score, classification, reasons, tradeoffs };
   }
 };
 
@@ -17837,32 +17887,8 @@ window.setActive = function(id, options) {
     </div>
     <div class="customer-modal__body" id="customerModalBody">
 
-      <!-- STEP 1: CONTACT LEAD CAPTURE -->
+      <!-- STEP 1: PURCHASE PURPOSE -->
       <div class="modal-step" id="stepContainer1">
-        <h2 class="modal-step-title">LET'S PERSONALISE YOUR SEARCH</h2>
-        <p class="modal-step-desc">Enter your contact details so Acre&amp;Key can deliver your personalized shortlist and connectivity analysis.</p>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <label class="field">
-            <span class="field__label">Full Name *</span>
-            <input type="text" id="custLeadName" class="field__input" placeholder="e.g. Rahul Sharma" autocomplete="name" required />
-          </label>
-          <label class="field">
-            <span class="field__label">WhatsApp Number *</span>
-            <input type="tel" id="custLeadPhone" class="field__input" placeholder="e.g. +91 98765 43210" autocomplete="tel" required />
-          </label>
-          <label class="field">
-            <span class="field__label">Email Address (Optional)</span>
-            <input type="email" id="custLeadEmail" class="field__input" placeholder="e.g. rahul@example.com" autocomplete="email" />
-          </label>
-          <label style="display:flex; align-items:flex-start; gap:8px; margin-top:6px; font-size:11px; color:#4A5568; line-height:1.4;">
-            <input type="checkbox" id="custLeadConsent" checked style="margin-top:2px;" />
-            <span>By continuing, you agree to be contacted by Acre&amp;Key regarding your property search and personalized intelligence recommendations.</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- STEP 2: PURCHASE PURPOSE -->
-      <div class="modal-step" id="stepContainer2" style="display:none;">
         <h2 class="modal-step-title">WHAT ARE YOU BUYING FOR?</h2>
         <p class="modal-step-desc">Select your primary objective to help us weigh livability vs investment growth factors.</p>
         <div class="chip-grid">
@@ -17884,8 +17910,8 @@ window.setActive = function(id, options) {
         </div>
       </div>
 
-      <!-- STEP 3: PROPERTY TYPE -->
-      <div class="modal-step" id="stepContainer3" style="display:none;">
+      <!-- STEP 2: PROPERTY TYPE -->
+      <div class="modal-step" id="stepContainer2" style="display:none;">
         <h2 class="modal-step-title">WHAT TYPE OF PROPERTY ARE YOU LOOKING FOR?</h2>
         <p class="modal-step-desc">Select one or more property types that suit your preference.</p>
         <div class="chip-grid">
@@ -17907,8 +17933,8 @@ window.setActive = function(id, options) {
         </div>
       </div>
 
-      <!-- STEP 4: BUDGET -->
-      <div class="modal-step" id="stepContainer4" style="display:none;">
+      <!-- STEP 3: BUDGET -->
+      <div class="modal-step" id="stepContainer3" style="display:none;">
         <h2 class="modal-step-title">WHAT'S YOUR APPROXIMATE BUDGET?</h2>
         <p class="modal-step-desc">Select your target price bracket across all-inclusive property cost.</p>
         <div class="chip-grid">
@@ -17922,8 +17948,8 @@ window.setActive = function(id, options) {
         </div>
       </div>
 
-      <!-- STEP 5: PREFERRED AREA -->
-      <div class="modal-step" id="stepContainer5" style="display:none;">
+      <!-- STEP 4: PREFERRED AREA -->
+      <div class="modal-step" id="stepContainer4" style="display:none;">
         <h2 class="modal-step-title">WHERE WOULD YOU LIKE TO LIVE?</h2>
         <p class="modal-step-desc">Select one or more preferred corridors across Bengaluru.</p>
         <div class="chip-grid">
@@ -17938,8 +17964,8 @@ window.setActive = function(id, options) {
         </div>
       </div>
 
-      <!-- STEP 6: WORK LOCATION -->
-      <div class="modal-step" id="stepContainer6" style="display:none;">
+      <!-- STEP 5: WORK LOCATION -->
+      <div class="modal-step" id="stepContainer5" style="display:none;">
         <h2 class="modal-step-title">WHERE DO YOU WORK?</h2>
         <p class="modal-step-desc">Select your office or tech park hub to compute commute Proximity.</p>
         <label class="field">
@@ -17957,8 +17983,8 @@ window.setActive = function(id, options) {
         </label>
       </div>
 
-      <!-- STEP 7: COMMUTE -->
-      <div class="modal-step" id="stepContainer7" style="display:none;">
+      <!-- STEP 6: COMMUTE -->
+      <div class="modal-step" id="stepContainer6" style="display:none;">
         <h2 class="modal-step-title">HOW IMPORTANT IS YOUR COMMUTE?</h2>
         <p class="modal-step-desc">Specify how many maximum drive minutes you prefer to spend commuting.</p>
         <div style="margin-bottom:16px;">
@@ -17970,8 +17996,8 @@ window.setActive = function(id, options) {
         </div>
       </div>
 
-      <!-- STEP 8: CONFIGURATION -->
-      <div class="modal-step" id="stepContainer8" style="display:none;">
+      <!-- STEP 7: CONFIGURATION -->
+      <div class="modal-step" id="stepContainer7" style="display:none;">
         <h2 class="modal-step-title">SELECT PREFERRED CONFIGURATION</h2>
         <p class="modal-step-desc">Choose bedroom configurations or plot size requirement.</p>
         <div class="chip-grid">
@@ -17981,6 +18007,26 @@ window.setActive = function(id, options) {
           <div class="chip-card" onclick="toggleConfig('5+ BHK', this)"><span class="chip-card__label">5+ BHK / Villa</span></div>
           <div class="chip-card" onclick="toggleConfig('Flexible', this)"><span class="chip-card__label">FLEXIBLE</span></div>
         </div>
+      </div>
+
+      <!-- STEP 8: YOUR PERSONALIZED MAP IS READY & OPTIONAL LEAD SAVE -->
+      <div class="modal-step" id="stepContainer8" style="display:none;">
+        <div style="text-align:center; margin-bottom:14px;">
+          <span style="font-size:24px;">✨</span>
+          <h2 class="modal-step-title" style="margin-top:4px;">YOUR BENGALURU IS READY</h2>
+          <p class="modal-step-desc" id="modalResultsSummaryText">Based on your requirements, we found 12 matching projects (6 Strong Matches, 6 Alternatives).</p>
+        </div>
+
+        <div style="background:#F7FAFC; border:1px solid #E2E8F0; padding:12px; border-radius:8px; margin-bottom:14px;">
+          <div style="font-size:11px; font-weight:800; color:#1A202C; margin-bottom:8px; text-transform:uppercase;">SAVE YOUR SHORTLIST (OPTIONAL)</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <input type="text" id="custLeadName" class="field__input" placeholder="Full Name (e.g. Rahul Sharma)" autocomplete="name" />
+            <input type="tel" id="custLeadPhone" class="field__input" placeholder="WhatsApp Number (e.g. +91 98765 43210)" autocomplete="tel" />
+            <input type="email" id="custLeadEmail" class="field__input" placeholder="Email Address (Optional)" autocomplete="email" />
+          </div>
+        </div>
+
+        <button type="button" class="modal-btn modal-btn--next" style="width:100%; margin-bottom:8px; background:var(--gold); color:#12202E; font-weight:800;" onclick="finishCustomerShortlist()">SEE MY SHORTLIST ON MAP ✨</button>
       </div>
 
     </div>
