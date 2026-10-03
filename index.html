@@ -5568,12 +5568,13 @@ html, body {
 <!-- PERSISTENT CUSTOMER SEARCH CONTEXT BAR -->
 <div id="customerSearchContextBar" class="customer-context-bar" style="display:none;">
   <div class="customer-context__info">
-    <span class="customer-context__label">YOUR SHORTLIST:</span>
+    <span class="customer-context__label">YOUR MATCHES:</span>
     <span class="customer-context__summary" id="customerSearchSummaryText">All Bengaluru Properties</span>
   </div>
   <div class="customer-context__actions">
+    <button type="button" id="btnToggleAlternatives" class="customer-context__btn customer-context__btn--alt" style="display:none;" onclick="toggleShowAlternatives()">SHOW ALTERNATIVES (+0)</button>
     <button type="button" class="customer-context__btn" onclick="openCustomerShortlistModal(true)">✏️ EDIT REQUIREMENTS</button>
-    <button type="button" class="customer-context__btn customer-context__btn--outline" onclick="exploreAllBengaluru()">🗺️ EXPLORE ALL OF BENGALURU</button>
+    <button type="button" class="customer-context__btn customer-context__btn--outline" onclick="exploreAllBengaluru()">🗺️ EXPLORE ALL BENGALURU</button>
   </div>
 </div>
 
@@ -5585,9 +5586,10 @@ html, body {
     <span class="team-context__req" id="teamCustomerReqText">3 BHK · ₹1.5–2.5 Cr · Whitefield · Near ITPL</span>
   </div>
   <div class="team-context__right">
+    <button type="button" id="btnTeamViewModeToggle" class="team-context__btn" onclick="toggleTeamViewMode()">🎯 CUSTOMER MATCH VIEW</button>
     <span class="team-context__override-badge" id="teamOverrideBadge" style="display:none;">FILTER OVERRIDE ACTIVE</span>
     <button type="button" class="team-context__btn" onclick="openTeamNotesModal()">📝 INTERNAL NOTES</button>
-    <button type="button" class="team-context__btn team-context__btn--gold" onclick="saveAsNewRequirement()">💾 SAVE AS NEW REQUIREMENT</button>
+    <button type="button" class="team-context__btn team-context__btn--gold" onclick="saveAsNewRequirement()">💾 SAVE REQUIREMENT</button>
     <button type="button" class="team-context__btn team-context__btn--clear" onclick="clearLoadedCustomer()">✕ UNLOAD</button>
   </div>
 </div>
@@ -14466,7 +14468,8 @@ function getPropertyDetails(p) {
   let priceStr = p.priceStr || p.priceRange || p.price || "₹1.25Cr – 1.95Cr";
   let config = p.config || p.bhk || "2 & 3 BHK";
   let whyRecommended = p.whyRecommended || RECOMMENDED_REASONS[p.id] || (p.recommended ? "Strong tech hub proximity & proven builder track record" : "");
-  return { priceStr, config, whyRecommended };
+  let range = typeof getPropertyPriceRangeLakhs === "function" ? getPropertyPriceRangeLakhs(p) : { min: 100, max: 200 };
+  return { priceStr, config, whyRecommended, priceMinLakhs: range.min, priceMaxLakhs: range.max };
 }
 
 function getAkScoreBadgeHtml(score) {
@@ -14483,16 +14486,42 @@ function renderList(properties) {
   if (shortlistBadge) shortlistBadge.textContent = properties.length;
 
   if (properties.length === 0) {
-    els.list.innerHTML = `
-      <div class="empty-state">
-        <div style="font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">No matching projects found</div>
-        <div>Try expanding your search criteria or resetting filters:</div>
-        <div class="empty-state__chips">
-          <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Show All Corridors</button>
-          <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Reset Filters</button>
+    if (typeof currentRequirementProfile !== "undefined" && currentRequirementProfile) {
+      els.list.innerHTML = `
+        <div class="empty-state" style="padding:16px; background:#FFF5F5; border:1px solid #FEB2B2; border-radius:8px;">
+          <div style="font-weight:800; font-size:13px; color:#9B2C2C; margin-bottom:6px;">⚠️ ZERO PROJECTS MATCH YOUR STRICT CRITERIA</div>
+          <div style="font-size:11px; color:#4A5568; margin-bottom:12px; line-height:1.4;">
+            No properties in our active database satisfy 100% of your hard requirements (${(currentRequirementProfile.configuration || []).join("/") || "Properties"}, ₹${currentRequirementProfile.budget_min || 0}L–${currentRequirementProfile.budget_max || 999}L, commute ≤ ${currentRequirementProfile.max_commute_minutes || 45} mins).
+          </div>
+          <div style="font-weight:700; font-size:10px; color:#2D3748; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.04em;">Quick Adjustment Options:</div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <button type="button" class="empty-state__chip-btn" style="background:#FFF; color:#2B6CB0; border:1px solid #3182CE; font-weight:700; text-align:left; padding:8px 10px;" onclick="quickAdjustCommute(60)">
+              🚗 EXPAND COMMUTE TO 60 MINS
+            </button>
+            <button type="button" class="empty-state__chip-btn" style="background:#FFF; color:#2B6CB0; border:1px solid #3182CE; font-weight:700; text-align:left; padding:8px 10px;" onclick="quickAdjustBudget(30)">
+              💰 INCREASE MAX BUDGET (+₹30 LAKHS)
+            </button>
+            <button type="button" class="empty-state__chip-btn" style="background:#FFF; color:#2B6CB0; border:1px solid #3182CE; font-weight:700; text-align:left; padding:8px 10px;" onclick="toggleShowAlternatives(true)">
+              👁️ SHOW NEARBY ALTERNATIVES (+${getLastAltCount()})
+            </button>
+            <button type="button" class="empty-state__chip-btn" style="background:#E2E8F0; color:#2D3748; font-weight:700; text-align:left; padding:8px 10px; margin-top:4px;" onclick="openCustomerShortlistModal(true)">
+              ✏️ RE-EDIT REQUIREMENTS
+            </button>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    } else {
+      els.list.innerHTML = `
+        <div class="empty-state">
+          <div style="font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">No matching projects found</div>
+          <div>Try expanding your search criteria or resetting filters:</div>
+          <div class="empty-state__chips">
+            <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Show All Corridors</button>
+            <button type="button" class="empty-state__chip-btn" onclick="els.reset.click()">Reset Filters</button>
+          </div>
+        </div>
+      `;
+    }
     return;
   }
 
@@ -14509,13 +14538,28 @@ function renderList(properties) {
       // Dual Mode Match Calculation
       let matchBadgeHtml = "";
       if (typeof MatchingEngine !== "undefined" && typeof currentRequirementProfile !== "undefined" && currentRequirementProfile) {
-        const match = MatchingEngine.calculateProjectMatch(p, currentRequirementProfile);
-        const matchClass = match.classification === "STRONG MATCH" ? "match-badge--strong" : match.classification === "PARTIAL MATCH" ? "match-badge--partial" : "match-badge--alt";
+        const match = p._lastMatch || MatchingEngine.calculateProjectMatch(p, currentRequirementProfile);
+        let matchClass = "match-badge--strong";
+        let iconStr = "★";
+        if (!match.eligible) {
+          matchClass = "match-badge--alt";
+          iconStr = "🚫 EXCLUDED";
+        } else if (match.classification === "GOOD MATCH") {
+          matchClass = "match-badge--strong";
+          iconStr = "✓";
+        } else if (match.classification === "PARTIAL MATCH") {
+          matchClass = "match-badge--partial";
+          iconStr = "✦";
+        }
+        
+        const badgeLabel = match.eligible ? `${match.classification} (${match.score}%)` : `ALTERNATIVE / EXCLUDED`;
+        const reasonItems = match.eligible ? (match.reasons || []).slice(0, 2) : (match.exclusions || []).slice(0, 2);
+
         matchBadgeHtml = `
           <div class="match-badge ${matchClass}">
-            <span>${match.classification === "STRONG MATCH" ? "★" : match.classification === "PARTIAL MATCH" ? "✦" : "•"} ${match.classification} (${match.score}%)</span>
+            <span>${iconStr} ${badgeLabel}</span>
           </div>
-          ${match.reasons && match.reasons.length ? `<div style="font-size:11px; color:#2D3748; background:#F7FAFC; padding:4px 8px; border-radius:4px; margin-top:4px; margin-bottom:6px; line-height:1.3; border-left:2px solid var(--navy);">${match.reasons.slice(0, 2).join("<br/>")}</div>` : ""}
+          ${reasonItems && reasonItems.length ? `<div style="font-size:11px; color:${match.eligible ? '#2D3748' : '#9B2C2C'}; background:${match.eligible ? '#F7FAFC' : '#FFF5F5'}; padding:4px 8px; border-radius:4px; margin-top:4px; margin-bottom:6px; line-height:1.3; border-left:2px solid ${match.eligible ? 'var(--navy)' : '#E53E3E'};">${reasonItems.join("<br/>")}</div>` : ""}
         `;
       }
 
@@ -14657,15 +14701,25 @@ function renderDetailPanel(property) {
     '</div>' +
     '</div></div>';
 
-  // YOUR SEARCH MATCH BREAKDOWN
+  // YOUR SEARCH MATCH BREAKDOWN & ADVISOR EXCLUSION INSPECTOR
   var searchMatchHtml = "";
   if (typeof currentRequirementProfile !== "undefined" && currentRequirementProfile && typeof MatchingEngine !== "undefined") {
-    var match = MatchingEngine.calculateProjectMatch(property, currentRequirementProfile);
-    searchMatchHtml = '<div class="pdp__section" style="background:#FFFFFF; border:1px solid var(--line); border-left:3px solid var(--rust); border-radius:6px; padding:10px 12px;">' +
-      '<div class="pdp__section-label" style="color:var(--rust); margin-bottom:6px; font-weight:700;">YOUR SEARCH MATCH (' + match.score + '%)</div>' +
-      '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:var(--navy); font-weight:600;">' +
-        match.reasons.map(function(r) { return '<div>' + r + '</div>'; }).join('') +
-      '</div></div>';
+    var match = property._lastMatch || MatchingEngine.calculateProjectMatch(property, currentRequirementProfile);
+    if (match.eligible) {
+      searchMatchHtml = '<div class="pdp__section" style="background:#FFFFFF; border:1px solid var(--line); border-left:4px solid #2B6CB0; border-radius:6px; padding:10px 12px;">' +
+        '<div class="pdp__section-label" style="color:#2B6CB0; margin-bottom:6px; font-weight:800;">✓ MATCHES CUSTOMER CRITERIA (' + match.score + '%)</div>' +
+        '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:var(--navy); font-weight:600;">' +
+          match.reasons.map(function(r) { return '<div>' + r + '</div>'; }).join('') +
+        '</div></div>';
+    } else {
+      searchMatchHtml = '<div class="pdp__section" style="background:#FFF5F5; border:1px solid #FEB2B2; border-left:4px solid #E53E3E; border-radius:6px; padding:10px 12px;">' +
+        '<div class="pdp__section-label" style="color:#9B2C2C; margin-bottom:6px; font-weight:800;">🚫 EXCLUDED FOR THIS CUSTOMER PROFILE</div>' +
+        '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:#C53030; font-weight:600;">' +
+          (match.exclusions || []).map(function(ex) { return '<div>❌ ' + ex + '</div>'; }).join('') +
+        '</div>' +
+        '<div style="font-size:10.5px; color:#718096; margin-top:6px; line-height:1.3; font-style:italic;">This project is hidden on customer canvas unless Alternatives mode is toggled.</div>' +
+        '</div>';
+    }
   }
 
   var advisoryTakeaways = '<div class="pdp__section"><div class="pdp__section-label">Advisory Decision Factors</div>' +
@@ -15518,6 +15572,48 @@ function getPropertyPriceRangeLakhs(p) {
   return { min, max };
 }
 
+let showAlternativesActive = false;
+let teamFullMarketViewActive = false;
+let cachedAltCount = 0;
+
+function getLastAltCount() {
+  return cachedAltCount;
+}
+
+function toggleShowAlternatives(forceState) {
+  showAlternativesActive = forceState !== undefined ? forceState : !showAlternativesActive;
+  applyFilters();
+}
+
+function toggleTeamViewMode() {
+  teamFullMarketViewActive = !teamFullMarketViewActive;
+  const btn = document.getElementById("btnTeamViewModeToggle");
+  if (btn) {
+    btn.innerHTML = teamFullMarketViewActive ? "🌐 FULL MARKET VIEW" : "🎯 CUSTOMER MATCH VIEW";
+    btn.classList.toggle("team-context__btn--gold", teamFullMarketViewActive);
+  }
+  applyFilters();
+}
+
+function updateAlternativesButtonUI(altCount) {
+  const btn = document.getElementById("btnToggleAlternatives");
+  if (!btn) return;
+
+  if (!currentRequirementProfile) {
+    btn.style.display = "none";
+    return;
+  }
+
+  btn.style.display = "inline-flex";
+  if (showAlternativesActive) {
+    btn.classList.add("selected");
+    btn.innerHTML = "👁️ HIDE ALTERNATIVES";
+  } else {
+    btn.classList.remove("selected");
+    btn.innerHTML = `➕ SHOW ALTERNATIVES (${altCount})`;
+  }
+}
+
 function getFiltered() {
   if (!ALL_PROPERTIES || ALL_PROPERTIES.length === 0) {
     ALL_PROPERTIES = SAMPLE_PROPERTIES;
@@ -15528,7 +15624,9 @@ function getFiltered() {
   const stage = (els.stage && els.stage.value) ? els.stage.value : "";
   const recommendedOnly = (els.recommended && els.recommended.checked) ? els.recommended.checked : false;
 
-  return ALL_PROPERTIES.filter((p) => {
+  let altCount = 0;
+
+  const result = ALL_PROPERTIES.filter((p) => {
     // Multi-Property Selection Filter Priority
     if (selectedPropertyIds && selectedPropertyIds.size > 0) {
       if (!selectedPropertyIds.has(p.id)) return false;
@@ -15577,8 +15675,27 @@ function getFiltered() {
     // Recommended only checkbox filter
     if (recommendedOnly && !p.recommended) return false;
 
+    // CUSTOMER REQUIREMENT HARD FILTER CANVAS DRIVER
+    if (currentRequirementProfile && typeof MatchingEngine !== "undefined") {
+      const match = MatchingEngine.calculateProjectMatch(p, currentRequirementProfile);
+      p._lastMatch = match;
+
+      if (!match.eligible) {
+        altCount++;
+        // If showAlternativesActive is FALSE and teamFullMarketViewActive is FALSE, exclude from active dataset
+        if (!showAlternativesActive && !teamFullMarketViewActive) {
+          return false;
+        }
+      }
+    }
+
     return true;
   });
+
+  cachedAltCount = altCount;
+  updateAlternativesButtonUI(altCount);
+
+  return result;
 }
 
 function applyFilters() {
@@ -17253,89 +17370,188 @@ function switchAppMode(mode) {
   }
 }
 
-// 2. SHARED MATCHING ENGINE
+// 2. SHARED MATCHING ENGINE (HARD FILTERS + SOFT SCORING)
 const MatchingEngine = {
-  weights: {
-    budget: 0.30,
-    propertyType: 0.20,
-    preferredLocation: 0.20,
-    commute: 0.20,
-    configuration: 0.10
-  },
-
   calculateProjectMatch(project, req) {
-    if (!req) return { score: 100, classification: "STRONG MATCH", reasons: ["All Projects View"] };
+    if (!req) {
+      return {
+        eligible: true,
+        score: 100,
+        classification: "STRONG MATCH",
+        hardMatches: ["All Projects View"],
+        softMatches: [],
+        reasons: ["Full Market View"],
+        tradeoffs: [],
+        exclusions: []
+      };
+    }
 
-    let score = 0;
+    const exclusions = [];
+    const hardMatches = [];
+    const softMatches = [];
     const reasons = [];
+    const tradeoffs = [];
 
-    // 1. Budget Match (30%)
     const pDetails = getPropertyDetails(project);
-    const pMin = pDetails.priceMinLakhs || 125;
-    const pMax = pDetails.priceMaxLakhs || 195;
+    const pMin = pDetails.priceMinLakhs || 100;
+    const pMax = pDetails.priceMaxLakhs || 200;
+    const pType = (project.type || "Apartment").toLowerCase();
+    const pConfigStr = (pDetails.config || project.bhk || "").toUpperCase();
+    const pLocality = (project.locality || "").toLowerCase();
+    const pZone = (project.zone || "").toLowerCase();
 
-    if (req.budget_flexible || (pMin <= req.budget_max && pMax >= req.budget_min)) {
-      score += 30;
-      reasons.push("✓ Within your budget range");
-    }
-
-    // 2. Property Type (20%)
-    const reqTypes = req.property_types || ["Apartment"];
-    const pType = project.type || "Apartment";
-    if (reqTypes.some(t => t.toLowerCase() === pType.toLowerCase())) {
-      score += 20;
-      reasons.push(`✓ Matches ${pType} preference`);
-    }
-
-    // 3. Preferred Location (20%)
-    const reqLocs = req.preferred_locations || [];
-    if (reqLocs.length === 0 || reqLocs.some(loc => project.locality?.toLowerCase().includes(loc.toLowerCase()) || project.zone?.toLowerCase().includes(loc.toLowerCase()))) {
-      score += 20;
-      reasons.push(`✓ Located in preferred area (${project.locality})`);
-    }
-
-    // 4. Workplace Commute (20%)
-    if (req.work_location_lat && req.work_location_lng) {
-      const dist = haversineDistanceKm(req.work_location_lat, req.work_location_lng, project.lat, project.lng);
-      const mins = Math.round(dist * 2.5 + 3);
-      if (mins <= (req.max_commute_minutes || 45)) {
-        score += 20;
-        reasons.push(`✓ Near ${req.work_location_name || 'workplace'} (~${mins} mins drive)`);
+    // 1. HARD FILTER: PROPERTY TYPE
+    const reqTypes = (req.property_types || []).map(t => t.toLowerCase());
+    let passType = true;
+    if (reqTypes.length > 0) {
+      passType = reqTypes.some(t => pType.includes(t) || t.includes(pType));
+      if (!passType) {
+        exclusions.push(`Property type mismatch (Project is ${project.type || 'Apartment'})`);
       } else {
-        reasons.push(`🚗 ~${mins} mins to ${req.work_location_name || 'workplace'}`);
+        hardMatches.push(`Property Type (${project.type || 'Apartment'})`);
+      }
+    }
+
+    // 2. HARD FILTER: CONFIGURATION / BHK
+    const reqConfigs = (req.configuration || []).map(c => c.toUpperCase().trim());
+    let passConfig = true;
+    if (reqConfigs.length > 0) {
+      passConfig = reqConfigs.some(cfg => pConfigStr.includes(cfg));
+      if (!passConfig) {
+        exclusions.push(`Configuration mismatch (Offers ${pConfigStr || 'N/A'})`);
+      } else {
+        hardMatches.push(`Configuration (${reqConfigs.join(', ')})`);
+      }
+    }
+
+    // 3. HARD FILTER: BUDGET OVERLAP
+    let passBudget = true;
+    if (!req.budget_flexible) {
+      const bMin = req.budget_min || 0;
+      const bMax = req.budget_max || 9999;
+      passBudget = (pMin <= bMax && pMax >= bMin);
+      if (!passBudget) {
+        exclusions.push(`Price (₹${pMin}L–${pMax}L) outside budget (₹${bMin}L–${bMax}L)`);
+      } else {
+        hardMatches.push(`Within Budget Range (₹${bMin}L–${bMax}L)`);
       }
     } else {
-      score += 20; // Default if no work location given
+      hardMatches.push(`Flexible Budget`);
     }
 
-    // 5. Configuration (10%)
-    const reqConfigs = req.configuration || [];
-    if (reqConfigs.length === 0 || reqConfigs.some(cfg => pDetails.config?.includes(cfg))) {
-      score += 10;
-      reasons.push(`✓ Available in ${pDetails.config}`);
-    }
-
-    // Calculate Trade-offs
-    const tradeoffs = [];
-    if (project.priceSqft && project.priceSqft > 13000) {
-      tradeoffs.push("⚠ ~12% above micro-market average price/sqft");
-    }
-    if (req.work_location_lat && req.work_location_lng) {
-      const dist = haversineDistanceKm(req.work_location_lat, req.work_location_lng, project.lat, project.lng);
-      const mins = Math.round(dist * 2.5 + 3);
-      if (mins > 35) {
-        tradeoffs.push(`⚠ Longer peak-hour commute (~${mins} mins)`);
+    // 4. HARD FILTER: LOCATION PREFERENCE
+    const reqLocs = (req.preferred_locations || []).map(l => l.toLowerCase().trim());
+    let passLocation = true;
+    if (reqLocs.length > 0 && req.location_mode === "STRICT") {
+      passLocation = reqLocs.some(loc => pLocality.includes(loc) || loc.includes(pLocality) || pZone.includes(loc));
+      if (!passLocation) {
+        exclusions.push(`Outside preferred strict location (${req.preferred_locations.join(', ')})`);
+      } else {
+        hardMatches.push(`Matches Location (${project.locality})`);
+      }
+    } else if (reqLocs.length > 0) {
+      const isDirectMatch = reqLocs.some(loc => pLocality.includes(loc) || loc.includes(pLocality) || pZone.includes(loc));
+      if (isDirectMatch) {
+        hardMatches.push(`Preferred Location (${project.locality})`);
+      } else {
+        hardMatches.push(`Nearby Sub-Market (${project.locality})`);
       }
     }
 
-    // Classification
-    let classification = "ALTERNATIVE";
-    if (score >= 80) classification = "STRONG MATCH";
-    else if (score >= 55) classification = "PARTIAL MATCH";
+    // 5. HARD FILTER: WORK COMMUTE TIME
+    let passCommute = true;
+    let commuteMins = null;
+    if (req.work_location_lat && req.work_location_lng) {
+      const dist = haversineDistanceKm(req.work_location_lat, req.work_location_lng, project.lat, project.lng);
+      commuteMins = Math.round(dist * 2.5 + 3);
+      const maxCommute = req.max_commute_minutes || 45;
+      if (commuteMins > maxCommute) {
+        passCommute = false;
+        exclusions.push(`Commute (~${commuteMins} mins) exceeds max limit (${maxCommute} mins)`);
+      } else {
+        hardMatches.push(`Commute ~${commuteMins} mins to ${req.work_location_name || 'Work'}`);
+      }
+    }
 
-    return { score, classification, reasons, tradeoffs };
+    // OVERALL HARD FILTER ELIGIBILITY
+    const eligible = passType && passConfig && passBudget && passLocation && passCommute;
+
+    // SOFT MATCHING & SCORING (For Eligible Projects)
+    let score = 0;
+    if (passType) score += 20;
+    if (passConfig) score += 15;
+    if (passBudget) score += 25;
+    if (passLocation) score += 20;
+    if (passCommute) score += 20;
+
+    if (project.akScore >= 78) {
+      score += 5;
+      softMatches.push(`High Acre&Key Score (${project.akScore}/100)`);
+    }
+
+    score = Math.min(100, Math.round(score));
+
+    if (eligible) {
+      reasons.push(...hardMatches.map(m => `✓ ${m}`));
+      reasons.push(...softMatches.map(m => `✦ ${m}`));
+    } else {
+      reasons.push(...exclusions.map(e => `❌ ${e}`));
+    }
+
+    if (project.priceSqft && project.priceSqft > 13000) {
+      tradeoffs.push("⚠ Above micro-market average price/sqft");
+    }
+    if (commuteMins && commuteMins > 35) {
+      tradeoffs.push(`⚠ Peak-hour commute ~${commuteMins} mins`);
+    }
+
+    let classification = "ALTERNATIVE";
+    if (eligible) {
+      if (score >= 85) classification = "STRONG MATCH";
+      else if (score >= 65) classification = "GOOD MATCH";
+      else classification = "PARTIAL MATCH";
+    }
+
+    return {
+      eligible,
+      score,
+      classification,
+      hardMatches,
+      softMatches,
+      reasons,
+      tradeoffs,
+      exclusions
+    };
   }
 };
+
+function quickAdjustCommute(newMins) {
+  if (currentRequirementProfile) {
+    currentRequirementProfile.max_commute_minutes = newMins;
+    if (typeof shortlistDraft !== "undefined") shortlistDraft.max_commute_minutes = newMins;
+    updateCustomerSearchSummary();
+    applyFilters();
+  }
+}
+
+function quickAdjustBudget(addLakhs) {
+  if (currentRequirementProfile) {
+    currentRequirementProfile.budget_max = (currentRequirementProfile.budget_max || 150) + addLakhs;
+    currentRequirementProfile.budget_flexible = false;
+    if (typeof shortlistDraft !== "undefined") shortlistDraft.budget_max = currentRequirementProfile.budget_max;
+    updateCustomerSearchSummary();
+    applyFilters();
+  }
+}
+
+function updateCustomerSearchSummary() {
+  if (!currentRequirementProfile) return;
+  const summaryText = document.getElementById("customerSearchSummaryText");
+  const locStr = (currentRequirementProfile.preferred_locations || []).join(", ") || "Bengaluru";
+  const cfgStr = (currentRequirementProfile.configuration || []).join(", ") || "Properties";
+  const bgtStr = currentRequirementProfile.budget_flexible ? "Flexible Budget" : `₹${currentRequirementProfile.budget_min || 0}L–${currentRequirementProfile.budget_max || 999}L`;
+  if (summaryText) summaryText.textContent = `${cfgStr} · ${bgtStr} · ${locStr} · Near ${currentRequirementProfile.work_location_name || 'workplace'} (≤${currentRequirementProfile.max_commute_minutes || 45}m)`;
+}
 
 // 3. GUIDED 8-STEP SHORTLIST FLOW MANAGER
 let shortlistDraft = {
