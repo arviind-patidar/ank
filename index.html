@@ -17365,10 +17365,20 @@ function updateModalStepUI() {
   const btnBack = document.getElementById("btnModalBack");
   const btnNext = document.getElementById("btnModalNext");
 
-  if (indicator) indicator.textContent = `STEP ${currentCustomerStep} OF 8`;
+  if (indicator) indicator.textContent = currentCustomerStep === 8 ? "YOUR PERSONALIZED MAP IS READY" : `STEP ${currentCustomerStep} OF 7`;
   if (fill) fill.style.width = `${(currentCustomerStep / 8) * 100}%`;
   if (btnBack) btnBack.style.display = currentCustomerStep > 1 ? "inline-block" : "none";
-  if (btnNext) btnNext.textContent = currentCustomerStep === 8 ? "GET MY SHORTLIST ✨" : "CONTINUE →";
+  if (btnNext) {
+    if (currentCustomerStep === 7) {
+      btnNext.textContent = "VIEW MY MATCHES ✨";
+      btnNext.style.display = "inline-block";
+    } else if (currentCustomerStep === 8) {
+      btnNext.style.display = "none";
+    } else {
+      btnNext.textContent = "CONTINUE →";
+      btnNext.style.display = "inline-block";
+    }
+  }
 
   for (let i = 1; i <= 8; i++) {
     const el = document.getElementById(`stepContainer${i}`);
@@ -17377,24 +17387,31 @@ function updateModalStepUI() {
 }
 
 function nextCustomerStep() {
-  if (currentCustomerStep === 1) {
-    const name = document.getElementById("custLeadName")?.value.trim();
-    const phone = document.getElementById("custLeadPhone")?.value.trim();
-    if (!name || !phone) {
-      alert("Please enter your name and WhatsApp number to continue.");
-      return;
-    }
-    shortlistDraft.name = name;
-    shortlistDraft.phone = phone;
-    shortlistDraft.email = document.getElementById("custLeadEmail")?.value.trim();
-  }
-
   if (currentCustomerStep < 8) {
     currentCustomerStep++;
+    if (currentCustomerStep === 8) {
+      calculateShortlistPreview();
+    }
     updateModalStepUI();
   } else {
-    // Finish questionnaire & apply requirement profile
     finishCustomerShortlist();
+  }
+}
+
+function calculateShortlistPreview() {
+  const draftProfile = { ...shortlistDraft };
+  const matches = ALL_PROPERTIES.map(p => MatchingEngine.calculateProjectMatch(p, draftProfile));
+  const strongMatches = matches.filter(m => m.classification === "STRONG MATCH").length;
+  const totalMatches = matches.filter(m => m.classification !== "ALTERNATIVE").length || 12;
+  const altMatches = matches.filter(m => m.classification === "ALTERNATIVE").length;
+
+  const summaryEl = document.getElementById("modalResultsSummaryText");
+  const locStr = draftProfile.preferred_locations.join(", ") || "Bengaluru";
+  const cfgStr = draftProfile.configuration.join(", ") || "Properties";
+  const bgtStr = draftProfile.budget_flexible ? "Flexible Budget" : `₹${draftProfile.budget_min}L–${draftProfile.budget_max}L`;
+  
+  if (summaryEl) {
+    summaryEl.innerHTML = `<strong>${cfgStr} · ${bgtStr} · ${locStr}</strong><br/><span style="color:var(--gold); font-weight:800;">${totalMatches} PROJECTS MATCH</span> (${strongMatches} Strong Matches, ${altMatches} Alternatives)`;
   }
 }
 
@@ -17451,23 +17468,31 @@ function toggleConfig(val, el) {
 }
 
 function finishCustomerShortlist() {
+  const name = document.getElementById("custLeadName")?.value.trim();
+  const phone = document.getElementById("custLeadPhone")?.value.trim();
+  const email = document.getElementById("custLeadEmail")?.value.trim();
+
+  shortlistDraft.name = name || "Valued Homebuyer";
+  shortlistDraft.phone = phone || "";
+  shortlistDraft.email = email || "";
+
   closeCustomerShortlistModal();
   closeCustomerHeroBanner();
 
   currentRequirementProfile = { ...shortlistDraft };
 
-  // Save new lead object
-  const newLead = {
-    lead_id: `LEAD_${Date.now()}`,
-    name: shortlistDraft.name,
-    phone: shortlistDraft.phone,
-    email: shortlistDraft.email,
-    created_at: new Date().toISOString(),
-    requirement: currentRequirementProfile
-  };
-  leadDatabase.unshift(newLead);
+  if (phone) {
+    const newLead = {
+      lead_id: `LEAD_${Date.now()}`,
+      name: shortlistDraft.name,
+      phone: shortlistDraft.phone,
+      email: shortlistDraft.email,
+      created_at: new Date().toISOString(),
+      requirement: currentRequirementProfile
+    };
+    leadDatabase.unshift(newLead);
+  }
 
-  // Update Context Bar
   const contextBar = document.getElementById("customerSearchContextBar");
   const summaryText = document.getElementById("customerSearchSummaryText");
 
