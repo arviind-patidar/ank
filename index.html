@@ -14633,27 +14633,27 @@ function renderDetailPanel(property) {
   var nearestHospital = nearby.hospitals && nearby.hospitals[0];
 
   var mattersHtml = '<div class="pdp__section">' +
-    '<div class="pdp__section-label" style="color:var(--gold);">WHY THIS PROJECT MATTERS</div>' +
-    '<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px;">' +
-    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
-      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">WORKPLACE HUB</div>' +
-      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestTP ? nearestTP.name : 'ITPL Hub') + '</div>' +
-      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestTP ? '~' + Math.round(nearestTP.distanceKm * 2.5 + 3) + ' min drive (' + nearestTP.distanceKm.toFixed(1) + ' km)' : '— DATA UNAVAILABLE') + '</div>' +
+    '<div class="pdp__section-label" style="color:var(--rust); font-weight:700;">WHY THIS PROJECT MATTERS</div>' +
+    '<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">' +
+    '<div style="background:#FFFFFF; border:1px solid var(--line); padding:9px 12px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">' +
+      '<div style="font-size:9px; color:#59616B; font-family:var(--font-mono); font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">WORKPLACE HUB</div>' +
+      '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestTP ? nearestTP.name : 'ITPL Hub') + '</div>' +
+      '<div style="font-size:10.5px; color:var(--rust); font-family:var(--font-mono); font-weight:600; margin-top:2px;">' + (nearestTP ? '~' + Math.round(nearestTP.distanceKm * 2.5 + 3) + ' min drive (' + nearestTP.distanceKm.toFixed(1) + ' km)' : '— DATA UNAVAILABLE') + '</div>' +
     '</div>' +
-    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
-      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">METRO CONNECTIVITY</div>' +
-      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestMetro ? nearestMetro.name : 'Purple Line') + '</div>' +
-      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestMetro ? nearestMetro.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
+    '<div style="background:#FFFFFF; border:1px solid var(--line); padding:9px 12px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">' +
+      '<div style="font-size:9px; color:#59616B; font-family:var(--font-mono); font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">METRO CONNECTIVITY</div>' +
+      '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestMetro ? nearestMetro.name : 'Purple Line') + '</div>' +
+      '<div style="font-size:10.5px; color:var(--rust); font-family:var(--font-mono); font-weight:600; margin-top:2px;">' + (nearestMetro ? nearestMetro.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
     '</div>' +
-    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
-      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">TOP SCHOOL</div>' +
-      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestSchool ? nearestSchool.name : 'Premier School') + '</div>' +
-      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestSchool ? nearestSchool.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
+    '<div style="background:#FFFFFF; border:1px solid var(--line); padding:9px 12px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">' +
+      '<div style="font-size:9px; color:#59616B; font-family:var(--font-mono); font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">TOP SCHOOL</div>' +
+      '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestSchool ? nearestSchool.name : 'Premier School') + '</div>' +
+      '<div style="font-size:10.5px; color:var(--rust); font-family:var(--font-mono); font-weight:600; margin-top:2px;">' + (nearestSchool ? nearestSchool.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
     '</div>' +
-    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
-      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">HEALTHCARE</div>' +
-      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestHospital ? nearestHospital.name : 'Multi-specialty') + '</div>' +
-      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestHospital ? nearestHospital.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
+    '<div style="background:#FFFFFF; border:1px solid var(--line); padding:9px 12px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">' +
+      '<div style="font-size:9px; color:#59616B; font-family:var(--font-mono); font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">HEALTHCARE</div>' +
+      '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestHospital ? nearestHospital.name : 'Multi-specialty') + '</div>' +
+      '<div style="font-size:10.5px; color:var(--rust); font-family:var(--font-mono); font-weight:600; margin-top:2px;">' + (nearestHospital ? nearestHospital.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
     '</div>' +
     '</div></div>';
 
@@ -14661,9 +14661,9 @@ function renderDetailPanel(property) {
   var searchMatchHtml = "";
   if (typeof currentRequirementProfile !== "undefined" && currentRequirementProfile && typeof MatchingEngine !== "undefined") {
     var match = MatchingEngine.calculateProjectMatch(property, currentRequirementProfile);
-    searchMatchHtml = '<div class="pdp__section" style="background:rgba(184,142,82,0.06); border:1px solid rgba(184,142,82,0.25); border-radius:6px; padding:10px 12px;">' +
-      '<div class="pdp__section-label" style="color:var(--gold); margin-bottom:6px;">YOUR SEARCH MATCH (' + match.score + '%)</div>' +
-      '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:#E2E8F0;">' +
+    searchMatchHtml = '<div class="pdp__section" style="background:#FFFFFF; border:1px solid var(--line); border-left:3px solid var(--rust); border-radius:6px; padding:10px 12px;">' +
+      '<div class="pdp__section-label" style="color:var(--rust); margin-bottom:6px; font-weight:700;">YOUR SEARCH MATCH (' + match.score + '%)</div>' +
+      '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:var(--navy); font-weight:600;">' +
         match.reasons.map(function(r) { return '<div>' + r + '</div>'; }).join('') +
       '</div></div>';
   }
