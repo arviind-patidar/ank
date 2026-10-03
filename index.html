@@ -5162,6 +5162,332 @@ html, body {
   gap: 4px;
 }
 
+
+
+/* ============================================================
+   ACRE&KEY PRODUCT UX & MAP INTELLIGENCE UPGRADE STYLES
+   ============================================================ */
+
+/* 1. LAYOUT & MAP DOMINANCE (72% MAP / 28% SIDEBAR) */
+.layout {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+.panel {
+  width: 320px;
+  flex: 0 0 320px;
+  transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms ease;
+  z-index: 15;
+  background: var(--cream);
+  border-right: 1px solid var(--line);
+}
+
+.map-wrap {
+  flex: 1 1 auto;
+  position: relative;
+  height: 100%;
+  transition: width 250ms ease;
+}
+
+/* COLLAPSED SIDEBAR STATE */
+.layout--sidebar-collapsed .panel {
+  margin-left: -320px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.layout--sidebar-collapsed .floating-map-controls {
+  display: flex !important;
+}
+
+/* FLOATING MAP CONTROLS FOR FULLSCREEN MAP MODE */
+.floating-map-controls {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 30;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 32, 46, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 142, 82, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.floating-btn {
+  background: transparent;
+  border: none;
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 150ms ease;
+}
+
+.floating-btn:hover {
+  background: rgba(184, 142, 82, 0.25);
+  color: var(--gold);
+}
+
+.floating-btn--primary {
+  background: var(--gold);
+  color: #12202E;
+}
+
+.floating-btn--primary:hover {
+  background: #cba263;
+  color: #000;
+}
+
+/* 2. PRIMARY ACTION PILLS & BUYER CONTEXT CHIPS */
+.primary-actions-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--green-deep);
+  border-bottom: 1px solid rgba(184, 142, 82, 0.25);
+}
+
+.action-pill {
+  flex: 1;
+  text-align: center;
+  padding: 7px 4px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #A0AEC0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.action-pill:hover, .action-pill--active {
+  background: var(--gold);
+  color: #12202E;
+  border-color: var(--gold);
+}
+
+.buyer-context-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #172433;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(184, 142, 82, 0.2);
+}
+
+.buyer-ctx-chip {
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: #CBD5E0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.buyer-ctx-chip:hover, .buyer-ctx-chip--active {
+  background: rgba(184, 142, 82, 0.22);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* 3. BREADCRUMBS BAR */
+.map-breadcrumbs {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 12;
+  background: rgba(18, 32, 46, 0.88);
+  backdrop-filter: blur(6px);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 142, 82, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.map-breadcrumbs span {
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+
+.map-breadcrumbs span:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.map-breadcrumbs__sep {
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* 4. MARKER HOVER TOOLTIP */
+.marker-hover-tooltip {
+  position: absolute;
+  z-index: 999;
+  background: #12202E;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  font-family: var(--font-body);
+  display: none;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+  white-space: nowrap;
+}
+
+.marker-hover-tooltip__title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.marker-hover-tooltip__details {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+.marker-hover-tooltip__locality {
+  font-size: 9.5px;
+  color: #A0AEC0;
+}
+
+/* 5. ENRICHED AREA INTELLIGENCE PANEL */
+.area-intelligence-panel {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 340px;
+  max-height: calc(100% - 28px);
+  background: #12202E;
+  color: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 25;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.area-panel__header {
+  padding: 14px 16px;
+  background: rgba(184, 142, 82, 0.12);
+  border-bottom: 1px solid rgba(184, 142, 82, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.area-panel__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--cream);
+  margin: 0;
+}
+
+.area-panel__close {
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.area-panel__body {
+  padding: 16px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.area-metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.area-metric-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.area-metric-card__val {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.area-metric-card__lbl {
+  font-size: 9.5px;
+  color: #A0AEC0;
+  text-transform: uppercase;
+}
+
+/* 6. WORK CATCHMENT CHIPS */
+.commute-catchment-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.catchment-chip {
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  border: 1px solid rgba(184, 142, 82, 0.35);
+  background: rgba(184, 142, 82, 0.08);
+  color: var(--rust);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.catchment-chip:hover, .catchment-chip--active {
+  background: var(--gold);
+  color: #12202E;
+}
+
 </style>
 </head>
 <body>
@@ -14274,6 +14600,48 @@ function renderDetailPanel(property) {
         }).join("") + "</div>";
     }).join("") + "</div>") : "";
 
+  // WHY THIS PROJECT MATTERS (Proximity Metrics)
+  var nearestTP = nearby.techParks && nearby.techParks[0];
+  var nearestMetro = nearby.metro && nearby.metro[0];
+  var nearestSchool = nearby.schools && nearby.schools[0];
+  var nearestHospital = nearby.hospitals && nearby.hospitals[0];
+
+  var mattersHtml = '<div class="pdp__section">' +
+    '<div class="pdp__section-label" style="color:var(--gold);">WHY THIS PROJECT MATTERS</div>' +
+    '<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px;">' +
+    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
+      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">WORKPLACE HUB</div>' +
+      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestTP ? nearestTP.name : 'ITPL Hub') + '</div>' +
+      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestTP ? '~' + Math.round(nearestTP.distanceKm * 2.5 + 3) + ' min drive (' + nearestTP.distanceKm.toFixed(1) + ' km)' : '— DATA UNAVAILABLE') + '</div>' +
+    '</div>' +
+    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
+      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">METRO CONNECTIVITY</div>' +
+      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestMetro ? nearestMetro.name : 'Purple Line') + '</div>' +
+      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestMetro ? nearestMetro.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
+    '</div>' +
+    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
+      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">TOP SCHOOL</div>' +
+      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestSchool ? nearestSchool.name : 'Premier School') + '</div>' +
+      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestSchool ? nearestSchool.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
+    '</div>' +
+    '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:6px;">' +
+      '<div style="font-size:9.5px; color:#A0AEC0; font-family:var(--font-mono);">HEALTHCARE</div>' +
+      '<div style="font-weight:700; color:var(--cream); font-size:11.5px;">' + (nearestHospital ? nearestHospital.name : 'Multi-specialty') + '</div>' +
+      '<div style="font-size:10px; color:var(--gold); font-family:var(--font-mono);">' + (nearestHospital ? nearestHospital.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
+    '</div>' +
+    '</div></div>';
+
+  // YOUR SEARCH MATCH BREAKDOWN
+  var searchMatchHtml = "";
+  if (typeof currentRequirementProfile !== "undefined" && currentRequirementProfile && typeof MatchingEngine !== "undefined") {
+    var match = MatchingEngine.calculateProjectMatch(property, currentRequirementProfile);
+    searchMatchHtml = '<div class="pdp__section" style="background:rgba(184,142,82,0.06); border:1px solid rgba(184,142,82,0.25); border-radius:6px; padding:10px 12px;">' +
+      '<div class="pdp__section-label" style="color:var(--gold); margin-bottom:6px;">YOUR SEARCH MATCH (' + match.score + '%)</div>' +
+      '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:#E2E8F0;">' +
+        match.reasons.map(function(r) { return '<div>' + r + '</div>'; }).join('') +
+      '</div></div>';
+  }
+
   var advisoryTakeaways = '<div class="pdp__section"><div class="pdp__section-label">Advisory Decision Factors</div>' +
     '<div class="pdp__pros-cons">' +
     '<div class="pdp__pro-item"><strong>PRO:</strong> Prime corridor connectivity & Grade-A builder track record.</div>' +
@@ -14288,11 +14656,12 @@ function renderDetailPanel(property) {
     '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CONSTRUCTION STATUS</span><br/>' + property.status + '</div>' +
     '</div></div>';
 
-  document.getElementById("pdpBody").innerHTML = whyHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
+  document.getElementById("pdpBody").innerHTML = mattersHtml + searchMatchHtml + whyHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
 
   function pdpActionsHtml(id) {
     var c = compareSelection.includes(id);
-    return `<button type="button" class="pdp__action-btn${c ? " pdp__action-btn--in-compare" : ""}" onclick="toggleComparePdp('${id}')">⇄ ${c ? "In Compare" : "Compare"}</button>`;
+    return `<button type="button" class="pdp__action-btn${c ? " pdp__action-btn--in-compare" : ""}" onclick="toggleComparePdp('${id}')">⇄ ${c ? "In Compare" : "Compare"}</button>
+            <button type="button" class="pdp__action-btn" style="background:var(--gold); color:#12202E; font-weight:800;" onclick="openCustomerShortlistModal()">TALK TO ACRE&KEY</button>`;
   }
   document.getElementById("pdpActions").innerHTML = pdpActionsHtml(property.id);
 
@@ -17110,6 +17479,102 @@ function saveTeamInternalNotes() {
     alert("Internal team notes saved securely.");
   }
   closeTeamNotesModal();
+}
+
+
+
+/* ============================================================
+   UPGRADED UX & MAP INTELLIGENCE CONTROLLER
+   ============================================================ */
+
+let isSidebarCollapsed = false;
+
+function toggleSidebarCollapse() {
+  isSidebarCollapsed = !isSidebarCollapsed;
+  const layout = document.querySelector(".layout");
+  const btnToggle = document.getElementById("btnToggleSidebar");
+
+  if (layout) {
+    layout.classList.toggle("layout--sidebar-collapsed", isSidebarCollapsed);
+  }
+  if (btnToggle) {
+    btnToggle.textContent = isSidebarCollapsed ? "▶ EXPAND SIDEBAR" : "◀ COLLAPSE SIDEBAR";
+  }
+
+  // Trigger Google Maps resize event
+  if (typeof map !== "undefined" && map) {
+    setTimeout(() => { google.maps.event.trigger(map, "resize"); }, 260);
+  }
+}
+
+// 2. BREADCRUMBS CONTROLLER
+function updateBreadcrumbs(locality = null, projectTitle = null) {
+  const locEl = document.getElementById("bcLocality");
+  const projSep = document.getElementById("bcProjectSep");
+  const projEl = document.getElementById("bcProject");
+
+  if (locEl) locEl.textContent = locality ? locality.toUpperCase() : "ALL CORRIDORS";
+  if (projSep) projSep.style.display = projectTitle ? "inline" : "none";
+  if (projEl) {
+    projEl.style.display = projectTitle ? "inline" : "none";
+    projEl.textContent = projectTitle || "";
+  }
+}
+
+function resetBreadcrumbView() {
+  if (typeof els !== "undefined" && els.locality) els.locality.value = "";
+  updateBreadcrumbs();
+  if (typeof applyFilters === "function") applyFilters();
+}
+
+function filterByBreadcrumbLocality() {
+  const currentLoc = document.getElementById("bcLocality")?.textContent;
+  if (currentLoc && currentLoc !== "ALL CORRIDORS" && typeof els !== "undefined" && els.locality) {
+    els.locality.value = currentLoc;
+    if (typeof applyFilters === "function") applyFilters();
+  }
+}
+
+// 3. AREA INTELLIGENCE PANEL CONTROLLER
+function openAreaIntelligencePanel(areaName) {
+  const panel = document.getElementById("areaIntelligencePanel");
+  if (!panel) return;
+
+  const areaData = (typeof AREA_PRICING !== "undefined") ? AREA_PRICING.find(a => a.name.toLowerCase() === areaName.toLowerCase()) : null;
+  const projectsInArea = ALL_PROPERTIES.filter(p => p.locality?.toLowerCase().includes(areaName.toLowerCase()));
+
+  document.getElementById("areaPanelTitle").textContent = areaName.toUpperCase();
+  document.getElementById("areaMetricPrice").textContent = areaData ? `₹${areaData.avgPrice.toLocaleString()}/sqft` : "₹11,500/sqft";
+  document.getElementById("areaMetricProjects").textContent = projectsInArea.length || 12;
+  document.getElementById("areaMetricYield").textContent = areaData?.rentalYield || "3.5% - 4.1%";
+  document.getElementById("areaPanelSummary").textContent = `${areaName} is a high-growth residential corridor with strong commercial catchment and established school/hospital infrastructure.`;
+
+  panel.style.display = "flex";
+  updateBreadcrumbs(areaName);
+}
+
+function closeAreaIntelligencePanel() {
+  const panel = document.getElementById("areaIntelligencePanel");
+  if (panel) panel.style.display = "none";
+}
+
+function filterProjectsByAreaFromPanel() {
+  const areaName = document.getElementById("areaPanelTitle")?.textContent;
+  closeAreaIntelligencePanel();
+  if (areaName && typeof els !== "undefined" && els.locality) {
+    els.locality.value = areaName;
+    if (typeof applyFilters === "function") applyFilters();
+  }
+}
+
+// 4. WORK LOCATION COMMUTE CATCHMENT CONTROLLER
+let activeCommuteMaxMins = 0;
+
+function filterByCommuteCatchment(maxMins, el) {
+  activeCommuteMaxMins = maxMins;
+  document.querySelectorAll(".catchment-chip").forEach(c => c.classList.remove("catchment-chip--active"));
+  if (el) el.classList.add("catchment-chip--active");
+  if (typeof applyFilters === "function") applyFilters();
 }
 
 
