@@ -9343,41 +9343,6 @@ function updateMapViewPillUI() {
 
 
 /* LOCALITY SUMMARY STRIP CONTROLLER */
-const LOCALITY_SUMMARIES = {
-  "Whitefield": {
-    tagline: "Established IT hub, premium residential enclave & high resale liquidity.",
-    highlight: "Core ITPL & EPIP Zone · Purple Line Metro Operational · Top International Schools"
-  },
-  "Varthur": {
-    tagline: "Rapidly transforming lakefront tech corridor connecting Whitefield to Sarjapur.",
-    highlight: "High appreciation velocity · Mega township developments · Sigma Tech Park proximity"
-  },
-  "KR Puram": {
-    tagline: "Major transit & arterial hub with direct ORR, OMR & Blue/Purple Line connectivity.",
-    highlight: "Seamless airport & city connectivity · Competitive price points · Strong rental yields"
-  },
-  "Budigere Cross": {
-    tagline: "Emerging North-East growth corridor with wide 8-lane roads and value pricing.",
-    highlight: "Quick Airport Road access · Master-planned townships · High future capital appreciation"
-  },
-  "Brookefield": {
-    tagline: "Mature residential micro-market nestled between ITPL and Marathahalli ORR.",
-    highlight: "Walk-to-work tech access · Kundalahalli Metro stop · High rental demand from techies"
-  },
-  "Hoodi": {
-    tagline: "Key industrial-turned-residential hub immediately adjacent to Hoodi Metro Station.",
-    highlight: "Zuri & Park Square Mall proximity · Backwards-integrated Grade-A builders"
-  },
-  "Mahadevapura": {
-    tagline: "High-density ORR tech corridor hub featuring established gated communities.",
-    highlight: "Direct ORR tech park frontage · Phoenix Marketcity access · Robust commercial base"
-  },
-  "Panathur": {
-    tagline: "Strategic tech corridor link between Marathahalli and Kadubeesanahalli ORR.",
-    highlight: "Cisco & JP Morgan corridor · High rental yield zone · Greek & themed luxury projects"
-  }
-};
-
 function findLocalityMatchName(input) {
   if (!input) return "";
   const str = input.toLowerCase().replace(/-/g, " ");
@@ -9502,28 +9467,38 @@ function updateLocalitySummaryStrip(rawLocality) {
     c.setAttribute("aria-pressed", isMatch ? "true" : "false");
   });
 
-  // Calculate statistics for properties matching this locality
+  // Calculate statistics & nearby amenities 100% dynamically from Sheet data
   const matching = ALL_PROPERTIES.filter((p) =>
     p.locality.toLowerCase().includes(rawLocality.toLowerCase()) ||
     p.locality.toLowerCase().includes(keyName.toLowerCase()) ||
     keyName.toLowerCase().includes(p.locality.toLowerCase())
   );
 
-  const count = matching.length || ALL_PROPERTIES.filter((p) => p.locality.toLowerCase().includes("whitefield")).length;
+  const count = matching.length;
+  const areaInfo = AREA_PRICING.find((a) => a.name.toLowerCase() === keyName.toLowerCase() || keyName.toLowerCase().includes(a.name.toLowerCase())) ||
+                   AREA_PRICING.find((a) => a.name.toLowerCase().includes(keyName.toLowerCase())) ||
+                   { minPrice: 8500, maxPrice: 15000, avgPrice: 11500 };
 
-  const areaInfo = AREA_PRICING.find((a) => a.name.toLowerCase() === keyName.toLowerCase()) || AREA_PRICING[0];
-  const sqftRange = `₹${Math.round(areaInfo.minPrice).toLocaleString('en-IN')} – ₹${Math.round(areaInfo.maxPrice).toLocaleString('en-IN')}/sqft`;
+  const sqftRange = (areaInfo.minPrice && areaInfo.maxPrice)
+    ? `₹${Math.round(areaInfo.minPrice).toLocaleString('en-IN')} – ₹${Math.round(areaInfo.maxPrice).toLocaleString('en-IN')}/sqft`
+    : `Avg ₹${Math.round(areaInfo.avgPrice || 11500).toLocaleString('en-IN')}/sqft`;
 
-  const meta = LOCALITY_SUMMARIES[keyName] || {
-    tagline: `Key residential micro-market in ${keyName} with strong connectivity and infrastructure.`,
-    highlight: "Prime connectivity · High demand corridor · Excellent social amenities"
-  };
+  // Compute spatial center & count nearby amenities dynamically
+  let centerLat = areaInfo.lat, centerLng = areaInfo.lng;
+  if (!centerLat && matching.length > 0) {
+    centerLat = matching.reduce((s, p) => s + p.lat, 0) / matching.length;
+    centerLng = matching.reduce((s, p) => s + p.lng, 0) / matching.length;
+  }
 
-  const highlightsList = meta.highlight.split(' · ');
-  const p1 = highlightsList[0] || 'Core tech hub status';
-  const p2 = highlightsList[1] || 'Metro & highway access';
-  const p3 = highlightsList[2] || 'Top schools & healthcare';
-  const p4 = 'High resale liquidity & growth';
+  const nearbyParks = (centerLat && typeof haversineKm === 'function') ? TECH_PARKS.filter(tp => haversineKm(centerLat, centerLng, tp.lat, tp.lng) <= 6.0) : [];
+  const nearestMetro = (centerLat && typeof haversineKm === 'function') ? METRO_STATIONS.map(m => ({ ...m, d: haversineKm(centerLat, centerLng, m.lat, m.lng) })).sort((a, b) => a.d - b.d)[0] : null;
+  const nearbySchools = (centerLat && typeof haversineKm === 'function') ? SCHOOLS.filter(s => haversineKm(centerLat, centerLng, s.lat, s.lng) <= 5.0) : [];
+
+  const tagline = areaInfo.tagline || `${keyName} Corridor · ${count} Active Projects · ${sqftRange}`;
+  const p1 = areaInfo.employmentHighlight || (nearbyParks.length > 0 ? `${nearbyParks.length} Tech Parks within 6 km` : 'Active Employment Hub');
+  const p2 = areaInfo.transitHighlight || (nearestMetro ? `${nearestMetro.name} (${nearestMetro.d.toFixed(1)} km)` : 'Transit Connectivity');
+  const p3 = areaInfo.socialInfraHighlight || (nearbySchools.length > 0 ? `${nearbySchools.length} Top Schools nearby` : 'Established Social Infra');
+  const p4 = areaInfo.outlook || (count > 0 ? `${count} Active Projects in Corridor` : 'Growth Micro-Market');
 
   strip.innerHTML = `
     <div class="l-strip__header">
@@ -9536,7 +9511,7 @@ function updateLocalitySummaryStrip(rawLocality) {
         <button type="button" class="l-strip__close" onclick="updateLocalitySummaryStrip(''); els.locality.value=''; applyFilters();" title="Clear locality filter">✕</button>
       </div>
     </div>
-    <div class="l-strip__tagline">${meta.tagline}</div>
+    <div class="l-strip__tagline">${tagline}</div>
     <div class="l-strip__pillars">
       <div class="l-strip__pillar-item">🏢 <strong>Employment:</strong> ${p1}</div>
       <div class="l-strip__pillar-item">🚇 <strong>Transit:</strong> ${p2}</div>
@@ -10004,7 +9979,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v7"
+  CACHE_KEY: "ackey_app_data_v8"
 };
 
 const DataService = {

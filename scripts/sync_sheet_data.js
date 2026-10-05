@@ -160,6 +160,11 @@ const normalizedAreaPricing = rawAreaPricing.map((ap, idx) => {
     lat: ap.lat,
     lng: ap.lng,
     category: ap.category || 'Residential Corridor',
+    tagline: ap.tagline || null,
+    employmentHighlight: ap.employmentHighlight || ap.employment || null,
+    transitHighlight: ap.transitHighlight || ap.transit || null,
+    socialInfraHighlight: ap.socialInfraHighlight || ap.socialInfra || null,
+    outlook: ap.outlook || null,
     source: 'GoogleSheet_SSOT'
   };
 });
