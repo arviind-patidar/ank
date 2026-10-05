@@ -7908,6 +7908,37 @@ function renderDetailPanel(property) {
       tradeoffsList.map(function(t) { return '<div>' + t + '</div>'; }).join('') +
     '</div></div>';
 
+  // UNIT CONFIGURATION & PRICING BREAKDOWN (Sheet-Driven Inventory Data)
+  var inventoryHtml = "";
+  if (Array.isArray(property.inventory) && property.inventory.length > 0) {
+    inventoryHtml = '<div class="pdp__section" style="background:#F8FAFC; border:1px solid var(--line); border-radius:6px; padding:10px 12px; margin-top:8px;">' +
+      '<div class="pdp__section-label" style="color:var(--navy); font-weight:800; font-size:10px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">' +
+        '<span>UNIT PRICING & CONFIGURATIONS</span>' +
+        '<span style="font-size:9px; background:#E2E8F0; color:#4A5568; padding:1px 5px; border-radius:3px;">SHEET SSOT DATA</span>' +
+      '</div>' +
+      '<table style="width:100%; border-collapse:collapse; font-size:10.5px; text-align:left;">' +
+        '<thead>' +
+          '<tr style="border-bottom:1.5px solid var(--line); color:#4A5568; font-weight:700; font-family:var(--font-mono); font-size:9px;">' +
+            '<th style="padding:4px 0;">BHK TYPE</th>' +
+            '<th style="padding:4px 0;">SUPER BUILTUP</th>' +
+            '<th style="padding:4px 0;">PRICE / SQFT</th>' +
+            '<th style="padding:4px 0; text-align:right;">ALL-INCLUSIVE</th>' +
+          '</tr>' +
+        '</thead>' +
+        '<tbody>' +
+          property.inventory.map(function(item) {
+            return '<tr style="border-bottom:1px solid #EDF2F7;">' +
+              '<td style="padding:5px 0; font-weight:700; color:var(--navy);">' + item.bhkType + '</td>' +
+              '<td style="padding:5px 0; color:#59616B; font-family:var(--font-mono);">' + item.superBuiltupAreaSqft + ' sqft</td>' +
+              '<td style="padding:5px 0; color:#59616B; font-family:var(--font-mono);">₹' + item.pricePerSqft.toLocaleString() + '</td>' +
+              '<td style="padding:5px 0; font-weight:800; color:var(--rust); font-family:var(--font-mono); text-align:right;">' + item.allInclusivePriceStr + '</td>' +
+            '</tr>';
+          }).join('') +
+        '</tbody>' +
+      '</table>' +
+    '</div>';
+  }
+
   // YOU MAY ALSO CONSIDER (Alternatives)
   var altProps = ALL_PROPERTIES.filter(function(p) {
     return p.id !== property.id && (p.locality === property.locality || p.zone === property.zone);
@@ -7924,7 +7955,7 @@ function renderDetailPanel(property) {
       }).join('') +
     '</div></div>') : '';
 
-  document.getElementById("pdpBody").innerHTML = mattersHtml + searchMatchHtml + tradeoffsHtml + whyHtml + alternativesHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
+  document.getElementById("pdpBody").innerHTML = mattersHtml + searchMatchHtml + inventoryHtml + tradeoffsHtml + whyHtml + alternativesHtml + advisoryTakeaways + commuteHtml + amenityHtml + detailHtml;
 
   function pdpActionsHtml(id) {
     var c = compareSelection.includes(id);
@@ -9988,7 +10019,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v3"
+  CACHE_KEY: "ackey_app_data_v4"
 };
 
 const DataService = {

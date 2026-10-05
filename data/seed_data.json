@@ -33,7 +33,7 @@
       "zone": "Core Whitefield–Hoodi",
       "status": "Under construction",
       "priceRange": "₹1.95Cr – 4.54Cr",
-      "bhk": "2, 3 & 4 BHK",
+      "bhk": "2 & 3 BHK",
       "lat": 12.95466944,
       "lng": 77.747175,
       "akScore": 78.3,
@@ -41,7 +41,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 195,
-      "maxPriceLakhs": 454
+      "maxPriceLakhs": 454,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 20526,
+          "allInclusivePriceLakhs": 195,
+          "allInclusivePriceStr": "₹1.95 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 23214,
+          "allInclusivePriceLakhs": 325,
+          "allInclusivePriceStr": "₹3.25 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 24595,
+          "allInclusivePriceLakhs": 455,
+          "allInclusivePriceStr": "₹4.55 Cr"
+        }
+      ],
+      "avgPricePerSqft": 22778
     },
     {
       "id": "P02",
@@ -59,7 +83,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
-      "maxPriceLakhs": 557
+      "maxPriceLakhs": 557,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 20783,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 21227,
+          "allInclusivePriceLakhs": 398,
+          "allInclusivePriceStr": "₹3.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 21423,
+          "allInclusivePriceLakhs": 557,
+          "allInclusivePriceStr": "₹5.57 Cr"
+        }
+      ],
+      "avgPricePerSqft": 21144
     },
     {
       "id": "P03",
@@ -77,7 +125,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
-      "maxPriceLakhs": 557
+      "maxPriceLakhs": 557,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 20783,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 21227,
+          "allInclusivePriceLakhs": 398,
+          "allInclusivePriceStr": "₹3.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 21423,
+          "allInclusivePriceLakhs": 557,
+          "allInclusivePriceStr": "₹5.57 Cr"
+        }
+      ],
+      "avgPricePerSqft": 21144
     },
     {
       "id": "P04",
@@ -95,7 +167,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
-      "maxPriceLakhs": 557
+      "maxPriceLakhs": 557,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 20783,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 21227,
+          "allInclusivePriceLakhs": 398,
+          "allInclusivePriceStr": "₹3.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 21423,
+          "allInclusivePriceLakhs": 557,
+          "allInclusivePriceStr": "₹5.57 Cr"
+        }
+      ],
+      "avgPricePerSqft": 21144
     },
     {
       "id": "P05",
@@ -113,7 +209,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P06",
@@ -131,7 +251,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
-      "maxPriceLakhs": 557
+      "maxPriceLakhs": 557,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 20783,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 21227,
+          "allInclusivePriceLakhs": 398,
+          "allInclusivePriceStr": "₹3.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 21423,
+          "allInclusivePriceLakhs": 557,
+          "allInclusivePriceStr": "₹5.57 Cr"
+        }
+      ],
+      "avgPricePerSqft": 21144
     },
     {
       "id": "P07",
@@ -149,7 +293,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
-      "maxPriceLakhs": 557
+      "maxPriceLakhs": 557,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 20783,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 21227,
+          "allInclusivePriceLakhs": 398,
+          "allInclusivePriceStr": "₹3.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 21423,
+          "allInclusivePriceLakhs": 557,
+          "allInclusivePriceStr": "₹5.57 Cr"
+        }
+      ],
+      "avgPricePerSqft": 21144
     },
     {
       "id": "P08",
@@ -167,7 +335,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
-      "maxPriceLakhs": 557
+      "maxPriceLakhs": 557,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 20783,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 21227,
+          "allInclusivePriceLakhs": 398,
+          "allInclusivePriceStr": "₹3.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 21423,
+          "allInclusivePriceLakhs": 557,
+          "allInclusivePriceStr": "₹5.57 Cr"
+        }
+      ],
+      "avgPricePerSqft": 21144
     },
     {
       "id": "P09",
@@ -185,7 +377,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
-      "maxPriceLakhs": 290
+      "maxPriceLakhs": 290,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13579,
+          "allInclusivePriceLakhs": 129,
+          "allInclusivePriceStr": "₹1.29 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 15000,
+          "allInclusivePriceLakhs": 210,
+          "allInclusivePriceStr": "₹2.10 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15730,
+          "allInclusivePriceLakhs": 291,
+          "allInclusivePriceStr": "₹2.91 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14770
     },
     {
       "id": "P10",
@@ -203,7 +419,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 133,
-      "maxPriceLakhs": 345
+      "maxPriceLakhs": 345,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 11565,
+          "allInclusivePriceLakhs": 133,
+          "allInclusivePriceStr": "₹1.33 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12747,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 13269,
+          "allInclusivePriceLakhs": 345,
+          "allInclusivePriceStr": "₹3.45 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12527
     },
     {
       "id": "P11",
@@ -221,7 +461,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 191,
-      "maxPriceLakhs": 388
+      "maxPriceLakhs": 388,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 20105,
+          "allInclusivePriceLakhs": 191,
+          "allInclusivePriceStr": "₹1.91 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 20714,
+          "allInclusivePriceLakhs": 290,
+          "allInclusivePriceStr": "₹2.90 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 21027,
+          "allInclusivePriceLakhs": 389,
+          "allInclusivePriceStr": "₹3.89 Cr"
+        }
+      ],
+      "avgPricePerSqft": 20615
     },
     {
       "id": "P12",
@@ -239,7 +503,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 268,
-      "maxPriceLakhs": 623
+      "maxPriceLakhs": 623,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 23304,
+          "allInclusivePriceLakhs": 268,
+          "allInclusivePriceStr": "₹2.68 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 23787,
+          "allInclusivePriceLakhs": 446,
+          "allInclusivePriceStr": "₹4.46 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 24000,
+          "allInclusivePriceLakhs": 624,
+          "allInclusivePriceStr": "₹6.24 Cr"
+        }
+      ],
+      "avgPricePerSqft": 23697
     },
     {
       "id": "P13",
@@ -257,7 +545,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 154,
-      "maxPriceLakhs": 407
+      "maxPriceLakhs": 407,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 13391,
+          "allInclusivePriceLakhs": 154,
+          "allInclusivePriceStr": "₹1.54 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 14987,
+          "allInclusivePriceLakhs": 281,
+          "allInclusivePriceStr": "₹2.81 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 15692,
+          "allInclusivePriceLakhs": 408,
+          "allInclusivePriceStr": "₹4.08 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14690
     },
     {
       "id": "P14",
@@ -275,7 +587,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 137,
-      "maxPriceLakhs": 324
+      "maxPriceLakhs": 324,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 14421,
+          "allInclusivePriceLakhs": 137,
+          "allInclusivePriceStr": "₹1.37 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 16500,
+          "allInclusivePriceLakhs": 231,
+          "allInclusivePriceStr": "₹2.31 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17568,
+          "allInclusivePriceLakhs": 325,
+          "allInclusivePriceStr": "₹3.25 Cr"
+        }
+      ],
+      "avgPricePerSqft": 16163
     },
     {
       "id": "P15",
@@ -293,7 +629,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 122,
-      "maxPriceLakhs": 290
+      "maxPriceLakhs": 290,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 12842,
+          "allInclusivePriceLakhs": 122,
+          "allInclusivePriceStr": "₹1.22 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14714,
+          "allInclusivePriceLakhs": 206,
+          "allInclusivePriceStr": "₹2.06 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15676,
+          "allInclusivePriceLakhs": 290,
+          "allInclusivePriceStr": "₹2.90 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14411
     },
     {
       "id": "P16",
@@ -311,7 +671,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 133,
-      "maxPriceLakhs": 345
+      "maxPriceLakhs": 345,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 11565,
+          "allInclusivePriceLakhs": 133,
+          "allInclusivePriceStr": "₹1.33 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12747,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 13269,
+          "allInclusivePriceLakhs": 345,
+          "allInclusivePriceStr": "₹3.45 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12527
     },
     {
       "id": "P17",
@@ -329,7 +713,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 116,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 12211,
+          "allInclusivePriceLakhs": 116,
+          "allInclusivePriceStr": "₹1.16 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14214,
+          "allInclusivePriceLakhs": 199,
+          "allInclusivePriceStr": "₹1.99 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 13889
     },
     {
       "id": "P18",
@@ -347,7 +755,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 101,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10632,
+          "allInclusivePriceLakhs": 101,
+          "allInclusivePriceStr": "₹1.01 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12143,
+          "allInclusivePriceLakhs": 170,
+          "allInclusivePriceStr": "₹1.70 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12919,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        }
+      ],
+      "avgPricePerSqft": 11898
     },
     {
       "id": "P19",
@@ -365,7 +797,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 109,
-      "maxPriceLakhs": 283
+      "maxPriceLakhs": 283,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 9478,
+          "allInclusivePriceLakhs": 109,
+          "allInclusivePriceStr": "₹1.09 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 10453,
+          "allInclusivePriceLakhs": 196,
+          "allInclusivePriceStr": "₹1.96 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10885,
+          "allInclusivePriceLakhs": 283,
+          "allInclusivePriceStr": "₹2.83 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10272
     },
     {
       "id": "P20",
@@ -383,7 +839,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 137,
-      "maxPriceLakhs": 324
+      "maxPriceLakhs": 324,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 14421,
+          "allInclusivePriceLakhs": 137,
+          "allInclusivePriceStr": "₹1.37 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 16500,
+          "allInclusivePriceLakhs": 231,
+          "allInclusivePriceStr": "₹2.31 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17568,
+          "allInclusivePriceLakhs": 325,
+          "allInclusivePriceStr": "₹3.25 Cr"
+        }
+      ],
+      "avgPricePerSqft": 16163
     },
     {
       "id": "P21",
@@ -401,7 +881,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 135,
-      "maxPriceLakhs": 270
+      "maxPriceLakhs": 270,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 14211,
+          "allInclusivePriceLakhs": 135,
+          "allInclusivePriceStr": "₹1.35 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14500,
+          "allInclusivePriceLakhs": 203,
+          "allInclusivePriceStr": "₹2.03 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14649,
+          "allInclusivePriceLakhs": 271,
+          "allInclusivePriceStr": "₹2.71 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14453
     },
     {
       "id": "P22",
@@ -419,7 +923,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 109,
-      "maxPriceLakhs": 283
+      "maxPriceLakhs": 283,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 9478,
+          "allInclusivePriceLakhs": 109,
+          "allInclusivePriceStr": "₹1.09 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 10453,
+          "allInclusivePriceLakhs": 196,
+          "allInclusivePriceStr": "₹1.96 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10885,
+          "allInclusivePriceLakhs": 283,
+          "allInclusivePriceStr": "₹2.83 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10272
     },
     {
       "id": "P23",
@@ -437,7 +965,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 101,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10632,
+          "allInclusivePriceLakhs": 101,
+          "allInclusivePriceStr": "₹1.01 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12143,
+          "allInclusivePriceLakhs": 170,
+          "allInclusivePriceStr": "₹1.70 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12919,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        }
+      ],
+      "avgPricePerSqft": 11898
     },
     {
       "id": "P24",
@@ -455,7 +1007,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 101,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10632,
+          "allInclusivePriceLakhs": 101,
+          "allInclusivePriceStr": "₹1.01 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12143,
+          "allInclusivePriceLakhs": 170,
+          "allInclusivePriceStr": "₹1.70 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12919,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        }
+      ],
+      "avgPricePerSqft": 11898
     },
     {
       "id": "P25",
@@ -473,7 +1049,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 133,
-      "maxPriceLakhs": 345
+      "maxPriceLakhs": 345,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 11565,
+          "allInclusivePriceLakhs": 133,
+          "allInclusivePriceStr": "₹1.33 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12747,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 13269,
+          "allInclusivePriceLakhs": 345,
+          "allInclusivePriceStr": "₹3.45 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12527
     },
     {
       "id": "P26",
@@ -491,7 +1091,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 174,
-      "maxPriceLakhs": 329
+      "maxPriceLakhs": 329,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 18316,
+          "allInclusivePriceLakhs": 174,
+          "allInclusivePriceStr": "₹1.74 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 18000,
+          "allInclusivePriceLakhs": 252,
+          "allInclusivePriceStr": "₹2.52 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17838,
+          "allInclusivePriceLakhs": 330,
+          "allInclusivePriceStr": "₹3.30 Cr"
+        }
+      ],
+      "avgPricePerSqft": 18051
     },
     {
       "id": "P27",
@@ -509,7 +1133,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
-      "maxPriceLakhs": 290
+      "maxPriceLakhs": 290,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13579,
+          "allInclusivePriceLakhs": 129,
+          "allInclusivePriceStr": "₹1.29 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 15000,
+          "allInclusivePriceLakhs": 210,
+          "allInclusivePriceStr": "₹2.10 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15730,
+          "allInclusivePriceLakhs": 291,
+          "allInclusivePriceStr": "₹2.91 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14770
     },
     {
       "id": "P28",
@@ -527,7 +1175,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 140,
-      "maxPriceLakhs": 345
+      "maxPriceLakhs": 345,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 12174,
+          "allInclusivePriceLakhs": 140,
+          "allInclusivePriceStr": "₹1.40 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12960,
+          "allInclusivePriceLakhs": 243,
+          "allInclusivePriceStr": "₹2.43 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 13308,
+          "allInclusivePriceLakhs": 346,
+          "allInclusivePriceStr": "₹3.46 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12814
     },
     {
       "id": "P29",
@@ -545,7 +1217,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
-      "maxPriceLakhs": 290
+      "maxPriceLakhs": 290,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13579,
+          "allInclusivePriceLakhs": 129,
+          "allInclusivePriceStr": "₹1.29 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 15000,
+          "allInclusivePriceLakhs": 210,
+          "allInclusivePriceStr": "₹2.10 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15730,
+          "allInclusivePriceLakhs": 291,
+          "allInclusivePriceStr": "₹2.91 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14770
     },
     {
       "id": "P30",
@@ -563,7 +1259,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
-      "maxPriceLakhs": 290
+      "maxPriceLakhs": 290,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13579,
+          "allInclusivePriceLakhs": 129,
+          "allInclusivePriceStr": "₹1.29 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 15000,
+          "allInclusivePriceLakhs": 210,
+          "allInclusivePriceStr": "₹2.10 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15730,
+          "allInclusivePriceLakhs": 291,
+          "allInclusivePriceStr": "₹2.91 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14770
     },
     {
       "id": "P31",
@@ -581,7 +1301,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 156,
-      "maxPriceLakhs": 385
+      "maxPriceLakhs": 385,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 13565,
+          "allInclusivePriceLakhs": 156,
+          "allInclusivePriceStr": "₹1.56 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 14453,
+          "allInclusivePriceLakhs": 271,
+          "allInclusivePriceStr": "₹2.71 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 14846,
+          "allInclusivePriceLakhs": 386,
+          "allInclusivePriceStr": "₹3.86 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14288
     },
     {
       "id": "P32",
@@ -599,7 +1343,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11158,
+          "allInclusivePriceLakhs": 106,
+          "allInclusivePriceStr": "₹1.06 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12286,
+          "allInclusivePriceLakhs": 172,
+          "allInclusivePriceStr": "₹1.72 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12865,
+          "allInclusivePriceLakhs": 238,
+          "allInclusivePriceStr": "₹2.38 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12103
     },
     {
       "id": "P33",
@@ -617,7 +1385,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11158,
+          "allInclusivePriceLakhs": 106,
+          "allInclusivePriceStr": "₹1.06 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12286,
+          "allInclusivePriceLakhs": 172,
+          "allInclusivePriceStr": "₹1.72 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12865,
+          "allInclusivePriceLakhs": 238,
+          "allInclusivePriceStr": "₹2.38 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12103
     },
     {
       "id": "P34",
@@ -635,7 +1427,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 115,
-      "maxPriceLakhs": 283
+      "maxPriceLakhs": 283,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 10000,
+          "allInclusivePriceLakhs": 115,
+          "allInclusivePriceStr": "₹1.15 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 10613,
+          "allInclusivePriceLakhs": 199,
+          "allInclusivePriceStr": "₹1.99 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10885,
+          "allInclusivePriceLakhs": 283,
+          "allInclusivePriceStr": "₹2.83 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10499
     },
     {
       "id": "P35",
@@ -653,7 +1469,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11158,
+          "allInclusivePriceLakhs": 106,
+          "allInclusivePriceStr": "₹1.06 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12286,
+          "allInclusivePriceLakhs": 172,
+          "allInclusivePriceStr": "₹1.72 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12865,
+          "allInclusivePriceLakhs": 238,
+          "allInclusivePriceStr": "₹2.38 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12103
     },
     {
       "id": "P36",
@@ -671,7 +1511,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 143,
-      "maxPriceLakhs": 270
+      "maxPriceLakhs": 270,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 15053,
+          "allInclusivePriceLakhs": 143,
+          "allInclusivePriceStr": "₹1.43 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14649,
+          "allInclusivePriceLakhs": 271,
+          "allInclusivePriceStr": "₹2.71 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14829
     },
     {
       "id": "P37",
@@ -689,7 +1553,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 115,
-      "maxPriceLakhs": 283
+      "maxPriceLakhs": 283,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 10000,
+          "allInclusivePriceLakhs": 115,
+          "allInclusivePriceStr": "₹1.15 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 10613,
+          "allInclusivePriceLakhs": 199,
+          "allInclusivePriceStr": "₹1.99 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10885,
+          "allInclusivePriceLakhs": 283,
+          "allInclusivePriceStr": "₹2.83 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10499
     },
     {
       "id": "P38",
@@ -707,7 +1595,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
-      "maxPriceLakhs": 238
+      "maxPriceLakhs": 238,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11158,
+          "allInclusivePriceLakhs": 106,
+          "allInclusivePriceStr": "₹1.06 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12286,
+          "allInclusivePriceLakhs": 172,
+          "allInclusivePriceStr": "₹1.72 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12865,
+          "allInclusivePriceLakhs": 238,
+          "allInclusivePriceStr": "₹2.38 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12103
     },
     {
       "id": "P39",
@@ -725,7 +1637,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P40",
@@ -743,7 +1679,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 195,
-      "maxPriceLakhs": 454
+      "maxPriceLakhs": 454,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 16957,
+          "allInclusivePriceLakhs": 195,
+          "allInclusivePriceStr": "₹1.95 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 17333,
+          "allInclusivePriceLakhs": 325,
+          "allInclusivePriceStr": "₹3.25 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 17500,
+          "allInclusivePriceLakhs": 455,
+          "allInclusivePriceStr": "₹4.55 Cr"
+        }
+      ],
+      "avgPricePerSqft": 17263
     },
     {
       "id": "P41",
@@ -761,7 +1721,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
-      "maxPriceLakhs": 696
+      "maxPriceLakhs": 696,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 26000,
+          "allInclusivePriceLakhs": 299,
+          "allInclusivePriceStr": "₹2.99 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 26560,
+          "allInclusivePriceLakhs": 498,
+          "allInclusivePriceStr": "₹4.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 26808,
+          "allInclusivePriceLakhs": 697,
+          "allInclusivePriceStr": "₹6.97 Cr"
+        }
+      ],
+      "avgPricePerSqft": 26456
     },
     {
       "id": "P42",
@@ -779,7 +1763,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
-      "maxPriceLakhs": 696
+      "maxPriceLakhs": 696,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 26000,
+          "allInclusivePriceLakhs": 299,
+          "allInclusivePriceStr": "₹2.99 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 26560,
+          "allInclusivePriceLakhs": 498,
+          "allInclusivePriceStr": "₹4.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 26808,
+          "allInclusivePriceLakhs": 697,
+          "allInclusivePriceStr": "₹6.97 Cr"
+        }
+      ],
+      "avgPricePerSqft": 26456
     },
     {
       "id": "P43",
@@ -797,7 +1805,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
-      "maxPriceLakhs": 696
+      "maxPriceLakhs": 696,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 26000,
+          "allInclusivePriceLakhs": 299,
+          "allInclusivePriceStr": "₹2.99 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 26560,
+          "allInclusivePriceLakhs": 498,
+          "allInclusivePriceStr": "₹4.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 26808,
+          "allInclusivePriceLakhs": 697,
+          "allInclusivePriceStr": "₹6.97 Cr"
+        }
+      ],
+      "avgPricePerSqft": 26456
     },
     {
       "id": "P44",
@@ -815,7 +1847,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P45",
@@ -833,7 +1889,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P46",
@@ -851,7 +1931,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
-      "maxPriceLakhs": 696
+      "maxPriceLakhs": 696,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 26000,
+          "allInclusivePriceLakhs": 299,
+          "allInclusivePriceStr": "₹2.99 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 26560,
+          "allInclusivePriceLakhs": 498,
+          "allInclusivePriceStr": "₹4.98 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 26808,
+          "allInclusivePriceLakhs": 697,
+          "allInclusivePriceStr": "₹6.97 Cr"
+        }
+      ],
+      "avgPricePerSqft": 26456
     },
     {
       "id": "P47",
@@ -869,7 +1973,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P48",
@@ -887,7 +2015,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P49",
@@ -905,7 +2057,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P50",
@@ -923,7 +2099,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 180,
-      "maxPriceLakhs": 382
+      "maxPriceLakhs": 382,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 18947,
+          "allInclusivePriceLakhs": 180,
+          "allInclusivePriceStr": "₹1.80 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 20071,
+          "allInclusivePriceLakhs": 281,
+          "allInclusivePriceStr": "₹2.81 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 20649,
+          "allInclusivePriceLakhs": 382,
+          "allInclusivePriceStr": "₹3.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19889
     },
     {
       "id": "P51",
@@ -941,7 +2141,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 242,
-      "maxPriceLakhs": 433
+      "maxPriceLakhs": 433,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 25474,
+          "allInclusivePriceLakhs": 242,
+          "allInclusivePriceStr": "₹2.42 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 24143,
+          "allInclusivePriceLakhs": 338,
+          "allInclusivePriceStr": "₹3.38 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 23459,
+          "allInclusivePriceLakhs": 434,
+          "allInclusivePriceStr": "₹4.34 Cr"
+        }
+      ],
+      "avgPricePerSqft": 24359
     },
     {
       "id": "P52",
@@ -959,7 +2183,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 175,
-      "maxPriceLakhs": 407
+      "maxPriceLakhs": 407,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 15217,
+          "allInclusivePriceLakhs": 175,
+          "allInclusivePriceStr": "₹1.75 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 15520,
+          "allInclusivePriceLakhs": 291,
+          "allInclusivePriceStr": "₹2.91 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 15654,
+          "allInclusivePriceLakhs": 407,
+          "allInclusivePriceStr": "₹4.07 Cr"
+        }
+      ],
+      "avgPricePerSqft": 15464
     },
     {
       "id": "P53",
@@ -977,7 +2225,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13895,
+          "allInclusivePriceLakhs": 132,
+          "allInclusivePriceStr": "₹1.32 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14641
     },
     {
       "id": "P54",
@@ -995,7 +2267,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13895,
+          "allInclusivePriceLakhs": 132,
+          "allInclusivePriceStr": "₹1.32 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14641
     },
     {
       "id": "P55",
@@ -1013,7 +2309,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
-      "maxPriceLakhs": 334
+      "maxPriceLakhs": 334,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 12522,
+          "allInclusivePriceLakhs": 144,
+          "allInclusivePriceStr": "₹1.44 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12747,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 12846,
+          "allInclusivePriceLakhs": 334,
+          "allInclusivePriceStr": "₹3.34 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12705
     },
     {
       "id": "P56",
@@ -1031,7 +2351,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 178,
-      "maxPriceLakhs": 319
+      "maxPriceLakhs": 319,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 18737,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 17786,
+          "allInclusivePriceLakhs": 249,
+          "allInclusivePriceStr": "₹2.49 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17297,
+          "allInclusivePriceLakhs": 320,
+          "allInclusivePriceStr": "₹3.20 Cr"
+        }
+      ],
+      "avgPricePerSqft": 17940
     },
     {
       "id": "P57",
@@ -1049,7 +2393,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13895,
+          "allInclusivePriceLakhs": 132,
+          "allInclusivePriceStr": "₹1.32 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14641
     },
     {
       "id": "P58",
@@ -1067,7 +2435,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
-      "maxPriceLakhs": 334
+      "maxPriceLakhs": 334,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 12522,
+          "allInclusivePriceLakhs": 144,
+          "allInclusivePriceStr": "₹1.44 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12747,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 12846,
+          "allInclusivePriceLakhs": 334,
+          "allInclusivePriceStr": "₹3.34 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12705
     },
     {
       "id": "P59",
@@ -1085,7 +2477,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 158,
-      "maxPriceLakhs": 358
+      "maxPriceLakhs": 358,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 16632,
+          "allInclusivePriceLakhs": 158,
+          "allInclusivePriceStr": "₹1.58 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 18429,
+          "allInclusivePriceLakhs": 258,
+          "allInclusivePriceStr": "₹2.58 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 19351,
+          "allInclusivePriceLakhs": 358,
+          "allInclusivePriceStr": "₹3.58 Cr"
+        }
+      ],
+      "avgPricePerSqft": 18137
     },
     {
       "id": "P60",
@@ -1103,7 +2519,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 158,
-      "maxPriceLakhs": 358
+      "maxPriceLakhs": 358,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 16632,
+          "allInclusivePriceLakhs": 158,
+          "allInclusivePriceStr": "₹1.58 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 18429,
+          "allInclusivePriceLakhs": 258,
+          "allInclusivePriceStr": "₹2.58 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 19351,
+          "allInclusivePriceLakhs": 358,
+          "allInclusivePriceStr": "₹3.58 Cr"
+        }
+      ],
+      "avgPricePerSqft": 18137
     },
     {
       "id": "P61",
@@ -1121,7 +2561,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 195,
-      "maxPriceLakhs": 454
+      "maxPriceLakhs": 454,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 16957,
+          "allInclusivePriceLakhs": 195,
+          "allInclusivePriceStr": "₹1.95 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 17333,
+          "allInclusivePriceLakhs": 325,
+          "allInclusivePriceStr": "₹3.25 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 17500,
+          "allInclusivePriceLakhs": 455,
+          "allInclusivePriceStr": "₹4.55 Cr"
+        }
+      ],
+      "avgPricePerSqft": 17263
     },
     {
       "id": "P62",
@@ -1139,7 +2603,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13895,
+          "allInclusivePriceLakhs": 132,
+          "allInclusivePriceStr": "₹1.32 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14641
     },
     {
       "id": "P63",
@@ -1157,7 +2645,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13895,
+          "allInclusivePriceLakhs": 132,
+          "allInclusivePriceStr": "₹1.32 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14641
     },
     {
       "id": "P64",
@@ -1175,7 +2687,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
-      "maxPriceLakhs": 334
+      "maxPriceLakhs": 334,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 12522,
+          "allInclusivePriceLakhs": 144,
+          "allInclusivePriceStr": "₹1.44 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12747,
+          "allInclusivePriceLakhs": 239,
+          "allInclusivePriceStr": "₹2.39 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 12846,
+          "allInclusivePriceLakhs": 334,
+          "allInclusivePriceStr": "₹3.34 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12705
     },
     {
       "id": "P65",
@@ -1193,7 +2729,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
-      "maxPriceLakhs": 281
+      "maxPriceLakhs": 281,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13895,
+          "allInclusivePriceLakhs": 132,
+          "allInclusivePriceStr": "₹1.32 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14786,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15243,
+          "allInclusivePriceLakhs": 282,
+          "allInclusivePriceStr": "₹2.82 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14641
     },
     {
       "id": "P66",
@@ -1211,7 +2771,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 178,
-      "maxPriceLakhs": 319
+      "maxPriceLakhs": 319,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 18737,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 17786,
+          "allInclusivePriceLakhs": 249,
+          "allInclusivePriceStr": "₹2.49 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17297,
+          "allInclusivePriceLakhs": 320,
+          "allInclusivePriceStr": "₹3.20 Cr"
+        }
+      ],
+      "avgPricePerSqft": 17940
     },
     {
       "id": "P67",
@@ -1229,7 +2813,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P68",
@@ -1247,7 +2855,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
-      "maxPriceLakhs": 259
+      "maxPriceLakhs": 259,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10211,
+          "allInclusivePriceLakhs": 97,
+          "allInclusivePriceStr": "₹97 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12714,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14000,
+          "allInclusivePriceLakhs": 259,
+          "allInclusivePriceStr": "₹2.59 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12308
     },
     {
       "id": "P69",
@@ -1265,7 +2897,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
-      "maxPriceLakhs": 259
+      "maxPriceLakhs": 259,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10211,
+          "allInclusivePriceLakhs": 97,
+          "allInclusivePriceStr": "₹97 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12714,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14000,
+          "allInclusivePriceLakhs": 259,
+          "allInclusivePriceStr": "₹2.59 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12308
     },
     {
       "id": "P70",
@@ -1283,7 +2939,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 117,
-      "maxPriceLakhs": 344
+      "maxPriceLakhs": 344,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 10174,
+          "allInclusivePriceLakhs": 117,
+          "allInclusivePriceStr": "₹1.17 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12320,
+          "allInclusivePriceLakhs": 231,
+          "allInclusivePriceStr": "₹2.31 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 13269,
+          "allInclusivePriceLakhs": 345,
+          "allInclusivePriceStr": "₹3.45 Cr"
+        }
+      ],
+      "avgPricePerSqft": 11921
     },
     {
       "id": "P71",
@@ -1301,7 +2981,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 116,
-      "maxPriceLakhs": 263
+      "maxPriceLakhs": 263,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 12211,
+          "allInclusivePriceLakhs": 116,
+          "allInclusivePriceStr": "₹1.16 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 13571,
+          "allInclusivePriceLakhs": 190,
+          "allInclusivePriceStr": "₹1.90 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14270,
+          "allInclusivePriceLakhs": 264,
+          "allInclusivePriceStr": "₹2.64 Cr"
+        }
+      ],
+      "avgPricePerSqft": 13351
     },
     {
       "id": "P72",
@@ -1319,7 +3023,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
-      "maxPriceLakhs": 259
+      "maxPriceLakhs": 259,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10211,
+          "allInclusivePriceLakhs": 97,
+          "allInclusivePriceStr": "₹97 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12714,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14000,
+          "allInclusivePriceLakhs": 259,
+          "allInclusivePriceStr": "₹2.59 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12308
     },
     {
       "id": "P73",
@@ -1337,7 +3065,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 94,
-      "maxPriceLakhs": 275
+      "maxPriceLakhs": 275,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 8174,
+          "allInclusivePriceLakhs": 94,
+          "allInclusivePriceStr": "₹94 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 9867,
+          "allInclusivePriceLakhs": 185,
+          "allInclusivePriceStr": "₹1.85 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10615,
+          "allInclusivePriceLakhs": 276,
+          "allInclusivePriceStr": "₹2.76 Cr"
+        }
+      ],
+      "avgPricePerSqft": 9552
     },
     {
       "id": "P74",
@@ -1355,7 +3107,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 115,
-      "maxPriceLakhs": 282
+      "maxPriceLakhs": 282,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 12105,
+          "allInclusivePriceLakhs": 115,
+          "allInclusivePriceStr": "₹1.15 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14214,
+          "allInclusivePriceLakhs": 199,
+          "allInclusivePriceStr": "₹1.99 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15297,
+          "allInclusivePriceLakhs": 283,
+          "allInclusivePriceStr": "₹2.83 Cr"
+        }
+      ],
+      "avgPricePerSqft": 13872
     },
     {
       "id": "P75",
@@ -1373,7 +3149,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 103,
-      "maxPriceLakhs": 253
+      "maxPriceLakhs": 253,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10842,
+          "allInclusivePriceLakhs": 103,
+          "allInclusivePriceStr": "₹1.03 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12714,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 13676,
+          "allInclusivePriceLakhs": 253,
+          "allInclusivePriceStr": "₹2.53 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12411
     },
     {
       "id": "P76",
@@ -1391,7 +3191,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 92,
-      "maxPriceLakhs": 263
+      "maxPriceLakhs": 263,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 8000,
+          "allInclusivePriceLakhs": 92,
+          "allInclusivePriceStr": "₹92 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 9493,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10154,
+          "allInclusivePriceLakhs": 264,
+          "allInclusivePriceStr": "₹2.64 Cr"
+        }
+      ],
+      "avgPricePerSqft": 9216
     },
     {
       "id": "P77",
@@ -1409,7 +3233,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 103,
-      "maxPriceLakhs": 253
+      "maxPriceLakhs": 253,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10842,
+          "allInclusivePriceLakhs": 103,
+          "allInclusivePriceStr": "₹1.03 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12714,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 13676,
+          "allInclusivePriceLakhs": 253,
+          "allInclusivePriceStr": "₹2.53 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12411
     },
     {
       "id": "P79",
@@ -1427,7 +3275,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
-      "maxPriceLakhs": 213
+      "maxPriceLakhs": 213,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 8316,
+          "allInclusivePriceLakhs": 79,
+          "allInclusivePriceStr": "₹79 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 10429,
+          "allInclusivePriceLakhs": 146,
+          "allInclusivePriceStr": "₹1.46 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 11514,
+          "allInclusivePriceLakhs": 213,
+          "allInclusivePriceStr": "₹2.13 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10086
     },
     {
       "id": "P80",
@@ -1445,7 +3317,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 105,
-      "maxPriceLakhs": 308
+      "maxPriceLakhs": 308,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 9130,
+          "allInclusivePriceLakhs": 105,
+          "allInclusivePriceStr": "₹1.05 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 11040,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 11885,
+          "allInclusivePriceLakhs": 309,
+          "allInclusivePriceStr": "₹3.09 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10685
     },
     {
       "id": "P81",
@@ -1463,7 +3359,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
-      "maxPriceLakhs": 213
+      "maxPriceLakhs": 213,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 8316,
+          "allInclusivePriceLakhs": 79,
+          "allInclusivePriceStr": "₹79 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 10429,
+          "allInclusivePriceLakhs": 146,
+          "allInclusivePriceStr": "₹1.46 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 11514,
+          "allInclusivePriceLakhs": 213,
+          "allInclusivePriceStr": "₹2.13 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10086
     },
     {
       "id": "P82",
@@ -1481,7 +3401,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 107,
-      "maxPriceLakhs": 242
+      "maxPriceLakhs": 242,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11263,
+          "allInclusivePriceLakhs": 107,
+          "allInclusivePriceStr": "₹1.07 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12500,
+          "allInclusivePriceLakhs": 175,
+          "allInclusivePriceStr": "₹1.75 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 13135,
+          "allInclusivePriceLakhs": 243,
+          "allInclusivePriceStr": "₹2.43 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12299
     },
     {
       "id": "P83",
@@ -1499,7 +3443,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 94,
-      "maxPriceLakhs": 275
+      "maxPriceLakhs": 275,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 8174,
+          "allInclusivePriceLakhs": 94,
+          "allInclusivePriceStr": "₹94 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 9867,
+          "allInclusivePriceLakhs": 185,
+          "allInclusivePriceStr": "₹1.85 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10615,
+          "allInclusivePriceLakhs": 276,
+          "allInclusivePriceStr": "₹2.76 Cr"
+        }
+      ],
+      "avgPricePerSqft": 9552
     },
     {
       "id": "P84",
@@ -1517,7 +3485,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
-      "maxPriceLakhs": 213
+      "maxPriceLakhs": 213,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 8316,
+          "allInclusivePriceLakhs": 79,
+          "allInclusivePriceStr": "₹79 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 10429,
+          "allInclusivePriceLakhs": 146,
+          "allInclusivePriceStr": "₹1.46 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 11514,
+          "allInclusivePriceLakhs": 213,
+          "allInclusivePriceStr": "₹2.13 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10086
     },
     {
       "id": "P85",
@@ -1535,7 +3527,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 92,
-      "maxPriceLakhs": 226
+      "maxPriceLakhs": 226,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 9684,
+          "allInclusivePriceLakhs": 92,
+          "allInclusivePriceStr": "₹92 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 11357,
+          "allInclusivePriceLakhs": 159,
+          "allInclusivePriceStr": "₹1.59 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12216,
+          "allInclusivePriceLakhs": 226,
+          "allInclusivePriceStr": "₹2.26 Cr"
+        }
+      ],
+      "avgPricePerSqft": 11086
     },
     {
       "id": "P86",
@@ -1553,7 +3569,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
-      "maxPriceLakhs": 512
+      "maxPriceLakhs": 512,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 19130,
+          "allInclusivePriceLakhs": 220,
+          "allInclusivePriceStr": "₹2.20 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 19520,
+          "allInclusivePriceLakhs": 366,
+          "allInclusivePriceStr": "₹3.66 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 19692,
+          "allInclusivePriceLakhs": 512,
+          "allInclusivePriceStr": "₹5.12 Cr"
+        }
+      ],
+      "avgPricePerSqft": 19447
     },
     {
       "id": "P87",
@@ -1571,7 +3611,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 145,
-      "maxPriceLakhs": 328
+      "maxPriceLakhs": 328,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 15263,
+          "allInclusivePriceLakhs": 145,
+          "allInclusivePriceStr": "₹1.45 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 16929,
+          "allInclusivePriceLakhs": 237,
+          "allInclusivePriceStr": "₹2.37 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17784,
+          "allInclusivePriceLakhs": 329,
+          "allInclusivePriceStr": "₹3.29 Cr"
+        }
+      ],
+      "avgPricePerSqft": 16659
     },
     {
       "id": "P88",
@@ -1589,7 +3653,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 29,
-      "maxPriceLakhs": 113
+      "maxPriceLakhs": 113,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 3053,
+          "allInclusivePriceLakhs": 29,
+          "allInclusivePriceStr": "₹29 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 5071,
+          "allInclusivePriceLakhs": 71,
+          "allInclusivePriceStr": "₹71 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 6108,
+          "allInclusivePriceLakhs": 113,
+          "allInclusivePriceStr": "₹1.13 Cr"
+        }
+      ],
+      "avgPricePerSqft": 4744
     },
     {
       "id": "P89",
@@ -1607,7 +3695,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 85,
-      "maxPriceLakhs": 242
+      "maxPriceLakhs": 242,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 7391,
+          "allInclusivePriceLakhs": 85,
+          "allInclusivePriceStr": "₹85 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 8747,
+          "allInclusivePriceLakhs": 164,
+          "allInclusivePriceStr": "₹1.64 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 9346,
+          "allInclusivePriceLakhs": 243,
+          "allInclusivePriceStr": "₹2.43 Cr"
+        }
+      ],
+      "avgPricePerSqft": 8495
     },
     {
       "id": "P90",
@@ -1625,7 +3737,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 88,
-      "maxPriceLakhs": 228
+      "maxPriceLakhs": 228,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 9263,
+          "allInclusivePriceLakhs": 88,
+          "allInclusivePriceStr": "₹88 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 11286,
+          "allInclusivePriceLakhs": 158,
+          "allInclusivePriceStr": "₹1.58 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 12324,
+          "allInclusivePriceLakhs": 228,
+          "allInclusivePriceStr": "₹2.28 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10958
     },
     {
       "id": "P91",
@@ -1643,7 +3779,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 85,
-      "maxPriceLakhs": 221
+      "maxPriceLakhs": 221,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 8947,
+          "allInclusivePriceLakhs": 85,
+          "allInclusivePriceStr": "₹85 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 10929,
+          "allInclusivePriceLakhs": 153,
+          "allInclusivePriceStr": "₹1.53 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 11946,
+          "allInclusivePriceLakhs": 221,
+          "allInclusivePriceStr": "₹2.21 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10607
     },
     {
       "id": "P92",
@@ -1661,7 +3821,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 92,
-      "maxPriceLakhs": 263
+      "maxPriceLakhs": 263,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 8000,
+          "allInclusivePriceLakhs": 92,
+          "allInclusivePriceStr": "₹92 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 9493,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 10154,
+          "allInclusivePriceLakhs": 264,
+          "allInclusivePriceStr": "₹2.64 Cr"
+        }
+      ],
+      "avgPricePerSqft": 9216
     },
     {
       "id": "P93",
@@ -1679,7 +3863,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 112,
-      "maxPriceLakhs": 289
+      "maxPriceLakhs": 289,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11789,
+          "allInclusivePriceLakhs": 112,
+          "allInclusivePriceStr": "₹1.12 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 14357,
+          "allInclusivePriceLakhs": 201,
+          "allInclusivePriceStr": "₹2.01 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15676,
+          "allInclusivePriceLakhs": 290,
+          "allInclusivePriceStr": "₹2.90 Cr"
+        }
+      ],
+      "avgPricePerSqft": 13941
     },
     {
       "id": "P94",
@@ -1697,7 +3905,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
-      "maxPriceLakhs": 253
+      "maxPriceLakhs": 253,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10211,
+          "allInclusivePriceLakhs": 97,
+          "allInclusivePriceStr": "₹97 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12500,
+          "allInclusivePriceLakhs": 175,
+          "allInclusivePriceStr": "₹1.75 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 13676,
+          "allInclusivePriceLakhs": 253,
+          "allInclusivePriceStr": "₹2.53 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12129
     },
     {
       "id": "P95",
@@ -1715,7 +3947,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 105,
-      "maxPriceLakhs": 308
+      "maxPriceLakhs": 308,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 9130,
+          "allInclusivePriceLakhs": 105,
+          "allInclusivePriceStr": "₹1.05 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 11040,
+          "allInclusivePriceLakhs": 207,
+          "allInclusivePriceStr": "₹2.07 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 11885,
+          "allInclusivePriceLakhs": 309,
+          "allInclusivePriceStr": "₹3.09 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10685
     },
     {
       "id": "P96",
@@ -1733,7 +3989,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
-      "maxPriceLakhs": 259
+      "maxPriceLakhs": 259,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 10211,
+          "allInclusivePriceLakhs": 97,
+          "allInclusivePriceStr": "₹97 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12714,
+          "allInclusivePriceLakhs": 178,
+          "allInclusivePriceStr": "₹1.78 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14000,
+          "allInclusivePriceLakhs": 259,
+          "allInclusivePriceStr": "₹2.59 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12308
     },
     {
       "id": "P97",
@@ -1751,7 +4031,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 107,
-      "maxPriceLakhs": 242
+      "maxPriceLakhs": 242,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11263,
+          "allInclusivePriceLakhs": 107,
+          "allInclusivePriceStr": "₹1.07 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 12500,
+          "allInclusivePriceLakhs": 175,
+          "allInclusivePriceStr": "₹1.75 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 13135,
+          "allInclusivePriceLakhs": 243,
+          "allInclusivePriceStr": "₹2.43 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12299
     },
     {
       "id": "P98",
@@ -1769,7 +4073,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 86,
-      "maxPriceLakhs": 253
+      "maxPriceLakhs": 253,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 7478,
+          "allInclusivePriceLakhs": 86,
+          "allInclusivePriceStr": "₹86 Lakhs"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 9067,
+          "allInclusivePriceLakhs": 170,
+          "allInclusivePriceStr": "₹1.70 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 9769,
+          "allInclusivePriceLakhs": 254,
+          "allInclusivePriceStr": "₹2.54 Cr"
+        }
+      ],
+      "avgPricePerSqft": 8771
     },
     {
       "id": "P99",
@@ -1787,7 +4115,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
-      "maxPriceLakhs": 324
+      "maxPriceLakhs": 324,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 15158,
+          "allInclusivePriceLakhs": 144,
+          "allInclusivePriceStr": "₹1.44 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 16714,
+          "allInclusivePriceLakhs": 234,
+          "allInclusivePriceStr": "₹2.34 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 17514,
+          "allInclusivePriceLakhs": 324,
+          "allInclusivePriceStr": "₹3.24 Cr"
+        }
+      ],
+      "avgPricePerSqft": 16462
     },
     {
       "id": "P100",
@@ -1805,7 +4157,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
-      "maxPriceLakhs": 269
+      "maxPriceLakhs": 269,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 11158,
+          "allInclusivePriceLakhs": 106,
+          "allInclusivePriceStr": "₹1.06 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 13429,
+          "allInclusivePriceLakhs": 188,
+          "allInclusivePriceStr": "₹1.88 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 14595,
+          "allInclusivePriceLakhs": 270,
+          "allInclusivePriceStr": "₹2.70 Cr"
+        }
+      ],
+      "avgPricePerSqft": 13061
     },
     {
       "id": "P101",
@@ -1823,7 +4199,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 126,
-      "maxPriceLakhs": 345
+      "maxPriceLakhs": 345,
+      "inventory": [
+        {
+          "bhkType": "2 BHK",
+          "superBuiltupAreaSqft": 1150,
+          "pricePerSqft": 10957,
+          "allInclusivePriceLakhs": 126,
+          "allInclusivePriceStr": "₹1.26 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1875,
+          "pricePerSqft": 12587,
+          "allInclusivePriceLakhs": 236,
+          "allInclusivePriceStr": "₹2.36 Cr"
+        },
+        {
+          "bhkType": "4 BHK",
+          "superBuiltupAreaSqft": 2600,
+          "pricePerSqft": 13308,
+          "allInclusivePriceLakhs": 346,
+          "allInclusivePriceStr": "₹3.46 Cr"
+        }
+      ],
+      "avgPricePerSqft": 12284
     },
     {
       "id": "P102",
@@ -1841,7 +4241,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 130,
-      "maxPriceLakhs": 294
+      "maxPriceLakhs": 294,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 13684,
+          "allInclusivePriceLakhs": 130,
+          "allInclusivePriceStr": "₹1.30 Cr"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 15143,
+          "allInclusivePriceLakhs": 212,
+          "allInclusivePriceStr": "₹2.12 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 15892,
+          "allInclusivePriceLakhs": 294,
+          "allInclusivePriceStr": "₹2.94 Cr"
+        }
+      ],
+      "avgPricePerSqft": 14906
     },
     {
       "id": "P103",
@@ -1859,7 +4283,31 @@
       "pitchText": "",
       "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
-      "maxPriceLakhs": 213
+      "maxPriceLakhs": 213,
+      "inventory": [
+        {
+          "bhkType": "2 BHK Small",
+          "superBuiltupAreaSqft": 950,
+          "pricePerSqft": 8316,
+          "allInclusivePriceLakhs": 79,
+          "allInclusivePriceStr": "₹79 Lakhs"
+        },
+        {
+          "bhkType": "2 BHK Large",
+          "superBuiltupAreaSqft": 1400,
+          "pricePerSqft": 10429,
+          "allInclusivePriceLakhs": 146,
+          "allInclusivePriceStr": "₹1.46 Cr"
+        },
+        {
+          "bhkType": "3 BHK",
+          "superBuiltupAreaSqft": 1850,
+          "pricePerSqft": 11514,
+          "allInclusivePriceLakhs": 213,
+          "allInclusivePriceStr": "₹2.13 Cr"
+        }
+      ],
+      "avgPricePerSqft": 10086
     }
   ],
   "techParks": [
