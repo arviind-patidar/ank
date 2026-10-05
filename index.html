@@ -15011,7 +15011,12 @@ function toggleMinimizeDetailPanel(e) {
 
 
 
-function setActive(id, { pan }) {
+function setActive(id, options) {
+  var pan = true;
+  if (options && typeof options.pan === "boolean") {
+    pan = options.pan;
+  }
+
   document.body.classList.add("has-active-property");
   activeCardId = id;
   pdpMinimized = false;
@@ -15029,8 +15034,15 @@ function setActive(id, { pan }) {
   if (sharedInfoWindow) sharedInfoWindow.close();
 
   var position = { lat: property.lat, lng: property.lng };
-  if (pan) {
-    var offset = window.innerWidth > 860 ? -0.008 : 0;
+
+  // Ensure map zooms in when a property is selected so it unclusters and shows micro-market context
+  const TARGET_ZOOM = 14.5;
+  if (map.getZoom() < TARGET_ZOOM) {
+    map.setZoom(TARGET_ZOOM);
+  }
+
+  if (pan || map.getZoom() < TARGET_ZOOM) {
+    var offset = window.innerWidth > 860 ? -0.006 : 0;
     map.panTo({ lat: position.lat, lng: position.lng + offset });
   }
 
@@ -15053,7 +15065,7 @@ function setActive(id, { pan }) {
       el.classList.add("plot-marker--highlight-pulse");
       setTimeout(() => el.classList.remove("plot-marker--highlight-pulse"), 1600);
     }
-  }, 50);
+  }, 100);
 }
 
 function clearActive() {
