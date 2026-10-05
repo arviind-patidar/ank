@@ -9494,7 +9494,7 @@ function updateLocalitySummaryStrip(rawLocality) {
   const nearestMetro = (centerLat && typeof haversineKm === 'function') ? METRO_STATIONS.map(m => ({ ...m, d: haversineKm(centerLat, centerLng, m.lat, m.lng) })).sort((a, b) => a.d - b.d)[0] : null;
   const nearbySchools = (centerLat && typeof haversineKm === 'function') ? SCHOOLS.filter(s => haversineKm(centerLat, centerLng, s.lat, s.lng) <= 5.0) : [];
 
-  const tagline = areaInfo.tagline || `${keyName} Corridor · ${count} Active Projects · ${sqftRange}`;
+  const taglineHtml = areaInfo.tagline ? `<div class="l-strip__tagline">${areaInfo.tagline}</div>` : '';
   const p1 = areaInfo.employmentHighlight || (nearbyParks.length > 0 ? `${nearbyParks.length} Tech Parks within 6 km` : 'Active Employment Hub');
   const p2 = areaInfo.transitHighlight || (nearestMetro ? `${nearestMetro.name} (${nearestMetro.d.toFixed(1)} km)` : 'Transit Connectivity');
   const p3 = areaInfo.socialInfraHighlight || (nearbySchools.length > 0 ? `${nearbySchools.length} Top Schools nearby` : 'Established Social Infra');
@@ -9511,7 +9511,7 @@ function updateLocalitySummaryStrip(rawLocality) {
         <button type="button" class="l-strip__close" onclick="updateLocalitySummaryStrip(''); els.locality.value=''; applyFilters();" title="Clear locality filter">✕</button>
       </div>
     </div>
-    <div class="l-strip__tagline">${tagline}</div>
+    ${taglineHtml}
     <div class="l-strip__pillars">
       <div class="l-strip__pillar-item">🏢 <strong>Employment:</strong> ${p1}</div>
       <div class="l-strip__pillar-item">🚇 <strong>Transit:</strong> ${p2}</div>
