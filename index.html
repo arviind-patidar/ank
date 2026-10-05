@@ -9495,9 +9495,9 @@ function updateLocalitySummaryStrip(rawLocality) {
   const nearbySchools = (centerLat && typeof haversineKm === 'function') ? SCHOOLS.filter(s => haversineKm(centerLat, centerLng, s.lat, s.lng) <= 5.0) : [];
 
   const taglineHtml = areaInfo.tagline ? `<div class="l-strip__tagline">${areaInfo.tagline}</div>` : '';
-  const p1 = areaInfo.employmentHighlight || (nearbyParks.length > 0 ? `${nearbyParks.length} Tech Parks within 6 km` : 'Active Employment Hub');
-  const p2 = areaInfo.transitHighlight || (nearestMetro ? `${nearestMetro.name} (${nearestMetro.d.toFixed(1)} km)` : 'Transit Connectivity');
-  const p3 = areaInfo.socialInfraHighlight || (nearbySchools.length > 0 ? `${nearbySchools.length} Top Schools nearby` : 'Established Social Infra');
+  const p1 = areaInfo.employment || areaInfo.employmentHighlight || (nearbyParks.length > 0 ? `${nearbyParks.length} Tech Parks within 6 km` : 'Active Employment Hub');
+  const p2 = areaInfo.transit || areaInfo.transitHighlight || (nearestMetro ? `${nearestMetro.name} (${nearestMetro.d.toFixed(1)} km)` : 'Transit Connectivity');
+  const p3 = areaInfo.socialInfra || areaInfo.socialInfraHighlight || (nearbySchools.length > 0 ? `${nearbySchools.length} Top Schools nearby` : 'Established Social Infra');
   const p4 = areaInfo.outlook || (count > 0 ? `${count} Active Projects in Corridor` : 'Growth Micro-Market');
 
   strip.innerHTML = `
