@@ -7850,10 +7850,13 @@ function renderDetailPanel(property) {
     }
   }
 
+  var proText = property.advisoryPro || (property.developer ? property.developer + " delivery track record & " + property.locality + " connectivity" : "");
+  var conText = property.advisoryConsideration || (property.status ? property.status + " stage in " + property.zone + " corridor" : "");
+
   var advisoryTakeaways = '<div class="pdp__section"><div class="pdp__section-label">Advisory Decision Factors</div>' +
     '<div class="pdp__pros-cons">' +
-    '<div class="pdp__pro-item"><strong>PRO:</strong> Prime corridor connectivity & Grade-A builder track record <span style="font-size:9px; background:#C6F6D5; color:#22543D; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">VERIFIED</span></div>' +
-    '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> High demand corridor with limited inventory release <span style="font-size:9px; background:#ED2B2B; color:#742A2A; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">CALCULATED</span></div>' +
+    (proText ? '<div class="pdp__pro-item"><strong>PRO:</strong> ' + proText + ' <span style="font-size:9px; background:#C6F6D5; color:#22543D; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">VERIFIED</span></div>' : '') +
+    (conText ? '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> ' + conText + ' <span style="font-size:9px; background:#ED2B2B; color:#742A2A; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">CALCULATED</span></div>' : '') +
     '</div></div>';
 
   var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Developer &amp; Project Details</div>' +
@@ -10001,7 +10004,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v6"
+  CACHE_KEY: "ackey_app_data_v7"
 };
 
 const DataService = {
