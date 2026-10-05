@@ -9227,17 +9227,22 @@ function applyPresentationStep(stepIdx) {
     const details = getPropertyDetails(property);
     const commute = getBuyerCommute(property.lat, property.lng);
 
+    const scoreBadgeText = (typeof property.akScore === 'number' && property.akScore > 0) ? `AK ${property.akScore}` : 'Verified Listing';
+    const scoreBulletText = (typeof property.akScore === 'number' && property.akScore > 0)
+      ? `<li>✓ <strong>Diligence Score:</strong> AK ${property.akScore} rating with verified builder delivery.</li>`
+      : `<li>✓ <strong>Verified Builder:</strong> ${property.developer} delivery track record.</li>`;
+
     stepCard.innerHTML = `
       <div class="p-card__header">
         <span class="p-card__step-label">Step 6 of 6 · Recommendation</span>
-        <span style="font-size:12px; color:#E2C699; font-weight:700;">AK ${property.akScore || 78}</span>
+        <span style="font-size:12px; color:#E2C699; font-weight:700;">${scoreBadgeText}</span>
       </div>
       <div class="p-card__title">Why We Recommend ${property.title}</div>
       <div class="p-card__body">
         <ul style="margin:4px 0 10px 16px; padding:0; font-size:11.5px; line-height:1.5;">
           <li>✓ <strong>Fits Budget:</strong> ${details.priceStr} matches target budget criteria.</li>
           <li>✓ <strong>Optimal Commute:</strong> Only ${commute.mins} mins to ITPL Tech Hub.</li>
-          <li>✓ <strong>High Diligence Score:</strong> AK ${property.akScore || 78} rating with verified builder delivery.</li>
+          ${scoreBulletText}
         </ul>
         <button type="button" style="width:100%; padding:10px; border-radius:999px; background:var(--rust); color:#fff; font-weight:700; border:none; cursor:pointer;" onclick="alert('Site visit booking request saved!')">
           📅 Book Site Visit
@@ -9996,7 +10001,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v5"
+  CACHE_KEY: "ackey_app_data_v6"
 };
 
 const DataService = {

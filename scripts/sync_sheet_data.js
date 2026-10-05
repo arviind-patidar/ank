@@ -67,7 +67,7 @@ const normalizedProjects = rawProjects.filter(p => p && p.title).map((p, idx) =>
     inventory: Array.isArray(p.inventory) ? p.inventory : [],
     lat: p.lat,
     lng: p.lng,
-    akScore: typeof p.akScore === 'number' ? p.akScore : (typeof p.score === 'number' ? p.score : 75.0),
+    akScore: (typeof p.akScore === 'number' && !isNaN(p.akScore)) ? p.akScore : ((typeof p.score === 'number' && !isNaN(p.score)) ? p.score : null),
     recommended: Boolean(p.recommended),
     pitchText: p.pitchText || p.pitch || '',
     source: 'GoogleSheet_SSOT'

@@ -63,7 +63,7 @@
       ],
       "lat": 12.95466944,
       "lng": 77.747175,
-      "akScore": 78.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -105,7 +105,7 @@
       ],
       "lat": 12.95561,
       "lng": 77.72381,
-      "akScore": 78,
+      "akScore": 77.4,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -147,7 +147,7 @@
       ],
       "lat": 12.96191,
       "lng": 77.72911,
-      "akScore": 79,
+      "akScore": 76.4,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -189,7 +189,7 @@
       ],
       "lat": 12.96651,
       "lng": 77.74358,
-      "akScore": 80,
+      "akScore": 78.7,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -231,7 +231,7 @@
       ],
       "lat": 12.97801,
       "lng": 77.73789,
-      "akScore": 80.6,
+      "akScore": 78.8,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -273,7 +273,7 @@
       ],
       "lat": 12.98581,
       "lng": 77.74891,
-      "akScore": 82,
+      "akScore": 80.6,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -315,7 +315,7 @@
       ],
       "lat": 12.98731,
       "lng": 77.75312,
-      "akScore": 83,
+      "akScore": 78.2,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -357,7 +357,7 @@
       ],
       "lat": 13.03061,
       "lng": 77.75221,
-      "akScore": 84,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -399,7 +399,7 @@
       ],
       "lat": 13.04961,
       "lng": 77.74758,
-      "akScore": 85.6,
+      "akScore": 65.6,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -441,7 +441,7 @@
       ],
       "lat": 13.00311,
       "lng": 77.68541,
-      "akScore": 86.6,
+      "akScore": 73.9,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -483,7 +483,7 @@
       ],
       "lat": 12.99061,
       "lng": 77.69781,
-      "akScore": 87.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -525,7 +525,7 @@
       ],
       "lat": 13.01171,
       "lng": 77.74591,
-      "akScore": 88.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -567,7 +567,7 @@
       ],
       "lat": 12.99281,
       "lng": 77.69121,
-      "akScore": 89.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -609,7 +609,7 @@
       ],
       "lat": 12.99421,
       "lng": 77.76101,
-      "akScore": 91.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -651,7 +651,7 @@
       ],
       "lat": 13.00891,
       "lng": 77.68921,
-      "akScore": 91.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -693,7 +693,7 @@
       ],
       "lat": 13.00951,
       "lng": 77.68981,
-      "akScore": 92.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -735,7 +735,7 @@
       ],
       "lat": 13.02011,
       "lng": 77.76151,
-      "akScore": 92.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -777,7 +777,7 @@
       ],
       "lat": 13.00811,
       "lng": 77.68251,
-      "akScore": 93.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -819,7 +819,7 @@
       ],
       "lat": 13.01851,
       "lng": 77.71211,
-      "akScore": 94.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -861,7 +861,7 @@
       ],
       "lat": 13.00121,
       "lng": 77.68741,
-      "akScore": 78.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -903,7 +903,7 @@
       ],
       "lat": 13.02311,
       "lng": 77.71181,
-      "akScore": 77.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -945,7 +945,7 @@
       ],
       "lat": 13.01021,
       "lng": 77.69851,
-      "akScore": 78.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -987,7 +987,7 @@
       ],
       "lat": 13.01451,
       "lng": 77.70121,
-      "akScore": 79.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1029,7 +1029,7 @@
       ],
       "lat": 12.94821,
       "lng": 77.73911,
-      "akScore": 80.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1071,7 +1071,7 @@
       ],
       "lat": 12.99491,
       "lng": 77.66911,
-      "akScore": 82.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1113,7 +1113,7 @@
       ],
       "lat": 13.05121,
       "lng": 77.74811,
-      "akScore": 83.6,
+      "akScore": 67,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1155,7 +1155,7 @@
       ],
       "lat": 13.05311,
       "lng": 77.74621,
-      "akScore": 84.6,
+      "akScore": 73.1,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1197,7 +1197,7 @@
       ],
       "lat": 13.05281,
       "lng": 77.74901,
-      "akScore": 85.6,
+      "akScore": 73.4,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1239,7 +1239,7 @@
       ],
       "lat": 13.05611,
       "lng": 77.75121,
-      "akScore": 86.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1281,7 +1281,7 @@
       ],
       "lat": 13.04731,
       "lng": 77.75138,
-      "akScore": 87.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1323,7 +1323,7 @@
       ],
       "lat": 13.0669,
       "lng": 77.7983,
-      "akScore": 89.3,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1365,7 +1365,7 @@
       ],
       "lat": 13.05221,
       "lng": 77.74551,
-      "akScore": 88.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1407,7 +1407,7 @@
       ],
       "lat": 13.05011,
       "lng": 77.74381,
-      "akScore": 89.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1449,7 +1449,7 @@
       ],
       "lat": 13.03211,
       "lng": 77.74911,
-      "akScore": 90.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1491,7 +1491,7 @@
       ],
       "lat": 13.05451,
       "lng": 77.74781,
-      "akScore": 91.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1533,7 +1533,7 @@
       ],
       "lat": 13.06521,
       "lng": 77.76151,
-      "akScore": 92.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1575,7 +1575,7 @@
       ],
       "lat": 13.05101,
       "lng": 77.74681,
-      "akScore": 93.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1617,7 +1617,7 @@
       ],
       "lat": 13.05251,
       "lng": 77.74821,
-      "akScore": 94.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1659,7 +1659,7 @@
       ],
       "lat": 12.98921,
       "lng": 77.75081,
-      "akScore": 76.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1701,7 +1701,7 @@
       ],
       "lat": 12.95482,
       "lng": 77.74751,
-      "akScore": 79.3,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1743,7 +1743,7 @@
       ],
       "lat": 12.95821,
       "lng": 77.74121,
-      "akScore": 80.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1785,7 +1785,7 @@
       ],
       "lat": 12.96981,
       "lng": 77.73158,
-      "akScore": 81.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1827,7 +1827,7 @@
       ],
       "lat": 12.97651,
       "lng": 77.73812,
-      "akScore": 82.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1869,7 +1869,7 @@
       ],
       "lat": 12.97111,
       "lng": 77.74251,
-      "akScore": 81.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1911,7 +1911,7 @@
       ],
       "lat": 12.96211,
       "lng": 77.76981,
-      "akScore": 82.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1953,7 +1953,7 @@
       ],
       "lat": 12.98771,
       "lng": 77.72041,
-      "akScore": 85.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -1995,7 +1995,7 @@
       ],
       "lat": 12.98851,
       "lng": 77.75218,
-      "akScore": 84.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2037,7 +2037,7 @@
       ],
       "lat": 12.98611,
       "lng": 77.75021,
-      "akScore": 85.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2079,7 +2079,7 @@
       ],
       "lat": 12.99121,
       "lng": 77.75411,
-      "akScore": 86.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2121,7 +2121,7 @@
       ],
       "lat": 12.952814,
       "lng": 77.742301,
-      "akScore": 89.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2163,7 +2163,7 @@
       ],
       "lat": 12.934412,
       "lng": 77.738315,
-      "akScore": 90.3,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2205,7 +2205,7 @@
       ],
       "lat": 12.934472,
       "lng": 77.743917,
-      "akScore": 90.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2247,7 +2247,7 @@
       ],
       "lat": 12.928812,
       "lng": 77.74512,
-      "akScore": 90.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2289,7 +2289,7 @@
       ],
       "lat": 12.94512,
       "lng": 77.74181,
-      "akScore": 91.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2331,7 +2331,7 @@
       ],
       "lat": 12.88521,
       "lng": 77.70312,
-      "akScore": 92.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2373,7 +2373,7 @@
       ],
       "lat": 12.941012,
       "lng": 77.74621,
-      "akScore": 93.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2415,7 +2415,7 @@
       ],
       "lat": 12.93921,
       "lng": 77.74758,
-      "akScore": 94.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2457,7 +2457,7 @@
       ],
       "lat": 12.92418,
       "lng": 77.73212,
-      "akScore": 76.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2499,7 +2499,7 @@
       ],
       "lat": 12.93912,
       "lng": 77.73771,
-      "akScore": 79.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2541,7 +2541,7 @@
       ],
       "lat": 12.93481,
       "lng": 77.71212,
-      "akScore": 80.3,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2583,7 +2583,7 @@
       ],
       "lat": 12.93081,
       "lng": 77.71921,
-      "akScore": 81.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2625,7 +2625,7 @@
       ],
       "lat": 12.92151,
       "lng": 77.73828,
-      "akScore": 80.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2667,7 +2667,7 @@
       ],
       "lat": 12.93518,
       "lng": 77.74281,
-      "akScore": 81.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2709,7 +2709,7 @@
       ],
       "lat": 12.94381,
       "lng": 77.74451,
-      "akScore": 82.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2751,7 +2751,7 @@
       ],
       "lat": 12.92481,
       "lng": 77.74121,
-      "akScore": 83.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2793,7 +2793,7 @@
       ],
       "lat": 12.91851,
       "lng": 77.72581,
-      "akScore": 84.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2835,7 +2835,7 @@
       ],
       "lat": 12.992764,
       "lng": 77.806045,
-      "akScore": 85.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2877,7 +2877,7 @@
       ],
       "lat": 13.258202,
       "lng": 77.708745,
-      "akScore": 87.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2919,7 +2919,7 @@
       ],
       "lat": 13.2662,
       "lng": 77.6325,
-      "akScore": 88.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -2961,7 +2961,7 @@
       ],
       "lat": 13.20845,
       "lng": 77.7695,
-      "akScore": 90.3,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3003,7 +3003,7 @@
       ],
       "lat": 13.2389,
       "lng": 77.6975,
-      "akScore": 90,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3045,7 +3045,7 @@
       ],
       "lat": 13.2678,
       "lng": 77.6441,
-      "akScore": 91.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3087,7 +3087,7 @@
       ],
       "lat": 13.2872,
       "lng": 77.7095,
-      "akScore": 92,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3129,7 +3129,7 @@
       ],
       "lat": 13.3371,
       "lng": 77.5312,
-      "akScore": 94.3,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3171,7 +3171,7 @@
       ],
       "lat": 13.39461,
       "lng": 77.486723,
-      "akScore": 94.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3213,7 +3213,7 @@
       ],
       "lat": 13.1952,
       "lng": 77.6421,
-      "akScore": 94.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3255,7 +3255,7 @@
       ],
       "lat": 13.2925,
       "lng": 77.5398,
-      "akScore": 77.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3297,7 +3297,7 @@
       ],
       "lat": 13.226434,
       "lng": 77.574941,
-      "akScore": 77.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3339,7 +3339,7 @@
       ],
       "lat": 13.2425,
       "lng": 77.7885,
-      "akScore": 79.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3381,7 +3381,7 @@
       ],
       "lat": 13.235005,
       "lng": 77.585,
-      "akScore": 79.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3423,7 +3423,7 @@
       ],
       "lat": 13.2038,
       "lng": 77.6285,
-      "akScore": 80.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3465,7 +3465,7 @@
       ],
       "lat": 13.2641,
       "lng": 77.6358,
-      "akScore": 82,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3507,7 +3507,7 @@
       ],
       "lat": 13.2985,
       "lng": 77.7182,
-      "akScore": 82.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3549,7 +3549,7 @@
       ],
       "lat": 13.2185,
       "lng": 77.5612,
-      "akScore": 84,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3591,7 +3591,7 @@
       ],
       "lat": 12.98484,
       "lng": 77.78384,
-      "akScore": 84.6,
+      "akScore": null,
       "recommended": true,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3633,7 +3633,7 @@
       ],
       "lat": 13.2285,
       "lng": 77.6015,
-      "akScore": 87.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3675,7 +3675,7 @@
       ],
       "lat": 13.2725,
       "lng": 77.5345,
-      "akScore": 87,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3717,7 +3717,7 @@
       ],
       "lat": 13.1945,
       "lng": 77.561,
-      "akScore": 88,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3759,7 +3759,7 @@
       ],
       "lat": 13.1895,
       "lng": 77.5645,
-      "akScore": 89.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3801,7 +3801,7 @@
       ],
       "lat": 13.211,
       "lng": 77.6315,
-      "akScore": 89.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3843,7 +3843,7 @@
       ],
       "lat": 13.2015,
       "lng": 77.625,
-      "akScore": 90.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3885,7 +3885,7 @@
       ],
       "lat": 13.1615,
       "lng": 77.6845,
-      "akScore": 93.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3927,7 +3927,7 @@
       ],
       "lat": 13.1825,
       "lng": 77.632,
-      "akScore": 93.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -3969,7 +3969,7 @@
       ],
       "lat": 13.2512,
       "lng": 77.7085,
-      "akScore": 94.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4011,7 +4011,7 @@
       ],
       "lat": 13.2425,
       "lng": 77.709,
-      "akScore": 95.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4053,7 +4053,7 @@
       ],
       "lat": 13.2195,
       "lng": 77.656,
-      "akScore": 76.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4095,7 +4095,7 @@
       ],
       "lat": 13.218,
       "lng": 77.638,
-      "akScore": 77.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4137,7 +4137,7 @@
       ],
       "lat": 13.0725,
       "lng": 77.748,
-      "akScore": 80.3,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4179,7 +4179,7 @@
       ],
       "lat": 13.0785,
       "lng": 77.6255,
-      "akScore": 79.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4221,7 +4221,7 @@
       ],
       "lat": 13.098,
       "lng": 77.604,
-      "akScore": 81.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4263,7 +4263,7 @@
       ],
       "lat": 13.2595,
       "lng": 77.618,
-      "akScore": 82.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
@@ -4305,7 +4305,7 @@
       ],
       "lat": 13.276,
       "lng": 77.558,
-      "akScore": 82.6,
+      "akScore": null,
       "recommended": false,
       "pitchText": "",
       "source": "GoogleSheet_SSOT"
