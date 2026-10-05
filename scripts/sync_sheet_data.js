@@ -166,10 +166,11 @@ const normalizedAreaPricing = rawAreaPricing.map((ap, idx) => {
 const fullPayload = {
   metadata: {
     source: 'Google Sheet Single Source of Truth',
-    datasetVersion: 'v2.0.0',
-    sheetUrl: 'https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=1841720749',
+    datasetVersion: 'v2.1.0',
+    activeTab: 'Project Unit Pricing',
+    sheetUrl: 'https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=456687578',
     syncedAt: new Date().toISOString(),
-    displayDate: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
+    displayDate: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase() + ' (SHEET TAB: PROJECT UNIT PRICING)',
     recordCounts: {
       projects: normalizedProjects.length,
       techParks: normalizedTechParks.length,

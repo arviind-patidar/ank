@@ -1,10 +1,11 @@
 {
   "metadata": {
     "source": "Google Sheet Single Source of Truth",
-    "datasetVersion": "v2.0.0",
-    "sheetUrl": "https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=1841720749",
-    "syncedAt": "2026-10-05T08:37:43.585Z",
-    "displayDate": "05 OCT 2026",
+    "datasetVersion": "v2.1.0",
+    "activeTab": "Project Unit Pricing",
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=456687578",
+    "syncedAt": "2026-10-05T10:08:28.149Z",
+    "displayDate": "05 OCT 2026 (SHEET TAB: PROJECT UNIT PRICING)",
     "recordCounts": {
       "projects": 102,
       "techParks": 244,
@@ -34,14 +35,9 @@
       "status": "Under construction",
       "priceRange": "₹1.95Cr – 4.54Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.95466944,
-      "lng": 77.747175,
-      "akScore": 78.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 195,
       "maxPriceLakhs": 454,
+      "avgPricePerSqft": 22778,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -65,7 +61,12 @@
           "allInclusivePriceStr": "₹4.55 Cr"
         }
       ],
-      "avgPricePerSqft": 22778
+      "lat": 12.95466944,
+      "lng": 77.747175,
+      "akScore": 78.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P02",
@@ -76,14 +77,9 @@
       "status": "Under construction",
       "priceRange": "₹2.39Cr – 5.57Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.95561,
-      "lng": 77.72381,
-      "akScore": 78,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
       "maxPriceLakhs": 557,
+      "avgPricePerSqft": 21144,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -107,7 +103,12 @@
           "allInclusivePriceStr": "₹5.57 Cr"
         }
       ],
-      "avgPricePerSqft": 21144
+      "lat": 12.95561,
+      "lng": 77.72381,
+      "akScore": 78,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P03",
@@ -118,14 +119,9 @@
       "status": "Under construction",
       "priceRange": "₹2.39Cr – 5.57Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.96191,
-      "lng": 77.72911,
-      "akScore": 79,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
       "maxPriceLakhs": 557,
+      "avgPricePerSqft": 21144,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -149,7 +145,12 @@
           "allInclusivePriceStr": "₹5.57 Cr"
         }
       ],
-      "avgPricePerSqft": 21144
+      "lat": 12.96191,
+      "lng": 77.72911,
+      "akScore": 79,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P04",
@@ -160,14 +161,9 @@
       "status": "Under construction",
       "priceRange": "₹2.39Cr – 5.57Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.96651,
-      "lng": 77.74358,
-      "akScore": 80,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
       "maxPriceLakhs": 557,
+      "avgPricePerSqft": 21144,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -191,7 +187,12 @@
           "allInclusivePriceStr": "₹5.57 Cr"
         }
       ],
-      "avgPricePerSqft": 21144
+      "lat": 12.96651,
+      "lng": 77.74358,
+      "akScore": 80,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P05",
@@ -202,14 +203,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.97801,
-      "lng": 77.73789,
-      "akScore": 80.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -233,7 +229,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.97801,
+      "lng": 77.73789,
+      "akScore": 80.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P06",
@@ -244,14 +245,9 @@
       "status": "Under construction",
       "priceRange": "₹2.39Cr – 5.57Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98581,
-      "lng": 77.74891,
-      "akScore": 82,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
       "maxPriceLakhs": 557,
+      "avgPricePerSqft": 21144,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -275,7 +271,12 @@
           "allInclusivePriceStr": "₹5.57 Cr"
         }
       ],
-      "avgPricePerSqft": 21144
+      "lat": 12.98581,
+      "lng": 77.74891,
+      "akScore": 82,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P07",
@@ -286,14 +287,9 @@
       "status": "Under construction",
       "priceRange": "₹2.39Cr – 5.57Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98731,
-      "lng": 77.75312,
-      "akScore": 83,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
       "maxPriceLakhs": 557,
+      "avgPricePerSqft": 21144,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -317,7 +313,12 @@
           "allInclusivePriceStr": "₹5.57 Cr"
         }
       ],
-      "avgPricePerSqft": 21144
+      "lat": 12.98731,
+      "lng": 77.75312,
+      "akScore": 83,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P08",
@@ -328,14 +329,9 @@
       "status": "Under construction",
       "priceRange": "₹2.39Cr – 5.57Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 13.03061,
-      "lng": 77.75221,
-      "akScore": 84,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 239,
       "maxPriceLakhs": 557,
+      "avgPricePerSqft": 21144,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -359,7 +355,12 @@
           "allInclusivePriceStr": "₹5.57 Cr"
         }
       ],
-      "avgPricePerSqft": 21144
+      "lat": 13.03061,
+      "lng": 77.75221,
+      "akScore": 84,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P09",
@@ -370,14 +371,9 @@
       "status": "Under construction",
       "priceRange": "₹1.29Cr – 2.90Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.04961,
-      "lng": 77.74758,
-      "akScore": 85.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
       "maxPriceLakhs": 290,
+      "avgPricePerSqft": 14770,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -401,7 +397,12 @@
           "allInclusivePriceStr": "₹2.91 Cr"
         }
       ],
-      "avgPricePerSqft": 14770
+      "lat": 13.04961,
+      "lng": 77.74758,
+      "akScore": 85.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P10",
@@ -412,14 +413,9 @@
       "status": "Under construction",
       "priceRange": "₹1.33Cr – 3.45Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.00311,
-      "lng": 77.68541,
-      "akScore": 86.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 133,
       "maxPriceLakhs": 345,
+      "avgPricePerSqft": 12527,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -443,7 +439,12 @@
           "allInclusivePriceStr": "₹3.45 Cr"
         }
       ],
-      "avgPricePerSqft": 12527
+      "lat": 13.00311,
+      "lng": 77.68541,
+      "akScore": 86.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P11",
@@ -454,14 +455,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.91Cr – 3.88Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 12.99061,
-      "lng": 77.69781,
-      "akScore": 87.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 191,
       "maxPriceLakhs": 388,
+      "avgPricePerSqft": 20615,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -485,7 +481,12 @@
           "allInclusivePriceStr": "₹3.89 Cr"
         }
       ],
-      "avgPricePerSqft": 20615
+      "lat": 12.99061,
+      "lng": 77.69781,
+      "akScore": 87.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P12",
@@ -496,14 +497,9 @@
       "status": "Under construction",
       "priceRange": "₹2.68Cr – 6.23Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 13.01171,
-      "lng": 77.74591,
-      "akScore": 88.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 268,
       "maxPriceLakhs": 623,
+      "avgPricePerSqft": 23697,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -527,7 +523,12 @@
           "allInclusivePriceStr": "₹6.24 Cr"
         }
       ],
-      "avgPricePerSqft": 23697
+      "lat": 13.01171,
+      "lng": 77.74591,
+      "akScore": 88.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P13",
@@ -538,14 +539,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.54Cr – 4.07Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.99281,
-      "lng": 77.69121,
-      "akScore": 89.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 154,
       "maxPriceLakhs": 407,
+      "avgPricePerSqft": 14690,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -569,7 +565,12 @@
           "allInclusivePriceStr": "₹4.08 Cr"
         }
       ],
-      "avgPricePerSqft": 14690
+      "lat": 12.99281,
+      "lng": 77.69121,
+      "akScore": 89.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P14",
@@ -580,14 +581,9 @@
       "status": "Under construction",
       "priceRange": "₹1.37Cr – 3.24Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.99421,
-      "lng": 77.76101,
-      "akScore": 91.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 137,
       "maxPriceLakhs": 324,
+      "avgPricePerSqft": 16163,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -611,7 +607,12 @@
           "allInclusivePriceStr": "₹3.25 Cr"
         }
       ],
-      "avgPricePerSqft": 16163
+      "lat": 12.99421,
+      "lng": 77.76101,
+      "akScore": 91.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P15",
@@ -622,14 +623,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.22Cr – 2.90Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.00891,
-      "lng": 77.68921,
-      "akScore": 91.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 122,
       "maxPriceLakhs": 290,
+      "avgPricePerSqft": 14411,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -653,7 +649,12 @@
           "allInclusivePriceStr": "₹2.90 Cr"
         }
       ],
-      "avgPricePerSqft": 14411
+      "lat": 13.00891,
+      "lng": 77.68921,
+      "akScore": 91.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P16",
@@ -664,14 +665,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.33Cr – 3.45Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.00951,
-      "lng": 77.68981,
-      "akScore": 92.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 133,
       "maxPriceLakhs": 345,
+      "avgPricePerSqft": 12527,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -695,7 +691,12 @@
           "allInclusivePriceStr": "₹3.45 Cr"
         }
       ],
-      "avgPricePerSqft": 12527
+      "lat": 13.00951,
+      "lng": 77.68981,
+      "akScore": 92.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P17",
@@ -706,14 +707,9 @@
       "status": "Under construction",
       "priceRange": "₹1.16Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.02011,
-      "lng": 77.76151,
-      "akScore": 92.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 116,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 13889,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -737,7 +733,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 13889
+      "lat": 13.02011,
+      "lng": 77.76151,
+      "akScore": 92.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P18",
@@ -748,14 +749,9 @@
       "status": "Under construction",
       "priceRange": "₹1.01Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.00811,
-      "lng": 77.68251,
-      "akScore": 93.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 101,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 11898,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -779,7 +775,12 @@
           "allInclusivePriceStr": "₹2.39 Cr"
         }
       ],
-      "avgPricePerSqft": 11898
+      "lat": 13.00811,
+      "lng": 77.68251,
+      "akScore": 93.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P19",
@@ -790,14 +791,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.09Cr – 2.83Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.01851,
-      "lng": 77.71211,
-      "akScore": 94.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 109,
       "maxPriceLakhs": 283,
+      "avgPricePerSqft": 10272,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -821,7 +817,12 @@
           "allInclusivePriceStr": "₹2.83 Cr"
         }
       ],
-      "avgPricePerSqft": 10272
+      "lat": 13.01851,
+      "lng": 77.71211,
+      "akScore": 94.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P20",
@@ -832,14 +833,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.37Cr – 3.24Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.00121,
-      "lng": 77.68741,
-      "akScore": 78.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 137,
       "maxPriceLakhs": 324,
+      "avgPricePerSqft": 16163,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -863,7 +859,12 @@
           "allInclusivePriceStr": "₹3.25 Cr"
         }
       ],
-      "avgPricePerSqft": 16163
+      "lat": 13.00121,
+      "lng": 77.68741,
+      "akScore": 78.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P21",
@@ -874,14 +875,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.35Cr – 2.70Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.02311,
-      "lng": 77.71181,
-      "akScore": 77.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 135,
       "maxPriceLakhs": 270,
+      "avgPricePerSqft": 14453,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -905,7 +901,12 @@
           "allInclusivePriceStr": "₹2.71 Cr"
         }
       ],
-      "avgPricePerSqft": 14453
+      "lat": 13.02311,
+      "lng": 77.71181,
+      "akScore": 77.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P22",
@@ -916,14 +917,9 @@
       "status": "Under construction",
       "priceRange": "₹1.09Cr – 2.83Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.01021,
-      "lng": 77.69851,
-      "akScore": 78.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 109,
       "maxPriceLakhs": 283,
+      "avgPricePerSqft": 10272,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -947,7 +943,12 @@
           "allInclusivePriceStr": "₹2.83 Cr"
         }
       ],
-      "avgPricePerSqft": 10272
+      "lat": 13.01021,
+      "lng": 77.69851,
+      "akScore": 78.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P23",
@@ -958,14 +959,9 @@
       "status": "Under construction",
       "priceRange": "₹1.01Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.01451,
-      "lng": 77.70121,
-      "akScore": 79.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 101,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 11898,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -989,7 +985,12 @@
           "allInclusivePriceStr": "₹2.39 Cr"
         }
       ],
-      "avgPricePerSqft": 11898
+      "lat": 13.01451,
+      "lng": 77.70121,
+      "akScore": 79.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P24",
@@ -1000,14 +1001,9 @@
       "status": "Under construction",
       "priceRange": "₹1.01Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.94821,
-      "lng": 77.73911,
-      "akScore": 80.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 101,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 11898,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1031,7 +1027,12 @@
           "allInclusivePriceStr": "₹2.39 Cr"
         }
       ],
-      "avgPricePerSqft": 11898
+      "lat": 12.94821,
+      "lng": 77.73911,
+      "akScore": 80.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P25",
@@ -1042,14 +1043,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.33Cr – 3.45Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.99491,
-      "lng": 77.66911,
-      "akScore": 82.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 133,
       "maxPriceLakhs": 345,
+      "avgPricePerSqft": 12527,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1073,7 +1069,12 @@
           "allInclusivePriceStr": "₹3.45 Cr"
         }
       ],
-      "avgPricePerSqft": 12527
+      "lat": 12.99491,
+      "lng": 77.66911,
+      "akScore": 82.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P26",
@@ -1084,14 +1085,9 @@
       "status": "Under construction",
       "priceRange": "₹1.74Cr – 3.29Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.05121,
-      "lng": 77.74811,
-      "akScore": 83.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 174,
       "maxPriceLakhs": 329,
+      "avgPricePerSqft": 18051,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1115,7 +1111,12 @@
           "allInclusivePriceStr": "₹3.30 Cr"
         }
       ],
-      "avgPricePerSqft": 18051
+      "lat": 13.05121,
+      "lng": 77.74811,
+      "akScore": 83.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P27",
@@ -1126,14 +1127,9 @@
       "status": "Under construction",
       "priceRange": "₹1.29Cr – 2.90Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.05311,
-      "lng": 77.74621,
-      "akScore": 84.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
       "maxPriceLakhs": 290,
+      "avgPricePerSqft": 14770,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1157,7 +1153,12 @@
           "allInclusivePriceStr": "₹2.91 Cr"
         }
       ],
-      "avgPricePerSqft": 14770
+      "lat": 13.05311,
+      "lng": 77.74621,
+      "akScore": 84.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P28",
@@ -1168,14 +1169,9 @@
       "status": "Under construction",
       "priceRange": "₹1.40Cr – 3.45Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.05281,
-      "lng": 77.74901,
-      "akScore": 85.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 140,
       "maxPriceLakhs": 345,
+      "avgPricePerSqft": 12814,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1199,7 +1195,12 @@
           "allInclusivePriceStr": "₹3.46 Cr"
         }
       ],
-      "avgPricePerSqft": 12814
+      "lat": 13.05281,
+      "lng": 77.74901,
+      "akScore": 85.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P29",
@@ -1210,14 +1211,9 @@
       "status": "Under construction",
       "priceRange": "₹1.29Cr – 2.90Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.05611,
-      "lng": 77.75121,
-      "akScore": 86.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
       "maxPriceLakhs": 290,
+      "avgPricePerSqft": 14770,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1241,7 +1237,12 @@
           "allInclusivePriceStr": "₹2.91 Cr"
         }
       ],
-      "avgPricePerSqft": 14770
+      "lat": 13.05611,
+      "lng": 77.75121,
+      "akScore": 86.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P30",
@@ -1252,14 +1253,9 @@
       "status": "Under construction",
       "priceRange": "₹1.29Cr – 2.90Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.04731,
-      "lng": 77.75138,
-      "akScore": 87.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 129,
       "maxPriceLakhs": 290,
+      "avgPricePerSqft": 14770,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1283,7 +1279,12 @@
           "allInclusivePriceStr": "₹2.91 Cr"
         }
       ],
-      "avgPricePerSqft": 14770
+      "lat": 13.04731,
+      "lng": 77.75138,
+      "akScore": 87.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P31",
@@ -1294,14 +1295,9 @@
       "status": "Under construction",
       "priceRange": "₹1.56Cr – 3.85Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.0669,
-      "lng": 77.7983,
-      "akScore": 89.3,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 156,
       "maxPriceLakhs": 385,
+      "avgPricePerSqft": 14288,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1325,7 +1321,12 @@
           "allInclusivePriceStr": "₹3.86 Cr"
         }
       ],
-      "avgPricePerSqft": 14288
+      "lat": 13.0669,
+      "lng": 77.7983,
+      "akScore": 89.3,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P32",
@@ -1336,14 +1337,9 @@
       "status": "Under construction",
       "priceRange": "₹1.06Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.05221,
-      "lng": 77.74551,
-      "akScore": 88.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 12103,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1367,7 +1363,12 @@
           "allInclusivePriceStr": "₹2.38 Cr"
         }
       ],
-      "avgPricePerSqft": 12103
+      "lat": 13.05221,
+      "lng": 77.74551,
+      "akScore": 88.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P33",
@@ -1378,14 +1379,9 @@
       "status": "Under construction",
       "priceRange": "₹1.06Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.05011,
-      "lng": 77.74381,
-      "akScore": 89.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 12103,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1409,7 +1405,12 @@
           "allInclusivePriceStr": "₹2.38 Cr"
         }
       ],
-      "avgPricePerSqft": 12103
+      "lat": 13.05011,
+      "lng": 77.74381,
+      "akScore": 89.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P34",
@@ -1420,14 +1421,9 @@
       "status": "Under construction",
       "priceRange": "₹1.15Cr – 2.83Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.03211,
-      "lng": 77.74911,
-      "akScore": 90.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 115,
       "maxPriceLakhs": 283,
+      "avgPricePerSqft": 10499,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1451,7 +1447,12 @@
           "allInclusivePriceStr": "₹2.83 Cr"
         }
       ],
-      "avgPricePerSqft": 10499
+      "lat": 13.03211,
+      "lng": 77.74911,
+      "akScore": 90.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P35",
@@ -1462,14 +1463,9 @@
       "status": "Under construction",
       "priceRange": "₹1.06Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.05451,
-      "lng": 77.74781,
-      "akScore": 91.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 12103,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1493,7 +1489,12 @@
           "allInclusivePriceStr": "₹2.38 Cr"
         }
       ],
-      "avgPricePerSqft": 12103
+      "lat": 13.05451,
+      "lng": 77.74781,
+      "akScore": 91.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P36",
@@ -1504,14 +1505,9 @@
       "status": "Under construction",
       "priceRange": "₹1.43Cr – 2.70Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.06521,
-      "lng": 77.76151,
-      "akScore": 92.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 143,
       "maxPriceLakhs": 270,
+      "avgPricePerSqft": 14829,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1535,7 +1531,12 @@
           "allInclusivePriceStr": "₹2.71 Cr"
         }
       ],
-      "avgPricePerSqft": 14829
+      "lat": 13.06521,
+      "lng": 77.76151,
+      "akScore": 92.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P37",
@@ -1546,14 +1547,9 @@
       "status": "Under construction",
       "priceRange": "₹1.15Cr – 2.83Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.05101,
-      "lng": 77.74681,
-      "akScore": 93.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 115,
       "maxPriceLakhs": 283,
+      "avgPricePerSqft": 10499,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1577,7 +1573,12 @@
           "allInclusivePriceStr": "₹2.83 Cr"
         }
       ],
-      "avgPricePerSqft": 10499
+      "lat": 13.05101,
+      "lng": 77.74681,
+      "akScore": 93.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P38",
@@ -1588,14 +1589,9 @@
       "status": "Under construction",
       "priceRange": "₹1.06Cr – 2.38Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.05251,
-      "lng": 77.74821,
-      "akScore": 94.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
       "maxPriceLakhs": 238,
+      "avgPricePerSqft": 12103,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -1619,7 +1615,12 @@
           "allInclusivePriceStr": "₹2.38 Cr"
         }
       ],
-      "avgPricePerSqft": 12103
+      "lat": 13.05251,
+      "lng": 77.74821,
+      "akScore": 94.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P39",
@@ -1630,14 +1631,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98921,
-      "lng": 77.75081,
-      "akScore": 76.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1661,7 +1657,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.98921,
+      "lng": 77.75081,
+      "akScore": 76.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P40",
@@ -1672,14 +1673,9 @@
       "status": "Under construction",
       "priceRange": "₹1.95Cr – 4.54Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.95482,
-      "lng": 77.74751,
-      "akScore": 79.3,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 195,
       "maxPriceLakhs": 454,
+      "avgPricePerSqft": 17263,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1703,7 +1699,12 @@
           "allInclusivePriceStr": "₹4.55 Cr"
         }
       ],
-      "avgPricePerSqft": 17263
+      "lat": 12.95482,
+      "lng": 77.74751,
+      "akScore": 79.3,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P41",
@@ -1714,14 +1715,9 @@
       "status": "Under construction",
       "priceRange": "₹2.99Cr – 6.96Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.95821,
-      "lng": 77.74121,
-      "akScore": 80.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
       "maxPriceLakhs": 696,
+      "avgPricePerSqft": 26456,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1745,7 +1741,12 @@
           "allInclusivePriceStr": "₹6.97 Cr"
         }
       ],
-      "avgPricePerSqft": 26456
+      "lat": 12.95821,
+      "lng": 77.74121,
+      "akScore": 80.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P42",
@@ -1756,14 +1757,9 @@
       "status": "Under construction",
       "priceRange": "₹2.99Cr – 6.96Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.96981,
-      "lng": 77.73158,
-      "akScore": 81.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
       "maxPriceLakhs": 696,
+      "avgPricePerSqft": 26456,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1787,7 +1783,12 @@
           "allInclusivePriceStr": "₹6.97 Cr"
         }
       ],
-      "avgPricePerSqft": 26456
+      "lat": 12.96981,
+      "lng": 77.73158,
+      "akScore": 81.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P43",
@@ -1798,14 +1799,9 @@
       "status": "Under construction",
       "priceRange": "₹2.99Cr – 6.96Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.97651,
-      "lng": 77.73812,
-      "akScore": 82.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
       "maxPriceLakhs": 696,
+      "avgPricePerSqft": 26456,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1829,7 +1825,12 @@
           "allInclusivePriceStr": "₹6.97 Cr"
         }
       ],
-      "avgPricePerSqft": 26456
+      "lat": 12.97651,
+      "lng": 77.73812,
+      "akScore": 82.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P44",
@@ -1840,14 +1841,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.97111,
-      "lng": 77.74251,
-      "akScore": 81.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1871,7 +1867,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.97111,
+      "lng": 77.74251,
+      "akScore": 81.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P45",
@@ -1882,14 +1883,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.96211,
-      "lng": 77.76981,
-      "akScore": 82.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1913,7 +1909,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.96211,
+      "lng": 77.76981,
+      "akScore": 82.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P46",
@@ -1924,14 +1925,9 @@
       "status": "Under construction",
       "priceRange": "₹2.99Cr – 6.96Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98771,
-      "lng": 77.72041,
-      "akScore": 85.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 299,
       "maxPriceLakhs": 696,
+      "avgPricePerSqft": 26456,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1955,7 +1951,12 @@
           "allInclusivePriceStr": "₹6.97 Cr"
         }
       ],
-      "avgPricePerSqft": 26456
+      "lat": 12.98771,
+      "lng": 77.72041,
+      "akScore": 85.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P47",
@@ -1966,14 +1967,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98851,
-      "lng": 77.75218,
-      "akScore": 84.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -1997,7 +1993,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.98851,
+      "lng": 77.75218,
+      "akScore": 84.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P48",
@@ -2008,14 +2009,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98611,
-      "lng": 77.75021,
-      "akScore": 85.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2039,7 +2035,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.98611,
+      "lng": 77.75021,
+      "akScore": 85.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P49",
@@ -2050,14 +2051,9 @@
       "status": "Ready to move",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.99121,
-      "lng": 77.75411,
-      "akScore": 86.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2081,7 +2077,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.99121,
+      "lng": 77.75411,
+      "akScore": 86.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P50",
@@ -2092,14 +2093,9 @@
       "status": "Under construction",
       "priceRange": "₹1.80Cr – 3.82Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.952814,
-      "lng": 77.742301,
-      "akScore": 89.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 180,
       "maxPriceLakhs": 382,
+      "avgPricePerSqft": 19889,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2123,7 +2119,12 @@
           "allInclusivePriceStr": "₹3.82 Cr"
         }
       ],
-      "avgPricePerSqft": 19889
+      "lat": 12.952814,
+      "lng": 77.742301,
+      "akScore": 89.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P51",
@@ -2134,14 +2135,9 @@
       "status": "Under construction",
       "priceRange": "₹2.42Cr – 4.33Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 12.934412,
-      "lng": 77.738315,
-      "akScore": 90.3,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 242,
       "maxPriceLakhs": 433,
+      "avgPricePerSqft": 24359,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2165,7 +2161,12 @@
           "allInclusivePriceStr": "₹4.34 Cr"
         }
       ],
-      "avgPricePerSqft": 24359
+      "lat": 12.934412,
+      "lng": 77.738315,
+      "akScore": 90.3,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P52",
@@ -2176,14 +2177,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.75Cr – 4.07Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.934472,
-      "lng": 77.743917,
-      "akScore": 90.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 175,
       "maxPriceLakhs": 407,
+      "avgPricePerSqft": 15464,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2207,7 +2203,12 @@
           "allInclusivePriceStr": "₹4.07 Cr"
         }
       ],
-      "avgPricePerSqft": 15464
+      "lat": 12.934472,
+      "lng": 77.743917,
+      "akScore": 90.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P53",
@@ -2218,14 +2219,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.32Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.928812,
-      "lng": 77.74512,
-      "akScore": 90.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 14641,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2249,7 +2245,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 14641
+      "lat": 12.928812,
+      "lng": 77.74512,
+      "akScore": 90.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P54",
@@ -2260,14 +2261,9 @@
       "status": "Under construction",
       "priceRange": "₹1.32Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.94512,
-      "lng": 77.74181,
-      "akScore": 91.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 14641,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2291,7 +2287,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 14641
+      "lat": 12.94512,
+      "lng": 77.74181,
+      "akScore": 91.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P55",
@@ -2302,14 +2303,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.44Cr – 3.34Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.88521,
-      "lng": 77.70312,
-      "akScore": 92.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
       "maxPriceLakhs": 334,
+      "avgPricePerSqft": 12705,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2333,7 +2329,12 @@
           "allInclusivePriceStr": "₹3.34 Cr"
         }
       ],
-      "avgPricePerSqft": 12705
+      "lat": 12.88521,
+      "lng": 77.70312,
+      "akScore": 92.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P56",
@@ -2344,14 +2345,9 @@
       "status": "Under construction",
       "priceRange": "₹1.78Cr – 3.19Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 12.941012,
-      "lng": 77.74621,
-      "akScore": 93.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 178,
       "maxPriceLakhs": 319,
+      "avgPricePerSqft": 17940,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2375,7 +2371,12 @@
           "allInclusivePriceStr": "₹3.20 Cr"
         }
       ],
-      "avgPricePerSqft": 17940
+      "lat": 12.941012,
+      "lng": 77.74621,
+      "akScore": 93.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P57",
@@ -2386,14 +2387,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.32Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.93921,
-      "lng": 77.74758,
-      "akScore": 94.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 14641,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2417,7 +2413,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 14641
+      "lat": 12.93921,
+      "lng": 77.74758,
+      "akScore": 94.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P58",
@@ -2428,14 +2429,9 @@
       "status": "Under construction",
       "priceRange": "₹1.44Cr – 3.34Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.92418,
-      "lng": 77.73212,
-      "akScore": 76.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
       "maxPriceLakhs": 334,
+      "avgPricePerSqft": 12705,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2459,7 +2455,12 @@
           "allInclusivePriceStr": "₹3.34 Cr"
         }
       ],
-      "avgPricePerSqft": 12705
+      "lat": 12.92418,
+      "lng": 77.73212,
+      "akScore": 76.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P59",
@@ -2470,14 +2471,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.58Cr – 3.58Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.93912,
-      "lng": 77.73771,
-      "akScore": 79.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 158,
       "maxPriceLakhs": 358,
+      "avgPricePerSqft": 18137,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2501,7 +2497,12 @@
           "allInclusivePriceStr": "₹3.58 Cr"
         }
       ],
-      "avgPricePerSqft": 18137
+      "lat": 12.93912,
+      "lng": 77.73771,
+      "akScore": 79.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P60",
@@ -2512,14 +2513,9 @@
       "status": "Under construction",
       "priceRange": "₹1.58Cr – 3.58Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.93481,
-      "lng": 77.71212,
-      "akScore": 80.3,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 158,
       "maxPriceLakhs": 358,
+      "avgPricePerSqft": 18137,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2543,7 +2539,12 @@
           "allInclusivePriceStr": "₹3.58 Cr"
         }
       ],
-      "avgPricePerSqft": 18137
+      "lat": 12.93481,
+      "lng": 77.71212,
+      "akScore": 80.3,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P61",
@@ -2554,14 +2555,9 @@
       "status": "Under construction",
       "priceRange": "₹1.95Cr – 4.54Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.93081,
-      "lng": 77.71921,
-      "akScore": 81.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 195,
       "maxPriceLakhs": 454,
+      "avgPricePerSqft": 17263,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2585,7 +2581,12 @@
           "allInclusivePriceStr": "₹4.55 Cr"
         }
       ],
-      "avgPricePerSqft": 17263
+      "lat": 12.93081,
+      "lng": 77.71921,
+      "akScore": 81.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P62",
@@ -2596,14 +2597,9 @@
       "status": "Under construction",
       "priceRange": "₹1.32Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.92151,
-      "lng": 77.73828,
-      "akScore": 80.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 14641,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2627,7 +2623,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 14641
+      "lat": 12.92151,
+      "lng": 77.73828,
+      "akScore": 80.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P63",
@@ -2638,14 +2639,9 @@
       "status": "Under construction",
       "priceRange": "₹1.32Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.93518,
-      "lng": 77.74281,
-      "akScore": 81.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 14641,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2669,7 +2665,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 14641
+      "lat": 12.93518,
+      "lng": 77.74281,
+      "akScore": 81.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P64",
@@ -2680,14 +2681,9 @@
       "status": "Under construction",
       "priceRange": "₹1.44Cr – 3.34Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 12.94381,
-      "lng": 77.74451,
-      "akScore": 82.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
       "maxPriceLakhs": 334,
+      "avgPricePerSqft": 12705,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2711,7 +2707,12 @@
           "allInclusivePriceStr": "₹3.34 Cr"
         }
       ],
-      "avgPricePerSqft": 12705
+      "lat": 12.94381,
+      "lng": 77.74451,
+      "akScore": 82.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P65",
@@ -2722,14 +2723,9 @@
       "status": "Under construction",
       "priceRange": "₹1.32Cr – 2.81Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 12.92481,
-      "lng": 77.74121,
-      "akScore": 83.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 132,
       "maxPriceLakhs": 281,
+      "avgPricePerSqft": 14641,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2753,7 +2749,12 @@
           "allInclusivePriceStr": "₹2.82 Cr"
         }
       ],
-      "avgPricePerSqft": 14641
+      "lat": 12.92481,
+      "lng": 77.74121,
+      "akScore": 83.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P66",
@@ -2764,14 +2765,9 @@
       "status": "Under construction",
       "priceRange": "₹1.78Cr – 3.19Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 12.91851,
-      "lng": 77.72581,
-      "akScore": 84.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 178,
       "maxPriceLakhs": 319,
+      "avgPricePerSqft": 17940,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2795,7 +2791,12 @@
           "allInclusivePriceStr": "₹3.20 Cr"
         }
       ],
-      "avgPricePerSqft": 17940
+      "lat": 12.91851,
+      "lng": 77.72581,
+      "akScore": 84.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P67",
@@ -2806,14 +2807,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.992764,
-      "lng": 77.806045,
-      "akScore": 85.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2837,7 +2833,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.992764,
+      "lng": 77.806045,
+      "akScore": 85.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P68",
@@ -2848,14 +2849,9 @@
       "status": "Under construction",
       "priceRange": "₹97Lakhs – 2.59Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.258202,
-      "lng": 77.708745,
-      "akScore": 87.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
       "maxPriceLakhs": 259,
+      "avgPricePerSqft": 12308,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2879,7 +2875,12 @@
           "allInclusivePriceStr": "₹2.59 Cr"
         }
       ],
-      "avgPricePerSqft": 12308
+      "lat": 13.258202,
+      "lng": 77.708745,
+      "akScore": 87.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P69",
@@ -2890,14 +2891,9 @@
       "status": "Under construction",
       "priceRange": "₹97Lakhs – 2.59Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.2662,
-      "lng": 77.6325,
-      "akScore": 88.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
       "maxPriceLakhs": 259,
+      "avgPricePerSqft": 12308,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -2921,7 +2917,12 @@
           "allInclusivePriceStr": "₹2.59 Cr"
         }
       ],
-      "avgPricePerSqft": 12308
+      "lat": 13.2662,
+      "lng": 77.6325,
+      "akScore": 88.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P70",
@@ -2932,14 +2933,9 @@
       "status": "Under construction",
       "priceRange": "₹1.17Cr – 3.44Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.20845,
-      "lng": 77.7695,
-      "akScore": 90.3,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 117,
       "maxPriceLakhs": 344,
+      "avgPricePerSqft": 11921,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -2963,7 +2959,12 @@
           "allInclusivePriceStr": "₹3.45 Cr"
         }
       ],
-      "avgPricePerSqft": 11921
+      "lat": 13.20845,
+      "lng": 77.7695,
+      "akScore": 90.3,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P71",
@@ -2974,14 +2975,9 @@
       "status": "Under construction",
       "priceRange": "₹1.16Cr – 2.63Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.2389,
-      "lng": 77.6975,
-      "akScore": 90,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 116,
       "maxPriceLakhs": 263,
+      "avgPricePerSqft": 13351,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3005,7 +3001,12 @@
           "allInclusivePriceStr": "₹2.64 Cr"
         }
       ],
-      "avgPricePerSqft": 13351
+      "lat": 13.2389,
+      "lng": 77.6975,
+      "akScore": 90,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P72",
@@ -3016,14 +3017,9 @@
       "status": "Ready to move",
       "priceRange": "₹97Lakhs – 2.59Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.2678,
-      "lng": 77.6441,
-      "akScore": 91.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
       "maxPriceLakhs": 259,
+      "avgPricePerSqft": 12308,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3047,7 +3043,12 @@
           "allInclusivePriceStr": "₹2.59 Cr"
         }
       ],
-      "avgPricePerSqft": 12308
+      "lat": 13.2678,
+      "lng": 77.6441,
+      "akScore": 91.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P73",
@@ -3058,14 +3059,9 @@
       "status": "Under construction",
       "priceRange": "₹94Lakhs – 2.75Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.2872,
-      "lng": 77.7095,
-      "akScore": 92,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 94,
       "maxPriceLakhs": 275,
+      "avgPricePerSqft": 9552,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3089,7 +3085,12 @@
           "allInclusivePriceStr": "₹2.76 Cr"
         }
       ],
-      "avgPricePerSqft": 9552
+      "lat": 13.2872,
+      "lng": 77.7095,
+      "akScore": 92,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P74",
@@ -3100,14 +3101,9 @@
       "status": "Under construction",
       "priceRange": "₹1.15Cr – 2.82Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.3371,
-      "lng": 77.5312,
-      "akScore": 94.3,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 115,
       "maxPriceLakhs": 282,
+      "avgPricePerSqft": 13872,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3131,7 +3127,12 @@
           "allInclusivePriceStr": "₹2.83 Cr"
         }
       ],
-      "avgPricePerSqft": 13872
+      "lat": 13.3371,
+      "lng": 77.5312,
+      "akScore": 94.3,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P75",
@@ -3142,14 +3143,9 @@
       "status": "Under construction",
       "priceRange": "₹1.03Cr – 2.53Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.39461,
-      "lng": 77.486723,
-      "akScore": 94.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 103,
       "maxPriceLakhs": 253,
+      "avgPricePerSqft": 12411,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3173,7 +3169,12 @@
           "allInclusivePriceStr": "₹2.53 Cr"
         }
       ],
-      "avgPricePerSqft": 12411
+      "lat": 13.39461,
+      "lng": 77.486723,
+      "akScore": 94.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P76",
@@ -3184,14 +3185,9 @@
       "status": "Ready to move",
       "priceRange": "₹92Lakhs – 2.63Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.1952,
-      "lng": 77.6421,
-      "akScore": 94.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 92,
       "maxPriceLakhs": 263,
+      "avgPricePerSqft": 9216,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3215,7 +3211,12 @@
           "allInclusivePriceStr": "₹2.64 Cr"
         }
       ],
-      "avgPricePerSqft": 9216
+      "lat": 13.1952,
+      "lng": 77.6421,
+      "akScore": 94.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P77",
@@ -3226,14 +3227,9 @@
       "status": "Under construction",
       "priceRange": "₹1.03Cr – 2.53Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.2925,
-      "lng": 77.5398,
-      "akScore": 77.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 103,
       "maxPriceLakhs": 253,
+      "avgPricePerSqft": 12411,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3257,7 +3253,12 @@
           "allInclusivePriceStr": "₹2.53 Cr"
         }
       ],
-      "avgPricePerSqft": 12411
+      "lat": 13.2925,
+      "lng": 77.5398,
+      "akScore": 77.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P79",
@@ -3268,14 +3269,9 @@
       "status": "Under construction",
       "priceRange": "₹79Lakhs – 2.13Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.226434,
-      "lng": 77.574941,
-      "akScore": 77.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
       "maxPriceLakhs": 213,
+      "avgPricePerSqft": 10086,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3299,7 +3295,12 @@
           "allInclusivePriceStr": "₹2.13 Cr"
         }
       ],
-      "avgPricePerSqft": 10086
+      "lat": 13.226434,
+      "lng": 77.574941,
+      "akScore": 77.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P80",
@@ -3310,14 +3311,9 @@
       "status": "Under construction",
       "priceRange": "₹1.05Cr – 3.08Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.2425,
-      "lng": 77.7885,
-      "akScore": 79.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 105,
       "maxPriceLakhs": 308,
+      "avgPricePerSqft": 10685,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3341,7 +3337,12 @@
           "allInclusivePriceStr": "₹3.09 Cr"
         }
       ],
-      "avgPricePerSqft": 10685
+      "lat": 13.2425,
+      "lng": 77.7885,
+      "akScore": 79.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P81",
@@ -3352,14 +3353,9 @@
       "status": "Ready to move",
       "priceRange": "₹79Lakhs – 2.13Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.235005,
-      "lng": 77.585,
-      "akScore": 79.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
       "maxPriceLakhs": 213,
+      "avgPricePerSqft": 10086,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3383,7 +3379,12 @@
           "allInclusivePriceStr": "₹2.13 Cr"
         }
       ],
-      "avgPricePerSqft": 10086
+      "lat": 13.235005,
+      "lng": 77.585,
+      "akScore": 79.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P82",
@@ -3394,14 +3395,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.07Cr – 2.42Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.2038,
-      "lng": 77.6285,
-      "akScore": 80.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 107,
       "maxPriceLakhs": 242,
+      "avgPricePerSqft": 12299,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3425,7 +3421,12 @@
           "allInclusivePriceStr": "₹2.43 Cr"
         }
       ],
-      "avgPricePerSqft": 12299
+      "lat": 13.2038,
+      "lng": 77.6285,
+      "akScore": 80.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P83",
@@ -3436,14 +3437,9 @@
       "status": "Ready to move",
       "priceRange": "₹94Lakhs – 2.75Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.2641,
-      "lng": 77.6358,
-      "akScore": 82,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 94,
       "maxPriceLakhs": 275,
+      "avgPricePerSqft": 9552,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3467,7 +3463,12 @@
           "allInclusivePriceStr": "₹2.76 Cr"
         }
       ],
-      "avgPricePerSqft": 9552
+      "lat": 13.2641,
+      "lng": 77.6358,
+      "akScore": 82,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P84",
@@ -3478,14 +3479,9 @@
       "status": "Under construction",
       "priceRange": "₹79Lakhs – 2.13Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.2985,
-      "lng": 77.7182,
-      "akScore": 82.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
       "maxPriceLakhs": 213,
+      "avgPricePerSqft": 10086,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3509,7 +3505,12 @@
           "allInclusivePriceStr": "₹2.13 Cr"
         }
       ],
-      "avgPricePerSqft": 10086
+      "lat": 13.2985,
+      "lng": 77.7182,
+      "akScore": 82.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P85",
@@ -3520,14 +3521,9 @@
       "status": "Under construction",
       "priceRange": "₹92Lakhs – 2.26Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.2185,
-      "lng": 77.5612,
-      "akScore": 84,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 92,
       "maxPriceLakhs": 226,
+      "avgPricePerSqft": 11086,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3551,7 +3547,12 @@
           "allInclusivePriceStr": "₹2.26 Cr"
         }
       ],
-      "avgPricePerSqft": 11086
+      "lat": 13.2185,
+      "lng": 77.5612,
+      "akScore": 84,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P86",
@@ -3562,14 +3563,9 @@
       "status": "Under construction",
       "priceRange": "₹2.20Cr – 5.12Cr",
       "bhk": "3 & 4 BHK Luxury",
-      "lat": 12.98484,
-      "lng": 77.78384,
-      "akScore": 84.6,
-      "recommended": true,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 220,
       "maxPriceLakhs": 512,
+      "avgPricePerSqft": 19447,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3593,7 +3589,12 @@
           "allInclusivePriceStr": "₹5.12 Cr"
         }
       ],
-      "avgPricePerSqft": 19447
+      "lat": 12.98484,
+      "lng": 77.78384,
+      "akScore": 84.6,
+      "recommended": true,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P87",
@@ -3604,14 +3605,9 @@
       "status": "Under construction",
       "priceRange": "₹1.45Cr – 3.28Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.2285,
-      "lng": 77.6015,
-      "akScore": 87.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 145,
       "maxPriceLakhs": 328,
+      "avgPricePerSqft": 16659,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3635,7 +3631,12 @@
           "allInclusivePriceStr": "₹3.29 Cr"
         }
       ],
-      "avgPricePerSqft": 16659
+      "lat": 13.2285,
+      "lng": 77.6015,
+      "akScore": 87.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P88",
@@ -3646,14 +3647,9 @@
       "status": "Under construction",
       "priceRange": "₹29Lakhs – 1.13Cr",
       "bhk": "1, 2 & 3 BHK",
-      "lat": 13.2725,
-      "lng": 77.5345,
-      "akScore": 87,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 29,
       "maxPriceLakhs": 113,
+      "avgPricePerSqft": 4744,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3677,7 +3673,12 @@
           "allInclusivePriceStr": "₹1.13 Cr"
         }
       ],
-      "avgPricePerSqft": 4744
+      "lat": 13.2725,
+      "lng": 77.5345,
+      "akScore": 87,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P89",
@@ -3688,14 +3689,9 @@
       "status": "Under construction",
       "priceRange": "₹85Lakhs – 2.42Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.1945,
-      "lng": 77.561,
-      "akScore": 88,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 85,
       "maxPriceLakhs": 242,
+      "avgPricePerSqft": 8495,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3719,7 +3715,12 @@
           "allInclusivePriceStr": "₹2.43 Cr"
         }
       ],
-      "avgPricePerSqft": 8495
+      "lat": 13.1945,
+      "lng": 77.561,
+      "akScore": 88,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P90",
@@ -3730,14 +3731,9 @@
       "status": "Under construction",
       "priceRange": "₹88Lakhs – 2.28Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.1895,
-      "lng": 77.5645,
-      "akScore": 89.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 88,
       "maxPriceLakhs": 228,
+      "avgPricePerSqft": 10958,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3761,7 +3757,12 @@
           "allInclusivePriceStr": "₹2.28 Cr"
         }
       ],
-      "avgPricePerSqft": 10958
+      "lat": 13.1895,
+      "lng": 77.5645,
+      "akScore": 89.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P91",
@@ -3772,14 +3773,9 @@
       "status": "Under construction",
       "priceRange": "₹85Lakhs – 2.21Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.211,
-      "lng": 77.6315,
-      "akScore": 89.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 85,
       "maxPriceLakhs": 221,
+      "avgPricePerSqft": 10607,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3803,7 +3799,12 @@
           "allInclusivePriceStr": "₹2.21 Cr"
         }
       ],
-      "avgPricePerSqft": 10607
+      "lat": 13.211,
+      "lng": 77.6315,
+      "akScore": 89.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P92",
@@ -3814,14 +3815,9 @@
       "status": "Under construction",
       "priceRange": "₹92Lakhs – 2.63Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.2015,
-      "lng": 77.625,
-      "akScore": 90.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 92,
       "maxPriceLakhs": 263,
+      "avgPricePerSqft": 9216,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3845,7 +3841,12 @@
           "allInclusivePriceStr": "₹2.64 Cr"
         }
       ],
-      "avgPricePerSqft": 9216
+      "lat": 13.2015,
+      "lng": 77.625,
+      "akScore": 90.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P93",
@@ -3856,14 +3857,9 @@
       "status": "Under construction",
       "priceRange": "₹1.12Cr – 2.89Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.1615,
-      "lng": 77.6845,
-      "akScore": 93.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 112,
       "maxPriceLakhs": 289,
+      "avgPricePerSqft": 13941,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3887,7 +3883,12 @@
           "allInclusivePriceStr": "₹2.90 Cr"
         }
       ],
-      "avgPricePerSqft": 13941
+      "lat": 13.1615,
+      "lng": 77.6845,
+      "akScore": 93.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P94",
@@ -3898,14 +3899,9 @@
       "status": "Under construction",
       "priceRange": "₹97Lakhs – 2.53Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.1825,
-      "lng": 77.632,
-      "akScore": 93.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
       "maxPriceLakhs": 253,
+      "avgPricePerSqft": 12129,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -3929,7 +3925,12 @@
           "allInclusivePriceStr": "₹2.53 Cr"
         }
       ],
-      "avgPricePerSqft": 12129
+      "lat": 13.1825,
+      "lng": 77.632,
+      "akScore": 93.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P95",
@@ -3940,14 +3941,9 @@
       "status": "Ready to move",
       "priceRange": "₹1.05Cr – 3.08Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.2512,
-      "lng": 77.7085,
-      "akScore": 94.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 105,
       "maxPriceLakhs": 308,
+      "avgPricePerSqft": 10685,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -3971,7 +3967,12 @@
           "allInclusivePriceStr": "₹3.09 Cr"
         }
       ],
-      "avgPricePerSqft": 10685
+      "lat": 13.2512,
+      "lng": 77.7085,
+      "akScore": 94.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P96",
@@ -3982,14 +3983,9 @@
       "status": "Ready to move",
       "priceRange": "₹97Lakhs – 2.59Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.2425,
-      "lng": 77.709,
-      "akScore": 95.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 97,
       "maxPriceLakhs": 259,
+      "avgPricePerSqft": 12308,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -4013,7 +4009,12 @@
           "allInclusivePriceStr": "₹2.59 Cr"
         }
       ],
-      "avgPricePerSqft": 12308
+      "lat": 13.2425,
+      "lng": 77.709,
+      "akScore": 95.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P97",
@@ -4024,14 +4025,9 @@
       "status": "Under construction",
       "priceRange": "₹1.07Cr – 2.42Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.2195,
-      "lng": 77.656,
-      "akScore": 76.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 107,
       "maxPriceLakhs": 242,
+      "avgPricePerSqft": 12299,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -4055,7 +4051,12 @@
           "allInclusivePriceStr": "₹2.43 Cr"
         }
       ],
-      "avgPricePerSqft": 12299
+      "lat": 13.2195,
+      "lng": 77.656,
+      "akScore": 76.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P98",
@@ -4066,14 +4067,9 @@
       "status": "Under construction",
       "priceRange": "₹86Lakhs – 2.53Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.218,
-      "lng": 77.638,
-      "akScore": 77.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 86,
       "maxPriceLakhs": 253,
+      "avgPricePerSqft": 8771,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -4097,7 +4093,12 @@
           "allInclusivePriceStr": "₹2.54 Cr"
         }
       ],
-      "avgPricePerSqft": 8771
+      "lat": 13.218,
+      "lng": 77.638,
+      "akScore": 77.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P99",
@@ -4108,14 +4109,9 @@
       "status": "Under construction",
       "priceRange": "₹1.44Cr – 3.24Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.0725,
-      "lng": 77.748,
-      "akScore": 80.3,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 144,
       "maxPriceLakhs": 324,
+      "avgPricePerSqft": 16462,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -4139,7 +4135,12 @@
           "allInclusivePriceStr": "₹3.24 Cr"
         }
       ],
-      "avgPricePerSqft": 16462
+      "lat": 13.0725,
+      "lng": 77.748,
+      "akScore": 80.3,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P100",
@@ -4150,14 +4151,9 @@
       "status": "Under construction",
       "priceRange": "₹1.06Cr – 2.69Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.0785,
-      "lng": 77.6255,
-      "akScore": 79.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 106,
       "maxPriceLakhs": 269,
+      "avgPricePerSqft": 13061,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -4181,7 +4177,12 @@
           "allInclusivePriceStr": "₹2.70 Cr"
         }
       ],
-      "avgPricePerSqft": 13061
+      "lat": 13.0785,
+      "lng": 77.6255,
+      "akScore": 79.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P101",
@@ -4192,14 +4193,9 @@
       "status": "Under construction",
       "priceRange": "₹1.26Cr – 3.45Cr",
       "bhk": "2, 3 & 4 BHK",
-      "lat": 13.098,
-      "lng": 77.604,
-      "akScore": 81.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 126,
       "maxPriceLakhs": 345,
+      "avgPricePerSqft": 12284,
       "inventory": [
         {
           "bhkType": "2 BHK",
@@ -4223,7 +4219,12 @@
           "allInclusivePriceStr": "₹3.46 Cr"
         }
       ],
-      "avgPricePerSqft": 12284
+      "lat": 13.098,
+      "lng": 77.604,
+      "akScore": 81.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P102",
@@ -4234,14 +4235,9 @@
       "status": "Under construction",
       "priceRange": "₹1.30Cr – 2.94Cr",
       "bhk": "3 BHK Luxury",
-      "lat": 13.2595,
-      "lng": 77.618,
-      "akScore": 82.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 130,
       "maxPriceLakhs": 294,
+      "avgPricePerSqft": 14906,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -4265,7 +4261,12 @@
           "allInclusivePriceStr": "₹2.94 Cr"
         }
       ],
-      "avgPricePerSqft": 14906
+      "lat": 13.2595,
+      "lng": 77.618,
+      "akScore": 82.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     },
     {
       "id": "P103",
@@ -4276,14 +4277,9 @@
       "status": "Under construction",
       "priceRange": "₹79Lakhs – 2.13Cr",
       "bhk": "2 & 3 BHK",
-      "lat": 13.276,
-      "lng": 77.558,
-      "akScore": 82.6,
-      "recommended": false,
-      "pitchText": "",
-      "source": "GoogleSheet_SSOT",
       "minPriceLakhs": 79,
       "maxPriceLakhs": 213,
+      "avgPricePerSqft": 10086,
       "inventory": [
         {
           "bhkType": "2 BHK Small",
@@ -4307,7 +4303,12 @@
           "allInclusivePriceStr": "₹2.13 Cr"
         }
       ],
-      "avgPricePerSqft": 10086
+      "lat": 13.276,
+      "lng": 77.558,
+      "akScore": 82.6,
+      "recommended": false,
+      "pitchText": "",
+      "source": "GoogleSheet_SSOT"
     }
   ],
   "techParks": [
