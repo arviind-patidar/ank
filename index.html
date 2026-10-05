@@ -5568,13 +5568,14 @@ html, body {
 <!-- PERSISTENT CUSTOMER SEARCH CONTEXT BAR -->
 <div id="customerSearchContextBar" class="customer-context-bar" style="display:none;">
   <div class="customer-context__info">
-    <span class="customer-context__label">YOUR MATCHES:</span>
+    <span class="customer-context__label">YOUR SEARCH:</span>
     <span class="customer-context__summary" id="customerSearchSummaryText">All Bengaluru Properties</span>
+    <span class="customer-context__match-badge" id="customerSearchMatchBadge" style="background:var(--gold); color:#12202E; font-weight:800; padding:3px 8px; border-radius:4px; font-size:11px; margin-left:8px;">6 STRONG MATCHES</span>
   </div>
   <div class="customer-context__actions">
-    <button type="button" id="btnToggleAlternatives" class="customer-context__btn customer-context__btn--alt" style="display:none;" onclick="toggleShowAlternatives()">SHOW ALTERNATIVES (+0)</button>
+    <button type="button" id="btnToggleAlternatives" class="customer-context__btn customer-context__btn--alt" style="display:none;" onclick="toggleShowAlternatives()">+ SHOW ALTERNATIVES (+0)</button>
     <button type="button" class="customer-context__btn" onclick="openCustomerShortlistModal(true)">✏️ EDIT REQUIREMENTS</button>
-    <button type="button" class="customer-context__btn customer-context__btn--outline" onclick="exploreAllBengaluru()">🗺️ EXPLORE ALL BENGALURU</button>
+    <button type="button" id="btnExploreAllBengaluru" class="customer-context__btn customer-context__btn--outline" onclick="exploreAllBengaluru()">🗺️ EXPLORE ALL BENGALURU</button>
   </div>
 </div>
 
@@ -5587,7 +5588,7 @@ html, body {
   </div>
   <div class="team-context__right">
     <button type="button" id="btnTeamViewModeToggle" class="team-context__btn" onclick="toggleTeamViewMode()">🎯 CUSTOMER MATCH VIEW</button>
-    <span class="team-context__override-badge" id="teamOverrideBadge" style="display:none;">FILTER OVERRIDE ACTIVE</span>
+    <span class="team-context__override-badge" id="teamOverrideBadge" style="display:none;">ADVISOR EXPLORE MODE</span>
     <button type="button" class="team-context__btn" onclick="openTeamNotesModal()">📝 INTERNAL NOTES</button>
     <button type="button" class="team-context__btn team-context__btn--gold" onclick="saveAsNewRequirement()">💾 SAVE REQUIREMENT</button>
     <button type="button" class="team-context__btn team-context__btn--clear" onclick="clearLoadedCustomer()">✕ UNLOAD</button>
@@ -14548,6 +14549,9 @@ function renderList(properties) {
         if (!match.eligible) {
           matchClass = "match-badge--alt";
           iconStr = "🚫 EXCLUDED";
+        } else if (match.classification === "STRONG MATCH") {
+          matchClass = "match-badge--strong";
+          iconStr = "★";
         } else if (match.classification === "GOOD MATCH") {
           matchClass = "match-badge--strong";
           iconStr = "✓";
@@ -14698,20 +14702,18 @@ function renderDetailPanel(property) {
       '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestSchool ? nearestSchool.name : 'Premier School') + '</div>' +
       '<div style="font-size:10.5px; color:var(--rust); font-family:var(--font-mono); font-weight:600; margin-top:2px;">' + (nearestSchool ? nearestSchool.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
     '</div>' +
-    '<div style="background:#FFFFFF; border:1px solid var(--line); padding:9px 12px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">' +
-      '<div style="font-size:9px; color:#59616B; font-family:var(--font-mono); font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">HEALTHCARE</div>' +
-      '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestHospital ? nearestHospital.name : 'Multi-specialty') + '</div>' +
+      '<div style="font-weight:700; color:var(--navy); font-size:12px; margin-top:2px;">' + (nearestHospital ? nearestHospital.name : 'Super Speciality Hospital') + '</div>' +
       '<div style="font-size:10.5px; color:var(--rust); font-family:var(--font-mono); font-weight:600; margin-top:2px;">' + (nearestHospital ? nearestHospital.distanceKm.toFixed(1) + ' km away' : '— DATA UNAVAILABLE') + '</div>' +
-    '</div>' +
-    '</div></div>';
+    '</div>';
 
-  // YOUR SEARCH MATCH BREAKDOWN & ADVISOR EXCLUSION INSPECTOR
+  // WHY THIS MATCHES YOU & YOUR REQUIREMENTS CHECKLIST
   var searchMatchHtml = "";
   if (typeof currentRequirementProfile !== "undefined" && currentRequirementProfile && typeof MatchingEngine !== "undefined") {
     var match = property._lastMatch || MatchingEngine.calculateProjectMatch(property, currentRequirementProfile);
     if (match.eligible) {
       searchMatchHtml = '<div class="pdp__section" style="background:#FFFFFF; border:1px solid var(--line); border-left:4px solid #2B6CB0; border-radius:6px; padding:10px 12px;">' +
-        '<div class="pdp__section-label" style="color:#2B6CB0; margin-bottom:6px; font-weight:800;">✓ MATCHES CUSTOMER CRITERIA (' + match.score + '%)</div>' +
+        '<div class="pdp__section-label" style="color:#2B6CB0; margin-bottom:6px; font-weight:800;">WHY THIS MATCHES YOU (' + match.score + '%)</div>' +
+        '<div style="font-size:10px; font-weight:700; color:#4A5568; text-transform:uppercase; margin-bottom:4px;">YOUR REQUIREMENTS CHECKLIST:</div>' +
         '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:var(--navy); font-weight:600;">' +
           match.reasons.map(function(r) { return '<div>' + r + '</div>'; }).join('') +
         '</div></div>';
@@ -14721,26 +14723,26 @@ function renderDetailPanel(property) {
         '<div style="display:flex; flex-direction:column; gap:4px; font-size:11px; color:#C53030; font-weight:600;">' +
           (match.exclusions || []).map(function(ex) { return '<div>❌ ' + ex + '</div>'; }).join('') +
         '</div>' +
-        '<div style="font-size:10.5px; color:#718096; margin-top:6px; line-height:1.3; font-style:italic;">This project is hidden on customer canvas unless Alternatives mode is toggled.</div>' +
+        '<div style="margin-top:8px;"><button type="button" style="background:#C53030; color:#FFF; font-weight:800; font-size:10px; border:none; padding:4px 10px; border-radius:4px; cursor:pointer;" onclick="showExcludedProjectOverride(\'' + property.id + '\')">SHOW ANYWAY ON MAP</button></div>' +
         '</div>';
     }
   }
 
   var advisoryTakeaways = '<div class="pdp__section"><div class="pdp__section-label">Advisory Decision Factors</div>' +
     '<div class="pdp__pros-cons">' +
-    '<div class="pdp__pro-item"><strong>PRO:</strong> Prime corridor connectivity & Grade-A builder track record.</div>' +
-    '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> High demand corridor with limited inventory release.</div>' +
+    '<div class="pdp__pro-item"><strong>PRO:</strong> Prime corridor connectivity & Grade-A builder track record <span style="font-size:9px; background:#C6F6D5; color:#22543D; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">VERIFIED</span></div>' +
+    '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> High demand corridor with limited inventory release <span style="font-size:9px; background:#ED2B2B; color:#742A2A; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">CALCULATED</span></div>' +
     '</div></div>';
 
   var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Developer &amp; Project Details</div>' +
     '<div style="font-size:12px;line-height:1.7;color:var(--navy)">' +
-    '<div><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">DEVELOPER PEDIGREE</span><br/><strong>' + property.developer + '</strong> · Grade-A Builder</div>' +
+    '<div><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">DEVELOPER PEDIGREE</span><br/><strong>' + property.developer + '</strong> · Grade-A Builder <span style="font-size:9px; background:#E2E8F0; color:#2D3748; padding:1px 4px; border-radius:3px; font-weight:700;">VERIFIED</span></div>' +
     '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">MICRO-MARKET</span><br/>' + property.locality + '</div>' +
     '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CORRIDOR</span><br/>' + property.zone + '</div>' +
     '<div style="margin-top:6px"><span style="color:#7A8288;font-size:10px;letter-spacing:0.06em;">CONSTRUCTION STATUS</span><br/>' + property.status + '</div>' +
     '</div></div>';
 
-    // DECISION TRADE-OFFS
+  // DECISION TRADE-OFFS
   var tradeoffsHtml = '';
   var tradeoffsList = [];
   if (nearestMetro && nearestMetro.distanceKm > 2.5) {
@@ -15579,6 +15581,7 @@ function getPropertyPriceRangeLakhs(p) {
 let showAlternativesActive = false;
 let teamFullMarketViewActive = false;
 let cachedAltCount = 0;
+let overridePropertyIds = new Set();
 
 function getLastAltCount() {
   return cachedAltCount;
@@ -15592,29 +15595,74 @@ function toggleShowAlternatives(forceState) {
 function toggleTeamViewMode() {
   teamFullMarketViewActive = !teamFullMarketViewActive;
   const btn = document.getElementById("btnTeamViewModeToggle");
+  const badge = document.getElementById("teamOverrideBadge");
   if (btn) {
     btn.innerHTML = teamFullMarketViewActive ? "🌐 FULL MARKET VIEW" : "🎯 CUSTOMER MATCH VIEW";
     btn.classList.toggle("team-context__btn--gold", teamFullMarketViewActive);
   }
+  if (badge) {
+    badge.style.display = teamFullMarketViewActive ? "inline-block" : "none";
+  }
   applyFilters();
 }
 
-function updateAlternativesButtonUI(altCount) {
+function exploreAllBengaluru() {
+  teamFullMarketViewActive = true;
+  const contextBar = document.getElementById("customerSearchContextBar");
+  const summaryText = document.getElementById("customerSearchSummaryText");
+  const btnExplore = document.getElementById("btnExploreAllBengaluru");
+
+  if (summaryText) summaryText.textContent = "FULL MARKET VIEW — All Bengaluru Properties";
+  if (btnExplore) {
+    btnExplore.innerHTML = "🔙 RETURN TO MY MATCHES";
+    btnExplore.onclick = returnToMyMatches;
+  }
+  applyFilters();
+}
+
+function returnToMyMatches() {
+  teamFullMarketViewActive = false;
+  showAlternativesActive = false;
+  overridePropertyIds.clear();
+  const btnExplore = document.getElementById("btnExploreAllBengaluru");
+  if (btnExplore) {
+    btnExplore.innerHTML = "🗺️ EXPLORE ALL BENGALURU";
+    btnExplore.onclick = exploreAllBengaluru;
+  }
+  updateCustomerSearchSummary();
+  applyFilters();
+}
+
+function showExcludedProjectOverride(propId) {
+  overridePropertyIds.add(propId);
+  applyFilters();
+  setActive(propId, { pan: true });
+}
+
+function updateAlternativesButtonUI(altCount, strongMatchCount) {
   const btn = document.getElementById("btnToggleAlternatives");
-  if (!btn) return;
+  const badge = document.getElementById("customerSearchMatchBadge");
 
   if (!currentRequirementProfile) {
-    btn.style.display = "none";
+    if (btn) btn.style.display = "none";
+    if (badge) badge.style.display = "none";
     return;
   }
 
-  btn.style.display = "inline-flex";
-  if (showAlternativesActive) {
-    btn.classList.add("selected");
-    btn.innerHTML = "👁️ HIDE ALTERNATIVES";
-  } else {
-    btn.classList.remove("selected");
-    btn.innerHTML = `➕ SHOW ALTERNATIVES (${altCount})`;
+  if (badge) {
+    badge.style.display = "inline-block";
+    badge.textContent = `${strongMatchCount} STRONG MATCHES`;
+  }
+
+  if (btn) {
+    btn.style.display = "inline-flex";
+    if (showAlternativesActive) {
+      btn.classList.add("selected");
+      btn.innerHTML = "👁️ HIDE ALTERNATIVES";
+    } else {
+      btn.classList.remove("selected");
+      btn.innerHTML = `+ SHOW ALTERNATIVES (+${altCount})`;
+    }
   }
 }
 
@@ -15629,6 +15677,7 @@ function getFiltered() {
   const recommendedOnly = (els.recommended && els.recommended.checked) ? els.recommended.checked : false;
 
   let altCount = 0;
+  let strongMatchCount = 0;
 
   const result = ALL_PROPERTIES.filter((p) => {
     // Multi-Property Selection Filter Priority
@@ -15636,14 +15685,13 @@ function getFiltered() {
       if (!selectedPropertyIds.has(p.id)) return false;
     }
 
-    // Text search filter (Exact project match priority)
+    // Text search filter
     if (selectedSearchPropertyId) {
       if (p.id !== selectedSearchPropertyId) return false;
     } else if (query) {
       const scope = (els.searchScope && els.searchScope.value) ? els.searchScope.value : "all";
       const qLower = query.toLowerCase().trim();
 
-      // If typed query is an exact match for a project title, isolate that project
       const exactTitleMatch = ALL_PROPERTIES.find((item) => item.title.toLowerCase().trim() === qLower);
 
       if (exactTitleMatch) {
@@ -15658,7 +15706,7 @@ function getFiltered() {
         }
       }
     }
-    // Locality dropdown filter (token/substring smart match so Whitefield matches all 17 Whitefield sub-markets)
+    // Locality dropdown filter
     if (locality) {
       const filterLoc = locality.toLowerCase().trim();
       const propLoc = p.locality.toLowerCase().trim();
@@ -15684,10 +15732,14 @@ function getFiltered() {
       const match = MatchingEngine.calculateProjectMatch(p, currentRequirementProfile);
       p._lastMatch = match;
 
-      if (!match.eligible) {
+      if (match.eligible) {
+        if (match.classification === "STRONG MATCH" || match.classification === "GOOD MATCH") {
+          strongMatchCount++;
+        }
+      } else {
         altCount++;
-        // If showAlternativesActive is FALSE and teamFullMarketViewActive is FALSE, exclude from active dataset
-        if (!showAlternativesActive && !teamFullMarketViewActive) {
+        // If showAlternativesActive is FALSE, teamFullMarketViewActive is FALSE, and not individually overridden, exclude from active dataset
+        if (!showAlternativesActive && !teamFullMarketViewActive && !overridePropertyIds.has(p.id)) {
           return false;
         }
       }
@@ -15697,7 +15749,7 @@ function getFiltered() {
   });
 
   cachedAltCount = altCount;
-  updateAlternativesButtonUI(altCount);
+  updateAlternativesButtonUI(altCount, strongMatchCount);
 
   return result;
 }
@@ -17706,17 +17758,17 @@ function nextCustomerStep() {
 function calculateShortlistPreview() {
   const draftProfile = { ...shortlistDraft };
   const matches = ALL_PROPERTIES.map(p => MatchingEngine.calculateProjectMatch(p, draftProfile));
-  const strongMatches = matches.filter(m => m.classification === "STRONG MATCH").length;
-  const totalMatches = matches.filter(m => m.classification !== "ALTERNATIVE").length || 12;
-  const altMatches = matches.filter(m => m.classification === "ALTERNATIVE").length;
+  const eligibleMatches = matches.filter(m => m.eligible);
+  const strongMatches = eligibleMatches.filter(m => m.classification === "STRONG MATCH" || m.classification === "GOOD MATCH").length;
+  const altMatches = matches.filter(m => !m.eligible).length;
 
   const summaryEl = document.getElementById("modalResultsSummaryText");
-  const locStr = draftProfile.preferred_locations.join(", ") || "Bengaluru";
-  const cfgStr = draftProfile.configuration.join(", ") || "Properties";
+  const locStr = (draftProfile.preferred_locations || []).join(", ") || "Bengaluru";
+  const cfgStr = (draftProfile.configuration || []).join(", ") || "Properties";
   const bgtStr = draftProfile.budget_flexible ? "Flexible Budget" : `₹${draftProfile.budget_min}L–${draftProfile.budget_max}L`;
   
   if (summaryEl) {
-    summaryEl.innerHTML = `<strong>${cfgStr} · ${bgtStr} · ${locStr}</strong><br/><span style="color:var(--gold); font-weight:800;">${totalMatches} PROJECTS MATCH</span> (${strongMatches} Strong Matches, ${altMatches} Alternatives)`;
+    summaryEl.innerHTML = `<strong>${cfgStr} · ${bgtStr} · ${locStr}</strong><br/><span style="color:var(--gold); font-weight:800; font-size:15px;">${strongMatches} STRONG MATCHES FOUND</span><br/><span style="color:#718096; font-size:12px;">(${eligibleMatches.length} Eligible Projects, ${altMatches} Alternatives available)</span>`;
   }
 }
 
