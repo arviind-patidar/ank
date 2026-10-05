@@ -8698,39 +8698,20 @@ function populatePopularLocalityChips() {
 }
 
 
-/* Helper to calculate price range in Lakhs for budget filtering */
 function getPropertyPriceRangeLakhs(p) {
-  if (p.minPriceLakhs && p.maxPriceLakhs) {
+  if (typeof p.minPriceLakhs === "number" && typeof p.maxPriceLakhs === "number") {
     return { min: p.minPriceLakhs, max: p.maxPriceLakhs };
   }
-  const str = p.priceStr || "₹1.25Cr – 1.95Cr";
+  const str = p.priceRange || p.priceStr || "";
   let min = 75, max = 150;
-  if (p.id === "P01") { min = 140; max = 220; }
-  else if (p.id === "P02") { min = 110; max = 160; }
-  else if (p.id === "P03") { min = 125; max = 185; }
-  else if (p.id === "P04") { min = 120; max = 175; }
-  else if (p.id === "P05") { min = 130; max = 190; }
-  else if (p.id === "P06") { min = 135; max = 200; }
-  else if (p.id === "P07") { min = 120; max = 170; }
-  else if (p.id === "P09") { min = 65; max = 110; }
-  else if (p.id === "P10") { min = 85; max = 140; }
-  else if (p.id === "P26") { min = 75; max = 120; }
-  else if (p.id === "P27") { min = 70; max = 115; }
-  else if (p.id === "P28") { min = 80; max = 130; }
-  else if (p.id === "P29") { min = 50; max = 90; }
-  else if (p.id === "P31") { min = 95; max = 160; }
-  else if (p.id === "P51") { min = 120; max = 180; }
-  else if (p.id === "P60") { min = 150; max = 260; }
-  else {
-    const matches = str.match(/₹?([\d\.]+)\s*(Cr|Lakhs|L)?\s*–\s*([\d\.]+)\s*(Cr|Lakhs|L)?/i);
-    if (matches) {
-      let minVal = parseFloat(matches[1]);
-      let minUnit = matches[2] || "Cr";
-      let maxVal = parseFloat(matches[3]);
-      let maxUnit = matches[4] || minUnit;
-      min = (minUnit.toLowerCase().includes("cr")) ? minVal * 100 : minVal;
-      max = (maxUnit.toLowerCase().includes("cr")) ? maxVal * 100 : maxVal;
-    }
+  const matches = str.match(/₹?\s*([\d\.]+)\s*(Cr|Lakhs|L)?\s*–\s*([\d\.]+)\s*(Cr|Lakhs|L)?/i);
+  if (matches) {
+    let minVal = parseFloat(matches[1]);
+    let minUnit = matches[2] || (str.toLowerCase().includes("cr") ? "Cr" : "L");
+    let maxVal = parseFloat(matches[3]);
+    let maxUnit = matches[4] || minUnit;
+    min = (minUnit.toLowerCase().includes("cr")) ? Math.round(minVal * 100) : minVal;
+    max = (maxUnit.toLowerCase().includes("cr")) ? Math.round(maxVal * 100) : maxVal;
   }
   return { min, max };
 }
@@ -10144,24 +10125,21 @@ const METRO_LINE_CONFIG = {
     color: "#7B2D8E",
     statusText: "Operational",
     isOperational: true,
-    dashed: false,
-    stationIds: ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18", "M19", "M20", "M21", "M22", "M23", "M24", "M25"]
+    dashed: false
   },
   Green: {
     name: "Green Line",
     color: "#0F8B45",
     statusText: "Operational",
     isOperational: true,
-    dashed: false,
-    stationIds: ["M26", "M27", "M28", "M29", "M30", "M31", "M32", "M33", "M34", "M35", "M36", "M37", "M38", "M23", "M39", "M40", "M41", "M42", "M43", "M44", "M45", "M46", "M47", "M48", "M49", "M50"]
+    dashed: false
   },
   Yellow: {
     name: "Yellow Line",
     color: "#C9960A",
     statusText: "Testing / Opening Soon",
     isOperational: true,
-    dashed: false,
-    stationIds: ["M51", "M52", "M53", "M54", "M55", "M56", "M57", "M58", "M59", "M60"]
+    dashed: false
   },
   Blue: {
     name: "Blue Line (ORR-Airport)",
@@ -10212,7 +10190,12 @@ const METRO_LINE_CONFIG = {
   }
 };
 
-const INTERCHANGE_STATION_IDS = new Set(["M23", "M12", "M55", "M53", "M51", "M19"]);
+function isInterchangeStation(station) {
+  if (!station) return false;
+  if (station.isInterchange) return true;
+  const name = (station.name || "").toLowerCase();
+  return name.includes("majestic") || name.includes("mg road") || name.includes("jayadeva") || name.includes("silk board") || name.includes("kr puram");
+}
 
 function toggleMetroLines(forceActive) {
   const checkbox = document.getElementById("filterMetroLines");
@@ -10277,10 +10260,9 @@ function renderMetroNetwork() {
 
     if (cfg.points) {
       path = cfg.points.map((pt) => new google.maps.LatLng(pt.lat, pt.lng));
-    } else if (cfg.stationIds) {
-      path = cfg.stationIds
-        .map((id) => METRO_STATIONS.find((s) => s.id === id))
-        .filter(Boolean)
+    } else {
+      path = METRO_STATIONS
+        .filter((s) => s.line && s.line.toLowerCase() === lineKey.toLowerCase())
         .map((s) => new google.maps.LatLng(s.lat, s.lng));
     }
 
@@ -10334,7 +10316,7 @@ function renderMetroNetwork() {
       return;
     }
 
-    const isInterchange = INTERCHANGE_STATION_IDS.has(station.id) || station.name.includes("Interchange");
+    const isInterchange = isInterchangeStation(station);
     const cfg = METRO_LINE_CONFIG[station.line] || { color: "#7B2D8E" };
 
     const markerIcon = {

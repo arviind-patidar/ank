@@ -1,19 +1,9 @@
 {
   "metadata": {
     "source": "Google Sheet Single Source of Truth",
-    "datasetVersion": "v2.0.0",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=1841720749",
-    "syncedAt": "2026-10-05T08:37:43.585Z",
+    "syncedAt": "2026-10-05T07:49:54.308Z",
     "displayDate": "05 OCT 2026",
-    "recordCounts": {
-      "projects": 102,
-      "techParks": 244,
-      "metroStations": 60,
-      "schools": 80,
-      "hospitals": 80,
-      "malls": 49,
-      "areaPricing": 156
-    },
     "counts": {
       "projects": 102,
       "techParks": 244,

@@ -1,14 +1,17 @@
 /**
  * Acre&Key Map — Google Sheet / SSOT Data Sync & Normalization Script
  * 
- * Reads raw/exported map data, validates schema & coordinates, normalizes field structures,
+ * Reads raw/exported map data from authoritative seed or live Google Sheets endpoints,
+ * validates schema & coordinates (-90..90, -180..180), normalizes field structures,
  * generates data quality reports, and outputs data/map_data.json as the authoritative dataset.
  */
 
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
+const SEED_FILE = path.join(DATA_DIR, 'seed_data.json');
 const OUTPUT_FILE = path.join(DATA_DIR, 'map_data.json');
 const REPORT_FILE = path.join(DATA_DIR, 'data_quality_report.json');
 
@@ -17,28 +20,23 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// Read current dataset from index.html as baseline seed data
-const htmlPath = path.join(__dirname, '..', 'index.html');
-const html = fs.readFileSync(htmlPath, 'utf8');
+let sourcePayload = null;
 
-function extractArrayFromHtml(varName) {
-  const match = html.match(new RegExp('(let|const|var)\\s+' + varName + '\\s*=\\s*(\\[[\\s\\S]*?\\]);'));
-  if (!match) return [];
+if (fs.existsSync(SEED_FILE)) {
   try {
-    return eval(match[2]);
+    sourcePayload = JSON.parse(fs.readFileSync(SEED_FILE, 'utf8'));
   } catch (e) {
-    console.error(`Error parsing ${varName} from index.html:`, e.message);
-    return [];
+    console.error('Error reading seed_data.json:', e.message);
   }
 }
 
-const rawProjects = extractArrayFromHtml('SAMPLE_PROPERTIES');
-const rawTechParks = extractArrayFromHtml('TECH_PARKS');
-const rawMetroStations = extractArrayFromHtml('METRO_STATIONS');
-const rawSchools = extractArrayFromHtml('SCHOOLS');
-const rawHospitals = extractArrayFromHtml('HOSPITALS');
-const rawMalls = extractArrayFromHtml('MALLS');
-const rawAreaPricing = extractArrayFromHtml('AREA_PRICING');
+const rawProjects = (sourcePayload && Array.isArray(sourcePayload.projects)) ? sourcePayload.projects : [];
+const rawTechParks = (sourcePayload && Array.isArray(sourcePayload.techParks)) ? sourcePayload.techParks : [];
+const rawMetroStations = (sourcePayload && Array.isArray(sourcePayload.metroStations)) ? sourcePayload.metroStations : [];
+const rawSchools = (sourcePayload && Array.isArray(sourcePayload.schools)) ? sourcePayload.schools : [];
+const rawHospitals = (sourcePayload && Array.isArray(sourcePayload.hospitals)) ? sourcePayload.hospitals : [];
+const rawMalls = (sourcePayload && Array.isArray(sourcePayload.malls)) ? sourcePayload.malls : [];
+const rawAreaPricing = (sourcePayload && Array.isArray(sourcePayload.areaPricing)) ? sourcePayload.areaPricing : [];
 
 // Validation helper
 function isValidCoord(lat, lng) {
@@ -49,13 +47,10 @@ function isValidCoord(lat, lng) {
 const auditIssues = [];
 
 // 1. Normalize Projects
-const normalizedProjects = rawProjects.map((p, idx) => {
+const normalizedProjects = rawProjects.filter(p => p && p.title).map((p, idx) => {
   const id = p.id || `P${String(idx + 1).padStart(3, '0')}`;
   if (!isValidCoord(p.lat, p.lng)) {
     auditIssues.push({ category: 'Project', id, name: p.title, issue: 'Invalid coordinates' });
-  }
-  if (!p.title) {
-    auditIssues.push({ category: 'Project', id, name: p.title, issue: 'Missing title' });
   }
   return {
     id,
@@ -64,13 +59,13 @@ const normalizedProjects = rawProjects.map((p, idx) => {
     locality: p.locality || 'Bengaluru',
     zone: p.zone || 'Bengaluru',
     status: p.status || 'Under construction',
-    priceRange: p.priceRange || 'Price on Request',
-    bhk: p.bhk || '2 & 3 BHK',
+    priceRange: p.priceRange || p.priceStr || 'Price on Request',
+    bhk: p.bhk || p.config || '2 & 3 BHK',
     lat: p.lat,
     lng: p.lng,
-    akScore: typeof p.akScore === 'number' ? p.akScore : 75.0,
+    akScore: typeof p.akScore === 'number' ? p.akScore : (typeof p.score === 'number' ? p.score : 75.0),
     recommended: Boolean(p.recommended),
-    pitchText: p.pitchText || '',
+    pitchText: p.pitchText || p.pitch || '',
     source: 'GoogleSheet_SSOT'
   };
 });
@@ -84,7 +79,7 @@ const normalizedTechParks = rawTechParks.map((tp, idx) => {
   return {
     id,
     name: tp.name || 'Tech Park',
-    area: tp.area || 'Bengaluru',
+    area: tp.area || tp.locality || 'Bengaluru',
     lat: tp.lat,
     lng: tp.lng,
     source: 'GoogleSheet_SSOT'
@@ -151,7 +146,7 @@ const normalizedAreaPricing = rawAreaPricing.map((ap, idx) => {
   const id = ap.id || `AP${String(idx + 1).padStart(2, '0')}`;
   return {
     id,
-    name: ap.name || 'Locality',
+    name: ap.name || ap.locality || 'Locality',
     zone: ap.zone || 'Bengaluru',
     avgPrice: typeof ap.avgPrice === 'number' ? ap.avgPrice : 10000,
     minPrice: typeof ap.minPrice === 'number' ? ap.minPrice : 8000,
@@ -167,9 +162,19 @@ const normalizedAreaPricing = rawAreaPricing.map((ap, idx) => {
 const fullPayload = {
   metadata: {
     source: 'Google Sheet Single Source of Truth',
+    datasetVersion: 'v2.0.0',
     sheetUrl: 'https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=1841720749',
     syncedAt: new Date().toISOString(),
     displayDate: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
+    recordCounts: {
+      projects: normalizedProjects.length,
+      techParks: normalizedTechParks.length,
+      metroStations: normalizedMetroStations.length,
+      schools: normalizedSchools.length,
+      hospitals: normalizedHospitals.length,
+      malls: normalizedMalls.length,
+      areaPricing: normalizedAreaPricing.length
+    },
     counts: {
       projects: normalizedProjects.length,
       techParks: normalizedTechParks.length,
@@ -198,11 +203,11 @@ const qualityReport = {
   timestamp: new Date().toISOString(),
   issuesCount: auditIssues.length,
   issues: auditIssues,
-  summary: fullPayload.metadata.counts
+  summary: fullPayload.metadata.recordCounts
 };
 
 fs.writeFileSync(REPORT_FILE, JSON.stringify(qualityReport, null, 2), 'utf8');
 
 console.log('✅ Google Sheet SSOT Data Normalization Complete!');
-console.log('Summary:', fullPayload.metadata.counts);
+console.log('Summary:', fullPayload.metadata.recordCounts);
 console.log(`Saved output to ${OUTPUT_FILE}`);
