@@ -7595,29 +7595,10 @@ function renderMarkers(properties) {
   if (markerLayer) markerLayer.setProperties(properties);
 }
 
-const RECOMMENDED_REASONS = {
-  P02: "Proximity to Kundalahalli metro & top floor plans",
-  P03: "High rental demand & quiet residential enclave",
-  P04: "Borewell road connectivity & Grade-A construction",
-  P05: "ECC Road premium location & low density",
-  P06: "Hope Farm junction access & strong resale track record",
-  P07: "Mahindra green building certification & spacious layouts",
-  P09: "Emerging growth corridor & value pricing",
-  P10: "Serene lakefront view & OMR commute hub",
-  P26: "Strong connectivity to Airport road & Budigere hub",
-  P27: "Grand central courtyard & competitive price point",
-  P28: "High appreciation potential along OMR stretch",
-  P29: "Compact efficient layouts & affordable entry price",
-  P31: "SOBHA backwards-integrated quality & township living",
-  P40: "Prestige flagship township & Varthur lake proximity",
-  P51: "Extensive sports amenities & Varthur road connectivity",
-  P60: "Greek-themed architecture & Panathur tech corridor"
-};
-
 function getPropertyDetails(p) {
-  let priceStr = p.priceStr || p.priceRange || p.price || "₹1.25Cr – 1.95Cr";
+  let priceStr = p.priceStr || p.priceRange || p.price || "Price on Request";
   let config = p.config || p.bhk || "2 & 3 BHK";
-  let whyRecommended = p.whyRecommended || RECOMMENDED_REASONS[p.id] || (p.recommended ? "Strong tech hub proximity & proven builder track record" : "");
+  let whyRecommended = p.whyRecommended || p.pitchText || (p.recommended ? "Strong tech hub proximity & proven builder track record" : "");
   let range = typeof getPropertyPriceRangeLakhs === "function" ? getPropertyPriceRangeLakhs(p) : { min: 100, max: 200 };
   return { priceStr, config, whyRecommended, priceMinLakhs: range.min, priceMaxLakhs: range.max };
 }
@@ -7778,20 +7759,14 @@ function renderDetailPanel(property) {
     akEl.style.display = "";
   } else { akEl.style.display = "none"; }
 
-  var extras = {
-    P02: ["Proximity to Kundalahalli metro corridor", "Grade-A Sumadhura build quality", "Strong rental demand in Brookefield"],
-    P04: ["Established Borewell Road address", "Low-rise, low-density community", "Quick access to ITPL"],
-    P05: ["ECC Road premium micro-market", "Low project density", "Vaswani legacy builds"],
-    P06: ["Hope Farm junction — 5 min to ITPL", "80+ amenities", "Strong resale performance"],
-    P07: ["Mahindra IGBC green-certified", "Spacious 3 & 4 BHK", "Pattandur Agrahara upcoming metro stop"],
-    P10: ["Serene lakefront backdrop", "KR Puram ORR access", "Brigade delivery track record"],
-    P51: ["80 acres of greenery", "Varthur Road — 12 min to Sigma", "Olympic sports facility"],
-    P60: ["SOBHA Neopolis ORR frontage", "SOBHA quality", "Greek-themed architecture — strong resale USP"],
-  };
   var reasonsList = [];
   if (details.whyRecommended) reasonsList.push(details.whyRecommended);
-  var ex = extras[property.id] || [];
-  ex.forEach(function(r) { if (reasonsList.indexOf(r) === -1) reasonsList.push(r); });
+  if (property.pitchText && property.pitchText.trim() !== "") {
+    property.pitchText.split("·").forEach(function(r) {
+      const trimmed = r.trim();
+      if (trimmed && reasonsList.indexOf(trimmed) === -1) reasonsList.push(trimmed);
+    });
+  }
   reasonsList = reasonsList.slice(0, 5);
 
   var whyHtml = reasonsList.length > 0 ? ('<div class="pdp__section"><div class="pdp__section-label">Why We Recommend This</div><div class="pdp__reasons">' +
