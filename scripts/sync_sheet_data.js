@@ -72,6 +72,7 @@ const normalizedProjects = rawProjects.filter(p => p && p.title).map((p, idx) =>
     pitchText: p.pitchText || p.pitch || '',
     advisoryPro: p.advisoryPro || p.pro || p.proText || null,
     advisoryConsideration: p.advisoryConsideration || p.consideration || p.conText || null,
+    tradeoffs: p.tradeoffs || p.decisionTradeoffs || null,
     source: 'GoogleSheet_SSOT'
   };
 });
