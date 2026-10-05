@@ -4476,10 +4476,12 @@ html, body {
   text-align: center;
   transition: all 0.15s ease;
 }
-.buyer-lens-pill:hover { background: rgba(30, 26, 22, 0.06); }
-.buyer-lens-pill--active {
-  background: var(--terracotta);
-  color: var(--white);
+.buyer-lens-pill:hover { background: rgba(30, 26, 22, 0.08); }
+.buyer-lens-pill--active,
+.buyer-lens-pill--active:hover {
+  background: var(--terracotta) !important;
+  color: var(--white) !important;
+  box-shadow: 0 1px 3px rgba(184, 80, 66, 0.3);
 }
 
 /* SMART SEARCH CHIPS */
