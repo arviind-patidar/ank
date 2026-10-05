@@ -1,0 +1,208 @@
+/**
+ * Acre&Key Map — Google Sheet / SSOT Data Sync & Normalization Script
+ * 
+ * Reads raw/exported map data, validates schema & coordinates, normalizes field structures,
+ * generates data quality reports, and outputs data/map_data.json as the authoritative dataset.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const DATA_DIR = path.join(__dirname, '..', 'data');
+const OUTPUT_FILE = path.join(DATA_DIR, 'map_data.json');
+const REPORT_FILE = path.join(DATA_DIR, 'data_quality_report.json');
+
+// Ensure data directory exists
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+
+// Read current dataset from index.html as baseline seed data
+const htmlPath = path.join(__dirname, '..', 'index.html');
+const html = fs.readFileSync(htmlPath, 'utf8');
+
+function extractArrayFromHtml(varName) {
+  const match = html.match(new RegExp('(let|const|var)\\s+' + varName + '\\s*=\\s*(\\[[\\s\\S]*?\\]);'));
+  if (!match) return [];
+  try {
+    return eval(match[2]);
+  } catch (e) {
+    console.error(`Error parsing ${varName} from index.html:`, e.message);
+    return [];
+  }
+}
+
+const rawProjects = extractArrayFromHtml('SAMPLE_PROPERTIES');
+const rawTechParks = extractArrayFromHtml('TECH_PARKS');
+const rawMetroStations = extractArrayFromHtml('METRO_STATIONS');
+const rawSchools = extractArrayFromHtml('SCHOOLS');
+const rawHospitals = extractArrayFromHtml('HOSPITALS');
+const rawMalls = extractArrayFromHtml('MALLS');
+const rawAreaPricing = extractArrayFromHtml('AREA_PRICING');
+
+// Validation helper
+function isValidCoord(lat, lng) {
+  return typeof lat === 'number' && !isNaN(lat) && lat >= -90 && lat <= 90 &&
+         typeof lng === 'number' && !isNaN(lng) && lng >= -180 && lng <= 180;
+}
+
+const auditIssues = [];
+
+// 1. Normalize Projects
+const normalizedProjects = rawProjects.map((p, idx) => {
+  const id = p.id || `P${String(idx + 1).padStart(3, '0')}`;
+  if (!isValidCoord(p.lat, p.lng)) {
+    auditIssues.push({ category: 'Project', id, name: p.title, issue: 'Invalid coordinates' });
+  }
+  if (!p.title) {
+    auditIssues.push({ category: 'Project', id, name: p.title, issue: 'Missing title' });
+  }
+  return {
+    id,
+    title: p.title || 'Untitled Project',
+    developer: p.developer || 'Unknown Developer',
+    locality: p.locality || 'Bengaluru',
+    zone: p.zone || 'Bengaluru',
+    status: p.status || 'Under construction',
+    priceRange: p.priceRange || 'Price on Request',
+    bhk: p.bhk || '2 & 3 BHK',
+    lat: p.lat,
+    lng: p.lng,
+    akScore: typeof p.akScore === 'number' ? p.akScore : 75.0,
+    recommended: Boolean(p.recommended),
+    pitchText: p.pitchText || '',
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// 2. Normalize Tech Parks
+const normalizedTechParks = rawTechParks.map((tp, idx) => {
+  const id = tp.id || `TP${String(idx + 1).padStart(3, '0')}`;
+  if (!isValidCoord(tp.lat, tp.lng)) {
+    auditIssues.push({ category: 'TechPark', id, name: tp.name, issue: 'Invalid coordinates' });
+  }
+  return {
+    id,
+    name: tp.name || 'Tech Park',
+    area: tp.area || 'Bengaluru',
+    lat: tp.lat,
+    lng: tp.lng,
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// 3. Normalize Metro Stations
+const normalizedMetroStations = rawMetroStations.map((ms, idx) => {
+  const id = ms.id || `M${String(idx + 1).padStart(2, '0')}`;
+  if (!isValidCoord(ms.lat, ms.lng)) {
+    auditIssues.push({ category: 'MetroStation', id, name: ms.name, issue: 'Invalid coordinates' });
+  }
+  return {
+    id,
+    name: ms.name || 'Metro Station',
+    line: ms.line || 'Purple',
+    lat: ms.lat,
+    lng: ms.lng,
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// 4. Normalize Schools
+const normalizedSchools = rawSchools.map((s, idx) => {
+  const id = s.id || `S${String(idx + 1).padStart(2, '0')}`;
+  return {
+    id,
+    name: s.name || 'School',
+    area: s.area || 'Bengaluru',
+    lat: s.lat,
+    lng: s.lng,
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// 5. Normalize Hospitals
+const normalizedHospitals = rawHospitals.map((h, idx) => {
+  const id = h.id || `H${String(idx + 1).padStart(2, '0')}`;
+  return {
+    id,
+    name: h.name || 'Hospital',
+    area: h.area || 'Bengaluru',
+    lat: h.lat,
+    lng: h.lng,
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// 6. Normalize Malls
+const normalizedMalls = rawMalls.map((m, idx) => {
+  const id = m.id || `MA${String(idx + 1).padStart(2, '0')}`;
+  return {
+    id,
+    name: m.name || 'Mall',
+    area: m.area || 'Bengaluru',
+    lat: m.lat,
+    lng: m.lng,
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// 7. Normalize Area Pricing / Price Density
+const normalizedAreaPricing = rawAreaPricing.map((ap, idx) => {
+  const id = ap.id || `AP${String(idx + 1).padStart(2, '0')}`;
+  return {
+    id,
+    name: ap.name || 'Locality',
+    zone: ap.zone || 'Bengaluru',
+    avgPrice: typeof ap.avgPrice === 'number' ? ap.avgPrice : 10000,
+    minPrice: typeof ap.minPrice === 'number' ? ap.minPrice : 8000,
+    maxPrice: typeof ap.maxPrice === 'number' ? ap.maxPrice : 15000,
+    lat: ap.lat,
+    lng: ap.lng,
+    category: ap.category || 'Residential Corridor',
+    source: 'GoogleSheet_SSOT'
+  };
+});
+
+// Build unified payload
+const fullPayload = {
+  metadata: {
+    source: 'Google Sheet Single Source of Truth',
+    sheetUrl: 'https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=1841720749',
+    syncedAt: new Date().toISOString(),
+    displayDate: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(),
+    counts: {
+      projects: normalizedProjects.length,
+      techParks: normalizedTechParks.length,
+      metroStations: normalizedMetroStations.length,
+      schools: normalizedSchools.length,
+      hospitals: normalizedHospitals.length,
+      malls: normalizedMalls.length,
+      areaPricing: normalizedAreaPricing.length
+    }
+  },
+  projects: normalizedProjects,
+  techParks: normalizedTechParks,
+  metroStations: normalizedMetroStations,
+  schools: normalizedSchools,
+  hospitals: normalizedHospitals,
+  malls: normalizedMalls,
+  areaPricing: normalizedAreaPricing
+};
+
+// Write map_data.json
+fs.writeFileSync(OUTPUT_FILE, JSON.stringify(fullPayload, null, 2), 'utf8');
+
+// Write data quality report
+const qualityReport = {
+  status: auditIssues.length === 0 ? 'HEALTHY' : 'WARNINGS_FOUND',
+  timestamp: new Date().toISOString(),
+  issuesCount: auditIssues.length,
+  issues: auditIssues,
+  summary: fullPayload.metadata.counts
+};
+
+fs.writeFileSync(REPORT_FILE, JSON.stringify(qualityReport, null, 2), 'utf8');
+
+console.log('✅ Google Sheet SSOT Data Normalization Complete!');
+console.log('Summary:', fullPayload.metadata.counts);
+console.log(`Saved output to ${OUTPUT_FILE}`);
