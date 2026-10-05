@@ -5658,7 +5658,7 @@ html, body {
         <span class="map-mode-btn__icon">📈</span>
         <span class="map-mode-btn__label">Market</span>
       </button>
-      <button type="button" class="map-mode-btn" id="modeBtnFuture" onclick="switchMapMode('future_growth')">
+      <button type="button" class="map-mode-btn" id="modeBtnFutureGrowth" onclick="switchMapMode('future_growth')">
         <span class="map-mode-btn__icon">🚀</span>
         <span class="map-mode-btn__label">Future Growth</span>
       </button>
@@ -11205,7 +11205,8 @@ function setBuyerIntent(intent) {
 function setBuyerLens(lens) {
   activeBuyerLens = lens;
   document.querySelectorAll('.buyer-lens-pill').forEach(b => b.classList.remove('buyer-lens-pill--active'));
-  const btn = document.getElementById('lens' + lens.charAt(0).toUpperCase() + lens.slice(1));
+  let idSuffix = lens.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
+  const btn = document.getElementById('lens' + idSuffix) || document.getElementById('lens' + lens.charAt(0).toUpperCase() + lens.slice(1));
   if (btn) btn.classList.add('buyer-lens-pill--active');
   if (typeof applyFilters === 'function') applyFilters();
 }
@@ -11213,7 +11214,8 @@ function setBuyerLens(lens) {
 function switchMapMode(mode) {
   activeMapMode = mode;
   document.querySelectorAll('.map-mode-btn').forEach(b => b.classList.remove('map-mode-btn--active'));
-  const btn = document.getElementById('modeBtn' + mode.charAt(0).toUpperCase() + mode.slice(1));
+  let idSuffix = mode.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
+  const btn = document.getElementById('modeBtn' + idSuffix) || document.getElementById('modeBtn' + mode.charAt(0).toUpperCase() + mode.slice(1));
   if (btn) btn.classList.add('map-mode-btn--active');
 
   if (!els) return;
@@ -11228,11 +11230,17 @@ function switchMapMode(mode) {
     if (els.techParkView && els.techParkView.checked) { els.techParkView.checked = false; setTechParkViewMode(false); }
     if (els.areaPriceView) { els.areaPriceView.checked = true; setAreaPriceViewMode(true); }
   } else if (mode === 'connectivity') {
-    if (els.metro && !els.metro.checked) { els.metro.click(); }
+    if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
   } else if (mode === 'livability') {
     if (els.schools && !els.schools.checked) { els.schools.click(); }
     if (els.hospitals && !els.hospitals.checked) { els.hospitals.click(); }
     if (els.malls && !els.malls.checked) { els.malls.click(); }
+  } else if (mode === 'future_growth' || mode === 'future') {
+    if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
+    if (els.areaPriceView) { els.areaPriceView.checked = true; setAreaPriceViewMode(true); }
+    if (typeof showMapStatus === 'function') {
+      showMapStatus("🚀 Future Growth Mode: Highlighting upcoming Metro corridors (Blue & Pink) & high growth areas");
+    }
   }
 }
 
