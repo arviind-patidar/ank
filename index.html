@@ -7218,34 +7218,64 @@ function updateAreaPricingDebugState() {
 
 function ensureComprehensiveAreaPricing() {
   if (!AREA_PRICING) AREA_PRICING = [];
-  const existingLocs = new Set(AREA_PRICING.map(a => a.name.toLowerCase().trim()));
   
+  // Keep primary corridor entries from data/map_data.json
+  const existingNodes = [...AREA_PRICING];
+  const subNodes = [];
+
+  // Group ALL_PROPERTIES by spatial micro-markets (~1.6 km radius) to ensure 100% map coverage
   (ALL_PROPERTIES || []).forEach(p => {
     if (!p) return;
-    const loc = (p.locality || p.microMarket || p.zone || '').trim();
-    if (!loc) return;
-    const key = loc.toLowerCase();
-    if (existingLocs.has(key)) return; // Keep SSOT area pricing entry pristine!
-
     const lat = typeof p.lat === 'number' ? p.lat : parseFloat(p.lat);
     const lng = typeof p.lng === 'number' ? p.lng : parseFloat(p.lng);
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    const loc = (p.locality || p.microMarket || p.zone || 'Bengaluru').trim();
     const priceSqft = p.avgPricePerSqft || (p.minPriceLakhs ? Math.round((p.minPriceLakhs * 100000) / 1300) : 10500);
 
-    if (!isNaN(lat) && !isNaN(lng)) {
-      existingLocs.add(key);
-      AREA_PRICING.push({
-        id: 'AP_GEN_' + AREA_PRICING.length,
+    // Find existing node within 1.6 km
+    let match = existingNodes.find(pt => {
+      const dLat = Math.abs(pt.lat - lat);
+      const dLng = Math.abs(pt.lng - lng);
+      return Math.hypot(dLat * 111, dLng * 111) < 1.6;
+    });
+
+    if (!match) {
+      match = subNodes.find(pt => {
+        const dLat = Math.abs(pt.lat - lat);
+        const dLng = Math.abs(pt.lng - lng);
+        return Math.hypot(dLat * 111, dLng * 111) < 1.6;
+      });
+    }
+
+    if (match) {
+      if (!match.priceCount) {
+        match.priceCount = 1;
+        match.priceSum = match.avgPrice || priceSqft;
+      }
+      match.priceCount++;
+      match.priceSum += priceSqft;
+      match.avgPrice = Math.round(match.priceSum / match.priceCount);
+      match.minPrice = Math.min(match.minPrice || priceSqft, priceSqft);
+      match.maxPrice = Math.max(match.maxPrice || priceSqft, priceSqft);
+    } else {
+      subNodes.push({
+        id: 'AP_NODE_' + (subNodes.length + 1),
         name: loc,
         zone: p.zone || 'Bengaluru',
         avgPrice: priceSqft,
         minPrice: Math.round(priceSqft * 0.85),
-        maxPrice: Math.round(priceSqft * 1.25),
+        maxPrice: Math.round(priceSqft * 1.20),
         lat: parseFloat(lat.toFixed(5)),
         lng: parseFloat(lng.toFixed(5)),
-        category: 'Residential Corridor'
+        category: 'Residential Corridor',
+        priceCount: 1,
+        priceSum: priceSqft
       });
     }
   });
+
+  AREA_PRICING = [...existingNodes, ...subNodes];
 }
 
 function getVisibleAreaPricing() {
@@ -10374,7 +10404,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v30"
+  CACHE_KEY: "ackey_app_data_v31"
 };
 
 const DataService = {
