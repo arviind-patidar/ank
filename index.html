@@ -7894,9 +7894,8 @@ function renderDetailPanel(property) {
   var inventoryHtml = "";
   if (Array.isArray(property.inventory) && property.inventory.length > 0) {
     inventoryHtml = '<div class="pdp__section" style="background:#F8FAFC; border:1px solid var(--line); border-radius:6px; padding:10px 12px; margin-top:8px;">' +
-      '<div class="pdp__section-label" style="color:var(--navy); font-weight:800; font-size:10px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">' +
-        '<span>UNIT PRICING & CONFIGURATIONS</span>' +
-        '<span style="font-size:9px; background:#E2E8F0; color:#4A5568; padding:1px 5px; border-radius:3px;">SHEET SSOT DATA</span>' +
+      '<div class="pdp__section-label" style="color:var(--navy); font-weight:800; font-size:10px; margin-bottom:6px;">' +
+        'UNIT PRICING & CONFIGURATIONS' +
       '</div>' +
       '<table style="width:100%; border-collapse:collapse; font-size:10.5px; text-align:left;">' +
         '<thead>' +
@@ -9981,7 +9980,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v11"
+  CACHE_KEY: "ackey_app_data_v12"
 };
 
 const DataService = {
