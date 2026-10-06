@@ -5761,9 +5761,6 @@ html, body {
   </div>
 
   <div class="topbar__actions" style="display:flex; align-items:center; gap:10px;">
-    <button type="button" class="topbar__shortlist-cta-btn" id="headerShortlistBtn" onclick="openCustomerShortlistModal()">
-      <span>✨</span> BUILD MY SHORTLIST
-    </button>
     <button type="button" class="topbar__methodology-btn" onclick="openMethodologyModal()">Data &amp; Methodology</button>
     
     <!-- AUTHENTICATION CONTAINER -->
@@ -5772,17 +5769,6 @@ html, body {
     </div>
   </div>
 </header>
-
-<!-- PERSONALIZATION PROMPT BANNER (STATE 2: AUTHENTICATED — NO PERSONALIZATION YET) -->
-<div id="personalizePromptBanner" class="personalize-prompt-banner" style="display:none;">
-  <div class="personalize-prompt__text">
-    <div class="personalize-prompt__title">PERSONALIZE YOUR MAP</div>
-    <div class="personalize-prompt__sub">Tell us what you're looking for and we'll filter Bengaluru around you.</div>
-  </div>
-  <button type="button" class="personalize-prompt__btn" onclick="openCustomerShortlistModal()">
-    BUILD MY SHORTLIST ✨
-  </button>
-</div>
 
 <!-- PERSISTENT SEARCH CONTEXT BAR (STATE 3: AUTHENTICATED — PERSONALIZED) -->
 <div id="customerSearchContextBar" class="customer-context-bar" style="display:none;">
@@ -10232,7 +10218,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v19"
+  CACHE_KEY: "ackey_app_data_v20"
 };
 
 const DataService = {
@@ -10479,9 +10465,7 @@ function onAuthSuccess() {
 
 function updateUIForAuthState() {
   const container = document.getElementById("topbarAuthContainer");
-  const personalizeBanner = document.getElementById("personalizePromptBanner");
   const contextBar = document.getElementById("customerSearchContextBar");
-  const shortlistBtn = document.getElementById("headerShortlistBtn");
 
   const user = AuthService.getCurrentUser();
   const shortlist = AuthService.getShortlist();
@@ -10506,7 +10490,6 @@ function updateUIForAuthState() {
 
     if (user.savedSearch) {
       currentRequirementProfile = user.savedSearch;
-      if (personalizeBanner) personalizeBanner.style.display = "none";
       if (contextBar) contextBar.style.display = "flex";
       
       const locStr = (currentRequirementProfile.preferred_locations || []).join(", ") || "Bengaluru";
@@ -10515,10 +10498,8 @@ function updateUIForAuthState() {
       const summaryText = document.getElementById("customerSearchSummaryText");
       if (summaryText) summaryText.textContent = `${cfgStr} · ${bgtStr} · ${locStr}`;
     } else {
-      if (personalizeBanner) personalizeBanner.style.display = "flex";
       if (contextBar) contextBar.style.display = "none";
     }
-    if (shortlistBtn) shortlistBtn.style.display = "inline-flex";
   } else {
     if (container) {
       container.innerHTML = `
@@ -10526,7 +10507,6 @@ function updateUIForAuthState() {
         <button type="button" class="btn-auth-nav btn-auth-nav--outline" onclick="openLoginModal()">LOG IN</button>
       `;
     }
-    if (personalizeBanner) personalizeBanner.style.display = "none";
     if (contextBar) contextBar.style.display = "none";
   }
 }
