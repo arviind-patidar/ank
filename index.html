@@ -5516,58 +5516,275 @@ html, body {
   color: #12202E;
 }
 
+/* PUBLIC LANDING OVERLAY STYLES */
+.landing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(12, 22, 32, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.landing-card {
+  background: #12202E;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6);
+  border-radius: 14px;
+  max-width: 540px;
+  width: 100%;
+  padding: 40px 36px;
+  text-align: center;
+  color: #FFFFFF;
+  position: relative;
+  animation: landingFadeIn 0.3s ease-out;
+}
+
+@keyframes landingFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.landing-brand {
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: var(--gold, #C55A11);
+}
+
+.landing-subbrand {
+  font-size: 10.5px;
+  letter-spacing: 0.15em;
+  color: #A0AEC0;
+  font-weight: 700;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.landing-title {
+  font-size: 23px;
+  font-weight: 700;
+  margin: 22px 0 12px 0;
+  line-height: 1.35;
+  color: #F7FAFC;
+}
+
+.landing-copy {
+  font-size: 13.5px;
+  color: #CBD5E0;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.landing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.landing-btn {
+  padding: 13px 22px;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: 13.5px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.landing-btn--primary {
+  background: var(--gold, #C55A11);
+  color: #12202E;
+}
+
+.landing-btn--primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.landing-btn--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.landing-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.landing-footer-note {
+  font-size: 12.5px;
+  color: #A0AEC0;
+  margin-top: 22px;
+}
+
+/* TOPBAR AUTH NAV BUTTONS & USER MENU */
+.btn-auth-nav {
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  background: var(--gold, #C55A11);
+  color: #12202E;
+  transition: all 0.2s ease;
+}
+
+.btn-auth-nav:hover {
+  filter: brightness(1.1);
+}
+
+.btn-auth-nav--outline {
+  background: transparent;
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-auth-nav--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-menu-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.user-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: #1A202C;
+  border: 1px solid #2D3748;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
+  width: 200px;
+  z-index: 1000;
+  padding: 6px 0;
+}
+
+.user-dropdown-menu a {
+  display: block;
+  padding: 9px 14px;
+  color: #E2E8F0;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.user-dropdown-menu a:hover {
+  background: #2D3748;
+  color: #FFFFFF;
+}
+
+/* PERSONALIZATION PROMPT BANNER (STATE 2) */
+.personalize-prompt-banner {
+  background: linear-gradient(135deg, #12202E 0%, #1A2B3C 100%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.15);
+  padding: 12px 18px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.personalize-prompt__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.personalize-prompt__title {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gold, #C55A11);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.personalize-prompt__sub {
+  font-size: 12px;
+  color: #E2E8F0;
+  margin-top: 2px;
+}
+
+.personalize-prompt__btn {
+  background: var(--gold, #C55A11);
+  color: #12202E;
+  font-weight: 800;
+  font-size: 11px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.personalize-prompt__btn:hover {
+  filter: brightness(1.1);
+}
+
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <div class="topbar__brand" style="display:flex; align-items:center; gap:8px;">
+  <div class="topbar__brand" style="display:flex; align-items:center; gap:8px; cursor:pointer;" onclick="showPublicLandingOverlay()" title="Return to Acre&Key introduction">
     <span style="font-weight:800; font-size:15px; letter-spacing:1px;">ACRE&amp;KEY</span>
     <span style="opacity:0.4;">//</span>
     <span class="topbar__page">Bengaluru Property Intelligence</span>
     <span class="topbar__tagline">Find. Compare. Understand. Before You Buy.</span>
   </div>
-  <!-- DUAL MODE SWITCHER -->
-  <div class="topbar__mode-switcher" id="appModeSwitcher">
-    <button type="button" class="topbar__mode-btn topbar__mode-btn--active" id="btnModeCustomer" onclick="switchAppMode('customer')">
-      <span>👤</span> CUSTOMER MODE
-    </button>
-    <button type="button" class="topbar__mode-btn" id="btnModeTeam" onclick="switchAppMode('team')">
-      <span>🛡️</span> TEAM / ADVISOR MODE
-    </button>
-  </div>
 
-  <div class="topbar__actions">
+  <div class="topbar__actions" style="display:flex; align-items:center; gap:10px;">
     <button type="button" class="topbar__shortlist-cta-btn" id="headerShortlistBtn" onclick="openCustomerShortlistModal()">
       <span>✨</span> BUILD MY SHORTLIST
     </button>
-    <button type="button" class="topbar__load-customer-btn" id="headerLoadCustomerBtn" onclick="openLoadCustomerModal()" style="display:none;">
-      <span>📂</span> LOAD CUSTOMER
-    </button>
     <button type="button" class="topbar__methodology-btn" onclick="openMethodologyModal()">Data &amp; Methodology</button>
+    
+    <!-- AUTHENTICATION CONTAINER -->
+    <div id="topbarAuthContainer">
+      <!-- Generated dynamically by updateUIForAuthState() -->
+    </div>
   </div>
 </header>
 
-
-<!-- CUSTOMER MODE HERO BANNER -->
-<div id="customerHeroBanner" class="customer-hero-banner">
-  <div class="customer-hero__content">
-    <div class="customer-hero__badge">ACRE&amp;KEY PERSONALIZED MATCHING ENGINE</div>
-    <h1 class="customer-hero__title">FIND THE RIGHT PROPERTY FOR YOU</h1>
-    <p class="customer-hero__sub">Tell us what matters to you. Acre&amp;Key will shortlist projects that fit your budget, location, and workplace commute.</p>
-    <div class="customer-hero__actions">
-      <button type="button" class="customer-hero__btn customer-hero__btn--primary" onclick="openCustomerShortlistModal()">
-        <span>✨</span> BUILD MY SHORTLIST
-      </button>
-      <button type="button" class="customer-hero__btn customer-hero__btn--secondary" onclick="closeCustomerHeroBanner()">
-        <span>🗺️</span> EXPLORE THE MAP
-      </button>
-    </div>
+<!-- PERSONALIZATION PROMPT BANNER (STATE 2: AUTHENTICATED — NO PERSONALIZATION YET) -->
+<div id="personalizePromptBanner" class="personalize-prompt-banner" style="display:none;">
+  <div class="personalize-prompt__text">
+    <div class="personalize-prompt__title">PERSONALIZE YOUR MAP</div>
+    <div class="personalize-prompt__sub">Tell us what you're looking for and we'll filter Bengaluru around you.</div>
   </div>
-  <button type="button" class="customer-hero__dismiss" onclick="closeCustomerHeroBanner()">✕</button>
+  <button type="button" class="personalize-prompt__btn" onclick="openCustomerShortlistModal()">
+    BUILD MY SHORTLIST ✨
+  </button>
 </div>
 
-<!-- PERSISTENT CUSTOMER SEARCH CONTEXT BAR -->
+<!-- PERSISTENT SEARCH CONTEXT BAR (STATE 3: AUTHENTICATED — PERSONALIZED) -->
 <div id="customerSearchContextBar" class="customer-context-bar" style="display:none;">
   <div class="customer-context__info">
     <span class="customer-context__label">YOUR SEARCH:</span>
@@ -5576,24 +5793,141 @@ html, body {
   </div>
   <div class="customer-context__actions">
     <button type="button" id="btnToggleAlternatives" class="customer-context__btn customer-context__btn--alt" style="display:none;" onclick="toggleShowAlternatives()">+ SHOW ALTERNATIVES (+0)</button>
-    <button type="button" class="customer-context__btn" onclick="openCustomerShortlistModal(true)">✏️ EDIT REQUIREMENTS</button>
+    <button type="button" class="customer-context__btn" onclick="openCustomerShortlistModal(true)">✏️ EDIT SEARCH</button>
     <button type="button" id="btnExploreAllBengaluru" class="customer-context__btn customer-context__btn--outline" onclick="exploreAllBengaluru()">🗺️ EXPLORE ALL BENGALURU</button>
   </div>
 </div>
 
-<!-- TEAM CUSTOMER CONTEXT BAR -->
-<div id="teamCustomerContextBar" class="team-context-bar" style="display:none;">
-  <div class="team-context__left">
-    <span class="team-context__badge">CUSTOMER LOADED</span>
-    <span class="team-context__name" id="teamCustomerName">Rahul Sharma</span>
-    <span class="team-context__req" id="teamCustomerReqText">3 BHK · ₹1.5–2.5 Cr · Whitefield · Near ITPL</span>
+<!-- PUBLIC LANDING OVERLAY (STATE 1: ANONYMOUS INITIAL VISITOR) -->
+<div id="publicLandingOverlay" class="landing-overlay" style="display:none;">
+  <div class="landing-card">
+    <div class="landing-brand">ACRE&amp;KEY</div>
+    <div class="landing-subbrand">BENGALURU PROPERTY INTELLIGENCE</div>
+    <h1 class="landing-title">Find the properties worth your time.</h1>
+    <p class="landing-copy">
+      Explore Bengaluru through property prices, connectivity, employment hubs, Metro, neighbourhood intelligence and Acre&amp;Key research.
+    </p>
+    <div class="landing-actions">
+      <button type="button" class="landing-btn landing-btn--primary" onclick="gateAction(closePublicLandingOverlay, 'explore_map')">
+        🚀 EXPLORE THE MAP
+      </button>
+      <button type="button" class="landing-btn landing-btn--secondary" onclick="openMethodologyModal()">
+        📖 HOW IT WORKS
+      </button>
+    </div>
+    <div class="landing-footer-note">
+      Already have an account? <a href="javascript:void(0)" onclick="openLoginModal()" style="color:var(--gold); font-weight:700; text-decoration:underline;">Log in</a>
+    </div>
   </div>
-  <div class="team-context__right">
-    <button type="button" id="btnTeamViewModeToggle" class="team-context__btn" onclick="toggleTeamViewMode()">🎯 CUSTOMER MATCH VIEW</button>
-    <span class="team-context__override-badge" id="teamOverrideBadge" style="display:none;">ADVISOR EXPLORE MODE</span>
-    <button type="button" class="team-context__btn" onclick="openTeamNotesModal()">📝 INTERNAL NOTES</button>
-    <button type="button" class="team-context__btn team-context__btn--gold" onclick="saveAsNewRequirement()">💾 SAVE REQUIREMENT</button>
-    <button type="button" class="team-context__btn team-context__btn--clear" onclick="clearLoadedCustomer()">✕ UNLOAD</button>
+</div>
+
+<!-- SIGNUP GATE MODAL -->
+<div id="signupModal" class="customer-modal-backdrop">
+  <div class="customer-modal" style="max-width:440px;">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator">CREATE YOUR FREE ACRE&amp;KEY ACCOUNT</div>
+      <button type="button" class="customer-modal__close" onclick="closeSignupModal()">✕</button>
+    </div>
+    <div class="customer-modal__body">
+      <h3 style="font-size:16px; font-weight:800; color:#12202E; margin:0 0 6px 0;">EXPLORE BENGALURU WITH ACRE&amp;KEY</h3>
+      <p style="font-size:12.5px; color:#4A5568; margin:0 0 16px 0;">Create a free account to explore Bengaluru's property intelligence map, project-level data, and personalized recommendations.</p>
+
+      <form onsubmit="handleSignupSubmit(event)" style="display:flex; flex-direction:column; gap:12px;">
+        <label class="field">
+          <span class="field__label">Full Name *</span>
+          <input type="text" id="signupName" class="field__input" placeholder="e.g. Rahul Sharma" required autocomplete="name" />
+        </label>
+        <label class="field">
+          <span class="field__label">WhatsApp Number *</span>
+          <input type="tel" id="signupPhone" class="field__input" placeholder="e.g. +91 98765 43210" required autocomplete="tel" />
+        </label>
+        <label class="field">
+          <span class="field__label">Email Address *</span>
+          <input type="email" id="signupEmail" class="field__input" placeholder="e.g. rahul@example.com" required autocomplete="email" />
+        </label>
+        <label class="field">
+          <span class="field__label">I am looking for:</span>
+          <select id="signupPurpose" class="field__input">
+            <option value="End Use">End Use (Self-living)</option>
+            <option value="Investment">Investment (Appreciation / Rental)</option>
+            <option value="Both">Both (Self-use + Appreciation)</option>
+          </select>
+        </label>
+
+        <button type="submit" class="modal-btn modal-btn--next" style="width:100%; margin-top:8px; background:var(--gold); color:#12202E; font-weight:800; font-size:13px; padding:12px;">
+          CONTINUE TO MAP →
+        </button>
+      </form>
+    </div>
+    <div class="customer-modal__footer" style="justify-content:center;">
+      <span style="font-size:12px; color:#718096;">
+        Already have an account? <a href="javascript:void(0)" onclick="openLoginFromSignup()" style="color:#2B6CB0; font-weight:700;">Log in</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="customer-modal-backdrop">
+  <div class="customer-modal" style="max-width:420px;">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator">WELCOME BACK TO ACRE&amp;KEY</div>
+      <button type="button" class="customer-modal__close" onclick="closeLoginModal()">✕</button>
+    </div>
+    <div class="customer-modal__body">
+      <h3 style="font-size:16px; font-weight:800; color:#12202E; margin:0 0 6px 0;">LOG IN TO YOUR ACCOUNT</h3>
+      <p style="font-size:12.5px; color:#4A5568; margin:0 0 16px 0;">Enter your Email or WhatsApp number to access your saved search and shortlisted properties.</p>
+
+      <form onsubmit="handleLoginSubmit(event)" style="display:flex; flex-direction:column; gap:12px;">
+        <label class="field">
+          <span class="field__label">Email or WhatsApp Number *</span>
+          <input type="text" id="loginIdentifier" class="field__input" placeholder="e.g. rahul@example.com or +91 98765 43210" required />
+        </label>
+
+        <button type="submit" class="modal-btn modal-btn--next" style="width:100%; margin-top:8px; background:var(--gold); color:#12202E; font-weight:800; font-size:13px; padding:12px;">
+          CONTINUE TO MAP →
+        </button>
+      </form>
+    </div>
+    <div class="customer-modal__footer" style="justify-content:center;">
+      <span style="font-size:12px; color:#718096;">
+        Don't have an account? <a href="javascript:void(0)" onclick="openSignupFromLogin()" style="color:#2B6CB0; font-weight:700;">Create free account</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- USER PROFILE MODAL -->
+<div id="userProfileModal" class="customer-modal-backdrop">
+  <div class="customer-modal" style="max-width:440px;">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator">MY ACRE&amp;KEY PROFILE</div>
+      <button type="button" class="customer-modal__close" onclick="closeUserProfileModal()">✕</button>
+    </div>
+    <div class="customer-modal__body" id="userProfileModalBody">
+      <!-- Generated dynamically -->
+    </div>
+    <div class="customer-modal__footer">
+      <button type="button" class="modal-btn modal-btn--back" onclick="closeUserProfileModal()">CLOSE</button>
+      <button type="button" class="modal-btn modal-btn--next" style="background:#C53030; color:#FFF;" onclick="handleLogout()">LOG OUT</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHORTLIST TRAY MODAL -->
+<div id="shortlistTrayModal" class="customer-modal-backdrop">
+  <div class="customer-modal" style="max-width:540px;">
+    <div class="customer-modal__header">
+      <div class="customer-modal__step-indicator">⭐ MY SHORTLISTED PROJECTS</div>
+      <button type="button" class="customer-modal__close" onclick="closeShortlistTray()">✕</button>
+    </div>
+    <div class="customer-modal__body" id="shortlistTrayBody" style="max-height:400px; overflow-y:auto;">
+      <!-- Generated dynamically -->
+    </div>
+    <div class="customer-modal__footer">
+      <button type="button" class="modal-btn modal-btn--back" onclick="closeShortlistTray()">CLOSE</button>
+      <button type="button" class="modal-btn modal-btn--next" style="background:var(--gold); color:#12202E;" onclick="openCompareTrayFromShortlist()">COMPARE SHORTLIST ⚖️</button>
+    </div>
   </div>
 </div>
 
@@ -8083,6 +8417,10 @@ function toggleMinimizeDetailPanel(e) {
 
 
 function setActive(id, options) {
+  if (typeof AuthService !== "undefined" && !AuthService.isAuthenticated()) {
+    gateAction(function() { setActive(id, options); }, "open_project_" + id);
+    return;
+  }
   var pan = true;
   if (options && typeof options.pan === "boolean") {
     pan = options.pan;
@@ -9894,7 +10232,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v16"
+  CACHE_KEY: "ackey_app_data_v17"
 };
 
 const DataService = {
@@ -10017,6 +10355,329 @@ const DataService = {
 function initAppListings() {
   DataService.loadApplicationData();
 }
+
+// ==================================================
+// ACRE&KEY USER AUTHENTICATION & SESSION ARCHITECTURE
+// ==================================================
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+const AuthService = {
+  STORAGE_KEY: "ackey_user_session_v1",
+  SHORTLIST_KEY: "ackey_user_shortlist_v1",
+  
+  getCurrentUser() {
+    try {
+      const raw = localStorage.getItem(this.STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch(e) { return null; }
+  },
+
+  isAuthenticated() {
+    return !!this.getCurrentUser();
+  },
+
+  signup(userData) {
+    const user = {
+      id: "usr_" + Date.now(),
+      name: userData.name || "Acre&Key User",
+      phone: userData.phone || "",
+      email: userData.email || "",
+      purpose: userData.purpose || "End Use",
+      createdAt: new Date().toISOString(),
+      savedSearch: null
+    };
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(user));
+    this.updateUI();
+    return user;
+  },
+
+  login(identifier) {
+    let user = this.getCurrentUser();
+    if (!user) {
+      user = {
+        id: "usr_" + Date.now(),
+        name: identifier.includes("@") ? identifier.split("@")[0] : identifier,
+        email: identifier.includes("@") ? identifier : "",
+        phone: !identifier.includes("@") ? identifier : "",
+        purpose: "End Use",
+        createdAt: new Date().toISOString(),
+        savedSearch: null
+      };
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(user));
+    }
+    this.updateUI();
+    return user;
+  },
+
+  logout() {
+    localStorage.removeItem(this.STORAGE_KEY);
+    currentRequirementProfile = null;
+    this.updateUI();
+    showPublicLandingOverlay();
+    applyFilters();
+  },
+
+  saveSearch(searchProfile) {
+    const user = this.getCurrentUser();
+    if (user) {
+      user.savedSearch = searchProfile;
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(user));
+      this.updateUI();
+    }
+  },
+
+  getShortlist() {
+    try {
+      const raw = localStorage.getItem(this.SHORTLIST_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e) { return []; }
+  },
+
+  toggleShortlist(projectId) {
+    let list = this.getShortlist();
+    const idx = list.indexOf(projectId);
+    if (idx > -1) list.splice(idx, 1);
+    else list.push(projectId);
+    localStorage.setItem(this.SHORTLIST_KEY, JSON.stringify(list));
+    this.updateUI();
+    return list;
+  },
+
+  updateUI() {
+    if (typeof updateUIForAuthState === "function") {
+      updateUIForAuthState();
+    }
+  }
+};
+
+let pendingIntendedAction = null;
+
+function gateAction(actionFn, actionDetails) {
+  if (AuthService.isAuthenticated()) {
+    if (typeof actionFn === "function") actionFn();
+  } else {
+    pendingIntendedAction = { fn: actionFn, details: actionDetails };
+    openSignupModal();
+  }
+}
+
+function onAuthSuccess() {
+  updateUIForAuthState();
+  closeSignupModal();
+  closeLoginModal();
+  closePublicLandingOverlay();
+
+  if (pendingIntendedAction && typeof pendingIntendedAction.fn === "function") {
+    const actionToRun = pendingIntendedAction.fn;
+    pendingIntendedAction = null;
+    actionToRun();
+  }
+}
+
+function updateUIForAuthState() {
+  const container = document.getElementById("topbarAuthContainer");
+  const personalizeBanner = document.getElementById("personalizePromptBanner");
+  const contextBar = document.getElementById("customerSearchContextBar");
+  const shortlistBtn = document.getElementById("headerShortlistBtn");
+
+  const user = AuthService.getCurrentUser();
+  const shortlist = AuthService.getShortlist();
+
+  if (user) {
+    if (container) {
+      container.innerHTML = `
+        <div class="user-menu-wrap">
+          <button type="button" class="user-menu-btn" onclick="toggleUserDropdown(event)">
+            <span>👤</span> <span>${escapeHtml(user.name)}</span> <span style="font-size:9px;">▼</span>
+          </button>
+          <div class="user-dropdown-menu" id="userDropdownMenu" style="display:none;">
+            <a href="javascript:void(0)" onclick="openUserProfileModal()">👤 My Profile</a>
+            <a href="javascript:void(0)" onclick="openCustomerShortlistModal(true)">🔍 My Search</a>
+            <a href="javascript:void(0)" onclick="openShortlistTray()">⭐ My Shortlist (${shortlist.length})</a>
+            <hr style="margin:4px 0; border:none; border-top:1px solid #2D3748;"/>
+            <a href="javascript:void(0)" onclick="handleLogout()" style="color:#FEB2B2;">🚪 Log Out</a>
+          </div>
+        </div>
+      `;
+    }
+
+    if (user.savedSearch) {
+      currentRequirementProfile = user.savedSearch;
+      if (personalizeBanner) personalizeBanner.style.display = "none";
+      if (contextBar) contextBar.style.display = "flex";
+      
+      const locStr = (currentRequirementProfile.preferred_locations || []).join(", ") || "Bengaluru";
+      const cfgStr = (currentRequirementProfile.configuration || []).join(", ") || "Properties";
+      const bgtStr = currentRequirementProfile.budget_flexible ? "Flexible Budget" : `₹${currentRequirementProfile.budget_min}L–${currentRequirementProfile.budget_max}L`;
+      const summaryText = document.getElementById("customerSearchSummaryText");
+      if (summaryText) summaryText.textContent = `${cfgStr} · ${bgtStr} · ${locStr}`;
+    } else {
+      if (personalizeBanner) personalizeBanner.style.display = "flex";
+      if (contextBar) contextBar.style.display = "none";
+    }
+    if (shortlistBtn) shortlistBtn.style.display = "inline-flex";
+  } else {
+    if (container) {
+      container.innerHTML = `
+        <button type="button" class="btn-auth-nav" onclick="openSignupModal()">SIGN UP</button>
+        <button type="button" class="btn-auth-nav btn-auth-nav--outline" onclick="openLoginModal()">LOG IN</button>
+      `;
+    }
+    if (personalizeBanner) personalizeBanner.style.display = "none";
+    if (contextBar) contextBar.style.display = "none";
+  }
+}
+
+function showPublicLandingOverlay() {
+  const overlay = document.getElementById("publicLandingOverlay");
+  if (overlay) overlay.style.display = "flex";
+}
+
+function closePublicLandingOverlay() {
+  const overlay = document.getElementById("publicLandingOverlay");
+  if (overlay) overlay.style.display = "none";
+}
+
+function openSignupModal() {
+  closeLoginModal();
+  const modal = document.getElementById("signupModal");
+  if (modal) modal.classList.add("active");
+}
+
+function closeSignupModal() {
+  const modal = document.getElementById("signupModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function openLoginModal() {
+  closeSignupModal();
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.add("active");
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function openSignupFromLogin() {
+  closeLoginModal();
+  openSignupModal();
+}
+
+function openLoginFromSignup() {
+  closeSignupModal();
+  openLoginModal();
+}
+
+function handleSignupSubmit(e) {
+  if (e) e.preventDefault();
+  const name = document.getElementById("signupName")?.value.trim() || "Acre&Key User";
+  const phone = document.getElementById("signupPhone")?.value.trim() || "";
+  const email = document.getElementById("signupEmail")?.value.trim() || "";
+  const purpose = document.getElementById("signupPurpose")?.value || "End Use";
+
+  AuthService.signup({ name, phone, email, purpose });
+  onAuthSuccess();
+}
+
+function handleLoginSubmit(e) {
+  if (e) e.preventDefault();
+  const identifier = document.getElementById("loginIdentifier")?.value.trim() || "Acre&Key User";
+  AuthService.login(identifier);
+  onAuthSuccess();
+}
+
+function handleLogout() {
+  AuthService.logout();
+  closeUserProfileModal();
+}
+
+function toggleUserDropdown(e) {
+  if (e) e.stopPropagation();
+  const menu = document.getElementById("userDropdownMenu");
+  if (menu) menu.style.display = menu.style.display === "none" ? "block" : "none";
+}
+
+document.addEventListener("click", () => {
+  const menu = document.getElementById("userDropdownMenu");
+  if (menu) menu.style.display = "none";
+});
+
+function openUserProfileModal() {
+  const user = AuthService.getCurrentUser();
+  if (!user) return;
+  const body = document.getElementById("userProfileModalBody");
+  if (body) {
+    body.innerHTML = `
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:13px; color:#2D3748;">
+        <div><strong style="color:#718096; font-size:10px; letter-spacing:0.05em;">FULL NAME</strong><br/><span style="font-weight:700; font-size:15px; color:#1A202C;">${escapeHtml(user.name)}</span></div>
+        <div><strong style="color:#718096; font-size:10px; letter-spacing:0.05em;">WHATSAPP / PHONE</strong><br/>${escapeHtml(user.phone || 'Not specified')}</div>
+        <div><strong style="color:#718096; font-size:10px; letter-spacing:0.05em;">EMAIL ADDRESS</strong><br/>${escapeHtml(user.email || 'Not specified')}</div>
+        <div><strong style="color:#718096; font-size:10px; letter-spacing:0.05em;">PURPOSE</strong><br/>${escapeHtml(user.purpose || 'End Use')}</div>
+        <div><strong style="color:#718096; font-size:10px; letter-spacing:0.05em;">MEMBER SINCE</strong><br/>${new Date(user.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+      </div>
+    `;
+  }
+  const modal = document.getElementById("userProfileModal");
+  if (modal) modal.classList.add("active");
+}
+
+function closeUserProfileModal() {
+  const modal = document.getElementById("userProfileModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function openShortlistTray() {
+  const shortlistIds = AuthService.getShortlist();
+  const body = document.getElementById("shortlistTrayBody");
+  if (body) {
+    if (shortlistIds.length === 0) {
+      body.innerHTML = `<div style="text-align:center; padding:30px; color:#718096; font-size:13px;">You have not shortlisted any projects yet.<br/><br/><button class="modal-btn modal-btn--next" style="background:var(--gold); color:#12202E;" onclick="closeShortlistTray()">EXPLORE MAP PROJECTS</button></div>`;
+    } else {
+      const items = shortlistIds.map(id => ALL_PROPERTIES.find(p => p.id === id)).filter(Boolean);
+      body.innerHTML = items.map(p => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; border:1px solid #E2E8F0; padding:10px 12px; border-radius:6px; margin-bottom:8px;">
+          <div>
+            <div style="font-weight:700; color:#1A202C; font-size:13px;">${escapeHtml(p.title)}</div>
+            <div style="font-size:11px; color:#718096;">${escapeHtml(p.locality)} · ${escapeHtml(p.bhk || '')} · ${escapeHtml(p.priceRange || '')}</div>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button type="button" style="background:var(--gold); color:#12202E; border:none; border-radius:4px; padding:4px 8px; font-weight:700; font-size:11px; cursor:pointer;" onclick="closeShortlistTray(); setActive('${p.id}');">VIEW</button>
+            <button type="button" style="background:#FFF; color:#E53E3E; border:1px solid #FEB2B2; border-radius:4px; padding:4px 8px; font-size:11px; cursor:pointer;" onclick="toggleProjectShortlist('${p.id}'); openShortlistTray();">✕</button>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+  const modal = document.getElementById("shortlistTrayModal");
+  if (modal) modal.classList.add("active");
+}
+
+function closeShortlistTray() {
+  const modal = document.getElementById("shortlistTrayModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function openCompareTrayFromShortlist() {
+  closeShortlistTray();
+  openCompareTray();
+}
+
+function toggleProjectShortlist(projectId) {
+  if (!AuthService.isAuthenticated()) {
+    gateAction(() => toggleProjectShortlist(projectId));
+    return;
+  }
+  AuthService.toggleShortlist(projectId);
+  if (popupCache && popupCache.id === projectId) {
+    renderDetailPanel(popupCache);
+  }
+}
+
 
 
 /* NAMMA METRO NETWORK OVERLAY MANAGER */
@@ -10644,6 +11305,10 @@ let shortlistDraft = {
 };
 
 function openCustomerShortlistModal(isEdit = false) {
+  if (typeof AuthService !== "undefined" && !AuthService.isAuthenticated()) {
+    gateAction(function() { openCustomerShortlistModal(isEdit); }, "open_shortlist_modal");
+    return;
+  }
   currentCustomerStep = 1;
   updateModalStepUI();
   document.getElementById("customerShortlistModal")?.classList.add("active");
@@ -11000,6 +11665,12 @@ document.addEventListener("DOMContentLoaded", () => {
   wireControls();
   initDraggableMinimizedPanel();
   initAppListings();
+  if (typeof AuthService !== "undefined") {
+    AuthService.updateUI();
+    if (!AuthService.isAuthenticated()) {
+      showPublicLandingOverlay();
+    }
+  }
 });
 
 async function onGoogleMapsLoaded() {
@@ -11368,45 +12039,6 @@ window.setActive = function(id, options) {
       <button type="button" class="modal-btn modal-btn--back" id="btnModalBack" onclick="prevCustomerStep()" style="display:none;">← BACK</button>
       <div></div>
       <button type="button" class="modal-btn modal-btn--next" id="btnModalNext" onclick="nextCustomerStep()">CONTINUE →</button>
-    </div>
-  </div>
-</div>
-
-<!-- LOAD CUSTOMER LEAD MODAL FOR TEAM MODE -->
-<div id="loadCustomerModal" class="customer-modal-backdrop">
-  <div class="customer-modal" style="max-width:520px;">
-    <div class="customer-modal__header">
-      <div class="customer-modal__step-indicator">📂 LOAD CUSTOMER REQUIREMENT</div>
-      <button type="button" class="customer-modal__close" onclick="closeLoadCustomerModal()">✕</button>
-    </div>
-    <div class="customer-modal__body">
-      <h3 style="font-size:15px; font-weight:800; color:#12202E; margin:0 0 6px 0;">SELECT A CUSTOMER LEAD</h3>
-      <p style="font-size:12px; color:#4A5568; margin:0 0 16px 0;">Search saved customer requirement profiles to load onto the research map workspace.</p>
-      <input type="text" id="leadSearchQuery" class="field__input" placeholder="Search by name, phone, or requirement ID..." onkeyup="filterLeadSearchList()" style="margin-bottom:12px;" />
-      <div id="leadSearchList" style="display:flex; flex-direction:column; gap:8px; max-height:280px; overflow-y:auto;">
-        <!-- Lead items generated dynamically -->
-      </div>
-    </div>
-    <div class="customer-modal__footer">
-      <button type="button" class="modal-btn modal-btn--back" onclick="closeLoadCustomerModal()">CANCEL</button>
-    </div>
-  </div>
-</div>
-
-<!-- TEAM INTERNAL NOTES MODAL -->
-<div id="teamNotesModal" class="customer-modal-backdrop">
-  <div class="customer-modal" style="max-width:480px;">
-    <div class="customer-modal__header">
-      <div class="customer-modal__step-indicator">📝 INTERNAL TEAM NOTES</div>
-      <button type="button" class="customer-modal__close" onclick="closeTeamNotesModal()">✕</button>
-    </div>
-    <div class="customer-modal__body">
-      <p style="font-size:12px; color:#4A5568; margin:0 0 12px 0;">These notes are strictly internal to Acre&amp;Key advisors and are <strong>NEVER</strong> visible to customers.</p>
-      <textarea id="teamInternalNotesText" class="field__input" rows="6" placeholder="Enter private notes (e.g. Customer prefers Whitefield but open to Varthur. Does not want high-density towers)..."></textarea>
-    </div>
-    <div class="customer-modal__footer">
-      <button type="button" class="modal-btn modal-btn--back" onclick="closeTeamNotesModal()">CANCEL</button>
-      <button type="button" class="modal-btn modal-btn--next" onclick="saveTeamInternalNotes()">SAVE NOTES</button>
     </div>
   </div>
 </div>
