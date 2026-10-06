@@ -5600,39 +5600,7 @@ html, body {
 <div class="layout">
 
   <aside class="panel" aria-label="Advisor Control Panel" id="sidebarPanel">
-  <!-- BUYER INTENT SECTION -->
-  <div class="intent-section">
-    <div class="intent-section__title">What are you looking for?</div>
-    <div class="intent-cards">
-      <div class="intent-card intent-card--active" id="intentBuyHome" onclick="setBuyerIntent('buy_home')">
-        <span class="intent-card__icon">🏠</span>
-        <span class="intent-card__label">BUY A HOME</span>
-        <span class="intent-card__sub">Budget &amp; Commute</span>
-      </div>
-      <div class="intent-card" id="intentCompareAreas" onclick="setBuyerIntent('compare_areas')">
-        <span class="intent-card__icon">📊</span>
-        <span class="intent-card__label">COMPARE AREAS</span>
-        <span class="intent-card__sub">Prices &amp; Trends</span>
-      </div>
-      <div class="intent-card" id="intentCheckProject" onclick="setBuyerIntent('check_project')">
-        <span class="intent-card__icon">🔍</span>
-        <span class="intent-card__label">CHECK A PROJECT</span>
-        <span class="intent-card__sub">Deep Intelligence</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- BUYER LENS SECTION -->
-  <div class="intent-section">
-    <div class="intent-section__title">What matters most to you?</div>
-    <div class="buyer-lens-bar">
-      <button type="button" class="buyer-lens-pill buyer-lens-pill--active" id="lensEndUse" onclick="setBuyerLens('end_use')">End Use</button>
-      <button type="button" class="buyer-lens-pill" id="lensCommute" onclick="setBuyerLens('commute')">Commute</button>
-      <button type="button" class="buyer-lens-pill" id="lensFamily" onclick="setBuyerLens('family')">Family</button>
-      <button type="button" class="buyer-lens-pill" id="lensInvestment" onclick="setBuyerLens('investment')">Investment</button>
-      <button type="button" class="buyer-lens-pill" id="lensRental" onclick="setBuyerLens('rental')">Rental</button>
-    </div>
-  </div>
 
   <!-- 5 MAP MODES SECTION -->
   <div class="intent-section">
@@ -9980,7 +9948,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v12"
+  CACHE_KEY: "ackey_app_data_v13"
 };
 
 const DataService = {
