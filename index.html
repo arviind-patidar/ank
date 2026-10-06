@@ -6204,10 +6204,12 @@ html, body {
   </div>
 
   <div id="priceLegend" class="price-legend" aria-hidden="true">
-    <div class="price-legend__title">Price / sqft</div>
+    <div class="price-legend__title">AREA PRICING (PRICE / SQFT)</div>
     <div class="price-legend__gradient"></div>
-    <div class="price-legend__scale">
-      <span>₹6K</span><span>₹8K</span><span>₹10K</span><span>₹12K</span><span>₹14K+</span>
+    <div class="price-legend__scale" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <span id="priceLegendMinVal">₹6K/sq.ft</span>
+      <span style="opacity:0.6; font-size:8.5px; letter-spacing:0.5px;">LOW ─── HIGH</span>
+      <span id="priceLegendMaxVal">₹18K/sq.ft</span>
     </div>
   </div>
 
@@ -7171,6 +7173,82 @@ function colorForPrice(price) {
 }
 
 
+
+/* ==================================================
+ * ACRE&KEY — AREA PRICING & DENSITY ENGINE (DYNAMIC SSOT)
+ * ================================================== */
+
+function getAreaPricingBounds() {
+  const points = typeof getVisibleAreaPricing === "function" ? getVisibleAreaPricing() : [];
+  if (!points || points.length === 0) return { minPrice: 6000, maxPrice: 18000 };
+  let minPrice = Infinity;
+  let maxPrice = -Infinity;
+  points.forEach(pt => {
+    const p = Number(pt.avgPrice || pt.pricePerSqft);
+    if (!isNaN(p) && p > 0) {
+      if (p < minPrice) minPrice = p;
+      if (p > maxPrice) maxPrice = p;
+    }
+  });
+  if (minPrice === Infinity || maxPrice === -Infinity || minPrice === maxPrice) {
+    return { minPrice: 6000, maxPrice: 18000 };
+  }
+  return { minPrice, maxPrice };
+}
+
+function colorForPriceNormalized(price) {
+  const { minPrice, maxPrice } = getAreaPricingBounds();
+  const range = (maxPrice - minPrice) || 1;
+  const norm = Math.max(0, Math.min(1, (price - minPrice) / range));
+  
+  let r, g, b;
+  if (norm <= 0.35) {
+    const f = norm / 0.35;
+    r = 168 + (246 - 168) * f;
+    g = 216 + (227 - 216) * f;
+    b = 185 + (161 - 185) * f;
+  } else if (norm <= 0.70) {
+    const f = (norm - 0.35) / 0.35;
+    r = 246 + (245 - 246) * f;
+    g = 227 + (197 - 227) * f;
+    b = 161 + (138 - 161) * f;
+  } else {
+    const f = (norm - 0.70) / 0.30;
+    r = 245 + (216 - 245) * f;
+    g = 197 + (124 - 197) * f;
+    b = 138 + (114 - 138) * f;
+  }
+  return [Math.round(r), Math.round(g), Math.round(b)];
+}
+
+function updateAreaPriceLegendUI() {
+  const { minPrice, maxPrice } = getAreaPricingBounds();
+  const legendMin = document.getElementById("priceLegendMinVal");
+  const legendMax = document.getElementById("priceLegendMaxVal");
+  if (legendMin) legendMin.textContent = `₹${Math.round(minPrice / 1000)}K/sq.ft`;
+  if (legendMax) legendMax.textContent = `₹${Math.round(maxPrice / 1000)}K/sq.ft`;
+}
+
+function updateAreaPricingDebugState() {
+  const points = typeof getVisibleAreaPricing === "function" ? getVisibleAreaPricing() : [];
+  const { minPrice, maxPrice } = getAreaPricingBounds();
+  const overlay = areaPriceDensityOverlay;
+  const canvas = overlay ? overlay.canvas : null;
+  
+  window.__ANK_AREA_PRICING_DEBUG__ = {
+    recordCount: (AREA_PRICING || []).length,
+    validCoordinates: (AREA_PRICING || []).filter(a => typeof a.lat === "number" && typeof a.lng === "number" && !isNaN(a.lat) && !isNaN(a.lng)).length,
+    validPrices: (AREA_PRICING || []).filter(a => typeof a.avgPrice === "number" && !isNaN(a.avgPrice) && a.avgPrice > 0).length,
+    minPrice: minPrice,
+    maxPrice: maxPrice,
+    canvasWidth: canvas ? canvas.width : 0,
+    canvasHeight: canvas ? canvas.height : 0,
+    visiblePointCount: points.length,
+    overlayVisible: Boolean(areaPriceViewActive),
+    currentZoom: (typeof map !== "undefined" && map) ? map.getZoom() : 0
+  };
+}
+
 function ensureComprehensiveAreaPricing() {
   const areaMap = {};
 
@@ -7320,7 +7398,7 @@ function defineAreaPriceDensityOverlayClass() {
       ctx.clearRect(0, 0, width, height);
 
       const zoom = gmap.getZoom() || 12;
-      const baseRadius = Math.max(85, Math.min(170, (zoom - 9) * 30 + 85));
+      const baseRadius = Math.max(90, Math.min(180, (zoom - 9) * 32 + 90));
 
       pts.forEach((pt) => {
         if (!pt || typeof pt.lat !== "number" || typeof pt.lng !== "number" || isNaN(pt.lat) || isNaN(pt.lng)) return;
@@ -7332,13 +7410,13 @@ function defineAreaPriceDensityOverlayClass() {
         if (x < -baseRadius * 2 || x > width + baseRadius * 2 || y < -baseRadius * 2 || y > height + baseRadius * 2) return;
 
         const avgPrice = pt.avgPrice || 10500;
-        const [r, g, b] = typeof colorForPrice === "function" ? colorForPrice(avgPrice) : [216, 124, 114];
+        const [r, g, b] = typeof colorForPriceNormalized === "function" ? colorForPriceNormalized(avgPrice) : [216, 124, 114];
         const rRadius = baseRadius;
 
         const grad = ctx.createRadialGradient(x, y, 0, x, y, rRadius);
-        grad.addColorStop(0.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.78)`);
-        grad.addColorStop(0.40, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.52)`);
-        grad.addColorStop(0.75, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.22)`);
+        grad.addColorStop(0.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.82)`);
+        grad.addColorStop(0.40, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.55)`);
+        grad.addColorStop(0.75, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.25)`);
         grad.addColorStop(1.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.00)`);
 
         ctx.fillStyle = grad;
@@ -7346,6 +7424,9 @@ function defineAreaPriceDensityOverlayClass() {
         ctx.arc(x, y, rRadius, 0, Math.PI * 2);
         ctx.fill();
       });
+
+      if (typeof updateAreaPricingDebugState === "function") updateAreaPricingDebugState();
+      if (typeof updateAreaPriceLegendUI === "function") updateAreaPriceLegendUI();
     }
   };
 }
@@ -10390,7 +10471,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v27"
+  CACHE_KEY: "ackey_app_data_v28"
 };
 
 const DataService = {
