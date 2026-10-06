@@ -4511,9 +4511,9 @@ html, body {
 /* 5 MAP MODES BAR */
 .map-mode-bar {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-  margin-top: 4px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 6px;
 }
 .map-mode-btn {
   background: var(--white);
@@ -9657,6 +9657,17 @@ function updateMapViewPillUI() {
   if (btnTech) btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
   if (btnPrice) btnPrice.classList.toggle("map-view-pill__btn--active", areaPriceViewActive);
   if (btnMetro) btnMetro.classList.toggle("map-view-pill__btn--active", metroNetworkActive);
+
+  // Synchronize 2x2 EXPLORE BENGALURU buttons
+  const modeProps = document.getElementById("modeBtnProperties");
+  const modeTech = document.getElementById("modeBtnEmployment");
+  const modePrice = document.getElementById("modeBtnMarket");
+  const modeMetro = document.getElementById("modeBtnConnectivity");
+
+  if (modeProps) modeProps.classList.toggle("map-mode-btn--active", !techParkViewActive && !areaPriceViewActive && !metroNetworkActive);
+  if (modeTech) modeTech.classList.toggle("map-mode-btn--active", techParkViewActive);
+  if (modePrice) modePrice.classList.toggle("map-mode-btn--active", areaPriceViewActive);
+  if (modeMetro) modeMetro.classList.toggle("map-mode-btn--active", metroNetworkActive);
 }
 
 
@@ -10297,7 +10308,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v21"
+  CACHE_KEY: "ackey_app_data_v22"
 };
 
 const DataService = {
@@ -11849,30 +11860,20 @@ function switchMapMode(mode) {
   const btn = document.getElementById('modeBtn' + idSuffix) || document.getElementById('modeBtn' + mode.charAt(0).toUpperCase() + mode.slice(1));
   if (btn) btn.classList.add('map-mode-btn--active');
 
-  if (!els) return;
-
   if (mode === 'properties') {
-    if (els.techParkView && els.techParkView.checked) { if (els.techParkView) els.techParkView.checked = false; setTechParkViewMode(false); }
-    if (els.areaPriceView && els.areaPriceView.checked) { if (els.areaPriceView) els.areaPriceView.checked = false; setAreaPriceViewMode(false); }
+    if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
+    if (typeof setAreaPriceViewMode === 'function') setAreaPriceViewMode(false);
   } else if (mode === 'employment') {
-    if (els.areaPriceView && els.areaPriceView.checked) { if (els.areaPriceView) els.areaPriceView.checked = false; setAreaPriceViewMode(false); }
-    if (els.techParkView) { if (els.techParkView) els.techParkView.checked = true; setTechParkViewMode(true); }
+    if (typeof setAreaPriceViewMode === 'function') setAreaPriceViewMode(false);
+    if (typeof setTechParkViewMode === 'function') setTechParkViewMode(true);
   } else if (mode === 'market') {
-    if (els.techParkView && els.techParkView.checked) { if (els.techParkView) els.techParkView.checked = false; setTechParkViewMode(false); }
-    if (els.areaPriceView) { if (els.areaPriceView) els.areaPriceView.checked = true; setAreaPriceViewMode(true); }
+    if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
+    if (typeof setAreaPriceViewMode === 'function') setAreaPriceViewMode(true);
   } else if (mode === 'connectivity') {
     if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
-  } else if (mode === 'livability') {
-    if (els.schools && !els.schools.checked) { els.schools.click(); }
-    if (els.hospitals && !els.hospitals.checked) { els.hospitals.click(); }
-    if (els.malls && !els.malls.checked) { els.malls.click(); }
-  } else if (mode === 'future_growth' || mode === 'future') {
-    if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
-    if (els.areaPriceView) { if (els.areaPriceView) els.areaPriceView.checked = true; setAreaPriceViewMode(true); }
-    if (typeof showMapStatus === 'function') {
-      showMapStatus("🚀 Future Growth Mode: Highlighting upcoming Metro corridors (Blue & Pink) & high growth areas");
-    }
   }
+
+  if (typeof updateMapViewPillUI === 'function') updateMapViewPillUI();
 }
 
 function openMethodologyModal() {
