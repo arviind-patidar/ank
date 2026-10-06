@@ -5771,45 +5771,7 @@ html, body {
           </label>
         </div>
 
-        <span class="sidebar-group-label" style="margin-top:10px;">Density Heatmaps</span>
-        <label class="field field--checkbox techpark-view-toggle" title="Show every tech park in Bengaluru with a density heatmap">
-          <input type="checkbox" id="filterTechParkView" />
-          <span class="field__label">Tech Park Density Heatmap</span>
-        </label>
-        <div id="techParkViewNotice" class="techpark-view-notice">
-          <div style="font-weight:600; color:var(--rust); margin-bottom:4px;">Employment Corridor Density</div>
-          <div>Showing all <strong id="techParkViewCount"></strong> tech parks across Bengaluru.</div>
-          <div class="techpark-legend__gradient" style="margin-top:6px; margin-bottom:4px;"></div>
-          <div class="techpark-legend__scale">
-            <span>Low</span><span>Medium</span><span>High</span><span>Peak</span>
-          </div>
-        </div>
 
-
-        <div class="price-insights" style="margin-top:8px;">
-          <label class="field field--checkbox area-price-view-toggle" title="Show area-wise pricing across Bengaluru as a heatmap">
-            <input type="checkbox" id="filterAreaPriceView" />
-            <span class="field__label">Area Price Density Heatmap</span>
-          </label>
-
-
-        </div>
-
-        <!-- NEW CTA: METRO LINES (Placed immediately after Area Price Density) -->
-        <div class="metro-lines-insights" style="margin-top:8px;">
-          <label class="field field--checkbox metro-lines-view-toggle" id="ctaMetroLinesToggle" title="Display Namma Metro routes, stations, interchanges, and property connectivity">
-            <input type="checkbox" id="filterMetroLines" />
-            <span class="field__label" style="display:flex; align-items:center; gap:6px; font-weight:700;">
-              <span style="font-size:13px;">🚇</span>
-              <span>Metro Lines</span>
-            </span>
-          </label>
-        </div>
-
-        <div id="areaPriceViewNotice" class="area-price-insight-card" style="margin-top:8px;">
-          <div class="area-price-insight-card__title">Area Price Insights</div>
-          <p>Visualizing average price/sqft across Bengaluru localities.</p>
-        </div>
       </div>
     </details>
 
@@ -9940,7 +9902,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v14"
+  CACHE_KEY: "ackey_app_data_v15"
 };
 
 const DataService = {
