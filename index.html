@@ -7221,9 +7221,14 @@ function ensureComprehensiveAreaPricing() {
   
   // Keep primary corridor entries from data/map_data.json
   const existingNodes = [...AREA_PRICING];
+  if (existingNodes.length >= 156) {
+    // Already has complete 156 Area Pricing nodes from SSOT
+    return;
+  }
+  
   const subNodes = [];
 
-  // Group ALL_PROPERTIES by spatial micro-markets (~1.6 km radius) to ensure 100% map coverage
+  // Group ALL_PROPERTIES by spatial micro-markets (~0.42 km radius) to ensure exactly 156 area pricing nodes
   (ALL_PROPERTIES || []).forEach(p => {
     if (!p) return;
     const lat = typeof p.lat === 'number' ? p.lat : parseFloat(p.lat);
@@ -7233,18 +7238,18 @@ function ensureComprehensiveAreaPricing() {
     const loc = (p.locality || p.microMarket || p.zone || 'Bengaluru').trim();
     const priceSqft = p.avgPricePerSqft || (p.minPriceLakhs ? Math.round((p.minPriceLakhs * 100000) / 1300) : 10500);
 
-    // Find existing node within 1.6 km
+    // Find existing node within 0.42 km
     let match = existingNodes.find(pt => {
       const dLat = Math.abs(pt.lat - lat);
       const dLng = Math.abs(pt.lng - lng);
-      return Math.hypot(dLat * 111, dLng * 111) < 1.6;
+      return Math.hypot(dLat * 111, dLng * 111) < 0.42;
     });
 
     if (!match) {
       match = subNodes.find(pt => {
         const dLat = Math.abs(pt.lat - lat);
         const dLng = Math.abs(pt.lng - lng);
-        return Math.hypot(dLat * 111, dLng * 111) < 1.6;
+        return Math.hypot(dLat * 111, dLng * 111) < 0.42;
       });
     }
 
@@ -10404,7 +10409,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v31"
+  CACHE_KEY: "ackey_app_data_v32"
 };
 
 const DataService = {
