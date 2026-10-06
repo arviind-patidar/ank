@@ -7855,8 +7855,8 @@ function renderDetailPanel(property) {
 
   var advisoryTakeaways = '<div class="pdp__section"><div class="pdp__section-label">Advisory Decision Factors</div>' +
     '<div class="pdp__pros-cons">' +
-    (proText ? '<div class="pdp__pro-item"><strong>PRO:</strong> ' + proText + ' <span style="font-size:9px; background:#C6F6D5; color:#22543D; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">VERIFIED</span></div>' : '') +
-    (conText ? '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> ' + conText + ' <span style="font-size:9px; background:#ED2B2B; color:#742A2A; padding:1px 4px; border-radius:3px; font-weight:800; margin-left:4px;">CALCULATED</span></div>' : '') +
+    (proText ? '<div class="pdp__pro-item"><strong>PRO:</strong> ' + proText + '</div>' : '') +
+    (conText ? '<div class="pdp__con-item"><strong>CONSIDERATION:</strong> ' + conText + '</div>' : '') +
     '</div></div>';
 
   var detailHtml = '<div class="pdp__section" style="border-bottom:none"><div class="pdp__section-label">Developer &amp; Project Details</div>' +
@@ -9981,7 +9981,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v10"
+  CACHE_KEY: "ackey_app_data_v11"
 };
 
 const DataService = {
