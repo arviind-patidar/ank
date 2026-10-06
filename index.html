@@ -1227,6 +1227,17 @@ body {
   opacity: 1;
 }
 
+.area-price-density-canvas {
+  position: absolute;
+  pointer-events: none !important;
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+.area-price-density-canvas--visible {
+  opacity: 1 !important;
+}
+
 .area-price-insight-card {
   display: none;
   margin: 0 0 14px 0;
@@ -7249,7 +7260,7 @@ function defineAreaPriceDensityOverlayClass() {
     }
     onAdd() {
       this.canvas = document.createElement("canvas");
-      this.canvas.className = "tech-park-density-canvas";
+      this.canvas.className = "area-price-density-canvas";
       this.canvas.style.position = "absolute";
       this.canvas.style.pointerEvents = "none";
       const panes = this.getPanes();
@@ -7266,9 +7277,9 @@ function defineAreaPriceDensityOverlayClass() {
       this.points = points || [];
       if (this.canvas) {
         if (this.points && this.points.length > 0) {
-          this.canvas.classList.add("tech-park-density-canvas--visible");
+          this.canvas.classList.add("area-price-density-canvas--visible");
         } else {
-          this.canvas.classList.remove("tech-park-density-canvas--visible");
+          this.canvas.classList.remove("area-price-density-canvas--visible");
         }
       }
       this.draw();
@@ -7281,20 +7292,25 @@ function defineAreaPriceDensityOverlayClass() {
       const pts = (this.points && this.points.length > 0) ? this.points : (typeof getVisibleAreaPricing === "function" ? getVisibleAreaPricing() : []);
 
       if (!bounds || !pts || pts.length === 0) {
-        this.canvas.width = 0; this.canvas.height = 0;
-        this.canvas.classList.remove("tech-park-density-canvas--visible");
         return;
       }
 
-      this.canvas.classList.add("tech-park-density-canvas--visible");
+      this.canvas.classList.add("area-price-density-canvas--visible");
 
       const ne = projection.fromLatLngToDivPixel(bounds.getNorthEast());
       const sw = projection.fromLatLngToDivPixel(bounds.getSouthWest());
-      const width = Math.max(1, Math.round(Math.abs(ne.x - sw.x)));
-      const height = Math.max(1, Math.round(Math.abs(sw.y - ne.y)));
+      if (!ne || !sw) return;
 
-      this.canvas.style.left = sw.x + "px";
-      this.canvas.style.top = ne.y + "px";
+      const minX = Math.min(sw.x, ne.x);
+      const maxX = Math.max(sw.x, ne.x);
+      const minY = Math.min(sw.y, ne.y);
+      const maxY = Math.max(sw.y, ne.y);
+
+      const width = Math.max(1, Math.round(maxX - minX));
+      const height = Math.max(1, Math.round(maxY - minY));
+
+      this.canvas.style.left = minX + "px";
+      this.canvas.style.top = minY + "px";
       this.canvas.width = width;
       this.canvas.height = height;
 
@@ -7304,12 +7320,15 @@ function defineAreaPriceDensityOverlayClass() {
       ctx.clearRect(0, 0, width, height);
 
       const zoom = gmap.getZoom() || 12;
-      const baseRadius = Math.max(85, Math.min(160, (zoom - 9) * 28 + 85));
+      const baseRadius = Math.max(85, Math.min(170, (zoom - 9) * 30 + 85));
 
       pts.forEach((pt) => {
         if (!pt || typeof pt.lat !== "number" || typeof pt.lng !== "number" || isNaN(pt.lat) || isNaN(pt.lng)) return;
         const pixel = projection.fromLatLngToDivPixel(new google.maps.LatLng(pt.lat, pt.lng));
-        const x = pixel.x - sw.x; const y = pixel.y - ne.y;
+        if (!pixel) return;
+
+        const x = pixel.x - minX;
+        const y = pixel.y - minY;
         if (x < -baseRadius * 2 || x > width + baseRadius * 2 || y < -baseRadius * 2 || y > height + baseRadius * 2) return;
 
         const avgPrice = pt.avgPrice || 10500;
@@ -7317,9 +7336,9 @@ function defineAreaPriceDensityOverlayClass() {
         const rRadius = baseRadius;
 
         const grad = ctx.createRadialGradient(x, y, 0, x, y, rRadius);
-        grad.addColorStop(0.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.72)`);
-        grad.addColorStop(0.40, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.48)`);
-        grad.addColorStop(0.75, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.20)`);
+        grad.addColorStop(0.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.78)`);
+        grad.addColorStop(0.40, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.52)`);
+        grad.addColorStop(0.75, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.22)`);
         grad.addColorStop(1.00, `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)}, 0.00)`);
 
         ctx.fillStyle = grad;
@@ -10371,7 +10390,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v26"
+  CACHE_KEY: "ackey_app_data_v27"
 };
 
 const DataService = {
