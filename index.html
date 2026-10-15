@@ -4519,10 +4519,10 @@ html, body {
   color: var(--terracotta);
 }
 
-/* 5 MAP MODES BAR */
+/* 3 MAP MODES BAR */
 .map-mode-bar {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin-top: 6px;
 }
@@ -5933,7 +5933,7 @@ html, body {
   <aside class="panel" aria-label="Advisor Control Panel" id="sidebarPanel">
 
 
-  <!-- 4 MAP MODES SECTION -->
+  <!-- 3 MAP MODES SECTION -->
   <div class="intent-section">
     <div class="intent-section__title">EXPLORE BENGALURU</div>
     <div class="map-mode-bar">
@@ -5948,10 +5948,6 @@ html, body {
       <button type="button" class="map-mode-btn" id="modeBtnConnectivity" onclick="switchMapMode('connectivity')">
         <span class="map-mode-btn__icon">🚇</span>
         <span class="map-mode-btn__label">Connectivity</span>
-      </button>
-      <button type="button" class="map-mode-btn" id="modeBtnMarket" onclick="switchMapMode('market')">
-        <span class="map-mode-btn__icon">📈</span>
-        <span class="map-mode-btn__label">Market</span>
       </button>
     </div>
   </div>
@@ -6137,9 +6133,6 @@ html, body {
       <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark')">
         <span>🏢</span> Tech Park Density
       </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnPrice" onclick="switchMapViewContext('price')">
-        <span>🏷️</span> Price Density
-      </button>
       <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro')">
         <span>🚇</span> Metro Lines
       </button>
@@ -6169,7 +6162,7 @@ html, body {
       <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--school"></span> Schools</div>
       <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--hospital"></span> Hospitals</div>
       <div class="map-legend__row" style="margin-top:3px;"><span class="map-legend__dot--mall"></span> Malls</div>
-      <div style="margin-top:6px; opacity:0.85;">Numbered = clustered, zoom in for names. Select a project to see its AK Score, nearest tech parks, metro, schools, hospitals &amp; malls — expand the popup to see everything within 5 km. "Tech Park View" and "Area Price Density" above the filters swap in full-city heatmaps (navy = denser tech parks, red = pricier per sqft).</div>
+      <div style="margin-top:6px; opacity:0.85;">Numbered = clustered, zoom in for names. Select a project to see its AK Score, nearest tech parks, metro, schools, hospitals &amp; malls — expand the popup to see everything within 5 km. "Tech Park Density" swaps in full-city tech employment heatmap.</div>
     </div>
   
     <!-- PROPERTY DETAIL PANEL (slides in from right) -->
@@ -6203,28 +6196,12 @@ html, body {
     </div>
   </div>
 
-  <div id="priceLegend" class="price-legend" aria-hidden="true">
-    <div class="price-legend__title">AREA PRICING (PRICE / SQFT)</div>
-    <div class="price-legend__gradient"></div>
-    <div class="price-legend__scale" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-      <span id="priceLegendMinVal">₹6K/sq.ft</span>
-      <span style="opacity:0.6; font-size:8.5px; letter-spacing:0.5px;">LOW ─── HIGH</span>
-      <span id="priceLegendMaxVal">₹18K/sq.ft</span>
-    </div>
-  </div>
-
   <div id="techParkLegend" class="techpark-legend" aria-hidden="true">
     <div class="techpark-legend__title">Tech Park Density</div>
     <div class="techpark-legend__gradient"></div>
     <div class="techpark-legend__scale">
       <span>Very Low</span><span>Low</span><span>Med</span><span>High</span><span>Very High</span>
     </div>
-  </div>
-
-  <div id="areaPriceHoverTip" class="area-price-hover-tip" role="tooltip"></div>
-
-  <div id="priceInsightModalBackdrop" class="price-insight-modal-backdrop"></div>
-  <div id="priceInsightCard" class="price-insight-card" role="dialog" aria-modal="true" aria-label="Locality price insights">
   </div>
 
 </div>
@@ -7124,10 +7101,6 @@ function setSidebarModeForHeatmap(active) {
 
 function setTechParkViewMode(active) {
   techParkViewActive = active;
-  if (active && areaPriceViewActive) {
-    if (els.areaPriceView) els.areaPriceView.checked = false;
-    setAreaPriceViewMode(false);
-  }
 
   if (els.techParkViewNotice) els.techParkViewNotice.classList.toggle("techpark-view-notice--visible", active);
   if (active && els.techParkViewCount) els.techParkViewCount.textContent = TECH_PARKS.length;
@@ -7582,35 +7555,7 @@ function refreshAreaPriceLayers() {
 }
 
 function setAreaPriceViewMode(active) {
-  areaPriceViewActive = active;
-  if (active && techParkViewActive) {
-    if (els.techParkView) els.techParkView.checked = false;
-    setTechParkViewMode(false);
-  }
-
-  const panelEl = document.querySelector(".panel");
-  if (panelEl) panelEl.classList.toggle("panel--price-view-active", active);
-
-  const subToggles = document.getElementById("priceInsightsSubToggles");
-  if (subToggles) subToggles.hidden = !active;
-
-  document.getElementById("priceLegend").classList.toggle("price-legend--visible", active);
-
-  if (active) {
-    if (markerLayer && markerLayer.container) markerLayer.container.style.display = "";
-    showAreaPriceHeatmap();
-    updateAreaPriceLabels();
-    buildAreaPriceHoverCircles();
-    if (els.areaPriceViewNotice) els.areaPriceViewNotice.classList.add("area-price-insight-card--visible");
-  } else {
-    hideAreaPriceHeatmap();
-    updateAreaPriceLabels();
-    destroyAreaPriceHoverCircles();
-    hideAreaPriceHoverTip();
-    closePriceInsightCard();
-    if (els.areaPriceViewNotice) els.areaPriceViewNotice.classList.remove("area-price-insight-card--visible");
-    if (markerLayer && markerLayer.container) markerLayer.container.style.display = "";
-  }
+  areaPriceViewActive = false;
   updateMapViewPillUI();
 }
 
@@ -7942,12 +7887,6 @@ function initMap() {
   const TechParkDensityOverlay = defineTechParkDensityOverlayClass();
   techParkDensityOverlay = new TechParkDensityOverlay(map);
 
-  const AreaPriceDensityOverlay = defineAreaPriceDensityOverlayClass();
-  areaPriceDensityOverlay = new AreaPriceDensityOverlay(map);
-
-  const AreaPriceLabelLayer = defineAreaPriceLabelLayerClass();
-  areaPriceLabelLayer = new AreaPriceLabelLayer(map);
-
   sharedInfoWindow = new google.maps.InfoWindow();
 
   google.maps.event.addListener(map, "zoom_changed", () => {
@@ -7959,8 +7898,6 @@ function initMap() {
     hospitalLayer.draw();
     mallLayer.draw();
     techParkDensityOverlay.draw();
-    areaPriceDensityOverlay.draw();
-    areaPriceLabelLayer.draw();
   });
   google.maps.event.addListener(map, "bounds_changed", () => {
     markerLayer.draw();
@@ -7970,8 +7907,6 @@ function initMap() {
     hospitalLayer.draw();
     mallLayer.draw();
     techParkDensityOverlay.draw();
-    areaPriceDensityOverlay.draw();
-    areaPriceLabelLayer.draw();
   });
   // Register mapViewPill as official Google Maps control so it stays visible in Fullscreen mode
   const pillEl = document.getElementById("mapViewPill");
@@ -9573,17 +9508,12 @@ function applyPresentationStep(stepIdx) {
     // Step 4: Price Benchmark
     closeCompareModal();
 
-    if (!areaPriceViewActive) {
-      if (els.areaPriceView) els.areaPriceView.checked = true;
-      setAreaPriceViewMode(true);
-    }
-
     if (map) {
       map.setZoom(13);
       map.panTo({ lat: property.lat, lng: property.lng });
     }
 
-    const area = AREA_PRICING.find((a) => a.name.toLowerCase() === property.locality.toLowerCase()) || AREA_PRICING[0];
+    const area = (AREA_PRICING && AREA_PRICING.length > 0) ? (AREA_PRICING.find((a) => a.name.toLowerCase() === property.locality.toLowerCase()) || AREA_PRICING[0]) : { category: "Established", minPrice: 9000, maxPrice: 16000, avgPrice: 12500 };
 
     stepCard.innerHTML = `
       <div class="p-card__header">
@@ -9595,9 +9525,6 @@ function applyPresentationStep(stepIdx) {
         <div>Locality Category: <strong>${area.category}</strong></div>
         <div>Locality Price Range: <strong>₹${Math.round(area.minPrice).toLocaleString('en-IN')} – ₹${Math.round(area.maxPrice).toLocaleString('en-IN')}/sqft</strong></div>
         <div style="margin-top:6px;">Project Price: <strong>${getPropertyDetails(property).priceStr}</strong></div>
-        <div class="p-card__highlight-box">
-          📈 <strong>Area Price Heatmap Active:</strong> Visualizing market price density across Bengaluru (darker red = higher sqft price).
-        </div>
       </div>
     `;
   }
@@ -9723,24 +9650,9 @@ function switchMapViewContext(context) {
       if (els.techParkView) els.techParkView.checked = false;
       setTechParkViewMode(false);
     }
-    if (areaPriceViewActive) {
-      if (els.areaPriceView) els.areaPriceView.checked = false;
-      setAreaPriceViewMode(false);
-    }
   } else if (context === 'techpark') {
-    if (areaPriceViewActive) {
-      if (els.areaPriceView) els.areaPriceView.checked = false;
-      setAreaPriceViewMode(false);
-    }
     if (els.techParkView) els.techParkView.checked = true;
     setTechParkViewMode(true);
-  } else if (context === 'price') {
-    if (techParkViewActive) {
-      if (els.techParkView) els.techParkView.checked = false;
-      setTechParkViewMode(false);
-    }
-    if (els.areaPriceView) els.areaPriceView.checked = true;
-    setAreaPriceViewMode(true);
   } else if (context === 'metro') {
     toggleMetroLines(!metroNetworkActive);
   }
@@ -9751,23 +9663,19 @@ function switchMapViewContext(context) {
 function updateMapViewPillUI() {
   const btnProps = document.getElementById("mapViewBtnProperties");
   const btnTech = document.getElementById("mapViewBtnTechPark");
-  const btnPrice = document.getElementById("mapViewBtnPrice");
   const btnMetro = document.getElementById("mapViewBtnMetro");
 
-  if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", !techParkViewActive && !areaPriceViewActive && !metroNetworkActive);
+  if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", !techParkViewActive && !metroNetworkActive);
   if (btnTech) btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
-  if (btnPrice) btnPrice.classList.toggle("map-view-pill__btn--active", areaPriceViewActive);
   if (btnMetro) btnMetro.classList.toggle("map-view-pill__btn--active", metroNetworkActive);
 
-  // Synchronize 2x2 EXPLORE BENGALURU buttons
+  // Synchronize EXPLORE BENGALURU buttons
   const modeProps = document.getElementById("modeBtnProperties");
   const modeTech = document.getElementById("modeBtnEmployment");
-  const modePrice = document.getElementById("modeBtnMarket");
   const modeMetro = document.getElementById("modeBtnConnectivity");
 
-  if (modeProps) modeProps.classList.toggle("map-mode-btn--active", !techParkViewActive && !areaPriceViewActive && !metroNetworkActive);
+  if (modeProps) modeProps.classList.toggle("map-mode-btn--active", !techParkViewActive && !metroNetworkActive);
   if (modeTech) modeTech.classList.toggle("map-mode-btn--active", techParkViewActive);
-  if (modePrice) modePrice.classList.toggle("map-mode-btn--active", areaPriceViewActive);
   if (modeMetro) modeMetro.classList.toggle("map-mode-btn--active", metroNetworkActive);
 }
 
@@ -10409,7 +10317,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v32"
+  CACHE_KEY: "ackey_app_data_v33"
 };
 
 const DataService = {
@@ -10511,11 +10419,6 @@ const DataService = {
     applyFilters();
     updateTechParkDisplay();
 
-    if (areaPriceViewActive) {
-      showAreaPriceHeatmap();
-      updateAreaPriceLabels();
-      buildAreaPriceHoverCircles();
-    }
     if (techParkViewActive) {
       showTechParkHeatmap();
     }
@@ -11901,23 +11804,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const modeProp = document.getElementById('modeBtnProperties');
   const modeEmp = document.getElementById('modeBtnEmployment');
   const modeConn = document.getElementById('modeBtnConnectivity');
-  const modeLiv = document.getElementById('modeBtnLivability');
-  const modeMkt = document.getElementById('modeBtnMarket');
-  const modeFut = document.getElementById('modeBtnFuture');
   if (modeProp) modeProp.addEventListener('click', () => switchMapMode('properties'));
   if (modeEmp) modeEmp.addEventListener('click', () => switchMapMode('employment'));
   if (modeConn) modeConn.addEventListener('click', () => switchMapMode('connectivity'));
-  if (modeLiv) modeLiv.addEventListener('click', () => switchMapMode('livability'));
-  if (modeMkt) modeMkt.addEventListener('click', () => switchMapMode('market'));
-  if (modeFut) modeFut.addEventListener('click', () => switchMapMode('future_growth'));
 
   // TOP RIGHT MAP VIEW PILLS
   const viewProp = document.getElementById('mapViewBtnProperties');
   const viewTech = document.getElementById('mapViewBtnTechPark');
-  const viewPrice = document.getElementById('mapViewBtnPrice');
+  const viewMetro = document.getElementById('mapViewBtnMetro');
   if (viewProp) viewProp.addEventListener('click', () => switchMapViewContext('properties'));
   if (viewTech) viewTech.addEventListener('click', () => switchMapViewContext('techpark'));
-  if (viewPrice) viewPrice.addEventListener('click', () => switchMapViewContext('price'));
+  if (viewMetro) viewMetro.addEventListener('click', () => switchMapViewContext('metro'));
 });
 
 </script>
@@ -11937,7 +11834,7 @@ function setBuyerIntent(intent) {
     switchMapMode('properties');
   } else if (intent === 'compare_areas') {
     document.getElementById('intentCompareAreas')?.classList.add('intent-card--active');
-    switchMapMode('market');
+    switchMapMode('properties');
   } else if (intent === 'check_project') {
     document.getElementById('intentCheckProject')?.classList.add('intent-card--active');
     switchMapMode('properties');
@@ -11963,13 +11860,8 @@ function switchMapMode(mode) {
 
   if (mode === 'properties') {
     if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
-    if (typeof setAreaPriceViewMode === 'function') setAreaPriceViewMode(false);
   } else if (mode === 'employment') {
-    if (typeof setAreaPriceViewMode === 'function') setAreaPriceViewMode(false);
     if (typeof setTechParkViewMode === 'function') setTechParkViewMode(true);
-  } else if (mode === 'market') {
-    if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
-    if (typeof setAreaPriceViewMode === 'function') setAreaPriceViewMode(true);
   } else if (mode === 'connectivity') {
     if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
   }
