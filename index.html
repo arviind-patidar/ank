@@ -10734,7 +10734,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v36"
+  CACHE_KEY: "ackey_app_data_v37"
 };
 
 const DataService = {
@@ -12408,7 +12408,7 @@ function startMeasureTool() {
     MapMeasureBadgeOverlayClass = defineMapMeasureBadgeClass();
   }
 
-  map.setOptions({ draggableCursor: 'crosshair' });
+  map.setOptions({ draggableCursor: 'crosshair', gestureHandling: 'none' });
 
   // Show status card
   const statusCard = document.getElementById("drawStatusCard");
@@ -12565,7 +12565,9 @@ function cleanupMeasureListeners() {
     MapDrawState.measureGuideLine.setMap(null);
     MapDrawState.measureGuideLine = null;
   }
-  if (map) map.setOptions({ draggableCursor: null });
+  if (map) {
+    map.setOptions({ draggableCursor: null, gestureHandling: 'auto' });
+  }
 
   MapDrawState.measurePolyline = null;
   MapDrawState.measurePoints = [];
@@ -12576,7 +12578,6 @@ function cleanupMeasureListeners() {
 // --- TOOL 2: SHAPE DRAWING (Polyline, Polygon, Circle, Rectangle) ---
 // Native implementation without deprecated google.maps.drawing.DrawingManager
 let shapeDrawTempOverlay = null;
-let shapeDrawStartLatLng = null;
 
 function startDrawingShape(shapeType) {
   if (!map) return;
@@ -12597,7 +12598,8 @@ function startDrawingShape(shapeType) {
     if (el) el.classList.add("map-tool-btn--active");
   }
 
-  map.setOptions({ draggableCursor: 'crosshair' });
+  // Set crosshair and disable map panning while placing points
+  map.setOptions({ draggableCursor: 'crosshair', gestureHandling: 'none' });
 
   // Update Status Card
   const statusCard = document.getElementById("drawStatusCard");
@@ -12607,7 +12609,7 @@ function startDrawingShape(shapeType) {
   const doneBtn = document.getElementById("drawStatusDoneBtn");
 
   const hints = {
-    'polyline': "Click on map to add line points. Click '✓ Done' or double-click to finish.",
+    'polyline': "Click on map to add line points. Click '✓ Done' to finish.",
     'polygon': "Click to add polygon corners. Click '✓ Done' to close the area and view acreage.",
     'circle': "Click on map for circle center, then click a second point to set radius.",
     'rectangle': "Click first corner, then click opposite corner to draw bounding box."
@@ -12630,7 +12632,7 @@ function startDrawingShape(shapeType) {
 
   if (shapeType === 'polyline') {
     shapeDrawTempOverlay = new google.maps.Polyline({
-      path: [],
+      path: new google.maps.MVCArray(),
       geodesic: true,
       strokeColor: '#B88E52',
       strokeOpacity: 0.95,
@@ -12639,7 +12641,7 @@ function startDrawingShape(shapeType) {
     });
   } else if (shapeType === 'polygon') {
     shapeDrawTempOverlay = new google.maps.Polygon({
-      paths: [],
+      paths: new google.maps.MVCArray([new google.maps.MVCArray()]),
       strokeColor: '#B88E52',
       strokeOpacity: 0.9,
       strokeWeight: 3,
@@ -12649,9 +12651,35 @@ function startDrawingShape(shapeType) {
     });
   }
 
+  // Dynamic dashed guideline following mouse pointer
+  MapDrawState.measureGuideLine = new google.maps.Polyline({
+    path: [],
+    geodesic: true,
+    strokeColor: '#FFFFFF',
+    strokeOpacity: 0.85,
+    strokeWeight: 2,
+    icons: [{
+      icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 3 },
+      offset: '0',
+      repeat: '10px'
+    }],
+    map: map
+  });
+
   MapDrawState.mapClickListener = map.addListener('click', (e) => {
     onShapeMapClick(shapeType, e.latLng);
   });
+
+  MapDrawState.mapMouseMoveListener = map.addListener('mousemove', (e) => {
+    onShapeMouseMove(shapeType, e.latLng);
+  });
+}
+
+function onShapeMouseMove(shapeType, latLng) {
+  const pts = MapDrawState.measurePoints;
+  if (pts.length === 0 || !MapDrawState.measureGuideLine) return;
+  const lastPt = pts[pts.length - 1];
+  MapDrawState.measureGuideLine.setPath([lastPt, latLng]);
 }
 
 function onShapeMapClick(shapeType, latLng) {
@@ -12660,16 +12688,33 @@ function onShapeMapClick(shapeType, latLng) {
   const doneBtn = document.getElementById("drawStatusDoneBtn");
   const statusHint = document.getElementById("drawStatusHint");
 
+  // Place visual vertex marker
+  const ptMarker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 5,
+      fillColor: pts.length === 1 ? '#4CAF50' : '#B88E52',
+      fillOpacity: 1,
+      strokeColor: '#FFFFFF',
+      strokeWeight: 2
+    }
+  });
+  MapDrawState.measureMarkers.push(ptMarker);
+
   if (shapeType === 'polyline') {
     const path = shapeDrawTempOverlay.getPath();
     path.push(latLng);
     if (pts.length >= 2 && doneBtn) doneBtn.style.display = "inline-block";
     if (statusHint) statusHint.innerHTML = `<strong>${pts.length} points placed.</strong> Click next point or click <strong>✓ Done</strong>.`;
   } else if (shapeType === 'polygon') {
-    const path = shapeDrawTempOverlay.getPath();
+    const paths = shapeDrawTempOverlay.getPaths();
+    if (paths.getLength() === 0) paths.push(new google.maps.MVCArray());
+    const path = paths.getAt(0);
     path.push(latLng);
     if (pts.length >= 3 && doneBtn) doneBtn.style.display = "inline-block";
-    if (statusHint) statusHint.innerHTML = `<strong>${pts.length} corners placed.</strong> Place more or click <strong>✓ Done</strong> to close polygon.`;
+    if (statusHint) statusHint.innerHTML = `<strong>${pts.length} corners placed.</strong> Place more corners or click <strong>✓ Done</strong> to close polygon.`;
   } else if (shapeType === 'circle') {
     if (pts.length === 1) {
       if (statusHint) statusHint.innerHTML = "Center set. Click a second point on the map to define the circle radius.";
