@@ -2499,6 +2499,336 @@ body.in-guided-presentation .map-view-pill {
   top: 66px;
 }
 
+/* ==========================================================================
+   ACRE&KEY MAP MEASURE & DRAWING ENGINE STYLES
+   ========================================================================== */
+.map-drawing-toolbar {
+  position: absolute;
+  top: 64px;
+  right: 16px;
+  z-index: 415;
+  background: rgba(18, 32, 46, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(182, 138, 76, 0.55);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  padding: 10px 12px;
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: drawToolbarFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes drawToolbarFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.map-drawing-toolbar__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(182, 138, 76, 0.25);
+  padding-bottom: 6px;
+}
+
+.map-drawing-toolbar__close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+.map-drawing-toolbar__close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.map-drawing-toolbar__tools {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.map-tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 7px 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.map-tool-btn__icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.map-tool-btn__label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.map-tool-btn:hover {
+  background: rgba(182, 138, 76, 0.2);
+  border-color: rgba(182, 138, 76, 0.5);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.map-tool-btn--active {
+  background: var(--gold) !important;
+  color: #12202E !important;
+  border-color: #E2C699 !important;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(182, 138, 76, 0.5);
+}
+.map-tool-btn--active .map-tool-btn__label {
+  color: #12202E !important;
+  font-weight: 700;
+}
+
+.map-drawing-toolbar__actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 6px;
+}
+
+.map-tool-btn-action {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.map-tool-btn-action:hover {
+  color: #ff8b8b;
+  border-color: rgba(255, 100, 100, 0.4);
+  background: rgba(255, 100, 100, 0.1);
+}
+
+/* INTERACTIVE DRAWING STATUS CARD */
+.draw-status-card {
+  position: absolute;
+  top: 130px;
+  right: 16px;
+  z-index: 416;
+  background: rgba(18, 32, 46, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  padding: 12px 14px;
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  animation: drawToolbarFadeIn 0.2s ease;
+}
+
+.draw-status-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.draw-status-card__title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.draw-status-card__cancel {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.draw-status-card__cancel:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.draw-status-card__hint {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.draw-status-card__metrics {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(182, 138, 76, 0.3);
+}
+
+.draw-status-card__metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+.draw-status-card__metric-row:last-child {
+  margin-bottom: 0;
+}
+
+.draw-status-card__metric-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.draw-status-card__metric-val {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.draw-status-card__footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.draw-status-btn {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.draw-status-btn--done {
+  background: var(--gold);
+  color: #12202E;
+  border: 1px solid #E2C699;
+}
+.draw-status-btn--done:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 8px rgba(182, 138, 76, 0.4);
+}
+
+.draw-status-btn--cancel {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.draw-status-btn--cancel:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* DISTANCE MEASURE BADGE ON MAP */
+.map-measure-badge {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: rgba(18, 32, 46, 0.92);
+  border: 1px solid var(--gold);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* SHAPE INFO POPUP WINDOW */
+.map-shape-info-box {
+  padding: 6px 4px;
+  color: #12202E;
+  font-family: var(--font-body);
+  max-width: 240px;
+}
+.map-shape-info-box h4 {
+  margin: 0 0 6px 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #B88E52;
+  font-weight: 700;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+.map-shape-info-box p {
+  margin: 3px 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #333;
+}
+.map-shape-info-box .shape-stat-highlight {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #12202E;
+}
+.map-shape-del-btn {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #FFF0F0;
+  color: #D32F2F;
+  border: 1px solid #FFCDD2;
+  border-radius: 5px;
+  padding: 4px 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.map-shape-del-btn:hover {
+  background: #D32F2F;
+  color: #FFFFFF;
+}
+
+/* FULLSCREEN EXTENSION FOR DRAWING TOOLS */
+:fullscreen .map-drawing-toolbar,
+:-webkit-full-screen .map-drawing-toolbar,
+:fullscreen .draw-status-card,
+:-webkit-full-screen .draw-status-card {
+  z-index: 999999 !important;
+}
+
+
+
 
 /* LOCALITY SUMMARY STRIP OVERLAY */
 .locality-summary-strip {
@@ -6136,6 +6466,67 @@ html, body {
       <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro', event)">
         <span>🚇</span> Metro Lines
       </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnDrawTools" onclick="toggleDrawingToolsPanel(event)" title="Measure distance and draw shapes on the map">
+        <span>📐</span> Measure & Draw
+      </button>
+    </div>
+
+    <!-- MAP DRAWING & MEASUREMENT TOOLBAR -->
+    <div id="mapDrawingToolbar" class="map-drawing-toolbar" style="display:none;" role="toolbar" aria-label="Map measurement and drawing tools">
+      <div class="map-drawing-toolbar__title">
+        <span>📐 Measure & Draw</span>
+        <button type="button" class="map-drawing-toolbar__close" onclick="closeDrawingToolsPanel(event)" title="Close drawing tools">✕</button>
+      </div>
+      <div class="map-drawing-toolbar__tools">
+        <button type="button" class="map-tool-btn" id="toolBtnMeasure" onclick="activateDrawTool('measure')" title="Measure point-to-point and path distance">
+          <span class="map-tool-btn__icon">📏</span>
+          <span class="map-tool-btn__label">Measure</span>
+        </button>
+        <button type="button" class="map-tool-btn" id="toolBtnLine" onclick="activateDrawTool('polyline')" title="Draw line path">
+          <span class="map-tool-btn__icon">〰️</span>
+          <span class="map-tool-btn__label">Line</span>
+        </button>
+        <button type="button" class="map-tool-btn" id="toolBtnPolygon" onclick="activateDrawTool('polygon')" title="Draw polygon / enclosed area with acre & sq.ft calculations">
+          <span class="map-tool-btn__icon">⬡</span>
+          <span class="map-tool-btn__label">Polygon</span>
+        </button>
+        <button type="button" class="map-tool-btn" id="toolBtnCircle" onclick="activateDrawTool('circle')" title="Draw circle radius buffer from center point">
+          <span class="map-tool-btn__icon">⭕</span>
+          <span class="map-tool-btn__label">Radius</span>
+        </button>
+        <button type="button" class="map-tool-btn" id="toolBtnRectangle" onclick="activateDrawTool('rectangle')" title="Draw bounding box rectangle">
+          <span class="map-tool-btn__icon">▭</span>
+          <span class="map-tool-btn__label">Box</span>
+        </button>
+      </div>
+      <div class="map-drawing-toolbar__actions">
+        <button type="button" class="map-tool-btn-action map-tool-btn-action--clear" onclick="clearAllDrawnShapes()" title="Remove all drawn shapes and measurements">
+          <span>🗑️ Clear All</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE MEASUREMENT / DRAWING STATUS CARD -->
+    <div id="drawStatusCard" class="draw-status-card" style="display:none;" role="status" aria-live="polite">
+      <div class="draw-status-card__header">
+        <span id="drawStatusTitle" class="draw-status-card__title">📏 Distance Measurement</span>
+        <button type="button" class="draw-status-card__cancel" onclick="cancelCurrentDrawing()" title="Cancel this measurement">✕</button>
+      </div>
+      <div id="drawStatusHint" class="draw-status-card__hint">Click anywhere on the map to place the first point.</div>
+      <div id="drawStatusMetrics" class="draw-status-card__metrics" style="display:none;">
+        <div class="draw-status-card__metric-row">
+          <span class="draw-status-card__metric-label">Total Distance:</span>
+          <span id="drawStatusMetricDist" class="draw-status-card__metric-val">0.00 km</span>
+        </div>
+      </div>
+      <div class="draw-status-card__footer">
+        <button type="button" id="drawStatusDoneBtn" class="draw-status-btn draw-status-btn--done" onclick="finishMeasureTool()" style="display:none;">
+          ✓ Done
+        </button>
+        <button type="button" class="draw-status-btn draw-status-btn--cancel" onclick="cancelCurrentDrawing()">
+          Cancel
+        </button>
+      </div>
     </div>
     
 
@@ -7926,15 +8317,21 @@ function initMap() {
     const detailPanel = document.getElementById("propertyDetailPanel");
     const compareTray = document.getElementById("compareTray");
     const compareBackdrop = document.getElementById("compareModalBackdrop");
+    const drawToolbar = document.getElementById("mapDrawingToolbar");
+    const drawStatus = document.getElementById("drawStatusCard");
 
     if (isFullscreen) {
       if (detailPanel && mapContainer && detailPanel.parentElement !== mapContainer) mapContainer.appendChild(detailPanel);
       if (compareTray && mapContainer && compareTray.parentElement !== mapContainer) mapContainer.appendChild(compareTray);
       if (compareBackdrop && mapContainer && compareBackdrop.parentElement !== mapContainer) mapContainer.appendChild(compareBackdrop);
+      if (drawToolbar && mapContainer && drawToolbar.parentElement !== mapContainer) mapContainer.appendChild(drawToolbar);
+      if (drawStatus && mapContainer && drawStatus.parentElement !== mapContainer) mapContainer.appendChild(drawStatus);
     } else {
       if (detailPanel && mapWrapEl && detailPanel.parentElement !== mapWrapEl) mapWrapEl.appendChild(detailPanel);
       if (compareTray && mapWrapEl && compareTray.parentElement !== mapWrapEl) mapWrapEl.appendChild(compareTray);
       if (compareBackdrop && mapWrapEl && compareBackdrop.parentElement !== mapWrapEl) mapWrapEl.appendChild(compareBackdrop);
+      if (drawToolbar && mapWrapEl && drawToolbar.parentElement !== mapWrapEl) mapWrapEl.appendChild(drawToolbar);
+      if (drawStatus && mapWrapEl && drawStatus.parentElement !== mapWrapEl) mapWrapEl.appendChild(drawStatus);
     }
   }
 
@@ -10335,7 +10732,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v34"
+  CACHE_KEY: "ackey_app_data_v35"
 };
 
 const DataService = {
@@ -11774,8 +12171,690 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/* ==========================================================================
+   ACRE&KEY MAP DISTANCE MEASUREMENT & SHAPE DRAWING ENGINE
+   ========================================================================== */
+const MapDrawState = {
+  activeTool: null, // 'measure', 'polyline', 'polygon', 'circle', 'rectangle', or null
+  drawingManager: null,
+  isDrawingToolsOpen: false,
+  // Distance Measure State
+  measurePoints: [],
+  measureMarkers: [],
+  measureBadges: [],
+  measurePolyline: null,
+  measureGuideLine: null,
+  mapClickListener: null,
+  mapMouseMoveListener: null,
+  // Persistent drawn shapes collection
+  drawnShapes: [],
+  activeInfoWindow: null
+};
+
+// Custom Overlay for mid-segment and total distance badges
+function defineMapMeasureBadgeClass() {
+  if (typeof google === "undefined" || !google.maps || !google.maps.OverlayView) return null;
+  class MapMeasureBadgeOverlay extends google.maps.OverlayView {
+    constructor(position, text) {
+      super();
+      this.position = position;
+      this.text = text;
+      this.div = null;
+    }
+    onAdd() {
+      this.div = document.createElement("div");
+      this.div.className = "map-measure-badge";
+      this.div.innerText = this.text;
+      const panes = this.getPanes();
+      if (panes && panes.overlayMouseTarget) {
+        panes.overlayMouseTarget.appendChild(this.div);
+      }
+    }
+    draw() {
+      if (!this.div) return;
+      const overlayProjection = this.getProjection();
+      if (!overlayProjection) return;
+      const pos = overlayProjection.fromLatLngToDivPixel(this.position);
+      if (pos) {
+        this.div.style.left = pos.x + "px";
+        this.div.style.top = pos.y + "px";
+      }
+    }
+    onRemove() {
+      if (this.div && this.div.parentNode) {
+        this.div.parentNode.removeChild(this.div);
+        this.div = null;
+      }
+    }
+    setText(text) {
+      this.text = text;
+      if (this.div) this.div.innerText = text;
+    }
+  }
+  return MapMeasureBadgeOverlay;
+}
+let MapMeasureBadgeOverlayClass = null;
+
+// Mathematical Geodesic Helpers
+function calcDistanceMeters(p1, p2) {
+  if (typeof google !== "undefined" && google.maps && google.maps.geometry && google.maps.geometry.spherical) {
+    return google.maps.geometry.spherical.computeDistanceBetween(p1, p2);
+  }
+  const lat1 = typeof p1.lat === "function" ? p1.lat() : p1.lat;
+  const lng1 = typeof p1.lng === "function" ? p1.lng() : p1.lng;
+  const lat2 = typeof p2.lat === "function" ? p2.lat() : p2.lat;
+  const lng2 = typeof p2.lng === "function" ? p2.lng() : p2.lng;
+  const R = 6371000;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLng / 2) * Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+function calcPathDistanceMeters(path) {
+  let total = 0;
+  const len = typeof path.getLength === "function" ? path.getLength() : path.length;
+  for (let i = 0; i < len - 1; i++) {
+    const pt1 = typeof path.getAt === "function" ? path.getAt(i) : path[i];
+    const pt2 = typeof path.getAt === "function" ? path.getAt(i + 1) : path[i + 1];
+    total += calcDistanceMeters(pt1, pt2);
+  }
+  return total;
+}
+
+function calcPolygonAreaSqMeters(poly) {
+  if (typeof google !== "undefined" && google.maps && google.maps.geometry && google.maps.geometry.spherical) {
+    return google.maps.geometry.spherical.computeArea(poly.getPath());
+  }
+  const path = poly.getPath();
+  const numCoords = path.getLength();
+  if (numCoords < 3) return 0;
+  let total = 0;
+  const radius = 6378137;
+  for (let i = 0; i < numCoords; i++) {
+    const p1 = path.getAt(i);
+    const p2 = path.getAt((i + 1) % numCoords);
+    const lat1 = p1.lat() * Math.PI / 180;
+    const lat2 = p2.lat() * Math.PI / 180;
+    const lng1 = p1.lng() * Math.PI / 180;
+    const lng2 = p2.lng() * Math.PI / 180;
+    total += (lng2 - lng1) * (2 + Math.sin(lat1) + Math.sin(lat2));
+  }
+  return Math.abs(total * radius * radius / 2.0);
+}
+
+function formatDist(meters) {
+  if (meters >= 1000) {
+    return (meters / 1000).toFixed(2) + " km (" + Math.round(meters) + " m)";
+  }
+  return Math.round(meters) + " m";
+}
+
+function formatArea(sqMeters) {
+  const sqFt = sqMeters * 10.7639;
+  const acres = sqMeters / 4046.86;
+  if (acres >= 0.05) {
+    return acres.toFixed(2) + " Acres (" + Math.round(sqFt).toLocaleString() + " sq.ft)";
+  }
+  return Math.round(sqFt).toLocaleString() + " sq.ft (" + acres.toFixed(3) + " Acres)";
+}
+
+// Check how many properties from ALL_PROPERTIES fall within a given shape
+function countPropertiesInsideShape(type, shape) {
+  if (!window.ALL_PROPERTIES || !Array.isArray(window.ALL_PROPERTIES) || !map) return 0;
+  let count = 0;
+  const bounds = (type === 'circle' || type === 'rectangle') ? shape.getBounds() : null;
+
+  window.ALL_PROPERTIES.forEach(p => {
+    if (!p.lat || !p.lng) return;
+    const pt = new google.maps.LatLng(p.lat, p.lng);
+    if (type === 'circle') {
+      const center = shape.getCenter();
+      const dist = calcDistanceMeters(center, pt);
+      if (dist <= shape.getRadius()) count++;
+    } else if (type === 'polygon') {
+      if (google.maps.geometry && google.maps.geometry.poly) {
+        if (google.maps.geometry.poly.containsLocation(pt, shape)) count++;
+      } else {
+        // Fallback ray-casting point-in-polygon
+        const path = shape.getPath();
+        let inside = false;
+        for (let i = 0, j = path.getLength() - 1; i < path.getLength(); j = i++) {
+          const xi = path.getAt(i).lng(), yi = path.getAt(i).lat();
+          const xj = path.getAt(j).lng(), yj = path.getAt(j).lat();
+          const intersect = ((yi > p.lat) !== (yj > p.lat)) &&
+            (p.lng < (xj - xi) * (p.lat - yi) / (yj - yi) + xi);
+          if (intersect) inside = !inside;
+        }
+        if (inside) count++;
+      }
+    } else if (type === 'rectangle') {
+      if (bounds && bounds.contains(pt)) count++;
+    }
+  });
+  return count;
+}
+
+// Toolbar & UI Toggles
+function toggleDrawingToolsPanel(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  const toolbar = document.getElementById("mapDrawingToolbar");
+  const btn = document.getElementById("mapViewBtnDrawTools");
+  if (!toolbar) return;
+
+  MapDrawState.isDrawingToolsOpen = (toolbar.style.display === "none" || !toolbar.style.display);
+  toolbar.style.display = MapDrawState.isDrawingToolsOpen ? "flex" : "none";
+  if (btn) btn.classList.toggle("map-view-pill__btn--active", MapDrawState.isDrawingToolsOpen);
+
+  if (!MapDrawState.isDrawingToolsOpen) {
+    cancelCurrentDrawing();
+    if (MapDrawState.drawingManager) MapDrawState.drawingManager.setDrawingMode(null);
+  }
+}
+
+function closeDrawingToolsPanel(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  const toolbar = document.getElementById("mapDrawingToolbar");
+  const btn = document.getElementById("mapViewBtnDrawTools");
+  if (toolbar) toolbar.style.display = "none";
+  if (btn) btn.classList.remove("map-view-pill__btn--active");
+  MapDrawState.isDrawingToolsOpen = false;
+  cancelCurrentDrawing();
+  if (MapDrawState.drawingManager) MapDrawState.drawingManager.setDrawingMode(null);
+}
+
+function activateDrawTool(toolName) {
+  // If clicking active tool, deactivate it
+  if (MapDrawState.activeTool === toolName) {
+    cancelCurrentDrawing();
+    return;
+  }
+
+  // Cancel any existing drawing in progress
+  cancelCurrentDrawing();
+  MapDrawState.activeTool = toolName;
+
+  // Highlight active tool button
+  document.querySelectorAll(".map-tool-btn").forEach(b => b.classList.remove("map-tool-btn--active"));
+  const activeBtnMap = {
+    'measure': 'toolBtnMeasure',
+    'polyline': 'toolBtnLine',
+    'polygon': 'toolBtnPolygon',
+    'circle': 'toolBtnCircle',
+    'rectangle': 'toolBtnRectangle'
+  };
+  const activeBtnId = activeBtnMap[toolName];
+  if (activeBtnId) {
+    const el = document.getElementById(activeBtnId);
+    if (el) el.classList.add("map-tool-btn--active");
+  }
+
+  if (toolName === 'measure') {
+    startMeasureTool();
+  } else {
+    startDrawingShape(toolName);
+  }
+}
+
+// --- TOOL 1: MEASURE DISTANCE ---
+function startMeasureTool() {
+  if (!map) return;
+  if (!MapMeasureBadgeOverlayClass) {
+    MapMeasureBadgeOverlayClass = defineMapMeasureBadgeClass();
+  }
+
+  map.setOptions({ draggableCursor: 'crosshair' });
+
+  // Show status card
+  const statusCard = document.getElementById("drawStatusCard");
+  const statusTitle = document.getElementById("drawStatusTitle");
+  const statusHint = document.getElementById("drawStatusHint");
+  const statusMetrics = document.getElementById("drawStatusMetrics");
+  const doneBtn = document.getElementById("drawStatusDoneBtn");
+
+  if (statusCard) statusCard.style.display = "block";
+  if (statusTitle) statusTitle.innerHTML = "📏 Measure Distance";
+  if (statusHint) statusHint.innerHTML = "Click on the map to place start point. Add more points to measure multi-segment routes.";
+  if (statusMetrics) statusMetrics.style.display = "none";
+  if (doneBtn) doneBtn.style.display = "none";
+
+  // Create persistent polyline for measurement
+  MapDrawState.measurePolyline = new google.maps.Polyline({
+    path: [],
+    geodesic: true,
+    strokeColor: '#B88E52',
+    strokeOpacity: 0.95,
+    strokeWeight: 4,
+    map: map
+  });
+
+  // Dynamic dashed guideline following mouse pointer
+  MapDrawState.measureGuideLine = new google.maps.Polyline({
+    path: [],
+    geodesic: true,
+    strokeColor: '#FFFFFF',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    icons: [{
+      icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 3 },
+      offset: '0',
+      repeat: '12px'
+    }],
+    map: map
+  });
+
+  MapDrawState.mapClickListener = map.addListener('click', (e) => {
+    onMeasureMapClick(e.latLng);
+  });
+
+  MapDrawState.mapMouseMoveListener = map.addListener('mousemove', (e) => {
+    onMeasureMouseMove(e.latLng);
+  });
+}
+
+function onMeasureMapClick(latLng) {
+  MapDrawState.measurePoints.push(latLng);
+  const path = MapDrawState.measurePolyline.getPath();
+  path.push(latLng);
+
+  const ptIndex = MapDrawState.measurePoints.length;
+
+  // Add marker at point
+  const marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    title: ptIndex === 1 ? "Start Point" : `Point ${ptIndex}`,
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 6,
+      fillColor: ptIndex === 1 ? '#4CAF50' : '#B88E52',
+      fillOpacity: 1,
+      strokeColor: '#FFFFFF',
+      strokeWeight: 2
+    }
+  });
+  MapDrawState.measureMarkers.push(marker);
+
+  // If >= 2 points, add distance badge on the newly added segment
+  if (ptIndex >= 2) {
+    const prevPt = MapDrawState.measurePoints[ptIndex - 2];
+    const segDist = calcDistanceMeters(prevPt, latLng);
+    const midLat = (prevPt.lat() + latLng.lat()) / 2;
+    const midLng = (prevPt.lng() + latLng.lng()) / 2;
+    const midPos = new google.maps.LatLng(midLat, midLng);
+
+    if (MapMeasureBadgeOverlayClass) {
+      const badge = new MapMeasureBadgeOverlayClass(midPos, formatDist(segDist));
+      badge.setMap(map);
+      MapDrawState.measureBadges.push(badge);
+    }
+  }
+
+  // Update Status Card
+  const totalDist = calcPathDistanceMeters(MapDrawState.measurePoints);
+  const statusHint = document.getElementById("drawStatusHint");
+  const statusMetrics = document.getElementById("drawStatusMetrics");
+  const metricDist = document.getElementById("drawStatusMetricDist");
+  const doneBtn = document.getElementById("drawStatusDoneBtn");
+
+  if (statusHint) {
+    statusHint.innerHTML = ptIndex === 1 
+      ? "Click second point to measure distance, or continue clicking for route segments."
+      : `<strong>${ptIndex} points placed.</strong> Click more points, or click <strong>✓ Done</strong> to finish.`;
+  }
+  if (statusMetrics) statusMetrics.style.display = "block";
+  if (metricDist) metricDist.textContent = formatDist(totalDist);
+  if (doneBtn && ptIndex >= 2) doneBtn.style.display = "inline-block";
+}
+
+function onMeasureMouseMove(latLng) {
+  if (MapDrawState.measurePoints.length === 0 || !MapDrawState.measureGuideLine) return;
+  const lastPt = MapDrawState.measurePoints[MapDrawState.measurePoints.length - 1];
+  MapDrawState.measureGuideLine.setPath([lastPt, latLng]);
+}
+
+function finishMeasureTool() {
+  if (MapDrawState.measurePoints.length < 2) {
+    cancelCurrentDrawing();
+    return;
+  }
+
+  // Save measurement as drawn item with InfoWindow
+  const poly = MapDrawState.measurePolyline;
+  const markers = [...MapDrawState.measureMarkers];
+  const badges = [...MapDrawState.measureBadges];
+  const totalDist = calcPathDistanceMeters(MapDrawState.measurePoints);
+  const ptsCount = MapDrawState.measurePoints.length;
+
+  const shapeRecord = {
+    id: "measure_" + Date.now(),
+    type: "measure",
+    overlay: poly,
+    markers: markers,
+    badges: badges,
+    distanceMeters: totalDist
+  };
+
+  // Add click listener to polyline to view measurement details
+  google.maps.event.addListener(poly, 'click', (e) => {
+    showShapeInfoWindow(shapeRecord, e.latLng);
+  });
+
+  MapDrawState.drawnShapes.push(shapeRecord);
+
+  // Clear current active tool listeners & guides
+  cleanupMeasureListeners();
+  resetDrawStatusCard();
+}
+
+function cleanupMeasureListeners() {
+  if (MapDrawState.mapClickListener) {
+    google.maps.event.removeListener(MapDrawState.mapClickListener);
+    MapDrawState.mapClickListener = null;
+  }
+  if (MapDrawState.mapMouseMoveListener) {
+    google.maps.event.removeListener(MapDrawState.mapMouseMoveListener);
+    MapDrawState.mapMouseMoveListener = null;
+  }
+  if (MapDrawState.measureGuideLine) {
+    MapDrawState.measureGuideLine.setMap(null);
+    MapDrawState.measureGuideLine = null;
+  }
+  if (map) map.setOptions({ draggableCursor: null });
+
+  MapDrawState.measurePolyline = null;
+  MapDrawState.measurePoints = [];
+  MapDrawState.measureMarkers = [];
+  MapDrawState.measureBadges = [];
+}
+
+// --- TOOL 2: SHAPE DRAWING (Polyline, Polygon, Circle, Rectangle) ---
+function startDrawingShape(shapeType) {
+  if (!map) return;
+  initDrawingManager();
+  if (!MapDrawState.drawingManager) return;
+
+  const modeMap = {
+    'polyline': google.maps.drawing.OverlayType.POLYLINE,
+    'polygon': google.maps.drawing.OverlayType.POLYGON,
+    'circle': google.maps.drawing.OverlayType.CIRCLE,
+    'rectangle': google.maps.drawing.OverlayType.RECTANGLE
+  };
+
+  const drawMode = modeMap[shapeType];
+  MapDrawState.drawingManager.setDrawingMode(drawMode);
+
+  // Update Status Card
+  const statusCard = document.getElementById("drawStatusCard");
+  const statusTitle = document.getElementById("drawStatusTitle");
+  const statusHint = document.getElementById("drawStatusHint");
+  const statusMetrics = document.getElementById("drawStatusMetrics");
+  const doneBtn = document.getElementById("drawStatusDoneBtn");
+
+  const hints = {
+    'polyline': "Click points on the map to draw a line path. Double-click or click last point to complete.",
+    'polygon': "Click to define boundary vertices. Connect back to the first point to close the area and view Acreage.",
+    'circle': "Click on map for circle center and drag outward to define the radius buffer.",
+    'rectangle': "Click and drag to draw a bounding box rectangle."
+  };
+
+  const titles = {
+    'polyline': "〰️ Draw Line",
+    'polygon': "⬡ Draw Area Polygon",
+    'circle': "⭕ Draw Radius Buffer",
+    'rectangle': "▭ Draw Bounding Box"
+  };
+
+  if (statusCard) statusCard.style.display = "block";
+  if (statusTitle) statusTitle.innerHTML = titles[shapeType] || "Draw Shape";
+  if (statusHint) statusHint.innerHTML = hints[shapeType] || "Draw on the map.";
+  if (statusMetrics) statusMetrics.style.display = "none";
+  if (doneBtn) doneBtn.style.display = "none";
+}
+
+function initDrawingManager() {
+  if (MapDrawState.drawingManager) return;
+  if (typeof google === "undefined" || !google.maps || !google.maps.drawing) return;
+
+  MapDrawState.drawingManager = new google.maps.drawing.DrawingManager({
+    drawingMode: null,
+    drawingControl: false, // We use our custom Acre&Key branded UI toolbar
+    polylineOptions: {
+      strokeColor: '#B88E52',
+      strokeOpacity: 0.95,
+      strokeWeight: 4,
+      editable: true
+    },
+    polygonOptions: {
+      fillColor: '#B88E52',
+      fillOpacity: 0.22,
+      strokeColor: '#B88E52',
+      strokeOpacity: 0.9,
+      strokeWeight: 3,
+      editable: true
+    },
+    circleOptions: {
+      fillColor: '#B88E52',
+      fillOpacity: 0.2,
+      strokeColor: '#B88E52',
+      strokeOpacity: 0.85,
+      strokeWeight: 3,
+      editable: true
+    },
+    rectangleOptions: {
+      fillColor: '#B88E52',
+      fillOpacity: 0.2,
+      strokeColor: '#B88E52',
+      strokeOpacity: 0.85,
+      strokeWeight: 3,
+      editable: true
+    }
+  });
+
+  MapDrawState.drawingManager.setMap(map);
+
+  google.maps.event.addListener(MapDrawState.drawingManager, 'overlaycomplete', (event) => {
+    onDrawingOverlayComplete(event);
+  });
+}
+
+function onDrawingOverlayComplete(event) {
+  const type = event.type;
+  const overlay = event.overlay;
+
+  // Turn off drawing mode after shape is placed
+  if (MapDrawState.drawingManager) MapDrawState.drawingManager.setDrawingMode(null);
+
+  const shapeRecord = {
+    id: "shape_" + Date.now(),
+    type: type,
+    overlay: overlay
+  };
+
+  MapDrawState.drawnShapes.push(shapeRecord);
+
+  // Bind click listener on shape to show InfoWindow with real estate stats & delete CTA
+  google.maps.event.addListener(overlay, 'click', (e) => {
+    const clickPos = e.latLng || (overlay.getCenter ? overlay.getCenter() : null);
+    showShapeInfoWindow(shapeRecord, clickPos);
+  });
+
+  // Calculate stats & show InfoWindow immediately upon completion
+  let initialPos = null;
+  if (type === 'circle') initialPos = overlay.getCenter();
+  else if (type === 'polygon') initialPos = overlay.getPath().getAt(0);
+  else if (type === 'rectangle') initialPos = overlay.getBounds().getNorthEast();
+  else if (type === 'polyline') initialPos = overlay.getPath().getAt(overlay.getPath().getLength() - 1);
+
+  showShapeInfoWindow(shapeRecord, initialPos);
+  resetDrawStatusCard();
+}
+
+function showShapeInfoWindow(shapeRecord, pos) {
+  if (!map) return;
+  if (MapDrawState.activeInfoWindow) {
+    MapDrawState.activeInfoWindow.close();
+  }
+
+  const { id, type, overlay } = shapeRecord;
+  let title = "Shape Details";
+  let contentHtml = "";
+
+  if (type === 'measure') {
+    title = "📏 Distance Measurement";
+    const dist = shapeRecord.distanceMeters || calcPathDistanceMeters(overlay.getPath());
+    contentHtml = `
+      <div class="map-shape-info-box">
+        <h4>${title}</h4>
+        <p>Total Distance: <span class="shape-stat-highlight">${formatDist(dist)}</span></p>
+        <p>Segments: <span class="shape-stat-highlight">${(shapeRecord.markers || []).length} points</span></p>
+        <button type="button" class="map-shape-del-btn" onclick="deleteSavedShape('${id}')">🗑️ Delete Measurement</button>
+      </div>
+    `;
+  } else if (type === 'polyline') {
+    title = "〰️ Drawn Line";
+    const dist = calcPathDistanceMeters(overlay.getPath());
+    contentHtml = `
+      <div class="map-shape-info-box">
+        <h4>${title}</h4>
+        <p>Total Length: <span class="shape-stat-highlight">${formatDist(dist)}</span></p>
+        <button type="button" class="map-shape-del-btn" onclick="deleteSavedShape('${id}')">🗑️ Delete Line</button>
+      </div>
+    `;
+  } else if (type === 'polygon') {
+    title = "⬡ Enclosed Area Polygon";
+    const sqMeters = calcPolygonAreaSqMeters(overlay);
+    const perimeter = calcPathDistanceMeters(overlay.getPath());
+    const propsCount = countPropertiesInsideShape('polygon', overlay);
+    contentHtml = `
+      <div class="map-shape-info-box">
+        <h4>${title}</h4>
+        <p>Area: <span class="shape-stat-highlight">${formatArea(sqMeters)}</span></p>
+        <p>Perimeter: <span class="shape-stat-highlight">${formatDist(perimeter)}</span></p>
+        <p>Properties Inside: <span class="shape-stat-highlight">${propsCount} project${propsCount === 1 ? '' : 's'}</span></p>
+        <button type="button" class="map-shape-del-btn" onclick="deleteSavedShape('${id}')">🗑️ Delete Area</button>
+      </div>
+    `;
+  } else if (type === 'circle') {
+    title = "⭕ Radius Buffer";
+    const radiusMeters = overlay.getRadius();
+    const areaSqMeters = Math.PI * radiusMeters * radiusMeters;
+    const propsCount = countPropertiesInsideShape('circle', overlay);
+    contentHtml = `
+      <div class="map-shape-info-box">
+        <h4>${title}</h4>
+        <p>Radius: <span class="shape-stat-highlight">${formatDist(radiusMeters)}</span></p>
+        <p>Enclosed Area: <span class="shape-stat-highlight">${formatArea(areaSqMeters)}</span></p>
+        <p>Properties Inside: <span class="shape-stat-highlight">${propsCount} project${propsCount === 1 ? '' : 's'}</span></p>
+        <button type="button" class="map-shape-del-btn" onclick="deleteSavedShape('${id}')">🗑️ Delete Buffer</button>
+      </div>
+    `;
+  } else if (type === 'rectangle') {
+    title = "▭ Bounding Box";
+    const b = overlay.getBounds();
+    const ne = b.getNorthEast();
+    const sw = b.getSouthWest();
+    const width = calcDistanceMeters(new google.maps.LatLng(sw.lat(), sw.lng()), new google.maps.LatLng(sw.lat(), ne.lng()));
+    const height = calcDistanceMeters(new google.maps.LatLng(sw.lat(), sw.lng()), new google.maps.LatLng(ne.lat(), sw.lng()));
+    const areaSqMeters = width * height;
+    const propsCount = countPropertiesInsideShape('rectangle', overlay);
+    contentHtml = `
+      <div class="map-shape-info-box">
+        <h4>${title}</h4>
+        <p>Area: <span class="shape-stat-highlight">${formatArea(areaSqMeters)}</span></p>
+        <p>Dimensions: <span class="shape-stat-highlight">${Math.round(width)}m × ${Math.round(height)}m</span></p>
+        <p>Properties Inside: <span class="shape-stat-highlight">${propsCount} project${propsCount === 1 ? '' : 's'}</span></p>
+        <button type="button" class="map-shape-del-btn" onclick="deleteSavedShape('${id}')">🗑️ Delete Box</button>
+      </div>
+    `;
+  }
+
+  MapDrawState.activeInfoWindow = new google.maps.InfoWindow({
+    content: contentHtml,
+    position: pos
+  });
+
+  MapDrawState.activeInfoWindow.open(map);
+}
+
+function deleteSavedShape(shapeId) {
+  const idx = MapDrawState.drawnShapes.findIndex(s => s.id === shapeId);
+  if (idx === -1) return;
+  const shape = MapDrawState.drawnShapes[idx];
+
+  if (shape.overlay) shape.overlay.setMap(null);
+  if (shape.markers) shape.markers.forEach(m => m.setMap(null));
+  if (shape.badges) shape.badges.forEach(b => b.setMap(null));
+
+  if (MapDrawState.activeInfoWindow) {
+    MapDrawState.activeInfoWindow.close();
+    MapDrawState.activeInfoWindow = null;
+  }
+
+  MapDrawState.drawnShapes.splice(idx, 1);
+}
+
+function clearAllDrawnShapes() {
+  if (MapDrawState.activeInfoWindow) {
+    MapDrawState.activeInfoWindow.close();
+    MapDrawState.activeInfoWindow = null;
+  }
+
+  MapDrawState.drawnShapes.forEach(shape => {
+    if (shape.overlay) shape.overlay.setMap(null);
+    if (shape.markers) shape.markers.forEach(m => m.setMap(null));
+    if (shape.badges) shape.badges.forEach(b => b.setMap(null));
+  });
+  MapDrawState.drawnShapes = [];
+
+  cancelCurrentDrawing();
+}
+
+function cancelCurrentDrawing() {
+  // Discard in-progress measure polyline, markers, and badges
+  if (MapDrawState.measurePolyline) {
+    MapDrawState.measurePolyline.setMap(null);
+    MapDrawState.measurePolyline = null;
+  }
+  if (MapDrawState.measureMarkers) {
+    MapDrawState.measureMarkers.forEach(m => m.setMap(null));
+    MapDrawState.measureMarkers = [];
+  }
+  if (MapDrawState.measureBadges) {
+    MapDrawState.measureBadges.forEach(b => b.setMap(null));
+    MapDrawState.measureBadges = [];
+  }
+  cleanupMeasureListeners();
+
+  // Reset drawing manager mode
+  if (MapDrawState.drawingManager) {
+    MapDrawState.drawingManager.setDrawingMode(null);
+  }
+
+  resetDrawStatusCard();
+}
+
+function resetDrawStatusCard() {
+  MapDrawState.activeTool = null;
+  document.querySelectorAll(".map-tool-btn").forEach(b => b.classList.remove("map-tool-btn--active"));
+  const statusCard = document.getElementById("drawStatusCard");
+  if (statusCard) statusCard.style.display = "none";
+}
+
+function initDrawingEngine() {
+  if (!map) return;
+  initDrawingManager();
+  if (!MapMeasureBadgeOverlayClass) {
+    MapMeasureBadgeOverlayClass = defineMapMeasureBadgeClass();
+  }
+}
+
 async function onGoogleMapsLoaded() {
   initMap();
+  initDrawingEngine();
   await initAppListings();
   updateTechParkDisplay();
 }
@@ -11830,7 +12909,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&callback=onGoogleMapsLoaded" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ7_VLYYmlZawNIDbPvUqoLkuYNIr7h1Q&libraries=drawing,geometry&callback=onGoogleMapsLoaded" async defer></script>
 <script>
 // --- ACRE&KEY PROPERTY INTELLIGENCE ENGINE EXTENSIONS ---
 let activeBuyerIntent = 'buy_home';
