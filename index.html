@@ -5937,15 +5937,15 @@ html, body {
   <div class="intent-section">
     <div class="intent-section__title">EXPLORE BENGALURU</div>
     <div class="map-mode-bar">
-      <button type="button" class="map-mode-btn map-mode-btn--active" id="modeBtnProperties" onclick="switchMapMode('properties')">
+      <button type="button" class="map-mode-btn map-mode-btn--active" id="modeBtnProperties" onclick="switchMapMode('properties', event)">
         <span class="map-mode-btn__icon">🏠</span>
         <span class="map-mode-btn__label">Properties</span>
       </button>
-      <button type="button" class="map-mode-btn" id="modeBtnEmployment" onclick="switchMapMode('employment')">
+      <button type="button" class="map-mode-btn" id="modeBtnEmployment" onclick="switchMapMode('employment', event)">
         <span class="map-mode-btn__icon">💼</span>
         <span class="map-mode-btn__label">Employment</span>
       </button>
-      <button type="button" class="map-mode-btn" id="modeBtnConnectivity" onclick="switchMapMode('connectivity')">
+      <button type="button" class="map-mode-btn" id="modeBtnConnectivity" onclick="switchMapMode('connectivity', event)">
         <span class="map-mode-btn__icon">🚇</span>
         <span class="map-mode-btn__label">Connectivity</span>
       </button>
@@ -6127,13 +6127,13 @@ html, body {
 
     <!-- PERSISTENT MAP VIEW PILL CONTROL -->
     <div id="mapViewPill" class="map-view-pill" role="radiogroup" aria-label="Map view context">
-      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties')">
+      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties', event)">
         <span>📍</span> Properties
       </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark')">
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark', event)">
         <span>🏢</span> Tech Park Density
       </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro')">
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro', event)">
         <span>🚇</span> Metro Lines
       </button>
     </div>
@@ -7101,6 +7101,11 @@ function setSidebarModeForHeatmap(active) {
 
 function setTechParkViewMode(active) {
   techParkViewActive = active;
+
+  if (active && metroNetworkActive) {
+    metroNetworkActive = false;
+    clearMetroNetwork();
+  }
 
   if (els.techParkViewNotice) els.techParkViewNotice.classList.toggle("techpark-view-notice--visible", active);
   if (active && els.techParkViewCount) els.techParkViewCount.textContent = TECH_PARKS.length;
@@ -9644,28 +9649,41 @@ function exitGuidedPresentation() {
 
 
 /* PERSISTENT MAP VIEW CONTROLLER */
-function switchMapViewContext(context) {
+function switchMapViewContext(context, e) {
+  if (e && typeof e.stopPropagation === 'function') {
+    e.stopPropagation();
+  }
+
   if (context === 'properties') {
-    if (techParkViewActive) {
-      if (els.techParkView) els.techParkView.checked = false;
-      setTechParkViewMode(false);
-    }
+    if (techParkViewActive) setTechParkViewMode(false);
+    if (metroNetworkActive) toggleMetroLines(false);
   } else if (context === 'techpark') {
-    if (els.techParkView) els.techParkView.checked = true;
-    setTechParkViewMode(true);
+    if (techParkViewActive) {
+      setTechParkViewMode(false);
+    } else {
+      if (metroNetworkActive) toggleMetroLines(false);
+      setTechParkViewMode(true);
+    }
   } else if (context === 'metro') {
-    toggleMetroLines(!metroNetworkActive);
+    if (metroNetworkActive) {
+      toggleMetroLines(false);
+    } else {
+      if (techParkViewActive) setTechParkViewMode(false);
+      toggleMetroLines(true);
+    }
   }
 
   updateMapViewPillUI();
 }
 
 function updateMapViewPillUI() {
+  const isProps = !techParkViewActive && !metroNetworkActive;
+
   const btnProps = document.getElementById("mapViewBtnProperties");
   const btnTech = document.getElementById("mapViewBtnTechPark");
   const btnMetro = document.getElementById("mapViewBtnMetro");
 
-  if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", !techParkViewActive && !metroNetworkActive);
+  if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", isProps);
   if (btnTech) btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
   if (btnMetro) btnMetro.classList.toggle("map-view-pill__btn--active", metroNetworkActive);
 
@@ -9674,7 +9692,7 @@ function updateMapViewPillUI() {
   const modeTech = document.getElementById("modeBtnEmployment");
   const modeMetro = document.getElementById("modeBtnConnectivity");
 
-  if (modeProps) modeProps.classList.toggle("map-mode-btn--active", !techParkViewActive && !metroNetworkActive);
+  if (modeProps) modeProps.classList.toggle("map-mode-btn--active", isProps);
   if (modeTech) modeTech.classList.toggle("map-mode-btn--active", techParkViewActive);
   if (modeMetro) modeMetro.classList.toggle("map-mode-btn--active", metroNetworkActive);
 }
@@ -10317,7 +10335,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v33"
+  CACHE_KEY: "ackey_app_data_v34"
 };
 
 const DataService = {
@@ -10850,10 +10868,16 @@ function toggleMetroLines(forceActive) {
     metroNetworkActive = checkbox ? checkbox.checked : !metroNetworkActive;
   }
 
+  if (metroNetworkActive && techParkViewActive) {
+    techParkViewActive = false;
+    hideTechParkHeatmap();
+    if (els.techParkViewNotice) els.techParkViewNotice.classList.remove("techpark-view-notice--visible");
+    updateTechParkDisplay();
+  }
+
   if (container) {
     container.classList.toggle("active", metroNetworkActive);
   }
-  updateMapViewPillUI();
 
   const legendPanel = document.getElementById("metroLegendPanel");
   if (legendPanel) {
@@ -10865,6 +10889,8 @@ function toggleMetroLines(forceActive) {
   } else {
     clearMetroNetwork();
   }
+
+  updateMapViewPillUI();
 }
 
 function filterMetroLine(lineName, btnEl) {
@@ -11800,21 +11826,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lensInv) lensInv.addEventListener('click', () => setBuyerLens('investment'));
   if (lensRental) lensRental.addEventListener('click', () => setBuyerLens('rental'));
 
-  // MAP MODES
-  const modeProp = document.getElementById('modeBtnProperties');
-  const modeEmp = document.getElementById('modeBtnEmployment');
-  const modeConn = document.getElementById('modeBtnConnectivity');
-  if (modeProp) modeProp.addEventListener('click', () => switchMapMode('properties'));
-  if (modeEmp) modeEmp.addEventListener('click', () => switchMapMode('employment'));
-  if (modeConn) modeConn.addEventListener('click', () => switchMapMode('connectivity'));
-
-  // TOP RIGHT MAP VIEW PILLS
-  const viewProp = document.getElementById('mapViewBtnProperties');
-  const viewTech = document.getElementById('mapViewBtnTechPark');
-  const viewMetro = document.getElementById('mapViewBtnMetro');
-  if (viewProp) viewProp.addEventListener('click', () => switchMapViewContext('properties'));
-  if (viewTech) viewTech.addEventListener('click', () => switchMapViewContext('techpark'));
-  if (viewMetro) viewMetro.addEventListener('click', () => switchMapViewContext('metro'));
 });
 
 </script>
@@ -11851,19 +11862,29 @@ function setBuyerLens(lens) {
   if (typeof applyFilters === 'function') applyFilters();
 }
 
-function switchMapMode(mode) {
+function switchMapMode(mode, e) {
+  if (e && typeof e.stopPropagation === 'function') {
+    e.stopPropagation();
+  }
   activeMapMode = mode;
-  document.querySelectorAll('.map-mode-btn').forEach(b => b.classList.remove('map-mode-btn--active'));
-  let idSuffix = mode.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
-  const btn = document.getElementById('modeBtn' + idSuffix) || document.getElementById('modeBtn' + mode.charAt(0).toUpperCase() + mode.slice(1));
-  if (btn) btn.classList.add('map-mode-btn--active');
 
   if (mode === 'properties') {
     if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
+    if (typeof toggleMetroLines === 'function') toggleMetroLines(false);
   } else if (mode === 'employment') {
-    if (typeof setTechParkViewMode === 'function') setTechParkViewMode(true);
+    if (techParkViewActive) {
+      if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
+    } else {
+      if (typeof toggleMetroLines === 'function') toggleMetroLines(false);
+      if (typeof setTechParkViewMode === 'function') setTechParkViewMode(true);
+    }
   } else if (mode === 'connectivity') {
-    if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
+    if (metroNetworkActive) {
+      if (typeof toggleMetroLines === 'function') toggleMetroLines(false);
+    } else {
+      if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
+      if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
+    }
   }
 
   if (typeof updateMapViewPillUI === 'function') updateMapViewPillUI();
