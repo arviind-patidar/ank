@@ -6520,7 +6520,7 @@ html, body {
         </div>
       </div>
       <div class="draw-status-card__footer">
-        <button type="button" id="drawStatusDoneBtn" class="draw-status-btn draw-status-btn--done" onclick="finishMeasureTool()" style="display:none;">
+        <button type="button" id="drawStatusDoneBtn" class="draw-status-btn draw-status-btn--done" onclick="finishCurrentShapeDrawing()" style="display:none;">
           ✓ Done
         </button>
         <button type="button" class="draw-status-btn draw-status-btn--cancel" onclick="cancelCurrentDrawing()">
@@ -10724,7 +10724,9 @@ function renderSearchSuggestions() {
   });
 
   const priceInsightModalBackdrop = document.getElementById("priceInsightModalBackdrop");
-  priceInsightModalBackdrop.addEventListener("click", () => closePriceInsightCard());
+  if (priceInsightModalBackdrop) {
+    priceInsightModalBackdrop.addEventListener("click", () => closePriceInsightCard());
+  }
 }
 
 /* ===== CONFIGURATION & CENTRALIZED DATA SERVICE LAYER ===== */
@@ -10732,7 +10734,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v35"
+  CACHE_KEY: "ackey_app_data_v36"
 };
 
 const DataService = {
@@ -12572,20 +12574,30 @@ function cleanupMeasureListeners() {
 }
 
 // --- TOOL 2: SHAPE DRAWING (Polyline, Polygon, Circle, Rectangle) ---
+// Native implementation without deprecated google.maps.drawing.DrawingManager
+let shapeDrawTempOverlay = null;
+let shapeDrawStartLatLng = null;
+
 function startDrawingShape(shapeType) {
   if (!map) return;
-  initDrawingManager();
-  if (!MapDrawState.drawingManager) return;
+  cancelCurrentDrawing();
+  MapDrawState.activeTool = shapeType;
 
-  const modeMap = {
-    'polyline': google.maps.drawing.OverlayType.POLYLINE,
-    'polygon': google.maps.drawing.OverlayType.POLYGON,
-    'circle': google.maps.drawing.OverlayType.CIRCLE,
-    'rectangle': google.maps.drawing.OverlayType.RECTANGLE
+  // Highlight active tool button
+  document.querySelectorAll(".map-tool-btn").forEach(b => b.classList.remove("map-tool-btn--active"));
+  const activeBtnMap = {
+    'polyline': 'toolBtnLine',
+    'polygon': 'toolBtnPolygon',
+    'circle': 'toolBtnCircle',
+    'rectangle': 'toolBtnRectangle'
   };
+  const activeBtnId = activeBtnMap[shapeType];
+  if (activeBtnId) {
+    const el = document.getElementById(activeBtnId);
+    if (el) el.classList.add("map-tool-btn--active");
+  }
 
-  const drawMode = modeMap[shapeType];
-  MapDrawState.drawingManager.setDrawingMode(drawMode);
+  map.setOptions({ draggableCursor: 'crosshair' });
 
   // Update Status Card
   const statusCard = document.getElementById("drawStatusCard");
@@ -12595,10 +12607,10 @@ function startDrawingShape(shapeType) {
   const doneBtn = document.getElementById("drawStatusDoneBtn");
 
   const hints = {
-    'polyline': "Click points on the map to draw a line path. Double-click or click last point to complete.",
-    'polygon': "Click to define boundary vertices. Connect back to the first point to close the area and view Acreage.",
-    'circle': "Click on map for circle center and drag outward to define the radius buffer.",
-    'rectangle': "Click and drag to draw a bounding box rectangle."
+    'polyline': "Click on map to add line points. Click '✓ Done' or double-click to finish.",
+    'polygon': "Click to add polygon corners. Click '✓ Done' to close the area and view acreage.",
+    'circle': "Click on map for circle center, then click a second point to set radius.",
+    'rectangle': "Click first corner, then click opposite corner to draw bounding box."
   };
 
   const titles = {
@@ -12613,84 +12625,134 @@ function startDrawingShape(shapeType) {
   if (statusHint) statusHint.innerHTML = hints[shapeType] || "Draw on the map.";
   if (statusMetrics) statusMetrics.style.display = "none";
   if (doneBtn) doneBtn.style.display = "none";
-}
 
-function initDrawingManager() {
-  if (MapDrawState.drawingManager) return;
-  if (typeof google === "undefined" || !google.maps || !google.maps.drawing) return;
+  MapDrawState.measurePoints = [];
 
-  MapDrawState.drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: null,
-    drawingControl: false, // We use our custom Acre&Key branded UI toolbar
-    polylineOptions: {
+  if (shapeType === 'polyline') {
+    shapeDrawTempOverlay = new google.maps.Polyline({
+      path: [],
+      geodesic: true,
       strokeColor: '#B88E52',
       strokeOpacity: 0.95,
       strokeWeight: 4,
-      editable: true
-    },
-    polygonOptions: {
-      fillColor: '#B88E52',
-      fillOpacity: 0.22,
+      map: map
+    });
+  } else if (shapeType === 'polygon') {
+    shapeDrawTempOverlay = new google.maps.Polygon({
+      paths: [],
       strokeColor: '#B88E52',
       strokeOpacity: 0.9,
       strokeWeight: 3,
-      editable: true
-    },
-    circleOptions: {
       fillColor: '#B88E52',
-      fillOpacity: 0.2,
-      strokeColor: '#B88E52',
-      strokeOpacity: 0.85,
-      strokeWeight: 3,
-      editable: true
-    },
-    rectangleOptions: {
-      fillColor: '#B88E52',
-      fillOpacity: 0.2,
-      strokeColor: '#B88E52',
-      strokeOpacity: 0.85,
-      strokeWeight: 3,
-      editable: true
-    }
-  });
+      fillOpacity: 0.22,
+      map: map
+    });
+  }
 
-  MapDrawState.drawingManager.setMap(map);
-
-  google.maps.event.addListener(MapDrawState.drawingManager, 'overlaycomplete', (event) => {
-    onDrawingOverlayComplete(event);
+  MapDrawState.mapClickListener = map.addListener('click', (e) => {
+    onShapeMapClick(shapeType, e.latLng);
   });
 }
 
-function onDrawingOverlayComplete(event) {
-  const type = event.type;
-  const overlay = event.overlay;
+function onShapeMapClick(shapeType, latLng) {
+  const pts = MapDrawState.measurePoints;
+  pts.push(latLng);
+  const doneBtn = document.getElementById("drawStatusDoneBtn");
+  const statusHint = document.getElementById("drawStatusHint");
 
-  // Turn off drawing mode after shape is placed
-  if (MapDrawState.drawingManager) MapDrawState.drawingManager.setDrawingMode(null);
+  if (shapeType === 'polyline') {
+    const path = shapeDrawTempOverlay.getPath();
+    path.push(latLng);
+    if (pts.length >= 2 && doneBtn) doneBtn.style.display = "inline-block";
+    if (statusHint) statusHint.innerHTML = `<strong>${pts.length} points placed.</strong> Click next point or click <strong>✓ Done</strong>.`;
+  } else if (shapeType === 'polygon') {
+    const path = shapeDrawTempOverlay.getPath();
+    path.push(latLng);
+    if (pts.length >= 3 && doneBtn) doneBtn.style.display = "inline-block";
+    if (statusHint) statusHint.innerHTML = `<strong>${pts.length} corners placed.</strong> Place more or click <strong>✓ Done</strong> to close polygon.`;
+  } else if (shapeType === 'circle') {
+    if (pts.length === 1) {
+      if (statusHint) statusHint.innerHTML = "Center set. Click a second point on the map to define the circle radius.";
+    } else if (pts.length >= 2) {
+      const center = pts[0];
+      const edge = pts[1];
+      const radiusMeters = calcDistanceMeters(center, edge);
+      const circle = new google.maps.Circle({
+        center: center,
+        radius: radiusMeters,
+        strokeColor: '#B88E52',
+        strokeOpacity: 0.85,
+        strokeWeight: 3,
+        fillColor: '#B88E52',
+        fillOpacity: 0.2,
+        map: map
+      });
+      finalizeCreatedShape('circle', circle, center);
+    }
+  } else if (shapeType === 'rectangle') {
+    if (pts.length === 1) {
+      if (statusHint) statusHint.innerHTML = "First corner set. Click opposite corner to complete the box.";
+    } else if (pts.length >= 2) {
+      const p1 = pts[0];
+      const p2 = pts[1];
+      const bounds = new google.maps.LatLngBounds();
+      bounds.extend(p1);
+      bounds.extend(p2);
+      const rect = new google.maps.Rectangle({
+        bounds: bounds,
+        strokeColor: '#B88E52',
+        strokeOpacity: 0.85,
+        strokeWeight: 3,
+        fillColor: '#B88E52',
+        fillOpacity: 0.2,
+        map: map
+      });
+      finalizeCreatedShape('rectangle', rect, bounds.getNorthEast());
+    }
+  }
+}
 
+function finalizeCreatedShape(type, overlay, infoPos) {
   const shapeRecord = {
     id: "shape_" + Date.now(),
     type: type,
     overlay: overlay
   };
-
   MapDrawState.drawnShapes.push(shapeRecord);
 
-  // Bind click listener on shape to show InfoWindow with real estate stats & delete CTA
   google.maps.event.addListener(overlay, 'click', (e) => {
     const clickPos = e.latLng || (overlay.getCenter ? overlay.getCenter() : null);
     showShapeInfoWindow(shapeRecord, clickPos);
   });
 
-  // Calculate stats & show InfoWindow immediately upon completion
-  let initialPos = null;
-  if (type === 'circle') initialPos = overlay.getCenter();
-  else if (type === 'polygon') initialPos = overlay.getPath().getAt(0);
-  else if (type === 'rectangle') initialPos = overlay.getBounds().getNorthEast();
-  else if (type === 'polyline') initialPos = overlay.getPath().getAt(overlay.getPath().getLength() - 1);
-
-  showShapeInfoWindow(shapeRecord, initialPos);
+  showShapeInfoWindow(shapeRecord, infoPos);
+  cleanupMeasureListeners();
+  if (shapeDrawTempOverlay) {
+    shapeDrawTempOverlay = null;
+  }
   resetDrawStatusCard();
+}
+
+function finishCurrentShapeDrawing() {
+  const type = MapDrawState.activeTool;
+  const pts = MapDrawState.measurePoints;
+
+  if (type === 'measure') {
+    finishMeasureTool();
+    return;
+  }
+
+  if (type === 'polyline') {
+    if (pts.length < 2) { cancelCurrentDrawing(); return; }
+    const poly = shapeDrawTempOverlay;
+    shapeDrawTempOverlay = null;
+    finalizeCreatedShape('polyline', poly, pts[pts.length - 1]);
+  } else if (type === 'polygon') {
+    if (pts.length < 3) { cancelCurrentDrawing(); return; }
+    const poly = shapeDrawTempOverlay;
+    shapeDrawTempOverlay = null;
+    finalizeCreatedShape('polygon', poly, pts[0]);
+  }
 }
 
 function showShapeInfoWindow(shapeRecord, pos) {
@@ -12819,6 +12881,10 @@ function cancelCurrentDrawing() {
     MapDrawState.measurePolyline.setMap(null);
     MapDrawState.measurePolyline = null;
   }
+  if (shapeDrawTempOverlay) {
+    shapeDrawTempOverlay.setMap(null);
+    shapeDrawTempOverlay = null;
+  }
   if (MapDrawState.measureMarkers) {
     MapDrawState.measureMarkers.forEach(m => m.setMap(null));
     MapDrawState.measureMarkers = [];
@@ -12828,11 +12894,6 @@ function cancelCurrentDrawing() {
     MapDrawState.measureBadges = [];
   }
   cleanupMeasureListeners();
-
-  // Reset drawing manager mode
-  if (MapDrawState.drawingManager) {
-    MapDrawState.drawingManager.setDrawingMode(null);
-  }
 
   resetDrawStatusCard();
 }
@@ -12846,17 +12907,36 @@ function resetDrawStatusCard() {
 
 function initDrawingEngine() {
   if (!map) return;
-  initDrawingManager();
-  if (!MapMeasureBadgeOverlayClass) {
-    MapMeasureBadgeOverlayClass = defineMapMeasureBadgeClass();
+  try {
+    if (!MapMeasureBadgeOverlayClass) {
+      MapMeasureBadgeOverlayClass = defineMapMeasureBadgeClass();
+    }
+  } catch (err) {
+    console.warn("Drawing engine init note:", err);
   }
 }
 
 async function onGoogleMapsLoaded() {
-  initMap();
-  initDrawingEngine();
-  await initAppListings();
-  updateTechParkDisplay();
+  try {
+    initMap();
+  } catch (e) {
+    console.error("initMap error:", e);
+  }
+  try {
+    initDrawingEngine();
+  } catch (e) {
+    console.error("initDrawingEngine error:", e);
+  }
+  try {
+    await initAppListings();
+  } catch (e) {
+    console.error("initAppListings error:", e);
+  }
+  try {
+    updateTechParkDisplay();
+  } catch (e) {
+    console.error("updateTechParkDisplay error:", e);
+  }
 }
 
 setTimeout(() => {
