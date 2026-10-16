@@ -2404,8 +2404,8 @@ body.in-guided-presentation .map-wrap { height: 100vh !important; min-height: 10
 .hospital-marker__leader,
 .mall-marker__tag,
 .mall-marker__leader,
-body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__tag,
-body.has-active-property .plot-marker:not(.plot-marker--active) .plot-marker__leader,
+body.has-active-property .plot-marker:not(.plot-marker--active):not(.plot-marker--selected) .plot-marker__tag,
+body.has-active-property .plot-marker:not(.plot-marker--active):not(.plot-marker--selected) .plot-marker__leader,
 body.has-active-property .techpark-marker .techpark-marker__tag,
 body.has-active-property .metro-marker .metro-marker__tag,
 body.has-active-property .school-marker .school-marker__tag,
@@ -3619,6 +3619,54 @@ body.in-guided-presentation .locality-summary-strip {
 .plot-marker--active .plot-marker__leader {
   background: var(--gold);
   width: 2px;
+}
+
+/* Multi-Selected Property Pins (When projects are selected from filter) */
+.gmap-marker-wrap--selected {
+  z-index: 998 !important;
+}
+
+.plot-marker--selected {
+  z-index: 998;
+}
+
+.plot-marker--selected .plot-marker__pin {
+  background: linear-gradient(135deg, #1A2837, #0F1822) !important;
+  border: 2px solid var(--gold) !important;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(184, 142, 82, 0.45), 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+.plot-marker--selected .plot-marker__tag {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: #FFFFFF !important;
+  color: #12202E !important;
+  border: 1.5px solid var(--gold) !important;
+  font-weight: 750 !important;
+  font-size: 10px !important;
+  padding: 3px 8px !important;
+  border-radius: 5px !important;
+  max-width: 180px !important;
+  box-shadow: 0 3px 12px rgba(18, 32, 46, 0.28) !important;
+  pointer-events: auto !important;
+}
+
+.plot-marker--selected .plot-marker__leader {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: var(--gold) !important;
+  width: 2px !important;
+}
+
+body.has-active-property .plot-marker--selected .plot-marker__tag,
+body.has-active-property .plot-marker--selected .plot-marker__leader {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 /* Cluster Bubbles */
@@ -7997,10 +8045,11 @@ function propertyTypeIcon(type) {
   return '<rect x="7" y="3" width="10" height="18" rx="1"/><rect x="9.3" y="6" width="2" height="2" fill="#B88E52"/><rect x="12.7" y="6" width="2" height="2" fill="#B88E52"/>';
 }
 
-function markerInnerHtml(property, isActive, hideLabel = false) {
+function markerInnerHtml(property, isActive, hideLabel = false, isMultiSelected = false) {
   const isRecommended = property.recommended;
+  const multiClass = isMultiSelected ? "plot-marker--selected" : "";
   return `
-    <div class="plot-marker ${isActive ? "plot-marker--active" : ""} ${isRecommended ? "plot-marker--recommended" : ""}" data-id="${property.id}">
+    <div class="plot-marker ${isActive ? "plot-marker--active" : ""} ${multiClass} ${isRecommended ? "plot-marker--recommended" : ""}" data-id="${property.id}">
       <div class="plot-marker__tag" style="${hideLabel ? 'display:none;' : ''}" title="${property.title}">${property.title}</div>
       <div class="plot-marker__leader" style="${hideLabel ? 'display:none;' : ''}"></div>
       <div class="plot-marker__pin">
@@ -8105,12 +8154,13 @@ function defineMarkerLayerClass() {
       const gmap = this.getMap(); if (!gmap) return;
 
       const zoom = gmap.getZoom();
-      const showNames = zoom >= ZOOM_THRESHOLD;
+      const isMultiFilterActive = Boolean(selectedPropertyIds && selectedPropertyIds.size > 0);
+      const showNames = zoom >= ZOOM_THRESHOLD || isMultiFilterActive;
 
       const points = this.properties.map((p) => {
         let lat = p.lat, lng = p.lng;
-        if (zoom >= 14) {
-          const sameLoc = this.properties.filter((other) => Math.abs(other.lat - p.lat) < 0.00015 && Math.abs(other.lng - p.lng) < 0.00015);
+        if (zoom >= 14 || isMultiFilterActive) {
+          const sameLoc = this.properties.filter((other) => Math.abs(other.lat - p.lat) < 0.0003 && Math.abs(other.lng - p.lng) < 0.0003);
           if (sameLoc.length > 1) {
             const idx = sameLoc.indexOf(p);
             const pos = getSpiderfiedPosition(p.lat, p.lng, idx, sameLoc.length);
@@ -8146,12 +8196,18 @@ function defineMarkerLayerClass() {
 
       this.container.innerHTML = "";
       const gmapRef = gmap;
-      // Sort render items by priority: Active (1st) -> Recommended (2nd) -> Regular (3rd)
+      // Sort render items by priority: Active (1st) -> Multi-selected (2nd) -> Recommended (3rd) -> Regular (4th)
       const sortedItems = renderItems.slice().sort((a, b) => {
-        const aSelected = a.type === "single" && (a.property.id === activeCardId || (selectedPropertyIds && selectedPropertyIds.has(a.property.id)));
-        const bSelected = b.type === "single" && (b.property.id === activeCardId || (selectedPropertyIds && selectedPropertyIds.has(b.property.id)));
+        const aActive = a.type === "single" && a.property.id === activeCardId;
+        const bActive = b.type === "single" && b.property.id === activeCardId;
+        if (aActive && !bActive) return -1;
+        if (bActive && !aActive) return 1;
+
+        const aSelected = a.type === "single" && Boolean(selectedPropertyIds && selectedPropertyIds.has(a.property.id));
+        const bSelected = b.type === "single" && Boolean(selectedPropertyIds && selectedPropertyIds.has(b.property.id));
         if (aSelected && !bSelected) return -1;
         if (bSelected && !aSelected) return 1;
+
         if (a.type === "single" && a.property.recommended && !b.property?.recommended) return -1;
         if (b.type === "single" && b.property.recommended && !a.property?.recommended) return 1;
         return 0;
@@ -8166,15 +8222,14 @@ function defineMarkerLayerClass() {
         const div = document.createElement("div");
         if (item.type === "single") {
           const isSingleActive = item.property.id === activeCardId;
-          const isMultiSelected = selectedPropertyIds && selectedPropertyIds.has(item.property.id);
-          // Only single active property (when detail panel is open) highlights its name tag
+          const isMultiSelected = Boolean(selectedPropertyIds && selectedPropertyIds.has(item.property.id));
           const isActive = isSingleActive;
 
-          div.className = "gmap-marker-wrap" + (isActive ? " gmap-marker-wrap--active" : "");
+          div.className = "gmap-marker-wrap" + (isActive ? " gmap-marker-wrap--active" : "") + (isMultiSelected ? " gmap-marker-wrap--selected" : "");
           div.style.left = item.x + "px"; div.style.top = item.y + "px";
 
-          const labelWidth = Math.min(135, item.property.title.length * 6 + 18);
-          const labelHeight = 24;
+          const labelWidth = Math.min(180, item.property.title.length * 7 + 22);
+          const labelHeight = 26;
           const box = {
             x1: item.x - labelWidth / 2,
             y1: item.y - 48,
@@ -8183,7 +8238,10 @@ function defineMarkerLayerClass() {
           };
 
           let hideLabel = false;
-          if (!isActive) {
+          if (isMultiSelected) {
+            // When multiple projects are selected, project name MUST ALWAYS appear on map
+            hideLabel = false;
+          } else if (!isActive) {
             if (activeCardId || (selectedPropertyIds && selectedPropertyIds.size > 0)) {
               hideLabel = true;
             } else if (zoom < 12 && !item.property.recommended) {
@@ -8197,7 +8255,7 @@ function defineMarkerLayerClass() {
             placedLabelBoxes.push(box);
           }
 
-          div.innerHTML = markerInnerHtml(item.property, isActive, hideLabel);
+          div.innerHTML = markerInnerHtml(item.property, isActive, hideLabel, isMultiSelected);
           div.addEventListener("click", () => setActive(item.property.id, { pan: false }));
         } else {
           div.className = "gmap-cluster-wrap";
@@ -10773,7 +10831,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v40"
+  CACHE_KEY: "ackey_app_data_v41"
 };
 
 const DataService = {
