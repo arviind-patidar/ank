@@ -10831,7 +10831,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v41"
+  CACHE_KEY: "ackey_app_data_v42"
 };
 
 const DataService = {
@@ -10950,10 +10950,6 @@ const DataService = {
 
 function ensureCompleteMetroStations() {
   if (!Array.isArray(METRO_STATIONS)) METRO_STATIONS = [];
-  const hasChallaghatta = METRO_STATIONS.some(s => (s.name || "").toLowerCase().includes("challaghatta"));
-  if (hasChallaghatta && METRO_STATIONS.filter(s => s.line === "Purple").length >= 37) {
-    return;
-  }
 
   const PURPLE_LINE_STATIONS = [
     { id: 'M_PUR_01', name: 'Challaghatta', line: 'Purple', lat: 12.897420, lng: 77.461370, source: 'BMRCL_Official' },
@@ -10995,8 +10991,43 @@ function ensureCompleteMetroStations() {
     { id: 'M_PUR_37', name: 'Whitefield (Kadugodi)', line: 'Purple', lat: 12.996412, lng: 77.760085, source: 'BMRCL_Official' }
   ];
 
-  const nonPurple = METRO_STATIONS.filter(s => s.line !== 'Purple');
-  METRO_STATIONS = [...PURPLE_LINE_STATIONS, ...nonPurple];
+  const GREEN_LINE_STATIONS = [
+    { id: 'M_GRN_01', name: 'Madavara (BIEC)', line: 'Green', lat: 13.057400, lng: 77.472900, source: 'BMRCL_Official' },
+    { id: 'M_GRN_02', name: 'Chikkabidarakallu', line: 'Green', lat: 13.053800, lng: 77.481800, source: 'BMRCL_Official' },
+    { id: 'M_GRN_03', name: 'Manjunathanagara', line: 'Green', lat: 13.050500, lng: 77.491200, source: 'BMRCL_Official' },
+    { id: 'M_GRN_04', name: 'Nagasandra', line: 'Green', lat: 13.048215, lng: 77.500215, source: 'BMRCL_Official' },
+    { id: 'M_GRN_05', name: 'Dasarahalli', line: 'Green', lat: 13.041852, lng: 77.511245, source: 'BMRCL_Official' },
+    { id: 'M_GRN_06', name: 'Jalahalli', line: 'Green', lat: 13.038152, lng: 77.519821, source: 'BMRCL_Official' },
+    { id: 'M_GRN_07', name: 'Peenya Industry', line: 'Green', lat: 13.034521, lng: 77.526845, source: 'BMRCL_Official' },
+    { id: 'M_GRN_08', name: 'Peenya', line: 'Green', lat: 13.031245, lng: 77.534812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_09', name: 'Goraguntepalya', line: 'Green', lat: 13.028541, lng: 77.542812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_10', name: 'Yeshwanthpur', line: 'Green', lat: 13.024521, lng: 77.549812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_11', name: 'Sandal Soap Factory', line: 'Green', lat: 13.018541, lng: 77.554812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_12', name: 'Mahalakshmi', line: 'Green', lat: 13.012541, lng: 77.552812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_13', name: 'Rajajinagar', line: 'Green', lat: 13.004851, lng: 77.553812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_14', name: 'Kuvempu Road', line: 'Green', lat: 12.998541, lng: 77.558812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_15', name: 'Srirampura', line: 'Green', lat: 12.991245, lng: 77.563812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_16', name: 'Mantri Square Sampige Road', line: 'Green', lat: 12.990215, lng: 77.570812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_17', name: 'Nadaprabhu Kempegowda Majestic Interchange', line: 'Green', lat: 12.975689, lng: 77.572841, source: 'BMRCL_Official', isInterchange: true },
+    { id: 'M_GRN_18', name: 'Chickpet', line: 'Green', lat: 12.967851, lng: 77.574812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_19', name: 'Krishna Rajendra Market (KR Market)', line: 'Green', lat: 12.961245, lng: 77.574215, source: 'BMRCL_Official' },
+    { id: 'M_GRN_20', name: 'National College', line: 'Green', lat: 12.951245, lng: 77.573812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_21', name: 'Lalbagh', line: 'Green', lat: 12.946521, lng: 77.581812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_22', name: 'South End Circle', line: 'Green', lat: 12.938541, lng: 77.581245, source: 'BMRCL_Official' },
+    { id: 'M_GRN_23', name: 'Jayanagar', line: 'Green', lat: 12.929851, lng: 77.581812, source: 'BMRCL_Official' },
+    { id: 'M_GRN_24', name: 'Rashtreeya Vidyalaya Road (RV Road) Interchange', line: 'Green', lat: 12.921245, lng: 77.580812, source: 'BMRCL_Official', isInterchange: true },
+    { id: 'M_GRN_25', name: 'Banashankari', line: 'Green', lat: 12.915649, lng: 77.573631, source: 'BMRCL_Official' },
+    { id: 'M_GRN_26', name: 'Jaya Prakash Nagar (JP Nagar)', line: 'Green', lat: 12.907299, lng: 77.573133, source: 'BMRCL_Official' },
+    { id: 'M_GRN_27', name: 'Yelachenahalli', line: 'Green', lat: 12.895983, lng: 77.570159, source: 'BMRCL_Official' },
+    { id: 'M_GRN_28', name: 'Konanakunte Cross', line: 'Green', lat: 12.888970, lng: 77.562670, source: 'BMRCL_Official' },
+    { id: 'M_GRN_29', name: 'Doddakallasandra', line: 'Green', lat: 12.884600, lng: 77.552800, source: 'BMRCL_Official' },
+    { id: 'M_GRN_30', name: 'Vajarahalli', line: 'Green', lat: 12.877450, lng: 77.544590, source: 'BMRCL_Official' },
+    { id: 'M_GRN_31', name: 'Thalaghattapura', line: 'Green', lat: 12.871680, lng: 77.538760, source: 'BMRCL_Official' },
+    { id: 'M_GRN_32', name: 'Silk Institute', line: 'Green', lat: 12.861858, lng: 77.530007, source: 'BMRCL_Official' }
+  ];
+
+  const others = METRO_STATIONS.filter(s => s.line !== 'Purple' && s.line !== 'Green');
+  METRO_STATIONS = [...PURPLE_LINE_STATIONS, ...GREEN_LINE_STATIONS, ...others];
 }
 
 function initAppListings() {
@@ -11379,7 +11410,41 @@ const METRO_LINE_CONFIG = {
     color: "#0F8B45",
     statusText: "Operational",
     isOperational: true,
-    dashed: false
+    dashed: false,
+    points: [
+      { lat: 13.057400, lng: 77.472900 }, // Madavara (BIEC)
+      { lat: 13.053800, lng: 77.481800 }, // Chikkabidarakallu
+      { lat: 13.050500, lng: 77.491200 }, // Manjunathanagara
+      { lat: 13.048215, lng: 77.500215 }, // Nagasandra
+      { lat: 13.041852, lng: 77.511245 }, // Dasarahalli
+      { lat: 13.038152, lng: 77.519821 }, // Jalahalli
+      { lat: 13.034521, lng: 77.526845 }, // Peenya Industry
+      { lat: 13.031245, lng: 77.534812 }, // Peenya
+      { lat: 13.028541, lng: 77.542812 }, // Goraguntepalya
+      { lat: 13.024521, lng: 77.549812 }, // Yeshwanthpur
+      { lat: 13.018541, lng: 77.554812 }, // Sandal Soap Factory
+      { lat: 13.012541, lng: 77.552812 }, // Mahalakshmi
+      { lat: 13.004851, lng: 77.553812 }, // Rajajinagar
+      { lat: 12.998541, lng: 77.558812 }, // Kuvempu Road
+      { lat: 12.991245, lng: 77.563812 }, // Srirampura
+      { lat: 12.990215, lng: 77.570812 }, // Mantri Square Sampige Road
+      { lat: 12.975689, lng: 77.572841 }, // Nadaprabhu Kempegowda Majestic
+      { lat: 12.967851, lng: 77.574812 }, // Chickpet
+      { lat: 12.961245, lng: 77.574215 }, // Krishna Rajendra Market (KR Market)
+      { lat: 12.951245, lng: 77.573812 }, // National College
+      { lat: 12.946521, lng: 77.581812 }, // Lalbagh
+      { lat: 12.938541, lng: 77.581245 }, // South End Circle
+      { lat: 12.929851, lng: 77.581812 }, // Jayanagar
+      { lat: 12.921245, lng: 77.580812 }, // Rashtreeya Vidyalaya Road (RV Road) Interchange
+      { lat: 12.915649, lng: 77.573631 }, // Banashankari (Kanakapura Road)
+      { lat: 12.907299, lng: 77.573133 }, // JP Nagar (Kanakapura Road)
+      { lat: 12.895983, lng: 77.570159 }, // Yelachenahalli (Kanakapura Road)
+      { lat: 12.888970, lng: 77.562670 }, // Konanakunte Cross (Kanakapura Road)
+      { lat: 12.884600, lng: 77.552800 }, // Doddakallasandra (Kanakapura Road)
+      { lat: 12.877450, lng: 77.544590 }, // Vajarahalli (Kanakapura Road)
+      { lat: 12.871680, lng: 77.538760 }, // Thalaghattapura (Kanakapura Road)
+      { lat: 12.861858, lng: 77.530007 }  // Silk Institute (Terminal on Kanakapura Road)
+    ]
   },
   Yellow: {
     name: "Yellow Line",

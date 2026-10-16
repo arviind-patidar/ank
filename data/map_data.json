@@ -4,12 +4,12 @@
     "datasetVersion": "v2.1.0",
     "activeTab": "Project Unit Pricing",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=456687578",
-    "syncedAt": "2026-10-16T18:14:27.220Z",
+    "syncedAt": "2026-10-16T18:33:01.873Z",
     "displayDate": "06 OCT 2026 (SHEET TAB: PROJECT UNIT PRICING)",
     "recordCounts": {
       "projects": 109,
       "techParks": 244,
-      "metroStations": 60,
+      "metroStations": 79,
       "schools": 80,
       "hospitals": 80,
       "malls": 49,
@@ -18,7 +18,7 @@
     "counts": {
       "projects": 109,
       "techParks": 244,
-      "metroStations": 60,
+      "metroStations": 79,
       "schools": 80,
       "hospitals": 80,
       "malls": 49,
@@ -7033,206 +7033,6 @@
       "source": "BMRCL_Official"
     },
     {
-      "id": "M26",
-      "name": "Nagasandra",
-      "line": "Green",
-      "lat": 13.048215,
-      "lng": 77.500215,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M27",
-      "name": "Dasarahalli",
-      "line": "Green",
-      "lat": 13.041852,
-      "lng": 77.511245,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M28",
-      "name": "Jalahalli",
-      "line": "Green",
-      "lat": 13.038152,
-      "lng": 77.519821,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M29",
-      "name": "Peenya Industry",
-      "line": "Green",
-      "lat": 13.034521,
-      "lng": 77.526845,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M30",
-      "name": "Peenya",
-      "line": "Green",
-      "lat": 13.031245,
-      "lng": 77.534812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M31",
-      "name": "Goraguntepalya",
-      "line": "Green",
-      "lat": 13.028541,
-      "lng": 77.542812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M32",
-      "name": "Yeshwanthpur",
-      "line": "Green",
-      "lat": 13.024521,
-      "lng": 77.549812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M33",
-      "name": "Sandal Soap Factory",
-      "line": "Green",
-      "lat": 13.018541,
-      "lng": 77.554812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M34",
-      "name": "Mahalakshmi",
-      "line": "Green",
-      "lat": 13.012541,
-      "lng": 77.552812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M35",
-      "name": "Rajajinagar",
-      "line": "Green",
-      "lat": 13.004851,
-      "lng": 77.553812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M36",
-      "name": "Kuvempu Road",
-      "line": "Green",
-      "lat": 12.998541,
-      "lng": 77.558812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M37",
-      "name": "Srirampura",
-      "line": "Green",
-      "lat": 12.991245,
-      "lng": 77.563812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M38",
-      "name": "Mantri Square Sampige Road",
-      "line": "Green",
-      "lat": 12.990215,
-      "lng": 77.570812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M39",
-      "name": "Chickpet",
-      "line": "Green",
-      "lat": 12.967851,
-      "lng": 77.574812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M40",
-      "name": "Krishna Rajendra Market (KR Market)",
-      "line": "Green",
-      "lat": 12.961245,
-      "lng": 77.574215,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M41",
-      "name": "National College",
-      "line": "Green",
-      "lat": 12.951245,
-      "lng": 77.573812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M42",
-      "name": "Lalbagh",
-      "line": "Green",
-      "lat": 12.946521,
-      "lng": 77.581812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M43",
-      "name": "Southend Circle",
-      "line": "Green",
-      "lat": 12.938541,
-      "lng": 77.581245,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M44",
-      "name": "Jayanagar",
-      "line": "Green",
-      "lat": 12.929851,
-      "lng": 77.581812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M45",
-      "name": "Rashtreeya Vidyalaya Road (RV Road)",
-      "line": "Green",
-      "lat": 12.921245,
-      "lng": 77.580812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M46",
-      "name": "Banashankari",
-      "line": "Green",
-      "lat": 12.915421,
-      "lng": 77.573812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M47",
-      "name": "JP Nagar",
-      "line": "Green",
-      "lat": 12.907851,
-      "lng": 77.572812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M48",
-      "name": "Yelachenahalli",
-      "line": "Green",
-      "lat": 12.896521,
-      "lng": 77.570812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M49",
-      "name": "Kanakapura Road / Doddakallasandra",
-      "line": "Green",
-      "lat": 12.884521,
-      "lng": 77.562812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M50",
-      "name": "Silk Institute",
-      "line": "Green",
-      "lat": 12.861245,
-      "lng": 77.545812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
       "id": "M51",
       "name": "R.V. Road Interchange",
       "line": "Yellow",
@@ -7311,6 +7111,264 @@
       "lat": 12.812541,
       "lng": 77.695215,
       "source": "GoogleSheet_SSOT"
+    },
+    {
+      "id": "M_GRN_01",
+      "name": "Madavara (BIEC)",
+      "line": "Green",
+      "lat": 13.0574,
+      "lng": 77.4729,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_02",
+      "name": "Chikkabidarakallu",
+      "line": "Green",
+      "lat": 13.0538,
+      "lng": 77.4818,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_03",
+      "name": "Manjunathanagara",
+      "line": "Green",
+      "lat": 13.0505,
+      "lng": 77.4912,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_04",
+      "name": "Nagasandra",
+      "line": "Green",
+      "lat": 13.048215,
+      "lng": 77.500215,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_05",
+      "name": "Dasarahalli",
+      "line": "Green",
+      "lat": 13.041852,
+      "lng": 77.511245,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_06",
+      "name": "Jalahalli",
+      "line": "Green",
+      "lat": 13.038152,
+      "lng": 77.519821,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_07",
+      "name": "Peenya Industry",
+      "line": "Green",
+      "lat": 13.034521,
+      "lng": 77.526845,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_08",
+      "name": "Peenya",
+      "line": "Green",
+      "lat": 13.031245,
+      "lng": 77.534812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_09",
+      "name": "Goraguntepalya",
+      "line": "Green",
+      "lat": 13.028541,
+      "lng": 77.542812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_10",
+      "name": "Yeshwanthpur",
+      "line": "Green",
+      "lat": 13.024521,
+      "lng": 77.549812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_11",
+      "name": "Sandal Soap Factory",
+      "line": "Green",
+      "lat": 13.018541,
+      "lng": 77.554812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_12",
+      "name": "Mahalakshmi",
+      "line": "Green",
+      "lat": 13.012541,
+      "lng": 77.552812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_13",
+      "name": "Rajajinagar",
+      "line": "Green",
+      "lat": 13.004851,
+      "lng": 77.553812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_14",
+      "name": "Kuvempu Road",
+      "line": "Green",
+      "lat": 12.998541,
+      "lng": 77.558812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_15",
+      "name": "Srirampura",
+      "line": "Green",
+      "lat": 12.991245,
+      "lng": 77.563812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_16",
+      "name": "Mantri Square Sampige Road",
+      "line": "Green",
+      "lat": 12.990215,
+      "lng": 77.570812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_17",
+      "name": "Nadaprabhu Kempegowda Majestic Interchange",
+      "line": "Green",
+      "lat": 12.975689,
+      "lng": 77.572841,
+      "source": "BMRCL_Official",
+      "isInterchange": true
+    },
+    {
+      "id": "M_GRN_18",
+      "name": "Chickpet",
+      "line": "Green",
+      "lat": 12.967851,
+      "lng": 77.574812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_19",
+      "name": "Krishna Rajendra Market (KR Market)",
+      "line": "Green",
+      "lat": 12.961245,
+      "lng": 77.574215,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_20",
+      "name": "National College",
+      "line": "Green",
+      "lat": 12.951245,
+      "lng": 77.573812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_21",
+      "name": "Lalbagh",
+      "line": "Green",
+      "lat": 12.946521,
+      "lng": 77.581812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_22",
+      "name": "South End Circle",
+      "line": "Green",
+      "lat": 12.938541,
+      "lng": 77.581245,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_23",
+      "name": "Jayanagar",
+      "line": "Green",
+      "lat": 12.929851,
+      "lng": 77.581812,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_24",
+      "name": "Rashtreeya Vidyalaya Road (RV Road) Interchange",
+      "line": "Green",
+      "lat": 12.921245,
+      "lng": 77.580812,
+      "source": "BMRCL_Official",
+      "isInterchange": true
+    },
+    {
+      "id": "M_GRN_25",
+      "name": "Banashankari",
+      "line": "Green",
+      "lat": 12.915649,
+      "lng": 77.573631,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_26",
+      "name": "Jaya Prakash Nagar (JP Nagar)",
+      "line": "Green",
+      "lat": 12.907299,
+      "lng": 77.573133,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_27",
+      "name": "Yelachenahalli",
+      "line": "Green",
+      "lat": 12.895983,
+      "lng": 77.570159,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_28",
+      "name": "Konanakunte Cross",
+      "line": "Green",
+      "lat": 12.88897,
+      "lng": 77.56267,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_29",
+      "name": "Doddakallasandra",
+      "line": "Green",
+      "lat": 12.8846,
+      "lng": 77.5528,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_30",
+      "name": "Vajarahalli",
+      "line": "Green",
+      "lat": 12.87745,
+      "lng": 77.54459,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_31",
+      "name": "Thalaghattapura",
+      "line": "Green",
+      "lat": 12.87168,
+      "lng": 77.53876,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_GRN_32",
+      "name": "Silk Institute",
+      "line": "Green",
+      "lat": 12.861858,
+      "lng": 77.530007,
+      "source": "BMRCL_Official"
     }
   ],
   "schools": [
