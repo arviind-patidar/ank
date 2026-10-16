@@ -7334,40 +7334,40 @@
       "id": "M_GRN_28",
       "name": "Konanakunte Cross",
       "line": "Green",
-      "lat": 12.88897,
-      "lng": 77.56267,
+      "lat": 12.888913872993053,
+      "lng": 77.56281265360748,
       "source": "BMRCL_Official"
     },
     {
       "id": "M_GRN_29",
       "name": "Doddakallasandra",
       "line": "Green",
-      "lat": 12.8846,
-      "lng": 77.5528,
+      "lat": 12.884653670870572,
+      "lng": 77.55283996353496,
       "source": "BMRCL_Official"
     },
     {
       "id": "M_GRN_30",
       "name": "Vajarahalli",
       "line": "Green",
-      "lat": 12.87745,
-      "lng": 77.54459,
+      "lat": 12.877496860336413,
+      "lng": 77.54484820603393,
       "source": "BMRCL_Official"
     },
     {
       "id": "M_GRN_31",
       "name": "Thalaghattapura",
       "line": "Green",
-      "lat": 12.87168,
-      "lng": 77.53876,
+      "lat": 12.871344571348454,
+      "lng": 77.53836515469953,
       "source": "BMRCL_Official"
     },
     {
       "id": "M_GRN_32",
       "name": "Silk Institute",
       "line": "Green",
-      "lat": 12.861858,
-      "lng": 77.530007,
+      "lat": 12.861668306483676,
+      "lng": 77.53001524837363,
       "source": "BMRCL_Official"
     }
   ],
