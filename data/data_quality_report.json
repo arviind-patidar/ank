@@ -1,12 +1,12 @@
 {
   "status": "HEALTHY",
-  "timestamp": "2026-10-17T09:30:40.437Z",
+  "timestamp": "2026-10-17T10:13:03.786Z",
   "issuesCount": 0,
   "issues": [],
   "summary": {
     "projects": 109,
     "techParks": 290,
-    "metroStations": 84,
+    "metroStations": 79,
     "schools": 80,
     "hospitals": 80,
     "malls": 49,

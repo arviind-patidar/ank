@@ -43,7 +43,9 @@ if (!sourcePayload && fs.existsSync(SEED_FILE)) {
 
 const rawProjects = (sourcePayload && Array.isArray(sourcePayload.projects)) ? sourcePayload.projects : [];
 const rawTechParks = (sourcePayload && Array.isArray(sourcePayload.techParks)) ? sourcePayload.techParks : [];
-const rawMetroStations = (sourcePayload && Array.isArray(sourcePayload.metroStations)) ? sourcePayload.metroStations : [];
+const rawMetroStations = (fs.existsSync(SEED_FILE) && JSON.parse(fs.readFileSync(SEED_FILE, 'utf8')).metroStations)
+  ? JSON.parse(fs.readFileSync(SEED_FILE, 'utf8')).metroStations
+  : ((sourcePayload && Array.isArray(sourcePayload.metroStations)) ? sourcePayload.metroStations : []);
 const rawSchools = (sourcePayload && Array.isArray(sourcePayload.schools)) ? sourcePayload.schools : [];
 const rawHospitals = (sourcePayload && Array.isArray(sourcePayload.hospitals)) ? sourcePayload.hospitals : [];
 const rawMalls = (sourcePayload && Array.isArray(sourcePayload.infrastructure)) ? sourcePayload.infrastructure : ((sourcePayload && Array.isArray(sourcePayload.malls)) ? sourcePayload.malls : []);

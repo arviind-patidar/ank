@@ -10832,7 +10832,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v45"
+  CACHE_KEY: "ackey_app_data_v46"
 };
 
 const DataService = {
@@ -10959,11 +10959,6 @@ const DataService = {
 
 function ensureCompleteMetroStations() {
   if (!Array.isArray(METRO_STATIONS)) METRO_STATIONS = [];
-
-  // If already populated from map_data.json with 80+ stations from the sheet, preserve full sheet dataset
-  if (METRO_STATIONS.length >= 80) {
-    return;
-  }
 
   const PURPLE_LINE_STATIONS = [
     { id: 'M_PUR_01', name: 'Challaghatta', line: 'Purple', lat: 12.897420, lng: 77.461370, source: 'BMRCL_Official' },
@@ -11465,25 +11460,7 @@ const METRO_LINE_CONFIG = {
     color: "#C9960A",
     statusText: "Testing / Opening Soon",
     isOperational: true,
-    dashed: false,
-    points: [
-      { lat: 12.921245, lng: 77.580812 }, // R.V. Road Interchange
-      { lat: 12.918541, lng: 77.592812 }, // Ragigudda
-      { lat: 12.918215, lng: 77.601245 }, // Jayadeva Hospital Interchange
-      { lat: 12.915421, lng: 77.609812 }, // BTM Layout
-      { lat: 12.917245, lng: 77.623812 }, // Central Silk Board Interchange
-      { lat: 12.900215, lng: 77.625812 }, // Bommanahalli
-      { lat: 12.888541, lng: 77.632812 }, // Hongasandra
-      { lat: 12.881245, lng: 77.641812 }, // Kudlu Gate
-      { lat: 12.873514, lng: 77.647512 }, // Singasandra
-      { lat: 12.864514, lng: 77.653512 }, // Hosa Road
-      { lat: 12.856514, lng: 77.657512 }, // Beratena Agrahara
-      { lat: 12.845215, lng: 77.660245 }, // Electronic City Phase 1
-      { lat: 12.839514, lng: 77.671210 }, // Infosys Foundation Konappana Agrahara
-      { lat: 12.829514, lng: 77.681512 }, // Huskur Road
-      { lat: 12.820514, lng: 77.689512 }, // Hebbagodi
-      { lat: 12.812541, lng: 77.695215 }  // Bommasandra (Terminal)
-    ]
+    dashed: false
   },
   Blue: {
     name: "Blue Line (ORR-Airport)",
