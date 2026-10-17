@@ -1,80 +1,108 @@
-Station ID,Station Name,Metro Line,Latitude,Longitude
-M_PUR_01,Challaghatta,Purple,12.89742,77.46137
-M_PUR_02,Kengeri,Purple,12.908,77.4765
-M_PUR_03,Kengeri Bus Terminal,Purple,12.9149,77.4876
-M_PUR_04,Pattanagere,Purple,12.9244,77.4983
-M_PUR_05,Jnanabharathi,Purple,12.9354,77.5124
-M_PUR_06,Rajarajeshwari Nagar,Purple,12.9367,77.5196
-M_PUR_07,Pantharapalya - Nayandahalli,Purple,12.9431,77.5245
-M_PUR_08,Mysuru Road,Purple,12.9465,77.5298
-M_PUR_09,Deepanjali Nagar,Purple,12.9612,77.535
-M_PUR_10,Attiguppe,Purple,12.9647,77.5401
-M_PUR_11,Vijayanagar,Purple,12.97078,77.53737
-M_PUR_12,Hosahalli,Purple,12.97417,77.54554
-M_PUR_13,Magadi Road,Purple,12.976521,77.554812
-M_PUR_14,City Railway Station,Purple,12.977215,77.566812
-M_PUR_15,Nadaprabhu Kempegowda Majestic Interchange,Purple,12.975689,77.572841
-M_PUR_16,Sir M. Visvesvaraya Central College,Purple,12.974125,77.582312
-M_PUR_17,Dr. B.R. Ambedkar Vidhana Soudha,Purple,12.979851,77.591245
-M_PUR_18,Cubbon Park,Purple,12.981254,77.596821
-M_PUR_19,Mahatma Gandhi Road (MG Road),Purple,12.975612,77.606742
-M_PUR_20,Trinity,Purple,12.972901,77.61712
-M_PUR_21,Halasuru,Purple,12.975418,77.626834
-M_PUR_22,Indiranagar,Purple,12.978312,77.638615
-M_PUR_23,Swami Vivekananda Road,Purple,12.985821,77.644892
-M_PUR_24,Baiyappanahalli,Purple,12.990715,77.652391
-M_PUR_25,Benniganahalli,Purple,12.993581,77.662095
-M_PUR_26,Krishnarajapura (KR Pura),Purple,12.996112,77.675631
-M_PUR_27,Singayyanapalya,Purple,12.991204,77.687192
-M_PUR_28,Garudacharpalya,Purple,12.990423,77.696145
-M_PUR_29,Hoodi,Purple,12.986812,77.701124
-M_PUR_30,Seetharamapalya,Purple,12.978152,77.705819
-M_PUR_31,Kundalahalli,Purple,12.971895,77.712984
-M_PUR_32,Nallurhalli,Purple,12.973411,77.718823
-M_PUR_33,Sri Sathya Sai Hospital,Purple,12.979234,77.724812
-M_PUR_34,Pattandur Agrahara,Purple,12.986615,77.735091
-M_PUR_35,Kadugodi Tree Park,Purple,12.987672,77.742321
-M_PUR_36,Hopefarm Channasandra,Purple,12.984089,77.751184
-M_PUR_37,Whitefield (Kadugodi),Purple,12.996412,77.760085
-M51,R.V. Road Interchange,Yellow,12.921245,77.580812
-M52,Ragigudda,Yellow,12.918541,77.592812
-M53,Jayadeva Hospital Interchange,Yellow,12.918215,77.601245
-M54,BTM Layout,Yellow,12.915421,77.609812
-M55,Central Silk Board Interchange,Yellow,12.917245,77.623812
-M56,Bommanahalli,Yellow,12.900215,77.625812
-M57,Hongasandra,Yellow,12.888541,77.632812
-M58,Kudlu Gate,Yellow,12.881245,77.641812
-M59,Electronic City Phase 1,Yellow,12.845215,77.660245
-M60,Bommasandra,Yellow,12.812541,77.695215
-M_GRN_01,Madavara (BIEC),Green,13.0574,77.4729
-M_GRN_02,Chikkabidarakallu,Green,13.0538,77.4818
-M_GRN_03,Manjunathanagara,Green,13.0505,77.4912
-M_GRN_04,Nagasandra,Green,13.048215,77.500215
-M_GRN_05,Dasarahalli,Green,13.041852,77.511245
-M_GRN_06,Jalahalli,Green,13.038152,77.519821
-M_GRN_07,Peenya Industry,Green,13.034521,77.526845
-M_GRN_08,Peenya,Green,13.031245,77.534812
-M_GRN_09,Goraguntepalya,Green,13.028541,77.542812
-M_GRN_10,Yeshwanthpur,Green,13.024521,77.549812
-M_GRN_11,Sandal Soap Factory,Green,13.018541,77.554812
-M_GRN_12,Mahalakshmi,Green,13.012541,77.552812
-M_GRN_13,Rajajinagar,Green,13.004851,77.553812
-M_GRN_14,Kuvempu Road,Green,12.998541,77.558812
-M_GRN_15,Srirampura,Green,12.991245,77.563812
-M_GRN_16,Mantri Square Sampige Road,Green,12.990215,77.570812
-M_GRN_17,Nadaprabhu Kempegowda Majestic Interchange,Green,12.975689,77.572841
-M_GRN_18,Chickpet,Green,12.967851,77.574812
-M_GRN_19,Krishna Rajendra Market (KR Market),Green,12.961245,77.574215
-M_GRN_20,National College,Green,12.951245,77.573812
-M_GRN_21,Lalbagh,Green,12.946521,77.581812
-M_GRN_22,South End Circle,Green,12.938541,77.581245
-M_GRN_23,Jayanagar,Green,12.929851,77.581812
-M_GRN_24,Rashtreeya Vidyalaya Road (RV Road) Interchange,Green,12.921245,77.580812
-M_GRN_25,Banashankari,Green,12.915649,77.573631
-M_GRN_26,Jaya Prakash Nagar (JP Nagar),Green,12.907299,77.573133
-M_GRN_27,Yelachenahalli,Green,12.895983,77.570159
-M_GRN_28,Konanakunte Cross,Green,12.888913872993053,77.56281265360748
-M_GRN_29,Doddakallasandra,Green,12.884653670870572,77.55283996353496
-M_GRN_30,Vajarahalli,Green,12.877496860336413,77.54484820603393
-M_GRN_31,Thalaghattapura,Green,12.871344571348454,77.53836515469953
-M_GRN_32,Silk Institute,Green,12.861668306483676,77.53001524837363
+id,name,line,latitude,longitude,isInterchange,status,source
+M_PUR_01,Challaghatta,Purple,12.89742,77.46137,False,Operational,GoogleSheet_SSOT
+M_PUR_02,Kengeri,Purple,12.908,77.4765,False,Operational,GoogleSheet_SSOT
+M_PUR_03,Kengeri Bus Terminal,Purple,12.9149,77.4876,False,Operational,GoogleSheet_SSOT
+M_PUR_04,Pattanagere,Purple,12.9244,77.4983,False,Operational,GoogleSheet_SSOT
+M_PUR_05,Jnanabharathi,Purple,12.9354,77.5124,False,Operational,GoogleSheet_SSOT
+M_PUR_06,Rajarajeshwari Nagar,Purple,12.9367,77.5196,False,Operational,GoogleSheet_SSOT
+M_PUR_07,Pantharapalya - Nayandahalli,Purple,12.9431,77.5245,False,Operational,GoogleSheet_SSOT
+M_PUR_08,Mysuru Road,Purple,12.9465,77.5298,False,Operational,GoogleSheet_SSOT
+M_PUR_09,Deepanjali Nagar,Purple,12.9612,77.535,False,Operational,GoogleSheet_SSOT
+M_PUR_10,Attiguppe,Purple,12.9647,77.5401,False,Operational,GoogleSheet_SSOT
+M_PUR_11,Vijayanagar,Purple,12.97078,77.53737,False,Operational,GoogleSheet_SSOT
+M_PUR_12,Hosahalli,Purple,12.97417,77.54554,False,Operational,GoogleSheet_SSOT
+M_PUR_13,Magadi Road,Purple,12.976521,77.554812,False,Operational,GoogleSheet_SSOT
+M_PUR_14,City Railway Station,Purple,12.977215,77.566812,False,Operational,GoogleSheet_SSOT
+M_PUR_15,Nadaprabhu Kempegowda Majestic Interchange,Purple,12.975689,77.572841,False,Operational,GoogleSheet_SSOT
+M_PUR_16,Sir M. Visvesvaraya Central College,Purple,12.974125,77.582312,False,Operational,GoogleSheet_SSOT
+M_PUR_17,Dr. B.R. Ambedkar Vidhana Soudha,Purple,12.979851,77.591245,False,Operational,GoogleSheet_SSOT
+M_PUR_18,Cubbon Park,Purple,12.981254,77.596821,False,Operational,GoogleSheet_SSOT
+M_PUR_19,Mahatma Gandhi Road (MG Road),Purple,12.975612,77.606742,False,Operational,GoogleSheet_SSOT
+M_PUR_20,Trinity,Purple,12.972901,77.61712,False,Operational,GoogleSheet_SSOT
+M_PUR_21,Halasuru,Purple,12.975418,77.626834,False,Operational,GoogleSheet_SSOT
+M_PUR_22,Indiranagar,Purple,12.978312,77.638615,False,Operational,GoogleSheet_SSOT
+M_PUR_23,Swami Vivekananda Road,Purple,12.985821,77.644892,False,Operational,GoogleSheet_SSOT
+M_PUR_24,Baiyappanahalli,Purple,12.990715,77.652391,False,Operational,GoogleSheet_SSOT
+M_PUR_25,Benniganahalli,Purple,12.993581,77.662095,False,Operational,GoogleSheet_SSOT
+M_PUR_26,Krishnarajapura (KR Pura),Purple,12.996112,77.675631,False,Operational,GoogleSheet_SSOT
+M_PUR_27,Singayyanapalya,Purple,12.991204,77.687192,False,Operational,GoogleSheet_SSOT
+M_PUR_28,Garudacharpalya,Purple,12.990423,77.696145,False,Operational,GoogleSheet_SSOT
+M_PUR_29,Hoodi,Purple,12.986812,77.701124,False,Operational,GoogleSheet_SSOT
+M_PUR_30,Seetharamapalya,Purple,12.978152,77.705819,False,Operational,GoogleSheet_SSOT
+M_PUR_31,Kundalahalli,Purple,12.971895,77.712984,False,Operational,GoogleSheet_SSOT
+M_PUR_32,Nallurhalli,Purple,12.973411,77.718823,False,Operational,GoogleSheet_SSOT
+M_PUR_33,Sri Sathya Sai Hospital,Purple,12.979234,77.724812,False,Operational,GoogleSheet_SSOT
+M_PUR_34,Pattandur Agrahara,Purple,12.986615,77.735091,False,Operational,GoogleSheet_SSOT
+M_PUR_35,Kadugodi Tree Park,Purple,12.987672,77.742321,False,Operational,GoogleSheet_SSOT
+M_PUR_36,Hopefarm Channasandra,Purple,12.984089,77.751184,False,Operational,GoogleSheet_SSOT
+M_PUR_37,Whitefield (Kadugodi),Purple,12.996412,77.760085,False,Operational,GoogleSheet_SSOT
+M51,R.V. Road Interchange,Yellow,12.921245,77.580812,False,Operational,GoogleSheet_SSOT
+M52,Ragigudda,Yellow,12.918541,77.592812,False,Operational,GoogleSheet_SSOT
+M53,Jayadeva Hospital Interchange,Yellow,12.918215,77.601245,False,Operational,GoogleSheet_SSOT
+M54,BTM Layout,Yellow,12.915421,77.609812,False,Operational,GoogleSheet_SSOT
+M55,Central Silk Board Interchange,Yellow,12.917245,77.623812,False,Operational,GoogleSheet_SSOT
+M56,Bommanahalli,Yellow,12.900215,77.625812,False,Operational,GoogleSheet_SSOT
+M57,Hongasandra,Yellow,12.888541,77.632812,False,Operational,GoogleSheet_SSOT
+M58,Kudlu Gate,Yellow,12.881245,77.641812,False,Operational,GoogleSheet_SSOT
+M59,Electronic City Phase 1,Yellow,12.845215,77.660245,False,Operational,GoogleSheet_SSOT
+M60,Bommasandra,Yellow,12.812541,77.695215,False,Operational,GoogleSheet_SSOT
+M_GRN_01,Madavara (BIEC),Green,13.0574,77.4729,False,Operational,GoogleSheet_SSOT
+M_GRN_02,Chikkabidarakallu,Green,13.0538,77.4818,False,Operational,GoogleSheet_SSOT
+M_GRN_03,Manjunathanagara,Green,13.0505,77.4912,False,Operational,GoogleSheet_SSOT
+M_GRN_04,Nagasandra,Green,13.048215,77.500215,False,Operational,GoogleSheet_SSOT
+M_GRN_05,Dasarahalli,Green,13.041852,77.511245,False,Operational,GoogleSheet_SSOT
+M_GRN_06,Jalahalli,Green,13.038152,77.519821,False,Operational,GoogleSheet_SSOT
+M_GRN_07,Peenya Industry,Green,13.034521,77.526845,False,Operational,GoogleSheet_SSOT
+M_GRN_08,Peenya,Green,13.031245,77.534812,False,Operational,GoogleSheet_SSOT
+M_GRN_09,Goraguntepalya,Green,13.028541,77.542812,False,Operational,GoogleSheet_SSOT
+M_GRN_10,Yeshwanthpur,Green,13.024521,77.549812,False,Operational,GoogleSheet_SSOT
+M_GRN_11,Sandal Soap Factory,Green,13.018541,77.554812,False,Operational,GoogleSheet_SSOT
+M_GRN_12,Mahalakshmi,Green,13.012541,77.552812,False,Operational,GoogleSheet_SSOT
+M_GRN_13,Rajajinagar,Green,13.004851,77.553812,False,Operational,GoogleSheet_SSOT
+M_GRN_14,Kuvempu Road,Green,12.998541,77.558812,False,Operational,GoogleSheet_SSOT
+M_GRN_15,Srirampura,Green,12.991245,77.563812,False,Operational,GoogleSheet_SSOT
+M_GRN_16,Mantri Square Sampige Road,Green,12.990215,77.570812,False,Operational,GoogleSheet_SSOT
+M_GRN_17,Nadaprabhu Kempegowda Majestic Interchange,Green,12.975689,77.572841,False,Operational,GoogleSheet_SSOT
+M_GRN_18,Chickpet,Green,12.967851,77.574812,False,Operational,GoogleSheet_SSOT
+M_GRN_19,Krishna Rajendra Market (KR Market),Green,12.961245,77.574215,False,Operational,GoogleSheet_SSOT
+M_GRN_20,National College,Green,12.951245,77.573812,False,Operational,GoogleSheet_SSOT
+M_GRN_21,Lalbagh,Green,12.946521,77.581812,False,Operational,GoogleSheet_SSOT
+M_GRN_22,South End Circle,Green,12.938541,77.581245,False,Operational,GoogleSheet_SSOT
+M_GRN_23,Jayanagar,Green,12.929851,77.581812,False,Operational,GoogleSheet_SSOT
+M_GRN_24,Rashtreeya Vidyalaya Road (RV Road) Interchange,Green,12.921245,77.580812,False,Operational,GoogleSheet_SSOT
+M_GRN_25,Banashankari,Green,12.915649,77.573631,False,Operational,GoogleSheet_SSOT
+M_GRN_26,Jaya Prakash Nagar (JP Nagar),Green,12.907299,77.573133,False,Operational,GoogleSheet_SSOT
+M_GRN_27,Yelachenahalli,Green,12.895983,77.570159,False,Operational,GoogleSheet_SSOT
+M_GRN_28,Konanakunte Cross,Green,12.888913872993053,77.56281265360748,False,Operational,GoogleSheet_SSOT
+M_GRN_29,Doddakallasandra,Green,12.884653670870572,77.55283996353496,False,Operational,GoogleSheet_SSOT
+M_GRN_30,Vajarahalli,Green,12.877496860336413,77.54484820603393,False,Operational,GoogleSheet_SSOT
+M_GRN_31,Thalaghattapura,Green,12.871344571348454,77.53836515469953,False,Operational,GoogleSheet_SSOT
+M_GRN_32,Silk Institute,Green,12.861668306483676,77.53001524837363,False,Operational,GoogleSheet_SSOT
+M_BLU_01,Central Silk Board,Blue,12.917245,77.623812,True,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_02,HSR Layout,Blue,12.9164,77.6331,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_03,Agara,Blue,12.9206,77.6436,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_04,Ibbaluru,Blue,12.9214,77.6625,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_05,Bellandur,Blue,12.9281,77.6808,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_06,Kadubeesanahalli,Blue,12.945,77.6981,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_07,Marathahalli,Blue,12.9583,77.7014,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_08,Doddanekundi (ISRO),Blue,12.9756,77.6972,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_09,DRDO Sports Complex,Blue,12.9858,77.6908,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_10,Saraswathi Nagar,Blue,12.9939,77.6856,False,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_11,Krishnarajapura (KR Pura),Blue,12.996112,77.675631,True,Under Construction,BMRCL_BlueLine_Phase2A
+M_BLU_12,Kasturi Nagar,Blue,13.0049,77.6632,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_13,Horamavu,Blue,13.0169,77.6603,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_14,HRBR Layout,Blue,13.0225,77.6475,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_15,Kalyan Nagar,Blue,13.0264,77.6378,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_16,HBR Layout,Blue,13.0328,77.6297,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_17,Nagawara,Blue,13.0406,77.6247,True,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_18,Veerannapalya,Blue,13.0412,77.6181,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_19,Kempapura,Blue,13.0435,77.6025,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_20,Hebbal,Blue,13.0443,77.5927,True,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_21,Kodigehalli,Blue,13.057,77.5939,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_22,Jakkur Cross,Blue,13.0704,77.5935,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_23,Yelahanka,Blue,13.1021,77.6004,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_24,Bagalur Cross,Blue,13.1206,77.6106,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_25,Bettahalasuru,Blue,13.1415,77.6205,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_26,Doddajala,Blue,13.1693,77.6318,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_27,Airport City,Blue,13.188,77.675,False,Under Construction,BMRCL_BlueLine_Phase2B
+M_BLU_28,KIAL Terminals (Airport),Blue,13.1981,77.7125,True,Under Construction,BMRCL_BlueLine_Phase2B

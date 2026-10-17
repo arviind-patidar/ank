@@ -10818,7 +10818,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v48"
+  CACHE_KEY: "ackey_app_data_v49"
 };
 
 const DataService = {
@@ -11021,8 +11021,39 @@ function ensureCompleteMetroStations() {
     { id: 'M_GRN_32', name: 'Silk Institute', line: 'Green', lat: 12.861668306483676, lng: 77.53001524837363, source: 'BMRCL_Official' }
   ];
 
-  const others = METRO_STATIONS.filter(s => s.line !== 'Purple' && s.line !== 'Green');
-  METRO_STATIONS = [...PURPLE_LINE_STATIONS, ...GREEN_LINE_STATIONS, ...others];
+  const BLUE_LINE_STATIONS = [
+    { id: 'M_BLU_01', name: 'Central Silk Board', line: 'Blue', lat: 12.917245, lng: 77.623812, isInterchange: true, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_02', name: 'HSR Layout', line: 'Blue', lat: 12.916400, lng: 77.633100, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_03', name: 'Agara', line: 'Blue', lat: 12.920600, lng: 77.643600, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_04', name: 'Ibbaluru', line: 'Blue', lat: 12.921400, lng: 77.662500, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_05', name: 'Bellandur', line: 'Blue', lat: 12.928100, lng: 77.680800, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_06', name: 'Kadubeesanahalli', line: 'Blue', lat: 12.945000, lng: 77.698100, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_07', name: 'Marathahalli', line: 'Blue', lat: 12.958300, lng: 77.701400, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_08', name: 'Doddanekundi (ISRO)', line: 'Blue', lat: 12.975600, lng: 77.697200, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_09', name: 'DRDO Sports Complex', line: 'Blue', lat: 12.985800, lng: 77.690800, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_10', name: 'Saraswathi Nagar', line: 'Blue', lat: 12.993900, lng: 77.685600, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_11', name: 'Krishnarajapura (KR Pura)', line: 'Blue', lat: 12.996112, lng: 77.675631, isInterchange: true, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2A' },
+    { id: 'M_BLU_12', name: 'Kasturi Nagar', line: 'Blue', lat: 13.004900, lng: 77.663200, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_13', name: 'Horamavu', line: 'Blue', lat: 13.016900, lng: 77.660300, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_14', name: 'HRBR Layout', line: 'Blue', lat: 13.022500, lng: 77.647500, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_15', name: 'Kalyan Nagar', line: 'Blue', lat: 13.026400, lng: 77.637800, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_16', name: 'HBR Layout', line: 'Blue', lat: 13.032800, lng: 77.629700, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_17', name: 'Nagawara', line: 'Blue', lat: 13.040600, lng: 77.624700, isInterchange: true, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_18', name: 'Veerannapalya', line: 'Blue', lat: 13.041200, lng: 77.618100, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_19', name: 'Kempapura', line: 'Blue', lat: 13.043500, lng: 77.602500, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_20', name: 'Hebbal', line: 'Blue', lat: 13.044300, lng: 77.592700, isInterchange: true, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_21', name: 'Kodigehalli', line: 'Blue', lat: 13.057000, lng: 77.593900, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_22', name: 'Jakkur Cross', line: 'Blue', lat: 13.070400, lng: 77.593500, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_23', name: 'Yelahanka', line: 'Blue', lat: 13.102100, lng: 77.600400, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_24', name: 'Bagalur Cross', line: 'Blue', lat: 13.120600, lng: 77.610600, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_25', name: 'Bettahalasuru', line: 'Blue', lat: 13.141500, lng: 77.620500, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_26', name: 'Doddajala', line: 'Blue', lat: 13.169300, lng: 77.631800, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_27', name: 'Airport City', line: 'Blue', lat: 13.188000, lng: 77.675000, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' },
+    { id: 'M_BLU_28', name: 'KIAL Terminals (Airport)', line: 'Blue', lat: 13.198100, lng: 77.712500, isInterchange: true, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' }
+  ];
+
+  const others = METRO_STATIONS.filter(s => s.line !== 'Purple' && s.line !== 'Green' && s.line !== 'Blue');
+  METRO_STATIONS = [...PURPLE_LINE_STATIONS, ...GREEN_LINE_STATIONS, ...BLUE_LINE_STATIONS, ...others];
 }
 
 function initAppListings() {
@@ -11455,21 +11486,59 @@ const METRO_LINE_CONFIG = {
     isOperational: false,
     dashed: true,
     points: [
-      { lat: 12.917245, lng: 77.623812 },
-      { lat: 12.9125, lng: 77.6385 },
-      { lat: 12.9245, lng: 77.6482 },
-      { lat: 12.9255, lng: 77.6612 },
-      { lat: 12.9285, lng: 77.6742 },
-      { lat: 12.9365, lng: 77.6902 },
-      { lat: 12.9555, lng: 77.6982 },
-      { lat: 12.9715, lng: 77.6975 },
-      { lat: 12.996112, lng: 77.675631 },
-      { lat: 13.0085, lng: 77.6625 },
-      { lat: 13.0212, lng: 77.6485 },
-      { lat: 13.0285, lng: 77.6395 },
-      { lat: 13.0415, lng: 77.6185 },
-      { lat: 13.1012, lng: 77.5965 },
-      { lat: 13.1985, lng: 77.7065 }
+      // Phase 2A: Central Silk Board to KR Puram (along Outer Ring Road / NH 44)
+      { lat: 12.917245, lng: 77.623812 }, // Central Silk Board Interchange
+      { lat: 12.916800, lng: 77.628500 }, // ORR east of Silk Board
+      { lat: 12.916400, lng: 77.633100 }, // HSR Layout (14th Main junction on ORR)
+      { lat: 12.917800, lng: 77.638500 }, // ORR around Agara Lake
+      { lat: 12.920600, lng: 77.643600 }, // Agara (Agara junction on ORR)
+      { lat: 12.921100, lng: 77.653000 }, // ORR flyover
+      { lat: 12.921400, lng: 77.662500 }, // Ibbaluru (Sarjapur Road / ORR junction)
+      { lat: 12.923800, lng: 77.671500 }, // ORR towards Bellandur
+      { lat: 12.928100, lng: 77.680800 }, // Bellandur (EcoSpace / ORR)
+      { lat: 12.935500, lng: 77.691200 }, // ORR past Devarabisanahalli
+      { lat: 12.945000, lng: 77.698100 }, // Kadubeesanahalli (Prestige Tech Park / Cessna / ORR)
+      { lat: 12.951500, lng: 77.700800 }, // ORR past Multiplex
+      { lat: 12.958300, lng: 77.701400 }, // Marathahalli (Marathahalli flyover / ORR)
+      { lat: 12.967500, lng: 77.699200 }, // ORR past Kalamandir
+      { lat: 12.975600, lng: 77.697200 }, // Doddanekundi - ISRO (ORR)
+      { lat: 12.981500, lng: 77.694200 }, // ORR past EMC
+      { lat: 12.985800, lng: 77.690800 }, // DRDO Sports Complex (ORR)
+      { lat: 12.990500, lng: 77.687800 }, // ORR Mahadevapura
+      { lat: 12.993900, lng: 77.685600 }, // Saraswathi Nagar (ORR near Phoenix Marketcity)
+      { lat: 12.995800, lng: 77.680000 }, // ORR approaching KR Puram
+      { lat: 12.996112, lng: 77.675631 }, // Krishnarajapura - KR Puram Interchange (Purple Line)
+
+      // Phase 2B: KR Puram to Hebbal (along Outer Ring Road)
+      { lat: 13.001000, lng: 77.669500 }, // ORR past Tin Factory
+      { lat: 13.004900, lng: 77.663200 }, // Kasturi Nagar (ORR)
+      { lat: 13.011500, lng: 77.661800 }, // ORR past Channasandra
+      { lat: 13.016900, lng: 77.660300 }, // Horamavu (ORR)
+      { lat: 13.020500, lng: 77.654000 }, // ORR curving northwest
+      { lat: 13.022500, lng: 77.647500 }, // HRBR Layout (ORR)
+      { lat: 13.026400, lng: 77.637800 }, // Kalyan Nagar (Kammanahalli / ORR)
+      { lat: 13.032800, lng: 77.629700 }, // HBR Layout (ORR)
+      { lat: 13.040600, lng: 77.624700 }, // Nagawara (Pink Line Interchange / ORR)
+      { lat: 13.041200, lng: 77.618100 }, // Veerannapalya (Manyata Tech Park / ORR)
+      { lat: 13.043500, lng: 77.602500 }, // Kempapura (ORR)
+      { lat: 13.044300, lng: 77.592700 }, // Hebbal Interchange (ORR / NH 44 Bellary Road)
+
+      // Phase 2B: Hebbal to Airport (directly along NH 44 / Bellary Road)
+      { lat: 13.048500, lng: 77.593200 }, // NH 44 Bellary Road north of Hebbal flyover
+      { lat: 13.057000, lng: 77.593900 }, // Kodigehalli (NH 44)
+      { lat: 13.064000, lng: 77.593600 }, // NH 44 Byatarayanapura
+      { lat: 13.070400, lng: 77.593500 }, // Jakkur Cross (NH 44)
+      { lat: 13.085000, lng: 77.596000 }, // NH 44 GKVK
+      { lat: 13.102100, lng: 77.600400 }, // Yelahanka (NH 44 Kogilu Cross)
+      { lat: 13.111500, lng: 77.605500 }, // NH 44 north
+      { lat: 13.120600, lng: 77.610600 }, // Bagalur Cross (NH 44)
+      { lat: 13.131000, lng: 77.615500 }, // NH 44 Vidyanagar
+      { lat: 13.141500, lng: 77.620500 }, // Bettahalasuru (NH 44)
+      { lat: 13.155000, lng: 77.626000 }, // NH 44 Chikkajala
+      { lat: 13.169300, lng: 77.631800 }, // Doddajala (NH 44)
+      { lat: 13.181000, lng: 77.645000 }, // NH 44 Trumpet interchange curve into Airport
+      { lat: 13.188000, lng: 77.675000 }, // Airport City (KIAL campus)
+      { lat: 13.198100, lng: 77.712500 }  // KIAL Terminals (Kempegowda International Airport)
     ]
   },
   Pink: {

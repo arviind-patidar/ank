@@ -5490,6 +5490,263 @@
       "lat": 12.861668306483676,
       "lng": 77.53001524837363,
       "source": "GoogleSheet_SSOT"
+    },
+    {
+      "id": "M_BLU_01",
+      "name": "Central Silk Board",
+      "line": "Blue",
+      "lat": 12.917245,
+      "lng": 77.623812,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_02",
+      "name": "HSR Layout",
+      "line": "Blue",
+      "lat": 12.9164,
+      "lng": 77.6331,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_03",
+      "name": "Agara",
+      "line": "Blue",
+      "lat": 12.9206,
+      "lng": 77.6436,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_04",
+      "name": "Ibbaluru",
+      "line": "Blue",
+      "lat": 12.9214,
+      "lng": 77.6625,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_05",
+      "name": "Bellandur",
+      "line": "Blue",
+      "lat": 12.9281,
+      "lng": 77.6808,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_06",
+      "name": "Kadubeesanahalli",
+      "line": "Blue",
+      "lat": 12.945,
+      "lng": 77.6981,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_07",
+      "name": "Marathahalli",
+      "line": "Blue",
+      "lat": 12.9583,
+      "lng": 77.7014,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_08",
+      "name": "Doddanekundi (ISRO)",
+      "line": "Blue",
+      "lat": 12.9756,
+      "lng": 77.6972,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_09",
+      "name": "DRDO Sports Complex",
+      "line": "Blue",
+      "lat": 12.9858,
+      "lng": 77.6908,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_10",
+      "name": "Saraswathi Nagar",
+      "line": "Blue",
+      "lat": 12.9939,
+      "lng": 77.6856,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_11",
+      "name": "Krishnarajapura (KR Pura)",
+      "line": "Blue",
+      "lat": 12.996112,
+      "lng": 77.675631,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_12",
+      "name": "Kasturi Nagar",
+      "line": "Blue",
+      "lat": 13.0049,
+      "lng": 77.6632,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_13",
+      "name": "Horamavu",
+      "line": "Blue",
+      "lat": 13.0169,
+      "lng": 77.6603,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_14",
+      "name": "HRBR Layout",
+      "line": "Blue",
+      "lat": 13.0225,
+      "lng": 77.6475,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_15",
+      "name": "Kalyan Nagar",
+      "line": "Blue",
+      "lat": 13.0264,
+      "lng": 77.6378,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_16",
+      "name": "HBR Layout",
+      "line": "Blue",
+      "lat": 13.0328,
+      "lng": 77.6297,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_17",
+      "name": "Nagawara",
+      "line": "Blue",
+      "lat": 13.0406,
+      "lng": 77.6247,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_18",
+      "name": "Veerannapalya",
+      "line": "Blue",
+      "lat": 13.0412,
+      "lng": 77.6181,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_19",
+      "name": "Kempapura",
+      "line": "Blue",
+      "lat": 13.0435,
+      "lng": 77.6025,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_20",
+      "name": "Hebbal",
+      "line": "Blue",
+      "lat": 13.0443,
+      "lng": 77.5927,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_21",
+      "name": "Kodigehalli",
+      "line": "Blue",
+      "lat": 13.057,
+      "lng": 77.5939,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_22",
+      "name": "Jakkur Cross",
+      "line": "Blue",
+      "lat": 13.0704,
+      "lng": 77.5935,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_23",
+      "name": "Yelahanka",
+      "line": "Blue",
+      "lat": 13.1021,
+      "lng": 77.6004,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_24",
+      "name": "Bagalur Cross",
+      "line": "Blue",
+      "lat": 13.1206,
+      "lng": 77.6106,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_25",
+      "name": "Bettahalasuru",
+      "line": "Blue",
+      "lat": 13.1415,
+      "lng": 77.6205,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_26",
+      "name": "Doddajala",
+      "line": "Blue",
+      "lat": 13.1693,
+      "lng": 77.6318,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_27",
+      "name": "Airport City",
+      "line": "Blue",
+      "lat": 13.188,
+      "lng": 77.675,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_28",
+      "name": "KIAL Terminals (Airport)",
+      "line": "Blue",
+      "lat": 13.1981,
+      "lng": 77.7125,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
     }
   ],
   "schools": [
