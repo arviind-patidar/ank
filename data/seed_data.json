@@ -4,7 +4,7 @@
     "datasetVersion": "v2.1.0",
     "activeTab": "Project Unit Pricing",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=456687578",
-    "syncedAt": "2026-10-17T10:13:03.725Z",
+    "syncedAt": "2026-10-17T12:13:45.849Z",
     "displayDate": "17 OCT 2026 (SHEET TAB: PROJECT UNIT PRICING)",
     "recordCounts": {
       "projects": 109,
@@ -43,13 +43,15 @@
       "inventory": [],
       "lat": 12.95466944,
       "lng": 77.747175,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-08-01T00:00:00.000Z"
     },
     {
       "id": "P02",
@@ -72,7 +74,9 @@
       "advisoryPro": "Sumadhura Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2026-01-01T00:00:00.000Z"
     },
     {
       "id": "P03",
@@ -95,7 +99,9 @@
       "advisoryPro": "Sumadhura Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2025-11-01T00:00:00.000Z"
     },
     {
       "id": "P04",
@@ -118,7 +124,9 @@
       "advisoryPro": "Sumadhura Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2022-01-01T00:00:00.000Z"
     },
     {
       "id": "P05",
@@ -141,7 +149,9 @@
       "advisoryPro": "Vaswani Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-04-01T00:00:00.000Z"
     },
     {
       "id": "P06",
@@ -164,7 +174,9 @@
       "advisoryPro": "Sumadhura Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-08-01T00:00:00.000Z"
     },
     {
       "id": "P07",
@@ -187,7 +199,9 @@
       "advisoryPro": "Mahindra Lifespaces delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2025-11-01T00:00:00.000Z"
     },
     {
       "id": "P08",
@@ -204,13 +218,15 @@
       "inventory": [],
       "lat": 13.03061,
       "lng": 77.75221,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Sumadhura Group proven delivery track record",
       "advisoryPro": "Sumadhura Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-09-01T00:00:00.000Z"
     },
     {
       "id": "P09",
@@ -233,7 +249,9 @@
       "advisoryPro": "Sattva Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-06-01T00:00:00.000Z"
     },
     {
       "id": "P10",
@@ -256,7 +274,9 @@
       "advisoryPro": "Brigade Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2025-06-01T00:00:00.000Z"
     },
     {
       "id": "P11",
@@ -273,13 +293,15 @@
       "inventory": [],
       "lat": 12.98779,
       "lng": 77.70796,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Mahadevapura tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Mahadevapura connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2005-07-01T00:00:00.000Z"
     },
     {
       "id": "P12",
@@ -296,13 +318,15 @@
       "inventory": [],
       "lat": 13.011723,
       "lng": 77.745931,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Godrej Properties proven delivery track record",
       "advisoryPro": "Godrej Properties delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2022-03-01T00:00:00.000Z"
     },
     {
       "id": "P13",
@@ -319,13 +343,15 @@
       "inventory": [],
       "lat": 12.99281,
       "lng": 77.69121,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Mahadevapura tech parks · Godrej Properties proven delivery track record",
       "advisoryPro": "Godrej Properties delivery track record & Mahadevapura connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2014-10-01T00:00:00.000Z"
     },
     {
       "id": "P14",
@@ -342,13 +368,15 @@
       "inventory": [],
       "lat": 13.01902,
       "lng": 77.7573213,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment & Villa",
+      "Launch date": "2023-08-01T00:00:00.000Z"
     },
     {
       "id": "P15",
@@ -365,13 +393,15 @@
       "inventory": [],
       "lat": 13.02154,
       "lng": 77.70821,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2017-01-01T00:00:00.000Z"
     },
     {
       "id": "P16",
@@ -388,13 +418,15 @@
       "inventory": [],
       "lat": 13.02211,
       "lng": 77.70885,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2020-08-01T00:00:00.000Z"
     },
     {
       "id": "P17",
@@ -411,13 +443,15 @@
       "inventory": [],
       "lat": 13.0246194444,
       "lng": 77.7642555556,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Mahadevapura tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Mahadevapura connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2017-11-01T00:00:00.000Z"
     },
     {
       "id": "P18",
@@ -432,15 +466,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.01452,
-      "lng": 77.72681,
-      "akScore": null,
+      "lat": 13.018971,
+      "lng": 77.70821,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2019-01-01T00:00:00.000Z"
     },
     {
       "id": "P19",
@@ -457,13 +493,15 @@
       "inventory": [],
       "lat": 13.01851,
       "lng": 77.72811,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Shriram Properties proven delivery track record",
       "advisoryPro": "Shriram Properties delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2018-11-01T00:00:00.000Z"
     },
     {
       "id": "P20",
@@ -480,13 +518,15 @@
       "inventory": [],
       "lat": 13.018241,
       "lng": 77.71285,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · SOBHA proven delivery track record",
       "advisoryPro": "SOBHA delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2018-06-01T00:00:00.000Z"
     },
     {
       "id": "P21",
@@ -503,13 +543,15 @@
       "inventory": [],
       "lat": 13.02311,
       "lng": 77.71181,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Concorde Group proven delivery track record",
       "advisoryPro": "Concorde Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2019-06-01T00:00:00.000Z"
     },
     {
       "id": "P22",
@@ -526,13 +568,15 @@
       "inventory": [],
       "lat": 13.01021,
       "lng": 77.69851,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Casagrand proven delivery track record",
       "advisoryPro": "Casagrand delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2021-08-01T00:00:00.000Z"
     },
     {
       "id": "P23",
@@ -549,13 +593,15 @@
       "inventory": [],
       "lat": 13.01451,
       "lng": 77.70121,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Pride Group proven delivery track record",
       "advisoryPro": "Pride Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2021-10-01T00:00:00.000Z"
     },
     {
       "id": "P24",
@@ -572,13 +618,15 @@
       "inventory": [],
       "lat": 12.94821,
       "lng": 77.73911,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · DSR Infrastructure proven delivery track record",
       "advisoryPro": "DSR Infrastructure delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Under construction stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2019-06-01T00:00:00.000Z"
     },
     {
       "id": "P25",
@@ -595,13 +643,15 @@
       "inventory": [],
       "lat": 12.99491,
       "lng": 77.66911,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to KR Puram tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & KR Puram connectivity",
       "advisoryConsideration": "Ready to move stage in KR Puram–Mahadevapura corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2012-11-01T00:00:00.000Z"
     },
     {
       "id": "P26",
@@ -616,15 +666,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05121,
-      "lng": 77.74811,
+      "lat": 13.0477678,
+      "lng": 77.7493738,
       "akScore": 67,
       "recommended": true,
       "pitchText": "Proximity to Budigere Cross tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-02-01T00:00:00.000Z"
     },
     {
       "id": "P27",
@@ -639,7 +691,7 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05311,
+      "lat": 13.05312,
       "lng": 77.74621,
       "akScore": 73.1,
       "recommended": true,
@@ -647,7 +699,9 @@
       "advisoryPro": "Brigade Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2022-09-01T00:00:00.000Z"
     },
     {
       "id": "P28",
@@ -662,15 +716,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05281,
-      "lng": 77.74901,
+      "lat": 13.052982,
+      "lng": 77.7575564,
       "akScore": 73.4,
       "recommended": true,
       "pitchText": "Proximity to Budigere Cross tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-10-01T00:00:00.000Z"
     },
     {
       "id": "P29",
@@ -685,15 +741,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05611,
-      "lng": 77.75121,
+      "lat": 13.0445671444,
+      "lng": 77.7480342079,
       "akScore": 68,
       "recommended": true,
       "pitchText": "Proximity to Budigere Cross tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-07-01T00:00:00.000Z"
     },
     {
       "id": "P30",
@@ -710,13 +768,15 @@
       "inventory": [],
       "lat": 13.04731,
       "lng": 77.75138,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · Godrej Properties proven delivery track record",
       "advisoryPro": "Godrej Properties delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-06-01T00:00:00.000Z"
     },
     {
       "id": "P31",
@@ -731,15 +791,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.0669,
-      "lng": 77.7983,
+      "lat": 13.06692,
+      "lng": 77.79831,
       "akScore": 64.7,
       "recommended": true,
       "pitchText": "Proximity to Budigere Cross tech parks · SOBHA proven delivery track record",
       "advisoryPro": "SOBHA delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-12-01T00:00:00.000Z"
     },
     {
       "id": "P32",
@@ -754,15 +816,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05221,
-      "lng": 77.74551,
-      "akScore": null,
+      "lat": 13.034503,
+      "lng": 77.734593,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · Concorde Group proven delivery track record",
       "advisoryPro": "Concorde Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-03-01T00:00:00.000Z"
     },
     {
       "id": "P33",
@@ -777,15 +841,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05011,
-      "lng": 77.74381,
-      "akScore": null,
+      "lat": 13.02254,
+      "lng": 77.71582,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · Ohana Developers proven delivery track record",
       "advisoryPro": "Ohana Developers delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-06-01T00:00:00.000Z"
     },
     {
       "id": "P34",
@@ -800,15 +866,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.03211,
-      "lng": 77.74911,
-      "akScore": null,
+      "lat": 13.01824,
+      "lng": 77.75481,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2022-12-01T00:00:00.000Z"
     },
     {
       "id": "P35",
@@ -823,15 +891,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05451,
-      "lng": 77.74781,
-      "akScore": null,
+      "lat": 13.029799,
+      "lng": 77.724023,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · Bren Corporation proven delivery track record",
       "advisoryPro": "Bren Corporation delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-08-01T00:00:00.000Z"
     },
     {
       "id": "P36",
@@ -846,15 +916,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.06521,
-      "lng": 77.76151,
-      "akScore": null,
+      "lat": 13.0616886,
+      "lng": 77.7531761,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · NVT Quality Lifestyle proven delivery track record",
       "advisoryPro": "NVT Quality Lifestyle delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Villa",
+      "Launch date": "2022-06-01T00:00:00.000Z"
     },
     {
       "id": "P37",
@@ -871,13 +943,15 @@
       "inventory": [],
       "lat": 13.05101,
       "lng": 77.74681,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · Aratt proven delivery track record",
       "advisoryPro": "Aratt delivery track record & Budigere Cross connectivity",
-      "advisoryConsideration": "Under construction stage in Budigere Cross���OMR East corridor",
+      "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-10-01T00:00:00.000Z"
     },
     {
       "id": "P38",
@@ -892,15 +966,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.05251,
-      "lng": 77.74821,
-      "akScore": null,
+      "lat": 13.07488066,
+      "lng": 77.79978275,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · SBR Group proven delivery track record",
       "advisoryPro": "SBR Group delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-11-01T00:00:00.000Z"
     },
     {
       "id": "P39",
@@ -915,15 +991,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.98921,
-      "lng": 77.75081,
-      "akScore": null,
+      "lat": 12.986254,
+      "lng": 77.75782,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Alembic Real Estate proven delivery track record",
       "advisoryPro": "Alembic Real Estate delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-09-01T00:00:00.000Z"
     },
     {
       "id": "P40",
@@ -946,7 +1024,9 @@
       "advisoryPro": "Prestige Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2025-01-01T00:00:00.000Z"
     },
     {
       "id": "P41",
@@ -961,15 +1041,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.95821,
-      "lng": 77.74121,
-      "akScore": null,
+      "lat": 12.9546212,
+      "lng": 77.7426543,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-03-01T00:00:00.000Z"
     },
     {
       "id": "P42",
@@ -984,15 +1066,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.96981,
-      "lng": 77.73158,
-      "akScore": null,
+      "lat": 12.969362,
+      "lng": 77.740286,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-10-01T00:00:00.000Z"
     },
     {
       "id": "P43",
@@ -1007,15 +1091,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.97651,
-      "lng": 77.73812,
-      "akScore": null,
+      "lat": 12.9755478605,
+      "lng": 77.7425280946,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-09-01T00:00:00.000Z"
     },
     {
       "id": "P44",
@@ -1032,13 +1118,15 @@
       "inventory": [],
       "lat": 12.97111,
       "lng": 77.74251,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Goyal & Co proven delivery track record",
       "advisoryPro": "Goyal & Co delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "P45",
@@ -1055,13 +1143,15 @@
       "inventory": [],
       "lat": 12.96211,
       "lng": 77.76981,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Birla Estates proven delivery track record",
       "advisoryPro": "Birla Estates delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Villament",
+      "Launch date": "2019-10-01T00:00:00.000Z"
     },
     {
       "id": "P46",
@@ -1078,13 +1168,15 @@
       "inventory": [],
       "lat": 12.98771,
       "lng": 77.72041,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Total Environment proven delivery track record",
       "advisoryPro": "Total Environment delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment & Villa",
+      "Launch date": "2015-09-01T00:00:00.000Z"
     },
     {
       "id": "P47",
@@ -1099,15 +1191,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.98851,
-      "lng": 77.75218,
-      "akScore": null,
+      "lat": 12.9879113708,
+      "lng": 77.7626087078,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · DSR Infrastructure proven delivery track record",
       "advisoryPro": "DSR Infrastructure delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-07-01T00:00:00.000Z"
     },
     {
       "id": "P48",
@@ -1122,15 +1216,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.98611,
-      "lng": 77.75021,
-      "akScore": null,
+      "lat": 13.0171037375,
+      "lng": 77.7624337797,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · Pavani Group proven delivery track record",
       "advisoryPro": "Pavani Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-10-01T00:00:00.000Z"
     },
     {
       "id": "P49",
@@ -1147,13 +1243,15 @@
       "inventory": [],
       "lat": 12.99121,
       "lng": 77.75411,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Whitefield tech parks · SBR Group proven delivery track record",
       "advisoryPro": "SBR Group delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Ready to move stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "P50",
@@ -1170,13 +1268,15 @@
       "inventory": [],
       "lat": 12.952814,
       "lng": 77.742301,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-08-01T00:00:00.000Z"
     },
     {
       "id": "P51",
@@ -1199,7 +1299,9 @@
       "advisoryPro": "Prestige Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-05-01T00:00:00.000Z"
     },
     {
       "id": "P52",
@@ -1214,15 +1316,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.934472,
-      "lng": 77.743917,
-      "akScore": null,
+      "lat": 12.934581,
+      "lng": 77.743574,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Ready to move stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2019-01-01T00:00:00.000Z"
     },
     {
       "id": "P53",
@@ -1239,13 +1343,15 @@
       "inventory": [],
       "lat": 12.928812,
       "lng": 77.74512,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Adarsh Developers proven delivery track record",
       "advisoryPro": "Adarsh Developers delivery track record & Varthur connectivity",
       "advisoryConsideration": "Ready to move stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2021-05-01T00:00:00.000Z"
     },
     {
       "id": "P54",
@@ -1262,13 +1368,15 @@
       "inventory": [],
       "lat": 12.94512,
       "lng": 77.74181,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "P55",
@@ -1283,15 +1391,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 12.88521,
-      "lng": 77.70312,
-      "akScore": null,
+      "lat": 12.88505865,
+      "lng": 77.70426373,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Ready to move stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2016-01-01T00:00:00.000Z"
     },
     {
       "id": "P56",
@@ -1308,13 +1418,15 @@
       "inventory": [],
       "lat": 12.941012,
       "lng": 77.74621,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Candeur Constructions proven delivery track record",
       "advisoryPro": "Candeur Constructions delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2022-02-01T00:00:00.000Z"
     },
     {
       "id": "P57",
@@ -1331,13 +1443,15 @@
       "inventory": [],
       "lat": 12.93921,
       "lng": 77.74758,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Candeur Constructions proven delivery track record",
       "advisoryPro": "Candeur Constructions delivery track record & Varthur connectivity",
       "advisoryConsideration": "Ready to move stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2021-08-01T00:00:00.000Z"
     },
     {
       "id": "P58",
@@ -1354,13 +1468,15 @@
       "inventory": [],
       "lat": 12.92418,
       "lng": 77.73212,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · DNR Group proven delivery track record",
       "advisoryPro": "DNR Group delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2021-07-01T00:00:00.000Z"
     },
     {
       "id": "P59",
@@ -1377,13 +1493,15 @@
       "inventory": [],
       "lat": 12.93912,
       "lng": 77.73771,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Panathur tech parks · SOBHA proven delivery track record",
       "advisoryPro": "SOBHA delivery track record & Panathur connectivity",
       "advisoryConsideration": "Ready to move stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2015-06-01T00:00:00.000Z"
     },
     {
       "id": "P60",
@@ -1406,7 +1524,9 @@
       "advisoryPro": "SOBHA delivery track record & Panathur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-09-01T00:00:00.000Z"
     },
     {
       "id": "P61",
@@ -1423,13 +1543,15 @@
       "inventory": [],
       "lat": 12.93081,
       "lng": 77.71921,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · SOBHA proven delivery track record",
       "advisoryPro": "SOBHA delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Villa / Row House",
+      "Launch date": "2021-12-01T00:00:00.000Z"
     },
     {
       "id": "P62",
@@ -1446,13 +1568,15 @@
       "inventory": [],
       "lat": 12.92151,
       "lng": 77.73828,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Modern Spaaces proven delivery track record",
       "advisoryPro": "Modern Spaaces delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-02-01T00:00:00.000Z"
     },
     {
       "id": "P63",
@@ -1469,13 +1593,15 @@
       "inventory": [],
       "lat": 12.93518,
       "lng": 77.74281,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Ecolife Developers proven delivery track record",
       "advisoryPro": "Ecolife Developers delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2022-01-01T00:00:00.000Z"
     },
     {
       "id": "P64",
@@ -1492,13 +1618,15 @@
       "inventory": [],
       "lat": 12.94381,
       "lng": 77.74451,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Spectra Constructions proven delivery track record",
       "advisoryPro": "Spectra Constructions delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-07-01T00:00:00.000Z"
     },
     {
       "id": "P65",
@@ -1515,13 +1643,15 @@
       "inventory": [],
       "lat": 12.92481,
       "lng": 77.74121,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Goyal & Co proven delivery track record",
       "advisoryPro": "Goyal & Co delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-03-01T00:00:00.000Z"
     },
     {
       "id": "P66",
@@ -1538,13 +1668,15 @@
       "inventory": [],
       "lat": 12.91851,
       "lng": 77.72581,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Varthur tech parks · Mana Projects proven delivery track record",
       "advisoryPro": "Mana Projects delivery track record & Varthur connectivity",
       "advisoryConsideration": "Under construction stage in Varthur–Gunjur corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-11-01T00:00:00.000Z"
     },
     {
       "id": "P67",
@@ -1567,7 +1699,9 @@
       "advisoryPro": "Provident Housing Limited delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-12-01T00:00:00.000Z"
     },
     {
       "id": "P68",
@@ -1584,13 +1718,15 @@
       "inventory": [],
       "lat": 13.258202,
       "lng": 77.708745,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Devanahalli tech parks · Puravankara Limited proven delivery track record",
       "advisoryPro": "Puravankara Limited delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2021-11-01T00:00:00.000Z"
     },
     {
       "id": "P69",
@@ -1607,13 +1743,15 @@
       "inventory": [],
       "lat": 13.2662,
       "lng": 77.6325,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Devanahalli tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2022-10-01T00:00:00.000Z"
     },
     {
       "id": "P70",
@@ -1630,13 +1768,15 @@
       "inventory": [],
       "lat": 13.20845,
       "lng": 77.7695,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Devanahalli tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-05-01T00:00:00.000Z"
     },
     {
       "id": "P71",
@@ -1653,13 +1793,15 @@
       "inventory": [],
       "lat": 13.2389,
       "lng": 77.6975,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Devanahalli tech parks · Sumadhura Group proven delivery track record",
       "advisoryPro": "Sumadhura Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-12-01T00:00:00.000Z"
     },
     {
       "id": "P72",
@@ -1676,13 +1818,15 @@
       "inventory": [],
       "lat": 13.2678,
       "lng": 77.6441,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Godrej Properties proven delivery track record",
       "advisoryPro": "Godrej Properties delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2018-11-01T00:00:00.000Z"
     },
     {
       "id": "P73",
@@ -1699,13 +1843,15 @@
       "inventory": [],
       "lat": 13.2872,
       "lng": 77.7095,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Century Real Estate proven delivery track record",
       "advisoryPro": "Century Real Estate delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "P74",
@@ -1722,13 +1868,15 @@
       "inventory": [],
       "lat": 13.3371,
       "lng": 77.5312,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Doddaballapur Road tech parks · Total Environment proven delivery track record",
       "advisoryPro": "Total Environment delivery track record & Doddaballapur Road connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2023-07-01T00:00:00.000Z"
     },
     {
       "id": "P75",
@@ -1745,13 +1893,15 @@
       "inventory": [],
       "lat": 13.39461,
       "lng": 77.486723,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Doddaballapur Road tech parks · Godrej Properties proven delivery track record",
       "advisoryPro": "Godrej Properties delivery track record & Doddaballapur Road connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-11-01T00:00:00.000Z"
     },
     {
       "id": "P76",
@@ -1768,13 +1918,15 @@
       "inventory": [],
       "lat": 13.1952,
       "lng": 77.6421,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Shettigere tech parks · Tata Housing proven delivery track record",
       "advisoryPro": "Tata Housing delivery track record & Shettigere connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2022-03-01T00:00:00.000Z"
     },
     {
       "id": "P77",
@@ -1791,13 +1943,15 @@
       "inventory": [],
       "lat": 13.2925,
       "lng": 77.5398,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Doddaballapur Road tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & Doddaballapur Road connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-09-01T00:00:00.000Z"
     },
     {
       "id": "P79",
@@ -1814,13 +1968,15 @@
       "inventory": [],
       "lat": 13.226434,
       "lng": 77.574941,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-08-01T00:00:00.000Z"
     },
     {
       "id": "P80",
@@ -1837,13 +1993,15 @@
       "inventory": [],
       "lat": 13.2425,
       "lng": 77.7885,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2025-01-01T00:00:00.000Z"
     },
     {
       "id": "P81",
@@ -1860,13 +2018,15 @@
       "inventory": [],
       "lat": 13.235005,
       "lng": 77.585,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Adarsh Developers proven delivery track record",
       "advisoryPro": "Adarsh Developers delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2023-06-01T00:00:00.000Z"
     },
     {
       "id": "P82",
@@ -1883,13 +2043,15 @@
       "inventory": [],
       "lat": 13.2038,
       "lng": 77.6285,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Embassy Group proven delivery track record",
       "advisoryPro": "Embassy Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot & Villa",
+      "Launch date": "2016-04-01T00:00:00.000Z"
     },
     {
       "id": "P83",
@@ -1906,13 +2068,15 @@
       "inventory": [],
       "lat": 13.2641,
       "lng": 77.6358,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Century Real Estate proven delivery track record",
       "advisoryPro": "Century Real Estate delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2021-10-01T00:00:00.000Z"
     },
     {
       "id": "P84",
@@ -1929,13 +2093,15 @@
       "inventory": [],
       "lat": 13.2985,
       "lng": 77.7182,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Devanahalli tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-03-01T00:00:00.000Z"
     },
     {
       "id": "P85",
@@ -1952,13 +2118,15 @@
       "inventory": [],
       "lat": 13.2185,
       "lng": 77.5612,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Doddaballapur Road tech parks · Century Real Estate proven delivery track record",
       "advisoryPro": "Century Real Estate delivery track record & Doddaballapur Road connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2013-10-01T00:00:00.000Z"
     },
     {
       "id": "P86",
@@ -1975,13 +2143,15 @@
       "inventory": [],
       "lat": 12.98484,
       "lng": 77.78384,
-      "akScore": null,
+      "akScore": "",
       "recommended": true,
       "pitchText": "Proximity to Whitefield tech parks · Goyal & Co proven delivery track record",
       "advisoryPro": "Goyal & Co delivery track record & Whitefield connectivity",
       "advisoryConsideration": "Under construction stage in Core Whitefield–Hoodi corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-10-01T00:00:00.000Z"
     },
     {
       "id": "P87",
@@ -1998,13 +2168,15 @@
       "inventory": [],
       "lat": 13.2285,
       "lng": 77.6015,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2022-01-01T00:00:00.000Z"
     },
     {
       "id": "P88",
@@ -2021,13 +2193,15 @@
       "inventory": [],
       "lat": 13.2725,
       "lng": 77.5345,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Kantanakunte tech parks · Century Real Estate proven delivery track record",
       "advisoryPro": "Century Real Estate delivery track record & Kantanakunte connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2019-09-01T00:00:00.000Z"
     },
     {
       "id": "P89",
@@ -2044,13 +2218,15 @@
       "inventory": [],
       "lat": 13.1945,
       "lng": 77.561,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Rajanukunte tech parks · Century Real Estate proven delivery track record",
       "advisoryPro": "Century Real Estate delivery track record & Rajanukunte connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2024-11-01T00:00:00.000Z"
     },
     {
       "id": "P90",
@@ -2067,13 +2243,15 @@
       "inventory": [],
       "lat": 13.1895,
       "lng": 77.5645,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Rajanukunte tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & Rajanukunte connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-09-01T00:00:00.000Z"
     },
     {
       "id": "P91",
@@ -2090,13 +2268,15 @@
       "inventory": [],
       "lat": 13.211,
       "lng": 77.6315,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Shettigere tech parks · Tata Housing proven delivery track record",
       "advisoryPro": "Tata Housing delivery track record & Shettigere connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment & Plot",
+      "Launch date": "2022-04-01T00:00:00.000Z"
     },
     {
       "id": "P92",
@@ -2113,13 +2293,15 @@
       "inventory": [],
       "lat": 13.2015,
       "lng": 77.625,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Shettigere tech parks · Birla Estates proven delivery track record",
       "advisoryPro": "Birla Estates delivery track record & Shettigere connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment & Villa",
+      "Launch date": "2023-08-01T00:00:00.000Z"
     },
     {
       "id": "P93",
@@ -2136,13 +2318,15 @@
       "inventory": [],
       "lat": 13.1615,
       "lng": 77.6845,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Bagalur tech parks · Prestige Group proven delivery track record",
       "advisoryPro": "Prestige Group delivery track record & Bagalur connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-03-01T00:00:00.000Z"
     },
     {
       "id": "P94",
@@ -2159,13 +2343,15 @@
       "inventory": [],
       "lat": 13.1825,
       "lng": 77.632,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Chikkajala tech parks · Puravankara proven delivery track record",
       "advisoryPro": "Puravankara delivery track record & Chikkajala connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-07-01T00:00:00.000Z"
     },
     {
       "id": "P95",
@@ -2182,13 +2368,15 @@
       "inventory": [],
       "lat": 13.2512,
       "lng": 77.7085,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Villa",
+      "Launch date": "2017-03-01T00:00:00.000Z"
     },
     {
       "id": "P96",
@@ -2205,13 +2393,15 @@
       "inventory": [],
       "lat": 13.2425,
       "lng": 77.709,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Sattva Group proven delivery track record",
       "advisoryPro": "Sattva Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Ready to move stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Ready to move stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2017-10-01T00:00:00.000Z"
     },
     {
       "id": "P97",
@@ -2228,13 +2418,15 @@
       "inventory": [],
       "lat": 13.2195,
       "lng": 77.656,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Assetz Property Group proven delivery track record",
       "advisoryPro": "Assetz Property Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Villa & Plot",
+      "Launch date": "2018-01-01T00:00:00.000Z"
     },
     {
       "id": "P98",
@@ -2251,13 +2443,15 @@
       "inventory": [],
       "lat": 13.218,
       "lng": 77.638,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Provident Housing proven delivery track record",
       "advisoryPro": "Provident Housing delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Townhouse / Villa",
+      "Launch date": "2023-11-01T00:00:00.000Z"
     },
     {
       "id": "P99",
@@ -2274,13 +2468,15 @@
       "inventory": [],
       "lat": 13.0725,
       "lng": 77.748,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Budigere Cross tech parks · SOBHA proven delivery track record",
       "advisoryPro": "SOBHA delivery track record & Budigere Cross connectivity",
       "advisoryConsideration": "Under construction stage in Budigere Cross–OMR East corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Villa / Row House",
+      "Launch date": "2023-01-01T00:00:00.000Z"
     },
     {
       "id": "P100",
@@ -2295,15 +2491,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.0785,
-      "lng": 77.6255,
-      "akScore": null,
+      "lat": 13.0544595312,
+      "lng": 77.7692817712,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Thanisandra tech parks · Lodha Group proven delivery track record",
       "advisoryPro": "Lodha Group delivery track record & Thanisandra connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2023-10-01T00:00:00.000Z"
     },
     {
       "id": "P101",
@@ -2318,15 +2516,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.098,
-      "lng": 77.604,
-      "akScore": null,
+      "lat": 13.050562257,
+      "lng": 77.6250636308,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Yelahanka tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Yelahanka connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": "2024-05-01T00:00:00.000Z"
     },
     {
       "id": "P102",
@@ -2341,15 +2541,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.2595,
-      "lng": 77.618,
-      "akScore": null,
+      "lat": 13.1103693,
+      "lng": 77.6041328,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Brigade Group proven delivery track record",
       "advisoryPro": "Brigade Group delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2025-02-01T00:00:00.000Z"
     },
     {
       "id": "P103",
@@ -2364,15 +2566,17 @@
       "maxPriceLakhs": null,
       "avgPricePerSqft": null,
       "inventory": [],
-      "lat": 13.276,
-      "lng": 77.558,
-      "akScore": null,
+      "lat": 13.1401,
+      "lng": 77.6819,
+      "akScore": "",
       "recommended": false,
       "pitchText": "Proximity to Devanahalli tech parks · Arvind SmartSpaces proven delivery track record",
       "advisoryPro": "Arvind SmartSpaces delivery track record & Devanahalli connectivity",
       "advisoryConsideration": "Under construction stage in North Bengaluru corridor",
       "tradeoffs": "High demand corridor with active inventory absorption · Under construction stage",
-      "source": "GoogleSheet_SSOT"
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Plot",
+      "Launch date": "2022-11-01T00:00:00.000Z"
     },
     {
       "id": "P104",
@@ -2389,13 +2593,15 @@
       "inventory": [],
       "lat": 12.88252447,
       "lng": 77.47104549,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": ""
     },
     {
       "id": "P105",
@@ -2412,13 +2618,15 @@
       "inventory": [],
       "lat": 12.8990194,
       "lng": 77.52856652,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": ""
     },
     {
       "id": "P106",
@@ -2435,13 +2643,15 @@
       "inventory": [],
       "lat": 12.86689651,
       "lng": 77.54247758,
-      "akScore": null,
+      "akScore": "",
       "recommended": false,
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "Apartment",
+      "Launch date": ""
     },
     {
       "id": "P107",
@@ -2458,13 +2668,15 @@
       "inventory": [],
       "lat": 12.93449402,
       "lng": 77.51297852,
-      "akScore": null,
-      "recommended": false,
+      "akScore": "",
+      "recommended": "",
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "",
+      "Launch date": ""
     },
     {
       "id": "P108",
@@ -2481,13 +2693,15 @@
       "inventory": [],
       "lat": 12.95145333,
       "lng": 77.48593536,
-      "akScore": null,
-      "recommended": false,
+      "akScore": "",
+      "recommended": "",
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "",
+      "Launch date": ""
     },
     {
       "id": "P109",
@@ -2504,13 +2718,15 @@
       "inventory": [],
       "lat": 12.98299003,
       "lng": 77.51981742,
-      "akScore": null,
-      "recommended": false,
+      "akScore": "",
+      "recommended": "",
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "",
+      "Launch date": ""
     },
     {
       "id": "P110",
@@ -2527,13 +2743,15 @@
       "inventory": [],
       "lat": 12.9293794,
       "lng": 77.50624427,
-      "akScore": null,
-      "recommended": false,
+      "akScore": "",
+      "recommended": "",
       "pitchText": "",
-      "advisoryPro": null,
-      "advisoryConsideration": null,
-      "tradeoffs": null,
-      "source": "GoogleSheet_SSOT"
+      "advisoryPro": "",
+      "advisoryConsideration": "",
+      "tradeoffs": "",
+      "source": "GoogleSheet_SSOT",
+      "Type / Apartment or Plot": "",
+      "Launch date": ""
     }
   ],
   "techParks": [
@@ -4865,7 +5083,7 @@
       "line": "Purple",
       "lat": 12.89742,
       "lng": 77.46137,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_02",
@@ -4873,7 +5091,7 @@
       "line": "Purple",
       "lat": 12.908,
       "lng": 77.4765,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_03",
@@ -4881,7 +5099,7 @@
       "line": "Purple",
       "lat": 12.9149,
       "lng": 77.4876,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_04",
@@ -4889,7 +5107,7 @@
       "line": "Purple",
       "lat": 12.9244,
       "lng": 77.4983,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_05",
@@ -4897,7 +5115,7 @@
       "line": "Purple",
       "lat": 12.9354,
       "lng": 77.5124,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_06",
@@ -4905,7 +5123,7 @@
       "line": "Purple",
       "lat": 12.9367,
       "lng": 77.5196,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_07",
@@ -4913,47 +5131,47 @@
       "line": "Purple",
       "lat": 12.9431,
       "lng": 77.5245,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_08",
       "name": "Mysuru Road",
       "line": "Purple",
       "lat": 12.9465,
-      "lng": 77.5298,
-      "source": "GoogleSheet_SSOT"
+      "lng": 77.53,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_09",
       "name": "Deepanjali Nagar",
       "line": "Purple",
-      "lat": 12.9612,
-      "lng": 77.535,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.952187,
+      "lng": 77.536939,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_10",
       "name": "Attiguppe",
       "line": "Purple",
-      "lat": 12.9647,
-      "lng": 77.5401,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.96188,
+      "lng": 77.53355,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_11",
       "name": "Vijayanagar",
       "line": "Purple",
-      "lat": 12.97078,
-      "lng": 77.53737,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.970801,
+      "lng": 77.537285,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_12",
       "name": "Hosahalli",
       "line": "Purple",
-      "lat": 12.97417,
-      "lng": 77.54554,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.974178,
+      "lng": 77.545538,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_13",
@@ -4961,7 +5179,7 @@
       "line": "Purple",
       "lat": 12.976521,
       "lng": 77.554812,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_14",
@@ -4969,7 +5187,7 @@
       "line": "Purple",
       "lat": 12.977215,
       "lng": 77.566812,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_15",
@@ -4977,7 +5195,8 @@
       "line": "Purple",
       "lat": 12.975689,
       "lng": 77.572841,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official",
+      "isInterchange": true
     },
     {
       "id": "M_PUR_16",
@@ -4985,7 +5204,7 @@
       "line": "Purple",
       "lat": 12.974125,
       "lng": 77.582312,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_17",
@@ -4993,7 +5212,7 @@
       "line": "Purple",
       "lat": 12.979851,
       "lng": 77.591245,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_18",
@@ -5001,7 +5220,7 @@
       "line": "Purple",
       "lat": 12.981254,
       "lng": 77.596821,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_19",
@@ -5009,7 +5228,8 @@
       "line": "Purple",
       "lat": 12.975612,
       "lng": 77.606742,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official",
+      "isInterchange": true
     },
     {
       "id": "M_PUR_20",
@@ -5017,7 +5237,7 @@
       "line": "Purple",
       "lat": 12.972901,
       "lng": 77.61712,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_21",
@@ -5025,7 +5245,7 @@
       "line": "Purple",
       "lat": 12.975418,
       "lng": 77.626834,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_22",
@@ -5033,7 +5253,7 @@
       "line": "Purple",
       "lat": 12.978312,
       "lng": 77.638615,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_23",
@@ -5041,119 +5261,120 @@
       "line": "Purple",
       "lat": 12.985821,
       "lng": 77.644892,
-      "source": "GoogleSheet_SSOT"
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_24",
       "name": "Baiyappanahalli",
       "line": "Purple",
-      "lat": 12.990715,
-      "lng": 77.652391,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.990763,
+      "lng": 77.652468,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_25",
       "name": "Benniganahalli",
       "line": "Purple",
-      "lat": 12.993581,
-      "lng": 77.662095,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.99655,
+      "lng": 77.66828,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_26",
       "name": "Krishnarajapura (KR Pura)",
       "line": "Purple",
-      "lat": 12.996112,
-      "lng": 77.675631,
-      "source": "GoogleSheet_SSOT"
+      "lat": 13,
+      "lng": 77.67794,
+      "source": "BMRCL_Official",
+      "isInterchange": true
     },
     {
       "id": "M_PUR_27",
       "name": "Singayyanapalya",
       "line": "Purple",
-      "lat": 12.991204,
-      "lng": 77.687192,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.99678,
+      "lng": 77.69217,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_28",
       "name": "Garudacharpalya",
       "line": "Purple",
-      "lat": 12.990423,
-      "lng": 77.696145,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.99356,
+      "lng": 77.70376,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_29",
       "name": "Hoodi",
       "line": "Purple",
-      "lat": 12.986812,
-      "lng": 77.701124,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.98873,
+      "lng": 77.71127,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_30",
       "name": "Seetharamapalya",
       "line": "Purple",
-      "lat": 12.978152,
-      "lng": 77.705819,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.98092,
+      "lng": 77.70887,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_31",
       "name": "Kundalahalli",
       "line": "Purple",
-      "lat": 12.971895,
-      "lng": 77.712984,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.977461,
+      "lng": 77.715761,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_32",
       "name": "Nallurhalli",
       "line": "Purple",
-      "lat": 12.973411,
-      "lng": 77.718823,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.976528,
+      "lng": 77.724763,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_33",
       "name": "Sri Sathya Sai Hospital",
       "line": "Purple",
-      "lat": 12.979234,
-      "lng": 77.724812,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.98102,
+      "lng": 77.72762,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_34",
       "name": "Pattandur Agrahara",
       "line": "Purple",
-      "lat": 12.986615,
-      "lng": 77.735091,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.987613,
+      "lng": 77.738211,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_35",
       "name": "Kadugodi Tree Park",
       "line": "Purple",
-      "lat": 12.987672,
-      "lng": 77.742321,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.98565,
+      "lng": 77.7469,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_36",
       "name": "Hopefarm Channasandra",
       "line": "Purple",
-      "lat": 12.984089,
-      "lng": 77.751184,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.98793,
+      "lng": 77.75409,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M_PUR_37",
       "name": "Whitefield (Kadugodi)",
       "line": "Purple",
-      "lat": 12.996412,
-      "lng": 77.760085,
-      "source": "GoogleSheet_SSOT"
+      "lat": 12.99507,
+      "lng": 77.75777,
+      "source": "BMRCL_Official"
     },
     {
       "id": "M51",
@@ -5490,6 +5711,263 @@
       "lat": 12.861668306483676,
       "lng": 77.53001524837363,
       "source": "GoogleSheet_SSOT"
+    },
+    {
+      "id": "M_BLU_01",
+      "name": "Central Silk Board",
+      "line": "Blue",
+      "lat": 12.917245,
+      "lng": 77.623812,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_02",
+      "name": "HSR Layout",
+      "line": "Blue",
+      "lat": 12.9164,
+      "lng": 77.6331,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_03",
+      "name": "Agara",
+      "line": "Blue",
+      "lat": 12.9206,
+      "lng": 77.6436,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_04",
+      "name": "Ibbaluru",
+      "line": "Blue",
+      "lat": 12.9214,
+      "lng": 77.6625,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_05",
+      "name": "Bellandur",
+      "line": "Blue",
+      "lat": 12.9281,
+      "lng": 77.6808,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_06",
+      "name": "Kadubeesanahalli",
+      "line": "Blue",
+      "lat": 12.945,
+      "lng": 77.6981,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_07",
+      "name": "Marathahalli",
+      "line": "Blue",
+      "lat": 12.9583,
+      "lng": 77.7014,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_08",
+      "name": "Doddanekundi (ISRO)",
+      "line": "Blue",
+      "lat": 12.9756,
+      "lng": 77.6972,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_09",
+      "name": "DRDO Sports Complex",
+      "line": "Blue",
+      "lat": 12.9858,
+      "lng": 77.6908,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_10",
+      "name": "Saraswathi Nagar",
+      "line": "Blue",
+      "lat": 12.9939,
+      "lng": 77.6856,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_11",
+      "name": "Krishnarajapura (KR Pura)",
+      "line": "Blue",
+      "lat": 13,
+      "lng": 77.67794,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2A"
+    },
+    {
+      "id": "M_BLU_12",
+      "name": "Kasturi Nagar",
+      "line": "Blue",
+      "lat": 13.0049,
+      "lng": 77.6632,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_13",
+      "name": "Horamavu",
+      "line": "Blue",
+      "lat": 13.0169,
+      "lng": 77.6603,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_14",
+      "name": "HRBR Layout",
+      "line": "Blue",
+      "lat": 13.0225,
+      "lng": 77.6475,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_15",
+      "name": "Kalyan Nagar",
+      "line": "Blue",
+      "lat": 13.0264,
+      "lng": 77.6378,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_16",
+      "name": "HBR Layout",
+      "line": "Blue",
+      "lat": 13.0328,
+      "lng": 77.6297,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_17",
+      "name": "Nagawara",
+      "line": "Blue",
+      "lat": 13.0406,
+      "lng": 77.6247,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_18",
+      "name": "Veerannapalya",
+      "line": "Blue",
+      "lat": 13.0412,
+      "lng": 77.6181,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_19",
+      "name": "Kempapura",
+      "line": "Blue",
+      "lat": 13.0435,
+      "lng": 77.6025,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_20",
+      "name": "Hebbal",
+      "line": "Blue",
+      "lat": 13.0443,
+      "lng": 77.5927,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_21",
+      "name": "Kodigehalli",
+      "line": "Blue",
+      "lat": 13.057,
+      "lng": 77.5939,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_22",
+      "name": "Jakkur Cross",
+      "line": "Blue",
+      "lat": 13.0704,
+      "lng": 77.5935,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_23",
+      "name": "Yelahanka",
+      "line": "Blue",
+      "lat": 13.1021,
+      "lng": 77.6004,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_24",
+      "name": "Bagalur Cross",
+      "line": "Blue",
+      "lat": 13.1206,
+      "lng": 77.6106,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_25",
+      "name": "Bettahalasuru",
+      "line": "Blue",
+      "lat": 13.1415,
+      "lng": 77.6205,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_26",
+      "name": "Doddajala",
+      "line": "Blue",
+      "lat": 13.1693,
+      "lng": 77.6318,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_27",
+      "name": "Airport City",
+      "line": "Blue",
+      "lat": 13.188,
+      "lng": 77.675,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_BLU_28",
+      "name": "KIAL Terminals (Airport)",
+      "line": "Blue",
+      "lat": 13.1981,
+      "lng": 77.7125,
+      "isInterchange": true,
+      "status": "Under Construction",
+      "source": "BMRCL_BlueLine_Phase2B"
     }
   ],
   "schools": [
