@@ -11,6 +11,7 @@ const path = require('path');
 const https = require('https');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
+const LIVE_BACKUP_FILE = path.join(DATA_DIR, 'live_sheet_backup.json');
 const SEED_FILE = path.join(DATA_DIR, 'seed_data.json');
 const OUTPUT_FILE = path.join(DATA_DIR, 'map_data.json');
 const REPORT_FILE = path.join(DATA_DIR, 'data_quality_report.json');
@@ -22,9 +23,19 @@ if (!fs.existsSync(DATA_DIR)) {
 
 let sourcePayload = null;
 
-if (fs.existsSync(SEED_FILE)) {
+if (fs.existsSync(LIVE_BACKUP_FILE)) {
+  try {
+    sourcePayload = JSON.parse(fs.readFileSync(LIVE_BACKUP_FILE, 'utf8'));
+    console.log('Loaded source data from live_sheet_backup.json');
+  } catch (e) {
+    console.error('Error reading live_sheet_backup.json:', e.message);
+  }
+}
+
+if (!sourcePayload && fs.existsSync(SEED_FILE)) {
   try {
     sourcePayload = JSON.parse(fs.readFileSync(SEED_FILE, 'utf8'));
+    console.log('Loaded source data from seed_data.json');
   } catch (e) {
     console.error('Error reading seed_data.json:', e.message);
   }
@@ -35,7 +46,7 @@ const rawTechParks = (sourcePayload && Array.isArray(sourcePayload.techParks)) ?
 const rawMetroStations = (sourcePayload && Array.isArray(sourcePayload.metroStations)) ? sourcePayload.metroStations : [];
 const rawSchools = (sourcePayload && Array.isArray(sourcePayload.schools)) ? sourcePayload.schools : [];
 const rawHospitals = (sourcePayload && Array.isArray(sourcePayload.hospitals)) ? sourcePayload.hospitals : [];
-const rawMalls = (sourcePayload && Array.isArray(sourcePayload.malls)) ? sourcePayload.malls : [];
+const rawMalls = (sourcePayload && Array.isArray(sourcePayload.infrastructure)) ? sourcePayload.infrastructure : ((sourcePayload && Array.isArray(sourcePayload.malls)) ? sourcePayload.malls : []);
 const rawAreaPricing = (sourcePayload && Array.isArray(sourcePayload.areaPricing)) ? sourcePayload.areaPricing : [];
 
 // Validation helper
@@ -186,6 +197,7 @@ const fullPayload = {
       schools: normalizedSchools.length,
       hospitals: normalizedHospitals.length,
       malls: normalizedMalls.length,
+      infrastructure: normalizedMalls.length,
       areaPricing: normalizedAreaPricing.length
     },
     counts: {
@@ -195,6 +207,7 @@ const fullPayload = {
       schools: normalizedSchools.length,
       hospitals: normalizedHospitals.length,
       malls: normalizedMalls.length,
+      infrastructure: normalizedMalls.length,
       areaPricing: normalizedAreaPricing.length
     }
   },
@@ -204,11 +217,13 @@ const fullPayload = {
   schools: normalizedSchools,
   hospitals: normalizedHospitals,
   malls: normalizedMalls,
+  infrastructure: normalizedMalls,
   areaPricing: normalizedAreaPricing
 };
 
-// Write map_data.json
+// Write map_data.json and seed_data.json
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(fullPayload, null, 2), 'utf8');
+fs.writeFileSync(SEED_FILE, JSON.stringify(fullPayload, null, 2), 'utf8');
 
 // Write data quality report
 const qualityReport = {
