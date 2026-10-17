@@ -6534,15 +6534,18 @@ html, body {
   <main class="map-wrap">
 
     <!-- PERSISTENT MAP VIEW PILL CONTROL -->
-    <div id="mapViewPill" class="map-view-pill" role="radiogroup" aria-label="Map view context">
-      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties', event)">
+    <div id="mapViewPill" class="map-view-pill" role="group" aria-label="Map view context">
+      <button type="button" class="map-view-pill__btn map-view-pill__btn--active" id="mapViewBtnProperties" onclick="switchMapViewContext('properties', event)" title="View Properties (clears layer overlays)">
         <span>📍</span> Properties
       </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark', event)">
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnTechPark" onclick="switchMapViewContext('techpark', event)" title="Toggle Tech Park Density heatmap (can be viewed together with Metro Lines)">
         <span>🏢</span> Tech Park Density
       </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro', event)">
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro', event)" title="Toggle Metro Lines (can be viewed together with Tech Park Density)">
         <span>🚇</span> Metro Lines
+      </button>
+      <button type="button" class="map-view-pill__btn" id="mapViewBtnBoth" onclick="switchMapViewContext('both', event)" title="View both Metro Lines and Tech Park Density simultaneously in one view">
+        <span>⚡</span> Both (Tech + Metro)
       </button>
       <button type="button" class="map-view-pill__btn" id="mapViewBtnDrawTools" onclick="toggleDrawingToolsPanel(event)" title="Measure distance and draw shapes on the map">
         <span>📐</span> Measure & Draw
@@ -7580,11 +7583,7 @@ function setSidebarModeForHeatmap(active) {
 function setTechParkViewMode(active) {
   techParkViewActive = active;
 
-  if (active && metroNetworkActive) {
-    metroNetworkActive = false;
-    clearMetroNetwork();
-  }
-
+  if (els.techParkView) els.techParkView.checked = active;
   if (els.techParkViewNotice) els.techParkViewNotice.classList.toggle("techpark-view-notice--visible", active);
   if (active && els.techParkViewCount) els.techParkViewCount.textContent = TECH_PARKS.length;
 
@@ -10153,34 +10152,31 @@ function switchMapViewContext(context, e) {
     if (techParkViewActive) setTechParkViewMode(false);
     if (metroNetworkActive) toggleMetroLines(false);
   } else if (context === 'techpark') {
-    if (techParkViewActive) {
-      setTechParkViewMode(false);
-    } else {
-      if (metroNetworkActive) toggleMetroLines(false);
-      setTechParkViewMode(true);
-    }
+    setTechParkViewMode(!techParkViewActive);
   } else if (context === 'metro') {
-    if (metroNetworkActive) {
-      toggleMetroLines(false);
-    } else {
-      if (techParkViewActive) setTechParkViewMode(false);
-      toggleMetroLines(true);
-    }
+    toggleMetroLines(!metroNetworkActive);
+  } else if (context === 'both') {
+    const shouldEnable = !(techParkViewActive && metroNetworkActive);
+    setTechParkViewMode(shouldEnable);
+    toggleMetroLines(shouldEnable);
   }
 
   updateMapViewPillUI();
 }
 
 function updateMapViewPillUI() {
+  const isBoth = techParkViewActive && metroNetworkActive;
   const isProps = !techParkViewActive && !metroNetworkActive;
 
   const btnProps = document.getElementById("mapViewBtnProperties");
   const btnTech = document.getElementById("mapViewBtnTechPark");
   const btnMetro = document.getElementById("mapViewBtnMetro");
+  const btnBoth = document.getElementById("mapViewBtnBoth");
 
   if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", isProps);
   if (btnTech) btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
   if (btnMetro) btnMetro.classList.toggle("map-view-pill__btn--active", metroNetworkActive);
+  if (btnBoth) btnBoth.classList.toggle("map-view-pill__btn--active", isBoth);
 
   // Synchronize EXPLORE BENGALURU buttons
   const modeProps = document.getElementById("modeBtnProperties");
@@ -10832,7 +10828,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v46"
+  CACHE_KEY: "ackey_app_data_v47"
 };
 
 const DataService = {
@@ -11527,13 +11523,6 @@ function toggleMetroLines(forceActive) {
     if (checkbox) checkbox.checked = forceActive;
   } else {
     metroNetworkActive = checkbox ? checkbox.checked : !metroNetworkActive;
-  }
-
-  if (metroNetworkActive && techParkViewActive) {
-    techParkViewActive = false;
-    hideTechParkHeatmap();
-    if (els.techParkViewNotice) els.techParkViewNotice.classList.remove("techpark-view-notice--visible");
-    updateTechParkDisplay();
   }
 
   if (container) {
@@ -13742,19 +13731,9 @@ function switchMapMode(mode, e) {
     if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
     if (typeof toggleMetroLines === 'function') toggleMetroLines(false);
   } else if (mode === 'employment') {
-    if (techParkViewActive) {
-      if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
-    } else {
-      if (typeof toggleMetroLines === 'function') toggleMetroLines(false);
-      if (typeof setTechParkViewMode === 'function') setTechParkViewMode(true);
-    }
+    if (typeof setTechParkViewMode === 'function') setTechParkViewMode(!techParkViewActive);
   } else if (mode === 'connectivity') {
-    if (metroNetworkActive) {
-      if (typeof toggleMetroLines === 'function') toggleMetroLines(false);
-    } else {
-      if (typeof setTechParkViewMode === 'function') setTechParkViewMode(false);
-      if (typeof toggleMetroLines === 'function') toggleMetroLines(true);
-    }
+    if (typeof toggleMetroLines === 'function') toggleMetroLines(!metroNetworkActive);
   }
 
   if (typeof updateMapViewPillUI === 'function') updateMapViewPillUI();
