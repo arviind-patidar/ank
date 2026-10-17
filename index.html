@@ -6544,9 +6544,6 @@ html, body {
       <button type="button" class="map-view-pill__btn" id="mapViewBtnMetro" onclick="switchMapViewContext('metro', event)" title="Toggle Metro Lines (can be viewed together with Tech Park Density)">
         <span>🚇</span> Metro Lines
       </button>
-      <button type="button" class="map-view-pill__btn" id="mapViewBtnBoth" onclick="switchMapViewContext('both', event)" title="View both Metro Lines and Tech Park Density simultaneously in one view">
-        <span>⚡</span> Both (Tech + Metro)
-      </button>
       <button type="button" class="map-view-pill__btn" id="mapViewBtnDrawTools" onclick="toggleDrawingToolsPanel(event)" title="Measure distance and draw shapes on the map">
         <span>📐</span> Measure & Draw
       </button>
@@ -10155,28 +10152,21 @@ function switchMapViewContext(context, e) {
     setTechParkViewMode(!techParkViewActive);
   } else if (context === 'metro') {
     toggleMetroLines(!metroNetworkActive);
-  } else if (context === 'both') {
-    const shouldEnable = !(techParkViewActive && metroNetworkActive);
-    setTechParkViewMode(shouldEnable);
-    toggleMetroLines(shouldEnable);
   }
 
   updateMapViewPillUI();
 }
 
 function updateMapViewPillUI() {
-  const isBoth = techParkViewActive && metroNetworkActive;
   const isProps = !techParkViewActive && !metroNetworkActive;
 
   const btnProps = document.getElementById("mapViewBtnProperties");
   const btnTech = document.getElementById("mapViewBtnTechPark");
   const btnMetro = document.getElementById("mapViewBtnMetro");
-  const btnBoth = document.getElementById("mapViewBtnBoth");
 
   if (btnProps) btnProps.classList.toggle("map-view-pill__btn--active", isProps);
   if (btnTech) btnTech.classList.toggle("map-view-pill__btn--active", techParkViewActive);
   if (btnMetro) btnMetro.classList.toggle("map-view-pill__btn--active", metroNetworkActive);
-  if (btnBoth) btnBoth.classList.toggle("map-view-pill__btn--active", isBoth);
 
   // Synchronize EXPLORE BENGALURU buttons
   const modeProps = document.getElementById("modeBtnProperties");
@@ -10828,7 +10818,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v47"
+  CACHE_KEY: "ackey_app_data_v48"
 };
 
 const DataService = {
