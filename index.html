@@ -10831,7 +10831,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v43"
+  CACHE_KEY: "ackey_app_data_v44"
 };
 
 const DataService = {
@@ -12836,6 +12836,11 @@ function finishMeasureTool() {
 
   MapDrawState.drawnShapes.push(shapeRecord);
 
+  // Detach markers & badges from in-progress state so cleanup won't delete them
+  MapDrawState.measureMarkers = [];
+  MapDrawState.measureBadges = [];
+  MapDrawState.measurePolyline = null;
+
   // Clear current active tool listeners & guides
   cleanupMeasureListeners();
   resetDrawStatusCard();
@@ -12866,17 +12871,29 @@ function cleanupMeasureListeners() {
 
   // Restore pointer-events and clickability
   document.body.classList.remove("is-map-drawing");
-  MapDrawState.drawnShapes.forEach(s => {
-    if (s.overlay && s.overlay.setOptions) s.overlay.setOptions({ clickable: true });
-  });
+  if (Array.isArray(MapDrawState.drawnShapes)) {
+    MapDrawState.drawnShapes.forEach(s => {
+      if (s.overlay && s.overlay.setOptions) s.overlay.setOptions({ clickable: true });
+    });
+  }
   if (typeof areaPriceHoverCircles !== "undefined" && Array.isArray(areaPriceHoverCircles)) {
     areaPriceHoverCircles.forEach(c => c.setOptions({ clickable: true }));
   }
 
   MapDrawState.measurePolyline = null;
   MapDrawState.measurePoints = [];
-  MapDrawState.measureMarkers = [];
-  MapDrawState.measureBadges = [];
+  if (Array.isArray(MapDrawState.measureMarkers)) {
+    MapDrawState.measureMarkers.forEach(m => {
+      if (m && m.setMap) m.setMap(null);
+    });
+    MapDrawState.measureMarkers = [];
+  }
+  if (Array.isArray(MapDrawState.measureBadges)) {
+    MapDrawState.measureBadges.forEach(b => {
+      if (b && b.setMap) b.setMap(null);
+    });
+    MapDrawState.measureBadges = [];
+  }
 }
 
 // --- TOOL 2: SHAPE DRAWING (Polyline, Polygon, Circle, Rectangle) ---
@@ -13129,16 +13146,31 @@ function onShapeMapClick(shapeType, latLng) {
       const center = pts[0];
       const edge = pts[1];
       const radiusMeters = calcDistanceMeters(center, edge);
-      const circle = new google.maps.Circle({
-        center: center,
-        radius: radiusMeters,
-        strokeColor: '#B88E52',
-        strokeOpacity: 0.85,
-        strokeWeight: 3,
-        fillColor: '#B88E52',
-        fillOpacity: 0.2,
-        map: map
-      });
+      let circle = shapeDrawTempOverlay;
+      if (circle) {
+        circle.setRadius(radiusMeters);
+        circle.setOptions({
+          strokeColor: '#B88E52',
+          strokeOpacity: 0.85,
+          strokeWeight: 3,
+          fillColor: '#B88E52',
+          fillOpacity: 0.2,
+          clickable: true
+        });
+        shapeDrawTempOverlay = null;
+      } else {
+        circle = new google.maps.Circle({
+          center: center,
+          radius: radiusMeters,
+          strokeColor: '#B88E52',
+          strokeOpacity: 0.85,
+          strokeWeight: 3,
+          fillColor: '#B88E52',
+          fillOpacity: 0.2,
+          clickable: true,
+          map: map
+        });
+      }
       finalizeCreatedShape('circle', circle, center);
     }
   } else if (shapeType === 'rectangle') {
@@ -13151,15 +13183,30 @@ function onShapeMapClick(shapeType, latLng) {
       const bounds = new google.maps.LatLngBounds();
       bounds.extend(p1);
       bounds.extend(p2);
-      const rect = new google.maps.Rectangle({
-        bounds: bounds,
-        strokeColor: '#B88E52',
-        strokeOpacity: 0.85,
-        strokeWeight: 3,
-        fillColor: '#B88E52',
-        fillOpacity: 0.2,
-        map: map
-      });
+      let rect = shapeDrawTempOverlay;
+      if (rect) {
+        rect.setBounds(bounds);
+        rect.setOptions({
+          strokeColor: '#B88E52',
+          strokeOpacity: 0.85,
+          strokeWeight: 3,
+          fillColor: '#B88E52',
+          fillOpacity: 0.2,
+          clickable: true
+        });
+        shapeDrawTempOverlay = null;
+      } else {
+        rect = new google.maps.Rectangle({
+          bounds: bounds,
+          strokeColor: '#B88E52',
+          strokeOpacity: 0.85,
+          strokeWeight: 3,
+          fillColor: '#B88E52',
+          fillOpacity: 0.2,
+          clickable: true,
+          map: map
+        });
+      }
       finalizeCreatedShape('rectangle', rect, bounds.getNorthEast());
     }
   }
@@ -13293,23 +13340,36 @@ function removeDrawKeyboardListeners() {
 function finalizeCreatedShape(type, overlay, infoPos) {
   if (overlay) overlay.setOptions({ clickable: true });
 
+  // Clean any temporary vertex markers placed during drawing
+  if (Array.isArray(MapDrawState.measureMarkers)) {
+    MapDrawState.measureMarkers.forEach(m => {
+      if (m && m.setMap) m.setMap(null);
+    });
+    MapDrawState.measureMarkers = [];
+  }
+
+  // Ensure temporary preview overlay is cleaned if not identical to finalized overlay
+  if (shapeDrawTempOverlay && shapeDrawTempOverlay !== overlay) {
+    if (shapeDrawTempOverlay.setMap) shapeDrawTempOverlay.setMap(null);
+  }
+  shapeDrawTempOverlay = null;
+
   const shapeRecord = {
     id: "shape_" + Date.now(),
     type: type,
-    overlay: overlay
+    overlay: overlay,
+    markers: [],
+    badges: []
   };
   MapDrawState.drawnShapes.push(shapeRecord);
 
   google.maps.event.addListener(overlay, 'click', (e) => {
-    const clickPos = e.latLng || (overlay.getCenter ? overlay.getCenter() : null);
+    const clickPos = e.latLng || (overlay.getCenter ? overlay.getCenter() : null) || infoPos;
     showShapeInfoWindow(shapeRecord, clickPos);
   });
 
   showShapeInfoWindow(shapeRecord, infoPos);
   cleanupMeasureListeners();
-  if (shapeDrawTempOverlay) {
-    shapeDrawTempOverlay = null;
-  }
   resetDrawStatusCard();
 }
 
@@ -13427,9 +13487,19 @@ function deleteSavedShape(shapeId) {
   if (idx === -1) return;
   const shape = MapDrawState.drawnShapes[idx];
 
-  if (shape.overlay) shape.overlay.setMap(null);
-  if (shape.markers) shape.markers.forEach(m => m.setMap(null));
-  if (shape.badges) shape.badges.forEach(b => b.setMap(null));
+  if (shape.overlay && shape.overlay.setMap) {
+    shape.overlay.setMap(null);
+  }
+  if (Array.isArray(shape.markers)) {
+    shape.markers.forEach(m => {
+      if (m && m.setMap) m.setMap(null);
+    });
+  }
+  if (Array.isArray(shape.badges)) {
+    shape.badges.forEach(b => {
+      if (b && b.setMap) b.setMap(null);
+    });
+  }
 
   if (MapDrawState.activeInfoWindow) {
     MapDrawState.activeInfoWindow.close();
@@ -13445,14 +13515,57 @@ function clearAllDrawnShapes() {
     MapDrawState.activeInfoWindow = null;
   }
 
-  MapDrawState.drawnShapes.forEach(shape => {
-    if (shape.overlay) shape.overlay.setMap(null);
-    if (shape.markers) shape.markers.forEach(m => m.setMap(null));
-    if (shape.badges) shape.badges.forEach(b => b.setMap(null));
-  });
-  MapDrawState.drawnShapes = [];
+  if (Array.isArray(MapDrawState.drawnShapes)) {
+    MapDrawState.drawnShapes.forEach(shape => {
+      if (shape.overlay && shape.overlay.setMap) {
+        shape.overlay.setMap(null);
+      }
+      if (Array.isArray(shape.markers)) {
+        shape.markers.forEach(m => {
+          if (m && m.setMap) m.setMap(null);
+        });
+      }
+      if (Array.isArray(shape.badges)) {
+        shape.badges.forEach(b => {
+          if (b && b.setMap) b.setMap(null);
+        });
+      }
+    });
+    MapDrawState.drawnShapes = [];
+  }
 
   cancelCurrentDrawing();
+
+  // Extra safety: force-clean any stray temporary objects from the map
+  if (shapeDrawTempOverlay) {
+    if (shapeDrawTempOverlay.setMap) shapeDrawTempOverlay.setMap(null);
+    shapeDrawTempOverlay = null;
+  }
+  if (MapDrawState.measureGuideLine) {
+    if (MapDrawState.measureGuideLine.setMap) MapDrawState.measureGuideLine.setMap(null);
+    MapDrawState.measureGuideLine = null;
+  }
+  if (MapDrawState.measurePolyline) {
+    if (MapDrawState.measurePolyline.setMap) MapDrawState.measurePolyline.setMap(null);
+    MapDrawState.measurePolyline = null;
+  }
+  if (Array.isArray(MapDrawState.measureMarkers)) {
+    MapDrawState.measureMarkers.forEach(m => {
+      if (m && m.setMap) m.setMap(null);
+    });
+    MapDrawState.measureMarkers = [];
+  }
+  if (Array.isArray(MapDrawState.measureBadges)) {
+    MapDrawState.measureBadges.forEach(b => {
+      if (b && b.setMap) b.setMap(null);
+    });
+    MapDrawState.measureBadges = [];
+  }
+  MapDrawState.measurePoints = [];
+
+  document.querySelectorAll(".map-tool-btn").forEach(b => b.classList.remove("map-tool-btn--active"));
+  MapDrawState.activeTool = null;
+  resetDrawStatusCard();
 }
 
 function cancelCurrentDrawing() {
@@ -13465,14 +13578,23 @@ function cancelCurrentDrawing() {
     shapeDrawTempOverlay.setMap(null);
     shapeDrawTempOverlay = null;
   }
-  if (MapDrawState.measureMarkers) {
-    MapDrawState.measureMarkers.forEach(m => m.setMap(null));
+  if (Array.isArray(MapDrawState.measureMarkers)) {
+    MapDrawState.measureMarkers.forEach(m => {
+      if (m && m.setMap) m.setMap(null);
+    });
     MapDrawState.measureMarkers = [];
   }
-  if (MapDrawState.measureBadges) {
-    MapDrawState.measureBadges.forEach(b => b.setMap(null));
+  if (Array.isArray(MapDrawState.measureBadges)) {
+    MapDrawState.measureBadges.forEach(b => {
+      if (b && b.setMap) b.setMap(null);
+    });
     MapDrawState.measureBadges = [];
   }
+  if (MapDrawState.measureGuideLine) {
+    MapDrawState.measureGuideLine.setMap(null);
+    MapDrawState.measureGuideLine = null;
+  }
+  MapDrawState.measurePoints = [];
   cleanupMeasureListeners();
 
   resetDrawStatusCard();
