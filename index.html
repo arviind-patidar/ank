@@ -10818,7 +10818,7 @@ const APP_CONFIG = {
   STATIC_DATA_URL: "data/map_data.json",
   API_ENDPOINT: "https://script.google.com/macros/s/AKfycbwFMWlDEulQLXIDN9RxHkBjSLZ3jFA2fIWVisexTsuK4xTCMHODFxGzCBlPw-oGtBBanw/exec",
   TIMEOUT_MS: 10000,
-  CACHE_KEY: "ackey_app_data_v57"
+  CACHE_KEY: "ackey_app_data_v58"
 };
 
 const DataService = {
@@ -11052,8 +11052,27 @@ function ensureCompleteMetroStations() {
     { id: 'M_BLU_28', name: 'KIAL Terminals (Airport)', line: 'Blue', lat: 13.198100, lng: 77.712500, isInterchange: true, status: 'Under Construction', source: 'BMRCL_BlueLine_Phase2B' }
   ];
 
-  const others = METRO_STATIONS.filter(s => s.line !== 'Purple' && s.line !== 'Green' && s.line !== 'Blue');
-  METRO_STATIONS = [...PURPLE_LINE_STATIONS, ...GREEN_LINE_STATIONS, ...BLUE_LINE_STATIONS, ...others];
+  const YELLOW_LINE_STATIONS = [
+    { id: 'M_YEL_01', name: 'Rashtreeya Vidyalaya Road (RV Road)', line: 'Yellow', lat: 12.921245, lng: 77.580812, isInterchange: true, source: 'BMRCL_Official' },
+    { id: 'M_YEL_02', name: 'Ragigudda', line: 'Yellow', lat: 12.916667, lng: 77.589167, source: 'BMRCL_Official' },
+    { id: 'M_YEL_03', name: 'Jayadeva Hospital', line: 'Yellow', lat: 12.916667, lng: 77.600000, isInterchange: true, source: 'BMRCL_Official' },
+    { id: 'M_YEL_04', name: 'BTM Layout', line: 'Yellow', lat: 12.916667, lng: 77.608333, source: 'BMRCL_Official' },
+    { id: 'M_YEL_05', name: 'Central Silk Board', line: 'Yellow', lat: 12.917245, lng: 77.623812, isInterchange: true, source: 'BMRCL_Official' },
+    { id: 'M_YEL_06', name: 'Bommanahalli', line: 'Yellow', lat: 12.910556, lng: 77.626667, source: 'BMRCL_Official' },
+    { id: 'M_YEL_07', name: 'Hongasandra', line: 'Yellow', lat: 12.901667, lng: 77.631944, source: 'BMRCL_Official' },
+    { id: 'M_YEL_08', name: 'Kudlu Gate', line: 'Yellow', lat: 12.890000, lng: 77.639167, source: 'BMRCL_Official' },
+    { id: 'M_YEL_09', name: 'Singasandra', line: 'Yellow', lat: 12.880556, lng: 77.645000, source: 'BMRCL_Official' },
+    { id: 'M_YEL_10', name: 'Hosa Road', line: 'Yellow', lat: 12.870833, lng: 77.652500, source: 'BMRCL_Official' },
+    { id: 'M_YEL_11', name: 'Beratena Agrahara', line: 'Yellow', lat: 12.863889, lng: 77.658056, source: 'BMRCL_Official' },
+    { id: 'M_YEL_12', name: 'Konappana Agrahara (Infosys Foundation)', line: 'Yellow', lat: 12.856389, lng: 77.663611, source: 'BMRCL_Official' },
+    { id: 'M_YEL_13', name: 'Electronic City', line: 'Yellow', lat: 12.846489, lng: 77.671119, source: 'BMRCL_Official' },
+    { id: 'M_YEL_14', name: 'Huskur Road', line: 'Yellow', lat: 12.838889, lng: 77.677500, source: 'BMRCL_Official' },
+    { id: 'M_YEL_15', name: 'Hebbagodi (Biocon)', line: 'Yellow', lat: 12.829167, lng: 77.681389, source: 'BMRCL_Official' },
+    { id: 'M_YEL_16', name: 'Bommasandra (Delta Electronics)', line: 'Yellow', lat: 12.819444, lng: 77.688333, source: 'BMRCL_Official' }
+  ];
+
+  const others = METRO_STATIONS.filter(s => s.line !== 'Purple' && s.line !== 'Green' && s.line !== 'Blue' && s.line !== 'Yellow');
+  METRO_STATIONS = [...PURPLE_LINE_STATIONS, ...GREEN_LINE_STATIONS, ...BLUE_LINE_STATIONS, ...YELLOW_LINE_STATIONS, ...others];
 }
 
 function initAppListings() {
@@ -11477,7 +11496,43 @@ const METRO_LINE_CONFIG = {
     color: "#C9960A",
     statusText: "Testing / Opening Soon",
     isOperational: true,
-    dashed: false
+    dashed: false,
+    points: [
+      // Segment 1: RV Road to Central Silk Board (via Jayanagar, BTM)
+      { lat: 12.921245, lng: 77.580812 }, // Rashtreeya Vidyalaya Road (RV Road Interchange)
+      { lat: 12.918500, lng: 77.585000 }, // 28th Main Road curve
+      { lat: 12.916667, lng: 77.589167 }, // Ragigudda
+      { lat: 12.916667, lng: 77.595000 }, // Mara Gowda Road
+      { lat: 12.916667, lng: 77.600000 }, // Jayadeva Hospital Interchange
+      { lat: 12.916667, lng: 77.604500 }, // Outer Ring Road / BTM
+      { lat: 12.916667, lng: 77.608333 }, // BTM Layout
+      { lat: 12.916200, lng: 77.615500 }, // Outer Ring Road towards Silk Board
+      { lat: 12.917245, lng: 77.623812 }, // Central Silk Board Interchange
+
+      // Segment 2: Central Silk Board to Bommasandra along NH 44 (Hosur Road / Bengaluru-Chennai Highway)
+      { lat: 12.914500, lng: 77.624800 }, // Silk Board flyover turn south onto NH 44
+      { lat: 12.910556, lng: 77.626667 }, // Bommanahalli (NH 44)
+      { lat: 12.906000, lng: 77.629000 }, // NH 44 past Roopena Agrahara
+      { lat: 12.901667, lng: 77.631944 }, // Hongasandra (Garvebhavipalya on NH 44)
+      { lat: 12.895500, lng: 77.635800 }, // NH 44 corridor
+      { lat: 12.890000, lng: 77.639167 }, // Kudlu Gate (NH 44)
+      { lat: 12.885000, lng: 77.642200 }, // NH 44 past Kudlu
+      { lat: 12.880556, lng: 77.645000 }, // Singasandra (NH 44)
+      { lat: 12.875500, lng: 77.648500 }, // NH 44 past Singasandra
+      { lat: 12.870833, lng: 77.652500 }, // Hosa Road (Parappana Agrahara on NH 44)
+      { lat: 12.867000, lng: 77.655500 }, // NH 44 corridor
+      { lat: 12.863889, lng: 77.658056 }, // Beratena Agrahara (NH 44)
+      { lat: 12.860000, lng: 77.660800 }, // NH 44 approaching Electronic City
+      { lat: 12.856389, lng: 77.663611 }, // Konappana Agrahara (Infosys Foundation on NH 44)
+      { lat: 12.851500, lng: 77.667200 }, // NH 44 Electronic City Phase 1
+      { lat: 12.846489, lng: 77.671119 }, // Electronic City (NH 44)
+      { lat: 12.842500, lng: 77.674500 }, // NH 44 Electronic City Phase 2
+      { lat: 12.838889, lng: 77.677500 }, // Huskur Road (NH 44)
+      { lat: 12.834000, lng: 77.679500 }, // NH 44 Veerasandra
+      { lat: 12.829167, lng: 77.681389 }, // Hebbagodi (Biocon on NH 44)
+      { lat: 12.824000, lng: 77.685000 }, // NH 44 towards Bommasandra
+      { lat: 12.819444, lng: 77.688333 }  // Bommasandra (Delta Electronics Terminal on NH 44)
+    ]
   },
   Blue: {
     name: "Blue Line (ORR-Airport)",

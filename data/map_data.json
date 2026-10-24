@@ -4,12 +4,12 @@
     "datasetVersion": "v2.1.0",
     "activeTab": "Project Unit Pricing",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1PsahoCsoWKiCUlwBmdxj9U36jquUSJnrG2ejsnn7xdE/edit#gid=456687578",
-    "syncedAt": "2026-10-24T03:20:41.665Z",
+    "syncedAt": "2026-10-24T03:45:47.830Z",
     "displayDate": "17 OCT 2026 (SHEET TAB: PROJECT UNIT PRICING)",
     "recordCounts": {
       "projects": 126,
       "techParks": 290,
-      "metroStations": 79,
+      "metroStations": 113,
       "schools": 80,
       "hospitals": 80,
       "malls": 49,
@@ -19,7 +19,7 @@
     "counts": {
       "projects": 126,
       "techParks": 290,
-      "metroStations": 79,
+      "metroStations": 113,
       "schools": 80,
       "hospitals": 80,
       "malls": 49,
@@ -5802,86 +5802,6 @@
       "source": "BMRCL_Official"
     },
     {
-      "id": "M51",
-      "name": "R.V. Road Interchange",
-      "line": "Yellow",
-      "lat": 12.921245,
-      "lng": 77.580812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M52",
-      "name": "Ragigudda",
-      "line": "Yellow",
-      "lat": 12.918541,
-      "lng": 77.592812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M53",
-      "name": "Jayadeva Hospital Interchange",
-      "line": "Yellow",
-      "lat": 12.918215,
-      "lng": 77.601245,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M54",
-      "name": "BTM Layout",
-      "line": "Yellow",
-      "lat": 12.915421,
-      "lng": 77.609812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M55",
-      "name": "Central Silk Board Interchange",
-      "line": "Yellow",
-      "lat": 12.917245,
-      "lng": 77.623812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M56",
-      "name": "Bommanahalli",
-      "line": "Yellow",
-      "lat": 12.900215,
-      "lng": 77.625812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M57",
-      "name": "Hongasandra",
-      "line": "Yellow",
-      "lat": 12.888541,
-      "lng": 77.632812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M58",
-      "name": "Kudlu Gate",
-      "line": "Yellow",
-      "lat": 12.881245,
-      "lng": 77.641812,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M59",
-      "name": "Electronic City Phase 1",
-      "line": "Yellow",
-      "lat": 12.845215,
-      "lng": 77.660245,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
-      "id": "M60",
-      "name": "Bommasandra",
-      "line": "Yellow",
-      "lat": 12.812541,
-      "lng": 77.695215,
-      "source": "GoogleSheet_SSOT"
-    },
-    {
       "id": "M_GRN_01",
       "name": "Madavara (BIEC)",
       "line": "Green",
@@ -6393,6 +6313,137 @@
       "isInterchange": true,
       "status": "Under Construction",
       "source": "BMRCL_BlueLine_Phase2B"
+    },
+    {
+      "id": "M_YEL_01",
+      "name": "Rashtreeya Vidyalaya Road (RV Road)",
+      "line": "Yellow",
+      "lat": 12.921245,
+      "lng": 77.580812,
+      "isInterchange": true,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_02",
+      "name": "Ragigudda",
+      "line": "Yellow",
+      "lat": 12.916667,
+      "lng": 77.589167,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_03",
+      "name": "Jayadeva Hospital",
+      "line": "Yellow",
+      "lat": 12.916667,
+      "lng": 77.6,
+      "isInterchange": true,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_04",
+      "name": "BTM Layout",
+      "line": "Yellow",
+      "lat": 12.916667,
+      "lng": 77.608333,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_05",
+      "name": "Central Silk Board",
+      "line": "Yellow",
+      "lat": 12.917245,
+      "lng": 77.623812,
+      "isInterchange": true,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_06",
+      "name": "Bommanahalli",
+      "line": "Yellow",
+      "lat": 12.910556,
+      "lng": 77.626667,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_07",
+      "name": "Hongasandra",
+      "line": "Yellow",
+      "lat": 12.901667,
+      "lng": 77.631944,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_08",
+      "name": "Kudlu Gate",
+      "line": "Yellow",
+      "lat": 12.89,
+      "lng": 77.639167,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_09",
+      "name": "Singasandra",
+      "line": "Yellow",
+      "lat": 12.880556,
+      "lng": 77.645,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_10",
+      "name": "Hosa Road",
+      "line": "Yellow",
+      "lat": 12.870833,
+      "lng": 77.6525,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_11",
+      "name": "Beratena Agrahara",
+      "line": "Yellow",
+      "lat": 12.863889,
+      "lng": 77.658056,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_12",
+      "name": "Konappana Agrahara (Infosys Foundation)",
+      "line": "Yellow",
+      "lat": 12.856389,
+      "lng": 77.663611,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_13",
+      "name": "Electronic City",
+      "line": "Yellow",
+      "lat": 12.846489,
+      "lng": 77.671119,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_14",
+      "name": "Huskur Road",
+      "line": "Yellow",
+      "lat": 12.838889,
+      "lng": 77.6775,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_15",
+      "name": "Hebbagodi (Biocon)",
+      "line": "Yellow",
+      "lat": 12.829167,
+      "lng": 77.681389,
+      "source": "BMRCL_Official"
+    },
+    {
+      "id": "M_YEL_16",
+      "name": "Bommasandra (Delta Electronics)",
+      "line": "Yellow",
+      "lat": 12.819444,
+      "lng": 77.688333,
+      "source": "BMRCL_Official"
     }
   ],
   "schools": [
